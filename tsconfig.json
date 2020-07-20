@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es2017",
+        "strict": true,
+        "moduleResolution": "node",
+        "removeComments": true,
+        "sourceMap": false,
+        "noLib": false,
+        "declaration": true,
+        "lib": ["es2017"],
+        "outDir": "dist",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}

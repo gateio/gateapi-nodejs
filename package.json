@@ -1,0 +1,23 @@
+{
+    "name": "gate-api",
+    "version": "4.14.0",
+    "description": "NodeJS client for gate-api",
+    "repository": "gateio/gateapi-node",
+    "main": "dist/api.js",
+    "types": "dist/api.d.ts",
+    "scripts": {
+        "clean": "rm -Rf node_modules/ *.js",
+        "build": "tsc"
+    },
+    "author": "GateIO",
+    "license": "Unlicense",
+    "dependencies": {
+        "request": "^2.81.0",
+        "@types/request": "*"
+    },
+    "devDependencies": {
+        "rewire": "^3.0.2",
+        "typescript": "^2.4.2",
+        "@types/node": "8.10.34"
+    }
+}
