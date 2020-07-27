@@ -9,42 +9,41 @@
  * Do not edit the class manually.
  */
 
-
 export class FundingBookItem {
     /**
-    * Loan rate
-    */
+     * Loan rate
+     */
     'rate'?: string;
     /**
-    * Borrowable amount
-    */
+     * Borrowable amount
+     */
     'amount'?: string;
     /**
-    * How long the loan should be repaid
-    */
+     * How long the loan should be repaid
+     */
     'days'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "rate",
-            "baseName": "rate",
-            "type": "string"
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "days",
-            "baseName": "days",
-            "type": "number"
-        }    ];
+            name: 'days',
+            baseName: 'days',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FundingBookItem.attributeTypeMap;
     }
 }
-

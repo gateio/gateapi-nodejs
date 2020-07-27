@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Current close order if any, or `null`
-*/
+ * Current close order if any, or `null`
+ */
 export class PositionCloseOrder {
     /**
-    * Close order ID
-    */
+     * Close order ID
+     */
     'id'?: number;
     /**
-    * Close order price
-    */
+     * Close order price
+     */
     'price'?: string;
     /**
-    * Is the close order from liquidation
-    */
+     * Is the close order from liquidation
+     */
     'isLiq'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "isLiq",
-            "baseName": "is_liq",
-            "type": "boolean"
-        }    ];
+            name: 'isLiq',
+            baseName: 'is_liq',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return PositionCloseOrder.attributeTypeMap;
     }
 }
-

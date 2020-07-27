@@ -45,8 +45,9 @@ export * from './transfer';
 export * from './triggerOrderResponse';
 
 import localVarRequest = require('request');
-import crypto = require("crypto");
-import { URL } from "url";
+import qs = require("querystring");
+import crypto = require('crypto');
+import { URL } from 'url';
 
 import { BatchOrder } from './batchOrder';
 import { CancelOrder } from './cancelOrder';
@@ -95,106 +96,97 @@ import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 
 /* tslint:disable:no-unused-variable */
-let primitives = [
-                    "string",
-                    "boolean",
-                    "double",
-                    "integer",
-                    "long",
-                    "float",
-                    "number",
-                    "any"
-                 ];
+const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
 
-let enumsMap: {[index: string]: any} = {
-        "BatchOrder.Status": BatchOrder.Status,
-        "BatchOrder.Type": BatchOrder.Type,
-        "BatchOrder.Account": BatchOrder.Account,
-        "BatchOrder.Side": BatchOrder.Side,
-        "BatchOrder.TimeInForce": BatchOrder.TimeInForce,
-        "Contract.Type": Contract.Type,
-        "Contract.MarkType": Contract.MarkType,
-        "CurrencyPair.TradeStatus": CurrencyPair.TradeStatus,
-        "DeliveryContract.Cycle": DeliveryContract.Cycle,
-        "DeliveryContract.Type": DeliveryContract.Type,
-        "DeliveryContract.MarkType": DeliveryContract.MarkType,
-        "FuturesAccountBook.Type": FuturesAccountBook.Type,
-        "FuturesInitialOrder.Tif": FuturesInitialOrder.Tif,
-        "FuturesOrder.FinishAs": FuturesOrder.FinishAs,
-        "FuturesOrder.Status": FuturesOrder.Status,
-        "FuturesOrder.Tif": FuturesOrder.Tif,
-        "FuturesPriceTrigger.StrategyType": FuturesPriceTrigger.StrategyType,
-        "FuturesPriceTrigger.PriceType": FuturesPriceTrigger.PriceType,
-        "FuturesPriceTrigger.Rule": FuturesPriceTrigger.Rule,
-        "FuturesPriceTriggeredOrder.Status": FuturesPriceTriggeredOrder.Status,
-        "FuturesPriceTriggeredOrder.FinishAs": FuturesPriceTriggeredOrder.FinishAs,
-        "LedgerRecord.Status": LedgerRecord.Status,
-        "Loan.Status": Loan.Status,
-        "Loan.Side": Loan.Side,
-        "LoanPatch.Side": LoanPatch.Side,
-        "LoanRecord.Status": LoanRecord.Status,
-        "MyFuturesTrade.Role": MyFuturesTrade.Role,
-        "Order.Status": Order.Status,
-        "Order.Type": Order.Type,
-        "Order.Account": Order.Account,
-        "Order.Side": Order.Side,
-        "Order.TimeInForce": Order.TimeInForce,
-        "PositionClose.Side": PositionClose.Side,
-        "RepayRequest.Mode": RepayRequest.Mode,
-        "SubAccountTransfer.Direction": SubAccountTransfer.Direction,
-        "Trade.Side": Trade.Side,
-        "Trade.Role": Trade.Role,
-        "Transfer.From": Transfer.From,
-        "Transfer.To": Transfer.To,
-}
+const enumsMap: { [index: string]: any } = {
+    'BatchOrder.Status': BatchOrder.Status,
+    'BatchOrder.Type': BatchOrder.Type,
+    'BatchOrder.Account': BatchOrder.Account,
+    'BatchOrder.Side': BatchOrder.Side,
+    'BatchOrder.TimeInForce': BatchOrder.TimeInForce,
+    'Contract.Type': Contract.Type,
+    'Contract.MarkType': Contract.MarkType,
+    'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
+    'DeliveryContract.Cycle': DeliveryContract.Cycle,
+    'DeliveryContract.Type': DeliveryContract.Type,
+    'DeliveryContract.MarkType': DeliveryContract.MarkType,
+    'FuturesAccountBook.Type': FuturesAccountBook.Type,
+    'FuturesInitialOrder.Tif': FuturesInitialOrder.Tif,
+    'FuturesOrder.FinishAs': FuturesOrder.FinishAs,
+    'FuturesOrder.Status': FuturesOrder.Status,
+    'FuturesOrder.Tif': FuturesOrder.Tif,
+    'FuturesPriceTrigger.StrategyType': FuturesPriceTrigger.StrategyType,
+    'FuturesPriceTrigger.PriceType': FuturesPriceTrigger.PriceType,
+    'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
+    'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
+    'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
+    'LedgerRecord.Status': LedgerRecord.Status,
+    'Loan.Status': Loan.Status,
+    'Loan.Side': Loan.Side,
+    'LoanPatch.Side': LoanPatch.Side,
+    'LoanRecord.Status': LoanRecord.Status,
+    'MyFuturesTrade.Role': MyFuturesTrade.Role,
+    'Order.Status': Order.Status,
+    'Order.Type': Order.Type,
+    'Order.Account': Order.Account,
+    'Order.Side': Order.Side,
+    'Order.TimeInForce': Order.TimeInForce,
+    'PositionClose.Side': PositionClose.Side,
+    'RepayRequest.Mode': RepayRequest.Mode,
+    'SubAccountTransfer.Direction': SubAccountTransfer.Direction,
+    'Trade.Side': Trade.Side,
+    'Trade.Role': Trade.Role,
+    'Transfer.From': Transfer.From,
+    'Transfer.To': Transfer.To,
+};
 
-let typeMap: {[index: string]: any} = {
-    "BatchOrder": BatchOrder,
-    "CancelOrder": CancelOrder,
-    "CancelOrderResult": CancelOrderResult,
-    "Contract": Contract,
-    "CurrencyPair": CurrencyPair,
-    "DeliveryContract": DeliveryContract,
-    "DeliverySettlement": DeliverySettlement,
-    "DepositAddress": DepositAddress,
-    "FundingAccount": FundingAccount,
-    "FundingBookItem": FundingBookItem,
-    "FundingRateRecord": FundingRateRecord,
-    "FuturesAccount": FuturesAccount,
-    "FuturesAccountBook": FuturesAccountBook,
-    "FuturesCandlestick": FuturesCandlestick,
-    "FuturesInitialOrder": FuturesInitialOrder,
-    "FuturesLiquidate": FuturesLiquidate,
-    "FuturesOrder": FuturesOrder,
-    "FuturesOrderBook": FuturesOrderBook,
-    "FuturesOrderBookItem": FuturesOrderBookItem,
-    "FuturesPriceTrigger": FuturesPriceTrigger,
-    "FuturesPriceTriggeredOrder": FuturesPriceTriggeredOrder,
-    "FuturesTicker": FuturesTicker,
-    "FuturesTrade": FuturesTrade,
-    "InsuranceRecord": InsuranceRecord,
-    "LedgerRecord": LedgerRecord,
-    "Loan": Loan,
-    "LoanPatch": LoanPatch,
-    "LoanRecord": LoanRecord,
-    "MarginAccount": MarginAccount,
-    "MarginAccountCurrency": MarginAccountCurrency,
-    "MarginCurrencyPair": MarginCurrencyPair,
-    "MyFuturesTrade": MyFuturesTrade,
-    "Order": Order,
-    "OrderBook": OrderBook,
-    "Position": Position,
-    "PositionClose": PositionClose,
-    "PositionCloseOrder": PositionCloseOrder,
-    "RepayRequest": RepayRequest,
-    "Repayment": Repayment,
-    "SpotAccount": SpotAccount,
-    "SubAccountTransfer": SubAccountTransfer,
-    "Ticker": Ticker,
-    "Trade": Trade,
-    "Transfer": Transfer,
-    "TriggerOrderResponse": TriggerOrderResponse,
-}
+const typeMap: { [index: string]: any } = {
+    BatchOrder,
+    CancelOrder,
+    CancelOrderResult,
+    Contract,
+    CurrencyPair,
+    DeliveryContract,
+    DeliverySettlement,
+    DepositAddress,
+    FundingAccount,
+    FundingBookItem,
+    FundingRateRecord,
+    FuturesAccount,
+    FuturesAccountBook,
+    FuturesCandlestick,
+    FuturesInitialOrder,
+    FuturesLiquidate,
+    FuturesOrder,
+    FuturesOrderBook,
+    FuturesOrderBookItem,
+    FuturesPriceTrigger,
+    FuturesPriceTriggeredOrder,
+    FuturesTicker,
+    FuturesTrade,
+    InsuranceRecord,
+    LedgerRecord,
+    Loan,
+    LoanPatch,
+    LoanRecord,
+    MarginAccount,
+    MarginAccountCurrency,
+    MarginCurrencyPair,
+    MyFuturesTrade,
+    Order,
+    OrderBook,
+    Position,
+    PositionClose,
+    PositionCloseOrder,
+    RepayRequest,
+    Repayment,
+    SpotAccount,
+    SubAccountTransfer,
+    Ticker,
+    Trade,
+    Transfer,
+    TriggerOrderResponse,
+};
 
 export class ObjectSerializer {
     public static findCorrectType(data: any, expectedType: string) {
@@ -202,7 +194,7 @@ export class ObjectSerializer {
             return expectedType;
         } else if (primitives.indexOf(expectedType.toLowerCase()) !== -1) {
             return expectedType;
-        } else if (expectedType === "Date") {
+        } else if (expectedType === 'Date') {
             return expectedType;
         } else {
             if (enumsMap[expectedType]) {
@@ -214,13 +206,13 @@ export class ObjectSerializer {
             }
 
             // Check the discriminator
-            let discriminatorProperty = typeMap[expectedType].discriminator;
+            const discriminatorProperty = typeMap[expectedType].discriminator;
             if (discriminatorProperty == null) {
                 return expectedType; // the type does not have a discriminator. use it.
             } else {
                 if (data[discriminatorProperty]) {
-                    var discriminatorType = data[discriminatorProperty];
-                    if(typeMap[discriminatorType]){
+                    const discriminatorType = data[discriminatorProperty];
+                    if (typeMap[discriminatorType]) {
                         return discriminatorType; // use the type given in the discriminator
                     } else {
                         return expectedType; // discriminator did not map to a type
@@ -237,22 +229,24 @@ export class ObjectSerializer {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
+        } else if (type.lastIndexOf('Array<', 0) === 0) {
+            // string.startsWith pre es6
+            let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            const transformedData: any[] = [];
+            for (const index in data) {
+                const date = data[index];
                 transformedData.push(ObjectSerializer.serialize(date, subType));
             }
             return transformedData;
-        } else if (type === "Date") {
+        } else if (type === 'Date') {
             return data.toISOString();
         } else {
             if (enumsMap[type]) {
                 return data;
             }
-            if (!typeMap[type]) { // in case we dont know the type
+            if (!typeMap[type]) {
+                // in case we dont know the type
                 return data;
             }
 
@@ -260,11 +254,14 @@ export class ObjectSerializer {
             type = this.findCorrectType(data, type);
 
             // get the map for the correct type.
-            let attributeTypes = typeMap[type].getAttributeTypeMap();
-            let instance: {[index: string]: any} = {};
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
-                instance[attributeType.baseName] = ObjectSerializer.serialize(data[attributeType.name], attributeType.type);
+            const attributeTypes = typeMap[type].getAttributeTypeMap();
+            const instance: { [index: string]: any } = {};
+            for (const index in attributeTypes) {
+                const attributeType = attributeTypes[index];
+                instance[attributeType.baseName] = ObjectSerializer.serialize(
+                    data[attributeType.name],
+                    attributeType.type,
+                );
             }
             return instance;
         }
@@ -277,30 +274,36 @@ export class ObjectSerializer {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
+        } else if (type.lastIndexOf('Array<', 0) === 0) {
+            // string.startsWith pre es6
+            let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            const transformedData: any[] = [];
+            for (const index in data) {
+                const date = data[index];
                 transformedData.push(ObjectSerializer.deserialize(date, subType));
             }
             return transformedData;
-        } else if (type === "Date") {
+        } else if (type === 'Date') {
             return new Date(data);
         } else {
-            if (enumsMap[type]) {// is Enum
+            if (enumsMap[type]) {
+                // is Enum
                 return data;
             }
 
-            if (!typeMap[type]) { // dont know the type
+            if (!typeMap[type]) {
+                // dont know the type
                 return data;
             }
-            let instance = new typeMap[type]();
-            let attributeTypes = typeMap[type].getAttributeTypeMap();
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
-                instance[attributeType.name] = ObjectSerializer.deserialize(data[attributeType.baseName], attributeType.type);
+            const instance = new typeMap[type]();
+            const attributeTypes = typeMap[type].getAttributeTypeMap();
+            for (const index in attributeTypes) {
+                const attributeType = attributeTypes[index];
+                instance[attributeType.name] = ObjectSerializer.deserialize(
+                    data[attributeType.baseName],
+                    attributeType.type,
+                );
             }
             return instance;
         }
@@ -309,19 +312,20 @@ export class ObjectSerializer {
 
 export interface Authentication {
     /**
-    * Apply authentication settings to header and query params.
-    */
+     * Apply authentication settings to header and query params.
+     */
     applyToRequest(requestOptions: localVarRequest.Options): Promise<void> | void;
 }
 
 export class HttpBasicAuth implements Authentication {
-    public username: string = '';
-    public password: string = '';
+    public username = '';
+    public password = '';
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
         requestOptions.auth = {
-            username: this.username, password: this.password
-        }
+            username: this.username,
+            password: this.password,
+        };
     }
 }
 
@@ -330,71 +334,66 @@ export class HttpBearerAuth implements Authentication {
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
         if (requestOptions && requestOptions.headers) {
-            const accessToken = typeof this.accessToken === 'function'
-                            ? this.accessToken()
-                            : this.accessToken;
-            requestOptions.headers["Authorization"] = "Bearer " + accessToken;
+            const accessToken = typeof this.accessToken === 'function' ? this.accessToken() : this.accessToken;
+            requestOptions.headers.Authorization = 'Bearer ' + accessToken;
         }
     }
 }
 
 export class ApiKeyAuth implements Authentication {
-    public apiKey: string = '';
+    public apiKey = '';
 
-    constructor(private location: string, private paramName: string) {
-    }
+    constructor(private location: string, private paramName: string) {}
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
-        if (this.location == "query") {
-            (<any>requestOptions.qs)[this.paramName] = this.apiKey;
-        } else if (this.location == "header" && requestOptions && requestOptions.headers) {
+        if (this.location == 'query') {
+            requestOptions.qs[this.paramName] = this.apiKey;
+        } else if (this.location == 'header' && requestOptions && requestOptions.headers) {
             requestOptions.headers[this.paramName] = this.apiKey;
         } else if (this.location == 'cookie' && requestOptions && requestOptions.headers) {
-            if (requestOptions.headers['Cookie']) {
-                requestOptions.headers['Cookie'] += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
-            }
-            else {
-                requestOptions.headers['Cookie'] = this.paramName + '=' + encodeURIComponent(this.apiKey);
+            if (requestOptions.headers.Cookie) {
+                requestOptions.headers.Cookie += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
+            } else {
+                requestOptions.headers.Cookie = this.paramName + '=' + encodeURIComponent(this.apiKey);
             }
         }
     }
 }
 
 export class OAuth implements Authentication {
-    public accessToken: string = '';
+    public accessToken = '';
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
         if (requestOptions && requestOptions.headers) {
-            requestOptions.headers["Authorization"] = "Bearer " + this.accessToken;
+            requestOptions.headers.Authorization = 'Bearer ' + this.accessToken;
         }
     }
 }
 
 export class GateApiV4Auth implements Authentication {
-    public key: string = "";
-    public secret: string = "";
+    public key = '';
+    public secret = '';
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
-        // force using queryString
-        requestOptions.useQuerystring = true;
-        let timestamp: string = ((new Date()).getTime() / 1000).toString();
-        let resourcePath: string = new URL((requestOptions as localVarRequest.UriOptions).uri as string).pathname;
-        let queryString: string = unescape(requestOptions.qs.stringify())
-        let bodyParam: string = "";
+        const timestamp: string = (new Date().getTime() / 1000).toString();
+        const resourcePath: string = new URL((requestOptions as localVarRequest.UriOptions).uri as string).pathname;
+        // do not encode anything
+        const queryString: string = qs.stringify(requestOptions.qs, undefined, undefined, { encodeURIComponent: s => s});
+        let bodyParam = '';
         if (requestOptions.body) {
-            if (typeof requestOptions.body == "string") {
-                bodyParam = requestOptions.body
+            if (typeof requestOptions.body == 'string') {
+                bodyParam = requestOptions.body;
             } else {
-                bodyParam = JSON.stringify(requestOptions.body)
+                bodyParam = JSON.stringify(requestOptions.body);
             }
         }
-        let hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
-        let signatureString = [requestOptions.method, resourcePath, queryString, hashedPayload, timestamp].join("\n");
-        // console.log('signature string to be calculated: ' + signatureString);
-        let signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
-        // console.log('signature generated: ' + signature);
-        (<any>Object).assign(requestOptions.headers, {'KEY': this.key, 'Timestamp': timestamp, 'SIGN': signature});
+        const hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
+        const signatureString = [requestOptions.method, resourcePath, queryString, hashedPayload, timestamp].join('\n');
+        console.log('signature string to be calculated: ' + signatureString);
+        const signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
+        console.log('signature generated: ' + signature);
+        (<any>Object).assign(requestOptions.headers, { KEY: this.key, Timestamp: timestamp, SIGN: signature });
     }
 }
 
-export type Interceptor = (requestOptions: localVarRequest.Options) => (Promise<void> | void);
+export type Interceptor = (requestOptions: localVarRequest.Options) => Promise<void> | void;

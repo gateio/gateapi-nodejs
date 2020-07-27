@@ -13,30 +13,30 @@ import { FuturesOrderBookItem } from './futuresOrderBookItem';
 
 export class FuturesOrderBook {
     /**
-    * Asks order depth
-    */
-    'asks': Array<FuturesOrderBookItem>;
+     * Asks order depth
+     */
+    'asks': FuturesOrderBookItem[];
     /**
-    * Bids order depth
-    */
-    'bids': Array<FuturesOrderBookItem>;
+     * Bids order depth
+     */
+    'bids': FuturesOrderBookItem[];
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "asks",
-            "baseName": "asks",
-            "type": "Array<FuturesOrderBookItem>"
+            name: 'asks',
+            baseName: 'asks',
+            type: 'Array<FuturesOrderBookItem>',
         },
         {
-            "name": "bids",
-            "baseName": "bids",
-            "type": "Array<FuturesOrderBookItem>"
-        }    ];
+            name: 'bids',
+            baseName: 'bids',
+            type: 'Array<FuturesOrderBookItem>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesOrderBook.attributeTypeMap;
     }
 }
-

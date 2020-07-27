@@ -9,93 +9,93 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesInitialOrder {
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract': string;
     /**
-    * Order size. Positive size means to buy, while negative one means to sell. Set to 0 to close the position
-    */
+     * Order size. Positive size means to buy, while negative one means to sell. Set to 0 to close the position
+     */
     'size'?: number;
     /**
-    * Order price. Set to 0 to use market price
-    */
+     * Order price. Set to 0 to use market price
+     */
     'price': string;
     /**
-    * Set to true if trying to close the position
-    */
+     * Set to true if trying to close the position
+     */
     'close'?: boolean;
     /**
-    * Time in force. If using market price, only `ioc` is supported.  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
-    */
+     * Time in force. If using market price, only `ioc` is supported.  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
+     */
     'tif'?: FuturesInitialOrder.Tif;
     /**
-    * How the order is created. Possible values are: web, api and app
-    */
+     * How the order is created. Possible values are: web, api and app
+     */
     'text'?: string;
     /**
-    * Set to true to create an reduce-only order
-    */
+     * Set to true to create an reduce-only order
+     */
     'reduceOnly'?: boolean;
     /**
-    * Is the order reduce-only
-    */
+     * Is the order reduce-only
+     */
     'isReduceOnly'?: boolean;
     /**
-    * Is the order to close position
-    */
+     * Is the order to close position
+     */
     'isClose'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "close",
-            "baseName": "close",
-            "type": "boolean"
+            name: 'close',
+            baseName: 'close',
+            type: 'boolean',
         },
         {
-            "name": "tif",
-            "baseName": "tif",
-            "type": "FuturesInitialOrder.Tif"
+            name: 'tif',
+            baseName: 'tif',
+            type: 'FuturesInitialOrder.Tif',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "reduceOnly",
-            "baseName": "reduce_only",
-            "type": "boolean"
+            name: 'reduceOnly',
+            baseName: 'reduce_only',
+            type: 'boolean',
         },
         {
-            "name": "isReduceOnly",
-            "baseName": "is_reduce_only",
-            "type": "boolean"
+            name: 'isReduceOnly',
+            baseName: 'is_reduce_only',
+            type: 'boolean',
         },
         {
-            "name": "isClose",
-            "baseName": "is_close",
-            "type": "boolean"
-        }    ];
+            name: 'isClose',
+            baseName: 'is_close',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesInitialOrder.attributeTypeMap;
@@ -104,7 +104,7 @@ export class FuturesInitialOrder {
 
 export namespace FuturesInitialOrder {
     export enum Tif {
-        Gtc = <any> 'gtc',
-        Ioc = <any> 'ioc'
+        Gtc = <any>'gtc',
+        Ioc = <any>'ioc',
     }
 }

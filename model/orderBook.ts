@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class OrderBook {
     /**
-    * Asks order depth
-    */
-    'asks': Array<Array<string>>;
+     * Asks order depth
+     */
+    'asks': string[][];
     /**
-    * Bids order depth
-    */
-    'bids': Array<Array<string>>;
+     * Bids order depth
+     */
+    'bids': string[][];
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "asks",
-            "baseName": "asks",
-            "type": "Array<Array<string>>"
+            name: 'asks',
+            baseName: 'asks',
+            type: 'Array<Array<string>>',
         },
         {
-            "name": "bids",
-            "baseName": "bids",
-            "type": "Array<Array<string>>"
-        }    ];
+            name: 'bids',
+            baseName: 'bids',
+            type: 'Array<Array<string>>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OrderBook.attributeTypeMap;
     }
 }
-

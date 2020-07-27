@@ -9,84 +9,84 @@
  * Do not edit the class manually.
  */
 
-
 export class LedgerRecord {
     /**
-    * Record ID
-    */
+     * Record ID
+     */
     'id'?: string;
     /**
-    * Hash record of the withdrawal
-    */
+     * Hash record of the withdrawal
+     */
     'txid'?: string;
     /**
-    * Record time
-    */
+     * Record time
+     */
     'timestamp'?: string;
     /**
-    * Trade amount
-    */
+     * Trade amount
+     */
     'amount': string;
     /**
-    * Record currency
-    */
+     * Record currency
+     */
     'currency': string;
     /**
-    * Withdrawal address. Required for withdrawals
-    */
+     * Withdrawal address. Required for withdrawals
+     */
     'address'?: string;
     /**
-    * Extra withdrawal memo
-    */
+     * Extra withdrawal memo
+     */
     'memo'?: string;
     /**
-    * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation
-    */
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation
+     */
     'status'?: LedgerRecord.Status;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "txid",
-            "baseName": "txid",
-            "type": "string"
+            name: 'txid',
+            baseName: 'txid',
+            type: 'string',
         },
         {
-            "name": "timestamp",
-            "baseName": "timestamp",
-            "type": "string"
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "string"
+            name: 'address',
+            baseName: 'address',
+            type: 'string',
         },
         {
-            "name": "memo",
-            "baseName": "memo",
-            "type": "string"
+            name: 'memo',
+            baseName: 'memo',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "LedgerRecord.Status"
-        }    ];
+            name: 'status',
+            baseName: 'status',
+            type: 'LedgerRecord.Status',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return LedgerRecord.attributeTypeMap;
@@ -95,10 +95,10 @@ export class LedgerRecord {
 
 export namespace LedgerRecord {
     export enum Status {
-        DONE = <any> 'DONE',
-        CANCEL = <any> 'CANCEL',
-        REQUEST = <any> 'REQUEST',
-        MANUAL = <any> 'MANUAL',
-        BCODE = <any> 'BCODE'
+        DONE = <any>'DONE',
+        CANCEL = <any>'CANCEL',
+        REQUEST = <any>'REQUEST',
+        MANUAL = <any>'MANUAL',
+        BCODE = <any>'BCODE',
     }
 }

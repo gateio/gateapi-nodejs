@@ -9,168 +9,168 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Margin loan details
-*/
+ * Margin loan details
+ */
 export class Loan {
     /**
-    * Loan ID
-    */
+     * Loan ID
+     */
     'id'?: string;
     /**
-    * Creation time
-    */
+     * Creation time
+     */
     'createTime'?: string;
     /**
-    * Repay time of the loan. No value will be returned for lending loan
-    */
+     * Repay time of the loan. No value will be returned for lending loan
+     */
     'expireTime'?: string;
     /**
-    * Loan status  open - not fully loaned loaned - all loaned out for lending loan; loaned in for borrowing side finished - loan is finished, either being all repaid or cancelled by the lender auto_repaid - automatically repaid by the system
-    */
+     * Loan status  open - not fully loaned loaned - all loaned out for lending loan; loaned in for borrowing side finished - loan is finished, either being all repaid or cancelled by the lender auto_repaid - automatically repaid by the system
+     */
     'status'?: Loan.Status;
     /**
-    * Loan side
-    */
+     * Loan side
+     */
     'side': Loan.Side;
     /**
-    * Loan currency
-    */
+     * Loan currency
+     */
     'currency': string;
     /**
-    * Loan rate. Only rates in [0.0002, 0.002] are supported.  Not required in lending. Market rate calculated from recent rates will be used if not set
-    */
+     * Loan rate. Only rates in [0.0002, 0.002] are supported.  Not required in lending. Market rate calculated from recent rates will be used if not set
+     */
     'rate'?: string;
     /**
-    * Loan amount
-    */
+     * Loan amount
+     */
     'amount': string;
     /**
-    * Loan days
-    */
+     * Loan days
+     */
     'days': number;
     /**
-    * Auto renew the loan on expiration
-    */
+     * Auto renew the loan on expiration
+     */
     'autoRenew'?: boolean;
     /**
-    * Currency pair. Required for borrowing side
-    */
+     * Currency pair. Required for borrowing side
+     */
     'currencyPair'?: string;
     /**
-    * Amount not lending out
-    */
+     * Amount not lending out
+     */
     'left'?: string;
     /**
-    * Repaid amount
-    */
+     * Repaid amount
+     */
     'repaid'?: string;
     /**
-    * Repaid interest
-    */
+     * Repaid interest
+     */
     'paidInterest'?: string;
     /**
-    * Interest not repaid
-    */
+     * Interest not repaid
+     */
     'unpaidInterest'?: string;
     /**
-    * Loan fee rate
-    */
+     * Loan fee rate
+     */
     'feeRate'?: string;
     /**
-    * Original loan ID if the loan is auto-renewed. Equal to `id` if not
-    */
+     * Original loan ID if the loan is auto-renewed. Equal to `id` if not
+     */
     'origId'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "string"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
         },
         {
-            "name": "expireTime",
-            "baseName": "expire_time",
-            "type": "string"
+            name: 'expireTime',
+            baseName: 'expire_time',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "Loan.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'Loan.Status',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "Loan.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'Loan.Side',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "rate",
-            "baseName": "rate",
-            "type": "string"
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "days",
-            "baseName": "days",
-            "type": "number"
+            name: 'days',
+            baseName: 'days',
+            type: 'number',
         },
         {
-            "name": "autoRenew",
-            "baseName": "auto_renew",
-            "type": "boolean"
+            name: 'autoRenew',
+            baseName: 'auto_renew',
+            type: 'boolean',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "string"
+            name: 'left',
+            baseName: 'left',
+            type: 'string',
         },
         {
-            "name": "repaid",
-            "baseName": "repaid",
-            "type": "string"
+            name: 'repaid',
+            baseName: 'repaid',
+            type: 'string',
         },
         {
-            "name": "paidInterest",
-            "baseName": "paid_interest",
-            "type": "string"
+            name: 'paidInterest',
+            baseName: 'paid_interest',
+            type: 'string',
         },
         {
-            "name": "unpaidInterest",
-            "baseName": "unpaid_interest",
-            "type": "string"
+            name: 'unpaidInterest',
+            baseName: 'unpaid_interest',
+            type: 'string',
         },
         {
-            "name": "feeRate",
-            "baseName": "fee_rate",
-            "type": "string"
+            name: 'feeRate',
+            baseName: 'fee_rate',
+            type: 'string',
         },
         {
-            "name": "origId",
-            "baseName": "orig_id",
-            "type": "string"
-        }    ];
+            name: 'origId',
+            baseName: 'orig_id',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Loan.attributeTypeMap;
@@ -179,13 +179,13 @@ export class Loan {
 
 export namespace Loan {
     export enum Status {
-        Open = <any> 'open',
-        Loaned = <any> 'loaned',
-        Finished = <any> 'finished',
-        AutoRepaid = <any> 'auto_repaid'
+        Open = <any>'open',
+        Loaned = <any>'loaned',
+        Finished = <any>'finished',
+        AutoRepaid = <any>'auto_repaid',
     }
     export enum Side {
-        Lend = <any> 'lend',
-        Borrow = <any> 'borrow'
+        Lend = <any>'lend',
+        Borrow = <any>'borrow',
     }
 }

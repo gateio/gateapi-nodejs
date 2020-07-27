@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class Repayment {
     /**
-    * Loan record ID
-    */
+     * Loan record ID
+     */
     'id'?: string;
     /**
-    * Repayment time
-    */
+     * Repayment time
+     */
     'createTime'?: string;
     /**
-    * Repaid principal
-    */
+     * Repaid principal
+     */
     'principal'?: string;
     /**
-    * Repaid interest
-    */
+     * Repaid interest
+     */
     'interest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "string"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
         },
         {
-            "name": "principal",
-            "baseName": "principal",
-            "type": "string"
+            name: 'principal',
+            baseName: 'principal',
+            type: 'string',
         },
         {
-            "name": "interest",
-            "baseName": "interest",
-            "type": "string"
-        }    ];
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Repayment.attributeTypeMap;
     }
 }
-

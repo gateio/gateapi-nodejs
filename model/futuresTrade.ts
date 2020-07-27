@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesTrade {
     /**
-    * Trade ID
-    */
+     * Trade ID
+     */
     'id'?: number;
     /**
-    * Trading time
-    */
+     * Trading time
+     */
     'createTime'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Trading size
-    */
+     * Trading size
+     */
     'size'?: number;
     /**
-    * Trading price
-    */
+     * Trading price
+     */
     'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
-        }    ];
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesTrade.attributeTypeMap;
     }
 }
-

@@ -9,75 +9,75 @@
  * Do not edit the class manually.
  */
 
-
 export class MyFuturesTrade {
     /**
-    * Trade ID
-    */
+     * Trade ID
+     */
     'id'?: number;
     /**
-    * Trading time
-    */
+     * Trading time
+     */
     'createTime'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Order ID related
-    */
+     * Order ID related
+     */
     'orderId'?: string;
     /**
-    * Trading size
-    */
+     * Trading size
+     */
     'size'?: number;
     /**
-    * Trading price
-    */
+     * Trading price
+     */
     'price'?: string;
     /**
-    * Trade role. Available values are `taker` and `maker`
-    */
+     * Trade role. Available values are `taker` and `maker`
+     */
     'role'?: MyFuturesTrade.Role;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "string"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "role",
-            "baseName": "role",
-            "type": "MyFuturesTrade.Role"
-        }    ];
+            name: 'role',
+            baseName: 'role',
+            type: 'MyFuturesTrade.Role',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MyFuturesTrade.attributeTypeMap;
@@ -86,7 +86,7 @@ export class MyFuturesTrade {
 
 export namespace MyFuturesTrade {
     export enum Role {
-        Taker = <any> 'taker',
-        Maker = <any> 'maker'
+        Taker = <any>'taker',
+        Maker = <any>'maker',
     }
 }

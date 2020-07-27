@@ -9,141 +9,141 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Margin loaned record details
-*/
+ * Margin loaned record details
+ */
 export class LoanRecord {
     /**
-    * Loan record ID
-    */
+     * Loan record ID
+     */
     'id'?: string;
     /**
-    * Loan ID the record belongs to
-    */
+     * Loan ID the record belongs to
+     */
     'loanId'?: string;
     /**
-    * Loan time
-    */
+     * Loan time
+     */
     'createTime'?: string;
     /**
-    * Expiration time
-    */
+     * Expiration time
+     */
     'expireTime'?: string;
     /**
-    * Loan record status
-    */
+     * Loan record status
+     */
     'status'?: LoanRecord.Status;
     /**
-    * Garbled user ID
-    */
+     * Garbled user ID
+     */
     'borrowUserId'?: string;
     /**
-    * Loan currency
-    */
+     * Loan currency
+     */
     'currency'?: string;
     /**
-    * Loan rate
-    */
+     * Loan rate
+     */
     'rate'?: string;
     /**
-    * Loan amount
-    */
+     * Loan amount
+     */
     'amount'?: string;
     /**
-    * Loan days
-    */
+     * Loan days
+     */
     'days'?: number;
     /**
-    * Whether the record will auto renew on expiration
-    */
+     * Whether the record will auto renew on expiration
+     */
     'autoRenew'?: boolean;
     /**
-    * Repaid amount
-    */
+     * Repaid amount
+     */
     'repaid'?: string;
     /**
-    * Repaid interest
-    */
+     * Repaid interest
+     */
     'paidInterest'?: string;
     /**
-    * Interest not repaid
-    */
+     * Interest not repaid
+     */
     'unpaidInterest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "loanId",
-            "baseName": "loan_id",
-            "type": "string"
+            name: 'loanId',
+            baseName: 'loan_id',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "string"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
         },
         {
-            "name": "expireTime",
-            "baseName": "expire_time",
-            "type": "string"
+            name: 'expireTime',
+            baseName: 'expire_time',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "LoanRecord.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'LoanRecord.Status',
         },
         {
-            "name": "borrowUserId",
-            "baseName": "borrow_user_id",
-            "type": "string"
+            name: 'borrowUserId',
+            baseName: 'borrow_user_id',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "rate",
-            "baseName": "rate",
-            "type": "string"
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "days",
-            "baseName": "days",
-            "type": "number"
+            name: 'days',
+            baseName: 'days',
+            type: 'number',
         },
         {
-            "name": "autoRenew",
-            "baseName": "auto_renew",
-            "type": "boolean"
+            name: 'autoRenew',
+            baseName: 'auto_renew',
+            type: 'boolean',
         },
         {
-            "name": "repaid",
-            "baseName": "repaid",
-            "type": "string"
+            name: 'repaid',
+            baseName: 'repaid',
+            type: 'string',
         },
         {
-            "name": "paidInterest",
-            "baseName": "paid_interest",
-            "type": "string"
+            name: 'paidInterest',
+            baseName: 'paid_interest',
+            type: 'string',
         },
         {
-            "name": "unpaidInterest",
-            "baseName": "unpaid_interest",
-            "type": "string"
-        }    ];
+            name: 'unpaidInterest',
+            baseName: 'unpaid_interest',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return LoanRecord.attributeTypeMap;
@@ -152,7 +152,7 @@ export class LoanRecord {
 
 export namespace LoanRecord {
     export enum Status {
-        Loaned = <any> 'loaned',
-        Finished = <any> 'finished'
+        Loaned = <any>'loaned',
+        Finished = <any>'finished',
     }
 }

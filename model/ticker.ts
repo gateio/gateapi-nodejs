@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class Ticker {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     /**
-    * Last trading price
-    */
+     * Last trading price
+     */
     'last'?: string;
     /**
-    * Lowest ask
-    */
+     * Lowest ask
+     */
     'lowestAsk'?: string;
     /**
-    * Highest bid
-    */
+     * Highest bid
+     */
     'highestBid'?: string;
     /**
-    * Change percentage.
-    */
+     * Change percentage.
+     */
     'changePercentage'?: string;
     /**
-    * Base currency trade volume
-    */
+     * Base currency trade volume
+     */
     'baseVolume'?: string;
     /**
-    * Quote currency trade volume
-    */
+     * Quote currency trade volume
+     */
     'quoteVolume'?: string;
     /**
-    * Highest price in 24h
-    */
+     * Highest price in 24h
+     */
     'high24h'?: string;
     /**
-    * Lowest price in 24h
-    */
+     * Lowest price in 24h
+     */
     'low24h'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "last",
-            "baseName": "last",
-            "type": "string"
+            name: 'last',
+            baseName: 'last',
+            type: 'string',
         },
         {
-            "name": "lowestAsk",
-            "baseName": "lowest_ask",
-            "type": "string"
+            name: 'lowestAsk',
+            baseName: 'lowest_ask',
+            type: 'string',
         },
         {
-            "name": "highestBid",
-            "baseName": "highest_bid",
-            "type": "string"
+            name: 'highestBid',
+            baseName: 'highest_bid',
+            type: 'string',
         },
         {
-            "name": "changePercentage",
-            "baseName": "change_percentage",
-            "type": "string"
+            name: 'changePercentage',
+            baseName: 'change_percentage',
+            type: 'string',
         },
         {
-            "name": "baseVolume",
-            "baseName": "base_volume",
-            "type": "string"
+            name: 'baseVolume',
+            baseName: 'base_volume',
+            type: 'string',
         },
         {
-            "name": "quoteVolume",
-            "baseName": "quote_volume",
-            "type": "string"
+            name: 'quoteVolume',
+            baseName: 'quote_volume',
+            type: 'string',
         },
         {
-            "name": "high24h",
-            "baseName": "high_24h",
-            "type": "string"
+            name: 'high24h',
+            baseName: 'high_24h',
+            type: 'string',
         },
         {
-            "name": "low24h",
-            "baseName": "low_24h",
-            "type": "string"
-        }    ];
+            name: 'low24h',
+            baseName: 'low_24h',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Ticker.attributeTypeMap;
     }
 }
-

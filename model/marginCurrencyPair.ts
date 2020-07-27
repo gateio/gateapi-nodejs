@@ -9,78 +9,77 @@
  * Do not edit the class manually.
  */
 
-
 export class MarginCurrencyPair {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'id'?: string;
     /**
-    * Base currency
-    */
+     * Base currency
+     */
     'base'?: string;
     /**
-    * Quote currency
-    */
+     * Quote currency
+     */
     'quote'?: string;
     /**
-    * Leverage
-    */
+     * Leverage
+     */
     'leverage'?: number;
     /**
-    * Minimum base currency to loan, `null` means no limit
-    */
+     * Minimum base currency to loan, `null` means no limit
+     */
     'minBaseAmount'?: string;
     /**
-    * Minimum quote currency to loan, `null` means no limit
-    */
+     * Minimum quote currency to loan, `null` means no limit
+     */
     'minQuoteAmount'?: string;
     /**
-    * Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. `null` means no limit
-    */
+     * Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. `null` means no limit
+     */
     'maxQuoteAmount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "base",
-            "baseName": "base",
-            "type": "string"
+            name: 'base',
+            baseName: 'base',
+            type: 'string',
         },
         {
-            "name": "quote",
-            "baseName": "quote",
-            "type": "string"
+            name: 'quote',
+            baseName: 'quote',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "number"
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'number',
         },
         {
-            "name": "minBaseAmount",
-            "baseName": "min_base_amount",
-            "type": "string"
+            name: 'minBaseAmount',
+            baseName: 'min_base_amount',
+            type: 'string',
         },
         {
-            "name": "minQuoteAmount",
-            "baseName": "min_quote_amount",
-            "type": "string"
+            name: 'minQuoteAmount',
+            baseName: 'min_quote_amount',
+            type: 'string',
         },
         {
-            "name": "maxQuoteAmount",
-            "baseName": "max_quote_amount",
-            "type": "string"
-        }    ];
+            name: 'maxQuoteAmount',
+            baseName: 'max_quote_amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MarginCurrencyPair.attributeTypeMap;
     }
 }
-

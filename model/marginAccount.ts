@@ -12,37 +12,37 @@
 import { MarginAccountCurrency } from './marginAccountCurrency';
 
 /**
-* Margin account detail. `base` refers to base currency, while `quotes to quote currency
-*/
+ * Margin account detail. `base` refers to base currency, while `quotes to quote currency
+ */
 export class MarginAccount {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     'base'?: MarginAccountCurrency;
     'quote'?: MarginAccountCurrency;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "base",
-            "baseName": "base",
-            "type": "MarginAccountCurrency"
+            name: 'base',
+            baseName: 'base',
+            type: 'MarginAccountCurrency',
         },
         {
-            "name": "quote",
-            "baseName": "quote",
-            "type": "MarginAccountCurrency"
-        }    ];
+            name: 'quote',
+            baseName: 'quote',
+            type: 'MarginAccountCurrency',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MarginAccount.attributeTypeMap;
     }
 }
-

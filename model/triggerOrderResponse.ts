@@ -9,24 +9,23 @@
  * Do not edit the class manually.
  */
 
-
 export class TriggerOrderResponse {
     /**
-    * Auto order ID
-    */
+     * Auto order ID
+     */
     'id'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
-        }    ];
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return TriggerOrderResponse.attributeTypeMap;
     }
 }
-

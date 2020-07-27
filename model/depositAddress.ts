@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class DepositAddress {
     /**
-    * Currency detail
-    */
+     * Currency detail
+     */
     'currency': string;
     /**
-    * Deposit address
-    */
+     * Deposit address
+     */
     'address': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "string"
-        }    ];
+            name: 'address',
+            baseName: 'address',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return DepositAddress.attributeTypeMap;
     }
 }
-

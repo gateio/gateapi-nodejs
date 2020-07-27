@@ -9,57 +9,57 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesAccountBook {
     /**
-    * Change time
-    */
+     * Change time
+     */
     'time'?: number;
     /**
-    * Change amount
-    */
+     * Change amount
+     */
     'change'?: string;
     /**
-    * Balance after change
-    */
+     * Balance after change
+     */
     'balance'?: string;
     /**
-    * Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
-    */
+     * Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     */
     'type'?: FuturesAccountBook.Type;
     /**
-    * Comment
-    */
+     * Comment
+     */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "change",
-            "baseName": "change",
-            "type": "string"
+            name: 'change',
+            baseName: 'change',
+            type: 'string',
         },
         {
-            "name": "balance",
-            "baseName": "balance",
-            "type": "string"
+            name: 'balance',
+            baseName: 'balance',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "FuturesAccountBook.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'FuturesAccountBook.Type',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
-        }    ];
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesAccountBook.attributeTypeMap;
@@ -68,13 +68,13 @@ export class FuturesAccountBook {
 
 export namespace FuturesAccountBook {
     export enum Type {
-        Dnw = <any> 'dnw',
-        Pnl = <any> 'pnl',
-        Fee = <any> 'fee',
-        Refr = <any> 'refr',
-        Fund = <any> 'fund',
-        PointDnw = <any> 'point_dnw',
-        PointFee = <any> 'point_fee',
-        PointRefr = <any> 'point_refr'
+        Dnw = <any>'dnw',
+        Pnl = <any>'pnl',
+        Fee = <any>'fee',
+        Refr = <any>'refr',
+        Fund = <any>'fund',
+        PointDnw = <any>'point_dnw',
+        PointFee = <any>'point_fee',
+        PointRefr = <any>'point_refr',
     }
 }

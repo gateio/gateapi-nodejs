@@ -9,222 +9,222 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Spot order details
-*/
+ * Spot order details
+ */
 export class Order {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'id'?: string;
     /**
-    * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) 
-    */
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     */
     'text'?: string;
     /**
-    * Order creation time
-    */
+     * Order creation time
+     */
     'createTime'?: string;
     /**
-    * Order last modification time
-    */
+     * Order last modification time
+     */
     'updateTime'?: string;
     /**
-    * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
-    */
+     * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     */
     'status'?: Order.Status;
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair': string;
     /**
-    * Order type. limit - limit order
-    */
+     * Order type. limit - limit order
+     */
     'type'?: Order.Type;
     /**
-    * Account type. spot - use spot account; margin - use margin account
-    */
+     * Account type. spot - use spot account; margin - use margin account
+     */
     'account'?: Order.Account;
     /**
-    * Order side
-    */
+     * Order side
+     */
     'side': Order.Side;
     /**
-    * Trade amount
-    */
+     * Trade amount
+     */
     'amount': string;
     /**
-    * Order price
-    */
+     * Order price
+     */
     'price': string;
     /**
-    * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
-    */
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
+     */
     'timeInForce'?: Order.TimeInForce;
     /**
-    * Used in margin trading(i.e. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
-    */
+     * Used in margin trading(i.e. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
+     */
     'autoBorrow'?: boolean;
     /**
-    * Amount left to fill
-    */
+     * Amount left to fill
+     */
     'left'?: string;
     /**
-    * Total filled in quote currency. Deprecated in favor of `filled_total`
-    */
+     * Total filled in quote currency. Deprecated in favor of `filled_total`
+     */
     'fillPrice'?: string;
     /**
-    * Total filled in quote currency
-    */
+     * Total filled in quote currency
+     */
     'filledTotal'?: string;
     /**
-    * Fee deducted
-    */
+     * Fee deducted
+     */
     'fee'?: string;
     /**
-    * Fee currency unit
-    */
+     * Fee currency unit
+     */
     'feeCurrency'?: string;
     /**
-    * Point used to deduct fee
-    */
+     * Point used to deduct fee
+     */
     'pointFee'?: string;
     /**
-    * GT used to deduct fee
-    */
+     * GT used to deduct fee
+     */
     'gtFee'?: string;
     /**
-    * Whether GT fee discount is used
-    */
+     * Whether GT fee discount is used
+     */
     'gtDiscount'?: boolean;
     /**
-    * Rebated fee
-    */
+     * Rebated fee
+     */
     'rebatedFee'?: string;
     /**
-    * Rebated fee currency unit
-    */
+     * Rebated fee currency unit
+     */
     'rebatedFeeCurrency'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "string"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
         },
         {
-            "name": "updateTime",
-            "baseName": "update_time",
-            "type": "string"
+            name: 'updateTime',
+            baseName: 'update_time',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "Order.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'Order.Status',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "Order.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'Order.Type',
         },
         {
-            "name": "account",
-            "baseName": "account",
-            "type": "Order.Account"
+            name: 'account',
+            baseName: 'account',
+            type: 'Order.Account',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "Order.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'Order.Side',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "timeInForce",
-            "baseName": "time_in_force",
-            "type": "Order.TimeInForce"
+            name: 'timeInForce',
+            baseName: 'time_in_force',
+            type: 'Order.TimeInForce',
         },
         {
-            "name": "autoBorrow",
-            "baseName": "auto_borrow",
-            "type": "boolean"
+            name: 'autoBorrow',
+            baseName: 'auto_borrow',
+            type: 'boolean',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "string"
+            name: 'left',
+            baseName: 'left',
+            type: 'string',
         },
         {
-            "name": "fillPrice",
-            "baseName": "fill_price",
-            "type": "string"
+            name: 'fillPrice',
+            baseName: 'fill_price',
+            type: 'string',
         },
         {
-            "name": "filledTotal",
-            "baseName": "filled_total",
-            "type": "string"
+            name: 'filledTotal',
+            baseName: 'filled_total',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "feeCurrency",
-            "baseName": "fee_currency",
-            "type": "string"
+            name: 'feeCurrency',
+            baseName: 'fee_currency',
+            type: 'string',
         },
         {
-            "name": "pointFee",
-            "baseName": "point_fee",
-            "type": "string"
+            name: 'pointFee',
+            baseName: 'point_fee',
+            type: 'string',
         },
         {
-            "name": "gtFee",
-            "baseName": "gt_fee",
-            "type": "string"
+            name: 'gtFee',
+            baseName: 'gt_fee',
+            type: 'string',
         },
         {
-            "name": "gtDiscount",
-            "baseName": "gt_discount",
-            "type": "boolean"
+            name: 'gtDiscount',
+            baseName: 'gt_discount',
+            type: 'boolean',
         },
         {
-            "name": "rebatedFee",
-            "baseName": "rebated_fee",
-            "type": "string"
+            name: 'rebatedFee',
+            baseName: 'rebated_fee',
+            type: 'string',
         },
         {
-            "name": "rebatedFeeCurrency",
-            "baseName": "rebated_fee_currency",
-            "type": "string"
-        }    ];
+            name: 'rebatedFeeCurrency',
+            baseName: 'rebated_fee_currency',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Order.attributeTypeMap;
@@ -233,24 +233,24 @@ export class Order {
 
 export namespace Order {
     export enum Status {
-        Open = <any> 'open',
-        Closed = <any> 'closed',
-        Cancelled = <any> 'cancelled'
+        Open = <any>'open',
+        Closed = <any>'closed',
+        Cancelled = <any>'cancelled',
     }
     export enum Type {
-        Limit = <any> 'limit'
+        Limit = <any>'limit',
     }
     export enum Account {
-        Spot = <any> 'spot',
-        Margin = <any> 'margin'
+        Spot = <any>'spot',
+        Margin = <any>'margin',
     }
     export enum Side {
-        Buy = <any> 'buy',
-        Sell = <any> 'sell'
+        Buy = <any>'buy',
+        Sell = <any>'sell',
     }
     export enum TimeInForce {
-        Gtc = <any> 'gtc',
-        Ioc = <any> 'ioc',
-        Poc = <any> 'poc'
+        Gtc = <any>'gtc',
+        Ioc = <any>'ioc',
+        Poc = <any>'poc',
     }
 }

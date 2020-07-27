@@ -9,57 +9,57 @@
  * Do not edit the class manually.
  */
 
-
 export class LoanPatch {
     /**
-    * Loan currency
-    */
+     * Loan currency
+     */
     'currency': string;
     /**
-    * Loan side. Possible values are `lend` and `borrow`. For `LoanRecord` patching, only `lend` is supported
-    */
+     * Loan side. Possible values are `lend` and `borrow`. For `LoanRecord` patching, only `lend` is supported
+     */
     'side': LoanPatch.Side;
     /**
-    * Auto renew
-    */
+     * Auto renew
+     */
     'autoRenew': boolean;
     /**
-    * Currency pair. Required for borrowing side
-    */
+     * Currency pair. Required for borrowing side
+     */
     'currencyPair'?: string;
     /**
-    * Loan ID. Required for `LoanRecord` patching
-    */
+     * Loan ID. Required for `LoanRecord` patching
+     */
     'loanId'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "LoanPatch.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'LoanPatch.Side',
         },
         {
-            "name": "autoRenew",
-            "baseName": "auto_renew",
-            "type": "boolean"
+            name: 'autoRenew',
+            baseName: 'auto_renew',
+            type: 'boolean',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "loanId",
-            "baseName": "loan_id",
-            "type": "string"
-        }    ];
+            name: 'loanId',
+            baseName: 'loan_id',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return LoanPatch.attributeTypeMap;
@@ -68,7 +68,7 @@ export class LoanPatch {
 
 export namespace LoanPatch {
     export enum Side {
-        Lend = <any> 'lend',
-        Borrow = <any> 'borrow'
+        Lend = <any>'lend',
+        Borrow = <any>'borrow',
     }
 }

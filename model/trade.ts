@@ -9,111 +9,111 @@
  * Do not edit the class manually.
  */
 
-
 export class Trade {
     /**
-    * Trade ID
-    */
+     * Trade ID
+     */
     'id'?: string;
     /**
-    * Trading time
-    */
+     * Trading time
+     */
     'createTime'?: string;
     /**
-    * Order side
-    */
+     * Order side
+     */
     'side'?: Trade.Side;
     /**
-    * Trade role
-    */
+     * Trade role
+     */
     'role'?: Trade.Role;
     /**
-    * Trade amount
-    */
+     * Trade amount
+     */
     'amount'?: string;
     /**
-    * Order price
-    */
+     * Order price
+     */
     'price'?: string;
     /**
-    * Related order ID. No value in public endpoints
-    */
+     * Related order ID. No value in public endpoints
+     */
     'orderId'?: string;
     /**
-    * Fee deducted. No value in public endpoints
-    */
+     * Fee deducted. No value in public endpoints
+     */
     'fee'?: string;
     /**
-    * Fee currency unit. No value in public endpoints
-    */
+     * Fee currency unit. No value in public endpoints
+     */
     'feeCurrency'?: string;
     /**
-    * Point used to deduct fee
-    */
+     * Point used to deduct fee
+     */
     'pointFee'?: string;
     /**
-    * GT used to deduct fee
-    */
+     * GT used to deduct fee
+     */
     'gtFee'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "string"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'string',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "Trade.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'Trade.Side',
         },
         {
-            "name": "role",
-            "baseName": "role",
-            "type": "Trade.Role"
+            name: 'role',
+            baseName: 'role',
+            type: 'Trade.Role',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "string"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "feeCurrency",
-            "baseName": "fee_currency",
-            "type": "string"
+            name: 'feeCurrency',
+            baseName: 'fee_currency',
+            type: 'string',
         },
         {
-            "name": "pointFee",
-            "baseName": "point_fee",
-            "type": "string"
+            name: 'pointFee',
+            baseName: 'point_fee',
+            type: 'string',
         },
         {
-            "name": "gtFee",
-            "baseName": "gt_fee",
-            "type": "string"
-        }    ];
+            name: 'gtFee',
+            baseName: 'gt_fee',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Trade.attributeTypeMap;
@@ -122,11 +122,11 @@ export class Trade {
 
 export namespace Trade {
     export enum Side {
-        Buy = <any> 'buy',
-        Sell = <any> 'sell'
+        Buy = <any>'buy',
+        Sell = <any>'sell',
     }
     export enum Role {
-        Taker = <any> 'taker',
-        Maker = <any> 'maker'
+        Taker = <any>'taker',
+        Maker = <any>'maker',
     }
 }

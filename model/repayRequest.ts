@@ -9,48 +9,48 @@
  * Do not edit the class manually.
  */
 
-
 export class RepayRequest {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair': string;
     /**
-    * Loan currency
-    */
+     * Loan currency
+     */
     'currency': string;
     /**
-    * Repay mode. all - repay all; partial - repay only some portion
-    */
+     * Repay mode. all - repay all; partial - repay only some portion
+     */
     'mode': RepayRequest.Mode;
     /**
-    * Repay amount. Required in `partial` mode
-    */
+     * Repay amount. Required in `partial` mode
+     */
     'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "RepayRequest.Mode"
+            name: 'mode',
+            baseName: 'mode',
+            type: 'RepayRequest.Mode',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
-        }    ];
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RepayRequest.attributeTypeMap;
@@ -59,7 +59,7 @@ export class RepayRequest {
 
 export namespace RepayRequest {
     export enum Mode {
-        All = <any> 'all',
-        Partial = <any> 'partial'
+        All = <any>'all',
+        Partial = <any>'partial',
     }
 }

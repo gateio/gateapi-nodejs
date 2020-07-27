@@ -48,17 +48,22 @@ export class DeliveryApi {
     }
 
     /**
-     * 
+     *
      * @summary Cancel a single order
      * @param settle Settle currency
      * @param orderId ID returned on order successfully being created
      */
-    public async cancelDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -66,7 +71,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -78,9 +83,9 @@ export class DeliveryApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelDeliveryOrder.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -96,8 +101,8 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(localVarRequestOptions, "FuturesOrder", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder>(localVarRequestOptions, 'FuturesOrder', authSettings);
     }
 
     /**
@@ -107,11 +112,16 @@ export class DeliveryApi {
      * @param contract Futures contract
      * @param side All bids or asks. Both included in not specified
      */
-    public async cancelDeliveryOrders(settle: 'usdt', contract: string, side?: 'ask' | 'bid') : Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelDeliveryOrders(
+        settle: 'usdt',
+        contract: string,
+        side?: 'ask' | 'bid',
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -119,7 +129,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -131,15 +141,15 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling cancelDeliveryOrders.');
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
         if (side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'ask' | 'bid'");
+            localVarQueryParameters.side = ObjectSerializer.serialize(side, "'ask' | 'bid'");
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -155,22 +165,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(localVarRequestOptions, "Array<FuturesOrder>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder[]>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel a single order
      * @param settle Settle currency
      * @param orderId ID returned on order successfully being created
      */
-    public async cancelPriceTriggeredDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -178,21 +193,25 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling cancelPriceTriggeredDeliveryOrder.',
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -208,21 +227,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(localVarRequestOptions, "FuturesPriceTriggeredOrder", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesPriceTriggeredOrder>(
+            localVarRequestOptions,
+            'FuturesPriceTriggeredOrder',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Cancel all open orders
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async cancelPriceTriggeredDeliveryOrderList(settle: 'usdt', contract: string) : Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelPriceTriggeredDeliveryOrderList(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -230,23 +257,27 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.',
+            );
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -262,21 +293,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesPriceTriggeredOrder>>(localVarRequestOptions, "Array<FuturesPriceTriggeredOrder>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesPriceTriggeredOrder[]>(
+            localVarRequestOptions,
+            'Array<FuturesPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
      * Zero-fill order cannot be retrieved 60 seconds after cancellation
      * @summary Create a futures order
      * @param settle Settle currency
-     * @param futuresOrder 
+     * @param futuresOrder
      */
-    public async createDeliveryOrder(settle: 'usdt', futuresOrder: FuturesOrder) : Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async createDeliveryOrder(
+        settle: 'usdt',
+        futuresOrder: FuturesOrder,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -284,7 +323,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -296,16 +335,16 @@ export class DeliveryApi {
             throw new Error('Required parameter futuresOrder was null or undefined when calling createDeliveryOrder.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(futuresOrder, "FuturesOrder")
+            body: ObjectSerializer.serialize(futuresOrder, 'FuturesOrder'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -315,21 +354,25 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(localVarRequestOptions, "FuturesOrder", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder>(localVarRequestOptions, 'FuturesOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Create a price-triggered order
      * @param settle Settle currency
-     * @param futuresPriceTriggeredOrder 
+     * @param futuresPriceTriggeredOrder
      */
-    public async createPriceTriggeredDeliveryOrder(settle: 'usdt', futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder) : Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async createPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    ): Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -337,28 +380,32 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling createPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling createPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'futuresPriceTriggeredOrder' is not null or undefined
         if (futuresPriceTriggeredOrder === null || futuresPriceTriggeredOrder === undefined) {
-            throw new Error('Required parameter futuresPriceTriggeredOrder was null or undefined when calling createPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter futuresPriceTriggeredOrder was null or undefined when calling createPriceTriggeredDeliveryOrder.',
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(futuresPriceTriggeredOrder, "FuturesPriceTriggeredOrder")
+            body: ObjectSerializer.serialize(futuresPriceTriggeredOrder, 'FuturesPriceTriggeredOrder'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -368,22 +415,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<TriggerOrderResponse>(localVarRequestOptions, "TriggerOrderResponse", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerOrderResponse>(localVarRequestOptions, 'TriggerOrderResponse', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get a single contract
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async getDeliveryContract(settle: 'usdt', contract: string) : Promise<{ response: http.IncomingMessage; body: DeliveryContract; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/contracts/{contract}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryContract(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: http.IncomingMessage; body: DeliveryContract }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/contracts/{contract}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -391,7 +443,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -403,9 +455,9 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling getDeliveryContract.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -421,8 +473,8 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<DeliveryContract>(localVarRequestOptions, "DeliveryContract", authSettings);
+        const authSettings = [];
+        return this.client.request<DeliveryContract>(localVarRequestOptions, 'DeliveryContract', authSettings);
     }
 
     /**
@@ -431,12 +483,17 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param orderId ID returned on order successfully being created
      */
-    public async getDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -444,7 +501,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -456,9 +513,9 @@ export class DeliveryApi {
             throw new Error('Required parameter orderId was null or undefined when calling getDeliveryOrder.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -474,22 +531,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(localVarRequestOptions, "FuturesOrder", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder>(localVarRequestOptions, 'FuturesOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get single position
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async getDeliveryPosition(settle: 'usdt', contract: string) : Promise<{ response: http.IncomingMessage; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryPosition(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: http.IncomingMessage; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -497,7 +559,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -509,9 +571,9 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling getDeliveryPosition.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -527,12 +589,12 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Position>(localVarRequestOptions, "Position", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(localVarRequestOptions, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List personal trading history
      * @param settle Settle currency
      * @param contract Futures contract
@@ -542,11 +604,20 @@ export class DeliveryApi {
      * @param lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param countTotal Whether to return total number matched. Default to 0(no return)
      */
-    public async getMyDeliveryTrades(settle: 'usdt', contract?: string, order?: number, limit?: number, offset?: number, lastId?: string, countTotal?: 0 | 1) : Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/my_trades'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getMyDeliveryTrades(
+        settle: 'usdt',
+        contract?: string,
+        order?: number,
+        limit?: number,
+        offset?: number,
+        lastId?: string,
+        countTotal?: 0 | 1,
+    ): Promise<{ response: http.IncomingMessage; body: MyFuturesTrade[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -554,7 +625,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -562,32 +633,32 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
         if (order !== undefined) {
-            localVarQueryParameters['order'] = ObjectSerializer.serialize(order, "number");
+            localVarQueryParameters.order = ObjectSerializer.serialize(order, 'number');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
         if (lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(lastId, "string");
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
         }
 
         if (countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(countTotal, "0 | 1");
+            localVarQueryParameters.count_total = ObjectSerializer.serialize(countTotal, '0 | 1');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -603,22 +674,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<MyFuturesTrade>>(localVarRequestOptions, "Array<MyFuturesTrade>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<MyFuturesTrade[]>(localVarRequestOptions, 'Array<MyFuturesTrade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get a single order
      * @param settle Settle currency
      * @param orderId ID returned on order successfully being created
      */
-    public async getPriceTriggeredDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -626,21 +702,25 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling getPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling getPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling getPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getPriceTriggeredDeliveryOrder.',
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -656,12 +736,16 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(localVarRequestOptions, "FuturesPriceTriggeredOrder", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesPriceTriggeredOrder>(
+            localVarRequestOptions,
+            'FuturesPriceTriggeredOrder',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Query account book
      * @param settle Settle currency
      * @param limit Maximum number of records returned in one list
@@ -669,11 +753,18 @@ export class DeliveryApi {
      * @param to End timestamp
      * @param type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
-    public async listDeliveryAccountBook(settle: 'usdt', limit?: number, from?: number, to?: number, type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr') : Promise<{ response: http.IncomingMessage; body: Array<FuturesAccountBook>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/account_book'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryAccountBook(
+        settle: 'usdt',
+        limit?: number,
+        from?: number,
+        to?: number,
+        type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr',
+    ): Promise<{ response: http.IncomingMessage; body: FuturesAccountBook[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -681,7 +772,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -689,24 +780,27 @@ export class DeliveryApi {
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
         if (type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(type, "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'");
+            localVarQueryParameters.type = ObjectSerializer.serialize(
+                type,
+                "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -722,20 +816,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesAccountBook>>(localVarRequestOptions, "Array<FuturesAccountBook>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesAccountBook[]>(
+            localVarRequestOptions,
+            'Array<FuturesAccountBook>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Query futures account
      * @param settle Settle currency
      */
-    public async listDeliveryAccounts(settle: 'usdt') : Promise<{ response: http.IncomingMessage; body: FuturesAccount; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/accounts'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryAccounts(
+        settle: 'usdt',
+    ): Promise<{ response: http.IncomingMessage; body: FuturesAccount }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -743,16 +844,16 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryAccounts.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -768,8 +869,8 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<FuturesAccount>(localVarRequestOptions, "FuturesAccount", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesAccount>(localVarRequestOptions, 'FuturesAccount', authSettings);
     }
 
     /**
@@ -782,11 +883,19 @@ export class DeliveryApi {
      * @param limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param interval Interval time between data points
      */
-    public async listDeliveryCandlesticks(settle: 'usdt', contract: string, from?: number, to?: number, limit?: number, interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d') : Promise<{ response: http.IncomingMessage; body: Array<FuturesCandlestick>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/candlesticks'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryCandlesticks(
+        settle: 'usdt',
+        contract: string,
+        from?: number,
+        to?: number,
+        limit?: number,
+        interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d',
+    ): Promise<{ response: http.IncomingMessage; body: FuturesCandlestick[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/candlesticks'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -794,7 +903,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -806,27 +915,30 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling listDeliveryCandlesticks.');
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(interval, "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'");
+            localVarQueryParameters.interval = ObjectSerializer.serialize(
+                interval,
+                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -842,20 +954,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<Array<FuturesCandlestick>>(localVarRequestOptions, "Array<FuturesCandlestick>", authSettings);
+        const authSettings = [];
+        return this.client.request<FuturesCandlestick[]>(
+            localVarRequestOptions,
+            'Array<FuturesCandlestick>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary List all futures contracts
      * @param settle Settle currency
      */
-    public async listDeliveryContracts(settle: 'usdt') : Promise<{ response: http.IncomingMessage; body: Array<DeliveryContract>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/contracts'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryContracts(
+        settle: 'usdt',
+    ): Promise<{ response: http.IncomingMessage; body: DeliveryContract[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/contracts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -863,16 +982,16 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryContracts.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -888,21 +1007,25 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<Array<DeliveryContract>>(localVarRequestOptions, "Array<DeliveryContract>", authSettings);
+        const authSettings = [];
+        return this.client.request<DeliveryContract[]>(localVarRequestOptions, 'Array<DeliveryContract>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Futures insurance balance history
      * @param settle Settle currency
      * @param limit Maximum number of records returned in one list
      */
-    public async listDeliveryInsuranceLedger(settle: 'usdt', limit?: number) : Promise<{ response: http.IncomingMessage; body: Array<InsuranceRecord>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/insurance'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryInsuranceLedger(
+        settle: 'usdt',
+        limit?: number,
+    ): Promise<{ response: http.IncomingMessage; body: InsuranceRecord[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/insurance'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -910,20 +1033,22 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling listDeliveryInsuranceLedger.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling listDeliveryInsuranceLedger.',
+            );
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -939,23 +1064,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<Array<InsuranceRecord>>(localVarRequestOptions, "Array<InsuranceRecord>", authSettings);
+        const authSettings = [];
+        return this.client.request<InsuranceRecord[]>(localVarRequestOptions, 'Array<InsuranceRecord>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List liquidation history
      * @param settle Settle currency
      * @param contract Futures contract
      * @param limit Maximum number of records returned in one list
      * @param at Specify a liquidation timestamp
      */
-    public async listDeliveryLiquidates(settle: 'usdt', contract?: string, limit?: number, at?: number) : Promise<{ response: http.IncomingMessage; body: Array<FuturesLiquidate>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/liquidates'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryLiquidates(
+        settle: 'usdt',
+        contract?: string,
+        limit?: number,
+        at?: number,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesLiquidate[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -963,7 +1094,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -971,20 +1102,20 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(at, "number");
+            localVarQueryParameters.at = ObjectSerializer.serialize(at, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1000,8 +1131,8 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesLiquidate>>(localVarRequestOptions, "Array<FuturesLiquidate>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesLiquidate[]>(localVarRequestOptions, 'Array<FuturesLiquidate>', authSettings);
     }
 
     /**
@@ -1012,11 +1143,17 @@ export class DeliveryApi {
      * @param interval Order depth. 0 means no aggregation is applied. default to 0
      * @param limit Maximum number of order depth data in asks or bids
      */
-    public async listDeliveryOrderBook(settle: 'usdt', contract: string, interval?: '0' | '0.1' | '0.01', limit?: number) : Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/order_book'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryOrderBook(
+        settle: 'usdt',
+        contract: string,
+        interval?: '0' | '0.1' | '0.01',
+        limit?: number,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrderBook }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1024,7 +1161,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1036,19 +1173,19 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling listDeliveryOrderBook.');
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
         if (interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(interval, "'0' | '0.1' | '0.01'");
+            localVarQueryParameters.interval = ObjectSerializer.serialize(interval, "'0' | '0.1' | '0.01'");
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1064,8 +1201,8 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<FuturesOrderBook>(localVarRequestOptions, "FuturesOrderBook", authSettings);
+        const authSettings = [];
+        return this.client.request<FuturesOrderBook>(localVarRequestOptions, 'FuturesOrderBook', authSettings);
     }
 
     /**
@@ -1079,11 +1216,20 @@ export class DeliveryApi {
      * @param lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param countTotal Whether to return total number matched. Default to 0(no return)
      */
-    public async listDeliveryOrders(settle: 'usdt', status: 'open' | 'finished', contract?: string, limit?: number, offset?: number, lastId?: string, countTotal?: 0 | 1) : Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryOrders(
+        settle: 'usdt',
+        status: 'open' | 'finished',
+        contract?: string,
+        limit?: number,
+        offset?: number,
+        lastId?: string,
+        countTotal?: 0 | 1,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1091,7 +1237,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1104,30 +1250,30 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
         if (lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(lastId, "string");
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
         }
 
         if (countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(countTotal, "0 | 1");
+            localVarQueryParameters.count_total = ObjectSerializer.serialize(countTotal, '0 | 1');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1143,22 +1289,27 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(localVarRequestOptions, "Array<FuturesOrder>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder[]>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List position close history
      * @param settle Settle currency
      * @param contract Futures contract
      * @param limit Maximum number of records returned in one list
      */
-    public async listDeliveryPositionClose(settle: 'usdt', contract?: string, limit?: number) : Promise<{ response: http.IncomingMessage; body: Array<PositionClose>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/position_close'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryPositionClose(
+        settle: 'usdt',
+        contract?: string,
+        limit?: number,
+    ): Promise<{ response: http.IncomingMessage; body: PositionClose[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1166,7 +1317,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1174,16 +1325,16 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1199,20 +1350,21 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<PositionClose>>(localVarRequestOptions, "Array<PositionClose>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<PositionClose[]>(localVarRequestOptions, 'Array<PositionClose>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all positions of a user
      * @param settle Settle currency
      */
-    public async listDeliveryPositions(settle: 'usdt') : Promise<{ response: http.IncomingMessage; body: Array<Position>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryPositions(settle: 'usdt'): Promise<{ response: http.IncomingMessage; body: Position[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1220,16 +1372,16 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryPositions.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1245,23 +1397,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<Position>>(localVarRequestOptions, "Array<Position>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<Position[]>(localVarRequestOptions, 'Array<Position>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List settlement history
      * @param settle Settle currency
      * @param contract Futures contract
      * @param limit Maximum number of records returned in one list
      * @param at Specify a settlement timestamp
      */
-    public async listDeliverySettlements(settle: 'usdt', contract?: string, limit?: number, at?: number) : Promise<{ response: http.IncomingMessage; body: Array<DeliverySettlement>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/settlements'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliverySettlements(
+        settle: 'usdt',
+        contract?: string,
+        limit?: number,
+        at?: number,
+    ): Promise<{ response: http.IncomingMessage; body: DeliverySettlement[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/settlements'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1269,7 +1427,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1277,20 +1435,20 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(at, "number");
+            localVarQueryParameters.at = ObjectSerializer.serialize(at, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1306,21 +1464,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<DeliverySettlement>>(localVarRequestOptions, "Array<DeliverySettlement>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<DeliverySettlement[]>(
+            localVarRequestOptions,
+            'Array<DeliverySettlement>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary List futures tickers
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async listDeliveryTickers(settle: 'usdt', contract?: string) : Promise<{ response: http.IncomingMessage; body: Array<FuturesTicker>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/tickers'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryTickers(
+        settle: 'usdt',
+        contract?: string,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesTicker[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1328,7 +1494,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1336,12 +1502,12 @@ export class DeliveryApi {
         }
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1357,25 +1523,33 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<Array<FuturesTicker>>(localVarRequestOptions, "Array<FuturesTicker>", authSettings);
+        const authSettings = [];
+        return this.client.request<FuturesTicker[]>(localVarRequestOptions, 'Array<FuturesTicker>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Futures trading history
      * @param settle Settle currency
      * @param contract Futures contract
      * @param limit Maximum number of records returned in one list
      * @param lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
-     * @param from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. 
+     * @param from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param to Specify end time in Unix seconds, default to current time
      */
-    public async listDeliveryTrades(settle: 'usdt', contract: string, limit?: number, lastId?: string, from?: number, to?: number) : Promise<{ response: http.IncomingMessage; body: Array<FuturesTrade>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/trades'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryTrades(
+        settle: 'usdt',
+        contract: string,
+        limit?: number,
+        lastId?: string,
+        from?: number,
+        to?: number,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesTrade[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1383,7 +1557,7 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
@@ -1395,27 +1569,27 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling listDeliveryTrades.');
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(lastId, "string");
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
         }
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1431,12 +1605,12 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = [];
-        return this.client.request<Array<FuturesTrade>>(localVarRequestOptions, "Array<FuturesTrade>", authSettings);
+        const authSettings = [];
+        return this.client.request<FuturesTrade[]>(localVarRequestOptions, 'Array<FuturesTrade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all auto orders
      * @param settle Settle currency
      * @param status List orders based on status
@@ -1444,11 +1618,18 @@ export class DeliveryApi {
      * @param limit Maximum number of records returned in one list
      * @param offset List offset, starting from 0
      */
-    public async listPriceTriggeredDeliveryOrders(settle: 'usdt', status: 'open' | 'finished', contract?: string, limit?: number, offset?: number) : Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listPriceTriggeredDeliveryOrders(
+        settle: 'usdt',
+        status: 'open' | 'finished',
+        contract?: string,
+        limit?: number,
+        offset?: number,
+    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder[] }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1456,35 +1637,39 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling listPriceTriggeredDeliveryOrders.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling listPriceTriggeredDeliveryOrders.',
+            );
         }
 
         // verify required parameter 'status' is not null or undefined
         if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listPriceTriggeredDeliveryOrders.');
+            throw new Error(
+                'Required parameter status was null or undefined when calling listPriceTriggeredDeliveryOrders.',
+            );
         }
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1500,23 +1685,33 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesPriceTriggeredOrder>>(localVarRequestOptions, "Array<FuturesPriceTriggeredOrder>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesPriceTriggeredOrder[]>(
+            localVarRequestOptions,
+            'Array<FuturesPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Update position leverage
      * @param settle Settle currency
      * @param contract Futures contract
      * @param leverage New position leverage
      */
-    public async updateDeliveryPositionLeverage(settle: 'usdt', contract: string, leverage: string) : Promise<{ response: http.IncomingMessage; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/leverage'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionLeverage(
+        settle: 'usdt',
+        contract: string,
+        leverage: string,
+    ): Promise<{ response: http.IncomingMessage; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/leverage'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1524,28 +1719,34 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
         // verify required parameter 'leverage' is not null or undefined
         if (leverage === null || leverage === undefined) {
-            throw new Error('Required parameter leverage was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter leverage was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
-        localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, "string");
+        localVarQueryParameters.leverage = ObjectSerializer.serialize(leverage, 'string');
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1561,23 +1762,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Position>(localVarRequestOptions, "Position", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(localVarRequestOptions, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update position margin
      * @param settle Settle currency
      * @param contract Futures contract
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
-    public async updateDeliveryPositionMargin(settle: 'usdt', contract: string, change: string) : Promise<{ response: http.IncomingMessage; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/margin'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionMargin(
+        settle: 'usdt',
+        contract: string,
+        change: string,
+    ): Promise<{ response: http.IncomingMessage; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/margin'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1585,28 +1792,34 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
         // verify required parameter 'change' is not null or undefined
         if (change === null || change === undefined) {
-            throw new Error('Required parameter change was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter change was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
-        localVarQueryParameters['change'] = ObjectSerializer.serialize(change, "string");
+        localVarQueryParameters.change = ObjectSerializer.serialize(change, 'string');
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1622,23 +1835,29 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Position>(localVarRequestOptions, "Position", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(localVarRequestOptions, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update position risk limit
      * @param settle Settle currency
      * @param contract Futures contract
      * @param riskLimit New position risk limit
      */
-    public async updateDeliveryPositionRiskLimit(settle: 'usdt', contract: string, riskLimit: string) : Promise<{ response: http.IncomingMessage; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/risk_limit'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionRiskLimit(
+        settle: 'usdt',
+        contract: string,
+        riskLimit: string,
+    ): Promise<{ response: http.IncomingMessage; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/risk_limit'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1646,28 +1865,34 @@ export class DeliveryApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
         // verify required parameter 'riskLimit' is not null or undefined
         if (riskLimit === null || riskLimit === undefined) {
-            throw new Error('Required parameter riskLimit was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter riskLimit was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
-        localVarQueryParameters['risk_limit'] = ObjectSerializer.serialize(riskLimit, "string");
+        localVarQueryParameters.risk_limit = ObjectSerializer.serialize(riskLimit, 'string');
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -1683,7 +1908,7 @@ export class DeliveryApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Position>(localVarRequestOptions, "Position", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(localVarRequestOptions, 'Position', authSettings);
     }
 }

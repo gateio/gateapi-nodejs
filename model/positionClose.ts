@@ -9,57 +9,57 @@
  * Do not edit the class manually.
  */
 
-
 export class PositionClose {
     /**
-    * Position close time
-    */
+     * Position close time
+     */
     'time'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Position side, long or short
-    */
+     * Position side, long or short
+     */
     'side'?: PositionClose.Side;
     /**
-    * PNL
-    */
+     * PNL
+     */
     'pnl'?: string;
     /**
-    * Text of close order
-    */
+     * Text of close order
+     */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "PositionClose.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'PositionClose.Side',
         },
         {
-            "name": "pnl",
-            "baseName": "pnl",
-            "type": "string"
+            name: 'pnl',
+            baseName: 'pnl',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
-        }    ];
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return PositionClose.attributeTypeMap;
@@ -68,7 +68,7 @@ export class PositionClose {
 
 export namespace PositionClose {
     export enum Side {
-        Long = <any> 'long',
-        Short = <any> 'short'
+        Long = <any>'long',
+        Short = <any>'short',
     }
 }

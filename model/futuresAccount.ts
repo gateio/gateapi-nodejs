@@ -9,78 +9,77 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesAccount {
     /**
-    * Total assets, total = position_margin + order_margin + available
-    */
+     * Total assets, total = position_margin + order_margin + available
+     */
     'total'?: string;
     /**
-    * Unrealized PNL
-    */
+     * Unrealized PNL
+     */
     'unrealisedPnl'?: string;
     /**
-    * Position margin
-    */
+     * Position margin
+     */
     'positionMargin'?: string;
     /**
-    * Order margin of unfinished orders
-    */
+     * Order margin of unfinished orders
+     */
     'orderMargin'?: string;
     /**
-    * Available balance to transfer out or trade
-    */
+     * Available balance to transfer out or trade
+     */
     'available'?: string;
     /**
-    * POINT amount
-    */
+     * POINT amount
+     */
     'point'?: string;
     /**
-    * Settle currency
-    */
+     * Settle currency
+     */
     'currency'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "string"
+            name: 'total',
+            baseName: 'total',
+            type: 'string',
         },
         {
-            "name": "unrealisedPnl",
-            "baseName": "unrealised_pnl",
-            "type": "string"
+            name: 'unrealisedPnl',
+            baseName: 'unrealised_pnl',
+            type: 'string',
         },
         {
-            "name": "positionMargin",
-            "baseName": "position_margin",
-            "type": "string"
+            name: 'positionMargin',
+            baseName: 'position_margin',
+            type: 'string',
         },
         {
-            "name": "orderMargin",
-            "baseName": "order_margin",
-            "type": "string"
+            name: 'orderMargin',
+            baseName: 'order_margin',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "point",
-            "baseName": "point",
-            "type": "string"
+            name: 'point',
+            baseName: 'point',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
-        }    ];
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesAccount.attributeTypeMap;
     }
 }
-

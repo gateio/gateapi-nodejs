@@ -36,14 +36,16 @@ export class WalletApi {
     }
 
     /**
-     * 
+     *
      * @summary Generate currency deposit address
      * @param currency Currency name
      */
-    public async getDepositAddress(currency: string) : Promise<{ response: http.IncomingMessage; body: DepositAddress; }> {
+    public async getDepositAddress(
+        currency: string,
+    ): Promise<{ response: http.IncomingMessage; body: DepositAddress }> {
         const localVarPath = this.client.basePath + '/wallet/deposit_address';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -51,18 +53,18 @@ export class WalletApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'currency' is not null or undefined
         if (currency === null || currency === undefined) {
             throw new Error('Required parameter currency was null or undefined when calling getDepositAddress.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+        localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -78,8 +80,8 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<DepositAddress>(localVarRequestOptions, "DepositAddress", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<DepositAddress>(localVarRequestOptions, 'DepositAddress', authSettings);
     }
 
     /**
@@ -91,10 +93,16 @@ export class WalletApi {
      * @param limit Maximum number of records returned in one list
      * @param offset List offset, starting from 0
      */
-    public async listDeposits(currency?: string, from?: number, to?: number, limit?: number, offset?: number) : Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }> {
+    public async listDeposits(
+        currency?: string,
+        from?: number,
+        to?: number,
+        limit?: number,
+        offset?: number,
+    ): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -102,31 +110,31 @@ export class WalletApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         if (currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
         }
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -142,8 +150,8 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, "Array<LedgerRecord>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<LedgerRecord[]>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
     }
 
     /**
@@ -155,10 +163,16 @@ export class WalletApi {
      * @param limit Maximum number of records returned in one list
      * @param offset List offset, starting from 0
      */
-    public async listSubAccountTransfers(subUid?: string, from?: number, to?: number, limit?: number, offset?: number) : Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransfer>; }> {
+    public async listSubAccountTransfers(
+        subUid?: string,
+        from?: number,
+        to?: number,
+        limit?: number,
+        offset?: number,
+    ): Promise<{ response: http.IncomingMessage; body: SubAccountTransfer[] }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -166,31 +180,31 @@ export class WalletApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         if (subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(subUid, "string");
+            localVarQueryParameters.sub_uid = ObjectSerializer.serialize(subUid, 'string');
         }
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -206,8 +220,12 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountTransfer>>(localVarRequestOptions, "Array<SubAccountTransfer>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<SubAccountTransfer[]>(
+            localVarRequestOptions,
+            'Array<SubAccountTransfer>',
+            authSettings,
+        );
     }
 
     /**
@@ -219,10 +237,16 @@ export class WalletApi {
      * @param limit Maximum number of records returned in one list
      * @param offset List offset, starting from 0
      */
-    public async listWithdrawals(currency?: string, from?: number, to?: number, limit?: number, offset?: number) : Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }> {
+    public async listWithdrawals(
+        currency?: string,
+        from?: number,
+        to?: number,
+        limit?: number,
+        offset?: number,
+    ): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -230,31 +254,31 @@ export class WalletApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         if (currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
         }
 
         if (from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
         }
 
         if (to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
+            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
         }
 
         if (limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
         }
 
         if (offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
@@ -270,36 +294,36 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, "Array<LedgerRecord>", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<LedgerRecord[]>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
     }
 
     /**
      * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 2. spot - delivery
      * @summary Transfer between accounts
-     * @param transfer 
+     * @param transfer
      */
-    public async transfer(transfer: Transfer) : Promise<{ response: http.IncomingMessage; body?: any; }> {
+    public async transfer(transfer: Transfer): Promise<{ response: http.IncomingMessage; body?: any }> {
         const localVarPath = this.client.basePath + '/wallet/transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        let localVarFormParams: any = {};
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarFormParams: any = {};
 
         // verify required parameter 'transfer' is not null or undefined
         if (transfer === null || transfer === undefined) {
             throw new Error('Required parameter transfer was null or undefined when calling transfer.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(transfer, "Transfer")
+            body: ObjectSerializer.serialize(transfer, 'Transfer'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -309,36 +333,40 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<any>(localVarRequestOptions, "", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(localVarRequestOptions, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Transfer between main and sub accounts
-     * @param subAccountTransfer 
+     * @param subAccountTransfer
      */
-    public async transferWithSubAccount(subAccountTransfer: SubAccountTransfer) : Promise<{ response: http.IncomingMessage; body?: any; }> {
+    public async transferWithSubAccount(
+        subAccountTransfer: SubAccountTransfer,
+    ): Promise<{ response: http.IncomingMessage; body?: any }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        let localVarFormParams: any = {};
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarFormParams: any = {};
 
         // verify required parameter 'subAccountTransfer' is not null or undefined
         if (subAccountTransfer === null || subAccountTransfer === undefined) {
-            throw new Error('Required parameter subAccountTransfer was null or undefined when calling transferWithSubAccount.');
+            throw new Error(
+                'Required parameter subAccountTransfer was null or undefined when calling transferWithSubAccount.',
+            );
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(subAccountTransfer, "SubAccountTransfer")
+            body: ObjectSerializer.serialize(subAccountTransfer, 'SubAccountTransfer'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -348,7 +376,7 @@ export class WalletApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<any>(localVarRequestOptions, "", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(localVarRequestOptions, '', authSettings);
     }
 }

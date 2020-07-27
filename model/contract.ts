@@ -9,294 +9,294 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Futures contract details
-*/
+ * Futures contract details
+ */
 export class Contract {
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'name'?: string;
     /**
-    * Futures contract type
-    */
+     * Futures contract type
+     */
     'type'?: Contract.Type;
     /**
-    * Multiplier used in converting from invoicing to settlement currency in quanto futures
-    */
+     * Multiplier used in converting from invoicing to settlement currency in quanto futures
+     */
     'quantoMultiplier'?: string;
     /**
-    * Minimum leverage
-    */
+     * Minimum leverage
+     */
     'leverageMin'?: string;
     /**
-    * Maximum leverage
-    */
+     * Maximum leverage
+     */
     'leverageMax'?: string;
     /**
-    * Maintenance rate of margin
-    */
+     * Maintenance rate of margin
+     */
     'maintenanceRate'?: string;
     /**
-    * Mark price type, internal - based on internal trading, index - based on external index price
-    */
+     * Mark price type, internal - based on internal trading, index - based on external index price
+     */
     'markType'?: Contract.MarkType;
     /**
-    * Current mark price
-    */
+     * Current mark price
+     */
     'markPrice'?: string;
     /**
-    * Current index price
-    */
+     * Current index price
+     */
     'indexPrice'?: string;
     /**
-    * Last trading price
-    */
+     * Last trading price
+     */
     'lastPrice'?: string;
     /**
-    * Maker fee rate, where negative means rebate
-    */
+     * Maker fee rate, where negative means rebate
+     */
     'makerFeeRate'?: string;
     /**
-    * Taker fee rate
-    */
+     * Taker fee rate
+     */
     'takerFeeRate'?: string;
     /**
-    * Minimum order price increment
-    */
+     * Minimum order price increment
+     */
     'orderPriceRound'?: string;
     /**
-    * Minimum mark price increment
-    */
+     * Minimum mark price increment
+     */
     'markPriceRound'?: string;
     /**
-    * Current funding rate
-    */
+     * Current funding rate
+     */
     'fundingRate'?: string;
     /**
-    * Funding application interval, unit in seconds
-    */
+     * Funding application interval, unit in seconds
+     */
     'fundingInterval'?: number;
     /**
-    * Next funding time
-    */
+     * Next funding time
+     */
     'fundingNextApply'?: number;
     /**
-    * Risk limit base
-    */
+     * Risk limit base
+     */
     'riskLimitBase'?: string;
     /**
-    * Step of adjusting risk limit
-    */
+     * Step of adjusting risk limit
+     */
     'riskLimitStep'?: string;
     /**
-    * Maximum risk limit the contract allowed
-    */
+     * Maximum risk limit the contract allowed
+     */
     'riskLimitMax'?: string;
     /**
-    * Minimum order size the contract allowed
-    */
+     * Minimum order size the contract allowed
+     */
     'orderSizeMin'?: number;
     /**
-    * Maximum order size the contract allowed
-    */
+     * Maximum order size the contract allowed
+     */
     'orderSizeMax'?: number;
     /**
-    * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
-    */
+     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
+     */
     'orderPriceDeviate'?: string;
     /**
-    * Referral fee rate discount
-    */
+     * Referral fee rate discount
+     */
     'refDiscountRate'?: string;
     /**
-    * Referrer commission rate
-    */
+     * Referrer commission rate
+     */
     'refRebateRate'?: string;
     /**
-    * Current orderbook ID
-    */
+     * Current orderbook ID
+     */
     'orderbookId'?: number;
     /**
-    * Current trade ID
-    */
+     * Current trade ID
+     */
     'tradeId'?: number;
     /**
-    * Historical accumulation trade size
-    */
+     * Historical accumulation trade size
+     */
     'tradeSize'?: number;
     /**
-    * Current total long position size
-    */
+     * Current total long position size
+     */
     'positionSize'?: number;
     /**
-    * Configuration\'s last changed time
-    */
+     * Configuration\'s last changed time
+     */
     'configChangeTime'?: number;
     /**
-    * Contract is delisting
-    */
+     * Contract is delisting
+     */
     'inDelisting'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "Contract.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'Contract.Type',
         },
         {
-            "name": "quantoMultiplier",
-            "baseName": "quanto_multiplier",
-            "type": "string"
+            name: 'quantoMultiplier',
+            baseName: 'quanto_multiplier',
+            type: 'string',
         },
         {
-            "name": "leverageMin",
-            "baseName": "leverage_min",
-            "type": "string"
+            name: 'leverageMin',
+            baseName: 'leverage_min',
+            type: 'string',
         },
         {
-            "name": "leverageMax",
-            "baseName": "leverage_max",
-            "type": "string"
+            name: 'leverageMax',
+            baseName: 'leverage_max',
+            type: 'string',
         },
         {
-            "name": "maintenanceRate",
-            "baseName": "maintenance_rate",
-            "type": "string"
+            name: 'maintenanceRate',
+            baseName: 'maintenance_rate',
+            type: 'string',
         },
         {
-            "name": "markType",
-            "baseName": "mark_type",
-            "type": "Contract.MarkType"
+            name: 'markType',
+            baseName: 'mark_type',
+            type: 'Contract.MarkType',
         },
         {
-            "name": "markPrice",
-            "baseName": "mark_price",
-            "type": "string"
+            name: 'markPrice',
+            baseName: 'mark_price',
+            type: 'string',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
         },
         {
-            "name": "lastPrice",
-            "baseName": "last_price",
-            "type": "string"
+            name: 'lastPrice',
+            baseName: 'last_price',
+            type: 'string',
         },
         {
-            "name": "makerFeeRate",
-            "baseName": "maker_fee_rate",
-            "type": "string"
+            name: 'makerFeeRate',
+            baseName: 'maker_fee_rate',
+            type: 'string',
         },
         {
-            "name": "takerFeeRate",
-            "baseName": "taker_fee_rate",
-            "type": "string"
+            name: 'takerFeeRate',
+            baseName: 'taker_fee_rate',
+            type: 'string',
         },
         {
-            "name": "orderPriceRound",
-            "baseName": "order_price_round",
-            "type": "string"
+            name: 'orderPriceRound',
+            baseName: 'order_price_round',
+            type: 'string',
         },
         {
-            "name": "markPriceRound",
-            "baseName": "mark_price_round",
-            "type": "string"
+            name: 'markPriceRound',
+            baseName: 'mark_price_round',
+            type: 'string',
         },
         {
-            "name": "fundingRate",
-            "baseName": "funding_rate",
-            "type": "string"
+            name: 'fundingRate',
+            baseName: 'funding_rate',
+            type: 'string',
         },
         {
-            "name": "fundingInterval",
-            "baseName": "funding_interval",
-            "type": "number"
+            name: 'fundingInterval',
+            baseName: 'funding_interval',
+            type: 'number',
         },
         {
-            "name": "fundingNextApply",
-            "baseName": "funding_next_apply",
-            "type": "number"
+            name: 'fundingNextApply',
+            baseName: 'funding_next_apply',
+            type: 'number',
         },
         {
-            "name": "riskLimitBase",
-            "baseName": "risk_limit_base",
-            "type": "string"
+            name: 'riskLimitBase',
+            baseName: 'risk_limit_base',
+            type: 'string',
         },
         {
-            "name": "riskLimitStep",
-            "baseName": "risk_limit_step",
-            "type": "string"
+            name: 'riskLimitStep',
+            baseName: 'risk_limit_step',
+            type: 'string',
         },
         {
-            "name": "riskLimitMax",
-            "baseName": "risk_limit_max",
-            "type": "string"
+            name: 'riskLimitMax',
+            baseName: 'risk_limit_max',
+            type: 'string',
         },
         {
-            "name": "orderSizeMin",
-            "baseName": "order_size_min",
-            "type": "number"
+            name: 'orderSizeMin',
+            baseName: 'order_size_min',
+            type: 'number',
         },
         {
-            "name": "orderSizeMax",
-            "baseName": "order_size_max",
-            "type": "number"
+            name: 'orderSizeMax',
+            baseName: 'order_size_max',
+            type: 'number',
         },
         {
-            "name": "orderPriceDeviate",
-            "baseName": "order_price_deviate",
-            "type": "string"
+            name: 'orderPriceDeviate',
+            baseName: 'order_price_deviate',
+            type: 'string',
         },
         {
-            "name": "refDiscountRate",
-            "baseName": "ref_discount_rate",
-            "type": "string"
+            name: 'refDiscountRate',
+            baseName: 'ref_discount_rate',
+            type: 'string',
         },
         {
-            "name": "refRebateRate",
-            "baseName": "ref_rebate_rate",
-            "type": "string"
+            name: 'refRebateRate',
+            baseName: 'ref_rebate_rate',
+            type: 'string',
         },
         {
-            "name": "orderbookId",
-            "baseName": "orderbook_id",
-            "type": "number"
+            name: 'orderbookId',
+            baseName: 'orderbook_id',
+            type: 'number',
         },
         {
-            "name": "tradeId",
-            "baseName": "trade_id",
-            "type": "number"
+            name: 'tradeId',
+            baseName: 'trade_id',
+            type: 'number',
         },
         {
-            "name": "tradeSize",
-            "baseName": "trade_size",
-            "type": "number"
+            name: 'tradeSize',
+            baseName: 'trade_size',
+            type: 'number',
         },
         {
-            "name": "positionSize",
-            "baseName": "position_size",
-            "type": "number"
+            name: 'positionSize',
+            baseName: 'position_size',
+            type: 'number',
         },
         {
-            "name": "configChangeTime",
-            "baseName": "config_change_time",
-            "type": "number"
+            name: 'configChangeTime',
+            baseName: 'config_change_time',
+            type: 'number',
         },
         {
-            "name": "inDelisting",
-            "baseName": "in_delisting",
-            "type": "boolean"
-        }    ];
+            name: 'inDelisting',
+            baseName: 'in_delisting',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Contract.attributeTypeMap;
@@ -305,11 +305,11 @@ export class Contract {
 
 export namespace Contract {
     export enum Type {
-        Inverse = <any> 'inverse',
-        Direct = <any> 'direct'
+        Inverse = <any>'inverse',
+        Direct = <any>'direct',
     }
     export enum MarkType {
-        Internal = <any> 'internal',
-        Index = <any> 'index'
+        Internal = <any>'internal',
+        Index = <any>'index',
     }
 }

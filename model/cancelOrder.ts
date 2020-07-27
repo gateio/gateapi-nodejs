@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Info of order to be cancelled
-*/
+ * Info of order to be cancelled
+ */
 export class CancelOrder {
     /**
-    * Order currency pair
-    */
+     * Order currency pair
+     */
     'currencyPair': string;
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'id': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        }    ];
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CancelOrder.attributeTypeMap;
     }
 }
-

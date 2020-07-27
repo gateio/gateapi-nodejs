@@ -9,75 +9,75 @@
  * Do not edit the class manually.
  */
 
-
 export class SubAccountTransfer {
     /**
-    * Transfer currency name
-    */
+     * Transfer currency name
+     */
     'currency': string;
     /**
-    * Sub account user ID
-    */
+     * Sub account user ID
+     */
     'subAccount': string;
     /**
-    * Transfer direction. to - transfer into sub account; from - transfer out from sub account
-    */
+     * Transfer direction. to - transfer into sub account; from - transfer out from sub account
+     */
     'direction': SubAccountTransfer.Direction;
     /**
-    * Transfer amount
-    */
+     * Transfer amount
+     */
     'amount': string;
     /**
-    * Main account user ID
-    */
+     * Main account user ID
+     */
     'uid'?: string;
     /**
-    * Transfer timestamp
-    */
+     * Transfer timestamp
+     */
     'timest'?: string;
     /**
-    * Where the operation is initiated from
-    */
+     * Where the operation is initiated from
+     */
     'source'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "subAccount",
-            "baseName": "sub_account",
-            "type": "string"
+            name: 'subAccount',
+            baseName: 'sub_account',
+            type: 'string',
         },
         {
-            "name": "direction",
-            "baseName": "direction",
-            "type": "SubAccountTransfer.Direction"
+            name: 'direction',
+            baseName: 'direction',
+            type: 'SubAccountTransfer.Direction',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "uid",
-            "baseName": "uid",
-            "type": "string"
+            name: 'uid',
+            baseName: 'uid',
+            type: 'string',
         },
         {
-            "name": "timest",
-            "baseName": "timest",
-            "type": "string"
+            name: 'timest',
+            baseName: 'timest',
+            type: 'string',
         },
         {
-            "name": "source",
-            "baseName": "source",
-            "type": "string"
-        }    ];
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubAccountTransfer.attributeTypeMap;
@@ -86,7 +86,7 @@ export class SubAccountTransfer {
 
 export namespace SubAccountTransfer {
     export enum Direction {
-        To = <any> 'to',
-        From = <any> 'from'
+        To = <any>'to',
+        From = <any>'from',
     }
 }

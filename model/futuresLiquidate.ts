@@ -9,123 +9,122 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesLiquidate {
     /**
-    * Liquidation time
-    */
+     * Liquidation time
+     */
     'time'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Position leverage
-    */
+     * Position leverage
+     */
     'leverage'?: string;
     /**
-    * Position size
-    */
+     * Position size
+     */
     'size'?: number;
     /**
-    * Position margin
-    */
+     * Position margin
+     */
     'margin'?: string;
     /**
-    * Average entry price
-    */
+     * Average entry price
+     */
     'entryPrice'?: string;
     /**
-    * Liquidation price
-    */
+     * Liquidation price
+     */
     'liqPrice'?: string;
     /**
-    * Mark price
-    */
+     * Mark price
+     */
     'markPrice'?: string;
     /**
-    * Liquidation order ID
-    */
+     * Liquidation order ID
+     */
     'orderId'?: number;
     /**
-    * Liquidation order price
-    */
+     * Liquidation order price
+     */
     'orderPrice'?: string;
     /**
-    * Liquidation order average taker price
-    */
+     * Liquidation order average taker price
+     */
     'fillPrice'?: string;
     /**
-    * Liquidation order maker size
-    */
+     * Liquidation order maker size
+     */
     'left'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "margin",
-            "baseName": "margin",
-            "type": "string"
+            name: 'margin',
+            baseName: 'margin',
+            type: 'string',
         },
         {
-            "name": "entryPrice",
-            "baseName": "entry_price",
-            "type": "string"
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
         },
         {
-            "name": "liqPrice",
-            "baseName": "liq_price",
-            "type": "string"
+            name: 'liqPrice',
+            baseName: 'liq_price',
+            type: 'string',
         },
         {
-            "name": "markPrice",
-            "baseName": "mark_price",
-            "type": "string"
+            name: 'markPrice',
+            baseName: 'mark_price',
+            type: 'string',
         },
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "orderPrice",
-            "baseName": "order_price",
-            "type": "string"
+            name: 'orderPrice',
+            baseName: 'order_price',
+            type: 'string',
         },
         {
-            "name": "fillPrice",
-            "baseName": "fill_price",
-            "type": "string"
+            name: 'fillPrice',
+            baseName: 'fill_price',
+            type: 'string',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "number"
-        }    ];
+            name: 'left',
+            baseName: 'left',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesLiquidate.attributeTypeMap;
     }
 }
-

@@ -13,97 +13,98 @@ import { FuturesInitialOrder } from './futuresInitialOrder';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 
 /**
-* Futures order details
-*/
+ * Futures order details
+ */
 export class FuturesPriceTriggeredOrder {
     'initial': FuturesInitialOrder;
     'trigger': FuturesPriceTrigger;
     /**
-    * Auto order ID
-    */
+     * Auto order ID
+     */
     'id'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'user'?: number;
     /**
-    * Creation time
-    */
+     * Creation time
+     */
     'createTime'?: number;
     /**
-    * Finished time
-    */
+     * Finished time
+     */
     'finishTime'?: number;
     /**
-    * ID of the newly created order on condition triggered
-    */
+     * ID of the newly created order on condition triggered
+     */
     'tradeId'?: number;
     /**
-    * Order status.
-    */
+     * Order status.
+     */
     'status'?: FuturesPriceTriggeredOrder.Status;
     /**
-    * How order is finished
-    */
+     * How order is finished
+     */
     'finishAs'?: FuturesPriceTriggeredOrder.FinishAs;
     /**
-    * Extra messages of how order is finished
-    */
+     * Extra messages of how order is finished
+     */
     'reason'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "initial",
-            "baseName": "initial",
-            "type": "FuturesInitialOrder"
+            name: 'initial',
+            baseName: 'initial',
+            type: 'FuturesInitialOrder',
         },
         {
-            "name": "trigger",
-            "baseName": "trigger",
-            "type": "FuturesPriceTrigger"
+            name: 'trigger',
+            baseName: 'trigger',
+            type: 'FuturesPriceTrigger',
         },
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "user",
-            "baseName": "user",
-            "type": "number"
+            name: 'user',
+            baseName: 'user',
+            type: 'number',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "finishTime",
-            "baseName": "finish_time",
-            "type": "number"
+            name: 'finishTime',
+            baseName: 'finish_time',
+            type: 'number',
         },
         {
-            "name": "tradeId",
-            "baseName": "trade_id",
-            "type": "number"
+            name: 'tradeId',
+            baseName: 'trade_id',
+            type: 'number',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "FuturesPriceTriggeredOrder.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'FuturesPriceTriggeredOrder.Status',
         },
         {
-            "name": "finishAs",
-            "baseName": "finish_as",
-            "type": "FuturesPriceTriggeredOrder.FinishAs"
+            name: 'finishAs',
+            baseName: 'finish_as',
+            type: 'FuturesPriceTriggeredOrder.FinishAs',
         },
         {
-            "name": "reason",
-            "baseName": "reason",
-            "type": "string"
-        }    ];
+            name: 'reason',
+            baseName: 'reason',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesPriceTriggeredOrder.attributeTypeMap;
@@ -112,13 +113,13 @@ export class FuturesPriceTriggeredOrder {
 
 export namespace FuturesPriceTriggeredOrder {
     export enum Status {
-        Open = <any> 'open',
-        Finished = <any> 'finished'
+        Open = <any>'open',
+        Finished = <any>'finished',
     }
     export enum FinishAs {
-        Cancelled = <any> 'cancelled',
-        Succeeded = <any> 'succeeded',
-        Failed = <any> 'failed',
-        Expired = <any> 'expired'
+        Cancelled = <any>'cancelled',
+        Succeeded = <any>'succeeded',
+        Failed = <any>'failed',
+        Expired = <any>'expired',
     }
 }

@@ -7,17 +7,29 @@
     "types": "dist/api.d.ts",
     "scripts": {
         "clean": "rm -Rf node_modules/ *.js",
-        "build": "tsc"
+        "build": "tsc",
+        "prepare": "npm run build",
+        "format": "prettier --write '*/**/*.{js,ts,tsx}'",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
     },
+    "files": [
+        "dist/**/*"
+    ],
     "author": "GateIO",
     "license": "Unlicense",
     "dependencies": {
         "request": "^2.81.0",
-        "@types/request": "*"
+        "@types/request": "*",
+        "@types/node": "^8.10.48"
     },
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^3.7.0",
+        "@typescript-eslint/parser": "^3.7.0",
+        "eslint": "^7.5.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "prettier": "^2.0.5",
         "rewire": "^3.0.2",
-        "typescript": "^2.4.2",
-        "@types/node": "8.10.34"
+        "typescript": "^3.7.9"
     }
 }

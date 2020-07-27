@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesOrderBookItem {
     /**
-    * Price
-    */
+     * Price
+     */
     'p'?: string;
     /**
-    * Size
-    */
+     * Size
+     */
     's'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
         {
-            "name": "p",
-            "baseName": "p",
-            "type": "string"
+            name: 'p',
+            baseName: 'p',
+            type: 'string',
         },
         {
-            "name": "s",
-            "baseName": "s",
-            "type": "number"
-        }    ];
+            name: 's',
+            baseName: 's',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesOrderBookItem.attributeTypeMap;
     }
 }
-

@@ -33,14 +33,14 @@ export class WithdrawalApi {
     }
 
     /**
-     * 
+     *
      * @summary Withdraw
-     * @param ledgerRecord 
+     * @param ledgerRecord
      */
-    public async withdraw(ledgerRecord: LedgerRecord) : Promise<{ response: http.IncomingMessage; body: LedgerRecord; }> {
+    public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: http.IncomingMessage; body: LedgerRecord }> {
         const localVarPath = this.client.basePath + '/withdrawals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -48,23 +48,23 @@ export class WithdrawalApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-        let localVarFormParams: any = {};
+        const localVarFormParams: any = {};
 
         // verify required parameter 'ledgerRecord' is not null or undefined
         if (ledgerRecord === null || ledgerRecord === undefined) {
             throw new Error('Required parameter ledgerRecord was null or undefined when calling withdraw.');
         }
 
-        let localVarUseFormData = false;
+        const localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        const localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(ledgerRecord, "LedgerRecord")
+            body: ObjectSerializer.serialize(ledgerRecord, 'LedgerRecord'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -74,7 +74,7 @@ export class WithdrawalApi {
             }
         }
 
-        let authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord>(localVarRequestOptions, "LedgerRecord", authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<LedgerRecord>(localVarRequestOptions, 'LedgerRecord', authSettings);
     }
 }
