@@ -45,7 +45,6 @@ export * from './transfer';
 export * from './triggerOrderResponse';
 
 import localVarRequest = require('request');
-import qs = require("querystring");
 import crypto = require('crypto');
 import { URL } from 'url';
 
@@ -375,10 +374,11 @@ export class GateApiV4Auth implements Authentication {
     public secret = '';
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
+        // force using queryString
+        requestOptions.useQuerystring = true;
         const timestamp: string = (new Date().getTime() / 1000).toString();
         const resourcePath: string = new URL((requestOptions as localVarRequest.UriOptions).uri as string).pathname;
-        // do not encode anything
-        const queryString: string = qs.stringify(requestOptions.qs, undefined, undefined, { encodeURIComponent: s => s});
+        const queryString: string = unescape(requestOptions.qs.stringify());
         let bodyParam = '';
         if (requestOptions.body) {
             if (typeof requestOptions.body == 'string') {
@@ -389,9 +389,9 @@ export class GateApiV4Auth implements Authentication {
         }
         const hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
         const signatureString = [requestOptions.method, resourcePath, queryString, hashedPayload, timestamp].join('\n');
-        console.log('signature string to be calculated: ' + signatureString);
+        // console.log('signature string to be calculated: ' + signatureString);
         const signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
-        console.log('signature generated: ' + signature);
+        // console.log('signature generated: ' + signature);
         (<any>Object).assign(requestOptions.headers, { KEY: this.key, Timestamp: timestamp, SIGN: signature });
     }
 }

@@ -154,13 +154,13 @@ export class SpotApi {
      *
      * @summary Cancel all `open` orders in specified currency pair
      * @param currencyPair Currency pair
-     * @param side All bids or asks. Both included in not specified
-     * @param account Specify account type. Default to all account types being included
+     * @param opts Optional parameters
+     * @param opts.side All bids or asks. Both included in not specified
+     * @param opts.account Specify account type. Default to all account types being included
      */
     public async cancelOrders(
         currencyPair: string,
-        side?: 'buy' | 'sell',
-        account?: 'spot' | 'margin',
+        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' },
     ): Promise<{ response: http.IncomingMessage; body: Order[] }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -179,14 +179,15 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrders.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
-        if (side !== undefined) {
-            localVarQueryParameters.side = ObjectSerializer.serialize(side, "'buy' | 'sell'");
+        if (opts.side !== undefined) {
+            localVarQueryParameters.side = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
         }
 
-        if (account !== undefined) {
-            localVarQueryParameters.account = ObjectSerializer.serialize(account, "'spot' | 'margin'");
+        if (opts.account !== undefined) {
+            localVarQueryParameters.account = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
         }
 
         const localVarUseFormData = false;
@@ -417,17 +418,20 @@ export class SpotApi {
      * Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
      * @summary Market candlesticks
      * @param currencyPair Currency pair
-     * @param limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param interval Interval time between data points
+     * @param opts Optional parameters
+     * @param opts.limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
+     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.interval Interval time between data points
      */
     public async listCandlesticks(
         currencyPair: string,
-        limit?: number,
-        from?: number,
-        to?: number,
-        interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d',
+        opts: {
+            limit?: number;
+            from?: number;
+            to?: number;
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+        },
     ): Promise<{ response: http.IncomingMessage; body: string[][] }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
         const localVarQueryParameters: any = {};
@@ -446,23 +450,24 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling listCandlesticks.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (interval !== undefined) {
+        if (opts.interval !== undefined) {
             localVarQueryParameters.interval = ObjectSerializer.serialize(
-                interval,
+                opts.interval,
                 "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
         }
@@ -532,15 +537,14 @@ export class SpotApi {
      *
      * @summary List personal trading history
      * @param currencyPair Currency pair
-     * @param limit Maximum number of records returned in one list
-     * @param page Page number
-     * @param orderId List all trades of specified order
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.page Page number
+     * @param opts.orderId List all trades of specified order
      */
     public async listMyTrades(
         currencyPair: string,
-        limit?: number,
-        page?: number,
-        orderId?: string,
+        opts: { limit?: number; page?: number; orderId?: string },
     ): Promise<{ response: http.IncomingMessage; body: Trade[] }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
         const localVarQueryParameters: any = {};
@@ -559,18 +563,19 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling listMyTrades.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(page, 'number');
+        if (opts.page !== undefined) {
+            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
         }
 
-        if (orderId !== undefined) {
-            localVarQueryParameters.order_id = ObjectSerializer.serialize(orderId, 'string');
+        if (opts.orderId !== undefined) {
+            localVarQueryParameters.order_id = ObjectSerializer.serialize(opts.orderId, 'string');
         }
 
         const localVarUseFormData = false;
@@ -599,13 +604,13 @@ export class SpotApi {
      * Order book will be sorted by price from high to low on bids; reversed on asks
      * @summary Retrieve order book
      * @param currencyPair Currency pair
-     * @param interval Order depth. 0 means no aggregation is applied. default to 0
-     * @param limit Maximum number of order depth data in asks or bids
+     * @param opts Optional parameters
+     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
+     * @param opts.limit Maximum number of order depth data in asks or bids
      */
     public async listOrderBook(
         currencyPair: string,
-        interval?: string,
-        limit?: number,
+        opts: { interval?: string; limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: OrderBook }> {
         const localVarPath = this.client.basePath + '/spot/order_book';
         const localVarQueryParameters: any = {};
@@ -624,14 +629,15 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling listOrderBook.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
-        if (interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(interval, 'string');
+        if (opts.interval !== undefined) {
+            localVarQueryParameters.interval = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -661,14 +667,14 @@ export class SpotApi {
      * @summary List orders
      * @param currencyPair Currency pair
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
-     * @param page Page number
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listOrders(
         currencyPair: string,
         status: 'open' | 'finished',
-        page?: number,
-        limit?: number,
+        opts: { page?: number; limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: Order[] }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -692,16 +698,17 @@ export class SpotApi {
             throw new Error('Required parameter status was null or undefined when calling listOrders.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
         localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
-        if (page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(page, 'number');
+        if (opts.page !== undefined) {
+            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -729,9 +736,12 @@ export class SpotApi {
     /**
      *
      * @summary List spot accounts
-     * @param currency Retrieved specified currency related data
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
      */
-    public async listSpotAccounts(currency?: string): Promise<{ response: http.IncomingMessage; body: SpotAccount[] }> {
+    public async listSpotAccounts(opts: {
+        currency?: string;
+    }): Promise<{ response: http.IncomingMessage; body: SpotAccount[] }> {
         const localVarPath = this.client.basePath + '/spot/accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -744,8 +754,9 @@ export class SpotApi {
         }
         const localVarFormParams: any = {};
 
-        if (currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         const localVarUseFormData = false;
@@ -773,9 +784,12 @@ export class SpotApi {
     /**
      * Return only related data if `currency_pair` is specified; otherwise return all of them
      * @summary Retrieve ticker information
-     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
      */
-    public async listTickers(currencyPair?: string): Promise<{ response: http.IncomingMessage; body: Ticker[] }> {
+    public async listTickers(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: http.IncomingMessage; body: Ticker[] }> {
         const localVarPath = this.client.basePath + '/spot/tickers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -788,8 +802,9 @@ export class SpotApi {
         }
         const localVarFormParams: any = {};
 
-        if (currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         const localVarUseFormData = false;
@@ -818,13 +833,13 @@ export class SpotApi {
      *
      * @summary Retrieve market trades
      * @param currencyPair Currency pair
-     * @param limit Maximum number of records returned in one list
-     * @param lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      */
     public async listTrades(
         currencyPair: string,
-        limit?: number,
-        lastId?: string,
+        opts: { limit?: number; lastId?: string },
     ): Promise<{ response: http.IncomingMessage; body: Trade[] }> {
         const localVarPath = this.client.basePath + '/spot/trades';
         const localVarQueryParameters: any = {};
@@ -843,14 +858,15 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling listTrades.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
+        if (opts.lastId !== undefined) {
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         const localVarUseFormData = false;

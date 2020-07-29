@@ -110,12 +110,13 @@ export class FuturesApi {
      * @summary Cancel all `open` orders matched
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param side All bids or asks. Both included in not specified
+     * @param opts Optional parameters
+     * @param opts.side All bids or asks. Both included in not specified
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
         contract: string,
-        side?: 'ask' | 'bid',
+        opts: { side?: 'ask' | 'bid' },
     ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
         const localVarPath =
             this.client.basePath +
@@ -141,10 +142,11 @@ export class FuturesApi {
             throw new Error('Required parameter contract was null or undefined when calling cancelFuturesOrders.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        if (side !== undefined) {
-            localVarQueryParameters.side = ObjectSerializer.serialize(side, "'ask' | 'bid'");
+        if (opts.side !== undefined) {
+            localVarQueryParameters.side = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
         }
 
         const localVarUseFormData = false;
@@ -533,21 +535,24 @@ export class FuturesApi {
      *
      * @summary List personal trading history
      * @param settle Settle currency
-     * @param contract Futures contract, return related data only if specified
-     * @param order Futures order ID, return related data only if specified
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
-     * @param lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param countTotal Whether to return total number matched. Default to 0(no return)
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.order Futures order ID, return related data only if specified
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyTrades(
         settle: 'btc' | 'usdt',
-        contract?: string,
-        order?: number,
-        limit?: number,
-        offset?: number,
-        lastId?: string,
-        countTotal?: 0 | 1,
+        opts: {
+            contract?: string;
+            order?: number;
+            limit?: number;
+            offset?: number;
+            lastId?: string;
+            countTotal?: 0 | 1;
+        },
     ): Promise<{ response: http.IncomingMessage; body: MyFuturesTrade[] }> {
         const localVarPath =
             this.client.basePath +
@@ -568,28 +573,29 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling getMyTrades.');
         }
 
-        if (contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
-        if (order !== undefined) {
-            localVarQueryParameters.order = ObjectSerializer.serialize(order, 'number');
+        if (opts.order !== undefined) {
+            localVarQueryParameters.order = ObjectSerializer.serialize(opts.order, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
-        if (lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
+        if (opts.lastId !== undefined) {
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
-        if (countTotal !== undefined) {
-            localVarQueryParameters.count_total = ObjectSerializer.serialize(countTotal, '0 | 1');
+        if (opts.countTotal !== undefined) {
+            localVarQueryParameters.count_total = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const localVarUseFormData = false;
@@ -738,17 +744,20 @@ export class FuturesApi {
      *
      * @summary Query account book
      * @param settle Settle currency
-     * @param limit Maximum number of records returned in one list
-     * @param from Start timestamp
-     * @param to End timestamp
-     * @param type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
+     * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     public async listFuturesAccountBook(
         settle: 'btc' | 'usdt',
-        limit?: number,
-        from?: number,
-        to?: number,
-        type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr',
+        opts: {
+            limit?: number;
+            from?: number;
+            to?: number;
+            type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr';
+        },
     ): Promise<{ response: http.IncomingMessage; body: FuturesAccountBook[] }> {
         const localVarPath =
             this.client.basePath +
@@ -769,21 +778,22 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling listFuturesAccountBook.');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        opts = opts || {};
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (type !== undefined) {
+        if (opts.type !== undefined) {
             localVarQueryParameters.type = ObjectSerializer.serialize(
-                type,
+                opts.type,
                 "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
             );
         }
@@ -868,18 +878,21 @@ export class FuturesApi {
      * @summary Get futures candlesticks
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param interval Interval time between data points
+     * @param opts Optional parameters
+     * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
+     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Interval time between data points
      */
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
         contract: string,
-        from?: number,
-        to?: number,
-        limit?: number,
-        interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d',
+        opts: {
+            from?: number;
+            to?: number;
+            limit?: number;
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+        },
     ): Promise<{ response: http.IncomingMessage; body: FuturesCandlestick[] }> {
         const localVarPath =
             this.client.basePath +
@@ -905,23 +918,24 @@ export class FuturesApi {
             throw new Error('Required parameter contract was null or undefined when calling listFuturesCandlesticks.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (interval !== undefined) {
+        if (opts.interval !== undefined) {
             localVarQueryParameters.interval = ObjectSerializer.serialize(
-                interval,
+                opts.interval,
                 "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
         }
@@ -1006,12 +1020,13 @@ export class FuturesApi {
      * @summary Funding rate history
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listFuturesFundingRateHistory(
         settle: 'btc' | 'usdt',
         contract: string,
-        limit?: number,
+        opts: { limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: FundingRateRecord[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1041,10 +1056,11 @@ export class FuturesApi {
             );
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1077,11 +1093,12 @@ export class FuturesApi {
      *
      * @summary Futures insurance balance history
      * @param settle Settle currency
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listFuturesInsuranceLedger(
         settle: 'btc' | 'usdt',
-        limit?: number,
+        opts: { limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: InsuranceRecord[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1102,8 +1119,9 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling listFuturesInsuranceLedger.');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        opts = opts || {};
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1133,14 +1151,14 @@ export class FuturesApi {
      * @summary Futures order book
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param interval Order depth. 0 means no aggregation is applied. default to 0
-     * @param limit Maximum number of order depth data in asks or bids
+     * @param opts Optional parameters
+     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
+     * @param opts.limit Maximum number of order depth data in asks or bids
      */
     public async listFuturesOrderBook(
         settle: 'btc' | 'usdt',
         contract: string,
-        interval?: '0' | '0.1' | '0.01',
-        limit?: number,
+        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: FuturesOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -1166,14 +1184,15 @@ export class FuturesApi {
             throw new Error('Required parameter contract was null or undefined when calling listFuturesOrderBook.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        if (interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(interval, "'0' | '0.1' | '0.01'");
+        if (opts.interval !== undefined) {
+            localVarQueryParameters.interval = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1204,19 +1223,17 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param status List orders based on status
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
-     * @param lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param countTotal Whether to return total number matched. Default to 0(no return)
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listFuturesOrders(
         settle: 'btc' | 'usdt',
         contract: string,
         status: 'open' | 'finished',
-        limit?: number,
-        offset?: number,
-        lastId?: string,
-        countTotal?: 0 | 1,
+        opts: { limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
     ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1247,24 +1264,25 @@ export class FuturesApi {
             throw new Error('Required parameter status was null or undefined when calling listFuturesOrders.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
         localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
-        if (lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
+        if (opts.lastId !== undefined) {
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
-        if (countTotal !== undefined) {
-            localVarQueryParameters.count_total = ObjectSerializer.serialize(countTotal, '0 | 1');
+        if (opts.countTotal !== undefined) {
+            localVarQueryParameters.count_total = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const localVarUseFormData = false;
@@ -1293,11 +1311,12 @@ export class FuturesApi {
      *
      * @summary List futures tickers
      * @param settle Settle currency
-     * @param contract Futures contract, return related data only if specified
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
      */
     public async listFuturesTickers(
         settle: 'btc' | 'usdt',
-        contract?: string,
+        opts: { contract?: string },
     ): Promise<{ response: http.IncomingMessage; body: FuturesTicker[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1318,8 +1337,9 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling listFuturesTickers.');
         }
 
-        if (contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         const localVarUseFormData = false;
@@ -1349,18 +1369,16 @@ export class FuturesApi {
      * @summary Futures trading history
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param limit Maximum number of records returned in one list
-     * @param lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
-     * @param from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
-     * @param to Specify end time in Unix seconds, default to current time
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
+     * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
+     * @param opts.to Specify end time in Unix seconds, default to current time
      */
     public async listFuturesTrades(
         settle: 'btc' | 'usdt',
         contract: string,
-        limit?: number,
-        lastId?: string,
-        from?: number,
-        to?: number,
+        opts: { limit?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: http.IncomingMessage; body: FuturesTrade[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1386,22 +1404,23 @@ export class FuturesApi {
             throw new Error('Required parameter contract was null or undefined when calling listFuturesTrades.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(lastId, 'string');
+        if (opts.lastId !== undefined) {
+            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1430,15 +1449,14 @@ export class FuturesApi {
      *
      * @summary List liquidation history
      * @param settle Settle currency
-     * @param contract Futures contract, return related data only if specified
-     * @param limit Maximum number of records returned in one list
-     * @param at Specify a liquidation timestamp
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.at Specify a liquidation timestamp
      */
     public async listLiquidates(
         settle: 'btc' | 'usdt',
-        contract?: string,
-        limit?: number,
-        at?: number,
+        opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: http.IncomingMessage; body: FuturesLiquidate[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1459,16 +1477,17 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling listLiquidates.');
         }
 
-        if (contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (at !== undefined) {
-            localVarQueryParameters.at = ObjectSerializer.serialize(at, 'number');
+        if (opts.at !== undefined) {
+            localVarQueryParameters.at = ObjectSerializer.serialize(opts.at, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1497,13 +1516,13 @@ export class FuturesApi {
      *
      * @summary List position close history
      * @param settle Settle currency
-     * @param contract Futures contract, return related data only if specified
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt',
-        contract?: string,
-        limit?: number,
+        opts: { contract?: string; limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: PositionClose[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1524,12 +1543,13 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling listPositionClose.');
         }
 
-        if (contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1606,16 +1626,15 @@ export class FuturesApi {
      * @summary List all auto orders
      * @param settle Settle currency
      * @param status List orders based on status
-     * @param contract Futures contract, return related data only if specified
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredOrders(
         settle: 'btc' | 'usdt',
         status: 'open' | 'finished',
-        contract?: string,
-        limit?: number,
-        offset?: number,
+        opts: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder[] }> {
         const localVarPath =
             this.client.basePath +
@@ -1641,18 +1660,19 @@ export class FuturesApi {
             throw new Error('Required parameter status was null or undefined when calling listPriceTriggeredOrders.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
-        if (contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        if (opts.contract !== undefined) {
+            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;

@@ -263,11 +263,12 @@ export class MarginApi {
     /**
      *
      * @summary Funding account list
-     * @param currency Retrieved specified currency related data
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
      */
-    public async listFundingAccounts(
-        currency?: string,
-    ): Promise<{ response: http.IncomingMessage; body: FundingAccount[] }> {
+    public async listFundingAccounts(opts: {
+        currency?: string;
+    }): Promise<{ response: http.IncomingMessage; body: FundingAccount[] }> {
         const localVarPath = this.client.basePath + '/margin/funding_accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -280,8 +281,9 @@ export class MarginApi {
         }
         const localVarFormParams: any = {};
 
-        if (currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         const localVarUseFormData = false;
@@ -359,15 +361,14 @@ export class MarginApi {
      *
      * @summary List repayment records of specified loan
      * @param loanId Loan ID
-     * @param status Loan record status
-     * @param page Page number
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.status Loan record status
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listLoanRecords(
         loanId: string,
-        status?: 'loaned' | 'finished',
-        page?: number,
-        limit?: number,
+        opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
     ): Promise<{ response: http.IncomingMessage; body: LoanRecord[] }> {
         const localVarPath = this.client.basePath + '/margin/loan_records';
         const localVarQueryParameters: any = {};
@@ -386,18 +387,19 @@ export class MarginApi {
             throw new Error('Required parameter loanId was null or undefined when calling listLoanRecords.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.loan_id = ObjectSerializer.serialize(loanId, 'string');
 
-        if (status !== undefined) {
-            localVarQueryParameters.status = ObjectSerializer.serialize(status, "'loaned' | 'finished'");
+        if (opts.status !== undefined) {
+            localVarQueryParameters.status = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
         }
 
-        if (page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(page, 'number');
+        if (opts.page !== undefined) {
+            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -474,22 +476,25 @@ export class MarginApi {
      * @summary List all loans
      * @param status Loan status
      * @param side Lend or borrow
-     * @param currency Retrieved specified currency related data
-     * @param currencyPair Currency pair
-     * @param sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
-     * @param reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
-     * @param page Page number
-     * @param limit Maximum number of records returned in one list
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
+     * @param opts.currencyPair Currency pair
+     * @param opts.sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
+     * @param opts.reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
      */
     public async listLoans(
         status: 'open' | 'loaned' | 'finished' | 'auto_repaid',
         side: 'lend' | 'borrow',
-        currency?: string,
-        currencyPair?: string,
-        sortBy?: 'create_time' | 'rate',
-        reverseSort?: boolean,
-        page?: number,
-        limit?: number,
+        opts: {
+            currency?: string;
+            currencyPair?: string;
+            sortBy?: 'create_time' | 'rate';
+            reverseSort?: boolean;
+            page?: number;
+            limit?: number;
+        },
     ): Promise<{ response: http.IncomingMessage; body: Loan[] }> {
         const localVarPath = this.client.basePath + '/margin/loans';
         const localVarQueryParameters: any = {};
@@ -513,6 +518,7 @@ export class MarginApi {
             throw new Error('Required parameter side was null or undefined when calling listLoans.');
         }
 
+        opts = opts || {};
         localVarQueryParameters.status = ObjectSerializer.serialize(
             status,
             "'open' | 'loaned' | 'finished' | 'auto_repaid'",
@@ -520,28 +526,28 @@ export class MarginApi {
 
         localVarQueryParameters.side = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
 
-        if (currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        if (opts.currency !== undefined) {
+            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
-        if (currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
-        if (sortBy !== undefined) {
-            localVarQueryParameters.sort_by = ObjectSerializer.serialize(sortBy, "'create_time' | 'rate'");
+        if (opts.sortBy !== undefined) {
+            localVarQueryParameters.sort_by = ObjectSerializer.serialize(opts.sortBy, "'create_time' | 'rate'");
         }
 
-        if (reverseSort !== undefined) {
-            localVarQueryParameters.reverse_sort = ObjectSerializer.serialize(reverseSort, 'boolean');
+        if (opts.reverseSort !== undefined) {
+            localVarQueryParameters.reverse_sort = ObjectSerializer.serialize(opts.reverseSort, 'boolean');
         }
 
-        if (page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(page, 'number');
+        if (opts.page !== undefined) {
+            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -569,11 +575,12 @@ export class MarginApi {
     /**
      *
      * @summary Margin account list
-     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
      */
-    public async listMarginAccounts(
-        currencyPair?: string,
-    ): Promise<{ response: http.IncomingMessage; body: MarginAccount[] }> {
+    public async listMarginAccounts(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: http.IncomingMessage; body: MarginAccount[] }> {
         const localVarPath = this.client.basePath + '/margin/accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -586,8 +593,9 @@ export class MarginApi {
         }
         const localVarFormParams: any = {};
 
-        if (currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         const localVarUseFormData = false;

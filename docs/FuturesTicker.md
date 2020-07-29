@@ -1,0 +1,24 @@
+# GateApi.FuturesTicker
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**contract** | **string** | Futures contract | [optional] [default to undefined]
+**last** | **string** | Last trading price | [optional] [default to undefined]
+**changePercentage** | **string** | Change percentage. | [optional] [default to undefined]
+**totalSize** | **string** | Contract total size | [optional] [default to undefined]
+**low24h** | **string** | Lowest trading price in recent 24h | [optional] [default to undefined]
+**high24h** | **string** | Highest trading price in recent 24h | [optional] [default to undefined]
+**volume24h** | **string** | Trade size in recent 24h | [optional] [default to undefined]
+**volume24hBtc** | **string** | Trade volumes in recent 24h in BTC(deprecated, use &#x60;volume_24h_base&#x60;, &#x60;volume_24h_quote&#x60;, &#x60;volume_24h_settle&#x60; instead) | [optional] [default to undefined]
+**volume24hUsd** | **string** | Trade volumes in recent 24h in USD(deprecated, use &#x60;volume_24h_base&#x60;, &#x60;volume_24h_quote&#x60;, &#x60;volume_24h_settle&#x60; instead) | [optional] [default to undefined]
+**volume24hBase** | **string** | Trade volume in recent 24h, in base currency | [optional] [default to undefined]
+**volume24hQuote** | **string** | Trade volume in recent 24h, in quote currency | [optional] [default to undefined]
+**volume24hSettle** | **string** | Trade volume in recent 24h, in settle currency | [optional] [default to undefined]
+**markPrice** | **string** | Recent mark price | [optional] [default to undefined]
+**fundingRate** | **string** | Funding rate | [optional] [default to undefined]
+**fundingRateIndicative** | **string** | Indicative Funding rate in next period | [optional] [default to undefined]
+**indexPrice** | **string** | Index price | [optional] [default to undefined]
+**quantoBaseRate** | **string** | Exchange rate of base currency and settlement currency in Quanto contract. Not existed in contract of other types | [optional] [default to undefined]
+

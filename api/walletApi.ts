@@ -87,19 +87,20 @@ export class WalletApi {
     /**
      * Record time range cannot exceed 30 days
      * @summary Retrieve deposit records
-     * @param currency Filter by currency. Return all currency records if not specified
-     * @param from Time range beginning, default to 7 days before current time
-     * @param to Time range ending, default to current time
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
+     * @param opts Optional parameters
+     * @param opts.currency Filter by currency. Return all currency records if not specified
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
      */
-    public async listDeposits(
-        currency?: string,
-        from?: number,
-        to?: number,
-        limit?: number,
-        offset?: number,
-    ): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
+    public async listDeposits(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -112,24 +113,25 @@ export class WalletApi {
         }
         const localVarFormParams: any = {};
 
-        if (currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -157,19 +159,20 @@ export class WalletApi {
     /**
      * Record time range cannot exceed 30 days  > Note: only records after 2020-04-10 can be retrieved
      * @summary Transfer records between main and sub accounts
-     * @param subUid Sub account user ID. Return records related to all sub accounts if not specified
-     * @param from Time range beginning, default to 7 days before current time
-     * @param to Time range ending, default to current time
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
+     * @param opts Optional parameters
+     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
      */
-    public async listSubAccountTransfers(
-        subUid?: string,
-        from?: number,
-        to?: number,
-        limit?: number,
-        offset?: number,
-    ): Promise<{ response: http.IncomingMessage; body: SubAccountTransfer[] }> {
+    public async listSubAccountTransfers(opts: {
+        subUid?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: http.IncomingMessage; body: SubAccountTransfer[] }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -182,24 +185,25 @@ export class WalletApi {
         }
         const localVarFormParams: any = {};
 
-        if (subUid !== undefined) {
-            localVarQueryParameters.sub_uid = ObjectSerializer.serialize(subUid, 'string');
+        opts = opts || {};
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters.sub_uid = ObjectSerializer.serialize(opts.subUid, 'string');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -231,19 +235,20 @@ export class WalletApi {
     /**
      * Record time range cannot exceed 30 days
      * @summary Retrieve withdrawal records
-     * @param currency Filter by currency. Return all currency records if not specified
-     * @param from Time range beginning, default to 7 days before current time
-     * @param to Time range ending, default to current time
-     * @param limit Maximum number of records returned in one list
-     * @param offset List offset, starting from 0
+     * @param opts Optional parameters
+     * @param opts.currency Filter by currency. Return all currency records if not specified
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
      */
-    public async listWithdrawals(
-        currency?: string,
-        from?: number,
-        to?: number,
-        limit?: number,
-        offset?: number,
-    ): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
+    public async listWithdrawals(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -256,24 +261,25 @@ export class WalletApi {
         }
         const localVarFormParams: any = {};
 
-        if (currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
-        if (from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(from, 'number');
+        if (opts.from !== undefined) {
+            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
         }
 
-        if (to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(to, 'number');
+        if (opts.to !== undefined) {
+            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
         }
 
-        if (limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(limit, 'number');
+        if (opts.limit !== undefined) {
+            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        if (offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(offset, 'number');
+        if (opts.offset !== undefined) {
+            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
