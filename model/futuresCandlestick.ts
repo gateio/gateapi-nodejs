@@ -40,7 +40,7 @@ export class FuturesCandlestick {
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 't',
             baseName: 't',

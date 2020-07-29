@@ -51,7 +51,7 @@ export class ApiClient {
     }
 
     public setApiKeySecret(key: string, secret: string) {
-        const auth = this.authentications.apiv4 as GateApiV4Auth;
+        const auth = this.authentications['apiv4'] as GateApiV4Auth;
         auth.key = key;
         auth.secret = secret;
     }
@@ -60,7 +60,7 @@ export class ApiClient {
         this.interceptors.push(interceptor);
     }
 
-    public applyToRequest(options: localVarRequest.Options, authSettings: string[]) {
+    public applyToRequest(options: localVarRequest.Options, authSettings: Array<string>) {
         for (const auth of authSettings) {
             const authenticator = this.authentications[auth];
             if (authenticator) {
@@ -72,7 +72,7 @@ export class ApiClient {
     public async request<T>(
         options: localVarRequest.Options,
         responseType: string,
-        authSettings: string[],
+        authSettings: Array<string>,
     ): Promise<{ response: http.IncomingMessage; body: T }> {
         const authenticationPromise = Promise.resolve();
         let interceptorPromise = authenticationPromise.then(() => this.applyToRequest(options, authSettings));
@@ -90,7 +90,7 @@ export class ApiClient {
                             if (responseType.length > 0) {
                                 body = ObjectSerializer.deserialize(body, responseType);
                             }
-                            resolve({ response, body });
+                            resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }

@@ -13,15 +13,15 @@ export class OrderBook {
     /**
      * Asks order depth
      */
-    'asks': string[][];
+    'asks': Array<Array<string>>;
     /**
      * Bids order depth
      */
-    'bids': string[][];
+    'bids': Array<Array<string>>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'asks',
             baseName: 'asks',

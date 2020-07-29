@@ -140,51 +140,51 @@ const enumsMap: { [index: string]: any } = {
 };
 
 const typeMap: { [index: string]: any } = {
-    BatchOrder,
-    CancelOrder,
-    CancelOrderResult,
-    Contract,
-    CurrencyPair,
-    DeliveryContract,
-    DeliverySettlement,
-    DepositAddress,
-    FundingAccount,
-    FundingBookItem,
-    FundingRateRecord,
-    FuturesAccount,
-    FuturesAccountBook,
-    FuturesCandlestick,
-    FuturesInitialOrder,
-    FuturesLiquidate,
-    FuturesOrder,
-    FuturesOrderBook,
-    FuturesOrderBookItem,
-    FuturesPriceTrigger,
-    FuturesPriceTriggeredOrder,
-    FuturesTicker,
-    FuturesTrade,
-    InsuranceRecord,
-    LedgerRecord,
-    Loan,
-    LoanPatch,
-    LoanRecord,
-    MarginAccount,
-    MarginAccountCurrency,
-    MarginCurrencyPair,
-    MyFuturesTrade,
-    Order,
-    OrderBook,
-    Position,
-    PositionClose,
-    PositionCloseOrder,
-    RepayRequest,
-    Repayment,
-    SpotAccount,
-    SubAccountTransfer,
-    Ticker,
-    Trade,
-    Transfer,
-    TriggerOrderResponse,
+    BatchOrder: BatchOrder,
+    CancelOrder: CancelOrder,
+    CancelOrderResult: CancelOrderResult,
+    Contract: Contract,
+    CurrencyPair: CurrencyPair,
+    DeliveryContract: DeliveryContract,
+    DeliverySettlement: DeliverySettlement,
+    DepositAddress: DepositAddress,
+    FundingAccount: FundingAccount,
+    FundingBookItem: FundingBookItem,
+    FundingRateRecord: FundingRateRecord,
+    FuturesAccount: FuturesAccount,
+    FuturesAccountBook: FuturesAccountBook,
+    FuturesCandlestick: FuturesCandlestick,
+    FuturesInitialOrder: FuturesInitialOrder,
+    FuturesLiquidate: FuturesLiquidate,
+    FuturesOrder: FuturesOrder,
+    FuturesOrderBook: FuturesOrderBook,
+    FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesPriceTrigger: FuturesPriceTrigger,
+    FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    FuturesTicker: FuturesTicker,
+    FuturesTrade: FuturesTrade,
+    InsuranceRecord: InsuranceRecord,
+    LedgerRecord: LedgerRecord,
+    Loan: Loan,
+    LoanPatch: LoanPatch,
+    LoanRecord: LoanRecord,
+    MarginAccount: MarginAccount,
+    MarginAccountCurrency: MarginAccountCurrency,
+    MarginCurrencyPair: MarginCurrencyPair,
+    MyFuturesTrade: MyFuturesTrade,
+    Order: Order,
+    OrderBook: OrderBook,
+    Position: Position,
+    PositionClose: PositionClose,
+    PositionCloseOrder: PositionCloseOrder,
+    RepayRequest: RepayRequest,
+    Repayment: Repayment,
+    SpotAccount: SpotAccount,
+    SubAccountTransfer: SubAccountTransfer,
+    Ticker: Ticker,
+    Trade: Trade,
+    Transfer: Transfer,
+    TriggerOrderResponse: TriggerOrderResponse,
 };
 
 export class ObjectSerializer {
@@ -334,7 +334,7 @@ export class HttpBearerAuth implements Authentication {
     applyToRequest(requestOptions: localVarRequest.Options): void {
         if (requestOptions && requestOptions.headers) {
             const accessToken = typeof this.accessToken === 'function' ? this.accessToken() : this.accessToken;
-            requestOptions.headers.Authorization = 'Bearer ' + accessToken;
+            requestOptions.headers['Authorization'] = 'Bearer ' + accessToken;
         }
     }
 }
@@ -350,10 +350,10 @@ export class ApiKeyAuth implements Authentication {
         } else if (this.location == 'header' && requestOptions && requestOptions.headers) {
             requestOptions.headers[this.paramName] = this.apiKey;
         } else if (this.location == 'cookie' && requestOptions && requestOptions.headers) {
-            if (requestOptions.headers.Cookie) {
-                requestOptions.headers.Cookie += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
+            if (requestOptions.headers['Cookie']) {
+                requestOptions.headers['Cookie'] += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
             } else {
-                requestOptions.headers.Cookie = this.paramName + '=' + encodeURIComponent(this.apiKey);
+                requestOptions.headers['Cookie'] = this.paramName + '=' + encodeURIComponent(this.apiKey);
             }
         }
     }
@@ -364,7 +364,7 @@ export class OAuth implements Authentication {
 
     applyToRequest(requestOptions: localVarRequest.Options): void {
         if (requestOptions && requestOptions.headers) {
-            requestOptions.headers.Authorization = 'Bearer ' + this.accessToken;
+            requestOptions.headers['Authorization'] = 'Bearer ' + this.accessToken;
         }
     }
 }

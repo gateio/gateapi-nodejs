@@ -117,7 +117,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         contract: string,
         opts: { side?: 'ask' | 'bid' },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -143,10 +143,10 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.side !== undefined) {
-            localVarQueryParameters.side = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
         }
 
         const localVarUseFormData = false;
@@ -168,7 +168,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder[]>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
+        return this.client.request<Array<FuturesOrder>>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
@@ -242,7 +242,7 @@ export class FuturesApi {
     public async cancelPriceTriggeredOrderList(
         settle: 'btc' | 'usdt',
         contract: string,
-    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -271,7 +271,7 @@ export class FuturesApi {
             );
         }
 
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         const localVarUseFormData = false;
 
@@ -292,7 +292,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder[]>(
+        return this.client.request<Array<FuturesPriceTriggeredOrder>>(
             localVarRequestOptions,
             'Array<FuturesPriceTriggeredOrder>',
             authSettings,
@@ -553,7 +553,7 @@ export class FuturesApi {
             lastId?: string;
             countTotal?: 0 | 1;
         },
-    ): Promise<{ response: http.IncomingMessage; body: MyFuturesTrade[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -575,27 +575,27 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.order !== undefined) {
-            localVarQueryParameters.order = ObjectSerializer.serialize(opts.order, 'number');
+            localVarQueryParameters['order'] = ObjectSerializer.serialize(opts.order, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters.count_total = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const localVarUseFormData = false;
@@ -617,7 +617,11 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<MyFuturesTrade[]>(localVarRequestOptions, 'Array<MyFuturesTrade>', authSettings);
+        return this.client.request<Array<MyFuturesTrade>>(
+            localVarRequestOptions,
+            'Array<MyFuturesTrade>',
+            authSettings,
+        );
     }
 
     /**
@@ -758,7 +762,7 @@ export class FuturesApi {
             to?: number;
             type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr';
         },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesAccountBook[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesAccountBook> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -780,19 +784,19 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters.type = ObjectSerializer.serialize(
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(
                 opts.type,
                 "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
             );
@@ -817,7 +821,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesAccountBook[]>(
+        return this.client.request<Array<FuturesAccountBook>>(
             localVarRequestOptions,
             'Array<FuturesAccountBook>',
             authSettings,
@@ -893,7 +897,7 @@ export class FuturesApi {
             limit?: number;
             interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
         },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesCandlestick[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesCandlestick> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/candlesticks'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -919,22 +923,22 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
                 "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
@@ -959,7 +963,7 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<FuturesCandlestick[]>(
+        return this.client.request<Array<FuturesCandlestick>>(
             localVarRequestOptions,
             'Array<FuturesCandlestick>',
             authSettings,
@@ -973,7 +977,7 @@ export class FuturesApi {
      */
     public async listFuturesContracts(
         settle: 'btc' | 'usdt',
-    ): Promise<{ response: http.IncomingMessage; body: Contract[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Contract> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/contracts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1012,7 +1016,7 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<Contract[]>(localVarRequestOptions, 'Array<Contract>', authSettings);
+        return this.client.request<Array<Contract>>(localVarRequestOptions, 'Array<Contract>', authSettings);
     }
 
     /**
@@ -1027,7 +1031,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         contract: string,
         opts: { limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: FundingRateRecord[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FundingRateRecord> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/funding_rate'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1057,10 +1061,10 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1082,7 +1086,7 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<FundingRateRecord[]>(
+        return this.client.request<Array<FundingRateRecord>>(
             localVarRequestOptions,
             'Array<FundingRateRecord>',
             authSettings,
@@ -1099,7 +1103,7 @@ export class FuturesApi {
     public async listFuturesInsuranceLedger(
         settle: 'btc' | 'usdt',
         opts: { limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: InsuranceRecord[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<InsuranceRecord> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/insurance'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1121,7 +1125,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1143,7 +1147,11 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<InsuranceRecord[]>(localVarRequestOptions, 'Array<InsuranceRecord>', authSettings);
+        return this.client.request<Array<InsuranceRecord>>(
+            localVarRequestOptions,
+            'Array<InsuranceRecord>',
+            authSettings,
+        );
     }
 
     /**
@@ -1185,14 +1193,14 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1234,7 +1242,7 @@ export class FuturesApi {
         contract: string,
         status: 'open' | 'finished',
         opts: { limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesOrder[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1265,24 +1273,24 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
-        localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters.count_total = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
+            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const localVarUseFormData = false;
@@ -1304,7 +1312,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder[]>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
+        return this.client.request<Array<FuturesOrder>>(localVarRequestOptions, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
@@ -1317,7 +1325,7 @@ export class FuturesApi {
     public async listFuturesTickers(
         settle: 'btc' | 'usdt',
         opts: { contract?: string },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesTicker[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesTicker> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1339,7 +1347,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         const localVarUseFormData = false;
@@ -1361,7 +1369,7 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<FuturesTicker[]>(localVarRequestOptions, 'Array<FuturesTicker>', authSettings);
+        return this.client.request<Array<FuturesTicker>>(localVarRequestOptions, 'Array<FuturesTicker>', authSettings);
     }
 
     /**
@@ -1379,7 +1387,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         contract: string,
         opts: { limit?: number; lastId?: string; from?: number; to?: number },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesTrade[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1405,22 +1413,22 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.contract = ObjectSerializer.serialize(contract, 'string');
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1442,7 +1450,7 @@ export class FuturesApi {
         }
 
         const authSettings = [];
-        return this.client.request<FuturesTrade[]>(localVarRequestOptions, 'Array<FuturesTrade>', authSettings);
+        return this.client.request<Array<FuturesTrade>>(localVarRequestOptions, 'Array<FuturesTrade>', authSettings);
     }
 
     /**
@@ -1457,7 +1465,7 @@ export class FuturesApi {
     public async listLiquidates(
         settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesLiquidate[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesLiquidate> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1479,15 +1487,15 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.at !== undefined) {
-            localVarQueryParameters.at = ObjectSerializer.serialize(opts.at, 'number');
+            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1509,7 +1517,11 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesLiquidate[]>(localVarRequestOptions, 'Array<FuturesLiquidate>', authSettings);
+        return this.client.request<Array<FuturesLiquidate>>(
+            localVarRequestOptions,
+            'Array<FuturesLiquidate>',
+            authSettings,
+        );
     }
 
     /**
@@ -1523,7 +1535,7 @@ export class FuturesApi {
     public async listPositionClose(
         settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: PositionClose[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<PositionClose> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1545,11 +1557,11 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1571,7 +1583,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<PositionClose[]>(localVarRequestOptions, 'Array<PositionClose>', authSettings);
+        return this.client.request<Array<PositionClose>>(localVarRequestOptions, 'Array<PositionClose>', authSettings);
     }
 
     /**
@@ -1579,7 +1591,9 @@ export class FuturesApi {
      * @summary List all positions of a user
      * @param settle Settle currency
      */
-    public async listPositions(settle: 'btc' | 'usdt'): Promise<{ response: http.IncomingMessage; body: Position[] }> {
+    public async listPositions(
+        settle: 'btc' | 'usdt',
+    ): Promise<{ response: http.IncomingMessage; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1618,7 +1632,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position[]>(localVarRequestOptions, 'Array<Position>', authSettings);
+        return this.client.request<Array<Position>>(localVarRequestOptions, 'Array<Position>', authSettings);
     }
 
     /**
@@ -1635,7 +1649,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number },
-    ): Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1661,18 +1675,18 @@ export class FuturesApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters.contract = ObjectSerializer.serialize(opts.contract, 'string');
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -1694,7 +1708,7 @@ export class FuturesApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder[]>(
+        return this.client.request<Array<FuturesPriceTriggeredOrder>>(
             localVarRequestOptions,
             'Array<FuturesPriceTriggeredOrder>',
             authSettings,
@@ -1744,7 +1758,7 @@ export class FuturesApi {
             throw new Error('Required parameter leverage was null or undefined when calling updatePositionLeverage.');
         }
 
-        localVarQueryParameters.leverage = ObjectSerializer.serialize(leverage, 'string');
+        localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, 'string');
 
         const localVarUseFormData = false;
 
@@ -1811,7 +1825,7 @@ export class FuturesApi {
             throw new Error('Required parameter change was null or undefined when calling updatePositionMargin.');
         }
 
-        localVarQueryParameters.change = ObjectSerializer.serialize(change, 'string');
+        localVarQueryParameters['change'] = ObjectSerializer.serialize(change, 'string');
 
         const localVarUseFormData = false;
 
@@ -1878,7 +1892,7 @@ export class FuturesApi {
             throw new Error('Required parameter riskLimit was null or undefined when calling updatePositionRiskLimit.');
         }
 
-        localVarQueryParameters.risk_limit = ObjectSerializer.serialize(riskLimit, 'string');
+        localVarQueryParameters['risk_limit'] = ObjectSerializer.serialize(riskLimit, 'string');
 
         const localVarUseFormData = false;
 

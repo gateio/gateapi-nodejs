@@ -49,7 +49,7 @@ export class Ticker {
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'currencyPair',
             baseName: 'currency_pair',

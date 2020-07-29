@@ -15,15 +15,15 @@ export class FuturesOrderBook {
     /**
      * Asks order depth
      */
-    'asks': FuturesOrderBookItem[];
+    'asks': Array<FuturesOrderBookItem>;
     /**
      * Bids order depth
      */
-    'bids': FuturesOrderBookItem[];
+    'bids': Array<FuturesOrderBookItem>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: { name: string; baseName: string; type: string }[] = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
             name: 'asks',
             baseName: 'asks',

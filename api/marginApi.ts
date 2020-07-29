@@ -71,7 +71,7 @@ export class MarginApi {
             throw new Error('Required parameter currency was null or undefined when calling cancelLoan.');
         }
 
-        localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const localVarUseFormData = false;
 
@@ -175,7 +175,7 @@ export class MarginApi {
             throw new Error('Required parameter side was null or undefined when calling getLoan.');
         }
 
-        localVarQueryParameters.side = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
+        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
 
         const localVarUseFormData = false;
 
@@ -236,7 +236,7 @@ export class MarginApi {
             throw new Error('Required parameter loanId was null or undefined when calling getLoanRecord.');
         }
 
-        localVarQueryParameters.loan_id = ObjectSerializer.serialize(loanId, 'string');
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
 
         const localVarUseFormData = false;
 
@@ -268,7 +268,7 @@ export class MarginApi {
      */
     public async listFundingAccounts(opts: {
         currency?: string;
-    }): Promise<{ response: http.IncomingMessage; body: FundingAccount[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<FundingAccount> }> {
         const localVarPath = this.client.basePath + '/margin/funding_accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -283,7 +283,7 @@ export class MarginApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         const localVarUseFormData = false;
@@ -305,7 +305,11 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<FundingAccount[]>(localVarRequestOptions, 'Array<FundingAccount>', authSettings);
+        return this.client.request<Array<FundingAccount>>(
+            localVarRequestOptions,
+            'Array<FundingAccount>',
+            authSettings,
+        );
     }
 
     /**
@@ -315,7 +319,7 @@ export class MarginApi {
      */
     public async listFundingBook(
         currency: string,
-    ): Promise<{ response: http.IncomingMessage; body: FundingBookItem[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<FundingBookItem> }> {
         const localVarPath = this.client.basePath + '/margin/funding_book';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -333,7 +337,7 @@ export class MarginApi {
             throw new Error('Required parameter currency was null or undefined when calling listFundingBook.');
         }
 
-        localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const localVarUseFormData = false;
 
@@ -354,7 +358,11 @@ export class MarginApi {
         }
 
         const authSettings = [];
-        return this.client.request<FundingBookItem[]>(localVarRequestOptions, 'Array<FundingBookItem>', authSettings);
+        return this.client.request<Array<FundingBookItem>>(
+            localVarRequestOptions,
+            'Array<FundingBookItem>',
+            authSettings,
+        );
     }
 
     /**
@@ -369,7 +377,7 @@ export class MarginApi {
     public async listLoanRecords(
         loanId: string,
         opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: LoanRecord[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<LoanRecord> }> {
         const localVarPath = this.client.basePath + '/margin/loan_records';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -388,18 +396,18 @@ export class MarginApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.loan_id = ObjectSerializer.serialize(loanId, 'string');
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
 
         if (opts.status !== undefined) {
-            localVarQueryParameters.status = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -421,7 +429,7 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<LoanRecord[]>(localVarRequestOptions, 'Array<LoanRecord>', authSettings);
+        return this.client.request<Array<LoanRecord>>(localVarRequestOptions, 'Array<LoanRecord>', authSettings);
     }
 
     /**
@@ -429,7 +437,9 @@ export class MarginApi {
      * @summary List loan repayment records
      * @param loanId Loan ID
      */
-    public async listLoanRepayments(loanId: string): Promise<{ response: http.IncomingMessage; body: Repayment[] }> {
+    public async listLoanRepayments(
+        loanId: string,
+    ): Promise<{ response: http.IncomingMessage; body: Array<Repayment> }> {
         const localVarPath =
             this.client.basePath +
             '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
@@ -468,7 +478,7 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Repayment[]>(localVarRequestOptions, 'Array<Repayment>', authSettings);
+        return this.client.request<Array<Repayment>>(localVarRequestOptions, 'Array<Repayment>', authSettings);
     }
 
     /**
@@ -495,7 +505,7 @@ export class MarginApi {
             page?: number;
             limit?: number;
         },
-    ): Promise<{ response: http.IncomingMessage; body: Loan[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Loan> }> {
         const localVarPath = this.client.basePath + '/margin/loans';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -519,35 +529,35 @@ export class MarginApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.status = ObjectSerializer.serialize(
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(
             status,
             "'open' | 'loaned' | 'finished' | 'auto_repaid'",
         );
 
-        localVarQueryParameters.side = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
+        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
 
         if (opts.currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.sortBy !== undefined) {
-            localVarQueryParameters.sort_by = ObjectSerializer.serialize(opts.sortBy, "'create_time' | 'rate'");
+            localVarQueryParameters['sort_by'] = ObjectSerializer.serialize(opts.sortBy, "'create_time' | 'rate'");
         }
 
         if (opts.reverseSort !== undefined) {
-            localVarQueryParameters.reverse_sort = ObjectSerializer.serialize(opts.reverseSort, 'boolean');
+            localVarQueryParameters['reverse_sort'] = ObjectSerializer.serialize(opts.reverseSort, 'boolean');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -569,7 +579,7 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Loan[]>(localVarRequestOptions, 'Array<Loan>', authSettings);
+        return this.client.request<Array<Loan>>(localVarRequestOptions, 'Array<Loan>', authSettings);
     }
 
     /**
@@ -580,7 +590,7 @@ export class MarginApi {
      */
     public async listMarginAccounts(opts: {
         currencyPair?: string;
-    }): Promise<{ response: http.IncomingMessage; body: MarginAccount[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<MarginAccount> }> {
         const localVarPath = this.client.basePath + '/margin/accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -595,7 +605,7 @@ export class MarginApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         const localVarUseFormData = false;
@@ -617,7 +627,7 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<MarginAccount[]>(localVarRequestOptions, 'Array<MarginAccount>', authSettings);
+        return this.client.request<Array<MarginAccount>>(localVarRequestOptions, 'Array<MarginAccount>', authSettings);
     }
 
     /**
@@ -626,7 +636,7 @@ export class MarginApi {
      */
     public async listMarginCurrencyPairs(): Promise<{
         response: http.IncomingMessage;
-        body: MarginCurrencyPair[];
+        body: Array<MarginCurrencyPair>;
     }> {
         const localVarPath = this.client.basePath + '/margin/currency_pairs';
         const localVarQueryParameters: any = {};
@@ -659,7 +669,7 @@ export class MarginApi {
         }
 
         const authSettings = [];
-        return this.client.request<MarginCurrencyPair[]>(
+        return this.client.request<Array<MarginCurrencyPair>>(
             localVarRequestOptions,
             'Array<MarginCurrencyPair>',
             authSettings,
@@ -695,9 +705,9 @@ export class MarginApi {
             throw new Error('Required parameter ids was null or undefined when calling mergeLoans.');
         }
 
-        localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
-        localVarQueryParameters.ids = ObjectSerializer.serialize(ids, 'string');
+        localVarQueryParameters['ids'] = ObjectSerializer.serialize(ids, 'string');
 
         const localVarUseFormData = false;
 

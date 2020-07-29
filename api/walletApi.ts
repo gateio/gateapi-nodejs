@@ -60,7 +60,7 @@ export class WalletApi {
             throw new Error('Required parameter currency was null or undefined when calling getDepositAddress.');
         }
 
-        localVarQueryParameters.currency = ObjectSerializer.serialize(currency, 'string');
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const localVarUseFormData = false;
 
@@ -100,7 +100,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -115,23 +115,23 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -153,7 +153,7 @@ export class WalletApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord[]>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
+        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
     }
 
     /**
@@ -172,7 +172,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: http.IncomingMessage; body: SubAccountTransfer[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransfer> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -187,23 +187,23 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters.sub_uid = ObjectSerializer.serialize(opts.subUid, 'string');
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -225,7 +225,7 @@ export class WalletApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<SubAccountTransfer[]>(
+        return this.client.request<Array<SubAccountTransfer>>(
             localVarRequestOptions,
             'Array<SubAccountTransfer>',
             authSettings,
@@ -248,7 +248,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: http.IncomingMessage; body: LedgerRecord[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -263,23 +263,23 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters.offset = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const localVarUseFormData = false;
@@ -301,7 +301,7 @@ export class WalletApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord[]>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
+        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
     }
 
     /**

@@ -46,8 +46,8 @@ export class SpotApi {
      * @param cancelOrder
      */
     public async cancelBatchOrders(
-        cancelOrder: CancelOrder[],
-    ): Promise<{ response: http.IncomingMessage; body: CancelOrderResult[] }> {
+        cancelOrder: Array<CancelOrder>,
+    ): Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -85,7 +85,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<CancelOrderResult[]>(
+        return this.client.request<Array<CancelOrderResult>>(
             localVarRequestOptions,
             'Array<CancelOrderResult>',
             authSettings,
@@ -126,7 +126,7 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrder.');
         }
 
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         const localVarUseFormData = false;
 
@@ -161,7 +161,7 @@ export class SpotApi {
     public async cancelOrders(
         currencyPair: string,
         opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' },
-    ): Promise<{ response: http.IncomingMessage; body: Order[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -180,14 +180,14 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.side !== undefined) {
-            localVarQueryParameters.side = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters.account = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
         }
 
         const localVarUseFormData = false;
@@ -209,7 +209,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order[]>(localVarRequestOptions, 'Array<Order>', authSettings);
+        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
     }
 
     /**
@@ -217,7 +217,9 @@ export class SpotApi {
      * @summary Create a batch of orders
      * @param order
      */
-    public async createBatchOrders(order: Order[]): Promise<{ response: http.IncomingMessage; body: BatchOrder[] }> {
+    public async createBatchOrders(
+        order: Array<Order>,
+    ): Promise<{ response: http.IncomingMessage; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -255,7 +257,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<BatchOrder[]>(localVarRequestOptions, 'Array<BatchOrder>', authSettings);
+        return this.client.request<Array<BatchOrder>>(localVarRequestOptions, 'Array<BatchOrder>', authSettings);
     }
 
     /**
@@ -390,7 +392,7 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling getOrder.');
         }
 
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         const localVarUseFormData = false;
 
@@ -432,7 +434,7 @@ export class SpotApi {
             to?: number;
             interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
         },
-    ): Promise<{ response: http.IncomingMessage; body: string[][] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Array<string>> }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -451,22 +453,22 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters.from = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters.to = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
                 "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
             );
@@ -491,14 +493,14 @@ export class SpotApi {
         }
 
         const authSettings = [];
-        return this.client.request<string[][]>(localVarRequestOptions, 'Array<Array<string>>', authSettings);
+        return this.client.request<Array<Array<string>>>(localVarRequestOptions, 'Array<Array<string>>', authSettings);
     }
 
     /**
      *
      * @summary List all currency pairs supported
      */
-    public async listCurrencyPairs(): Promise<{ response: http.IncomingMessage; body: CurrencyPair[] }> {
+    public async listCurrencyPairs(): Promise<{ response: http.IncomingMessage; body: Array<CurrencyPair> }> {
         const localVarPath = this.client.basePath + '/spot/currency_pairs';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -530,7 +532,7 @@ export class SpotApi {
         }
 
         const authSettings = [];
-        return this.client.request<CurrencyPair[]>(localVarRequestOptions, 'Array<CurrencyPair>', authSettings);
+        return this.client.request<Array<CurrencyPair>>(localVarRequestOptions, 'Array<CurrencyPair>', authSettings);
     }
 
     /**
@@ -545,7 +547,7 @@ export class SpotApi {
     public async listMyTrades(
         currencyPair: string,
         opts: { limit?: number; page?: number; orderId?: string },
-    ): Promise<{ response: http.IncomingMessage; body: Trade[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -564,18 +566,18 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.orderId !== undefined) {
-            localVarQueryParameters.order_id = ObjectSerializer.serialize(opts.orderId, 'string');
+            localVarQueryParameters['order_id'] = ObjectSerializer.serialize(opts.orderId, 'string');
         }
 
         const localVarUseFormData = false;
@@ -597,7 +599,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Trade[]>(localVarRequestOptions, 'Array<Trade>', authSettings);
+        return this.client.request<Array<Trade>>(localVarRequestOptions, 'Array<Trade>', authSettings);
     }
 
     /**
@@ -630,14 +632,14 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters.interval = ObjectSerializer.serialize(opts.interval, 'string');
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -675,7 +677,7 @@ export class SpotApi {
         currencyPair: string,
         status: 'open' | 'finished',
         opts: { page?: number; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: Order[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -699,16 +701,16 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
-        localVarQueryParameters.status = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.page !== undefined) {
-            localVarQueryParameters.page = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const localVarUseFormData = false;
@@ -730,7 +732,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order[]>(localVarRequestOptions, 'Array<Order>', authSettings);
+        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
     }
 
     /**
@@ -741,7 +743,7 @@ export class SpotApi {
      */
     public async listSpotAccounts(opts: {
         currency?: string;
-    }): Promise<{ response: http.IncomingMessage; body: SpotAccount[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<SpotAccount> }> {
         const localVarPath = this.client.basePath + '/spot/accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -756,7 +758,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters.currency = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         const localVarUseFormData = false;
@@ -778,7 +780,7 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<SpotAccount[]>(localVarRequestOptions, 'Array<SpotAccount>', authSettings);
+        return this.client.request<Array<SpotAccount>>(localVarRequestOptions, 'Array<SpotAccount>', authSettings);
     }
 
     /**
@@ -789,7 +791,7 @@ export class SpotApi {
      */
     public async listTickers(opts: {
         currencyPair?: string;
-    }): Promise<{ response: http.IncomingMessage; body: Ticker[] }> {
+    }): Promise<{ response: http.IncomingMessage; body: Array<Ticker> }> {
         const localVarPath = this.client.basePath + '/spot/tickers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -804,7 +806,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters.currency_pair = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         const localVarUseFormData = false;
@@ -826,7 +828,7 @@ export class SpotApi {
         }
 
         const authSettings = [];
-        return this.client.request<Ticker[]>(localVarRequestOptions, 'Array<Ticker>', authSettings);
+        return this.client.request<Array<Ticker>>(localVarRequestOptions, 'Array<Ticker>', authSettings);
     }
 
     /**
@@ -840,7 +842,7 @@ export class SpotApi {
     public async listTrades(
         currencyPair: string,
         opts: { limit?: number; lastId?: string },
-    ): Promise<{ response: http.IncomingMessage; body: Trade[] }> {
+    ): Promise<{ response: http.IncomingMessage; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/trades';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -859,14 +861,14 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters.currency_pair = ObjectSerializer.serialize(currencyPair, 'string');
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters.limit = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters.last_id = ObjectSerializer.serialize(opts.lastId, 'string');
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         const localVarUseFormData = false;
@@ -888,6 +890,6 @@ export class SpotApi {
         }
 
         const authSettings = [];
-        return this.client.request<Trade[]>(localVarRequestOptions, 'Array<Trade>', authSettings);
+        return this.client.request<Array<Trade>>(localVarRequestOptions, 'Array<Trade>', authSettings);
     }
 }
