@@ -1,4 +1,4 @@
-# GateApi.DepositAddress
+# DepositAddress
 
 ## Properties
 

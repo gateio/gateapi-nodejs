@@ -1,4 +1,4 @@
-# GateApi.Position
+# Position
 
 ## Properties
 

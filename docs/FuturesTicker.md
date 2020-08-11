@@ -1,4 +1,4 @@
-# GateApi.FuturesTicker
+# FuturesTicker
 
 ## Properties
 

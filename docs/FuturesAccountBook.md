@@ -1,4 +1,4 @@
-# GateApi.FuturesAccountBook
+# FuturesAccountBook
 
 ## Properties
 

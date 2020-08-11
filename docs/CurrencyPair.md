@@ -1,4 +1,4 @@
-# GateApi.CurrencyPair
+# CurrencyPair
 
 ## Properties
 

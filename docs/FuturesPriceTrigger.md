@@ -1,4 +1,4 @@
-# GateApi.FuturesPriceTrigger
+# FuturesPriceTrigger
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# GateApi.Ticker
+# Ticker
 
 ## Properties
 

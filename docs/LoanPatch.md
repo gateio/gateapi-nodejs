@@ -1,4 +1,4 @@
-# GateApi.LoanPatch
+# LoanPatch
 
 ## Properties
 

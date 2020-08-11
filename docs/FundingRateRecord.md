@@ -1,4 +1,4 @@
-# GateApi.FundingRateRecord
+# FundingRateRecord
 
 ## Properties
 

@@ -86,6 +86,78 @@ export class WalletApi {
 
     /**
      * Record time range cannot exceed 30 days
+     * @summary Retrieve withdrawal records
+     * @param opts Optional parameters
+     * @param opts.currency Filter by currency. Return all currency records if not specified
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async listWithdrawals(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord> }> {
+        const localVarPath = this.client.basePath + '/wallet/withdrawals';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
+    }
+
+    /**
+     * Record time range cannot exceed 30 days
      * @summary Retrieve deposit records
      * @param opts Optional parameters
      * @param opts.currency Filter by currency. Return all currency records if not specified
@@ -154,6 +226,45 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
+    }
+
+    /**
+     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery
+     * @summary Transfer between trading accounts
+     * @param transfer
+     */
+    public async transfer(transfer: Transfer): Promise<{ response: http.IncomingMessage; body?: any }> {
+        const localVarPath = this.client.basePath + '/wallet/transfers';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'transfer' is not null or undefined
+        if (transfer === null || transfer === undefined) {
+            throw new Error('Required parameter transfer was null or undefined when calling transfer.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+            body: ObjectSerializer.serialize(transfer, 'Transfer'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(localVarRequestOptions, '', authSettings);
     }
 
     /**
@@ -230,117 +341,6 @@ export class WalletApi {
             'Array<SubAccountTransfer>',
             authSettings,
         );
-    }
-
-    /**
-     * Record time range cannot exceed 30 days
-     * @summary Retrieve withdrawal records
-     * @param opts Optional parameters
-     * @param opts.currency Filter by currency. Return all currency records if not specified
-     * @param opts.from Time range beginning, default to 7 days before current time
-     * @param opts.to Time range ending, default to current time
-     * @param opts.limit Maximum number of records returned in one list
-     * @param opts.offset List offset, starting from 0
-     */
-    public async listWithdrawals(opts: {
-        currency?: string;
-        from?: number;
-        to?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord> }> {
-        const localVarPath = this.client.basePath + '/wallet/withdrawals';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        opts = opts || {};
-        if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
-        }
-
-        if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
-        }
-
-        if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
-        }
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(localVarRequestOptions, 'Array<LedgerRecord>', authSettings);
-    }
-
-    /**
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 2. spot - delivery
-     * @summary Transfer between accounts
-     * @param transfer
-     */
-    public async transfer(transfer: Transfer): Promise<{ response: http.IncomingMessage; body?: any }> {
-        const localVarPath = this.client.basePath + '/wallet/transfers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'transfer' is not null or undefined
-        if (transfer === null || transfer === undefined) {
-            throw new Error('Required parameter transfer was null or undefined when calling transfer.');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-            body: ObjectSerializer.serialize(transfer, 'Transfer'),
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(localVarRequestOptions, '', authSettings);
     }
 
     /**

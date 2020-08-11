@@ -1,4 +1,4 @@
-# GateApi.Contract
+# Contract
 
 ## Properties
 

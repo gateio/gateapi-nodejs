@@ -1,4 +1,4 @@
-# GateApi.Transfer
+# Transfer
 
 ## Properties
 

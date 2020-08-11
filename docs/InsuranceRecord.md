@@ -1,4 +1,4 @@
-# GateApi.InsuranceRecord
+# InsuranceRecord
 
 ## Properties
 

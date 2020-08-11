@@ -1,4 +1,4 @@
-# GateApi.PositionClose
+# PositionClose
 
 ## Properties
 

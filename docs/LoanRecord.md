@@ -1,4 +1,4 @@
-# GateApi.LoanRecord
+# LoanRecord
 
 ## Properties
 

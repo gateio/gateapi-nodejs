@@ -1,4 +1,4 @@
-# GateApi.MarginCurrencyPair
+# MarginCurrencyPair
 
 ## Properties
 

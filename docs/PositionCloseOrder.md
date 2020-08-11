@@ -1,4 +1,4 @@
-# GateApi.PositionCloseOrder
+# PositionCloseOrder
 
 ## Properties
 

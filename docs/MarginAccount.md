@@ -1,4 +1,4 @@
-# GateApi.MarginAccount
+# MarginAccount
 
 ## Properties
 

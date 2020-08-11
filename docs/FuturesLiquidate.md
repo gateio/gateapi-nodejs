@@ -1,4 +1,4 @@
-# GateApi.FuturesLiquidate
+# FuturesLiquidate
 
 ## Properties
 

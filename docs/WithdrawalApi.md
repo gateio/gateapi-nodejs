@@ -1,4 +1,4 @@
-# GateApi.WithdrawalApi
+# WithdrawalApi
 
 All URIs are relative to *https://api.gateio.ws/api/v4*
 
@@ -24,7 +24,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WithdrawalApi(client);
-const ledgerRecord = {"id":"210496","timestamp":"1542000000","currency":"ETH","address":"1HkxtBAMrA3tP5ENnYY2CZortjZvFDH5Cs","txid":"128988928203223323290","amount":"222.61","memo":"","status":"DONE"}; // LedgerRecord | 
+const ledgerRecord = new LedgerRecord(); // LedgerRecord | 
 api.withdraw(ledgerRecord)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));

@@ -1,4 +1,4 @@
-# GateApi.SpotAccount
+# SpotAccount
 
 ## Properties
 

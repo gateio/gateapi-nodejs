@@ -1,4 +1,4 @@
-# GateApi.DeliveryContract
+# DeliveryContract
 
 ## Properties
 

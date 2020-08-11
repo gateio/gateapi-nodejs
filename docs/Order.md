@@ -1,4 +1,4 @@
-# GateApi.Order
+# Order
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# GateApi.Loan
+# Loan
 
 ## Properties
 

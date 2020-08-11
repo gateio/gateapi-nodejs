@@ -1,4 +1,4 @@
-# GateApi.BatchOrder
+# BatchOrder
 
 ## Properties
 

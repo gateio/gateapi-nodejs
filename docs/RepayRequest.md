@@ -1,4 +1,4 @@
-# GateApi.RepayRequest
+# RepayRequest
 
 ## Properties
 

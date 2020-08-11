@@ -1,4 +1,4 @@
-# GateApi.FundingBookItem
+# FundingBookItem
 
 ## Properties
 

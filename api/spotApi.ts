@@ -17,11 +17,13 @@ import { BatchOrder } from '../model/batchOrder';
 import { CancelOrder } from '../model/cancelOrder';
 import { CancelOrderResult } from '../model/cancelOrderResult';
 import { CurrencyPair } from '../model/currencyPair';
+import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
 import { SpotAccount } from '../model/spotAccount';
 import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
+import { TradeFee } from '../model/tradeFee';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 
@@ -41,70 +43,11 @@ export class SpotApi {
     }
 
     /**
-     * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
-     * @summary Cancel a batch of orders with an ID list
-     * @param cancelOrder
-     */
-    public async cancelBatchOrders(
-        cancelOrder: Array<CancelOrder>,
-    ): Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult> }> {
-        const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'cancelOrder' is not null or undefined
-        if (cancelOrder === null || cancelOrder === undefined) {
-            throw new Error('Required parameter cancelOrder was null or undefined when calling cancelBatchOrders.');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-            body: ObjectSerializer.serialize(cancelOrder, 'Array<CancelOrder>'),
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<CancelOrderResult>>(
-            localVarRequestOptions,
-            'Array<CancelOrderResult>',
-            authSettings,
-        );
-    }
-
-    /**
      *
-     * @summary Cancel a single order
-     * @param orderId ID returned on order successfully being created
-     * @param currencyPair Currency pair
+     * @summary List all currency pairs supported
      */
-    public async cancelOrder(
-        orderId: string,
-        currencyPair: string,
-    ): Promise<{ response: http.IncomingMessage; body: Order }> {
-        const localVarPath =
-            this.client.basePath +
-            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+    public async listCurrencyPairs(): Promise<{ response: http.IncomingMessage; body: Array<CurrencyPair> }> {
+        const localVarPath = this.client.basePath + '/spot/currency_pairs';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -116,22 +59,10 @@ export class SpotApi {
         }
         const localVarFormParams: any = {};
 
-        // verify required parameter 'orderId' is not null or undefined
-        if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelOrder.');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrder.');
-        }
-
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
         const localVarUseFormData = false;
 
         const localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
+            method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
@@ -146,164 +77,8 @@ export class SpotApi {
             }
         }
 
-        const authSettings = ['apiv4'];
-        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
-    }
-
-    /**
-     *
-     * @summary Cancel all `open` orders in specified currency pair
-     * @param currencyPair Currency pair
-     * @param opts Optional parameters
-     * @param opts.side All bids or asks. Both included in not specified
-     * @param opts.account Specify account type. Default to all account types being included
-     */
-    public async cancelOrders(
-        currencyPair: string,
-        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' },
-    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
-        const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrders.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
-        }
-
-        if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
-    }
-
-    /**
-     * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders
-     * @summary Create a batch of orders
-     * @param order
-     */
-    public async createBatchOrders(
-        order: Array<Order>,
-    ): Promise<{ response: http.IncomingMessage; body: Array<BatchOrder> }> {
-        const localVarPath = this.client.basePath + '/spot/batch_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'order' is not null or undefined
-        if (order === null || order === undefined) {
-            throw new Error('Required parameter order was null or undefined when calling createBatchOrders.');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-            body: ObjectSerializer.serialize(order, 'Array<Order>'),
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<BatchOrder>>(localVarRequestOptions, 'Array<BatchOrder>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Create an order
-     * @param order
-     */
-    public async createOrder(order: Order): Promise<{ response: http.IncomingMessage; body: Order }> {
-        const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'order' is not null or undefined
-        if (order === null || order === undefined) {
-            throw new Error('Required parameter order was null or undefined when calling createOrder.');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-            body: ObjectSerializer.serialize(order, 'Order'),
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
+        const authSettings = [];
+        return this.client.request<Array<CurrencyPair>>(localVarRequestOptions, 'Array<CurrencyPair>', authSettings);
     }
 
     /**
@@ -359,18 +134,15 @@ export class SpotApi {
     }
 
     /**
-     *
-     * @summary Get a single order
-     * @param orderId ID returned on order successfully being created
-     * @param currencyPair Currency pair
+     * Return only related data if `currency_pair` is specified; otherwise return all of them
+     * @summary Retrieve ticker information
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
      */
-    public async getOrder(
-        orderId: string,
-        currencyPair: string,
-    ): Promise<{ response: http.IncomingMessage; body: Order }> {
-        const localVarPath =
-            this.client.basePath +
-            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+    public async listTickers(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: http.IncomingMessage; body: Array<Ticker> }> {
+        const localVarPath = this.client.basePath + '/spot/tickers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -382,17 +154,10 @@ export class SpotApi {
         }
         const localVarFormParams: any = {};
 
-        // verify required parameter 'orderId' is not null or undefined
-        if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling getOrder.');
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling getOrder.');
-        }
-
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         const localVarUseFormData = false;
 
@@ -412,8 +177,132 @@ export class SpotApi {
             }
         }
 
-        const authSettings = ['apiv4'];
-        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
+        const authSettings = [];
+        return this.client.request<Array<Ticker>>(localVarRequestOptions, 'Array<Ticker>', authSettings);
+    }
+
+    /**
+     * Order book will be sorted by price from high to low on bids; reversed on asks
+     * @summary Retrieve order book
+     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
+     * @param opts.limit Maximum number of order depth data in asks or bids
+     */
+    public async listOrderBook(
+        currencyPair: string,
+        opts: { interval?: string; limit?: number },
+    ): Promise<{ response: http.IncomingMessage; body: OrderBook }> {
+        const localVarPath = this.client.basePath + '/spot/order_book';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling listOrderBook.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.interval !== undefined) {
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = [];
+        return this.client.request<OrderBook>(localVarRequestOptions, 'OrderBook', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve market trades
+     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     */
+    public async listTrades(
+        currencyPair: string,
+        opts: { limit?: number; lastId?: string },
+    ): Promise<{ response: http.IncomingMessage; body: Array<Trade> }> {
+        const localVarPath = this.client.basePath + '/spot/trades';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling listTrades.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.lastId !== undefined) {
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = [];
+        return this.client.request<Array<Trade>>(localVarRequestOptions, 'Array<Trade>', authSettings);
     }
 
     /**
@@ -498,10 +387,12 @@ export class SpotApi {
 
     /**
      *
-     * @summary List all currency pairs supported
+     * @summary Query user trading fee rates
+     * @param opts Optional parameters
+     * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
      */
-    public async listCurrencyPairs(): Promise<{ response: http.IncomingMessage; body: Array<CurrencyPair> }> {
-        const localVarPath = this.client.basePath + '/spot/currency_pairs';
+    public async getFee(opts: { currencyPair?: string }): Promise<{ response: http.IncomingMessage; body: TradeFee }> {
+        const localVarPath = this.client.basePath + '/spot/fee';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -512,6 +403,11 @@ export class SpotApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
         const localVarFormParams: any = {};
+
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
 
         const localVarUseFormData = false;
 
@@ -531,8 +427,505 @@ export class SpotApi {
             }
         }
 
-        const authSettings = [];
-        return this.client.request<Array<CurrencyPair>>(localVarRequestOptions, 'Array<CurrencyPair>', authSettings);
+        const authSettings = ['apiv4'];
+        return this.client.request<TradeFee>(localVarRequestOptions, 'TradeFee', authSettings);
+    }
+
+    /**
+     *
+     * @summary List spot accounts
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
+     */
+    public async listSpotAccounts(opts: {
+        currency?: string;
+    }): Promise<{ response: http.IncomingMessage; body: Array<SpotAccount> }> {
+        const localVarPath = this.client.basePath + '/spot/accounts';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotAccount>>(localVarRequestOptions, 'Array<SpotAccount>', authSettings);
+    }
+
+    /**
+     * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders
+     * @summary Create a batch of orders
+     * @param order
+     */
+    public async createBatchOrders(
+        order: Array<Order>,
+    ): Promise<{ response: http.IncomingMessage; body: Array<BatchOrder> }> {
+        const localVarPath = this.client.basePath + '/spot/batch_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'order' is not null or undefined
+        if (order === null || order === undefined) {
+            throw new Error('Required parameter order was null or undefined when calling createBatchOrders.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+            body: ObjectSerializer.serialize(order, 'Array<Order>'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<BatchOrder>>(localVarRequestOptions, 'Array<BatchOrder>', authSettings);
+    }
+
+    /**
+     * List open orders in all currency pairs.  Note that pagination parameters affect record number in each currency pair\'s open order list. No pagination is applied to the number of currency pairs returned. All currency pairs with open orders will be returned
+     * @summary List all open orders
+     * @param opts Optional parameters
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one page in each currency pair
+     */
+    public async listAllOpenOrders(opts: {
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: http.IncomingMessage; body: Array<OpenOrders> }> {
+        const localVarPath = this.client.basePath + '/spot/open_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        opts = opts || {};
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<OpenOrders>>(localVarRequestOptions, 'Array<OpenOrders>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List orders
+     * @param currencyPair Currency pair
+     * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
+     * @param opts Optional parameters
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
+     */
+    public async listOrders(
+        currencyPair: string,
+        status: 'open' | 'finished',
+        opts: { page?: number; limit?: number },
+    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
+        const localVarPath = this.client.basePath + '/spot/orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling listOrders.');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling listOrders.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Create an order
+     * @param order
+     */
+    public async createOrder(order: Order): Promise<{ response: http.IncomingMessage; body: Order }> {
+        const localVarPath = this.client.basePath + '/spot/orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'order' is not null or undefined
+        if (order === null || order === undefined) {
+            throw new Error('Required parameter order was null or undefined when calling createOrder.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+            body: ObjectSerializer.serialize(order, 'Order'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel all `open` orders in specified currency pair
+     * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.side All bids or asks. Both included in not specified
+     * @param opts.account Specify account type. Default to all account types being included
+     */
+    public async cancelOrders(
+        currencyPair: string,
+        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' },
+    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
+        const localVarPath = this.client.basePath + '/spot/orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrders.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.side !== undefined) {
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
+        }
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
+    }
+
+    /**
+     * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
+     * @summary Cancel a batch of orders with an ID list
+     * @param cancelOrder
+     */
+    public async cancelBatchOrders(
+        cancelOrder: Array<CancelOrder>,
+    ): Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult> }> {
+        const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'cancelOrder' is not null or undefined
+        if (cancelOrder === null || cancelOrder === undefined) {
+            throw new Error('Required parameter cancelOrder was null or undefined when calling cancelBatchOrders.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+            body: ObjectSerializer.serialize(cancelOrder, 'Array<CancelOrder>'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CancelOrderResult>>(
+            localVarRequestOptions,
+            'Array<CancelOrderResult>',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary Get a single order
+     * @param orderId ID returned on order successfully being created
+     * @param currencyPair Currency pair
+     */
+    public async getOrder(
+        orderId: string,
+        currencyPair: string,
+    ): Promise<{ response: http.IncomingMessage; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling getOrder.');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getOrder.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel a single order
+     * @param orderId ID returned on order successfully being created
+     * @param currencyPair Currency pair
+     */
+    public async cancelOrder(
+        orderId: string,
+        currencyPair: string,
+    ): Promise<{ response: http.IncomingMessage; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling cancelOrder.');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrder.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Order>(localVarRequestOptions, 'Order', authSettings);
     }
 
     /**
@@ -599,297 +992,6 @@ export class SpotApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Trade>>(localVarRequestOptions, 'Array<Trade>', authSettings);
-    }
-
-    /**
-     * Order book will be sorted by price from high to low on bids; reversed on asks
-     * @summary Retrieve order book
-     * @param currencyPair Currency pair
-     * @param opts Optional parameters
-     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
-     * @param opts.limit Maximum number of order depth data in asks or bids
-     */
-    public async listOrderBook(
-        currencyPair: string,
-        opts: { interval?: string; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: OrderBook }> {
-        const localVarPath = this.client.basePath + '/spot/order_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling listOrderBook.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
-        }
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = [];
-        return this.client.request<OrderBook>(localVarRequestOptions, 'OrderBook', authSettings);
-    }
-
-    /**
-     *
-     * @summary List orders
-     * @param currencyPair Currency pair
-     * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
-     * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
-     */
-    public async listOrders(
-        currencyPair: string,
-        status: 'open' | 'finished',
-        opts: { page?: number; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: Array<Order> }> {
-        const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling listOrders.');
-        }
-
-        // verify required parameter 'status' is not null or undefined
-        if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listOrders.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
-
-        if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
-        }
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<Order>>(localVarRequestOptions, 'Array<Order>', authSettings);
-    }
-
-    /**
-     *
-     * @summary List spot accounts
-     * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
-     */
-    public async listSpotAccounts(opts: {
-        currency?: string;
-    }): Promise<{ response: http.IncomingMessage; body: Array<SpotAccount> }> {
-        const localVarPath = this.client.basePath + '/spot/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        opts = opts || {};
-        if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotAccount>>(localVarRequestOptions, 'Array<SpotAccount>', authSettings);
-    }
-
-    /**
-     * Return only related data if `currency_pair` is specified; otherwise return all of them
-     * @summary Retrieve ticker information
-     * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair
-     */
-    public async listTickers(opts: {
-        currencyPair?: string;
-    }): Promise<{ response: http.IncomingMessage; body: Array<Ticker> }> {
-        const localVarPath = this.client.basePath + '/spot/tickers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        opts = opts || {};
-        if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = [];
-        return this.client.request<Array<Ticker>>(localVarRequestOptions, 'Array<Ticker>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Retrieve market trades
-     * @param currencyPair Currency pair
-     * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
-     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     */
-    public async listTrades(
-        currencyPair: string,
-        opts: { limit?: number; lastId?: string },
-    ): Promise<{ response: http.IncomingMessage; body: Array<Trade> }> {
-        const localVarPath = this.client.basePath + '/spot/trades';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling listTrades.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = [];
         return this.client.request<Array<Trade>>(localVarRequestOptions, 'Array<Trade>', authSettings);
     }
 }

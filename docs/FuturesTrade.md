@@ -1,4 +1,4 @@
-# GateApi.FuturesTrade
+# FuturesTrade
 
 ## Properties
 

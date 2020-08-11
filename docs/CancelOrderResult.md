@@ -1,4 +1,4 @@
-# GateApi.CancelOrderResult
+# CancelOrderResult
 
 ## Properties
 

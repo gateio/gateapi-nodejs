@@ -1,4 +1,4 @@
-# GateApi.FundingAccount
+# FundingAccount
 
 ## Properties
 

@@ -19,6 +19,7 @@ import { Loan } from '../model/loan';
 import { LoanPatch } from '../model/loanPatch';
 import { LoanRecord } from '../model/loanRecord';
 import { MarginAccount } from '../model/marginAccount';
+import { MarginAccountBook } from '../model/marginAccountBook';
 import { MarginCurrencyPair } from '../model/marginCurrencyPair';
 import { RepayRequest } from '../model/repayRequest';
 import { Repayment } from '../model/repayment';
@@ -41,67 +42,14 @@ export class MarginApi {
     }
 
     /**
-     * Only lending loans can be cancelled
-     * @summary Cancel lending loan
-     * @param loanId Loan ID
-     * @param currency Retrieved specified currency related data
-     */
-    public async cancelLoan(loanId: string, currency: string): Promise<{ response: http.IncomingMessage; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling cancelLoan.');
-        }
-
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling cancelLoan.');
-        }
-
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
-    }
-
-    /**
      *
-     * @summary Lend or borrow
-     * @param loan
+     * @summary List all supported currency pairs supported in margin trading
      */
-    public async createLoan(loan: Loan): Promise<{ response: http.IncomingMessage; body: Loan }> {
-        const localVarPath = this.client.basePath + '/margin/loans';
+    public async listMarginCurrencyPairs(): Promise<{
+        response: http.IncomingMessage;
+        body: Array<MarginCurrencyPair>;
+    }> {
+        const localVarPath = this.client.basePath + '/margin/currency_pairs';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -112,70 +60,6 @@ export class MarginApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
         const localVarFormParams: any = {};
-
-        // verify required parameter 'loan' is not null or undefined
-        if (loan === null || loan === undefined) {
-            throw new Error('Required parameter loan was null or undefined when calling createLoan.');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-            body: ObjectSerializer.serialize(loan, 'Loan'),
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary Retrieve one single loan detail
-     * @param loanId Loan ID
-     * @param side Lend or borrow
-     */
-    public async getLoan(
-        loanId: string,
-        side: 'lend' | 'borrow',
-    ): Promise<{ response: http.IncomingMessage; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling getLoan.');
-        }
-
-        // verify required parameter 'side' is not null or undefined
-        if (side === null || side === undefined) {
-            throw new Error('Required parameter side was null or undefined when calling getLoan.');
-        }
-
-        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
 
         const localVarUseFormData = false;
 
@@ -195,119 +79,10 @@ export class MarginApi {
             }
         }
 
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary Get one single loan record
-     * @param loanRecordId Loan record ID
-     * @param loanId Loan ID
-     */
-    public async getLoanRecord(
-        loanRecordId: string,
-        loanId: string,
-    ): Promise<{ response: http.IncomingMessage; body: LoanRecord }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loan_records/{loan_record_id}'.replace(
-                '{' + 'loan_record_id' + '}',
-                encodeURIComponent(String(loanRecordId)),
-            );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        // verify required parameter 'loanRecordId' is not null or undefined
-        if (loanRecordId === null || loanRecordId === undefined) {
-            throw new Error('Required parameter loanRecordId was null or undefined when calling getLoanRecord.');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling getLoanRecord.');
-        }
-
-        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<LoanRecord>(localVarRequestOptions, 'LoanRecord', authSettings);
-    }
-
-    /**
-     *
-     * @summary Funding account list
-     * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
-     */
-    public async listFundingAccounts(opts: {
-        currency?: string;
-    }): Promise<{ response: http.IncomingMessage; body: Array<FundingAccount> }> {
-        const localVarPath = this.client.basePath + '/margin/funding_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        opts = opts || {};
-        if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
-        }
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<FundingAccount>>(
+        const authSettings = [];
+        return this.client.request<Array<MarginCurrencyPair>>(
             localVarRequestOptions,
-            'Array<FundingAccount>',
+            'Array<MarginCurrencyPair>',
             authSettings,
         );
     }
@@ -367,18 +142,14 @@ export class MarginApi {
 
     /**
      *
-     * @summary List repayment records of specified loan
-     * @param loanId Loan ID
+     * @summary Margin account list
      * @param opts Optional parameters
-     * @param opts.status Loan record status
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.currencyPair Currency pair
      */
-    public async listLoanRecords(
-        loanId: string,
-        opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
-    ): Promise<{ response: http.IncomingMessage; body: Array<LoanRecord> }> {
-        const localVarPath = this.client.basePath + '/margin/loan_records';
+    public async listMarginAccounts(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: http.IncomingMessage; body: Array<MarginAccount> }> {
+        const localVarPath = this.client.basePath + '/margin/accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -390,16 +161,79 @@ export class MarginApi {
         }
         const localVarFormParams: any = {};
 
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling listLoanRecords.');
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
-        opts = opts || {};
-        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
+        const localVarUseFormData = false;
 
-        if (opts.status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MarginAccount>>(localVarRequestOptions, 'Array<MarginAccount>', authSettings);
+    }
+
+    /**
+     * Only transferring from or to margin account are provided for now. Time range allows 30 days at most
+     * @summary List margin account balance change history
+     * @param opts Optional parameters
+     * @param opts.currency List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required.
+     * @param opts.currencyPair List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
+     */
+    public async listMarginAccountBook(opts: {
+        currency?: string;
+        currencyPair?: string;
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: http.IncomingMessage; body: Array<MarginAccountBook> }> {
+        const localVarPath = this.client.basePath + '/margin/account_book';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.page !== undefined) {
@@ -429,20 +263,23 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<LoanRecord>>(localVarRequestOptions, 'Array<LoanRecord>', authSettings);
+        return this.client.request<Array<MarginAccountBook>>(
+            localVarRequestOptions,
+            'Array<MarginAccountBook>',
+            authSettings,
+        );
     }
 
     /**
      *
-     * @summary List loan repayment records
-     * @param loanId Loan ID
+     * @summary Funding account list
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
      */
-    public async listLoanRepayments(
-        loanId: string,
-    ): Promise<{ response: http.IncomingMessage; body: Array<Repayment> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+    public async listFundingAccounts(opts: {
+        currency?: string;
+    }): Promise<{ response: http.IncomingMessage; body: Array<FundingAccount> }> {
+        const localVarPath = this.client.basePath + '/margin/funding_accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -454,9 +291,9 @@ export class MarginApi {
         }
         const localVarFormParams: any = {};
 
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling listLoanRepayments.');
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         const localVarUseFormData = false;
@@ -478,7 +315,11 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Repayment>>(localVarRequestOptions, 'Array<Repayment>', authSettings);
+        return this.client.request<Array<FundingAccount>>(
+            localVarRequestOptions,
+            'Array<FundingAccount>',
+            authSettings,
+        );
     }
 
     /**
@@ -584,14 +425,11 @@ export class MarginApi {
 
     /**
      *
-     * @summary Margin account list
-     * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair
+     * @summary Lend or borrow
+     * @param loan
      */
-    public async listMarginAccounts(opts: {
-        currencyPair?: string;
-    }): Promise<{ response: http.IncomingMessage; body: Array<MarginAccount> }> {
-        const localVarPath = this.client.basePath + '/margin/accounts';
+    public async createLoan(loan: Loan): Promise<{ response: http.IncomingMessage; body: Loan }> {
+        const localVarPath = this.client.basePath + '/margin/loans';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -603,20 +441,21 @@ export class MarginApi {
         }
         const localVarFormParams: any = {};
 
-        opts = opts || {};
-        if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        // verify required parameter 'loan' is not null or undefined
+        if (loan === null || loan === undefined) {
+            throw new Error('Required parameter loan was null or undefined when calling createLoan.');
         }
 
         const localVarUseFormData = false;
 
         const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
+            method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
+            body: ObjectSerializer.serialize(loan, 'Loan'),
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -627,53 +466,7 @@ export class MarginApi {
         }
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<MarginAccount>>(localVarRequestOptions, 'Array<MarginAccount>', authSettings);
-    }
-
-    /**
-     *
-     * @summary List all supported currency pairs supported in margin trading
-     */
-    public async listMarginCurrencyPairs(): Promise<{
-        response: http.IncomingMessage;
-        body: Array<MarginCurrencyPair>;
-    }> {
-        const localVarPath = this.client.basePath + '/margin/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        const localVarFormParams: any = {};
-
-        const localVarUseFormData = false;
-
-        const localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: true,
-            json: true,
-        };
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                localVarRequestOptions.formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-
-        const authSettings = [];
-        return this.client.request<Array<MarginCurrencyPair>>(
-            localVarRequestOptions,
-            'Array<MarginCurrencyPair>',
-            authSettings,
-        );
+        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
     }
 
     /**
@@ -733,17 +526,17 @@ export class MarginApi {
 
     /**
      *
-     * @summary Repay a loan
+     * @summary Retrieve one single loan detail
      * @param loanId Loan ID
-     * @param repayRequest
+     * @param side Lend or borrow
      */
-    public async repayLoan(
+    public async getLoan(
         loanId: string,
-        repayRequest: RepayRequest,
+        side: 'lend' | 'borrow',
     ): Promise<{ response: http.IncomingMessage; body: Loan }> {
         const localVarPath =
             this.client.basePath +
-            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -757,24 +550,80 @@ export class MarginApi {
 
         // verify required parameter 'loanId' is not null or undefined
         if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling repayLoan.');
+            throw new Error('Required parameter loanId was null or undefined when calling getLoan.');
         }
 
-        // verify required parameter 'repayRequest' is not null or undefined
-        if (repayRequest === null || repayRequest === undefined) {
-            throw new Error('Required parameter repayRequest was null or undefined when calling repayLoan.');
+        // verify required parameter 'side' is not null or undefined
+        if (side === null || side === undefined) {
+            throw new Error('Required parameter side was null or undefined when calling getLoan.');
         }
+
+        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
 
         const localVarUseFormData = false;
 
         const localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
+            method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: true,
             json: true,
-            body: ObjectSerializer.serialize(repayRequest, 'RepayRequest'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
+    }
+
+    /**
+     * Only lending loans can be cancelled
+     * @summary Cancel lending loan
+     * @param loanId Loan ID
+     * @param currency Retrieved specified currency related data
+     */
+    public async cancelLoan(loanId: string, currency: string): Promise<{ response: http.IncomingMessage; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling cancelLoan.');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling cancelLoan.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
         };
         if (Object.keys(localVarFormParams).length) {
             if (localVarUseFormData) {
@@ -843,6 +692,240 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary List loan repayment records
+     * @param loanId Loan ID
+     */
+    public async listLoanRepayments(
+        loanId: string,
+    ): Promise<{ response: http.IncomingMessage; body: Array<Repayment> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling listLoanRepayments.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Repayment>>(localVarRequestOptions, 'Array<Repayment>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Repay a loan
+     * @param loanId Loan ID
+     * @param repayRequest
+     */
+    public async repayLoan(
+        loanId: string,
+        repayRequest: RepayRequest,
+    ): Promise<{ response: http.IncomingMessage; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling repayLoan.');
+        }
+
+        // verify required parameter 'repayRequest' is not null or undefined
+        if (repayRequest === null || repayRequest === undefined) {
+            throw new Error('Required parameter repayRequest was null or undefined when calling repayLoan.');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+            body: ObjectSerializer.serialize(repayRequest, 'RepayRequest'),
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(localVarRequestOptions, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary List repayment records of specified loan
+     * @param loanId Loan ID
+     * @param opts Optional parameters
+     * @param opts.status Loan record status
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
+     */
+    public async listLoanRecords(
+        loanId: string,
+        opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
+    ): Promise<{ response: http.IncomingMessage; body: Array<LoanRecord> }> {
+        const localVarPath = this.client.basePath + '/margin/loan_records';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling listLoanRecords.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
+
+        if (opts.status !== undefined) {
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<LoanRecord>>(localVarRequestOptions, 'Array<LoanRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get one single loan record
+     * @param loanRecordId Loan record ID
+     * @param loanId Loan ID
+     */
+    public async getLoanRecord(
+        loanRecordId: string,
+        loanId: string,
+    ): Promise<{ response: http.IncomingMessage; body: LoanRecord }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loan_records/{loan_record_id}'.replace(
+                '{' + 'loan_record_id' + '}',
+                encodeURIComponent(String(loanRecordId)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        const localVarFormParams: any = {};
+
+        // verify required parameter 'loanRecordId' is not null or undefined
+        if (loanRecordId === null || loanRecordId === undefined) {
+            throw new Error('Required parameter loanRecordId was null or undefined when calling getLoanRecord.');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling getLoanRecord.');
+        }
+
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
+
+        const localVarUseFormData = false;
+
+        const localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: true,
+            json: true,
+        };
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                localVarRequestOptions.formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+
+        const authSettings = ['apiv4'];
+        return this.client.request<LoanRecord>(localVarRequestOptions, 'LoanRecord', authSettings);
     }
 
     /**

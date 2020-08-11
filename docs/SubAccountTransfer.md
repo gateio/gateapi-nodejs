@@ -1,4 +1,4 @@
-# GateApi.SubAccountTransfer
+# SubAccountTransfer
 
 ## Properties
 

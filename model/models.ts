@@ -27,9 +27,11 @@ export * from './loan';
 export * from './loanPatch';
 export * from './loanRecord';
 export * from './marginAccount';
+export * from './marginAccountBook';
 export * from './marginAccountCurrency';
 export * from './marginCurrencyPair';
 export * from './myFuturesTrade';
+export * from './openOrders';
 export * from './order';
 export * from './orderBook';
 export * from './position';
@@ -41,6 +43,7 @@ export * from './spotAccount';
 export * from './subAccountTransfer';
 export * from './ticker';
 export * from './trade';
+export * from './tradeFee';
 export * from './transfer';
 export * from './triggerOrderResponse';
 
@@ -77,9 +80,11 @@ import { Loan } from './loan';
 import { LoanPatch } from './loanPatch';
 import { LoanRecord } from './loanRecord';
 import { MarginAccount } from './marginAccount';
+import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
 import { MarginCurrencyPair } from './marginCurrencyPair';
 import { MyFuturesTrade } from './myFuturesTrade';
+import { OpenOrders } from './openOrders';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { Position } from './position';
@@ -91,6 +96,7 @@ import { SpotAccount } from './spotAccount';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { Ticker } from './ticker';
 import { Trade } from './trade';
+import { TradeFee } from './tradeFee';
 import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 
@@ -169,9 +175,11 @@ const typeMap: { [index: string]: any } = {
     LoanPatch: LoanPatch,
     LoanRecord: LoanRecord,
     MarginAccount: MarginAccount,
+    MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
     MarginCurrencyPair: MarginCurrencyPair,
     MyFuturesTrade: MyFuturesTrade,
+    OpenOrders: OpenOrders,
     Order: Order,
     OrderBook: OrderBook,
     Position: Position,
@@ -183,6 +191,7 @@ const typeMap: { [index: string]: any } = {
     SubAccountTransfer: SubAccountTransfer,
     Ticker: Ticker,
     Trade: Trade,
+    TradeFee: TradeFee,
     Transfer: Transfer,
     TriggerOrderResponse: TriggerOrderResponse,
 };

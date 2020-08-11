@@ -1,4 +1,4 @@
-# GateApi.Repayment
+# Repayment
 
 ## Properties
 

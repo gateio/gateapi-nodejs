@@ -1,4 +1,4 @@
-# GateApi.TriggerOrderResponse
+# TriggerOrderResponse
 
 ## Properties
 

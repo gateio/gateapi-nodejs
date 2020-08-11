@@ -1,4 +1,4 @@
-# GateApi.LedgerRecord
+# LedgerRecord
 
 ## Properties
 

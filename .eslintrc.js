@@ -32,7 +32,7 @@ module.exports = {
     "plugins": [
         "@typescript-eslint"
     ],
-    "ignorePatterns": ["dist/*"],
+    "ignorePatterns": ["dist/**/*"],
     "rules": {
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-namespace": "off",

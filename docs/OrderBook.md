@@ -1,4 +1,4 @@
-# GateApi.OrderBook
+# OrderBook
 
 ## Properties
 
