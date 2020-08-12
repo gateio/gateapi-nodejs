@@ -18,8 +18,7 @@
     "author": "GateIO",
     "license": "Unlicense",
     "dependencies": {
-        "request": "^2.81.0",
-        "@types/request": "*",
+        "axios": "^0.19.2",
         "@types/node": "^8.10.48"
     },
     "devDependencies": {

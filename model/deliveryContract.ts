@@ -20,7 +20,7 @@ export class DeliveryContract {
     /**
      * Underlying
      */
-    'underling'?: string;
+    'underlying'?: string;
     /**
      * Cycle type, e.g. WEEKLY, QUARTERLY
      */
@@ -171,8 +171,8 @@ export class DeliveryContract {
             type: 'string',
         },
         {
-            name: 'underling',
-            baseName: 'underling',
+            name: 'underlying',
+            baseName: 'underlying',
             type: 'string',
         },
         {

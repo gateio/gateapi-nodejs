@@ -11,18 +11,8 @@
 
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import {
-    Authentication,
-    GateApiV4Auth,
-    HttpBasicAuth,
-    HttpBearerAuth,
-    OAuth,
-    Interceptor,
-    ObjectSerializer,
-} from '../model/models';
-import localVarRequest = require('request');
-import http = require('http');
-import { HttpError } from './apis';
+import { Authentication, GateApiV4Auth, HttpBasicAuth, HttpBearerAuth, OAuth, ObjectSerializer } from '../model/models';
+import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export class ApiClient {
     protected _basePath = 'https://api.gateio.ws/api/v4';
@@ -32,7 +22,9 @@ export class ApiClient {
         apiv4: new GateApiV4Auth(),
     };
 
-    protected interceptors: Interceptor[] = [];
+    constructor(basePath?: string, protected axiosInstance: AxiosInstance = globalAxios) {
+        this._basePath = basePath || this._basePath;
+    }
 
     set basePath(basePath: string) {
         this._basePath = basePath;
@@ -56,47 +48,31 @@ export class ApiClient {
         auth.secret = secret;
     }
 
-    public addInterceptor(interceptor: Interceptor) {
-        this.interceptors.push(interceptor);
-    }
-
-    public applyToRequest(options: localVarRequest.Options, authSettings: Array<string>) {
+    public applyToRequest(config: AxiosRequestConfig, authSettings: Array<string>): AxiosRequestConfig {
         for (const auth of authSettings) {
             const authenticator = this.authentications[auth];
             if (authenticator) {
-                authenticator.applyToRequest(options);
+                config = authenticator.applyToRequest(config);
             }
         }
+        return config;
     }
 
     public async request<T>(
-        options: localVarRequest.Options,
+        config: AxiosRequestConfig,
         responseType: string,
         authSettings: Array<string>,
-    ): Promise<{ response: http.IncomingMessage; body: T }> {
-        const authenticationPromise = Promise.resolve();
-        let interceptorPromise = authenticationPromise.then(() => this.applyToRequest(options, authSettings));
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(options));
-        }
-
-        return interceptorPromise.then(() => {
-            return new Promise<{ response: http.IncomingMessage; body: T }>((resolve, reject) => {
-                localVarRequest(options, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            if (responseType.length > 0) {
-                                body = ObjectSerializer.deserialize(body, responseType);
-                            }
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
+    ): Promise<{ response: AxiosResponse; body: T }> {
+        return Promise.resolve(config)
+            .then((c) => this.applyToRequest(c, authSettings))
+            .then((c) => {
+                return this.axiosInstance.request(c).then((rsp) => {
+                    let body = rsp.data;
+                    if (responseType.length > 0) {
+                        body = ObjectSerializer.deserialize(rsp.data, responseType);
                     }
+                    return { response: rsp, body: body };
                 });
             });
-        });
     }
 }

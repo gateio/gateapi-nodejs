@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Futures contract | [optional] [default to undefined]
-**underling** | **string** | Underlying | [optional] [default to undefined]
+**underlying** | **string** | Underlying | [optional] [default to undefined]
 **cycle** | **string** | Cycle type, e.g. WEEKLY, QUARTERLY | [optional] [default to undefined]
 **type** | **string** | Futures contract type | [optional] [default to undefined]
 **quantoMultiplier** | **string** | Multiplier used in converting from invoicing to settlement currency in quanto futures | [optional] [default to undefined]

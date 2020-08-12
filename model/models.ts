@@ -47,7 +47,8 @@ export * from './tradeFee';
 export * from './transfer';
 export * from './triggerOrderResponse';
 
-import localVarRequest = require('request');
+import { AxiosRequestConfig } from 'axios';
+import querystring = require('querystring');
 import crypto = require('crypto');
 import { URL } from 'url';
 
@@ -322,29 +323,31 @@ export interface Authentication {
     /**
      * Apply authentication settings to header and query params.
      */
-    applyToRequest(requestOptions: localVarRequest.Options): Promise<void> | void;
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig;
 }
 
 export class HttpBasicAuth implements Authentication {
     public username = '';
     public password = '';
 
-    applyToRequest(requestOptions: localVarRequest.Options): void {
-        requestOptions.auth = {
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+        config.auth = {
             username: this.username,
             password: this.password,
         };
+        return config;
     }
 }
 
 export class HttpBearerAuth implements Authentication {
     public accessToken: string | (() => string) = '';
 
-    applyToRequest(requestOptions: localVarRequest.Options): void {
-        if (requestOptions && requestOptions.headers) {
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+        if (config && config.headers) {
             const accessToken = typeof this.accessToken === 'function' ? this.accessToken() : this.accessToken;
-            requestOptions.headers['Authorization'] = 'Bearer ' + accessToken;
+            config.headers['Authorization'] = 'Bearer ' + accessToken;
         }
+        return config;
     }
 }
 
@@ -353,28 +356,30 @@ export class ApiKeyAuth implements Authentication {
 
     constructor(private location: string, private paramName: string) {}
 
-    applyToRequest(requestOptions: localVarRequest.Options): void {
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         if (this.location == 'query') {
-            requestOptions.qs[this.paramName] = this.apiKey;
-        } else if (this.location == 'header' && requestOptions && requestOptions.headers) {
-            requestOptions.headers[this.paramName] = this.apiKey;
-        } else if (this.location == 'cookie' && requestOptions && requestOptions.headers) {
-            if (requestOptions.headers['Cookie']) {
-                requestOptions.headers['Cookie'] += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
+            config.params[this.paramName] = this.apiKey;
+        } else if (this.location == 'header' && config && config.headers) {
+            config.headers[this.paramName] = this.apiKey;
+        } else if (this.location == 'cookie' && config && config.headers) {
+            if (config.headers['Cookie']) {
+                config.headers['Cookie'] += '; ' + this.paramName + '=' + encodeURIComponent(this.apiKey);
             } else {
-                requestOptions.headers['Cookie'] = this.paramName + '=' + encodeURIComponent(this.apiKey);
+                config.headers['Cookie'] = this.paramName + '=' + encodeURIComponent(this.apiKey);
             }
         }
+        return config;
     }
 }
 
 export class OAuth implements Authentication {
     public accessToken = '';
 
-    applyToRequest(requestOptions: localVarRequest.Options): void {
-        if (requestOptions && requestOptions.headers) {
-            requestOptions.headers['Authorization'] = 'Bearer ' + this.accessToken;
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+        if (config && config.headers) {
+            config.headers['Authorization'] = 'Bearer ' + this.accessToken;
         }
+        return config;
     }
 }
 
@@ -382,27 +387,25 @@ export class GateApiV4Auth implements Authentication {
     public key = '';
     public secret = '';
 
-    applyToRequest(requestOptions: localVarRequest.Options): void {
-        // force using queryString
-        requestOptions.useQuerystring = true;
+    applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
+        config.paramsSerializer = function (params) {
+            return querystring.stringify(params);
+        };
         const timestamp: string = (new Date().getTime() / 1000).toString();
-        const resourcePath: string = new URL((requestOptions as localVarRequest.UriOptions).uri as string).pathname;
-        const queryString: string = unescape(requestOptions.qs.stringify());
+        const resourcePath: string = new URL(config.url as string).pathname;
+        const queryString: string = unescape(querystring.stringify(config.params));
         let bodyParam = '';
-        if (requestOptions.body) {
-            if (typeof requestOptions.body == 'string') {
-                bodyParam = requestOptions.body;
+        if (config.data) {
+            if (typeof config.data == 'string') {
+                bodyParam = config.data;
             } else {
-                bodyParam = JSON.stringify(requestOptions.body);
+                bodyParam = JSON.stringify(config.data);
             }
         }
         const hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
-        const signatureString = [requestOptions.method, resourcePath, queryString, hashedPayload, timestamp].join('\n');
-        // console.log('signature string to be calculated: ' + signatureString);
+        const signatureString = [config.method, resourcePath, queryString, hashedPayload, timestamp].join('\n');
         const signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
-        // console.log('signature generated: ' + signature);
-        (<any>Object).assign(requestOptions.headers, { KEY: this.key, Timestamp: timestamp, SIGN: signature });
+        (<any>Object).assign(config.headers, { KEY: this.key, Timestamp: timestamp, SIGN: signature });
+        return config;
     }
 }
-
-export type Interceptor = (requestOptions: localVarRequest.Options) => Promise<void> | void;
