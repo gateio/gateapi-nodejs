@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **positionSize** | **number** | Current total long position size | [optional] [default to undefined]
 **configChangeTime** | **number** | Configuration\&#39;s last changed time | [optional] [default to undefined]
 **inDelisting** | **boolean** | Contract is delisting | [optional] [default to undefined]
+**ordersLimit** | **number** | Maximum number of open orders | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

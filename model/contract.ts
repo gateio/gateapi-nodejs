@@ -137,6 +137,10 @@ export class Contract {
      * Contract is delisting
      */
     'inDelisting'?: boolean;
+    /**
+     * Maximum number of open orders
+     */
+    'ordersLimit'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -295,6 +299,11 @@ export class Contract {
             name: 'inDelisting',
             baseName: 'in_delisting',
             type: 'boolean',
+        },
+        {
+            name: 'ordersLimit',
+            baseName: 'orders_limit',
+            type: 'number',
         },
     ];
 

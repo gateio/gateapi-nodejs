@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<CurrencyPair>; }(CurrencyPair.md)
+Promise<{ response: AxiosResponse; body: Array<CurrencyPair>; }> [CurrencyPair](CurrencyPair.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: CurrencyPair; }(CurrencyPair.md)
+Promise<{ response: AxiosResponse; body: CurrencyPair; }> [CurrencyPair](CurrencyPair.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Ticker>; }(Ticker.md)
+Promise<{ response: AxiosResponse; body: Array<Ticker>; }> [Ticker](Ticker.md)
 
 ### Authorization
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: OrderBook; }(OrderBook.md)
+Promise<{ response: AxiosResponse; body: OrderBook; }> [OrderBook](OrderBook.md)
 
 ### Authorization
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Trade>; }(Trade.md)
+Promise<{ response: AxiosResponse; body: Array<Trade>; }> [Trade](Trade.md)
 
 ### Authorization
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Array<string>>; }(Array.md)
+Promise<{ response: AxiosResponse; body: Array<Array<string>>; }> [Array](Array.md)
 
 ### Authorization
 
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: TradeFee; }(TradeFee.md)
+Promise<{ response: AxiosResponse; body: TradeFee; }> [TradeFee](TradeFee.md)
 
 ### Authorization
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<SpotAccount>; }(SpotAccount.md)
+Promise<{ response: AxiosResponse; body: Array<SpotAccount>; }> [SpotAccount](SpotAccount.md)
 
 ### Authorization
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<BatchOrder>; }(BatchOrder.md)
+Promise<{ response: AxiosResponse; body: Array<BatchOrder>; }> [BatchOrder](BatchOrder.md)
 
 ### Authorization
 
@@ -468,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<OpenOrders>; }(OpenOrders.md)
+Promise<{ response: AxiosResponse; body: Array<OpenOrders>; }> [OpenOrders](OpenOrders.md)
 
 ### Authorization
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Order>; }(Order.md)
+Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 ### Authorization
 
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Order; }(Order.md)
+Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 ### Authorization
 
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Order>; }(Order.md)
+Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 ### Authorization
 
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult>; }(CancelOrderResult.md)
+Promise<{ response: AxiosResponse; body: Array<CancelOrderResult>; }> [CancelOrderResult](CancelOrderResult.md)
 
 ### Authorization
 
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Order; }(Order.md)
+Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 ### Authorization
 
@@ -746,7 +746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Order; }(Order.md)
+Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 ### Authorization
 
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Trade>; }(Trade.md)
+Promise<{ response: AxiosResponse; body: Array<Trade>; }> [Trade](Trade.md)
 
 ### Authorization
 

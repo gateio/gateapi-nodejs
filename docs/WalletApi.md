@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: DepositAddress; }(DepositAddress.md)
+Promise<{ response: AxiosResponse; body: DepositAddress; }> [DepositAddress](DepositAddress.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }(LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](LedgerRecord.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }(LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](LedgerRecord.md)
 
 ### Authorization
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body?: any; }(.md)
+Promise<{ response: AxiosResponse; body?: any; }> 
 
 ### Authorization
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransfer>; }(SubAccountTransfer.md)
+Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer>; }> [SubAccountTransfer](SubAccountTransfer.md)
 
 ### Authorization
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body?: any; }(.md)
+Promise<{ response: AxiosResponse; body?: any; }> 
 
 ### Authorization
 

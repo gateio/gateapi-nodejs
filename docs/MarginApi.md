@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<MarginCurrencyPair>; }(MarginCurrencyPair.md)
+Promise<{ response: AxiosResponse; body: Array<MarginCurrencyPair>; }> [MarginCurrencyPair](MarginCurrencyPair.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FundingBookItem>; }(FundingBookItem.md)
+Promise<{ response: AxiosResponse; body: Array<FundingBookItem>; }> [FundingBookItem](FundingBookItem.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<MarginAccount>; }(MarginAccount.md)
+Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount](MarginAccount.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<MarginAccountBook>; }(MarginAccountBook.md)
+Promise<{ response: AxiosResponse; body: Array<MarginAccountBook>; }> [MarginAccountBook](MarginAccountBook.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FundingAccount>; }(FundingAccount.md)
+Promise<{ response: AxiosResponse; body: Array<FundingAccount>; }> [FundingAccount](FundingAccount.md)
 
 ### Authorization
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Loan>; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Array<Loan>; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Repayment>; }(Repayment.md)
+Promise<{ response: AxiosResponse; body: Array<Repayment>; }> [Repayment](Repayment.md)
 
 ### Authorization
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Loan; }(Loan.md)
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 ### Authorization
 
@@ -661,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<LoanRecord>; }(LoanRecord.md)
+Promise<{ response: AxiosResponse; body: Array<LoanRecord>; }> [LoanRecord](LoanRecord.md)
 
 ### Authorization
 
@@ -706,7 +706,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: LoanRecord; }(LoanRecord.md)
+Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
 
 ### Authorization
 
@@ -753,7 +753,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: LoanRecord; }(LoanRecord.md)
+Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
 
 ### Authorization
 

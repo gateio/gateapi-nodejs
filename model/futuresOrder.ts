@@ -44,7 +44,7 @@ export class FuturesOrder {
     /**
      * Order size. Specify positive number to make a bid, and negative number to ask
      */
-    'size'?: number;
+    'size': number;
     /**
      * Display size for iceberg order. 0 for non-iceberg. Note that you would pay the taker fee for the hidden size
      */

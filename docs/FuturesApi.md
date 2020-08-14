@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Contract>; }(Contract.md)
+Promise<{ response: AxiosResponse; body: Array<Contract>; }> [Contract](Contract.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Contract; }(Contract.md)
+Promise<{ response: AxiosResponse; body: Contract; }> [Contract](Contract.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }(FuturesOrderBook.md)
+Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> [FuturesOrderBook](FuturesOrderBook.md)
 
 ### Authorization
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesTrade>; }(FuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesTrade>; }> [FuturesTrade](FuturesTrade.md)
 
 ### Authorization
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesCandlestick>; }(FuturesCandlestick.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick>; }> [FuturesCandlestick](FuturesCandlestick.md)
 
 ### Authorization
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesTicker>; }(FuturesTicker.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesTicker>; }> [FuturesTicker](FuturesTicker.md)
 
 ### Authorization
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FundingRateRecord>; }(FundingRateRecord.md)
+Promise<{ response: AxiosResponse; body: Array<FundingRateRecord>; }> [FundingRateRecord](FundingRateRecord.md)
 
 ### Authorization
 
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<InsuranceRecord>; }(InsuranceRecord.md)
+Promise<{ response: AxiosResponse; body: Array<InsuranceRecord>; }> [InsuranceRecord](InsuranceRecord.md)
 
 ### Authorization
 
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesAccount; }(FuturesAccount.md)
+Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](FuturesAccount.md)
 
 ### Authorization
 
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesAccountBook>; }(FuturesAccountBook.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook>; }> [FuturesAccountBook](FuturesAccountBook.md)
 
 ### Authorization
 
@@ -542,7 +542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<Position>; }(Position.md)
+Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position.md)
 
 ### Authorization
 
@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Position; }(Position.md)
+Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ### Authorization
 
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Position; }(Position.md)
+Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ### Authorization
 
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Position; }(Position.md)
+Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ### Authorization
 
@@ -728,7 +728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Position; }(Position.md)
+Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ### Authorization
 
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }(FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](FuturesOrder.md)
 
 ### Authorization
 
@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesOrder; }(FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
 
 ### Authorization
 
@@ -885,7 +885,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesOrder>; }(FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](FuturesOrder.md)
 
 ### Authorization
 
@@ -932,7 +932,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesOrder; }(FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
 
 ### Authorization
 
@@ -977,7 +977,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesOrder; }(FuturesOrder.md)
+Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
 
 ### Authorization
 
@@ -1034,7 +1034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }(MyFuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTrade](MyFuturesTrade.md)
 
 ### Authorization
 
@@ -1083,7 +1083,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<PositionClose>; }(PositionClose.md)
+Promise<{ response: AxiosResponse; body: Array<PositionClose>; }> [PositionClose](PositionClose.md)
 
 ### Authorization
 
@@ -1134,7 +1134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesLiquidate>; }(FuturesLiquidate.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate>; }> [FuturesLiquidate](FuturesLiquidate.md)
 
 ### Authorization
 
@@ -1187,7 +1187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }(FuturesPriceTriggeredOrder.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 
@@ -1232,7 +1232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: TriggerOrderResponse; }(TriggerOrderResponse.md)
+Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderResponse](TriggerOrderResponse.md)
 
 ### Authorization
 
@@ -1277,7 +1277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }(FuturesPriceTriggeredOrder.md)
+Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 
@@ -1322,7 +1322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }(FuturesPriceTriggeredOrder.md)
+Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 
@@ -1367,7 +1367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }(FuturesPriceTriggeredOrder.md)
+Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> [FuturesPriceTriggeredOrder](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 

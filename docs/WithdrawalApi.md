@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: http.IncomingMessage; body: LedgerRecord; }(LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: LedgerRecord; }> [LedgerRecord](LedgerRecord.md)
 
 ### Authorization
 
