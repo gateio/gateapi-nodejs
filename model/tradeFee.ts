@@ -38,6 +38,10 @@ export class TradeFee {
      * Loan fee rate of margin lending
      */
     'loanFee'?: string;
+    /**
+     * Point type. 0 - Initial version. 1 - new version since 202009
+     */
+    'pointType'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -75,6 +79,11 @@ export class TradeFee {
         {
             name: 'loanFee',
             baseName: 'loan_fee',
+            type: 'string',
+        },
+        {
+            name: 'pointType',
+            baseName: 'point_type',
             type: 'string',
         },
     ];

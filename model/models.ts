@@ -46,6 +46,7 @@ export * from './trade';
 export * from './tradeFee';
 export * from './transfer';
 export * from './triggerOrderResponse';
+export * from './withdrawStatus';
 
 import { AxiosRequestConfig } from 'axios';
 import querystring = require('querystring');
@@ -100,6 +101,7 @@ import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
+import { WithdrawStatus } from './withdrawStatus';
 
 /* tslint:disable:no-unused-variable */
 const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
@@ -195,6 +197,7 @@ const typeMap: { [index: string]: any } = {
     TradeFee: TradeFee,
     Transfer: Transfer,
     TriggerOrderResponse: TriggerOrderResponse,
+    WithdrawStatus: WithdrawStatus,
 };
 
 export class ObjectSerializer {

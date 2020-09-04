@@ -14,6 +14,7 @@ import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
 import { Transfer } from '../model/transfer';
+import { WithdrawStatus } from '../model/withdrawStatus';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -304,5 +305,41 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve withdrawal status
+     * @param opts Optional parameters
+     * @param opts.currency Retrieved specified currency related data
+     */
+    public async listWithdrawStatus(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<WithdrawStatus> }> {
+        const localVarPath = this.client.basePath + '/wallet/withdraw_status';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<WithdrawStatus>>(config, 'Array<WithdrawStatus>', authSettings);
     }
 }
