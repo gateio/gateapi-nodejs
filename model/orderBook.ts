@@ -11,6 +11,10 @@
 
 export class OrderBook {
     /**
+     * Order book ID, which is updated whenever the order book is changed. Valid only when `with_id` is set to `true`
+     */
+    'id'?: number;
+    /**
      * Asks order depth
      */
     'asks': Array<Array<string>>;
@@ -22,6 +26,11 @@ export class OrderBook {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
         {
             name: 'asks',
             baseName: 'asks',

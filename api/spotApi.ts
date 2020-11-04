@@ -148,10 +148,11 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
+     * @param opts.withId Return order book ID
      */
     public async listOrderBook(
         currencyPair: string,
-        opts: { interval?: string; limit?: number },
+        opts: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OrderBook }> {
         const localVarPath = this.client.basePath + '/spot/order_book';
         const localVarQueryParameters: any = {};
@@ -178,6 +179,10 @@ export class SpotApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.withId !== undefined) {
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
 
         const config: AxiosRequestConfig = {

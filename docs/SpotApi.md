@@ -166,7 +166,8 @@ const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'interval': '0', // string | Order depth. 0 means no aggregation is applied. default to 0
-  'limit': 10 // number | Maximum number of order depth data in asks or bids
+  'limit': 10, // number | Maximum number of order depth data in asks or bids
+  'withId': false // boolean | Return order book ID
 };
 api.listOrderBook(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -181,6 +182,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **interval** | **string**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
+ **withId** | **boolean**| Return order book ID | [optional] [default to undefined]
 
 ### Return type
 

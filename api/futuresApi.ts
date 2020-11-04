@@ -11,6 +11,7 @@
 
 /* tslint:disable:no-unused-locals */
 import { Contract } from '../model/contract';
+import { ContractStat } from '../model/contractStat';
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
@@ -479,6 +480,68 @@ export class FuturesApi {
 
         const authSettings = [];
         return this.client.request<Array<InsuranceRecord>>(config, 'Array<InsuranceRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Futures stats
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.interval
+     * @param opts.limit
+     */
+    public async listContractStats(
+        settle: 'btc' | 'usdt',
+        contract: string,
+        opts: { interval?: '5m' | '15m' | '30m' | '1h' | '4h' | '1d'; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/contract_stats'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listContractStats.');
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error('Required parameter contract was null or undefined when calling listContractStats.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+
+        if (opts.interval !== undefined) {
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'5m' | '15m' | '30m' | '1h' | '4h' | '1d'",
+            );
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<ContractStat>>(config, 'Array<ContractStat>', authSettings);
     }
 
     /**

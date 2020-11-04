@@ -77,8 +77,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
-  'from': 56, // number | Time range beginning, default to 7 days before current time
-  'to': 56, // number | Time range ending, default to current time
+  'from': 1602120000, // number | Time range beginning, default to 7 days before current time
+  'to': 1602123600, // number | Time range ending, default to current time
   'limit': 100, // number | Maximum number of records returned in one list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -132,8 +132,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
-  'from': 56, // number | Time range beginning, default to 7 days before current time
-  'to': 56, // number | Time range ending, default to current time
+  'from': 1602120000, // number | Time range beginning, default to 7 days before current time
+  'to': 1602123600, // number | Time range ending, default to current time
   'limit': 100, // number | Maximum number of records returned in one list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -232,8 +232,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'subUid': "10003", // string | Sub account user ID. Return records related to all sub accounts if not specified
-  'from': 56, // number | Time range beginning, default to 7 days before current time
-  'to': 56, // number | Time range ending, default to current time
+  'from': 1602120000, // number | Time range beginning, default to 7 days before current time
+  'to': 1602123600, // number | Time range ending, default to current time
   'limit': 100, // number | Maximum number of records returned in one list
   'offset': 0 // number | List offset, starting from 0
 };

@@ -2,6 +2,7 @@ export * from './batchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
 export * from './contract';
+export * from './contractStat';
 export * from './currencyPair';
 export * from './deliveryContract';
 export * from './deliverySettlement';
@@ -57,6 +58,7 @@ import { BatchOrder } from './batchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
 import { Contract } from './contract';
+import { ContractStat } from './contractStat';
 import { CurrencyPair } from './currencyPair';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
@@ -153,6 +155,7 @@ const typeMap: { [index: string]: any } = {
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
     Contract: Contract,
+    ContractStat: ContractStat,
     CurrencyPair: CurrencyPair,
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,

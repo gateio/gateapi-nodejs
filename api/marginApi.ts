@@ -68,6 +68,48 @@ export class MarginApi {
 
     /**
      *
+     * @summary Query one single margin currency pair
+     * @param currencyPair Margin currency pair
+     */
+    public async getMarginCurrencyPair(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: MarginCurrencyPair }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/currency_pairs/{currency_pair}'.replace(
+                '{' + 'currency_pair' + '}',
+                encodeURIComponent(String(currencyPair)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error(
+                'Required parameter currencyPair was null or undefined when calling getMarginCurrencyPair.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<MarginCurrencyPair>(config, 'MarginCurrencyPair', authSettings);
+    }
+
+    /**
+     *
      * @summary Order book of lending loans
      * @param currency Retrieved specified currency related data
      */
