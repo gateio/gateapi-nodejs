@@ -19,7 +19,7 @@ export class FuturesLiquidate {
      */
     'contract'?: string;
     /**
-     * Position leverage
+     * Position leverage. Not returned in public endpoints.
      */
     'leverage'?: string;
     /**
@@ -27,23 +27,23 @@ export class FuturesLiquidate {
      */
     'size'?: number;
     /**
-     * Position margin
+     * Position margin. Not returned in public endpoints.
      */
     'margin'?: string;
     /**
-     * Average entry price
+     * Average entry price. Not returned in public endpoints.
      */
     'entryPrice'?: string;
     /**
-     * Liquidation price
+     * Liquidation price. Not returned in public endpoints.
      */
     'liqPrice'?: string;
     /**
-     * Mark price
+     * Mark price. Not returned in public endpoints.
      */
     'markPrice'?: string;
     /**
-     * Liquidation order ID
+     * Liquidation order ID. Not returned in public endpoints.
      */
     'orderId'?: number;
     /**

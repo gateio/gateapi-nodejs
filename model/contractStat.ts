@@ -23,9 +23,13 @@ export class ContractStat {
      */
     'lsrAccount'?: number;
     /**
-     * Liquidation size
+     * Long liquidation size
      */
-    'liqSize'?: number;
+    'longLiqSize'?: number;
+    /**
+     * Short liquidation size
+     */
+    'shortLiqSize'?: number;
     /**
      * Open interest
      */
@@ -50,8 +54,13 @@ export class ContractStat {
             type: 'number',
         },
         {
-            name: 'liqSize',
-            baseName: 'liq_size',
+            name: 'longLiqSize',
+            baseName: 'long_liq_size',
+            type: 'number',
+        },
+        {
+            name: 'shortLiqSize',
+            baseName: 'short_liq_size',
             type: 'number',
         },
         {

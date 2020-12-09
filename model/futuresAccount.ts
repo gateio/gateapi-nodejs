@@ -38,6 +38,10 @@ export class FuturesAccount {
      * Settle currency
      */
     'currency'?: string;
+    /**
+     * Whether dual mode is enabled
+     */
+    'inDualMode'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -76,6 +80,11 @@ export class FuturesAccount {
             name: 'currency',
             baseName: 'currency',
             type: 'string',
+        },
+        {
+            name: 'inDualMode',
+            baseName: 'in_dual_mode',
+            type: 'boolean',
         },
     ];
 

@@ -11,4 +11,5 @@ Name | Type | Description | Notes
 **available** | **string** | Available balance to transfer out or trade | [optional] [default to undefined]
 **point** | **string** | POINT amount | [optional] [default to undefined]
 **currency** | **string** | Settle currency | [optional] [default to undefined]
+**inDualMode** | **boolean** | Whether dual mode is enabled | [optional] [default to undefined]
 
