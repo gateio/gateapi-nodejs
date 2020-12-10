@@ -141,7 +141,7 @@ const enumsMap: { [index: string]: any } = {
     'Order.Account': Order.Account,
     'Order.Side': Order.Side,
     'Order.TimeInForce': Order.TimeInForce,
-    'Position.DualMode': Position.DualMode,
+    'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'RepayRequest.Mode': RepayRequest.Mode,
     'SubAccountTransfer.Direction': SubAccountTransfer.Direction,

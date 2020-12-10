@@ -25,9 +25,9 @@ Name | Type | Description | Notes
 **adlRanking** | **number** | ADL ranking, range from 1 to 5 | [optional] [readonly] [default to undefined]
 **pendingOrders** | **number** | Current open orders | [optional] [readonly] [default to undefined]
 **closeOrder** | [**PositionCloseOrder**](PositionCloseOrder.md) |  | [optional] [default to undefined]
-**dualMode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]
+**mode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]
 
-## Enum: Position.DualMode
+## Enum: Position.Mode
 
 * `Single` (value: `'single'`)
 

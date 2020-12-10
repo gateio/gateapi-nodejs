@@ -1169,7 +1169,7 @@ const api = new GateApi.DeliveryApi(client);
 const settle = "usdt"; // 'usdt' | Settle currency
 const status = "status_example"; // 'open' | 'finished' | List orders based on status
 const opts = {
-  'contract': "BTC_USD", // string | Futures contract, return related data only if specified
+  'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in one list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -1265,7 +1265,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.DeliveryApi(client);
 const settle = "usdt"; // 'usdt' | Settle currency
-const contract = "BTC_USD"; // string | Futures contract
+const contract = "BTC_USDT"; // string | Futures contract
 api.cancelPriceTriggeredDeliveryOrderList(settle, contract)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));

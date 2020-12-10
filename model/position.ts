@@ -99,7 +99,7 @@ export class Position {
     /**
      * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: short position in dual mode
      */
-    'dualMode'?: Position.DualMode;
+    'mode'?: Position.Mode;
 
     static discriminator: string | undefined = undefined;
 
@@ -210,9 +210,9 @@ export class Position {
             type: 'PositionCloseOrder',
         },
         {
-            name: 'dualMode',
-            baseName: 'dual_mode',
-            type: 'Position.DualMode',
+            name: 'mode',
+            baseName: 'mode',
+            type: 'Position.Mode',
         },
     ];
 
@@ -222,7 +222,7 @@ export class Position {
 }
 
 export namespace Position {
-    export enum DualMode {
+    export enum Mode {
         Single = <any>'single',
         DualLong = <any>'dual_long',
         DualShort = <any>'dual_short',
