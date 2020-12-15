@@ -41,6 +41,7 @@ export * from './positionCloseOrder';
 export * from './repayRequest';
 export * from './repayment';
 export * from './spotAccount';
+export * from './subAccountBalance';
 export * from './subAccountTransfer';
 export * from './ticker';
 export * from './trade';
@@ -97,6 +98,7 @@ import { PositionCloseOrder } from './positionCloseOrder';
 import { RepayRequest } from './repayRequest';
 import { Repayment } from './repayment';
 import { SpotAccount } from './spotAccount';
+import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { Ticker } from './ticker';
 import { Trade } from './trade';
@@ -195,6 +197,7 @@ const typeMap: { [index: string]: any } = {
     RepayRequest: RepayRequest,
     Repayment: Repayment,
     SpotAccount: SpotAccount,
+    SubAccountBalance: SubAccountBalance,
     SubAccountTransfer: SubAccountTransfer,
     Ticker: Ticker,
     Trade: Trade,

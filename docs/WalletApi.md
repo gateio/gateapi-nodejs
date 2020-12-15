@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Retrieve withdrawal status
+[**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 
 
 ## getDepositAddress
@@ -344,6 +345,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<WithdrawStatus>; }> [WithdrawStatus](WithdrawStatus.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSubAccountBalances
+
+> Promise<{ response: http.IncomingMessage; body: Array<SubAccountBalance>; }> listSubAccountBalances(opts)
+
+Retrieve sub account balances
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'subUid': "10003" // string | Sub account user ID. Return records related to all sub accounts if not specified
+};
+api.listSubAccountBalances(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SubAccountBalance>; }> [SubAccountBalance](SubAccountBalance.md)
 
 ### Authorization
 

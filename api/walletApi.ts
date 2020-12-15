@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
+import { SubAccountBalance } from '../model/subAccountBalance';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
 import { Transfer } from '../model/transfer';
 import { WithdrawStatus } from '../model/withdrawStatus';
@@ -341,5 +342,41 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<WithdrawStatus>>(config, 'Array<WithdrawStatus>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve sub account balances
+     * @param opts Optional parameters
+     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     */
+    public async listSubAccountBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountBalance> }> {
+        const localVarPath = this.client.basePath + '/wallet/sub_account_balances';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SubAccountBalance>>(config, 'Array<SubAccountBalance>', authSettings);
     }
 }
