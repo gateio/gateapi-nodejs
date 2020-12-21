@@ -13,6 +13,7 @@
 import { BatchOrder } from '../model/batchOrder';
 import { CancelOrder } from '../model/cancelOrder';
 import { CancelOrderResult } from '../model/cancelOrderResult';
+import { Currency } from '../model/currency';
 import { CurrencyPair } from '../model/currencyPair';
 import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
@@ -38,6 +39,68 @@ export class SpotApi {
         } else {
             this.client = new ApiClient();
         }
+    }
+
+    /**
+     *
+     * @summary List all currencies\' detail
+     */
+    public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
+        const localVarPath = this.client.basePath + '/spot/currencies';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<Currency>>(config, 'Array<Currency>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get detail of one particular currency
+     * @param currency Currency name
+     */
+    public async getCurrency(currency: string): Promise<{ response: AxiosResponse; body: Currency }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getCurrency.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Currency>(config, 'Currency', authSettings);
     }
 
     /**

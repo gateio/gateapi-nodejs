@@ -27,13 +27,41 @@ export class ContractStat {
      */
     'longLiqSize'?: number;
     /**
+     * Long liquidation amount(base currency)
+     */
+    'longLiqAmount'?: number;
+    /**
+     * Long liquidation volume(quote currency)
+     */
+    'longLiqUsd'?: number;
+    /**
      * Short liquidation size
      */
     'shortLiqSize'?: number;
     /**
-     * Open interest
+     * Short liquidation amount(base currency)
+     */
+    'shortLiqAmount'?: number;
+    /**
+     * Short liquidation volume(quote currency)
+     */
+    'shortLiqUsd'?: number;
+    /**
+     * Open interest size
      */
     'openInterest'?: number;
+    /**
+     * Open interest volume(quote currency)
+     */
+    'openInterestUsd'?: number;
+    /**
+     * Top trader long/short account ratio
+     */
+    'topLsrAccount'?: string;
+    /**
+     * Top trader long/short position ratio
+     */
+    'topLsrSize'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -59,14 +87,49 @@ export class ContractStat {
             type: 'number',
         },
         {
+            name: 'longLiqAmount',
+            baseName: 'long_liq_amount',
+            type: 'number',
+        },
+        {
+            name: 'longLiqUsd',
+            baseName: 'long_liq_usd',
+            type: 'number',
+        },
+        {
             name: 'shortLiqSize',
             baseName: 'short_liq_size',
+            type: 'number',
+        },
+        {
+            name: 'shortLiqAmount',
+            baseName: 'short_liq_amount',
+            type: 'number',
+        },
+        {
+            name: 'shortLiqUsd',
+            baseName: 'short_liq_usd',
             type: 'number',
         },
         {
             name: 'openInterest',
             baseName: 'open_interest',
             type: 'number',
+        },
+        {
+            name: 'openInterestUsd',
+            baseName: 'open_interest_usd',
+            type: 'number',
+        },
+        {
+            name: 'topLsrAccount',
+            baseName: 'top_lsr_account',
+            type: 'string',
+        },
+        {
+            name: 'topLsrSize',
+            baseName: 'top_lsr_size',
+            type: 'string',
         },
     ];
 
