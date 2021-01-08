@@ -74,6 +74,10 @@ export class BatchOrder {
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
+     * Amount to display for the iceberg order. Null or 0 for normal orders
+     */
+    'iceberg'?: string;
+    /**
      * Used in margin trading(i.e. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
      */
     'autoBorrow'?: boolean;
@@ -195,6 +199,11 @@ export class BatchOrder {
             name: 'timeInForce',
             baseName: 'time_in_force',
             type: 'BatchOrder.TimeInForce',
+        },
+        {
+            name: 'iceberg',
+            baseName: 'iceberg',
+            type: 'string',
         },
         {
             name: 'autoBorrow',

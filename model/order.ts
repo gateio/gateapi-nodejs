@@ -62,6 +62,10 @@ export class Order {
      */
     'timeInForce'?: Order.TimeInForce;
     /**
+     * Amount to display for the iceberg order. Null or 0 for normal orders
+     */
+    'iceberg'?: string;
+    /**
      * Used in margin trading(i.e. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
      */
     'autoBorrow'?: boolean;
@@ -168,6 +172,11 @@ export class Order {
             name: 'timeInForce',
             baseName: 'time_in_force',
             type: 'Order.TimeInForce',
+        },
+        {
+            name: 'iceberg',
+            baseName: 'iceberg',
+            type: 'string',
         },
         {
             name: 'autoBorrow',

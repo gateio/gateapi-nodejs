@@ -57,11 +57,11 @@ export class ContractStat {
     /**
      * Top trader long/short account ratio
      */
-    'topLsrAccount'?: string;
+    'topLsrAccount'?: number;
     /**
      * Top trader long/short position ratio
      */
-    'topLsrSize'?: string;
+    'topLsrSize'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -124,12 +124,12 @@ export class ContractStat {
         {
             name: 'topLsrAccount',
             baseName: 'top_lsr_account',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'topLsrSize',
             baseName: 'top_lsr_size',
-            type: 'string',
+            type: 'number',
         },
     ];
 
