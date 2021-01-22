@@ -49,22 +49,6 @@ export class CurrencyPair {
      * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold
      */
     'tradeStatus'?: CurrencyPair.TradeStatus;
-    /**
-     * ETF net value
-     */
-    'etfNetValue'?: string;
-    /**
-     * ETF previous net value at re-balancing time
-     */
-    'etfPreNetValue'?: string;
-    /**
-     * ETF previous re-balancing time
-     */
-    'etfPreTimestamp'?: number;
-    /**
-     * ETF current leverage
-     */
-    'etfLeverage'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -113,26 +97,6 @@ export class CurrencyPair {
             name: 'tradeStatus',
             baseName: 'trade_status',
             type: 'CurrencyPair.TradeStatus',
-        },
-        {
-            name: 'etfNetValue',
-            baseName: 'etf_net_value',
-            type: 'string',
-        },
-        {
-            name: 'etfPreNetValue',
-            baseName: 'etf_pre_net_value',
-            type: 'string',
-        },
-        {
-            name: 'etfPreTimestamp',
-            baseName: 'etf_pre_timestamp',
-            type: 'number',
-        },
-        {
-            name: 'etfLeverage',
-            baseName: 'etf_leverage',
-            type: 'string',
         },
     ];
 

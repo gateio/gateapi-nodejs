@@ -46,6 +46,22 @@ export class Ticker {
      * Lowest price in 24h
      */
     'low24h'?: string;
+    /**
+     * ETF net value
+     */
+    'etfNetValue'?: string;
+    /**
+     * ETF previous net value at re-balancing time
+     */
+    'etfPreNetValue'?: string;
+    /**
+     * ETF previous re-balancing time
+     */
+    'etfPreTimestamp'?: number;
+    /**
+     * ETF current leverage
+     */
+    'etfLeverage'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -93,6 +109,26 @@ export class Ticker {
         {
             name: 'low24h',
             baseName: 'low_24h',
+            type: 'string',
+        },
+        {
+            name: 'etfNetValue',
+            baseName: 'etf_net_value',
+            type: 'string',
+        },
+        {
+            name: 'etfPreNetValue',
+            baseName: 'etf_pre_net_value',
+            type: 'string',
+        },
+        {
+            name: 'etfPreTimestamp',
+            baseName: 'etf_pre_timestamp',
+            type: 'number',
+        },
+        {
+            name: 'etfLeverage',
+            baseName: 'etf_leverage',
             type: 'string',
         },
     ];
