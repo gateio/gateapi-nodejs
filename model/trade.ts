@@ -19,6 +19,10 @@ export class Trade {
      */
     'createTime'?: string;
     /**
+     * Trading time, with millisecond precision
+     */
+    'createTimeMs'?: string;
+    /**
      * Order side
      */
     'side'?: Trade.Side;
@@ -66,6 +70,11 @@ export class Trade {
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'string',
+        },
+        {
+            name: 'createTimeMs',
+            baseName: 'create_time_ms',
             type: 'string',
         },
         {

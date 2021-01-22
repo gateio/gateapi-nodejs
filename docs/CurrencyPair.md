@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **amountPrecision** | **number** | Amount scale | [optional] [default to undefined]
 **precision** | **number** | Price scale | [optional] [default to undefined]
 **tradeStatus** | **string** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] [default to undefined]
+**etfNetValue** | **string** | ETF net value | [optional] [default to undefined]
+**etfPreNetValue** | **string** | ETF previous net value at re-balancing time | [optional] [default to undefined]
+**etfPreTimestamp** | **number** | ETF previous re-balancing time | [optional] [default to undefined]
+**etfLeverage** | **string** | ETF current leverage | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

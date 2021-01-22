@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Trade ID | [optional] [default to undefined]
 **createTime** | **string** | Trading time | [optional] [default to undefined]
+**createTimeMs** | **string** | Trading time, with millisecond precision | [optional] [default to undefined]
 **side** | **string** | Order side | [optional] [default to undefined]
 **role** | **string** | Trade role | [optional] [default to undefined]
 **amount** | **string** | Trade amount | [optional] [default to undefined]
