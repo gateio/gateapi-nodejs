@@ -146,7 +146,8 @@ const settle = 'btc'; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'interval': '0', // '0' | '0.1' | '0.01' | Order depth. 0 means no aggregation is applied. default to 0
-  'limit': 10 // number | Maximum number of order depth data in asks or bids
+  'limit': 10, // number | Maximum number of order depth data in asks or bids
+  'withId': false // boolean | Whether order book update ID would be returned. This ID increments by 1 on every order book update
 };
 api.listFuturesOrderBook(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [default to undefined]
  **interval** | **Interval**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
+ **withId** | **boolean**| Whether order book update ID would be returned. This ID increments by 1 on every order book update | [optional] [default to undefined]
 
 ### Return type
 
@@ -1409,7 +1411,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = 'btc'; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records returned in one list
+  'offset': 0 // number | List offset, starting from 0
 };
 api.listPositionClose(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1424,6 +1427,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to &#39;btc&#39;]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
 

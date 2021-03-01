@@ -14,6 +14,7 @@ import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SubAccountBalance } from '../model/subAccountBalance';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
+import { TradeFee } from '../model/tradeFee';
 import { Transfer } from '../model/transfer';
 import { WithdrawStatus } from '../model/withdrawStatus';
 import { ObjectSerializer } from '../model/models';
@@ -378,5 +379,32 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<SubAccountBalance>>(config, 'Array<SubAccountBalance>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve personal trading fee
+     */
+    public async getTradeFee(): Promise<{ response: AxiosResponse; body: TradeFee }> {
+        const localVarPath = this.client.basePath + '/wallet/fee';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TradeFee>(config, 'TradeFee', authSettings);
     }
 }

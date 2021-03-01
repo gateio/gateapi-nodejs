@@ -53,15 +53,15 @@ export class Ticker {
     /**
      * ETF previous net value at re-balancing time
      */
-    'etfPreNetValue'?: string;
+    'etfPreNetValue'?: string | null;
     /**
      * ETF previous re-balancing time
      */
-    'etfPreTimestamp'?: number;
+    'etfPreTimestamp'?: number | null;
     /**
      * ETF current leverage
      */
-    'etfLeverage'?: string;
+    'etfLeverage'?: string | null;
 
     static discriminator: string | undefined = undefined;
 

@@ -383,7 +383,7 @@ export class SpotApi {
     }
 
     /**
-     *
+     * This API is deprecated in favour of new fee retrieving API `/wallet/fee`.
      * @summary Query user trading fee rates
      * @param opts Optional parameters
      * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs

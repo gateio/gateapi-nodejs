@@ -19,6 +19,10 @@ export class FuturesTrade {
      */
     'createTime'?: number;
     /**
+     * Trading time, with milliseconds set to 3 decimal places.
+     */
+    'createTimeMs'?: number;
+    /**
      * Futures contract
      */
     'contract'?: string;
@@ -42,6 +46,11 @@ export class FuturesTrade {
         {
             name: 'createTime',
             baseName: 'create_time',
+            type: 'number',
+        },
+        {
+            name: 'createTimeMs',
+            baseName: 'create_time_ms',
             type: 'number',
         },
         {

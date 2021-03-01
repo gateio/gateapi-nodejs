@@ -13,6 +13,10 @@ import { FuturesOrderBookItem } from './futuresOrderBookItem';
 
 export class FuturesOrderBook {
     /**
+     * Order Book ID. Increase by 1 on every order book change. Set `with_id=true` to include this field in response
+     */
+    'id'?: number;
+    /**
      * Asks order depth
      */
     'asks': Array<FuturesOrderBookItem>;
@@ -24,6 +28,11 @@ export class FuturesOrderBook {
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
+        },
         {
             name: 'asks',
             baseName: 'asks',

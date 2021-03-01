@@ -137,11 +137,12 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
+     * @param opts.withId Whether order book update ID would be returned. This ID increments by 1 on every order book update
      */
     public async listFuturesOrderBook(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number },
+        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -175,6 +176,10 @@ export class FuturesApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.withId !== undefined) {
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
 
         const config: AxiosRequestConfig = {
@@ -1588,10 +1593,11 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number },
+        opts: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
         const localVarPath =
             this.client.basePath +
@@ -1618,6 +1624,10 @@ export class FuturesApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const config: AxiosRequestConfig = {

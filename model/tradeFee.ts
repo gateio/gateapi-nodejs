@@ -42,6 +42,14 @@ export class TradeFee {
      * Point type. 0 - Initial version. 1 - new version since 202009
      */
     'pointType'?: string;
+    /**
+     * Futures trading taker fee
+     */
+    'futuresTakerFee'?: string;
+    /**
+     * Future trading maker fee
+     */
+    'futuresMakerFee'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -84,6 +92,16 @@ export class TradeFee {
         {
             name: 'pointType',
             baseName: 'point_type',
+            type: 'string',
+        },
+        {
+            name: 'futuresTakerFee',
+            baseName: 'futures_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'futuresMakerFee',
+            baseName: 'futures_maker_fee',
             type: 'string',
         },
     ];

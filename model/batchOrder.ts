@@ -74,7 +74,7 @@ export class BatchOrder {
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders
+     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the amount totally
      */
     'iceberg'?: string;
     /**

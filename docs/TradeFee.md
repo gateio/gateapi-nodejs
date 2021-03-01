@@ -12,4 +12,6 @@ Name | Type | Description | Notes
 **gtMakerFee** | **string** | Maker fee rate if using GT deduction. It will be 0 if GT deduction is disabled | [optional] [default to undefined]
 **loanFee** | **string** | Loan fee rate of margin lending | [optional] [default to undefined]
 **pointType** | **string** | Point type. 0 - Initial version. 1 - new version since 202009 | [optional] [default to undefined]
+**futuresTakerFee** | **string** | Futures trading taker fee | [optional] [default to undefined]
+**futuresMakerFee** | **string** | Future trading maker fee | [optional] [default to undefined]
 

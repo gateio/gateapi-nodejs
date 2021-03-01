@@ -19,15 +19,15 @@ export class LedgerRecord {
      */
     'txid'?: string;
     /**
-     * Record time
+     * Operation time
      */
     'timestamp'?: string;
     /**
-     * Trade amount
+     * Currency amount
      */
     'amount': string;
     /**
-     * Record currency
+     * Currency name
      */
     'currency': string;
     /**
@@ -42,6 +42,10 @@ export class LedgerRecord {
      * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation
      */
     'status'?: LedgerRecord.Status;
+    /**
+     * Name of the chain used in withdrawals
+     */
+    'chain'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +89,11 @@ export class LedgerRecord {
             name: 'status',
             baseName: 'status',
             type: 'LedgerRecord.Status',
+        },
+        {
+            name: 'chain',
+            baseName: 'chain',
+            type: 'string',
         },
     ];
 

@@ -136,11 +136,12 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
+     * @param opts.withId Whether order book update ID would be returned. This ID increments by 1 on every order book update
      */
     public async listDeliveryOrderBook(
         settle: 'usdt',
         contract: string,
-        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number },
+        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -174,6 +175,10 @@ export class DeliveryApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.withId !== undefined) {
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
 
         const config: AxiosRequestConfig = {
