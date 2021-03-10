@@ -11,11 +11,19 @@ Name | Type | Description | Notes
 **uid** | **string** | Main account user ID | [optional] [readonly] [default to undefined]
 **timest** | **string** | Transfer timestamp | [optional] [readonly] [default to undefined]
 **source** | **string** | Where the operation is initiated from | [optional] [readonly] [default to undefined]
+**subAccountType** | **string** | Target sub user\&#39;s account. &#x60;spot&#x60; - spot account, &#x60;futures&#x60; - perpetual contract account | [optional] [default to &#39;spot&#39;]
 
 ## Enum: SubAccountTransfer.Direction
 
 * `To` (value: `'to'`)
 
 * `From` (value: `'from'`)
+
+
+## Enum: SubAccountTransfer.SubAccountType
+
+* `Spot` (value: `'spot'`)
+
+* `Futures` (value: `'futures'`)
 
 

@@ -21,6 +21,8 @@ Method | HTTP request | Description
 [**listLoanRecords**](MarginApi.md#listLoanRecords) | **GET** /margin/loan_records | List repayment records of specified loan
 [**getLoanRecord**](MarginApi.md#getLoanRecord) | **GET** /margin/loan_records/{loan_record_id} | Get one single loan record
 [**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
+[**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
+[**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
 
 
 ## listMarginCurrencyPairs
@@ -804,4 +806,86 @@ Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## getAutoRepayStatus
+
+> Promise<{ response: http.IncomingMessage; body: AutoRepaySetting; }> getAutoRepayStatus()
+
+Retrieve user auto repayment setting
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+api.getAutoRepayStatus()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting](AutoRepaySetting.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setAutoRepay
+
+> Promise<{ response: http.IncomingMessage; body: AutoRepaySetting; }> setAutoRepay(status)
+
+Update user\&#39;s auto repayment setting
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const status = "true"; // string | New auto repayment status. `on` - enabled, `off` - disabled
+api.setAutoRepay(status)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**| New auto repayment status. &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting](AutoRepaySetting.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json

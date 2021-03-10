@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -279,7 +279,7 @@ export class WalletApi {
     }
 
     /**
-     *
+     * Support transferring with sub user\'s spot or futures account. Note that only main user\'s spot account is used no matter which sub user\'s account is operated.
      * @summary Transfer between main and sub accounts
      * @param subAccountTransfer
      */

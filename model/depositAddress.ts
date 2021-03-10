@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -8,6 +8,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+
+import { MultiChainAddressItem } from './multiChainAddressItem';
 
 export class DepositAddress {
     /**
@@ -18,6 +20,7 @@ export class DepositAddress {
      * Deposit address
      */
     'address': string;
+    'multichainAddress'?: Array<MultiChainAddressItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,6 +34,11 @@ export class DepositAddress {
             name: 'address',
             baseName: 'address',
             type: 'string',
+        },
+        {
+            name: 'multichainAddress',
+            baseName: 'multichain_address',
+            type: 'Array<MultiChainAddressItem>',
         },
     ];
 

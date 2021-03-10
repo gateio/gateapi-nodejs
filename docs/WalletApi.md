@@ -32,7 +32,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
-const currency = "currency_example"; // string | Currency name
+const currency = "USDT"; // string | Currency name
 api.getDepositAddress(currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -273,6 +273,8 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer>; }> [SubAccou
 > Promise<{ response: http.IncomingMessage; body?: any; }> transferWithSubAccount(subAccountTransfer)
 
 Transfer between main and sub accounts
+
+Support transferring with sub user\&#39;s spot or futures account. Note that only main user\&#39;s spot account is used no matter which sub user\&#39;s account is operated.
 
 ### Example
 

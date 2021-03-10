@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { AutoRepaySetting } from '../model/autoRepaySetting';
 import { FundingAccount } from '../model/fundingAccount';
 import { FundingBookItem } from '../model/fundingBookItem';
 import { Loan } from '../model/loan';
@@ -805,5 +806,67 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<LoanRecord>(config, 'LoanRecord', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve user auto repayment setting
+     */
+    public async getAutoRepayStatus(): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
+        const localVarPath = this.client.basePath + '/margin/auto_repay';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoRepaySetting>(config, 'AutoRepaySetting', authSettings);
+    }
+
+    /**
+     *
+     * @summary Update user\'s auto repayment setting
+     * @param status New auto repayment status. &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled
+     */
+    public async setAutoRepay(status: string): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
+        const localVarPath = this.client.basePath + '/margin/auto_repay';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling setAutoRepay.');
+        }
+
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<AutoRepaySetting>(config, 'AutoRepaySetting', authSettings);
     }
 }

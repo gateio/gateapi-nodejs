@@ -9,50 +9,59 @@
  * Do not edit the class manually.
  */
 
-export class Repayment {
+export class MultiChainAddressItem {
     /**
-     * Loan record ID
+     * Name of the chain
      */
-    'id'?: string;
+    'chain'?: string;
     /**
-     * Repayment time
+     * Deposit address
      */
-    'createTime'?: string;
+    'address'?: string;
     /**
-     * Repaid principal
+     * Notes that some currencies required(e.g., Tag, Memo) when depositing
      */
-    'principal'?: string;
+    'paymentId'?: string;
     /**
-     * Repaid interest
+     * Note type, `Tag` or `Memo`
      */
-    'interest'?: string;
+    'paymentName'?: string;
+    /**
+     * Whether address is obtained. 0 means success. 1 is failure, which needs retries
+     */
+    'obtainFailed'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'chain',
+            baseName: 'chain',
             type: 'string',
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
+            name: 'address',
+            baseName: 'address',
             type: 'string',
         },
         {
-            name: 'principal',
-            baseName: 'principal',
+            name: 'paymentId',
+            baseName: 'payment_id',
             type: 'string',
         },
         {
-            name: 'interest',
-            baseName: 'interest',
+            name: 'paymentName',
+            baseName: 'payment_name',
             type: 'string',
+        },
+        {
+            name: 'obtainFailed',
+            baseName: 'obtain_failed',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return Repayment.attributeTypeMap;
+        return MultiChainAddressItem.attributeTypeMap;
     }
 }

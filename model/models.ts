@@ -1,3 +1,4 @@
+export * from './autoRepaySetting';
 export * from './batchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
@@ -32,6 +33,7 @@ export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
 export * from './marginCurrencyPair';
+export * from './multiChainAddressItem';
 export * from './myFuturesTrade';
 export * from './openOrders';
 export * from './order';
@@ -56,6 +58,7 @@ import querystring = require('querystring');
 import crypto = require('crypto');
 import { URL } from 'url';
 
+import { AutoRepaySetting } from './autoRepaySetting';
 import { BatchOrder } from './batchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
@@ -90,6 +93,7 @@ import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
 import { MarginCurrencyPair } from './marginCurrencyPair';
+import { MultiChainAddressItem } from './multiChainAddressItem';
 import { MyFuturesTrade } from './myFuturesTrade';
 import { OpenOrders } from './openOrders';
 import { Order } from './order';
@@ -113,6 +117,7 @@ import { WithdrawStatus } from './withdrawStatus';
 const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
 
 const enumsMap: { [index: string]: any } = {
+    'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchOrder.Status': BatchOrder.Status,
     'BatchOrder.Type': BatchOrder.Type,
     'BatchOrder.Account': BatchOrder.Account,
@@ -149,6 +154,7 @@ const enumsMap: { [index: string]: any } = {
     'PositionClose.Side': PositionClose.Side,
     'RepayRequest.Mode': RepayRequest.Mode,
     'SubAccountTransfer.Direction': SubAccountTransfer.Direction,
+    'SubAccountTransfer.SubAccountType': SubAccountTransfer.SubAccountType,
     'Trade.Side': Trade.Side,
     'Trade.Role': Trade.Role,
     'Transfer.From': Transfer.From,
@@ -156,6 +162,7 @@ const enumsMap: { [index: string]: any } = {
 };
 
 const typeMap: { [index: string]: any } = {
+    AutoRepaySetting: AutoRepaySetting,
     BatchOrder: BatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
@@ -190,6 +197,7 @@ const typeMap: { [index: string]: any } = {
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
     MarginCurrencyPair: MarginCurrencyPair,
+    MultiChainAddressItem: MultiChainAddressItem,
     MyFuturesTrade: MyFuturesTrade,
     OpenOrders: OpenOrders,
     Order: Order,

@@ -9,32 +9,30 @@
  * Do not edit the class manually.
  */
 
-export class SubAccountBalance {
+export class AutoRepaySetting {
     /**
-     * User ID
+     * Auto repayment status. `on` - enabled, `off` - disabled
      */
-    'uid'?: string;
-    /**
-     * Available balances of currencies
-     */
-    'available'?: { [key: string]: string };
+    'status'?: AutoRepaySetting.Status;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'string',
-        },
-        {
-            name: 'available',
-            baseName: 'available',
-            type: '{ [key: string]: string; }',
+            name: 'status',
+            baseName: 'status',
+            type: 'AutoRepaySetting.Status',
         },
     ];
 
     static getAttributeTypeMap() {
-        return SubAccountBalance.attributeTypeMap;
+        return AutoRepaySetting.attributeTypeMap;
+    }
+}
+
+export namespace AutoRepaySetting {
+    export enum Status {
+        True = <any>'true',
+        False = <any>'false',
     }
 }

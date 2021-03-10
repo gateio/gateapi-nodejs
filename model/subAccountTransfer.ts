@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -38,6 +38,10 @@ export class SubAccountTransfer {
      * Where the operation is initiated from
      */
     'source'?: string;
+    /**
+     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account
+     */
+    'subAccountType'?: SubAccountTransfer.SubAccountType;
 
     static discriminator: string | undefined = undefined;
 
@@ -77,6 +81,11 @@ export class SubAccountTransfer {
             baseName: 'source',
             type: 'string',
         },
+        {
+            name: 'subAccountType',
+            baseName: 'sub_account_type',
+            type: 'SubAccountTransfer.SubAccountType',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -88,5 +97,9 @@ export namespace SubAccountTransfer {
     export enum Direction {
         To = <any>'to',
         From = <any>'from',
+    }
+    export enum SubAccountType {
+        Spot = <any>'spot',
+        Futures = <any>'futures',
     }
 }
