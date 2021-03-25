@@ -19,9 +19,11 @@ import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
 import { SpotAccount } from '../model/spotAccount';
+import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
 import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
 import { TradeFee } from '../model/tradeFee';
+import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -710,7 +712,7 @@ export class SpotApi {
     /**
      *
      * @summary Get a single order
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
      */
     public async getOrder(orderId: string, currencyPair: string): Promise<{ response: AxiosResponse; body: Order }> {
@@ -753,7 +755,7 @@ export class SpotApi {
     /**
      *
      * @summary Cancel a single order
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
      */
     public async cancelOrder(orderId: string, currencyPair: string): Promise<{ response: AxiosResponse; body: Order }> {
@@ -846,5 +848,233 @@ export class SpotApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<Trade>>(config, 'Array<Trade>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve running auto order list
+     * @param status List orders based on status
+     * @param opts Optional parameters
+     * @param opts.market 交易市场
+     * @param opts.account Trading account
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async listSpotPriceTriggeredOrders(
+        status: 'open' | 'finished',
+        opts: { market?: string; account?: 'normal' | 'margin'; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
+        const localVarPath = this.client.basePath + '/spot/price_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error(
+                'Required parameter status was null or undefined when calling listSpotPriceTriggeredOrders.',
+            );
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+
+        if (opts.market !== undefined) {
+            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, 'string');
+        }
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin'");
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotPriceTriggeredOrder>>(
+            config,
+            'Array<SpotPriceTriggeredOrder>',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary Create a price-triggered order
+     * @param spotPriceTriggeredOrder
+     */
+    public async createSpotPriceTriggeredOrder(
+        spotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        const localVarPath = this.client.basePath + '/spot/price_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'spotPriceTriggeredOrder' is not null or undefined
+        if (spotPriceTriggeredOrder === null || spotPriceTriggeredOrder === undefined) {
+            throw new Error(
+                'Required parameter spotPriceTriggeredOrder was null or undefined when calling createSpotPriceTriggeredOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(spotPriceTriggeredOrder, 'SpotPriceTriggeredOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel all open orders
+     * @param opts Optional parameters
+     * @param opts.market 交易市场
+     * @param opts.account Trading account
+     */
+    public async cancelSpotPriceTriggeredOrderList(opts: {
+        market?: string;
+        account?: 'normal' | 'margin';
+    }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
+        const localVarPath = this.client.basePath + '/spot/price_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.market !== undefined) {
+            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, 'string');
+        }
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin'");
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'DELETE',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SpotPriceTriggeredOrder>>(
+            config,
+            'Array<SpotPriceTriggeredOrder>',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary Get a single order
+     * @param orderId ID returned on order successfully being created
+     */
+    public async getSpotPriceTriggeredOrder(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getSpotPriceTriggeredOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SpotPriceTriggeredOrder>(config, 'SpotPriceTriggeredOrder', authSettings);
+    }
+
+    /**
+     *
+     * @summary Cancel a single order
+     * @param orderId ID returned on order successfully being created
+     */
+    public async cancelSpotPriceTriggeredOrder(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling cancelSpotPriceTriggeredOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'DELETE',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<SpotPriceTriggeredOrder>(config, 'SpotPriceTriggeredOrder', authSettings);
     }
 }

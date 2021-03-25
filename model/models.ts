@@ -44,6 +44,9 @@ export * from './positionCloseOrder';
 export * from './repayRequest';
 export * from './repayment';
 export * from './spotAccount';
+export * from './spotPricePutOrder';
+export * from './spotPriceTrigger';
+export * from './spotPriceTriggeredOrder';
 export * from './subAccountBalance';
 export * from './subAccountTransfer';
 export * from './ticker';
@@ -104,6 +107,9 @@ import { PositionCloseOrder } from './positionCloseOrder';
 import { RepayRequest } from './repayRequest';
 import { Repayment } from './repayment';
 import { SpotAccount } from './spotAccount';
+import { SpotPricePutOrder } from './spotPricePutOrder';
+import { SpotPriceTrigger } from './spotPriceTrigger';
+import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { Ticker } from './ticker';
@@ -153,6 +159,10 @@ const enumsMap: { [index: string]: any } = {
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'RepayRequest.Mode': RepayRequest.Mode,
+    'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
+    'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
+    'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
+    'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
     'SubAccountTransfer.Direction': SubAccountTransfer.Direction,
     'SubAccountTransfer.SubAccountType': SubAccountTransfer.SubAccountType,
     'Trade.Side': Trade.Side,
@@ -208,6 +218,9 @@ const typeMap: { [index: string]: any } = {
     RepayRequest: RepayRequest,
     Repayment: Repayment,
     SpotAccount: SpotAccount,
+    SpotPricePutOrder: SpotPricePutOrder,
+    SpotPriceTrigger: SpotPriceTrigger,
+    SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     SubAccountBalance: SubAccountBalance,
     SubAccountTransfer: SubAccountTransfer,
     Ticker: Ticker,

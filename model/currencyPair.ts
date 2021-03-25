@@ -49,6 +49,14 @@ export class CurrencyPair {
      * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold
      */
     'tradeStatus'?: CurrencyPair.TradeStatus;
+    /**
+     * 允许卖出时间，秒级 Unix 时间戳
+     */
+    'sellStart'?: number;
+    /**
+     * 允许买入时间，秒级 Unix 时间戳
+     */
+    'buyStart'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -97,6 +105,16 @@ export class CurrencyPair {
             name: 'tradeStatus',
             baseName: 'trade_status',
             type: 'CurrencyPair.TradeStatus',
+        },
+        {
+            name: 'sellStart',
+            baseName: 'sell_start',
+            type: 'number',
+        },
+        {
+            name: 'buyStart',
+            baseName: 'buy_start',
+            type: 'number',
         },
     ];
 

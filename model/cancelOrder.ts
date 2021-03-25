@@ -18,7 +18,7 @@ export class CancelOrder {
      */
     'currencyPair': string;
     /**
-     * Order ID
+     * Order ID or user custom ID. Custom ID are accepted only within 30 minutes after order creation
      */
     'id': string;
 

@@ -1421,7 +1421,7 @@ export class FuturesApi {
      * Zero-fill order cannot be retrieved 60 seconds after cancellation
      * @summary Get a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      */
     public async getFuturesOrder(
         settle: 'btc' | 'usdt',
@@ -1467,7 +1467,7 @@ export class FuturesApi {
      *
      * @summary Cancel a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      */
     public async cancelFuturesOrder(
         settle: 'btc' | 'usdt',
