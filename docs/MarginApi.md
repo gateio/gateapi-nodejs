@@ -864,7 +864,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const status = "true"; // string | New auto repayment status. `on` - enabled, `off` - disabled
+const status = "on"; // string | New auto repayment status. `on` - enabled, `off` - disabled
 api.setAutoRepay(status)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));

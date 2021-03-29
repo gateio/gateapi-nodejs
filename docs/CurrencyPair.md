@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **amountPrecision** | **number** | Amount scale | [optional] [default to undefined]
 **precision** | **number** | Price scale | [optional] [default to undefined]
 **tradeStatus** | **string** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] [default to undefined]
-**sellStart** | **number** | 允许卖出时间，秒级 Unix 时间戳 | [optional] [default to undefined]
-**buyStart** | **number** | 允许买入时间，秒级 Unix 时间戳 | [optional] [default to undefined]
+**sellStart** | **number** | Sell start unix timestamp in seconds | [optional] [default to undefined]
+**buyStart** | **number** | Buy start unix timestamp in seconds | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

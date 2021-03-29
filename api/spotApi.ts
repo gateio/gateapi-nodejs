@@ -855,7 +855,7 @@ export class SpotApi {
      * @summary Retrieve running auto order list
      * @param status List orders based on status
      * @param opts Optional parameters
-     * @param opts.market 交易市场
+     * @param opts.market Currency pair
      * @param opts.account Trading account
      * @param opts.limit Maximum number of records returned in one list
      * @param opts.offset List offset, starting from 0
@@ -958,7 +958,7 @@ export class SpotApi {
      *
      * @summary Cancel all open orders
      * @param opts Optional parameters
-     * @param opts.market 交易市场
+     * @param opts.market Currency pair
      * @param opts.account Trading account
      */
     public async cancelSpotPriceTriggeredOrderList(opts: {

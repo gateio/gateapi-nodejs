@@ -918,7 +918,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const status = "status_example"; // 'open' | 'finished' | List orders based on status
 const opts = {
-  'market': "BTC_USDT", // string | 交易市场
+  'market': "BTC_USDT", // string | Currency pair
   'account': "account_example", // 'normal' | 'margin' | Trading account
   'limit': 100, // number | Maximum number of records returned in one list
   'offset': 0 // number | List offset, starting from 0
@@ -934,7 +934,7 @@ api.listSpotPriceTriggeredOrders(status, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **Status**| List orders based on status | [default to undefined]
- **market** | **string**| 交易市场 | [optional] [default to undefined]
+ **market** | **string**| Currency pair | [optional] [default to undefined]
  **account** | **Account**| Trading account | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -1013,7 +1013,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
 const opts = {
-  'market': "BTC_USDT", // string | 交易市场
+  'market': "BTC_USDT", // string | Currency pair
   'account': "account_example" // 'normal' | 'margin' | Trading account
 };
 api.cancelSpotPriceTriggeredOrderList(opts)
@@ -1026,7 +1026,7 @@ api.cancelSpotPriceTriggeredOrderList(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **market** | **string**| 交易市场 | [optional] [default to undefined]
+ **market** | **string**| Currency pair | [optional] [default to undefined]
  **account** | **Account**| Trading account | [optional] [default to undefined]
 
 ### Return type

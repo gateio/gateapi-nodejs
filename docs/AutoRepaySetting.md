@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 
 ## Enum: AutoRepaySetting.Status
 
-* `True` (value: `'true'`)
+* `On` (value: `'on'`)
 
-* `False` (value: `'false'`)
+* `Off` (value: `'off'`)
 
 

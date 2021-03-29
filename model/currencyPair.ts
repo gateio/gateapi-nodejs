@@ -50,11 +50,11 @@ export class CurrencyPair {
      */
     'tradeStatus'?: CurrencyPair.TradeStatus;
     /**
-     * 允许卖出时间，秒级 Unix 时间戳
+     * Sell start unix timestamp in seconds
      */
     'sellStart'?: number;
     /**
-     * 允许买入时间，秒级 Unix 时间戳
+     * Buy start unix timestamp in seconds
      */
     'buyStart'?: number;
 

@@ -32,7 +32,7 @@ export class AutoRepaySetting {
 
 export namespace AutoRepaySetting {
     export enum Status {
-        True = <any>'true',
-        False = <any>'false',
+        On = <any>'on',
+        Off = <any>'off',
     }
 }
