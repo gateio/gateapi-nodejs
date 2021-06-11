@@ -23,6 +23,14 @@ Method | HTTP request | Description
 [**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
 [**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
 [**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
+[**listCrossMarginCurrencies**](MarginApi.md#listCrossMarginCurrencies) | **GET** /margin/cross/currencies | Currencies supported by cross margin.
+[**getCrossMarginCurrency**](MarginApi.md#getCrossMarginCurrency) | **GET** /margin/cross/currencies/{currency} | Retrieve detail of one single currency supported by cross margin
+[**getCrossMarginAccount**](MarginApi.md#getCrossMarginAccount) | **GET** /margin/cross/accounts | Retrieve cross margin account
+[**listCrossMarginLoans**](MarginApi.md#listCrossMarginLoans) | **GET** /margin/cross/loans | List cross margin borrow history
+[**createCrossMarginLoan**](MarginApi.md#createCrossMarginLoan) | **POST** /margin/cross/loans | Create a cross margin borrow loan
+[**getCrossMarginLoan**](MarginApi.md#getCrossMarginLoan) | **GET** /margin/cross/loans/{loan_id} | Retrieve single borrow loan detail
+[**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments
+[**repayCrossMarginLoan**](MarginApi.md#repayCrossMarginLoan) | **POST** /margin/cross/repayments | Repay cross margin loan
 
 
 ## listMarginCurrencyPairs
@@ -888,4 +896,362 @@ Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting]
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listCrossMarginCurrencies
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossMarginCurrency>; }> listCrossMarginCurrencies()
+
+Currencies supported by cross margin.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+api.listCrossMarginCurrencies()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossMarginCurrency>; }> [CrossMarginCurrency](CrossMarginCurrency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getCrossMarginCurrency
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginCurrency; }> getCrossMarginCurrency(currency)
+
+Retrieve detail of one single currency supported by cross margin
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Currency name
+api.getCrossMarginCurrency(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency name | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginCurrency; }> [CrossMarginCurrency](CrossMarginCurrency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getCrossMarginAccount
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginAccount; }> getCrossMarginAccount()
+
+Retrieve cross margin account
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+api.getCrossMarginAccount()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginAccount; }> [CrossMarginAccount](CrossMarginAccount.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listCrossMarginLoans
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossMarginLoan>; }> listCrossMarginLoans(status, opts)
+
+List cross margin borrow history
+
+Sort by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const status = 56; // number | Filter by status. Supported values are 2 and 3.
+const opts = {
+  'currency': "currency_example", // string | Filter by currency
+  'limit': 100, // number | Maximum number of records returned in one list
+  'offset': 0, // number | List offset, starting from 0
+  'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
+};
+api.listCrossMarginLoans(status, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **number**| Filter by status. Supported values are 2 and 3. | [default to undefined]
+ **currency** | **string**| Filter by currency | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+ **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMarginLoan](CrossMarginLoan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createCrossMarginLoan
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginLoan; }> createCrossMarginLoan(crossMarginLoan)
+
+Create a cross margin borrow loan
+
+Borrow amount cannot be less than currency minimum borrow amount
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const crossMarginLoan = new CrossMarginLoan(); // CrossMarginLoan | 
+api.createCrossMarginLoan(crossMarginLoan)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **crossMarginLoan** | [**CrossMarginLoan**](CrossMarginLoan.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginLoan; }> [CrossMarginLoan](CrossMarginLoan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## getCrossMarginLoan
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginLoan; }> getCrossMarginLoan(loanId)
+
+Retrieve single borrow loan detail
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Borrow loan ID
+api.getCrossMarginLoan(loanId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Borrow loan ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginLoan; }> [CrossMarginLoan](CrossMarginLoan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listCrossMarginRepayments
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossMarginRepayment>; }> listCrossMarginRepayments(opts)
+
+Retrieve cross margin repayments
+
+Sort by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const opts = {
+  'currency': "BTC", // string | 
+  'loanId': "12345", // string | 
+  'limit': 100, // number | Maximum number of records returned in one list
+  'offset': 0, // number | List offset, starting from 0
+  'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
+};
+api.listCrossMarginRepayments(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**|  | [optional] [default to undefined]
+ **loanId** | **string**|  | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+ **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossMarginRepayment>; }> [CrossMarginRepayment](CrossMarginRepayment.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## repayCrossMarginLoan
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossMarginLoan>; }> repayCrossMarginLoan(crossMarginRepayRequest)
+
+Repay cross margin loan
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const crossMarginRepayRequest = new CrossMarginRepayRequest(); // CrossMarginRepayRequest | 
+api.repayCrossMarginLoan(crossMarginRepayRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **crossMarginRepayRequest** | [**CrossMarginRepayRequest**](CrossMarginRepayRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMarginLoan](CrossMarginLoan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json

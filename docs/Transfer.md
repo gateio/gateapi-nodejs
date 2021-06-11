@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 
 * `Delivery` (value: `'delivery'`)
 
+* `CrossMargin` (value: `'cross_margin'`)
+
 
 ## Enum: Transfer.To
 
@@ -31,5 +33,7 @@ Name | Type | Description | Notes
 * `Futures` (value: `'futures'`)
 
 * `Delivery` (value: `'delivery'`)
+
+* `CrossMargin` (value: `'cross_margin'`)
 
 

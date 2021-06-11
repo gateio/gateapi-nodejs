@@ -192,7 +192,7 @@ export class WalletApi {
     }
 
     /**
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery
+     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin
      * @summary Transfer between trading accounts
      * @param transfer
      */

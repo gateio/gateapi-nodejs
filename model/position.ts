@@ -95,11 +95,15 @@ export class Position {
      * Current open orders
      */
     'pendingOrders'?: number;
-    'closeOrder'?: PositionCloseOrder;
+    'closeOrder'?: PositionCloseOrder | null;
     /**
      * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: short position in dual mode
      */
     'mode'?: Position.Mode;
+    /**
+     * Cross margin leverage(valid only when `leverage` is 0)
+     */
+    'crossLeverageLimit'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -213,6 +217,11 @@ export class Position {
             name: 'mode',
             baseName: 'mode',
             type: 'Position.Mode',
+        },
+        {
+            name: 'crossLeverageLimit',
+            baseName: 'cross_leverage_limit',
+            type: 'string',
         },
     ];
 

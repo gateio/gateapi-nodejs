@@ -63,4 +63,42 @@ export class WithdrawalApi {
         const authSettings = ['apiv4'];
         return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
     }
+
+    /**
+     *
+     * @summary Cancel withdrawal with specified ID
+     * @param withdrawalId
+     */
+    public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
+        const localVarPath =
+            this.client.basePath +
+            '/withdrawals/{withdrawal_id}'.replace(
+                '{' + 'withdrawal_id' + '}',
+                encodeURIComponent(String(withdrawalId)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'withdrawalId' is not null or undefined
+        if (withdrawalId === null || withdrawalId === undefined) {
+            throw new Error('Required parameter withdrawalId was null or undefined when calling cancelWithdrawal.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'DELETE',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
+    }
 }

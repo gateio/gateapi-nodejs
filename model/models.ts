@@ -4,6 +4,12 @@ export * from './cancelOrder';
 export * from './cancelOrderResult';
 export * from './contract';
 export * from './contractStat';
+export * from './crossMarginAccount';
+export * from './crossMarginBalance';
+export * from './crossMarginCurrency';
+export * from './crossMarginLoan';
+export * from './crossMarginRepayRequest';
+export * from './crossMarginRepayment';
 export * from './currency';
 export * from './currencyPair';
 export * from './deliveryContract';
@@ -67,6 +73,12 @@ import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
 import { Contract } from './contract';
 import { ContractStat } from './contractStat';
+import { CrossMarginAccount } from './crossMarginAccount';
+import { CrossMarginBalance } from './crossMarginBalance';
+import { CrossMarginCurrency } from './crossMarginCurrency';
+import { CrossMarginLoan } from './crossMarginLoan';
+import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
+import { CrossMarginRepayment } from './crossMarginRepayment';
 import { Currency } from './currency';
 import { CurrencyPair } from './currencyPair';
 import { DeliveryContract } from './deliveryContract';
@@ -131,6 +143,7 @@ const enumsMap: { [index: string]: any } = {
     'BatchOrder.TimeInForce': BatchOrder.TimeInForce,
     'Contract.Type': Contract.Type,
     'Contract.MarkType': Contract.MarkType,
+    'CrossMarginLoan.Status': CrossMarginLoan.Status,
     'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
     'DeliveryContract.Cycle': DeliveryContract.Cycle,
     'DeliveryContract.Type': DeliveryContract.Type,
@@ -178,6 +191,12 @@ const typeMap: { [index: string]: any } = {
     CancelOrderResult: CancelOrderResult,
     Contract: Contract,
     ContractStat: ContractStat,
+    CrossMarginAccount: CrossMarginAccount,
+    CrossMarginBalance: CrossMarginBalance,
+    CrossMarginCurrency: CrossMarginCurrency,
+    CrossMarginLoan: CrossMarginLoan,
+    CrossMarginRepayRequest: CrossMarginRepayRequest,
+    CrossMarginRepayment: CrossMarginRepayment,
     Currency: Currency,
     CurrencyPair: CurrencyPair,
     DeliveryContract: DeliveryContract,

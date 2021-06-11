@@ -30,7 +30,7 @@ export class FuturesOrder {
      */
     'finishTime'?: number;
     /**
-     * How the order is finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set
+     * How the order is finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close
      */
     'finishAs'?: FuturesOrder.FinishAs;
     /**
@@ -230,6 +230,8 @@ export namespace FuturesOrder {
         Ioc = <any>'ioc',
         AutoDeleveraged = <any>'auto_deleveraged',
         ReduceOnly = <any>'reduce_only',
+        PositionClosed = <any>'position_closed',
+        ReduceOut = <any>'reduce_out',
     }
     export enum Status {
         Open = <any>'open',

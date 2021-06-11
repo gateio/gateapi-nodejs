@@ -760,7 +760,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updatePositionLeverage
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionLeverage(settle, contract, leverage)
+> Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionLeverage(settle, contract, leverage, opts)
 
 Update position leverage
 
@@ -778,7 +778,10 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const leverage = "10"; // string | New position leverage
-api.updatePositionLeverage(settle, contract, leverage)
+const opts = {
+  'crossLeverageLimit': "10" // string | Cross margin leverage(valid only when `leverage` is 0)
+};
+api.updatePositionLeverage(settle, contract, leverage, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -791,6 +794,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **leverage** | **string**| New position leverage | [default to undefined]
+ **crossLeverageLimit** | **string**| Cross margin leverage(valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
 
 ### Return type
 
@@ -946,7 +950,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 ## updateDualModePositionMargin
 
-> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionMargin(settle, contract, change)
+> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualModePositionMargin(settle, contract, change, dualSide)
 
 Update position margin in dual mode
 
@@ -964,7 +968,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const change = "0.01"; // string | Margin change. Use positive number to increase margin, negative number otherwise.
-api.updateDualModePositionMargin(settle, contract, change)
+const dualSide = "dual_long"; // 'dual_long' | 'dual_short' | Long or short position
+api.updateDualModePositionMargin(settle, contract, change, dualSide)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -977,6 +982,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **change** | **string**| Margin change. Use positive number to increase margin, negative number otherwise. | [default to undefined]
+ **dualSide** | **DualSide**| Long or short position | [default to undefined]
 
 ### Return type
 

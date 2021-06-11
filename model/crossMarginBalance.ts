@@ -9,22 +9,15 @@
  * Do not edit the class manually.
  */
 
-/**
- * Account currency detail
- */
-export class MarginAccountCurrency {
+export class CrossMarginBalance {
     /**
-     * Currency name
-     */
-    'currency'?: string;
-    /**
-     * Amount suitable for margin trading.
+     * Available amount
      */
     'available'?: string;
     /**
-     * Locked amount, used in margin trading
+     * Locked amount
      */
-    'locked'?: string;
+    'freeze'?: string;
     /**
      * Borrowed amount
      */
@@ -38,18 +31,13 @@ export class MarginAccountCurrency {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
-        },
-        {
             name: 'available',
             baseName: 'available',
             type: 'string',
         },
         {
-            name: 'locked',
-            baseName: 'locked',
+            name: 'freeze',
+            baseName: 'freeze',
             type: 'string',
         },
         {
@@ -65,6 +53,6 @@ export class MarginAccountCurrency {
     ];
 
     static getAttributeTypeMap() {
-        return MarginAccountCurrency.attributeTypeMap;
+        return CrossMarginBalance.attributeTypeMap;
     }
 }

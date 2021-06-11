@@ -9,44 +9,32 @@
  * Do not edit the class manually.
  */
 
-/**
- * Info of order to be cancelled
- */
-export class CancelOrder {
+export class CrossMarginRepayRequest {
     /**
-     * Order currency pair
+     * Repayment currency
      */
-    'currencyPair': string;
+    'currency': string;
     /**
-     * Order ID or user custom ID. Custom ID are accepted only within 30 minutes after order creation
+     * Repayment amount
      */
-    'id': string;
-    /**
-     * If cancelled order is cross margin order, this field must be set and can only be `cross_margin`
-     */
-    'account'?: string;
+    'amount': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
-        },
-        {
-            name: 'account',
-            baseName: 'account',
+            name: 'amount',
+            baseName: 'amount',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return CancelOrder.attributeTypeMap;
+        return CrossMarginRepayRequest.attributeTypeMap;
     }
 }

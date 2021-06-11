@@ -9,28 +9,29 @@
  * Do not edit the class manually.
  */
 
-/**
- * Account currency detail
- */
-export class MarginAccountCurrency {
+export class CrossMarginRepayment {
+    /**
+     * Loan record ID
+     */
+    'id'?: string;
+    /**
+     * Repayment time
+     */
+    'createTime'?: number;
+    /**
+     * Borrow loan ID
+     */
+    'loanId'?: string;
     /**
      * Currency name
      */
     'currency'?: string;
     /**
-     * Amount suitable for margin trading.
+     * Repaid principal
      */
-    'available'?: string;
+    'principal'?: string;
     /**
-     * Locked amount, used in margin trading
-     */
-    'locked'?: string;
-    /**
-     * Borrowed amount
-     */
-    'borrowed'?: string;
-    /**
-     * Interests unpaid
+     * Repaid interest
      */
     'interest'?: string;
 
@@ -38,23 +39,28 @@ export class MarginAccountCurrency {
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+        {
+            name: 'loanId',
+            baseName: 'loan_id',
+            type: 'string',
+        },
+        {
             name: 'currency',
             baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'available',
-            baseName: 'available',
-            type: 'string',
-        },
-        {
-            name: 'locked',
-            baseName: 'locked',
-            type: 'string',
-        },
-        {
-            name: 'borrowed',
-            baseName: 'borrowed',
+            name: 'principal',
+            baseName: 'principal',
             type: 'string',
         },
         {
@@ -65,6 +71,6 @@ export class MarginAccountCurrency {
     ];
 
     static getAttributeTypeMap() {
-        return MarginAccountCurrency.attributeTypeMap;
+        return CrossMarginRepayment.attributeTypeMap;
     }
 }

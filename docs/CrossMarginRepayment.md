@@ -1,0 +1,13 @@
+# CrossMarginRepayment
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | Loan record ID | [optional] [default to undefined]
+**createTime** | **number** | Repayment time | [optional] [default to undefined]
+**loanId** | **string** | Borrow loan ID | [optional] [default to undefined]
+**currency** | **string** | Currency name | [optional] [default to undefined]
+**principal** | **string** | Repaid principal | [optional] [default to undefined]
+**interest** | **string** | Repaid interest | [optional] [default to undefined]
+

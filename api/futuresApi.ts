@@ -861,11 +861,14 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param leverage New position leverage
+     * @param opts Optional parameters
+     * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updatePositionLeverage(
         settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
+        opts: { crossLeverageLimit?: string },
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
             this.client.basePath +
@@ -897,7 +900,15 @@ export class FuturesApi {
             throw new Error('Required parameter leverage was null or undefined when calling updatePositionLeverage.');
         }
 
+        opts = opts || {};
         localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, 'string');
+
+        if (opts.crossLeverageLimit !== undefined) {
+            localVarQueryParameters['cross_leverage_limit'] = ObjectSerializer.serialize(
+                opts.crossLeverageLimit,
+                'string',
+            );
+        }
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -1063,11 +1074,13 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
+     * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
         settle: 'btc' | 'usdt',
         contract: string,
         change: string,
+        dualSide: 'dual_long' | 'dual_short',
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -1105,7 +1118,16 @@ export class FuturesApi {
             );
         }
 
+        // verify required parameter 'dualSide' is not null or undefined
+        if (dualSide === null || dualSide === undefined) {
+            throw new Error(
+                'Required parameter dualSide was null or undefined when calling updateDualModePositionMargin.',
+            );
+        }
+
         localVarQueryParameters['change'] = ObjectSerializer.serialize(change, 'string');
+
+        localVarQueryParameters['dual_side'] = ObjectSerializer.serialize(dualSide, "'dual_long' | 'dual_short'");
 
         const config: AxiosRequestConfig = {
             method: 'POST',

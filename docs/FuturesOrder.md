@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **user** | **number** | User ID | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Order creation time | [optional] [readonly] [default to undefined]
 **finishTime** | **number** | Order finished time. Not returned if order is open | [optional] [readonly] [default to undefined]
-**finishAs** | **string** | How the order is finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is &#x60;IOC&#x60;, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while &#x60;reduce-only&#x60; set | [optional] [readonly] [default to undefined]
+**finishAs** | **string** | How the order is finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is &#x60;IOC&#x60;, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while &#x60;reduce-only&#x60; set- position_closed: cancelled because of position close  | [optional] [readonly] [default to undefined]
 **status** | **string** | Order status  - &#x60;open&#x60;: waiting to be traded - &#x60;finished&#x60;: finished | [optional] [readonly] [default to undefined]
 **contract** | **string** | Futures contract | [default to undefined]
 **size** | **number** | Order size. Specify positive number to make a bid, and negative number to ask | [default to undefined]
@@ -40,6 +40,10 @@ Name | Type | Description | Notes
 * `AutoDeleveraged` (value: `'auto_deleveraged'`)
 
 * `ReduceOnly` (value: `'reduce_only'`)
+
+* `PositionClosed` (value: `'position_closed'`)
+
+* `ReduceOut` (value: `'reduce_out'`)
 
 
 ## Enum: FuturesOrder.Status

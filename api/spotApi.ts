@@ -489,15 +489,17 @@ export class SpotApi {
     }
 
     /**
-     * List open orders in all currency pairs.  Note that pagination parameters affect record number in each currency pair\'s open order list. No pagination is applied to the number of currency pairs returned. All currency pairs with open orders will be returned
+     * List open orders in all currency pairs.  Note that pagination parameters affect record number in each currency pair\'s open order list. No pagination is applied to the number of currency pairs returned. All currency pairs with open orders will be returned.  Spot and margin orders are returned by default. To list cross margin orders, `account` must be set to `cross_margin`
      * @summary List all open orders
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in one page in each currency pair
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
     public async listAllOpenOrders(opts: {
         page?: number;
         limit?: number;
+        account?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OpenOrders> }> {
         const localVarPath = this.client.basePath + '/spot/open_orders';
         const localVarQueryParameters: any = {};
@@ -519,6 +521,10 @@ export class SpotApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -531,18 +537,19 @@ export class SpotApi {
     }
 
     /**
-     *
+     * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`
      * @summary List orders
      * @param currencyPair Currency pair
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
     public async listOrders(
         currencyPair: string,
         status: 'open' | 'finished',
-        opts: { page?: number; limit?: number },
+        opts: { page?: number; limit?: number; account?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -578,6 +585,10 @@ export class SpotApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -590,7 +601,7 @@ export class SpotApi {
     }
 
     /**
-     *
+     * You can place orders with spot, margin or cross margin account through setting the `account `field. It defaults to `spot`, which means spot account is used to place orders.  When margin account is used, i.e., `account` is `margin`, `auto_borrow` field can be set to `true` to enable the server to borrow the amount lacked using `POST /margin/loans` when your account\'s balance is not enough. Whether margin orders\' fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using `/margin/auto_repay` API.  When cross margin account is used, i.e., `account` is `cross_margin`, `auto_borrow` can also be enabled to achieve borrowing the insufficient amount automatically if cross account\'s balance is not enough. But it differs from margin account that automatic repayment is determined by order\'s `auto_repay` field and only current order\'s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either `cancelled` or `closed`.  **Order status**  An order waiting to be filled is `open`, and it stays `open` until it is filled totally. If fully filled, order is finished and its status turns to `closed`.If the order is cancelled before it is totally filled, whether or not partially filled, its status is `cancelled`. **Iceberg order**  `iceberg` field can be used to set the amount shown. Set to `-1` to hide totally. Note that the hidden part\'s fee will be charged using taker\'s fee rate.
      * @summary Create an order
      * @param order
      */
@@ -624,7 +635,7 @@ export class SpotApi {
     }
 
     /**
-     *
+     * If `account` is not set, all open orders, including spot, margin and cross margin ones, will be cancelled.  You can set `account` to cancel only orders within the specified account
      * @summary Cancel all `open` orders in specified currency pair
      * @param currencyPair Currency pair
      * @param opts Optional parameters
@@ -633,7 +644,7 @@ export class SpotApi {
      */
     public async cancelOrders(
         currencyPair: string,
-        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' },
+        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' | 'cross_margin' },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -659,7 +670,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'spot' | 'margin'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(
+                opts.account,
+                "'spot' | 'margin' | 'cross_margin'",
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -710,12 +724,18 @@ export class SpotApi {
     }
 
     /**
-     *
+     * Spot and margin orders are queried by default. If cross margin orders are needed, `account` must be set to `cross_margin`
      * @summary Get a single order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
-    public async getOrder(orderId: string, currencyPair: string): Promise<{ response: AxiosResponse; body: Order }> {
+    public async getOrder(
+        orderId: string,
+        currencyPair: string,
+        opts: { account?: string },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -739,7 +759,12 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling getOrder.');
         }
 
+        opts = opts || {};
         localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -753,12 +778,18 @@ export class SpotApi {
     }
 
     /**
-     *
+     * Spot and margin orders are cancelled by default. If trying to cancel cross margin orders, `account` must be set to `cross_margin`
      * @summary Cancel a single order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
+     * @param opts Optional parameters
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
-    public async cancelOrder(orderId: string, currencyPair: string): Promise<{ response: AxiosResponse; body: Order }> {
+    public async cancelOrder(
+        orderId: string,
+        currencyPair: string,
+        opts: { account?: string },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
@@ -782,7 +813,12 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrder.');
         }
 
+        opts = opts || {};
         localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -796,17 +832,18 @@ export class SpotApi {
     }
 
     /**
-     *
+     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`
      * @summary List personal trading history
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in one list
      * @param opts.page Page number
      * @param opts.orderId List all trades of specified order
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
     public async listMyTrades(
         currencyPair: string,
-        opts: { limit?: number; page?: number; orderId?: string },
+        opts: { limit?: number; page?: number; orderId?: string; account?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
         const localVarQueryParameters: any = {};
@@ -837,6 +874,10 @@ export class SpotApi {
 
         if (opts.orderId !== undefined) {
             localVarQueryParameters['order_id'] = ObjectSerializer.serialize(opts.orderId, 'string');
+        }
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         const config: AxiosRequestConfig = {

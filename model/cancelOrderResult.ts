@@ -33,6 +33,10 @@ export class CancelOrderResult {
      * Error message when failed to cancel the order; empty if succeeded
      */
     'message'?: string;
+    /**
+     * Empty by default. If cancelled order is cross margin order, this field is set to `cross_margin`
+     */
+    'account'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,6 +64,11 @@ export class CancelOrderResult {
         {
             name: 'message',
             baseName: 'message',
+            type: 'string',
+        },
+        {
+            name: 'account',
+            baseName: 'account',
             type: 'string',
         },
     ];

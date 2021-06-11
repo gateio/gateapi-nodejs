@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Futures contract | [optional] [default to undefined]
 **type** | **string** | Futures contract type | [optional] [default to undefined]
-**quantoMultiplier** | **string** | Multiplier used in converting from invoicing to settlement currency in quanto futures | [optional] [default to undefined]
+**quantoMultiplier** | **string** | Multiplier used in converting from invoicing to settlement currency | [optional] [default to undefined]
 **leverageMin** | **string** | Minimum leverage | [optional] [default to undefined]
 **leverageMax** | **string** | Maximum leverage | [optional] [default to undefined]
 **maintenanceRate** | **string** | Maintenance rate of margin | [optional] [default to undefined]
