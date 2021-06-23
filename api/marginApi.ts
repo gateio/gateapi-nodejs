@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { AutoRepaySetting } from '../model/autoRepaySetting';
 import { CrossMarginAccount } from '../model/crossMarginAccount';
+import { CrossMarginAccountBook } from '../model/crossMarginAccountBook';
 import { CrossMarginCurrency } from '../model/crossMarginCurrency';
 import { CrossMarginLoan } from '../model/crossMarginLoan';
 import { CrossMarginRepayRequest } from '../model/crossMarginRepayRequest';
@@ -186,7 +187,7 @@ export class MarginApi {
     }
 
     /**
-     * Only transferring from or to margin account are provided for now. Time range allows 30 days at most
+     * Only transferals from and to margin account are provided for now. Time range allows 30 days at most
      * @summary List margin account balance change history
      * @param opts Optional parameters
      * @param opts.currency List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required.
@@ -964,6 +965,76 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<CrossMarginAccount>(config, 'CrossMarginAccount', authSettings);
+    }
+
+    /**
+     * Record time range cannot exceed 30 days
+     * @summary Retrieve cross margin account change history
+     * @param opts Optional parameters
+     * @param opts.currency Filter by currency
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.type Filter by account change type. All types are returned if not specified.
+     */
+    public async listCrossMarginAccountBook(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+        type?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<CrossMarginAccountBook> }> {
+        const localVarPath = this.client.basePath + '/margin/cross/account_book';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<CrossMarginAccountBook>>(
+            config,
+            'Array<CrossMarginAccountBook>',
+            authSettings,
+        );
     }
 
     /**

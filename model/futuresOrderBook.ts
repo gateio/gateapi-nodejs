@@ -17,6 +17,14 @@ export class FuturesOrderBook {
      */
     'id'?: number;
     /**
+     * Response data generation timestamp
+     */
+    'current'?: number;
+    /**
+     * Order book changed timestamp
+     */
+    'update'?: number;
+    /**
      * Asks order depth
      */
     'asks': Array<FuturesOrderBookItem>;
@@ -31,6 +39,16 @@ export class FuturesOrderBook {
         {
             name: 'id',
             baseName: 'id',
+            type: 'number',
+        },
+        {
+            name: 'current',
+            baseName: 'current',
+            type: 'number',
+        },
+        {
+            name: 'update',
+            baseName: 'update',
             type: 'number',
         },
         {

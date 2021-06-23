@@ -5,6 +5,7 @@ export * from './cancelOrderResult';
 export * from './contract';
 export * from './contractStat';
 export * from './crossMarginAccount';
+export * from './crossMarginAccountBook';
 export * from './crossMarginBalance';
 export * from './crossMarginCurrency';
 export * from './crossMarginLoan';
@@ -74,6 +75,7 @@ import { CancelOrderResult } from './cancelOrderResult';
 import { Contract } from './contract';
 import { ContractStat } from './contractStat';
 import { CrossMarginAccount } from './crossMarginAccount';
+import { CrossMarginAccountBook } from './crossMarginAccountBook';
 import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginCurrency } from './crossMarginCurrency';
 import { CrossMarginLoan } from './crossMarginLoan';
@@ -143,6 +145,7 @@ const enumsMap: { [index: string]: any } = {
     'BatchOrder.TimeInForce': BatchOrder.TimeInForce,
     'Contract.Type': Contract.Type,
     'Contract.MarkType': Contract.MarkType,
+    'CrossMarginAccountBook.Type': CrossMarginAccountBook.Type,
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
     'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
     'DeliveryContract.Cycle': DeliveryContract.Cycle,
@@ -192,6 +195,7 @@ const typeMap: { [index: string]: any } = {
     Contract: Contract,
     ContractStat: ContractStat,
     CrossMarginAccount: CrossMarginAccount,
+    CrossMarginAccountBook: CrossMarginAccountBook,
     CrossMarginBalance: CrossMarginBalance,
     CrossMarginCurrency: CrossMarginCurrency,
     CrossMarginLoan: CrossMarginLoan,

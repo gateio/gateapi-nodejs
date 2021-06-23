@@ -15,6 +15,14 @@ export class OrderBook {
      */
     'id'?: number;
     /**
+     * Response data generation timestamp in milliseconds
+     */
+    'current'?: number;
+    /**
+     * Order book changed timestamp in milliseconds
+     */
+    'update'?: number;
+    /**
      * Asks order depth
      */
     'asks': Array<Array<string>>;
@@ -29,6 +37,16 @@ export class OrderBook {
         {
             name: 'id',
             baseName: 'id',
+            type: 'number',
+        },
+        {
+            name: 'current',
+            baseName: 'current',
+            type: 'number',
+        },
+        {
+            name: 'update',
+            baseName: 'update',
             type: 'number',
         },
         {

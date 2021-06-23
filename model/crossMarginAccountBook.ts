@@ -9,27 +9,19 @@
  * Do not edit the class manually.
  */
 
-export class MarginAccountBook {
+export class CrossMarginAccountBook {
     /**
      * Balance change record ID
      */
     'id'?: string;
     /**
-     * Balance changed timestamp
-     */
-    'time'?: string;
-    /**
      * Account changed timestamp in milliseconds
      */
-    'timeMs'?: number;
+    'time'?: number;
     /**
      * Currency changed
      */
     'currency'?: string;
-    /**
-     * Account currency pair
-     */
-    'currencyPair'?: string;
     /**
      * Amount changed. Positive value means transferring in, while negative out
      */
@@ -38,6 +30,10 @@ export class MarginAccountBook {
      * Balance after change
      */
     'balance'?: string;
+    /**
+     * Account change type, including:  - in: transferals into cross margin account - out: transferals out from cross margin account - repay: loan repayment - borrow: borrowed loan - new_order: new order locked - order_fill: order fills - referral_fee: fee refund from referrals - order_fee: order fee generated from fills - unknown: unknown type
+     */
+    'type'?: CrossMarginAccountBook.Type;
 
     static discriminator: string | undefined = undefined;
 
@@ -50,21 +46,11 @@ export class MarginAccountBook {
         {
             name: 'time',
             baseName: 'time',
-            type: 'string',
-        },
-        {
-            name: 'timeMs',
-            baseName: 'time_ms',
             type: 'number',
         },
         {
             name: 'currency',
             baseName: 'currency',
-            type: 'string',
-        },
-        {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
             type: 'string',
         },
         {
@@ -77,9 +63,28 @@ export class MarginAccountBook {
             baseName: 'balance',
             type: 'string',
         },
+        {
+            name: 'type',
+            baseName: 'type',
+            type: 'CrossMarginAccountBook.Type',
+        },
     ];
 
     static getAttributeTypeMap() {
-        return MarginAccountBook.attributeTypeMap;
+        return CrossMarginAccountBook.attributeTypeMap;
+    }
+}
+
+export namespace CrossMarginAccountBook {
+    export enum Type {
+        In = <any>'in',
+        Out = <any>'out',
+        Repay = <any>'repay',
+        Borrow = <any>'borrow',
+        NewOrder = <any>'new_order',
+        OrderFill = <any>'order_fill',
+        ReferralFee = <any>'referral_fee',
+        OrderFee = <any>'order_fee',
+        Unknown = <any>'unknown',
     }
 }

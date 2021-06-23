@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**listCrossMarginCurrencies**](MarginApi.md#listCrossMarginCurrencies) | **GET** /margin/cross/currencies | Currencies supported by cross margin.
 [**getCrossMarginCurrency**](MarginApi.md#getCrossMarginCurrency) | **GET** /margin/cross/currencies/{currency} | Retrieve detail of one single currency supported by cross margin
 [**getCrossMarginAccount**](MarginApi.md#getCrossMarginAccount) | **GET** /margin/cross/accounts | Retrieve cross margin account
+[**listCrossMarginAccountBook**](MarginApi.md#listCrossMarginAccountBook) | **GET** /margin/cross/account_book | Retrieve cross margin account change history
 [**listCrossMarginLoans**](MarginApi.md#listCrossMarginLoans) | **GET** /margin/cross/loans | List cross margin borrow history
 [**createCrossMarginLoan**](MarginApi.md#createCrossMarginLoan) | **POST** /margin/cross/loans | Create a cross margin borrow loan
 [**getCrossMarginLoan**](MarginApi.md#getCrossMarginLoan) | **GET** /margin/cross/loans/{loan_id} | Retrieve single borrow loan detail
@@ -203,7 +204,7 @@ Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount
 
 List margin account balance change history
 
-Only transferring from or to margin account are provided for now. Time range allows 30 days at most
+Only transferals from and to margin account are provided for now. Time range allows 30 days at most
 
 ### Example
 
@@ -1005,6 +1006,63 @@ This endpoint does not need any parameter.
 ### Return type
 
 Promise<{ response: AxiosResponse; body: CrossMarginAccount; }> [CrossMarginAccount](CrossMarginAccount.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listCrossMarginAccountBook
+
+> Promise<{ response: http.IncomingMessage; body: Array<CrossMarginAccountBook>; }> listCrossMarginAccountBook(opts)
+
+Retrieve cross margin account change history
+
+Record time range cannot exceed 30 days
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const opts = {
+  'currency': "currency_example", // string | Filter by currency
+  'from': 56, // number | Time range beginning, default to 7 days before current time
+  'to': 56, // number | Time range ending, default to current time
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records returned in one list
+  'type': "borrow" // string | Filter by account change type. All types are returned if not specified.
+};
+api.listCrossMarginAccountBook(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Filter by currency | [optional] [default to undefined]
+ **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
+ **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **type** | **string**| Filter by account change type. All types are returned if not specified. | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CrossMarginAccountBook>; }> [CrossMarginAccountBook](CrossMarginAccountBook.md)
 
 ### Authorization
 
