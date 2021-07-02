@@ -17,6 +17,7 @@ import { CrossMarginCurrency } from '../model/crossMarginCurrency';
 import { CrossMarginLoan } from '../model/crossMarginLoan';
 import { CrossMarginRepayRequest } from '../model/crossMarginRepayRequest';
 import { CrossMarginRepayment } from '../model/crossMarginRepayment';
+import { CrossMarginTransferable } from '../model/crossMarginTransferable';
 import { FundingAccount } from '../model/fundingAccount';
 import { FundingBookItem } from '../model/fundingBookItem';
 import { Loan } from '../model/loan';
@@ -25,6 +26,7 @@ import { LoanRecord } from '../model/loanRecord';
 import { MarginAccount } from '../model/marginAccount';
 import { MarginAccountBook } from '../model/marginAccountBook';
 import { MarginCurrencyPair } from '../model/marginCurrencyPair';
+import { MarginTransferable } from '../model/marginTransferable';
 import { RepayRequest } from '../model/repayRequest';
 import { Repayment } from '../model/repayment';
 import { ObjectSerializer } from '../model/models';
@@ -878,6 +880,51 @@ export class MarginApi {
 
     /**
      *
+     * @summary Max transferable amount for specified margin currency
+     * @param currency Retrieved specified currency related data
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     */
+    public async getMarginTransferable(
+        currency: string,
+        opts: { currencyPair?: string },
+    ): Promise<{ response: AxiosResponse; body: MarginTransferable }> {
+        const localVarPath = this.client.basePath + '/margin/transferable';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getMarginTransferable.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<MarginTransferable>(config, 'MarginTransferable', authSettings);
+    }
+
+    /**
+     *
      * @summary Currencies supported by cross margin.
      */
     public async listCrossMarginCurrencies(): Promise<{ response: AxiosResponse; body: Array<CrossMarginCurrency> }> {
@@ -1266,5 +1313,44 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<CrossMarginLoan>>(config, 'Array<CrossMarginLoan>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Max transferable amount for specified cross margin currency
+     * @param currency Retrieved specified currency related data
+     */
+    public async getCrossMarginTransferable(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: CrossMarginTransferable }> {
+        const localVarPath = this.client.basePath + '/margin/cross/transferable';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error(
+                'Required parameter currency was null or undefined when calling getCrossMarginTransferable.',
+            );
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CrossMarginTransferable>(config, 'CrossMarginTransferable', authSettings);
     }
 }

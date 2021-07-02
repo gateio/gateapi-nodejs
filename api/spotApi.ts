@@ -539,7 +539,7 @@ export class SpotApi {
     /**
      * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`
      * @summary List orders
-     * @param currencyPair Currency pair
+     * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
      * @param opts Optional parameters
      * @param opts.page Page number
@@ -834,11 +834,11 @@ export class SpotApi {
     /**
      * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`
      * @summary List personal trading history
-     * @param currencyPair Currency pair
+     * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records returned in one list
      * @param opts.page Page number
-     * @param opts.orderId List all trades of specified order
+     * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
      */
     public async listMyTrades(

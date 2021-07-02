@@ -14,4 +14,5 @@ Name | Type | Description | Notes
 **withdrawAmountMini** | **string** | Minimum withdrawal amount | [optional] [default to undefined]
 **withdrawDayLimitRemain** | **string** | Daily withdrawal amount left | [optional] [default to undefined]
 **withdrawEachtimeLimit** | **string** | Maximum amount for each withdrawal | [optional] [default to undefined]
+**withdrawFixOnChains** | **{ [key: string]: string; }** | Fixed withdrawal fee on multiple chains | [optional] [default to undefined]
 

@@ -23,6 +23,10 @@ export class Trade {
      */
     'createTimeMs'?: string;
     /**
+     * Currency pair
+     */
+    'currencyPair'?: string;
+    /**
      * Order side
      */
     'side'?: Trade.Side;
@@ -75,6 +79,11 @@ export class Trade {
         {
             name: 'createTimeMs',
             baseName: 'create_time_ms',
+            type: 'string',
+        },
+        {
+            name: 'currencyPair',
+            baseName: 'currency_pair',
             type: 'string',
         },
         {

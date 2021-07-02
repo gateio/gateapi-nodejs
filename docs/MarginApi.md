@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
 [**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
 [**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
+[**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Max transferable amount for specified margin currency
 [**listCrossMarginCurrencies**](MarginApi.md#listCrossMarginCurrencies) | **GET** /margin/cross/currencies | Currencies supported by cross margin.
 [**getCrossMarginCurrency**](MarginApi.md#getCrossMarginCurrency) | **GET** /margin/cross/currencies/{currency} | Retrieve detail of one single currency supported by cross margin
 [**getCrossMarginAccount**](MarginApi.md#getCrossMarginAccount) | **GET** /margin/cross/accounts | Retrieve cross margin account
@@ -32,6 +33,7 @@ Method | HTTP request | Description
 [**getCrossMarginLoan**](MarginApi.md#getCrossMarginLoan) | **GET** /margin/cross/loans/{loan_id} | Retrieve single borrow loan detail
 [**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments
 [**repayCrossMarginLoan**](MarginApi.md#repayCrossMarginLoan) | **POST** /margin/cross/repayments | Repay cross margin loan
+[**getCrossMarginTransferable**](MarginApi.md#getCrossMarginTransferable) | **GET** /margin/cross/transferable | Max transferable amount for specified cross margin currency
 
 
 ## listMarginCurrencyPairs
@@ -899,6 +901,53 @@ Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting]
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## getMarginTransferable
+
+> Promise<{ response: http.IncomingMessage; body: MarginTransferable; }> getMarginTransferable(currency, opts)
+
+Max transferable amount for specified margin currency
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieved specified currency related data
+const opts = {
+  'currencyPair': "BTC_USDT" // string | Currency pair
+};
+api.getMarginTransferable(currency, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: MarginTransferable; }> [MarginTransferable](MarginTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## listCrossMarginCurrencies
 
 > Promise<{ response: http.IncomingMessage; body: Array<CrossMarginCurrency>; }> listCrossMarginCurrencies()
@@ -1312,4 +1361,47 @@ Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMargin
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## getCrossMarginTransferable
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginTransferable; }> getCrossMarginTransferable(currency)
+
+Max transferable amount for specified cross margin currency
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieved specified currency related data
+api.getCrossMarginTransferable(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginTransferable; }> [CrossMarginTransferable](CrossMarginTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json

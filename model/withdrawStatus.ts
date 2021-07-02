@@ -50,6 +50,10 @@ export class WithdrawStatus {
      * Maximum amount for each withdrawal
      */
     'withdrawEachtimeLimit'?: string;
+    /**
+     * Fixed withdrawal fee on multiple chains
+     */
+    'withdrawFixOnChains'?: { [key: string]: string };
 
     static discriminator: string | undefined = undefined;
 
@@ -103,6 +107,11 @@ export class WithdrawStatus {
             name: 'withdrawEachtimeLimit',
             baseName: 'withdraw_eachtime_limit',
             type: 'string',
+        },
+        {
+            name: 'withdrawFixOnChains',
+            baseName: 'withdraw_fix_on_chains',
+            type: '{ [key: string]: string; }',
         },
     ];
 

@@ -11,6 +11,7 @@ export * from './crossMarginCurrency';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayRequest';
 export * from './crossMarginRepayment';
+export * from './crossMarginTransferable';
 export * from './currency';
 export * from './currencyPair';
 export * from './deliveryContract';
@@ -40,6 +41,7 @@ export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
 export * from './marginCurrencyPair';
+export * from './marginTransferable';
 export * from './multiChainAddressItem';
 export * from './myFuturesTrade';
 export * from './openOrders';
@@ -81,6 +83,7 @@ import { CrossMarginCurrency } from './crossMarginCurrency';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
 import { CrossMarginRepayment } from './crossMarginRepayment';
+import { CrossMarginTransferable } from './crossMarginTransferable';
 import { Currency } from './currency';
 import { CurrencyPair } from './currencyPair';
 import { DeliveryContract } from './deliveryContract';
@@ -110,6 +113,7 @@ import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
 import { MarginCurrencyPair } from './marginCurrencyPair';
+import { MarginTransferable } from './marginTransferable';
 import { MultiChainAddressItem } from './multiChainAddressItem';
 import { MyFuturesTrade } from './myFuturesTrade';
 import { OpenOrders } from './openOrders';
@@ -201,6 +205,7 @@ const typeMap: { [index: string]: any } = {
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayRequest: CrossMarginRepayRequest,
     CrossMarginRepayment: CrossMarginRepayment,
+    CrossMarginTransferable: CrossMarginTransferable,
     Currency: Currency,
     CurrencyPair: CurrencyPair,
     DeliveryContract: DeliveryContract,
@@ -230,6 +235,7 @@ const typeMap: { [index: string]: any } = {
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
     MarginCurrencyPair: MarginCurrencyPair,
+    MarginTransferable: MarginTransferable,
     MultiChainAddressItem: MultiChainAddressItem,
     MyFuturesTrade: MyFuturesTrade,
     OpenOrders: OpenOrders,

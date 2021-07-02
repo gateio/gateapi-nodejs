@@ -1616,10 +1616,12 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records returned in one list
      * @param opts.offset List offset, starting from 0
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; offset?: number },
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
         const localVarPath =
             this.client.basePath +
@@ -1650,6 +1652,14 @@ export class FuturesApi {
 
         if (opts.offset !== undefined) {
             localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         const config: AxiosRequestConfig = {

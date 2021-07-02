@@ -1418,7 +1418,9 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records returned in one list
-  'offset': 0 // number | List offset, starting from 0
+  'offset': 0, // number | List offset, starting from 0
+  'from': 1547706332, // number | Start timestamp
+  'to': 1547706332 // number | End timestamp
 };
 api.listPositionClose(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1434,6 +1436,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+ **from** | **number**| Start timestamp | [optional] [default to undefined]
+ **to** | **number**| End timestamp | [optional] [default to undefined]
 
 ### Return type
 
