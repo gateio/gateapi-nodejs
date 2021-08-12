@@ -20,7 +20,7 @@ export class DepositAddress {
      * Deposit address
      */
     'address': string;
-    'multichainAddress'?: Array<MultiChainAddressItem>;
+    'multichainAddresses'?: Array<MultiChainAddressItem>;
 
     static discriminator: string | undefined = undefined;
 
@@ -36,8 +36,8 @@ export class DepositAddress {
             type: 'string',
         },
         {
-            name: 'multichainAddress',
-            baseName: 'multichain_address',
+            name: 'multichainAddresses',
+            baseName: 'multichain_addresses',
             type: 'Array<MultiChainAddressItem>',
         },
     ];
