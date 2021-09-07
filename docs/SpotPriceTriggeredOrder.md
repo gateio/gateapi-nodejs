@@ -13,5 +13,5 @@ Name | Type | Description | Notes
 **ftime** | **number** | Finished time | [optional] [readonly] [default to undefined]
 **firedOrderId** | **number** | ID of the newly created order on condition triggered | [optional] [readonly] [default to undefined]
 **status** | **string** | Status  - open: open - cancelled: being manually cancelled - finish: successfully executed - failed: failed to execute - expired - expired  | [optional] [readonly] [default to undefined]
-**reason** | **string** | Extra messages of how order is finished | [optional] [readonly] [default to undefined]
+**reason** | **string** | Additional remarks on how the order was finished | [optional] [readonly] [default to undefined]
 

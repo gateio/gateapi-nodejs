@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **autoRenew** | **boolean** | Whether the record will auto renew on expiration | [optional] [default to undefined]
 **repaid** | **string** | Repaid amount | [optional] [default to undefined]
 **paidInterest** | **string** | Repaid interest | [optional] [readonly] [default to undefined]
-**unpaidInterest** | **string** | Interest not repaid | [optional] [readonly] [default to undefined]
+**unpaidInterest** | **string** | Outstanding interest yet to be paid | [optional] [readonly] [default to undefined]
 
 ## Enum: LoanRecord.Status
 

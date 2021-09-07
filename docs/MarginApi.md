@@ -18,12 +18,13 @@ Method | HTTP request | Description
 [**updateLoan**](MarginApi.md#updateLoan) | **PATCH** /margin/loans/{loan_id} | Modify a loan
 [**listLoanRepayments**](MarginApi.md#listLoanRepayments) | **GET** /margin/loans/{loan_id}/repayment | List loan repayment records
 [**repayLoan**](MarginApi.md#repayLoan) | **POST** /margin/loans/{loan_id}/repayment | Repay a loan
-[**listLoanRecords**](MarginApi.md#listLoanRecords) | **GET** /margin/loan_records | List repayment records of specified loan
+[**listLoanRecords**](MarginApi.md#listLoanRecords) | **GET** /margin/loan_records | List repayment records of a specific loan
 [**getLoanRecord**](MarginApi.md#getLoanRecord) | **GET** /margin/loan_records/{loan_record_id} | Get one single loan record
 [**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
 [**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
 [**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
-[**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Max transferable amount for specified margin currency
+[**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Get the max transferable amount for a specific margin currency
+[**getMarginBorrowable**](MarginApi.md#getMarginBorrowable) | **GET** /margin/borrowable | Get the max borrowable amount for a specific margin currency
 [**listCrossMarginCurrencies**](MarginApi.md#listCrossMarginCurrencies) | **GET** /margin/cross/currencies | Currencies supported by cross margin.
 [**getCrossMarginCurrency**](MarginApi.md#getCrossMarginCurrency) | **GET** /margin/cross/currencies/{currency} | Retrieve detail of one single currency supported by cross margin
 [**getCrossMarginAccount**](MarginApi.md#getCrossMarginAccount) | **GET** /margin/cross/accounts | Retrieve cross margin account
@@ -33,7 +34,8 @@ Method | HTTP request | Description
 [**getCrossMarginLoan**](MarginApi.md#getCrossMarginLoan) | **GET** /margin/cross/loans/{loan_id} | Retrieve single borrow loan detail
 [**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments
 [**repayCrossMarginLoan**](MarginApi.md#repayCrossMarginLoan) | **POST** /margin/cross/repayments | Repay cross margin loan
-[**getCrossMarginTransferable**](MarginApi.md#getCrossMarginTransferable) | **GET** /margin/cross/transferable | Max transferable amount for specified cross margin currency
+[**getCrossMarginTransferable**](MarginApi.md#getCrossMarginTransferable) | **GET** /margin/cross/transferable | Get the max transferable amount for a specific cross margin currency
+[**getCrossMarginBorrowable**](MarginApi.md#getCrossMarginBorrowable) | **GET** /margin/cross/borrowable | Get the max borrowable amount for a specific cross margin currency
 
 
 ## listMarginCurrencyPairs
@@ -129,7 +131,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieved specified currency related data
+const currency = "BTC"; // string | Retrieve data of the specified currency
 api.listFundingBook(currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -140,7 +142,7 @@ api.listFundingBook(currency)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
 
 ### Return type
 
@@ -225,7 +227,7 @@ const opts = {
   'from': 56, // number | Time range beginning, default to 7 days before current time
   'to': 56, // number | Time range ending, default to current time
   'page': 1, // number | Page number
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listMarginAccountBook(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -242,7 +244,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -275,7 +277,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieved specified currency related data
+  'currency': "BTC" // string | Retrieve data of the specified currency
 };
 api.listFundingAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -287,7 +289,7 @@ api.listFundingAccounts(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [optional] [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -322,12 +324,12 @@ const api = new GateApi.MarginApi(client);
 const status = "open"; // 'open' | 'loaned' | 'finished' | 'auto_repaid' | Loan status
 const side = "lend"; // 'lend' | 'borrow' | Lend or borrow
 const opts = {
-  'currency': "BTC", // string | Retrieved specified currency related data
+  'currency': "BTC", // string | Retrieve data of the specified currency
   'currencyPair': "BTC_USDT", // string | Currency pair
   'sortBy': "rate", // 'create_time' | 'rate' | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
   'reverseSort': false, // boolean | Whether to sort in descending order. Default to `true`
   'page': 1, // number | Page number
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listLoans(status, side, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -341,12 +343,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **Status**| Loan status | [default to undefined]
  **side** | **Side**| Lend or borrow | [default to undefined]
- **currency** | **string**| Retrieved specified currency related data | [optional] [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
  **sortBy** | **SortBy**| Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60; | [optional] [default to undefined]
  **reverseSort** | **boolean**| Whether to sort in descending order. Default to &#x60;true&#x60; | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -421,8 +423,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieved specified currency related data
-const ids = "123,234,345"; // string | Lending loan ID list separated by `,`. Maximum of 20 IDs are allowed in one request
+const currency = "BTC"; // string | Retrieve data of the specified currency
+const ids = "123,234,345"; // string | A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
 api.mergeLoans(currency, ids)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -433,8 +435,8 @@ api.mergeLoans(currency, ids)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [default to undefined]
- **ids** | **string**| Lending loan ID list separated by &#x60;,&#x60;. Maximum of 20 IDs are allowed in one request | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+ **ids** | **string**| A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request | [default to undefined]
 
 ### Return type
 
@@ -500,7 +502,7 @@ Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 Cancel lending loan
 
-Only lending loans can be cancelled
+Only lent loans can be cancelled
 
 ### Example
 
@@ -514,7 +516,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const loanId = "12345"; // string | Loan ID
-const currency = "BTC"; // string | Retrieved specified currency related data
+const currency = "BTC"; // string | Retrieve data of the specified currency
 api.cancelLoan(loanId, currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -526,7 +528,7 @@ api.cancelLoan(loanId, currency)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **string**| Loan ID | [default to undefined]
- **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
 
 ### Return type
 
@@ -680,7 +682,7 @@ Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
 
 > Promise<{ response: http.IncomingMessage; body: Array<LoanRecord>; }> listLoanRecords(loanId, opts)
 
-List repayment records of specified loan
+List repayment records of a specific loan
 
 ### Example
 
@@ -697,7 +699,7 @@ const loanId = "12345"; // string | Loan ID
 const opts = {
   'status': "loaned", // 'loaned' | 'finished' | Loan record status
   'page': 1, // number | Page number
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listLoanRecords(loanId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -712,7 +714,7 @@ Name | Type | Description  | Notes
  **loanId** | **string**| Loan ID | [default to undefined]
  **status** | **Status**| Loan record status | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -905,7 +907,7 @@ Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting]
 
 > Promise<{ response: http.IncomingMessage; body: MarginTransferable; }> getMarginTransferable(currency, opts)
 
-Max transferable amount for specified margin currency
+Get the max transferable amount for a specific margin currency
 
 ### Example
 
@@ -918,7 +920,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieved specified currency related data
+const currency = "BTC"; // string | Retrieve data of the specified currency
 const opts = {
   'currencyPair': "BTC_USDT" // string | Currency pair
 };
@@ -932,12 +934,59 @@ api.getMarginTransferable(currency, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
 
 ### Return type
 
 Promise<{ response: AxiosResponse; body: MarginTransferable; }> [MarginTransferable](MarginTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getMarginBorrowable
+
+> Promise<{ response: http.IncomingMessage; body: MarginBorrowable; }> getMarginBorrowable(currency, opts)
+
+Get the max borrowable amount for a specific margin currency
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieve data of the specified currency
+const opts = {
+  'currencyPair': "BTC_USDT" // string | Currency pair
+};
+api.getMarginBorrowable(currency, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: MarginBorrowable; }> [MarginBorrowable](MarginBorrowable.md)
 
 ### Authorization
 
@@ -1089,8 +1138,8 @@ const opts = {
   'from': 56, // number | Time range beginning, default to 7 days before current time
   'to': 56, // number | Time range ending, default to current time
   'page': 1, // number | Page number
-  'limit': 100, // number | Maximum number of records returned in one list
-  'type': "borrow" // string | Filter by account change type. All types are returned if not specified.
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'type': "borrow" // string | Only retrieve changes of the specified type. All types will be returned if not specified.
 };
 api.listCrossMarginAccountBook(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1106,8 +1155,8 @@ Name | Type | Description  | Notes
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
- **type** | **string**| Filter by account change type. All types are returned if not specified. | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **type** | **string**| Only retrieve changes of the specified type. All types will be returned if not specified. | [optional] [default to undefined]
 
 ### Return type
 
@@ -1144,7 +1193,7 @@ const api = new GateApi.MarginApi(client);
 const status = 56; // number | Filter by status. Supported values are 2 and 3.
 const opts = {
   'currency': "currency_example", // string | Filter by currency
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
 };
@@ -1160,7 +1209,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **number**| Filter by status. Supported values are 2 and 3. | [default to undefined]
  **currency** | **string**| Filter by currency | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
 
@@ -1287,7 +1336,7 @@ const api = new GateApi.MarginApi(client);
 const opts = {
   'currency': "BTC", // string | 
   'loanId': "12345", // string | 
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
 };
@@ -1303,7 +1352,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**|  | [optional] [default to undefined]
  **loanId** | **string**|  | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
 
@@ -1367,7 +1416,7 @@ Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMargin
 
 > Promise<{ response: http.IncomingMessage; body: CrossMarginTransferable; }> getCrossMarginTransferable(currency)
 
-Max transferable amount for specified cross margin currency
+Get the max transferable amount for a specific cross margin currency
 
 ### Example
 
@@ -1380,7 +1429,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieved specified currency related data
+const currency = "BTC"; // string | Retrieve data of the specified currency
 api.getCrossMarginTransferable(currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1391,11 +1440,54 @@ api.getCrossMarginTransferable(currency)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
 
 ### Return type
 
 Promise<{ response: AxiosResponse; body: CrossMarginTransferable; }> [CrossMarginTransferable](CrossMarginTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getCrossMarginBorrowable
+
+> Promise<{ response: http.IncomingMessage; body: CrossMarginBorrowable; }> getCrossMarginBorrowable(currency)
+
+Get the max borrowable amount for a specific cross margin currency
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieve data of the specified currency
+api.getCrossMarginBorrowable(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: CrossMarginBorrowable; }> [CrossMarginBorrowable](CrossMarginBorrowable.md)
 
 ### Authorization
 

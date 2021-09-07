@@ -8,11 +8,12 @@ Method | HTTP request | Description
 [**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Retrieve withdrawal records
 [**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Retrieve deposit records
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between trading accounts
-[**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Transfer records between main and sub accounts
+[**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Retrieve transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Retrieve withdrawal status
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Retrieve personal trading fee
+[**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Retrieve user\&#39;s total balances
 
 
 ## getDepositAddress
@@ -81,7 +82,7 @@ const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
 api.listWithdrawals(opts)
@@ -97,7 +98,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Filter by currency. Return all currency records if not specified | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -136,7 +137,7 @@ const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
 api.listDeposits(opts)
@@ -152,7 +153,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Filter by currency. Return all currency records if not specified | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -217,7 +218,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransfer>; }> listSubAccountTransfers(opts)
 
-Transfer records between main and sub accounts
+Retrieve transfer records between main and sub accounts
 
 Record time range cannot exceed 30 days  &gt; Note: only records after 2020-04-10 can be retrieved
 
@@ -236,7 +237,7 @@ const opts = {
   'subUid': "10003", // string | Sub account user ID. Return records related to all sub accounts if not specified
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
 api.listSubAccountTransfers(opts)
@@ -252,7 +253,7 @@ Name | Type | Description  | Notes
  **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -331,7 +332,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieved specified currency related data
+  'currency': "BTC" // string | Retrieve data of the specified currency
 };
 api.listWithdrawStatus(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -343,7 +344,7 @@ api.listWithdrawStatus(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [optional] [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -405,7 +406,7 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountBalance>; }> [SubAccoun
 
 ## getTradeFee
 
-> Promise<{ response: http.IncomingMessage; body: TradeFee; }> getTradeFee()
+> Promise<{ response: http.IncomingMessage; body: TradeFee; }> getTradeFee(opts)
 
 Retrieve personal trading fee
 
@@ -420,18 +421,69 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
-api.getTradeFee()
+const opts = {
+  'currencyPair': "BTC_USDT" // string | Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
+};
+api.getTradeFee(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs | [optional] [default to undefined]
 
 ### Return type
 
 Promise<{ response: AxiosResponse; body: TradeFee; }> [TradeFee](TradeFee.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getTotalBalance
+
+> Promise<{ response: http.IncomingMessage; body: TotalBalance; }> getTotalBalance(opts)
+
+Retrieve user\&#39;s total balances
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'currency': 'USDT' // string | Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default.
+};
+api.getTotalBalance(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default. | [optional] [default to &#39;USDT&#39;]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: TotalBalance; }> [TotalBalance](TotalBalance.md)
 
 ### Authorization
 

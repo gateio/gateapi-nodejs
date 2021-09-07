@@ -15,7 +15,7 @@ export class CrossMarginAccountBook {
      */
     'id'?: string;
     /**
-     * Account changed timestamp in milliseconds
+     * The timestamp of the change (in milliseconds)
      */
     'time'?: number;
     /**

@@ -13,6 +13,7 @@
 import { AutoRepaySetting } from '../model/autoRepaySetting';
 import { CrossMarginAccount } from '../model/crossMarginAccount';
 import { CrossMarginAccountBook } from '../model/crossMarginAccountBook';
+import { CrossMarginBorrowable } from '../model/crossMarginBorrowable';
 import { CrossMarginCurrency } from '../model/crossMarginCurrency';
 import { CrossMarginLoan } from '../model/crossMarginLoan';
 import { CrossMarginRepayRequest } from '../model/crossMarginRepayRequest';
@@ -25,6 +26,7 @@ import { LoanPatch } from '../model/loanPatch';
 import { LoanRecord } from '../model/loanRecord';
 import { MarginAccount } from '../model/marginAccount';
 import { MarginAccountBook } from '../model/marginAccountBook';
+import { MarginBorrowable } from '../model/marginBorrowable';
 import { MarginCurrencyPair } from '../model/marginCurrencyPair';
 import { MarginTransferable } from '../model/marginTransferable';
 import { RepayRequest } from '../model/repayRequest';
@@ -120,7 +122,7 @@ export class MarginApi {
     /**
      *
      * @summary Order book of lending loans
-     * @param currency Retrieved specified currency related data
+     * @param currency Retrieve data of the specified currency
      */
     public async listFundingBook(currency: string): Promise<{ response: AxiosResponse; body: Array<FundingBookItem> }> {
         const localVarPath = this.client.basePath + '/margin/funding_book';
@@ -197,7 +199,7 @@ export class MarginApi {
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listMarginAccountBook(opts: {
         currency?: string;
@@ -258,7 +260,7 @@ export class MarginApi {
      *
      * @summary Funding account list
      * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
+     * @param opts.currency Retrieve data of the specified currency
      */
     public async listFundingAccounts(opts: {
         currency?: string;
@@ -296,12 +298,12 @@ export class MarginApi {
      * @param status Loan status
      * @param side Lend or borrow
      * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
+     * @param opts.currency Retrieve data of the specified currency
      * @param opts.currencyPair Currency pair
      * @param opts.sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
      * @param opts.reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
      * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listLoans(
         status: 'open' | 'loaned' | 'finished' | 'auto_repaid',
@@ -416,8 +418,8 @@ export class MarginApi {
     /**
      *
      * @summary Merge multiple lending loans
-     * @param currency Retrieved specified currency related data
-     * @param ids Lending loan ID list separated by &#x60;,&#x60;. Maximum of 20 IDs are allowed in one request
+     * @param currency Retrieve data of the specified currency
+     * @param ids A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
      */
     public async mergeLoans(currency: string, ids: string): Promise<{ response: AxiosResponse; body: Loan }> {
         const localVarPath = this.client.basePath + '/margin/merged_loans';
@@ -500,10 +502,10 @@ export class MarginApi {
     }
 
     /**
-     * Only lending loans can be cancelled
+     * Only lent loans can be cancelled
      * @summary Cancel lending loan
      * @param loanId Loan ID
-     * @param currency Retrieved specified currency related data
+     * @param currency Retrieve data of the specified currency
      */
     public async cancelLoan(loanId: string, currency: string): Promise<{ response: AxiosResponse; body: Loan }> {
         const localVarPath =
@@ -666,12 +668,12 @@ export class MarginApi {
 
     /**
      *
-     * @summary List repayment records of specified loan
+     * @summary List repayment records of a specific loan
      * @param loanId Loan ID
      * @param opts Optional parameters
      * @param opts.status Loan record status
      * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listLoanRecords(
         loanId: string,
@@ -880,8 +882,8 @@ export class MarginApi {
 
     /**
      *
-     * @summary Max transferable amount for specified margin currency
-     * @param currency Retrieved specified currency related data
+     * @summary Get the max transferable amount for a specific margin currency
+     * @param currency Retrieve data of the specified currency
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
      */
@@ -921,6 +923,51 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<MarginTransferable>(config, 'MarginTransferable', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get the max borrowable amount for a specific margin currency
+     * @param currency Retrieve data of the specified currency
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     */
+    public async getMarginBorrowable(
+        currency: string,
+        opts: { currencyPair?: string },
+    ): Promise<{ response: AxiosResponse; body: MarginBorrowable }> {
+        const localVarPath = this.client.basePath + '/margin/borrowable';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getMarginBorrowable.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<MarginBorrowable>(config, 'MarginBorrowable', authSettings);
     }
 
     /**
@@ -1022,8 +1069,8 @@ export class MarginApi {
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned in one list
-     * @param opts.type Filter by account change type. All types are returned if not specified.
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
      */
     public async listCrossMarginAccountBook(opts: {
         currency?: string;
@@ -1090,7 +1137,7 @@ export class MarginApi {
      * @param status Filter by status. Supported values are 2 and 3.
      * @param opts Optional parameters
      * @param opts.currency Filter by currency
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.reverse Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results
      */
@@ -1223,7 +1270,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currency
      * @param opts.loanId
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.reverse Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results
      */
@@ -1317,8 +1364,8 @@ export class MarginApi {
 
     /**
      *
-     * @summary Max transferable amount for specified cross margin currency
-     * @param currency Retrieved specified currency related data
+     * @summary Get the max transferable amount for a specific cross margin currency
+     * @param currency Retrieve data of the specified currency
      */
     public async getCrossMarginTransferable(
         currency: string,
@@ -1352,5 +1399,42 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<CrossMarginTransferable>(config, 'CrossMarginTransferable', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get the max borrowable amount for a specific cross margin currency
+     * @param currency Retrieve data of the specified currency
+     */
+    public async getCrossMarginBorrowable(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: CrossMarginBorrowable }> {
+        const localVarPath = this.client.basePath + '/margin/cross/borrowable';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getCrossMarginBorrowable.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<CrossMarginBorrowable>(config, 'CrossMarginBorrowable', authSettings);
     }
 }

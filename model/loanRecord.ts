@@ -66,7 +66,7 @@ export class LoanRecord {
      */
     'paidInterest'?: string;
     /**
-     * Interest not repaid
+     * Outstanding interest yet to be paid
      */
     'unpaidInterest'?: string;
 

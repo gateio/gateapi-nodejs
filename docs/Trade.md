@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **orderId** | **string** | Related order ID. No value in public endpoints | [optional] [default to undefined]
 **fee** | **string** | Fee deducted. No value in public endpoints | [optional] [default to undefined]
 **feeCurrency** | **string** | Fee currency unit. No value in public endpoints | [optional] [default to undefined]
-**pointFee** | **string** | Point used to deduct fee | [optional] [default to undefined]
+**pointFee** | **string** | Points used to deduct fee | [optional] [default to undefined]
 **gtFee** | **string** | GT used to deduct fee | [optional] [default to undefined]
 
 ## Enum: Trade.Side

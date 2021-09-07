@@ -35,11 +35,11 @@ export class LedgerRecord {
      */
     'address'?: string;
     /**
-     * Extra withdrawal memo
+     * Additional remarks with regards to the withdrawal
      */
     'memo'?: string;
     /**
-     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation
      */
     'status'?: LedgerRecord.Status;
     /**

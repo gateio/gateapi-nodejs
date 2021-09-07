@@ -147,7 +147,7 @@ const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'interval': '0', // '0' | '0.1' | '0.01' | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10, // number | Maximum number of order depth data in asks or bids
-  'withId': false // boolean | Whether order book update ID would be returned. This ID increments by 1 on every order book update
+  'withId': false // boolean | Whether the order book update ID will be returned. This ID increases by 1 on every order book update
 };
 api.listFuturesOrderBook(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [default to undefined]
  **interval** | **Interval**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
- **withId** | **boolean**| Whether order book update ID would be returned. This ID increments by 1 on every order book update | [optional] [default to undefined]
+ **withId** | **boolean**| Whether the order book update ID will be returned. This ID increases by 1 on every order book update | [optional] [default to undefined]
 
 ### Return type
 
@@ -196,8 +196,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'limit': 100, // number | Maximum number of records returned in one list
-  'lastId': "12345", // string | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'lastId': "12345", // string | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use `from` and `to` instead to limit time range
   'from': 1546905600, // number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
   'to': 1546935600 // number | Specify end time in Unix seconds, default to current time
 };
@@ -213,8 +213,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
- **lastId** | **string**| Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **lastId** | **string**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] [default to undefined]
  **from** | **number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] [default to undefined]
  **to** | **number**| Specify end time in Unix seconds, default to current time | [optional] [default to undefined]
 
@@ -253,7 +253,7 @@ const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'limit': 100, // number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points
 };
 api.listFuturesCandlesticks(settle, contract, opts)
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [default to undefined]
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
- **limit** | **number**| Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
 ### Return type
@@ -349,7 +349,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listFuturesFundingRateHistory(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -395,7 +395,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listFuturesInsuranceLedger(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -408,7 +408,7 @@ api.listFuturesInsuranceLedger(settle, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -496,7 +496,7 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'from': 1547706332, // number | Start timestamp
   'to': 1547706332, // number | End timestamp
-  'limit': 100 // number | Maximum number of records returned in one list
+  'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listLiquidatedOrders(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -589,7 +589,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1547706332, // number | Start timestamp
   'to': 1547706332, // number | End timestamp
   'type': "dnw" // 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr' | Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
@@ -605,7 +605,7 @@ api.listFuturesAccountBook(settle, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
  **type** | **Type**| Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate | [optional] [default to undefined]
@@ -1097,7 +1097,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 List futures orders
 
-Zero-fill order cannot be retrieved 60 seconds after cancellation
+Zero-fill order cannot be retrieved for 60 seconds after cancellation
 
 ### Example
 
@@ -1112,9 +1112,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const status = "open"; // 'open' | 'finished' | List orders based on status
+const status = "open"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
   'countTotal': 0 // 0 | 1 | Whether to return total number matched. Default to 0(no return)
@@ -1131,8 +1131,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **status** | **Status**| List orders based on status | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **status** | **Status**| Only list the orders with this status | [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
  **countTotal** | **CountTotal**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
@@ -1156,7 +1156,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Create a futures order
 
-Zero-fill order cannot be retrieved 60 seconds after cancellation
+Zero-fill order cannot be retrieved for 60 seconds after cancellation
 
 ### Example
 
@@ -1203,7 +1203,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 Cancel all &#x60;open&#x60; orders matched
 
-Zero-fill order cannot be retrieved 60 seconds after cancellation
+Zero-fill order cannot be retrieved for 60 seconds after cancellation
 
 ### Example
 
@@ -1219,7 +1219,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'side': "ask" // 'ask' | 'bid' | All bids or asks. Both included in not specified
+  'side': "ask" // 'ask' | 'bid' | All bids or asks. Both included if not specified
 };
 api.cancelFuturesOrders(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1233,7 +1233,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **side** | **Side**| All bids or asks. Both included in not specified | [optional] [default to undefined]
+ **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -1254,7 +1254,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Get a single order
 
-Zero-fill order cannot be retrieved 60 seconds after cancellation
+Zero-fill order cannot be retrieved for 60 seconds after cancellation
 
 ### Example
 
@@ -1361,7 +1361,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'order': 12345, // number | Futures order ID, return related data only if specified
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
   'countTotal': 0 // 0 | 1 | Whether to return total number matched. Default to 0(no return)
@@ -1379,7 +1379,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **order** | **number**| Futures order ID, return related data only if specified | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
  **countTotal** | **CountTotal**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
@@ -1417,7 +1417,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'from': 1547706332, // number | Start timestamp
   'to': 1547706332 // number | End timestamp
@@ -1434,7 +1434,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
@@ -1472,7 +1472,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'at': 0 // number | Specify a liquidation timestamp
 };
 api.listLiquidates(settle, opts)
@@ -1487,7 +1487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **at** | **number**| Specify a liquidation timestamp | [optional] [default to 0]
 
 ### Return type
@@ -1521,10 +1521,10 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const status = "status_example"; // 'open' | 'finished' | List orders based on status
+const status = "status_example"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
 api.listPriceTriggeredOrders(settle, status, opts)
@@ -1538,9 +1538,9 @@ api.listPriceTriggeredOrders(settle, status, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **status** | **Status**| List orders based on status | [default to undefined]
+ **status** | **Status**| Only list the orders with this status | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -1664,7 +1664,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = "orderId_example"; // string | ID returned on order successfully being created
+const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.getPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1676,7 +1676,7 @@ api.getPriceTriggeredOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| ID returned on order successfully being created | [default to undefined]
+ **orderId** | **string**| Retrieve the data of the order with the specified ID | [default to undefined]
 
 ### Return type
 
@@ -1709,7 +1709,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const orderId = "orderId_example"; // string | ID returned on order successfully being created
+const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.cancelPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1721,7 +1721,7 @@ api.cancelPriceTriggeredOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| ID returned on order successfully being created | [default to undefined]
+ **orderId** | **string**| Retrieve the data of the order with the specified ID | [default to undefined]
 
 ### Return type
 

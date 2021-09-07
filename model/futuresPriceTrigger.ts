@@ -11,7 +11,7 @@
 
 export class FuturesPriceTrigger {
     /**
-     * How the order will be triggered   - `0`: by price, which means order will be triggered on price condition satisfied  - `1`: by price gap, which means order will be triggered on gap of recent two prices of specified `price_type` satisfied.  Only `0` is supported currently
+     * How the order will be triggered   - `0`: by price, which means the order will be triggered if price condition is satisfied  - `1`: by price gap, which means the order will be triggered if gap of recent two prices of specified `price_type` are satisfied.  Only `0` is supported currently
      */
     'strategyType'?: FuturesPriceTrigger.StrategyType;
     /**
@@ -27,7 +27,7 @@ export class FuturesPriceTrigger {
      */
     'rule'?: FuturesPriceTrigger.Rule;
     /**
-     * How many seconds will the order wait for the condition being triggered. Order will be cancelled on timed out
+     * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
      */
     'expiration'?: number;
 

@@ -45,7 +45,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary List all currencies\' detail
+     * @summary List all currencies\' details
      */
     public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
         const localVarPath = this.client.basePath + '/spot/currencies';
@@ -72,7 +72,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get detail of one particular currency
+     * @summary Get details of a specific currency
      * @param currency Currency name
      */
     public async getCurrency(currency: string): Promise<{ response: AxiosResponse; body: Currency }> {
@@ -134,7 +134,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get detail of one single order
+     * @summary Get details of a specifc order
      * @param currencyPair Currency pair
      */
     public async getCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: CurrencyPair }> {
@@ -207,7 +207,7 @@ export class SpotApi {
     }
 
     /**
-     * Order book will be sorted by price from high to low on bids; reversed on asks
+     * Order book will be sorted by price from high to low on bids; low to high on asks
      * @summary Retrieve order book
      * @param currencyPair Currency pair
      * @param opts Optional parameters
@@ -266,9 +266,9 @@ export class SpotApi {
      * @summary Retrieve market trades
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param opts.reverse Whether to retrieve records whose IDs are smaller than &#x60;last_id&#x60;\&#39;s. Default to larger ones.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
+     * @param opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
      */
     public async listTrades(
         currencyPair: string,
@@ -317,11 +317,11 @@ export class SpotApi {
     }
 
     /**
-     * Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
+     * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
      * @summary Market candlesticks
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param opts.interval Interval time between data points
@@ -422,7 +422,7 @@ export class SpotApi {
      *
      * @summary List spot accounts
      * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
+     * @param opts.currency Retrieve data of the specified currency
      */
     public async listSpotAccounts(opts: {
         currency?: string;
@@ -537,19 +537,22 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`
+     * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`  When `status` is `open`, i.e., listing open orders, only pagination parameters `page` and `limit` are supported and `limit` cannot be larger than 100. Query by `side` and time range parameters `from` and `to` are not supported.  When `status` is `finished`, i.e., listing finished orders, pagination parameters, time range parameters `from` and `to`, and `side` parameters are all supported.
      * @summary List orders
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
      * @param opts Optional parameters
      * @param opts.page Page number
-     * @param opts.limit Maximum number of records returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
+     * @param opts.limit Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
+     * @param opts.side All bids or asks. Both included if not specified
      */
     public async listOrders(
         currencyPair: string,
         status: 'open' | 'finished',
-        opts: { page?: number; limit?: number; account?: string },
+        opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: 'buy' | 'sell' },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -589,6 +592,18 @@ export class SpotApi {
             localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.side !== undefined) {
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -601,7 +616,7 @@ export class SpotApi {
     }
 
     /**
-     * You can place orders with spot, margin or cross margin account through setting the `account `field. It defaults to `spot`, which means spot account is used to place orders.  When margin account is used, i.e., `account` is `margin`, `auto_borrow` field can be set to `true` to enable the server to borrow the amount lacked using `POST /margin/loans` when your account\'s balance is not enough. Whether margin orders\' fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using `/margin/auto_repay` API.  When cross margin account is used, i.e., `account` is `cross_margin`, `auto_borrow` can also be enabled to achieve borrowing the insufficient amount automatically if cross account\'s balance is not enough. But it differs from margin account that automatic repayment is determined by order\'s `auto_repay` field and only current order\'s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either `cancelled` or `closed`.  **Order status**  An order waiting to be filled is `open`, and it stays `open` until it is filled totally. If fully filled, order is finished and its status turns to `closed`.If the order is cancelled before it is totally filled, whether or not partially filled, its status is `cancelled`. **Iceberg order**  `iceberg` field can be used to set the amount shown. Set to `-1` to hide totally. Note that the hidden part\'s fee will be charged using taker\'s fee rate.
+     * You can place orders with spot, margin or cross margin account through setting the `account `field. It defaults to `spot`, which means spot account is used to place orders.  When margin account is used, i.e., `account` is `margin`, `auto_borrow` field can be set to `true` to enable the server to borrow the amount lacked using `POST /margin/loans` when your account\'s balance is not enough. Whether margin orders\' fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using `/margin/auto_repay` API.  When cross margin account is used, i.e., `account` is `cross_margin`, `auto_borrow` can also be enabled to achieve borrowing the insufficient amount automatically if cross account\'s balance is not enough. But it differs from margin account that automatic repayment is determined by order\'s `auto_repay` field and only current order\'s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either `cancelled` or `closed`.  **Order status**  An order waiting to be filled is `open`, and it stays `open` until it is filled totally. If fully filled, order is finished and its status turns to `closed`.If the order is cancelled before it is totally filled, whether or not partially filled, its status is `cancelled`. **Iceberg order**  `iceberg` field can be used to set the amount shown. Set to `-1` to hide the order completely. Note that the hidden part\'s fee will be charged using taker\'s fee rate.
      * @summary Create an order
      * @param order
      */
@@ -639,7 +654,7 @@ export class SpotApi {
      * @summary Cancel all `open` orders in specified currency pair
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.side All bids or asks. Both included in not specified
+     * @param opts.side All bids or asks. Both included if not specified
      * @param opts.account Specify account type. Default to all account types being included
      */
     public async cancelOrders(
@@ -832,18 +847,20 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`
+     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range
      * @summary List personal trading history
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.to Time range ending, default to current time
      */
     public async listMyTrades(
         currencyPair: string,
-        opts: { limit?: number; page?: number; orderId?: string; account?: string },
+        opts: { limit?: number; page?: number; orderId?: string; account?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
         const localVarQueryParameters: any = {};
@@ -880,6 +897,14 @@ export class SpotApi {
             localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -894,11 +919,11 @@ export class SpotApi {
     /**
      *
      * @summary Retrieve running auto order list
-     * @param status List orders based on status
+     * @param status Only list the orders with this status
      * @param opts Optional parameters
      * @param opts.market Currency pair
      * @param opts.account Trading account
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listSpotPriceTriggeredOrders(
@@ -1044,7 +1069,7 @@ export class SpotApi {
     /**
      *
      * @summary Get a single order
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getSpotPriceTriggeredOrder(
         orderId: string,
@@ -1083,7 +1108,7 @@ export class SpotApi {
     /**
      *
      * @summary Cancel a single order
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelSpotPriceTriggeredOrder(
         orderId: string,

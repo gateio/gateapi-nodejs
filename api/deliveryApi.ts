@@ -51,7 +51,7 @@ export class DeliveryApi {
      * @param settle Settle currency
      */
     public async listDeliveryContracts(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryContract> }> {
         const localVarPath =
             this.client.basePath +
@@ -89,7 +89,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      */
     public async getDeliveryContract(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: DeliveryContract }> {
         const localVarPath =
@@ -136,10 +136,10 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
-     * @param opts.withId Whether order book update ID would be returned. This ID increments by 1 on every order book update
+     * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
     public async listDeliveryOrderBook(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
@@ -198,13 +198,13 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
-     * @param opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
      * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
     public async listDeliveryTrades(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         opts: { limit?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
@@ -269,11 +269,11 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param opts.limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points
      */
     public async listDeliveryCandlesticks(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         opts: {
             from?: number;
@@ -346,7 +346,7 @@ export class DeliveryApi {
      * @param opts.contract Futures contract
      */
     public async listDeliveryTickers(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
@@ -388,10 +388,10 @@ export class DeliveryApi {
      * @summary Futures insurance balance history
      * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listDeliveryInsuranceLedger(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
@@ -435,7 +435,9 @@ export class DeliveryApi {
      * @summary Query futures account
      * @param settle Settle currency
      */
-    public async listDeliveryAccounts(settle: 'usdt'): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+    public async listDeliveryAccounts(
+        settle: 'btc' | 'usdt',
+    ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -470,13 +472,13 @@ export class DeliveryApi {
      * @summary Query account book
      * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     public async listDeliveryAccountBook(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: {
             limit?: number;
             from?: number;
@@ -538,7 +540,9 @@ export class DeliveryApi {
      * @summary List all positions of a user
      * @param settle Settle currency
      */
-    public async listDeliveryPositions(settle: 'usdt'): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+    public async listDeliveryPositions(
+        settle: 'btc' | 'usdt',
+    ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -575,7 +579,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      */
     public async getDeliveryPosition(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -622,7 +626,7 @@ export class DeliveryApi {
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
     public async updateDeliveryPositionMargin(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -683,7 +687,7 @@ export class DeliveryApi {
      * @param leverage New position leverage
      */
     public async updateDeliveryPositionLeverage(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -744,7 +748,7 @@ export class DeliveryApi {
      * @param riskLimit New position risk limit
      */
     public async updateDeliveryPositionRiskLimit(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -798,19 +802,19 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
+     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
      * @summary List futures orders
      * @param settle Settle currency
-     * @param status List orders based on status
+     * @param status Only list the orders with this status
      * @param opts Optional parameters
      * @param opts.contract Futures contract
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listDeliveryOrders(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -872,13 +876,13 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
+     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
      * @summary Create a futures order
      * @param settle Settle currency
      * @param futuresOrder
      */
     public async createDeliveryOrder(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         futuresOrder: FuturesOrder,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -917,15 +921,15 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
+     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
      * @summary Cancel all `open` orders matched
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.side All bids or asks. Both included in not specified
+     * @param opts.side All bids or asks. Both included if not specified
      */
     public async cancelDeliveryOrders(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         contract: string,
         opts: { side?: 'ask' | 'bid' },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -971,13 +975,13 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
+     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
      * @summary Get a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getDeliveryOrder(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1020,10 +1024,10 @@ export class DeliveryApi {
      *
      * @summary Cancel a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelDeliveryOrder(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1069,13 +1073,13 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.contract Futures contract
      * @param opts.order Futures order ID, return related data only if specified
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyDeliveryTrades(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: {
             contract?: string;
             order?: number;
@@ -1145,10 +1149,10 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listDeliveryPositionClose(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
         const localVarPath =
@@ -1195,11 +1199,11 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.at Specify a liquidation timestamp
      */
     public async listDeliveryLiquidates(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -1250,11 +1254,11 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.at Specify a settlement timestamp
      */
     public async listDeliverySettlements(
-        settle: 'usdt',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliverySettlement> }> {
         const localVarPath =
@@ -1303,10 +1307,10 @@ export class DeliveryApi {
      *
      * @summary List all auto orders
      * @param settle Settle currency
-     * @param status List orders based on status
+     * @param status Only list the orders with this status
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredDeliveryOrders(
@@ -1478,7 +1482,7 @@ export class DeliveryApi {
      *
      * @summary Get a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getPriceTriggeredDeliveryOrder(
         settle: 'usdt',
@@ -1528,7 +1532,7 @@ export class DeliveryApi {
      *
      * @summary Cancel a single order
      * @param settle Settle currency
-     * @param orderId ID returned on order successfully being created
+     * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelPriceTriggeredDeliveryOrder(
         settle: 'usdt',

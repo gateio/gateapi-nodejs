@@ -146,7 +146,7 @@ export class DeliveryContract {
      */
     'tradeId'?: number;
     /**
-     * Historical accumulation trade size
+     * Historical accumulated trade size
      */
     'tradeSize'?: number;
     /**
@@ -154,7 +154,7 @@ export class DeliveryContract {
      */
     'positionSize'?: number;
     /**
-     * Configuration\'s last changed time
+     * Last changed time of configuration
      */
     'configChangeTime'?: number;
     /**

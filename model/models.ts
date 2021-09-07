@@ -1,3 +1,4 @@
+export * from './accountBalance';
 export * from './autoRepaySetting';
 export * from './batchOrder';
 export * from './cancelOrder';
@@ -7,6 +8,7 @@ export * from './contractStat';
 export * from './crossMarginAccount';
 export * from './crossMarginAccountBook';
 export * from './crossMarginBalance';
+export * from './crossMarginBorrowable';
 export * from './crossMarginCurrency';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayRequest';
@@ -40,6 +42,7 @@ export * from './loanRecord';
 export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
+export * from './marginBorrowable';
 export * from './marginCurrencyPair';
 export * from './marginTransferable';
 export * from './multiChainAddressItem';
@@ -59,6 +62,7 @@ export * from './spotPriceTriggeredOrder';
 export * from './subAccountBalance';
 export * from './subAccountTransfer';
 export * from './ticker';
+export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
 export * from './transfer';
@@ -70,6 +74,7 @@ import querystring = require('querystring');
 import crypto = require('crypto');
 import { URL } from 'url';
 
+import { AccountBalance } from './accountBalance';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { BatchOrder } from './batchOrder';
 import { CancelOrder } from './cancelOrder';
@@ -79,6 +84,7 @@ import { ContractStat } from './contractStat';
 import { CrossMarginAccount } from './crossMarginAccount';
 import { CrossMarginAccountBook } from './crossMarginAccountBook';
 import { CrossMarginBalance } from './crossMarginBalance';
+import { CrossMarginBorrowable } from './crossMarginBorrowable';
 import { CrossMarginCurrency } from './crossMarginCurrency';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
@@ -112,6 +118,7 @@ import { LoanRecord } from './loanRecord';
 import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
+import { MarginBorrowable } from './marginBorrowable';
 import { MarginCurrencyPair } from './marginCurrencyPair';
 import { MarginTransferable } from './marginTransferable';
 import { MultiChainAddressItem } from './multiChainAddressItem';
@@ -131,6 +138,7 @@ import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { Ticker } from './ticker';
+import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
 import { Transfer } from './transfer';
@@ -141,6 +149,7 @@ import { WithdrawStatus } from './withdrawStatus';
 const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
 
 const enumsMap: { [index: string]: any } = {
+    'AccountBalance.Currency': AccountBalance.Currency,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchOrder.Status': BatchOrder.Status,
     'BatchOrder.Type': BatchOrder.Type,
@@ -192,6 +201,7 @@ const enumsMap: { [index: string]: any } = {
 };
 
 const typeMap: { [index: string]: any } = {
+    AccountBalance: AccountBalance,
     AutoRepaySetting: AutoRepaySetting,
     BatchOrder: BatchOrder,
     CancelOrder: CancelOrder,
@@ -201,6 +211,7 @@ const typeMap: { [index: string]: any } = {
     CrossMarginAccount: CrossMarginAccount,
     CrossMarginAccountBook: CrossMarginAccountBook,
     CrossMarginBalance: CrossMarginBalance,
+    CrossMarginBorrowable: CrossMarginBorrowable,
     CrossMarginCurrency: CrossMarginCurrency,
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayRequest: CrossMarginRepayRequest,
@@ -234,6 +245,7 @@ const typeMap: { [index: string]: any } = {
     MarginAccount: MarginAccount,
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
+    MarginBorrowable: MarginBorrowable,
     MarginCurrencyPair: MarginCurrencyPair,
     MarginTransferable: MarginTransferable,
     MultiChainAddressItem: MultiChainAddressItem,
@@ -253,6 +265,7 @@ const typeMap: { [index: string]: any } = {
     SubAccountBalance: SubAccountBalance,
     SubAccountTransfer: SubAccountTransfer,
     Ticker: Ticker,
+    TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,
     Transfer: Transfer,

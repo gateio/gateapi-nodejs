@@ -27,7 +27,7 @@ export class MultiChainAddressItem {
      */
     'paymentName'?: string;
     /**
-     * Whether address is obtained. 0 means success. 1 is failure, which needs retries
+     * The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
      */
     'obtainFailed'?: number;
 

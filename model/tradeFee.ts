@@ -23,7 +23,7 @@ export class TradeFee {
      */
     'makerFee'?: string;
     /**
-     * Is GT deduction is enabled
+     * If GT deduction is enabled
      */
     'gtDiscount'?: boolean;
     /**

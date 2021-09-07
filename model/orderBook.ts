@@ -15,11 +15,11 @@ export class OrderBook {
      */
     'id'?: number;
     /**
-     * Response data generation timestamp in milliseconds
+     * The timestamp of the response data being generated (in milliseconds)
      */
     'current'?: number;
     /**
-     * Order book changed timestamp in milliseconds
+     * The timestamp of when the orderbook last changed (in milliseconds)
      */
     'update'?: number;
     /**

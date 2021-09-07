@@ -18,15 +18,15 @@ export class BatchOrder {
      */
     'text'?: string;
     /**
-     * Whether order succeeds
+     * Whether the batch of orders succeeded
      */
     'succeeded'?: boolean;
     /**
-     * Error label, empty string if order succeeds
+     * Error label, if any, otherwise an empty string
      */
     'label'?: string;
     /**
-     * Detailed error message, empty string if order succeeds
+     * Detailed error message, if any, otherwise an empty string
      */
     'message'?: string;
     /**
@@ -34,19 +34,19 @@ export class BatchOrder {
      */
     'id'?: string;
     /**
-     * Order creation time
+     * Creation time of order
      */
     'createTime'?: string;
     /**
-     * Order last modification time
+     * Last modification time of order
      */
     'updateTime'?: string;
     /**
-     * Order creation time in milliseconds
+     * Creation time of order (in milliseconds)
      */
     'createTimeMs'?: number;
     /**
-     * Order last modification time in milliseconds
+     * Last modification time of order (in milliseconds)
      */
     'updateTimeMs'?: number;
     /**
@@ -82,7 +82,7 @@ export class BatchOrder {
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the amount totally
+     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the order completely
      */
     'iceberg'?: string;
     /**
@@ -114,7 +114,7 @@ export class BatchOrder {
      */
     'feeCurrency'?: string;
     /**
-     * Point used to deduct fee
+     * Points used to deduct fee
      */
     'pointFee'?: string;
     /**

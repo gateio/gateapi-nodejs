@@ -18,11 +18,11 @@ export class Transfer {
      */
     'currency': string;
     /**
-     * Account transferred from
+     * Account to transfer from
      */
     'from': Transfer.From;
     /**
-     * Account transferred to
+     * Account to transfer to
      */
     'to': Transfer.To;
     /**

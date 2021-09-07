@@ -46,19 +46,19 @@ export class Loan {
      */
     'amount': string;
     /**
-     * Loan days
+     * Loan days. Only 10 is supported for now
      */
-    'days': number;
+    'days'?: number;
     /**
-     * Auto renew the loan on expiration
+     * Whether to auto renew the loan upon expiration
      */
     'autoRenew'?: boolean;
     /**
-     * Currency pair. Required for borrowing side
+     * Currency pair. Required if borrowing
      */
     'currencyPair'?: string;
     /**
-     * Amount not lending out
+     * Amount not lent out yet
      */
     'left'?: string;
     /**
@@ -70,7 +70,7 @@ export class Loan {
      */
     'paidInterest'?: string;
     /**
-     * Interest not repaid
+     * Outstanding interest yet to be paid
      */
     'unpaidInterest'?: string;
     /**
@@ -78,9 +78,13 @@ export class Loan {
      */
     'feeRate'?: string;
     /**
-     * Original loan ID if the loan is auto-renewed. Equal to `id` if not
+     * Original loan ID of the loan if auto-renewed, otherwise equals to id
      */
     'origId'?: string;
+    /**
+     * User defined custom ID
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -168,6 +172,11 @@ export class Loan {
         {
             name: 'origId',
             baseName: 'orig_id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

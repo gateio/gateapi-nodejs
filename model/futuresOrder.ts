@@ -22,7 +22,7 @@ export class FuturesOrder {
      */
     'user'?: number;
     /**
-     * Order creation time
+     * Creation time of order
      */
     'createTime'?: number;
     /**
@@ -30,7 +30,7 @@ export class FuturesOrder {
      */
     'finishTime'?: number;
     /**
-     * How the order is finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close
+     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close
      */
     'finishAs'?: FuturesOrder.FinishAs;
     /**
@@ -46,7 +46,7 @@ export class FuturesOrder {
      */
     'size': number;
     /**
-     * Display size for iceberg order. 0 for non-iceberg. Note that you would pay the taker fee for the hidden size
+     * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
      */
     'iceberg'?: number;
     /**

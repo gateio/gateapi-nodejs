@@ -88,7 +88,7 @@ export class Position {
      */
     'historyPoint'?: string;
     /**
-     * ADL ranking, range from 1 to 5
+     * ADL ranking, ranging from 1 to 5
      */
     'adlRanking'?: number;
     /**

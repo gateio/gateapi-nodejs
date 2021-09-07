@@ -22,19 +22,19 @@ export class Order {
      */
     'text'?: string;
     /**
-     * Order creation time
+     * Creation time of order
      */
     'createTime'?: string;
     /**
-     * Order last modification time
+     * Last modification time of order
      */
     'updateTime'?: string;
     /**
-     * Order creation time in milliseconds
+     * Creation time of order (in milliseconds)
      */
     'createTimeMs'?: number;
     /**
-     * Order last modification time in milliseconds
+     * Last modification time of order (in milliseconds)
      */
     'updateTimeMs'?: number;
     /**
@@ -70,7 +70,7 @@ export class Order {
      */
     'timeInForce'?: Order.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the amount totally
+     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the order completely
      */
     'iceberg'?: string;
     /**
@@ -102,7 +102,7 @@ export class Order {
      */
     'feeCurrency'?: string;
     /**
-     * Point used to deduct fee
+     * Points used to deduct fee
      */
     'pointFee'?: string;
     /**

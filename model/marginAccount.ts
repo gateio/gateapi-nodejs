@@ -19,6 +19,14 @@ export class MarginAccount {
      * Currency pair
      */
     'currencyPair'?: string;
+    /**
+     * Whether account is locked
+     */
+    'locked'?: boolean;
+    /**
+     * Current risk rate of margin account
+     */
+    'risk'?: string;
     'base'?: MarginAccountCurrency;
     'quote'?: MarginAccountCurrency;
 
@@ -28,6 +36,16 @@ export class MarginAccount {
         {
             name: 'currencyPair',
             baseName: 'currency_pair',
+            type: 'string',
+        },
+        {
+            name: 'locked',
+            baseName: 'locked',
+            type: 'boolean',
+        },
+        {
+            name: 'risk',
+            baseName: 'risk',
             type: 'string',
         },
         {

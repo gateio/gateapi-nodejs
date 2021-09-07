@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **amount** | **string** | Currency amount | [default to undefined]
 **currency** | **string** | Currency name | [default to undefined]
 **address** | **string** | Withdrawal address. Required for withdrawals | [optional] [default to undefined]
-**memo** | **string** | Extra withdrawal memo | [optional] [default to undefined]
-**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation | [optional] [readonly] [default to undefined]
+**memo** | **string** | Additional remarks with regards to the withdrawal | [optional] [default to undefined]
+**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation | [optional] [readonly] [default to undefined]
 **chain** | **string** | Name of the chain used in withdrawals | [optional] [default to undefined]
 
 ## Enum: LedgerRecord.Status

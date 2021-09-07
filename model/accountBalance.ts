@@ -9,41 +9,44 @@
  * Do not edit the class manually.
  */
 
-export class FundingBookItem {
+/**
+ * Total balances calculated with specified currency unit
+ */
+export class AccountBalance {
     /**
-     * Loan rate
-     */
-    'rate'?: string;
-    /**
-     * Borrowable amount
+     * Account total balance amount
      */
     'amount'?: string;
     /**
-     * The number of days till the loan repayment\'s dateline
+     * Currency
      */
-    'days'?: number;
+    'currency'?: AccountBalance.Currency;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
         {
             name: 'amount',
             baseName: 'amount',
             type: 'string',
         },
         {
-            name: 'days',
-            baseName: 'days',
-            type: 'number',
+            name: 'currency',
+            baseName: 'currency',
+            type: 'AccountBalance.Currency',
         },
     ];
 
     static getAttributeTypeMap() {
-        return FundingBookItem.attributeTypeMap;
+        return AccountBalance.attributeTypeMap;
+    }
+}
+
+export namespace AccountBalance {
+    export enum Currency {
+        BTC = <any>'BTC',
+        CNY = <any>'CNY',
+        USD = <any>'USD',
+        USDT = <any>'USDT',
     }
 }

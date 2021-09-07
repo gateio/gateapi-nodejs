@@ -47,7 +47,7 @@ export class FuturesPriceTriggeredOrder {
      */
     'finishAs'?: FuturesPriceTriggeredOrder.FinishAs;
     /**
-     * Extra messages of how order is finished
+     * Additional remarks on how the order was finished
      */
     'reason'?: string;
 

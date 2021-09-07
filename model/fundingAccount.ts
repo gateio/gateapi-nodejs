@@ -23,7 +23,7 @@ export class FundingAccount {
      */
     'locked'?: string;
     /**
-     * Amount that is loaned but not repaid
+     * Outstanding loan amount yet to be repaid
      */
     'lent'?: string;
     /**

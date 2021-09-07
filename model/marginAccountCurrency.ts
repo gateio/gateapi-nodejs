@@ -10,7 +10,7 @@
  */
 
 /**
- * Account currency detail
+ * Account currency details
  */
 export class MarginAccountCurrency {
     /**
@@ -30,7 +30,7 @@ export class MarginAccountCurrency {
      */
     'borrowed'?: string;
     /**
-     * Interests unpaid
+     * Unpaid interests
      */
     'interest'?: string;
 

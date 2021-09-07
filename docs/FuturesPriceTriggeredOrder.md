@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **tradeId** | **number** | ID of the newly created order on condition triggered | [optional] [readonly] [default to undefined]
 **status** | **string** | Order status. | [optional] [readonly] [default to undefined]
 **finishAs** | **string** | How order is finished | [optional] [readonly] [default to undefined]
-**reason** | **string** | Extra messages of how order is finished | [optional] [readonly] [default to undefined]
+**reason** | **string** | Additional remarks on how the order was finished | [optional] [readonly] [default to undefined]
 
 ## Enum: FuturesPriceTriggeredOrder.Status
 

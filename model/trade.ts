@@ -55,7 +55,7 @@ export class Trade {
      */
     'feeCurrency'?: string;
     /**
-     * Point used to deduct fee
+     * Points used to deduct fee
      */
     'pointFee'?: string;
     /**

@@ -23,7 +23,7 @@ export class LoanPatch {
      */
     'autoRenew': boolean;
     /**
-     * Currency pair. Required for borrowing side
+     * Currency pair. Required if borrowing
      */
     'currencyPair'?: string;
     /**

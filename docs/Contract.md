@@ -31,9 +31,9 @@ Name | Type | Description | Notes
 **refRebateRate** | **string** | Referrer commission rate | [optional] [default to undefined]
 **orderbookId** | **number** | Current orderbook ID | [optional] [default to undefined]
 **tradeId** | **number** | Current trade ID | [optional] [default to undefined]
-**tradeSize** | **number** | Historical accumulation trade size | [optional] [default to undefined]
+**tradeSize** | **number** | Historical accumulated trade size | [optional] [default to undefined]
 **positionSize** | **number** | Current total long position size | [optional] [default to undefined]
-**configChangeTime** | **number** | Configuration\&#39;s last changed time | [optional] [default to undefined]
+**configChangeTime** | **number** | Last changed time of configuration | [optional] [default to undefined]
 **inDelisting** | **boolean** | Contract is delisting | [optional] [default to undefined]
 **ordersLimit** | **number** | Maximum number of open orders | [optional] [default to undefined]
 

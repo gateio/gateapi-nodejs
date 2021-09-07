@@ -13,7 +13,7 @@ import { FuturesOrderBookItem } from './futuresOrderBookItem';
 
 export class FuturesOrderBook {
     /**
-     * Order Book ID. Increase by 1 on every order book change. Set `with_id=true` to include this field in response
+     * Order Book ID. Increases by 1 on every order book change. Set `with_id=true` to include this field in response
      */
     'id'?: number;
     /**

@@ -9,26 +9,31 @@
  * Do not edit the class manually.
  */
 
-export class FundingBookItem {
+export class MarginBorrowable {
     /**
-     * Loan rate
+     * Currency detail
      */
-    'rate'?: string;
+    'currency'?: string;
     /**
-     * Borrowable amount
+     * Currency pair
+     */
+    'currencyPair'?: string;
+    /**
+     * Max borrowable amount
      */
     'amount'?: string;
-    /**
-     * The number of days till the loan repayment\'s dateline
-     */
-    'days'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'rate',
-            baseName: 'rate',
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
+        },
+        {
+            name: 'currencyPair',
+            baseName: 'currency_pair',
             type: 'string',
         },
         {
@@ -36,14 +41,9 @@ export class FundingBookItem {
             baseName: 'amount',
             type: 'string',
         },
-        {
-            name: 'days',
-            baseName: 'days',
-            type: 'number',
-        },
     ];
 
     static getAttributeTypeMap() {
-        return FundingBookItem.attributeTypeMap;
+        return MarginBorrowable.attributeTypeMap;
     }
 }

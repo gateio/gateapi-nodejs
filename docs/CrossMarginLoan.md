@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **status** | **number** | Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete | [optional] [readonly] [default to undefined]
 **repaid** | **string** | Repaid amount | [optional] [readonly] [default to undefined]
 **repaidInterest** | **string** | Repaid interest | [optional] [readonly] [default to undefined]
-**unpaidInterest** | **string** | Interest not repaid | [optional] [readonly] [default to undefined]
+**unpaidInterest** | **string** | Outstanding interest yet to be paid | [optional] [readonly] [default to undefined]
 
 ## Enum: CrossMarginLoan.Status
 

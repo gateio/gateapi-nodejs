@@ -4,10 +4,10 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCurrencies**](SpotApi.md#listCurrencies) | **GET** /spot/currencies | List all currencies\&#39; detail
-[**getCurrency**](SpotApi.md#getCurrency) | **GET** /spot/currencies/{currency} | Get detail of one particular currency
+[**listCurrencies**](SpotApi.md#listCurrencies) | **GET** /spot/currencies | List all currencies\&#39; details
+[**getCurrency**](SpotApi.md#getCurrency) | **GET** /spot/currencies/{currency} | Get details of a specific currency
 [**listCurrencyPairs**](SpotApi.md#listCurrencyPairs) | **GET** /spot/currency_pairs | List all currency pairs supported
-[**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Get detail of one single order
+[**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Get details of a specifc order
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Retrieve ticker information
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Retrieve order book
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
@@ -34,7 +34,7 @@ Method | HTTP request | Description
 
 > Promise<{ response: http.IncomingMessage; body: Array<Currency>; }> listCurrencies()
 
-List all currencies\&#39; detail
+List all currencies\&#39; details
 
 ### Example
 
@@ -71,7 +71,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: Currency; }> getCurrency(currency)
 
-Get detail of one particular currency
+Get details of a specific currency
 
 ### Example
 
@@ -149,7 +149,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: CurrencyPair; }> getCurrencyPair(currencyPair)
 
-Get detail of one single order
+Get details of a specifc order
 
 ### Example
 
@@ -237,7 +237,7 @@ No authorization required
 
 Retrieve order book
 
-Order book will be sorted by price from high to low on bids; reversed on asks
+Order book will be sorted by price from high to low on bids; low to high on asks
 
 ### Example
 
@@ -299,9 +299,9 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
-  'reverse': true // boolean | Whether to retrieve records whose IDs are smaller than `last_id`\'s. Default to larger ones.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'reverse': true // boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
 };
 api.listTrades(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -314,9 +314,9 @@ api.listTrades(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
- **reverse** | **boolean**| Whether to retrieve records whose IDs are smaller than &#x60;last_id&#x60;\&#39;s. Default to larger ones.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to undefined]
+ **reverse** | **boolean**| Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to undefined]
 
 ### Return type
 
@@ -337,7 +337,7 @@ No authorization required
 
 Market candlesticks
 
-Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
+Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
 
 ### Example
 
@@ -350,7 +350,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'limit': 100, // number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'interval': '30m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points
@@ -366,7 +366,7 @@ api.listCandlesticks(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **limit** | **number**| Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
  **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;30m&#39;]
@@ -449,7 +449,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieved specified currency related data
+  'currency': "BTC" // string | Retrieve data of the specified currency
 };
 api.listSpotAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -461,7 +461,7 @@ api.listSpotAccounts(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieved specified currency related data | [optional] [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -578,7 +578,7 @@ Promise<{ response: AxiosResponse; body: Array<OpenOrders>; }> [OpenOrders](Open
 
 List orders
 
-Spot and margin orders are returned by default. If cross margin orders are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;
+Spot and margin orders are returned by default. If cross margin orders are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;  When &#x60;status&#x60; is &#x60;open&#x60;, i.e., listing open orders, only pagination parameters &#x60;page&#x60; and &#x60;limit&#x60; are supported and &#x60;limit&#x60; cannot be larger than 100. Query by &#x60;side&#x60; and time range parameters &#x60;from&#x60; and &#x60;to&#x60; are not supported.  When &#x60;status&#x60; is &#x60;finished&#x60;, i.e., listing finished orders, pagination parameters, time range parameters &#x60;from&#x60; and &#x60;to&#x60;, and &#x60;side&#x60; parameters are all supported.
 
 ### Example
 
@@ -595,8 +595,11 @@ const currencyPair = "BTC_USDT"; // string | Retrieve results with specified cur
 const status = "open"; // 'open' | 'finished' | List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled 
 const opts = {
   'page': 1, // number | Page number
-  'limit': 100, // number | Maximum number of records returned. If `status` is `open`, maximum of `limit` is 100
-  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'limit': 100, // number | Maximum number of records to be returned. If `status` is `open`, maximum of `limit` is 100
+  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'from': 56, // number | Time range beginning, default to 7 days before current time
+  'to': 56, // number | Time range ending, default to current time
+  'side': "sell" // 'buy' | 'sell' | All bids or asks. Both included if not specified
 };
 api.listOrders(currencyPair, status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -611,8 +614,11 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones. | [default to undefined]
  **status** | **Status**| List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled  | [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100 | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100 | [optional] [default to 100]
  **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
+ **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
+ **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -633,7 +639,7 @@ Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 Create an order
 
-You can place orders with spot, margin or cross margin account through setting the &#x60;account &#x60;field. It defaults to &#x60;spot&#x60;, which means spot account is used to place orders.  When margin account is used, i.e., &#x60;account&#x60; is &#x60;margin&#x60;, &#x60;auto_borrow&#x60; field can be set to &#x60;true&#x60; to enable the server to borrow the amount lacked using &#x60;POST /margin/loans&#x60; when your account\&#39;s balance is not enough. Whether margin orders\&#39; fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using &#x60;/margin/auto_repay&#x60; API.  When cross margin account is used, i.e., &#x60;account&#x60; is &#x60;cross_margin&#x60;, &#x60;auto_borrow&#x60; can also be enabled to achieve borrowing the insufficient amount automatically if cross account\&#39;s balance is not enough. But it differs from margin account that automatic repayment is determined by order\&#39;s &#x60;auto_repay&#x60; field and only current order\&#39;s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either &#x60;cancelled&#x60; or &#x60;closed&#x60;.  **Order status**  An order waiting to be filled is &#x60;open&#x60;, and it stays &#x60;open&#x60; until it is filled totally. If fully filled, order is finished and its status turns to &#x60;closed&#x60;.If the order is cancelled before it is totally filled, whether or not partially filled, its status is &#x60;cancelled&#x60;. **Iceberg order**  &#x60;iceberg&#x60; field can be used to set the amount shown. Set to &#x60;-1&#x60; to hide totally. Note that the hidden part\&#39;s fee will be charged using taker\&#39;s fee rate. 
+You can place orders with spot, margin or cross margin account through setting the &#x60;account &#x60;field. It defaults to &#x60;spot&#x60;, which means spot account is used to place orders.  When margin account is used, i.e., &#x60;account&#x60; is &#x60;margin&#x60;, &#x60;auto_borrow&#x60; field can be set to &#x60;true&#x60; to enable the server to borrow the amount lacked using &#x60;POST /margin/loans&#x60; when your account\&#39;s balance is not enough. Whether margin orders\&#39; fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using &#x60;/margin/auto_repay&#x60; API.  When cross margin account is used, i.e., &#x60;account&#x60; is &#x60;cross_margin&#x60;, &#x60;auto_borrow&#x60; can also be enabled to achieve borrowing the insufficient amount automatically if cross account\&#39;s balance is not enough. But it differs from margin account that automatic repayment is determined by order\&#39;s &#x60;auto_repay&#x60; field and only current order\&#39;s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either &#x60;cancelled&#x60; or &#x60;closed&#x60;.  **Order status**  An order waiting to be filled is &#x60;open&#x60;, and it stays &#x60;open&#x60; until it is filled totally. If fully filled, order is finished and its status turns to &#x60;closed&#x60;.If the order is cancelled before it is totally filled, whether or not partially filled, its status is &#x60;cancelled&#x60;. **Iceberg order**  &#x60;iceberg&#x60; field can be used to set the amount shown. Set to &#x60;-1&#x60; to hide the order completely. Note that the hidden part\&#39;s fee will be charged using taker\&#39;s fee rate. 
 
 ### Example
 
@@ -693,7 +699,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'side': "sell", // 'buy' | 'sell' | All bids or asks. Both included in not specified
+  'side': "sell", // 'buy' | 'sell' | All bids or asks. Both included if not specified
   'account': "spot" // 'spot' | 'margin' | 'cross_margin' | Specify account type. Default to all account types being included
 };
 api.cancelOrders(currencyPair, opts)
@@ -707,7 +713,7 @@ api.cancelOrders(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **side** | **Side**| All bids or asks. Both included in not specified | [optional] [default to undefined]
+ **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
  **account** | **Account**| Specify account type. Default to all account types being included | [optional] [default to undefined]
 
 ### Return type
@@ -876,7 +882,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 List personal trading history
 
-Spot and margin trades are queried by default. If cross margin trades are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;
+Spot and margin trades are queried by default. If cross margin trades are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;  You can also set &#x60;from&#x60; and(or) &#x60;to&#x60; to query by time range
 
 ### Example
 
@@ -891,10 +897,12 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
 const opts = {
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'page': 1, // number | Page number
   'orderId': "12345", // string | Filter trades with specified order ID. `currency_pair` is also required if this field is present
-  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'from': 56, // number | Time range beginning, default to 7 days before current time
+  'to': 56 // number | Time range ending, default to current time
 };
 api.listMyTrades(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -907,10 +915,12 @@ api.listMyTrades(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones. | [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **page** | **number**| Page number | [optional] [default to 1]
  **orderId** | **string**| Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present | [optional] [default to undefined]
  **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
+ **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
 
 ### Return type
 
@@ -942,11 +952,11 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const status = "status_example"; // 'open' | 'finished' | List orders based on status
+const status = "status_example"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
   'market': "BTC_USDT", // string | Currency pair
   'account': "account_example", // 'normal' | 'margin' | Trading account
-  'limit': 100, // number | Maximum number of records returned in one list
+  'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
 api.listSpotPriceTriggeredOrders(status, opts)
@@ -959,10 +969,10 @@ api.listSpotPriceTriggeredOrders(status, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **Status**| List orders based on status | [default to undefined]
+ **status** | **Status**| Only list the orders with this status | [default to undefined]
  **market** | **string**| Currency pair | [optional] [default to undefined]
  **account** | **Account**| Trading account | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -1085,7 +1095,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const orderId = "orderId_example"; // string | ID returned on order successfully being created
+const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.getSpotPriceTriggeredOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1096,7 +1106,7 @@ api.getSpotPriceTriggeredOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **string**| ID returned on order successfully being created | [default to undefined]
+ **orderId** | **string**| Retrieve the data of the order with the specified ID | [default to undefined]
 
 ### Return type
 
@@ -1128,7 +1138,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const orderId = "orderId_example"; // string | ID returned on order successfully being created
+const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.cancelSpotPriceTriggeredOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1139,7 +1149,7 @@ api.cancelSpotPriceTriggeredOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **string**| ID returned on order successfully being created | [default to undefined]
+ **orderId** | **string**| Retrieve the data of the order with the specified ID | [default to undefined]
 
 ### Return type
 

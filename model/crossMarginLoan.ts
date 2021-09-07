@@ -47,7 +47,7 @@ export class CrossMarginLoan {
      */
     'repaidInterest'?: string;
     /**
-     * Interest not repaid
+     * Outstanding interest yet to be paid
      */
     'unpaidInterest'?: string;
 

@@ -19,7 +19,7 @@ export class MarginAccountBook {
      */
     'time'?: string;
     /**
-     * Account changed timestamp in milliseconds
+     * The timestamp of the change (in milliseconds)
      */
     'timeMs'?: number;
     /**

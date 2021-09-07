@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **available** | **string** | Amount suitable for margin trading. | [optional] [default to undefined]
 **locked** | **string** | Locked amount, used in margin trading | [optional] [default to undefined]
 **borrowed** | **string** | Borrowed amount | [optional] [default to undefined]
-**interest** | **string** | Interests unpaid | [optional] [default to undefined]
+**interest** | **string** | Unpaid interests | [optional] [default to undefined]
 

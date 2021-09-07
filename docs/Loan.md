@@ -12,15 +12,16 @@ Name | Type | Description | Notes
 **currency** | **string** | Loan currency | [default to undefined]
 **rate** | **string** | Loan rate. Only rates in [0.0002, 0.002] are supported.  Not required in lending. Market rate calculated from recent rates will be used if not set | [optional] [default to undefined]
 **amount** | **string** | Loan amount | [default to undefined]
-**days** | **number** | Loan days | [default to undefined]
-**autoRenew** | **boolean** | Auto renew the loan on expiration | [optional] [default to undefined]
-**currencyPair** | **string** | Currency pair. Required for borrowing side | [optional] [default to undefined]
-**left** | **string** | Amount not lending out | [optional] [readonly] [default to undefined]
+**days** | **number** | Loan days. Only 10 is supported for now | [optional] [default to undefined]
+**autoRenew** | **boolean** | Whether to auto renew the loan upon expiration | [optional] [default to undefined]
+**currencyPair** | **string** | Currency pair. Required if borrowing | [optional] [default to undefined]
+**left** | **string** | Amount not lent out yet | [optional] [readonly] [default to undefined]
 **repaid** | **string** | Repaid amount | [optional] [readonly] [default to undefined]
 **paidInterest** | **string** | Repaid interest | [optional] [readonly] [default to undefined]
-**unpaidInterest** | **string** | Interest not repaid | [optional] [readonly] [default to undefined]
+**unpaidInterest** | **string** | Outstanding interest yet to be paid | [optional] [readonly] [default to undefined]
 **feeRate** | **string** | Loan fee rate | [optional] [default to undefined]
-**origId** | **string** | Original loan ID if the loan is auto-renewed. Equal to &#x60;id&#x60; if not | [optional] [default to undefined]
+**origId** | **string** | Original loan ID of the loan if auto-renewed, otherwise equals to id | [optional] [default to undefined]
+**text** | **string** | User defined custom ID | [optional] [default to undefined]
 
 ## Enum: Loan.Status
 

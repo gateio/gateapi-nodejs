@@ -14,6 +14,7 @@ import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SubAccountBalance } from '../model/subAccountBalance';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
+import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
 import { Transfer } from '../model/transfer';
 import { WithdrawStatus } from '../model/withdrawStatus';
@@ -78,7 +79,7 @@ export class WalletApi {
      * @param opts.currency Filter by currency. Return all currency records if not specified
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listWithdrawals(opts: {
@@ -138,7 +139,7 @@ export class WalletApi {
      * @param opts.currency Filter by currency. Return all currency records if not specified
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listDeposits(opts: {
@@ -220,12 +221,12 @@ export class WalletApi {
 
     /**
      * Record time range cannot exceed 30 days  > Note: only records after 2020-04-10 can be retrieved
-     * @summary Transfer records between main and sub accounts
+     * @summary Retrieve transfer records between main and sub accounts
      * @param opts Optional parameters
      * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
-     * @param opts.limit Maximum number of records returned in one list
+     * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listSubAccountTransfers(opts: {
@@ -313,7 +314,7 @@ export class WalletApi {
      *
      * @summary Retrieve withdrawal status
      * @param opts Optional parameters
-     * @param opts.currency Retrieved specified currency related data
+     * @param opts.currency Retrieve data of the specified currency
      */
     public async listWithdrawStatus(opts: {
         currency?: string;
@@ -384,8 +385,10 @@ export class WalletApi {
     /**
      *
      * @summary Retrieve personal trading fee
+     * @param opts Optional parameters
+     * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
      */
-    public async getTradeFee(): Promise<{ response: AxiosResponse; body: TradeFee }> {
+    public async getTradeFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: TradeFee }> {
         const localVarPath = this.client.basePath + '/wallet/fee';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -397,6 +400,11 @@ export class WalletApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -406,5 +414,41 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<TradeFee>(config, 'TradeFee', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve user\'s total balances
+     * @param opts Optional parameters
+     * @param opts.currency Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default.
+     */
+    public async getTotalBalance(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: TotalBalance }> {
+        const localVarPath = this.client.basePath + '/wallet/total_balance';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TotalBalance>(config, 'TotalBalance', authSettings);
     }
 }

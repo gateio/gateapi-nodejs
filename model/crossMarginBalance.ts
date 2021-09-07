@@ -23,7 +23,7 @@ export class CrossMarginBalance {
      */
     'borrowed'?: string;
     /**
-     * Interests unpaid
+     * Unpaid interests
      */
     'interest'?: string;
 

@@ -19,7 +19,7 @@ export class SpotPriceTrigger {
      */
     'rule': SpotPriceTrigger.Rule;
     /**
-     * How many seconds will the order wait for the condition being triggered. Order will be cancelled on timed out
+     * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
      */
     'expiration': number;
 

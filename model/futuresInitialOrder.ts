@@ -35,7 +35,7 @@ export class FuturesInitialOrder {
      */
     'text'?: string;
     /**
-     * Set to true to create an reduce-only order
+     * Set to true to create a reduce-only order
      */
     'reduceOnly'?: boolean;
     /**
