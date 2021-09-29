@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **tkfr** | **string** | Taker fee | [optional] [readonly] [default to undefined]
 **mkfr** | **string** | Maker fee | [optional] [readonly] [default to undefined]
 **refu** | **number** | Reference user ID | [optional] [readonly] [default to undefined]
+**autoSize** | **string** | Set side to close dual-mode position. &#x60;close_long&#x60; closes the long side; while &#x60;close_short&#x60; the short one. Note &#x60;size&#x60; also needs to be set to 0 | [optional] [default to undefined]
 
 ## Enum: FuturesOrder.FinishAs
 
@@ -60,5 +61,12 @@ Name | Type | Description | Notes
 * `Ioc` (value: `'ioc'`)
 
 * `Poc` (value: `'poc'`)
+
+
+## Enum: FuturesOrder.AutoSize
+
+* `Long` (value: `'close_long'`)
+
+* `Short` (value: `'close_short'`)
 
 

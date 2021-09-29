@@ -12,7 +12,7 @@
 import { AccountBalance } from './accountBalance';
 
 /**
- * 用户总资产信息
+ * User\'s balance in all accounts
  */
 export class TotalBalance {
     'total'?: AccountBalance;

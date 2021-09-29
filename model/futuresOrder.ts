@@ -101,6 +101,10 @@ export class FuturesOrder {
      * Reference user ID
      */
     'refu'?: number;
+    /**
+     * Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
+     */
+    'autoSize'?: FuturesOrder.AutoSize;
 
     static discriminator: string | undefined = undefined;
 
@@ -215,6 +219,11 @@ export class FuturesOrder {
             baseName: 'refu',
             type: 'number',
         },
+        {
+            name: 'autoSize',
+            baseName: 'auto_size',
+            type: 'FuturesOrder.AutoSize',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -241,5 +250,9 @@ export namespace FuturesOrder {
         Gtc = <any>'gtc',
         Ioc = <any>'ioc',
         Poc = <any>'poc',
+    }
+    export enum AutoSize {
+        Long = <any>'close_long',
+        Short = <any>'close_short',
     }
 }

@@ -169,6 +169,7 @@ const enumsMap: { [index: string]: any } = {
     'FuturesOrder.FinishAs': FuturesOrder.FinishAs,
     'FuturesOrder.Status': FuturesOrder.Status,
     'FuturesOrder.Tif': FuturesOrder.Tif,
+    'FuturesOrder.AutoSize': FuturesOrder.AutoSize,
     'FuturesPriceTrigger.StrategyType': FuturesPriceTrigger.StrategyType,
     'FuturesPriceTrigger.PriceType': FuturesPriceTrigger.PriceType,
     'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,

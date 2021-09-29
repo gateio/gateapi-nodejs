@@ -537,7 +537,7 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`  When `status` is `open`, i.e., listing open orders, only pagination parameters `page` and `limit` are supported and `limit` cannot be larger than 100. Query by `side` and time range parameters `from` and `to` are not supported.  When `status` is `finished`, i.e., listing finished orders, pagination parameters, time range parameters `from` and `to`, and `side` parameters are all supported.
+     * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`  When `status` is `open`, i.e., listing open orders, only pagination parameters `page` and `limit` are supported and `limit` cannot be larger than 100. Query by `side` and time range parameters `from` and `to` are not supported.  When `status` is `finished`, i.e., listing finished orders, pagination parameters, time range parameters `from` and `to`, and `side` parameters are all supported. Time range parameters are handled as order finish time.
      * @summary List orders
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
@@ -847,7 +847,7 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range
+     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range Time range parameters are handled as order finish time.
      * @summary List personal trading history
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param opts Optional parameters
