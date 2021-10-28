@@ -224,8 +224,8 @@ const api = new GateApi.MarginApi(client);
 const opts = {
   'currency': "currency_example", // string | List records related to specified currency only. If specified, `currency_pair` is also required.
   'currencyPair': "currencyPair_example", // string | List records related to specified currency pair. Used in combination with `currency`. Ignored if `currency` is not provided
-  'from': 56, // number | Time range beginning, default to 7 days before current time
-  'to': 56, // number | Time range ending, default to current time
+  'from': 1627706330, // number | Start timestamp of the query
+  'to': 1635329650, // number | Time range ending, default to current time
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of records to be returned in a single list
 };
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required. | [optional] [default to undefined]
  **currencyPair** | **string**| List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided | [optional] [default to undefined]
- **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
+ **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
@@ -1135,8 +1135,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.MarginApi(client);
 const opts = {
   'currency': "currency_example", // string | Filter by currency
-  'from': 56, // number | Time range beginning, default to 7 days before current time
-  'to': 56, // number | Time range ending, default to current time
+  'from': 1627706330, // number | Start timestamp of the query
+  'to': 1635329650, // number | Time range ending, default to current time
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'type': "borrow" // string | Only retrieve changes of the specified type. All types will be returned if not specified.
@@ -1152,7 +1152,7 @@ api.listCrossMarginAccountBook(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Filter by currency | [optional] [default to undefined]
- **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
+ **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]

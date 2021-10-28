@@ -196,7 +196,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currency List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required.
      * @param opts.currencyPair List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided
-     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
@@ -1066,7 +1066,7 @@ export class MarginApi {
      * @summary Retrieve cross margin account change history
      * @param opts Optional parameters
      * @param opts.currency Filter by currency
-     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list

@@ -262,17 +262,20 @@ export class SpotApi {
     }
 
     /**
-     *
+     * You can use `from` and `to` to query by time range, or use `last_id` by scrolling page. The default behavior is by time range.  Scrolling query using `last_id` is not recommended any more. If `last_id` is specified, time range query parameters will be ignored.
      * @summary Retrieve market trades
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
+     * @param opts.from Start timestamp of the query
+     * @param opts.to Time range ending, default to current time
+     * @param opts.page Page number
      */
     public async listTrades(
         currencyPair: string,
-        opts: { limit?: number; lastId?: string; reverse?: boolean },
+        opts: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/trades';
         const localVarQueryParameters: any = {};
@@ -303,6 +306,18 @@ export class SpotApi {
 
         if (opts.reverse !== undefined) {
             localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, 'boolean');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -545,7 +560,7 @@ export class SpotApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
-     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.side All bids or asks. Both included if not specified
      */
@@ -855,7 +870,7 @@ export class SpotApi {
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
-     * @param opts.from Time range beginning, default to 7 days before current time
+     * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      */
     public async listMyTrades(
