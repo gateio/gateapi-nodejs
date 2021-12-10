@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SubAccountBalance } from '../model/subAccountBalance';
@@ -35,6 +36,43 @@ export class WalletApi {
         } else {
             this.client = new ApiClient();
         }
+    }
+
+    /**
+     *
+     * @summary List chains supported for specified currency
+     * @param currency Currency name
+     */
+    public async listCurrencyChains(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: Array<CurrencyChain> }> {
+        const localVarPath = this.client.basePath + '/wallet/currency_chains';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling listCurrencyChains.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<CurrencyChain>>(config, 'Array<CurrencyChain>', authSettings);
     }
 
     /**
@@ -193,7 +231,7 @@ export class WalletApi {
     }
 
     /**
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin
+     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin 5. spot - options
      * @summary Transfer between trading accounts
      * @param transfer
      */
@@ -417,7 +455,7 @@ export class WalletApi {
     }
 
     /**
-     *
+     * This endpoint returns an approximate sum of exchanged amount from all currencies to input currency for each account.The exchange rate and account balance could have been cached for at most 1 minute. It is not recommended to use its result for any trading calculation.  For trading calculation, use the corresponding account query endpoint for each account type. For example:   - `GET /spot/accounts` to query spot account balance - `GET /margin/accounts` to query margin account balance - `GET /futures/{settle}/accounts` to query futures account balance
      * @summary Retrieve user\'s total balances
      * @param opts Optional parameters
      * @param opts.currency Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default.

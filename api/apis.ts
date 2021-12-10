@@ -5,6 +5,8 @@ export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
 export * from './marginApi';
 import { MarginApi } from './marginApi';
+export * from './optionsApi';
+import { OptionsApi } from './optionsApi';
 export * from './spotApi';
 import { SpotApi } from './spotApi';
 export * from './walletApi';
@@ -12,4 +14,4 @@ import { WalletApi } from './walletApi';
 export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
-export const APIS = [DeliveryApi, FuturesApi, MarginApi, SpotApi, WalletApi, WithdrawalApi];
+export const APIS = [DeliveryApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi, WithdrawalApi];

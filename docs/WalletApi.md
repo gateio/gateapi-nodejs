@@ -4,6 +4,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**listCurrencyChains**](WalletApi.md#listCurrencyChains) | **GET** /wallet/currency_chains | List chains supported for specified currency
 [**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Generate currency deposit address
 [**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Retrieve withdrawal records
 [**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Retrieve deposit records
@@ -15,6 +16,47 @@ Method | HTTP request | Description
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Retrieve personal trading fee
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Retrieve user\&#39;s total balances
 
+
+## listCurrencyChains
+
+> Promise<{ response: http.IncomingMessage; body: Array<CurrencyChain>; }> listCurrencyChains(currency)
+
+List chains supported for specified currency
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.WalletApi(client);
+const currency = "GT"; // string | Currency name
+api.listCurrencyChains(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency name | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<CurrencyChain>; }> [CurrencyChain](CurrencyChain.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ## getDepositAddress
 
@@ -175,7 +217,7 @@ Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](
 
 Transfer between trading accounts
 
-Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin
+Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin 5. spot - options
 
 ### Example
 
@@ -454,6 +496,8 @@ Promise<{ response: AxiosResponse; body: TradeFee; }> [TradeFee](TradeFee.md)
 > Promise<{ response: http.IncomingMessage; body: TotalBalance; }> getTotalBalance(opts)
 
 Retrieve user\&#39;s total balances
+
+This endpoint returns an approximate sum of exchanged amount from all currencies to input currency for each account.The exchange rate and account balance could have been cached for at most 1 minute. It is not recommended to use its result for any trading calculation.  For trading calculation, use the corresponding account query endpoint for each account type. For example:   - &#x60;GET /spot/accounts&#x60; to query spot account balance - &#x60;GET /margin/accounts&#x60; to query margin account balance - &#x60;GET /futures/{settle}/accounts&#x60; to query futures account balance
 
 ### Example
 

@@ -39,7 +39,7 @@ export class LedgerRecord {
      */
     'memo'?: string;
     /**
-     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending
      */
     'status'?: LedgerRecord.Status;
     /**
@@ -111,5 +111,9 @@ export namespace LedgerRecord {
         BCODE = <any>'BCODE',
         EXTPEND = <any>'EXTPEND',
         FAIL = <any>'FAIL',
+        INVALID = <any>'INVALID',
+        VERIFY = <any>'VERIFY',
+        PROCES = <any>'PROCES',
+        PEND = <any>'PEND',
     }
 }

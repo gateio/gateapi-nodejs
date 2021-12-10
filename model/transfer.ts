@@ -10,7 +10,7 @@
  */
 
 /**
- * Accounts available to transfer:  - `spot`: spot account - `margin`: margin account - `futures`: perpetual futures account - `delivery`: delivery futures account - `cross_margin`: cross margin account
+ * Accounts available to transfer:  - `spot`: spot account - `margin`: margin account - `futures`: perpetual futures account - `delivery`: delivery futures account - `cross_margin`: cross margin account - `options`: options account
  */
 export class Transfer {
     /**
@@ -85,6 +85,7 @@ export namespace Transfer {
         Futures = <any>'futures',
         Delivery = <any>'delivery',
         CrossMargin = <any>'cross_margin',
+        Options = <any>'options',
     }
     export enum To {
         Spot = <any>'spot',
@@ -92,5 +93,6 @@ export namespace Transfer {
         Futures = <any>'futures',
         Delivery = <any>'delivery',
         CrossMargin = <any>'cross_margin',
+        Options = <any>'options',
     }
 }

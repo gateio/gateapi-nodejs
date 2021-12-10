@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 
 * `CrossMargin` (value: `'cross_margin'`)
 
+* `Options` (value: `'options'`)
+
 
 ## Enum: Transfer.To
 
@@ -35,5 +37,7 @@ Name | Type | Description | Notes
 * `Delivery` (value: `'delivery'`)
 
 * `CrossMargin` (value: `'cross_margin'`)
+
+* `Options` (value: `'options'`)
 
 

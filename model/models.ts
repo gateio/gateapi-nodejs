@@ -15,6 +15,7 @@ export * from './crossMarginRepayRequest';
 export * from './crossMarginRepayment';
 export * from './crossMarginTransferable';
 export * from './currency';
+export * from './currencyChain';
 export * from './currencyPair';
 export * from './deliveryContract';
 export * from './deliverySettlement';
@@ -48,6 +49,17 @@ export * from './marginTransferable';
 export * from './multiChainAddressItem';
 export * from './myFuturesTrade';
 export * from './openOrders';
+export * from './optionsAccount';
+export * from './optionsAccountBook';
+export * from './optionsContract';
+export * from './optionsMyTrade';
+export * from './optionsOrder';
+export * from './optionsPosition';
+export * from './optionsPositionClose';
+export * from './optionsSettlement';
+export * from './optionsTicker';
+export * from './optionsUnderlying';
+export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
 export * from './position';
@@ -91,6 +103,7 @@ import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
 import { CrossMarginRepayment } from './crossMarginRepayment';
 import { CrossMarginTransferable } from './crossMarginTransferable';
 import { Currency } from './currency';
+import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
@@ -124,6 +137,17 @@ import { MarginTransferable } from './marginTransferable';
 import { MultiChainAddressItem } from './multiChainAddressItem';
 import { MyFuturesTrade } from './myFuturesTrade';
 import { OpenOrders } from './openOrders';
+import { OptionsAccount } from './optionsAccount';
+import { OptionsAccountBook } from './optionsAccountBook';
+import { OptionsContract } from './optionsContract';
+import { OptionsMyTrade } from './optionsMyTrade';
+import { OptionsOrder } from './optionsOrder';
+import { OptionsPosition } from './optionsPosition';
+import { OptionsPositionClose } from './optionsPositionClose';
+import { OptionsSettlement } from './optionsSettlement';
+import { OptionsTicker } from './optionsTicker';
+import { OptionsUnderlying } from './optionsUnderlying';
+import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { Position } from './position';
@@ -181,6 +205,11 @@ const enumsMap: { [index: string]: any } = {
     'LoanPatch.Side': LoanPatch.Side,
     'LoanRecord.Status': LoanRecord.Status,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
+    'OptionsMyTrade.Role': OptionsMyTrade.Role,
+    'OptionsOrder.FinishAs': OptionsOrder.FinishAs,
+    'OptionsOrder.Status': OptionsOrder.Status,
+    'OptionsOrder.Tif': OptionsOrder.Tif,
+    'OptionsPositionClose.Side': OptionsPositionClose.Side,
     'Order.Status': Order.Status,
     'Order.Type': Order.Type,
     'Order.Account': Order.Account,
@@ -219,6 +248,7 @@ const typeMap: { [index: string]: any } = {
     CrossMarginRepayment: CrossMarginRepayment,
     CrossMarginTransferable: CrossMarginTransferable,
     Currency: Currency,
+    CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
@@ -252,6 +282,17 @@ const typeMap: { [index: string]: any } = {
     MultiChainAddressItem: MultiChainAddressItem,
     MyFuturesTrade: MyFuturesTrade,
     OpenOrders: OpenOrders,
+    OptionsAccount: OptionsAccount,
+    OptionsAccountBook: OptionsAccountBook,
+    OptionsContract: OptionsContract,
+    OptionsMyTrade: OptionsMyTrade,
+    OptionsOrder: OptionsOrder,
+    OptionsPosition: OptionsPosition,
+    OptionsPositionClose: OptionsPositionClose,
+    OptionsSettlement: OptionsSettlement,
+    OptionsTicker: OptionsTicker,
+    OptionsUnderlying: OptionsUnderlying,
+    OptionsUnderlyingTicker: OptionsUnderlyingTicker,
     Order: Order,
     OrderBook: OrderBook,
     Position: Position,

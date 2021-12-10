@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **currency** | **string** | Currency name | [default to undefined]
 **address** | **string** | Withdrawal address. Required for withdrawals | [optional] [default to undefined]
 **memo** | **string** | Additional remarks with regards to the withdrawal | [optional] [default to undefined]
-**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail | [optional] [readonly] [default to undefined]
+**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending | [optional] [readonly] [default to undefined]
 **chain** | **string** | Name of the chain used in withdrawals | [optional] [default to undefined]
 
 ## Enum: LedgerRecord.Status
@@ -29,5 +29,13 @@ Name | Type | Description | Notes
 * `EXTPEND` (value: `'EXTPEND'`)
 
 * `FAIL` (value: `'FAIL'`)
+
+* `INVALID` (value: `'INVALID'`)
+
+* `VERIFY` (value: `'VERIFY'`)
+
+* `PROCES` (value: `'PROCES'`)
+
+* `PEND` (value: `'PEND'`)
 
 
