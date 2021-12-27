@@ -66,7 +66,7 @@ export class Order {
      */
     'price': string;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
      */
     'timeInForce'?: Order.TimeInForce;
     /**
@@ -289,5 +289,6 @@ export namespace Order {
         Gtc = <any>'gtc',
         Ioc = <any>'ioc',
         Poc = <any>'poc',
+        Fok = <any>'fok',
     }
 }

@@ -78,7 +78,7 @@ export class BatchOrder {
      */
     'price'?: string;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
@@ -316,5 +316,6 @@ export namespace BatchOrder {
         Gtc = <any>'gtc',
         Ioc = <any>'ioc',
         Poc = <any>'poc',
+        Fok = <any>'fok',
     }
 }
