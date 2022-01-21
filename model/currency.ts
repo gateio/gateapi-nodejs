@@ -34,6 +34,10 @@ export class Currency {
      * Whether currency\'s trading is disabled
      */
     'tradeDisabled'?: boolean;
+    /**
+     * Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies
+     */
+    'fixedRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,6 +71,11 @@ export class Currency {
             name: 'tradeDisabled',
             baseName: 'trade_disabled',
             type: 'boolean',
+        },
+        {
+            name: 'fixedRate',
+            baseName: 'fixed_rate',
+            type: 'string',
         },
     ];
 

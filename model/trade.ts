@@ -31,7 +31,7 @@ export class Trade {
      */
     'side'?: Trade.Side;
     /**
-     * Trade role
+     * Trade role. No value in public endpoints
      */
     'role'?: Trade.Role;
     /**
@@ -55,11 +55,11 @@ export class Trade {
      */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee
+     * Points used to deduct fee. No value in public endpoints
      */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee
+     * GT used to deduct fee. No value in public endpoints
      */
     'gtFee'?: string;
 

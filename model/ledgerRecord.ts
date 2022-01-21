@@ -46,6 +46,10 @@ export class LedgerRecord {
      * Name of the chain used in withdrawals
      */
     'chain'?: string;
+    /**
+     * Fee
+     */
+    'fee'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -93,6 +97,11 @@ export class LedgerRecord {
         {
             name: 'chain',
             baseName: 'chain',
+            type: 'string',
+        },
+        {
+            name: 'fee',
+            baseName: 'fee',
             type: 'string',
         },
     ];
