@@ -247,7 +247,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points
+  'interval': '5m' // '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d' | Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0
 };
 api.listDeliveryCandlesticks(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
+ **interval** | **Interval**| Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0 | [optional] [default to &#39;5m&#39;]
 
 ### Return type
 
@@ -700,7 +700,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 List futures orders
 
-Zero-fill order cannot be retrieved for 60 seconds after cancellation
+Zero-filled order cannot be retrieved 10 minutes after order cancellation
 
 ### Example
 
@@ -759,7 +759,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Create a futures order
 
-Zero-fill order cannot be retrieved for 60 seconds after cancellation
+Zero-filled order cannot be retrieved 10 minutes after order cancellation
 
 ### Example
 
@@ -806,7 +806,7 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 
 Cancel all &#x60;open&#x60; orders matched
 
-Zero-fill order cannot be retrieved for 60 seconds after cancellation
+Zero-filled order cannot be retrieved 10 minutes after order cancellation
 
 ### Example
 
@@ -857,7 +857,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Get a single order
 
-Zero-fill order cannot be retrieved for 60 seconds after cancellation
+Zero-filled order cannot be retrieved 10 minutes after order cancellation
 
 ### Example
 

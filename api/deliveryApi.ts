@@ -270,7 +270,7 @@ export class DeliveryApi {
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points
+     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
      */
     public async listDeliveryCandlesticks(
         settle: 'btc' | 'usdt',
@@ -279,7 +279,23 @@ export class DeliveryApi {
             from?: number;
             to?: number;
             limit?: number;
-            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+            interval?:
+                | '10s'
+                | '30s'
+                | '1m'
+                | '5m'
+                | '15m'
+                | '30m'
+                | '1h'
+                | '2h'
+                | '4h'
+                | '6h'
+                | '8h'
+                | '12h'
+                | '1d'
+                | '7d'
+                | '1w'
+                | '30d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath =
@@ -323,7 +339,7 @@ export class DeliveryApi {
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+                "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'",
             );
         }
 
@@ -802,7 +818,7 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary List futures orders
      * @param settle Settle currency
      * @param status Only list the orders with this status
@@ -876,7 +892,7 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Create a futures order
      * @param settle Settle currency
      * @param futuresOrder
@@ -921,7 +937,7 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Cancel all `open` orders matched
      * @param settle Settle currency
      * @param contract Futures contract
@@ -975,7 +991,7 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Get a single order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID

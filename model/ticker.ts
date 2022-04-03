@@ -19,23 +19,23 @@ export class Ticker {
      */
     'last'?: string;
     /**
-     * Lowest ask
+     * Recent lowest ask
      */
     'lowestAsk'?: string;
     /**
-     * Highest bid
+     * Recent highest bid
      */
     'highestBid'?: string;
     /**
-     * Change percentage.
+     * Change percentage in the last 24h
      */
     'changePercentage'?: string;
     /**
-     * Base currency trade volume
+     * Base currency trade volume in the last 24h
      */
     'baseVolume'?: string;
     /**
-     * Quote currency trade volume
+     * Quote currency trade volume in the last 24h
      */
     'quoteVolume'?: string;
     /**

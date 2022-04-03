@@ -271,7 +271,7 @@ export class FuturesApi {
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points
+     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
      */
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
@@ -280,7 +280,23 @@ export class FuturesApi {
             from?: number;
             to?: number;
             limit?: number;
-            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+            interval?:
+                | '10s'
+                | '30s'
+                | '1m'
+                | '5m'
+                | '15m'
+                | '30m'
+                | '1h'
+                | '2h'
+                | '4h'
+                | '6h'
+                | '8h'
+                | '12h'
+                | '1d'
+                | '7d'
+                | '1w'
+                | '30d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath =
@@ -324,7 +340,7 @@ export class FuturesApi {
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+                "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'",
             );
         }
 
@@ -1146,11 +1162,14 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param leverage New position leverage
+     * @param opts Optional parameters
+     * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updateDualModePositionLeverage(
         settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
+        opts: { crossLeverageLimit?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -1188,7 +1207,15 @@ export class FuturesApi {
             );
         }
 
+        opts = opts || {};
         localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, 'string');
+
+        if (opts.crossLeverageLimit !== undefined) {
+            localVarQueryParameters['cross_leverage_limit'] = ObjectSerializer.serialize(
+                opts.crossLeverageLimit,
+                'string',
+            );
+        }
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -1263,7 +1290,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary List futures orders
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1341,7 +1368,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * - Creating futures orders requires `size`, which is number of contracts instead of currency amount. You can use `quanto_multiplier` in contract detail response to know how much currency 1 size contract represents - Zero-filled order cannot be retrieved 10 minutes after order cancellation. You will get a 404 not found for such orders - Set `reduce_only` to `true` can keep the position from changing side when reducing position size - In single position mode, to close a position, you need to set `size` to 0 and `close` to `true` - In dual position mode, to close one side position, you need to set `auto_size` side, `reduce_only` to true and `size` to 0
      * @summary Create a futures order
      * @param settle Settle currency
      * @param futuresOrder
@@ -1386,7 +1413,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Cancel all `open` orders matched
      * @param settle Settle currency
      * @param contract Futures contract
@@ -1440,7 +1467,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-fill order cannot be retrieved for 60 seconds after cancellation
+     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Get a single order
      * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.

@@ -26,6 +26,14 @@ export class CurrencyChain {
      * If it is disabled. 0 means NOT being disabled
      */
     'isDisabled'?: number;
+    /**
+     * Is deposit disabled. 0 means not
+     */
+    'isDepositDisabled'?: number;
+    /**
+     * Is withdrawal disabled. 0 means not
+     */
+    'isWithdrawDisabled'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -48,6 +56,16 @@ export class CurrencyChain {
         {
             name: 'isDisabled',
             baseName: 'is_disabled',
+            type: 'number',
+        },
+        {
+            name: 'isDepositDisabled',
+            baseName: 'is_deposit_disabled',
+            type: 'number',
+        },
+        {
+            name: 'isWithdrawDisabled',
+            baseName: 'is_withdraw_disabled',
             type: 'number',
         },
     ];

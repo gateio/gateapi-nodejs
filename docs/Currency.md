@@ -11,4 +11,5 @@ Name | Type | Description | Notes
 **depositDisabled** | **boolean** | Whether currency\&#39;s deposit is disabled | [optional] [default to undefined]
 **tradeDisabled** | **boolean** | Whether currency\&#39;s trading is disabled | [optional] [default to undefined]
 **fixedRate** | **string** | Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies | [optional] [default to undefined]
+**chain** | **string** | Chain of currency | [optional] [default to undefined]
 

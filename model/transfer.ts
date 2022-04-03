@@ -34,7 +34,7 @@ export class Transfer {
      */
     'currencyPair'?: string;
     /**
-     * Futures settle currency. Required if `currency` is `POINT`
+     * Futures settle currency. Required if transferring from or to futures account
      */
     'settle'?: string;
 

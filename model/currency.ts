@@ -38,6 +38,10 @@ export class Currency {
      * Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies
      */
     'fixedRate'?: string;
+    /**
+     * Chain of currency
+     */
+    'chain'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -75,6 +79,11 @@ export class Currency {
         {
             name: 'fixedRate',
             baseName: 'fixed_rate',
+            type: 'string',
+        },
+        {
+            name: 'chain',
+            baseName: 'chain',
             type: 'string',
         },
     ];

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **to** | **string** | Account to transfer to | [default to undefined]
 **amount** | **string** | Transfer amount | [default to undefined]
 **currencyPair** | **string** | Margin currency pair. Required if transfer from or to margin account | [optional] [default to undefined]
-**settle** | **string** | Futures settle currency. Required if &#x60;currency&#x60; is &#x60;POINT&#x60; | [optional] [default to undefined]
+**settle** | **string** | Futures settle currency. Required if transferring from or to futures account | [optional] [default to undefined]
 
 ## Enum: Transfer.From
 
