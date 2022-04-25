@@ -18,6 +18,7 @@ import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
+import { FuturesOrderAmendment } from '../model/futuresOrderAmendment';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
 import { FuturesTicker } from '../model/futuresTicker';
@@ -52,7 +53,7 @@ export class FuturesApi {
      * @param settle Settle currency
      */
     public async listFuturesContracts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
         const localVarPath =
             this.client.basePath +
@@ -90,7 +91,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getFuturesContract(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Contract }> {
         const localVarPath =
@@ -140,7 +141,7 @@ export class FuturesApi {
      * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
     public async listFuturesOrderBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
@@ -205,7 +206,7 @@ export class FuturesApi {
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
     public async listFuturesTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { limit?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
@@ -274,7 +275,7 @@ export class FuturesApi {
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
      */
     public async listFuturesCandlesticks(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: {
             from?: number;
@@ -363,7 +364,7 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async listFuturesTickers(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
@@ -409,7 +410,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listFuturesFundingRateHistory(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FundingRateRecord> }> {
@@ -466,7 +467,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listFuturesInsuranceLedger(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
@@ -514,7 +515,7 @@ export class FuturesApi {
      * @param opts.limit
      */
     public async listContractStats(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { from?: number; interval?: '5m' | '15m' | '30m' | '1h' | '4h' | '1d'; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
@@ -581,7 +582,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listLiquidatedOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; from?: number; to?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -636,7 +637,7 @@ export class FuturesApi {
      * @param settle Settle currency
      */
     public async listFuturesAccounts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
             this.client.basePath +
@@ -678,7 +679,7 @@ export class FuturesApi {
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     public async listFuturesAccountBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: {
             limit?: number;
             from?: number;
@@ -740,7 +741,9 @@ export class FuturesApi {
      * @summary List all positions of a user
      * @param settle Settle currency
      */
-    public async listPositions(settle: 'btc' | 'usdt'): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+    public async listPositions(
+        settle: 'btc' | 'usdt' | 'usd',
+    ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -777,7 +780,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getPosition(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -824,7 +827,7 @@ export class FuturesApi {
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
     public async updatePositionMargin(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -881,7 +884,7 @@ export class FuturesApi {
      * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updatePositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         leverage: string,
         opts: { crossLeverageLimit?: string },
@@ -945,7 +948,7 @@ export class FuturesApi {
      * @param riskLimit New position risk limit
      */
     public async updatePositionRiskLimit(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -999,7 +1002,7 @@ export class FuturesApi {
      * @param dualMode Whether to enable dual mode
      */
     public async setDualMode(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         dualMode: boolean,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
@@ -1045,7 +1048,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getDualModePosition(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -1093,7 +1096,7 @@ export class FuturesApi {
      * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         change: string,
         dualSide: 'dual_long' | 'dual_short',
@@ -1166,7 +1169,7 @@ export class FuturesApi {
      * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updateDualModePositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         leverage: string,
         opts: { crossLeverageLimit?: string },
@@ -1236,7 +1239,7 @@ export class FuturesApi {
      * @param riskLimit New position risk limit
      */
     public async updateDualModePositionRiskLimit(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
@@ -1302,7 +1305,7 @@ export class FuturesApi {
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listFuturesOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         status: 'open' | 'finished',
         opts: { limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
@@ -1374,7 +1377,7 @@ export class FuturesApi {
      * @param futuresOrder
      */
     public async createFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         futuresOrder: FuturesOrder,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1421,7 +1424,7 @@ export class FuturesApi {
      * @param opts.side All bids or asks. Both included if not specified
      */
     public async cancelFuturesOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { side?: 'ask' | 'bid' },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -1473,7 +1476,7 @@ export class FuturesApi {
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      */
     public async getFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1514,12 +1517,68 @@ export class FuturesApi {
 
     /**
      *
+     * @summary Amend an order
+     * @param settle Settle currency
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param futuresOrderAmendment
+     */
+    public async amendFuturesOrder(
+        settle: 'btc' | 'usdt' | 'usd',
+        orderId: string,
+        futuresOrderAmendment: FuturesOrderAmendment,
+    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling amendFuturesOrder.');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling amendFuturesOrder.');
+        }
+
+        // verify required parameter 'futuresOrderAmendment' is not null or undefined
+        if (futuresOrderAmendment === null || futuresOrderAmendment === undefined) {
+            throw new Error(
+                'Required parameter futuresOrderAmendment was null or undefined when calling amendFuturesOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(futuresOrderAmendment, 'FuturesOrderAmendment'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
+    }
+
+    /**
+     *
      * @summary Cancel a single order
      * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      */
     public async cancelFuturesOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1571,7 +1630,7 @@ export class FuturesApi {
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: {
             contract?: string;
             order?: number;
@@ -1647,7 +1706,7 @@ export class FuturesApi {
      * @param opts.to End timestamp
      */
     public async listPositionClose(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
         const localVarPath =
@@ -1710,7 +1769,7 @@ export class FuturesApi {
      * @param opts.at Specify a liquidation timestamp
      */
     public async listLiquidates(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -1766,7 +1825,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
@@ -1830,7 +1889,7 @@ export class FuturesApi {
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
@@ -1877,7 +1936,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async cancelPriceTriggeredOrderList(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
@@ -1931,7 +1990,7 @@ export class FuturesApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
@@ -1977,7 +2036,7 @@ export class FuturesApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelPriceTriggeredOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =

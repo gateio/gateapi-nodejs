@@ -29,6 +29,7 @@ export * from './futuresCandlestick';
 export * from './futuresInitialOrder';
 export * from './futuresLiquidate';
 export * from './futuresOrder';
+export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
 export * from './futuresPriceTrigger';
@@ -117,6 +118,7 @@ import { FuturesCandlestick } from './futuresCandlestick';
 import { FuturesInitialOrder } from './futuresInitialOrder';
 import { FuturesLiquidate } from './futuresLiquidate';
 import { FuturesOrder } from './futuresOrder';
+import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
@@ -262,6 +264,7 @@ const typeMap: { [index: string]: any } = {
     FuturesInitialOrder: FuturesInitialOrder,
     FuturesLiquidate: FuturesLiquidate,
     FuturesOrder: FuturesOrder,
+    FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
     FuturesPriceTrigger: FuturesPriceTrigger,

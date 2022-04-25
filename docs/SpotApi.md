@@ -305,7 +305,7 @@ const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
-  'reverse': true, // boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'reverse': true, // boolean | Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650, // number | Time range ending, default to current time
   'page': 1 // number | Page number
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
- **reverse** | **boolean**| Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to undefined]
+ **reverse** | **boolean**| Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to undefined]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
@@ -363,7 +363,7 @@ const opts = {
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'interval': '30m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points
+  'interval': '30m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d' | Interval time between data points. Note that `30d` means 1 natual month, not 30 days
 };
 api.listCandlesticks(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
- **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;30m&#39;]
+ **interval** | **Interval**| Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days | [optional] [default to &#39;30m&#39;]
 
 ### Return type
 

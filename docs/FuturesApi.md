@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**createFuturesOrder**](FuturesApi.md#createFuturesOrder) | **POST** /futures/{settle}/orders | Create a futures order
 [**cancelFuturesOrders**](FuturesApi.md#cancelFuturesOrders) | **DELETE** /futures/{settle}/orders | Cancel all &#x60;open&#x60; orders matched
 [**getFuturesOrder**](FuturesApi.md#getFuturesOrder) | **GET** /futures/{settle}/orders/{order_id} | Get a single order
+[**amendFuturesOrder**](FuturesApi.md#amendFuturesOrder) | **PUT** /futures/{settle}/orders/{order_id} | Amend an order
 [**cancelFuturesOrder**](FuturesApi.md#cancelFuturesOrder) | **DELETE** /futures/{settle}/orders/{order_id} | Cancel a single order
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/{settle}/my_trades | List personal trading history
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/{settle}/position_close | List position close history
@@ -56,7 +57,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 api.listFuturesContracts(settle)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -97,7 +98,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 api.getFuturesContract(settle, contract)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -142,7 +143,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'interval': '0', // '0' | '0.1' | '0.01' | Order depth. 0 means no aggregation is applied. default to 0
@@ -193,7 +194,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -248,7 +249,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
@@ -301,7 +302,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'contract': "BTC_USDT" // string | Futures contract, return related data only if specified
 };
@@ -346,7 +347,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'limit': 100 // number | Maximum number of records to be returned in a single list
@@ -393,7 +394,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'limit': 100 // number | Maximum number of records to be returned in a single list
 };
@@ -438,7 +439,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'from': 1604561000, // number | Start timestamp
@@ -491,7 +492,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'from': 1547706332, // number | Start timestamp
@@ -544,7 +545,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 api.listFuturesAccounts(settle)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -587,7 +588,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1547706332, // number | Start timestamp
@@ -640,7 +641,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 api.listPositions(settle)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -683,7 +684,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 api.getPosition(settle, contract)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -728,7 +729,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const change = "0.01"; // string | Margin change. Use positive number to increase margin, negative number otherwise.
 api.updatePositionMargin(settle, contract, change)
@@ -775,7 +776,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const leverage = "10"; // string | New position leverage
 const opts = {
@@ -826,7 +827,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const riskLimit = "10"; // string | New position risk limit
 api.updatePositionRiskLimit(settle, contract, riskLimit)
@@ -875,7 +876,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const dualMode = true; // boolean | Whether to enable dual mode
 api.setDualMode(settle, dualMode)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -920,7 +921,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 api.getDualModePosition(settle, contract)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -965,7 +966,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const change = "0.01"; // string | Margin change. Use positive number to increase margin, negative number otherwise.
 const dualSide = "dual_long"; // 'dual_long' | 'dual_short' | Long or short position
@@ -1014,7 +1015,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const leverage = "10"; // string | New position leverage
 const opts = {
@@ -1065,7 +1066,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const riskLimit = "10"; // string | New position risk limit
 api.updateDualModePositionRiskLimit(settle, contract, riskLimit)
@@ -1114,7 +1115,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const status = "open"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
@@ -1173,7 +1174,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const futuresOrder = new FuturesOrder(); // FuturesOrder | 
 api.createFuturesOrder(settle, futuresOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1220,7 +1221,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'side': "ask" // 'ask' | 'bid' | All bids or asks. Both included if not specified
@@ -1271,7 +1272,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
 api.getFuturesOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1299,6 +1300,53 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## amendFuturesOrder
+
+> Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> amendFuturesOrder(settle, orderId, futuresOrderAmendment)
+
+Amend an order
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const futuresOrderAmendment = new FuturesOrderAmendment(); // FuturesOrderAmendment | 
+api.amendFuturesOrder(settle, orderId, futuresOrderAmendment)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **futuresOrderAmendment** | [**FuturesOrderAmendment**](FuturesOrderAmendment.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](FuturesOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## cancelFuturesOrder
 
 > Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> cancelFuturesOrder(settle, orderId)
@@ -1316,7 +1364,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
 api.cancelFuturesOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1361,7 +1409,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'order': 12345, // number | Futures order ID, return related data only if specified
@@ -1418,7 +1466,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -1473,7 +1521,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -1524,7 +1572,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const status = "status_example"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
@@ -1577,7 +1625,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const futuresPriceTriggeredOrder = new FuturesPriceTriggeredOrder(); // FuturesPriceTriggeredOrder | 
 api.createPriceTriggeredOrder(settle, futuresPriceTriggeredOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1622,7 +1670,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 api.cancelPriceTriggeredOrderList(settle, contract)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1667,7 +1715,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.getPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1712,7 +1760,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
-const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const orderId = "orderId_example"; // string | Retrieve the data of the order with the specified ID
 api.cancelPriceTriggeredOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),

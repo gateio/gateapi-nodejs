@@ -268,7 +268,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
+     * @param opts.reverse Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
@@ -339,7 +339,7 @@ export class SpotApi {
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param opts.interval Interval time between data points
+     * @param opts.interval Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days
      */
     public async listCandlesticks(
         currencyPair: string,
@@ -347,7 +347,7 @@ export class SpotApi {
             limit?: number;
             from?: number;
             to?: number;
-            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<Array<string>> }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
@@ -384,7 +384,7 @@ export class SpotApi {
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'",
             );
         }
 

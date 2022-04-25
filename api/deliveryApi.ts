@@ -51,7 +51,7 @@ export class DeliveryApi {
      * @param settle Settle currency
      */
     public async listDeliveryContracts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
     ): Promise<{ response: AxiosResponse; body: Array<DeliveryContract> }> {
         const localVarPath =
             this.client.basePath +
@@ -89,7 +89,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      */
     public async getDeliveryContract(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: DeliveryContract }> {
         const localVarPath =
@@ -139,7 +139,7 @@ export class DeliveryApi {
      * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
     public async listDeliveryOrderBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
@@ -204,7 +204,7 @@ export class DeliveryApi {
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
     public async listDeliveryTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { limit?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
@@ -273,7 +273,7 @@ export class DeliveryApi {
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
      */
     public async listDeliveryCandlesticks(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: {
             from?: number;
@@ -362,7 +362,7 @@ export class DeliveryApi {
      * @param opts.contract Futures contract
      */
     public async listDeliveryTickers(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
@@ -407,7 +407,7 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listDeliveryInsuranceLedger(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
@@ -452,7 +452,7 @@ export class DeliveryApi {
      * @param settle Settle currency
      */
     public async listDeliveryAccounts(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
             this.client.basePath +
@@ -494,7 +494,7 @@ export class DeliveryApi {
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     public async listDeliveryAccountBook(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: {
             limit?: number;
             from?: number;
@@ -557,7 +557,7 @@ export class DeliveryApi {
      * @param settle Settle currency
      */
     public async listDeliveryPositions(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -595,7 +595,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      */
     public async getDeliveryPosition(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -642,7 +642,7 @@ export class DeliveryApi {
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
     public async updateDeliveryPositionMargin(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -703,7 +703,7 @@ export class DeliveryApi {
      * @param leverage New position leverage
      */
     public async updateDeliveryPositionLeverage(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         leverage: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -764,7 +764,7 @@ export class DeliveryApi {
      * @param riskLimit New position risk limit
      */
     public async updateDeliveryPositionRiskLimit(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -830,7 +830,7 @@ export class DeliveryApi {
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listDeliveryOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -898,7 +898,7 @@ export class DeliveryApi {
      * @param futuresOrder
      */
     public async createDeliveryOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         futuresOrder: FuturesOrder,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -945,7 +945,7 @@ export class DeliveryApi {
      * @param opts.side All bids or asks. Both included if not specified
      */
     public async cancelDeliveryOrders(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         opts: { side?: 'ask' | 'bid' },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
@@ -997,7 +997,7 @@ export class DeliveryApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getDeliveryOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1043,7 +1043,7 @@ export class DeliveryApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelDeliveryOrder(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1095,7 +1095,7 @@ export class DeliveryApi {
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyDeliveryTrades(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: {
             contract?: string;
             order?: number;
@@ -1168,7 +1168,7 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listDeliveryPositionClose(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
         const localVarPath =
@@ -1219,7 +1219,7 @@ export class DeliveryApi {
      * @param opts.at Specify a liquidation timestamp
      */
     public async listDeliveryLiquidates(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -1274,7 +1274,7 @@ export class DeliveryApi {
      * @param opts.at Specify a settlement timestamp
      */
     public async listDeliverySettlements(
-        settle: 'btc' | 'usdt',
+        settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<DeliverySettlement> }> {
         const localVarPath =
@@ -1330,7 +1330,7 @@ export class DeliveryApi {
      * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredDeliveryOrders(
-        settle: 'usdt',
+        settle: 'usdt' | 'btc',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
@@ -1398,7 +1398,7 @@ export class DeliveryApi {
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredDeliveryOrder(
-        settle: 'usdt',
+        settle: 'usdt' | 'btc',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
@@ -1447,7 +1447,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      */
     public async cancelPriceTriggeredDeliveryOrderList(
-        settle: 'usdt',
+        settle: 'usdt' | 'btc',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
@@ -1501,7 +1501,7 @@ export class DeliveryApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getPriceTriggeredDeliveryOrder(
-        settle: 'usdt',
+        settle: 'usdt' | 'btc',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
@@ -1551,7 +1551,7 @@ export class DeliveryApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelPriceTriggeredDeliveryOrder(
-        settle: 'usdt',
+        settle: 'usdt' | 'btc',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
