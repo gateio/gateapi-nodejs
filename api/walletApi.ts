@@ -14,6 +14,8 @@ import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SubAccountBalance } from '../model/subAccountBalance';
+import { SubAccountFuturesBalance } from '../model/subAccountFuturesBalance';
+import { SubAccountMarginBalance } from '../model/subAccountMarginBalance';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
 import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
@@ -418,6 +420,92 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<SubAccountBalance>>(config, 'Array<SubAccountBalance>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query sub accounts\' margin balances
+     * @param opts Optional parameters
+     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     */
+    public async listSubAccountMarginBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountMarginBalance> }> {
+        const localVarPath = this.client.basePath + '/wallet/sub_account_margin_balances';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SubAccountMarginBalance>>(
+            config,
+            'Array<SubAccountMarginBalance>',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary Query sub accounts\' futures account balances
+     * @param opts Optional parameters
+     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.settle Query only balances of specified settle currency
+     */
+    public async listSubAccountFuturesBalances(opts: {
+        subUid?: string;
+        settle?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance> }> {
+        const localVarPath = this.client.basePath + '/wallet/sub_account_futures_balances';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
+        }
+
+        if (opts.settle !== undefined) {
+            localVarQueryParameters['settle'] = ObjectSerializer.serialize(opts.settle, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SubAccountFuturesBalance>>(
+            config,
+            'Array<SubAccountFuturesBalance>',
+            authSettings,
+        );
     }
 
     /**

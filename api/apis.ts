@@ -1,6 +1,8 @@
 export * from './apiClient';
 export * from './deliveryApi';
 import { DeliveryApi } from './deliveryApi';
+export * from './flashSwapApi';
+import { FlashSwapApi } from './flashSwapApi';
 export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
 export * from './marginApi';
@@ -14,4 +16,4 @@ import { WalletApi } from './walletApi';
 export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
-export const APIS = [DeliveryApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi, WithdrawalApi];
+export const APIS = [DeliveryApi, FlashSwapApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi, WithdrawalApi];

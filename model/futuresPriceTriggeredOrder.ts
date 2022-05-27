@@ -39,7 +39,7 @@ export class FuturesPriceTriggeredOrder {
      */
     'tradeId'?: number;
     /**
-     * Order status.
+     * Auto order status  - `open`: order is active - `finished`: order is finished - `inactive`: order is not active, only for close-long-order or close-short-order - `invalid`: order is invalid, only for close-long-order or close-short-order
      */
     'status'?: FuturesPriceTriggeredOrder.Status;
     /**
@@ -50,6 +50,14 @@ export class FuturesPriceTriggeredOrder {
      * Additional remarks on how the order was finished
      */
     'reason'?: string;
+    /**
+     * Take-profit/stop-loss types, which include:  - `close-long-order`: order take-profit/stop-loss, close long position - `close-short-order`: order take-profit/stop-loss, close short position - `close-long-position`: position take-profit/stop-loss, close long position - `close-short-position`: position take-profit/stop-loss, close short position - `plan-close-long-position`: position planned take-profit/stop-loss, close long position - `plan-close-short-position`: position planned take-profit/stop-loss, close short position  The order take-profit/stop-loss can not be passed by request. These two types are read only.
+     */
+    'orderType'?: string;
+    /**
+     * Corresponding order ID of order take-profit/stop-loss.
+     */
+    'meOrderId'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -104,6 +112,16 @@ export class FuturesPriceTriggeredOrder {
             baseName: 'reason',
             type: 'string',
         },
+        {
+            name: 'orderType',
+            baseName: 'order_type',
+            type: 'string',
+        },
+        {
+            name: 'meOrderId',
+            baseName: 'me_order_id',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -115,6 +133,8 @@ export namespace FuturesPriceTriggeredOrder {
     export enum Status {
         Open = <any>'open',
         Finished = <any>'finished',
+        Inactive = <any>'inactive',
+        Invalid = <any>'invalid',
     }
     export enum FinishAs {
         Cancelled = <any>'cancelled',

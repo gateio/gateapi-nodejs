@@ -16,6 +16,7 @@ import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
+import { FuturesIndexConstituents } from '../model/futuresIndexConstituents';
 import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
 import { FuturesOrderAmendment } from '../model/futuresOrderAmendment';
@@ -569,6 +570,52 @@ export class FuturesApi {
 
         const authSettings = [];
         return this.client.request<Array<ContractStat>>(config, 'Array<ContractStat>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get index constituents
+     * @param settle Settle currency
+     * @param index Index name
+     */
+    public async getIndexConstituents(
+        settle: 'btc' | 'usdt' | 'usd',
+        index: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesIndexConstituents }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/index_constituents/{index}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'index' + '}', encodeURIComponent(String(index)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getIndexConstituents.');
+        }
+
+        // verify required parameter 'index' is not null or undefined
+        if (index === null || index === undefined) {
+            throw new Error('Required parameter index was null or undefined when calling getIndexConstituents.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<FuturesIndexConstituents>(config, 'FuturesIndexConstituents', authSettings);
     }
 
     /**

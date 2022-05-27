@@ -20,12 +20,17 @@ export * from './currencyPair';
 export * from './deliveryContract';
 export * from './deliverySettlement';
 export * from './depositAddress';
+export * from './flashSwapCurrency';
+export * from './flashSwapOrder';
+export * from './flashSwapOrderPreview';
+export * from './flashSwapOrderRequest';
 export * from './fundingAccount';
 export * from './fundingBookItem';
 export * from './fundingRateRecord';
 export * from './futuresAccount';
 export * from './futuresAccountBook';
 export * from './futuresCandlestick';
+export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
 export * from './futuresLiquidate';
 export * from './futuresOrder';
@@ -36,6 +41,7 @@ export * from './futuresPriceTrigger';
 export * from './futuresPriceTriggeredOrder';
 export * from './futuresTicker';
 export * from './futuresTrade';
+export * from './indexConstituent';
 export * from './insuranceRecord';
 export * from './ledgerRecord';
 export * from './loan';
@@ -73,6 +79,8 @@ export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
 export * from './subAccountBalance';
+export * from './subAccountFuturesBalance';
+export * from './subAccountMarginBalance';
 export * from './subAccountTransfer';
 export * from './ticker';
 export * from './totalBalance';
@@ -109,12 +117,17 @@ import { CurrencyPair } from './currencyPair';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
 import { DepositAddress } from './depositAddress';
+import { FlashSwapCurrency } from './flashSwapCurrency';
+import { FlashSwapOrder } from './flashSwapOrder';
+import { FlashSwapOrderPreview } from './flashSwapOrderPreview';
+import { FlashSwapOrderRequest } from './flashSwapOrderRequest';
 import { FundingAccount } from './fundingAccount';
 import { FundingBookItem } from './fundingBookItem';
 import { FundingRateRecord } from './fundingRateRecord';
 import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesCandlestick } from './futuresCandlestick';
+import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
 import { FuturesLiquidate } from './futuresLiquidate';
 import { FuturesOrder } from './futuresOrder';
@@ -125,6 +138,7 @@ import { FuturesPriceTrigger } from './futuresPriceTrigger';
 import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
+import { IndexConstituent } from './indexConstituent';
 import { InsuranceRecord } from './insuranceRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { Loan } from './loan';
@@ -162,6 +176,8 @@ import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
 import { SubAccountBalance } from './subAccountBalance';
+import { SubAccountFuturesBalance } from './subAccountFuturesBalance';
+import { SubAccountMarginBalance } from './subAccountMarginBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { Ticker } from './ticker';
 import { TotalBalance } from './totalBalance';
@@ -255,12 +271,17 @@ const typeMap: { [index: string]: any } = {
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
     DepositAddress: DepositAddress,
+    FlashSwapCurrency: FlashSwapCurrency,
+    FlashSwapOrder: FlashSwapOrder,
+    FlashSwapOrderPreview: FlashSwapOrderPreview,
+    FlashSwapOrderRequest: FlashSwapOrderRequest,
     FundingAccount: FundingAccount,
     FundingBookItem: FundingBookItem,
     FundingRateRecord: FundingRateRecord,
     FuturesAccount: FuturesAccount,
     FuturesAccountBook: FuturesAccountBook,
     FuturesCandlestick: FuturesCandlestick,
+    FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
     FuturesLiquidate: FuturesLiquidate,
     FuturesOrder: FuturesOrder,
@@ -271,6 +292,7 @@ const typeMap: { [index: string]: any } = {
     FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
+    IndexConstituent: IndexConstituent,
     InsuranceRecord: InsuranceRecord,
     LedgerRecord: LedgerRecord,
     Loan: Loan,
@@ -308,6 +330,8 @@ const typeMap: { [index: string]: any } = {
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     SubAccountBalance: SubAccountBalance,
+    SubAccountFuturesBalance: SubAccountFuturesBalance,
+    SubAccountMarginBalance: SubAccountMarginBalance,
     SubAccountTransfer: SubAccountTransfer,
     Ticker: Ticker,
     TotalBalance: TotalBalance,

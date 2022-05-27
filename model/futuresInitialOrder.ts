@@ -39,6 +39,10 @@ export class FuturesInitialOrder {
      */
     'reduceOnly'?: boolean;
     /**
+     * Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
+     */
+    'autoSize'?: string;
+    /**
      * Is the order reduce-only
      */
     'isReduceOnly'?: boolean;
@@ -84,6 +88,11 @@ export class FuturesInitialOrder {
             name: 'reduceOnly',
             baseName: 'reduce_only',
             type: 'boolean',
+        },
+        {
+            name: 'autoSize',
+            baseName: 'auto_size',
+            type: 'string',
         },
         {
             name: 'isReduceOnly',
