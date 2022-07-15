@@ -77,19 +77,23 @@ export * from './positionClose';
 export * from './positionCloseOrder';
 export * from './repayRequest';
 export * from './repayment';
+export * from './savedAddress';
 export * from './spotAccount';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
 export * from './subAccountBalance';
+export * from './subAccountCrossMarginBalance';
 export * from './subAccountFuturesBalance';
 export * from './subAccountMarginBalance';
 export * from './subAccountTransfer';
+export * from './subCrossMarginAccount';
 export * from './systemTime';
 export * from './ticker';
 export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
+export * from './transactionID';
 export * from './transfer';
 export * from './triggerOrderResponse';
 export * from './withdrawStatus';
@@ -178,19 +182,23 @@ import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
 import { RepayRequest } from './repayRequest';
 import { Repayment } from './repayment';
+import { SavedAddress } from './savedAddress';
 import { SpotAccount } from './spotAccount';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
 import { SubAccountBalance } from './subAccountBalance';
+import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from './subAccountFuturesBalance';
 import { SubAccountMarginBalance } from './subAccountMarginBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
+import { SubCrossMarginAccount } from './subCrossMarginAccount';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
+import { TransactionID } from './transactionID';
 import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 import { WithdrawStatus } from './withdrawStatus';
@@ -336,19 +344,23 @@ const typeMap: { [index: string]: any } = {
     PositionCloseOrder: PositionCloseOrder,
     RepayRequest: RepayRequest,
     Repayment: Repayment,
+    SavedAddress: SavedAddress,
     SpotAccount: SpotAccount,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     SubAccountBalance: SubAccountBalance,
+    SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
     SubAccountFuturesBalance: SubAccountFuturesBalance,
     SubAccountMarginBalance: SubAccountMarginBalance,
     SubAccountTransfer: SubAccountTransfer,
+    SubCrossMarginAccount: SubCrossMarginAccount,
     SystemTime: SystemTime,
     Ticker: Ticker,
     TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,
+    TransactionID: TransactionID,
     Transfer: Transfer,
     TriggerOrderResponse: TriggerOrderResponse,
     WithdrawStatus: WithdrawStatus,

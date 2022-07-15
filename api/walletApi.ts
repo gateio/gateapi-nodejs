@@ -13,12 +13,15 @@
 import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
 import { LedgerRecord } from '../model/ledgerRecord';
+import { SavedAddress } from '../model/savedAddress';
 import { SubAccountBalance } from '../model/subAccountBalance';
+import { SubAccountCrossMarginBalance } from '../model/subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from '../model/subAccountFuturesBalance';
 import { SubAccountMarginBalance } from '../model/subAccountMarginBalance';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
 import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
+import { TransactionID } from '../model/transactionID';
 import { Transfer } from '../model/transfer';
 import { WithdrawStatus } from '../model/withdrawStatus';
 import { ObjectSerializer } from '../model/models';
@@ -237,10 +240,17 @@ export class WalletApi {
      * @summary Transfer between trading accounts
      * @param transfer
      */
-    public async transfer(transfer: Transfer): Promise<{ response: AxiosResponse; body?: any }> {
+    public async transfer(transfer: Transfer): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/transfers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
         // verify required parameter 'transfer' is not null or undefined
         if (transfer === null || transfer === undefined) {
@@ -256,7 +266,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
     }
 
     /**
@@ -506,6 +516,96 @@ export class WalletApi {
             'Array<SubAccountFuturesBalance>',
             authSettings,
         );
+    }
+
+    /**
+     *
+     * @summary Query subaccount\'s cross_margin account info
+     * @param opts Optional parameters
+     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     */
+    public async listSubAccountCrossMarginBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance> }> {
+        const localVarPath = this.client.basePath + '/wallet/sub_account_cross_margin_balances';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SubAccountCrossMarginBalance>>(
+            config,
+            'Array<SubAccountCrossMarginBalance>',
+            authSettings,
+        );
+    }
+
+    /**
+     *
+     * @summary Query saved address
+     * @param currency Currency
+     * @param opts Optional parameters
+     * @param opts.chain Chain name
+     * @param opts.limit Maximum number returned, 100 at most
+     */
+    public async listSavedAddress(
+        currency: string,
+        opts: { chain?: string; limit?: string },
+    ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
+        const localVarPath = this.client.basePath + '/wallet/saved_address';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling listSavedAddress.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        if (opts.chain !== undefined) {
+            localVarQueryParameters['chain'] = ObjectSerializer.serialize(opts.chain, 'string');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SavedAddress>>(config, 'Array<SavedAddress>', authSettings);
     }
 
     /**

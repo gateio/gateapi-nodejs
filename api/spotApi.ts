@@ -1010,13 +1010,13 @@ export class SpotApi {
      * @param status Only list the orders with this status
      * @param opts Optional parameters
      * @param opts.market Currency pair
-     * @param opts.account Trading account
+     * @param opts.account Trading account type.  Portfolio margin account must set to &#x60;cross_margin&#x60;
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
     public async listSpotPriceTriggeredOrders(
         status: 'open' | 'finished',
-        opts: { market?: string; account?: 'normal' | 'margin'; limit?: number; offset?: number },
+        opts: { market?: string; account?: 'normal' | 'margin' | 'cross_margin'; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
         const localVarQueryParameters: any = {};
@@ -1044,7 +1044,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(
+                opts.account,
+                "'normal' | 'margin' | 'cross_margin'",
+            );
         }
 
         if (opts.limit !== undefined) {
@@ -1113,11 +1116,11 @@ export class SpotApi {
      * @summary Cancel all open orders
      * @param opts Optional parameters
      * @param opts.market Currency pair
-     * @param opts.account Trading account
+     * @param opts.account Trading account type.  Portfolio margin account must set to &#x60;cross_margin&#x60;
      */
     public async cancelSpotPriceTriggeredOrderList(opts: {
         market?: string;
-        account?: 'normal' | 'margin';
+        account?: 'normal' | 'margin' | 'cross_margin';
     }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
         const localVarQueryParameters: any = {};
@@ -1136,7 +1139,10 @@ export class SpotApi {
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(
+                opts.account,
+                "'normal' | 'margin' | 'cross_margin'",
+            );
         }
 
         const config: AxiosRequestConfig = {

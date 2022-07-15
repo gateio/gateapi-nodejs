@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **side** | **string** | Order side  - buy: buy side - sell: sell side | [default to undefined]
 **price** | **string** | Order price | [default to undefined]
 **amount** | **string** | Order amount | [default to undefined]
-**account** | **string** | Trading type  - normal: spot trading - margin: margin trading | [default to &#39;normal&#39;]
+**account** | **string** | Trading account type.  Portfolio margin account must set to &#x60;cross_margin&#x60;  - normal: spot trading - margin: margin trading - cross_margin: cross_margin trading  | [default to &#39;normal&#39;]
 **timeInForce** | **string** | time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only  | [optional] [default to &#39;gtc&#39;]
 
 ## Enum: SpotPricePutOrder.Side
@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 * `Normal` (value: `'normal'`)
 
 * `Margin` (value: `'margin'`)
+
+* `CrossMargin` (value: `'cross_margin'`)
 
 
 ## Enum: SpotPricePutOrder.TimeInForce

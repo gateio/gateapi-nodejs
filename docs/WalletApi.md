@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub accounts\&#39; margin balances
 [**listSubAccountFuturesBalances**](WalletApi.md#listSubAccountFuturesBalances) | **GET** /wallet/sub_account_futures_balances | Query sub accounts\&#39; futures account balances
+[**listSubAccountCrossMarginBalances**](WalletApi.md#listSubAccountCrossMarginBalances) | **GET** /wallet/sub_account_cross_margin_balances | Query subaccount\&#39;s cross_margin account info
+[**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query saved address
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Retrieve personal trading fee
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Retrieve user\&#39;s total balances
 
@@ -215,7 +217,7 @@ Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](
 
 ## transfer
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> transfer(transfer)
+> Promise<{ response: http.IncomingMessage; body: TransactionID; }> transfer(transfer)
 
 Transfer between trading accounts
 
@@ -234,7 +236,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const transfer = new Transfer(); // Transfer | 
 api.transfer(transfer)
-   .then(value => console.log('API called successfully.'),
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -247,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](TransactionID.md)
 
 ### Authorization
 
@@ -256,7 +258,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ## listSubAccountTransfers
 
@@ -530,6 +532,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance>; }> [SubAccountFuturesBalance](SubAccountFuturesBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSubAccountCrossMarginBalances
+
+> Promise<{ response: http.IncomingMessage; body: Array<SubAccountCrossMarginBalance>; }> listSubAccountCrossMarginBalances(opts)
+
+Query subaccount\&#39;s cross_margin account info
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'subUid': "10003" // string | Sub account user ID. Return records related to all sub accounts if not specified
+};
+api.listSubAccountCrossMarginBalances(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance>; }> [SubAccountCrossMarginBalance](SubAccountCrossMarginBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSavedAddress
+
+> Promise<{ response: http.IncomingMessage; body: Array<SavedAddress>; }> listSavedAddress(currency, opts)
+
+Query saved address
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const currency = "USDT"; // string | Currency
+const opts = {
+  'chain': '', // string | Chain name
+  'limit': '50' // string | Maximum number returned, 100 at most
+};
+api.listSavedAddress(currency, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency | [default to undefined]
+ **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
+ **limit** | **string**| Maximum number returned, 100 at most | [optional] [default to &#39;50&#39;]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SavedAddress>; }> [SavedAddress](SavedAddress.md)
 
 ### Authorization
 

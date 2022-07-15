@@ -38,6 +38,10 @@ export class MarginCurrencyPair {
      * Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. `null` means no limit
      */
     'maxQuoteAmount'?: string;
+    /**
+     * Currency pair status   - `0`: disabled  - `1`: enabled
+     */
+    'status'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -76,6 +80,11 @@ export class MarginCurrencyPair {
             name: 'maxQuoteAmount',
             baseName: 'max_quote_amount',
             type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'number',
         },
     ];
 

@@ -11,4 +11,5 @@ Name | Type | Description | Notes
 **minBaseAmount** | **string** | Minimum base currency to loan, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **minQuoteAmount** | **string** | Minimum quote currency to loan, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **maxQuoteAmount** | **string** | Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. &#x60;null&#x60; means no limit | [optional] [default to undefined]
+**status** | **number** | Currency pair status   - &#x60;0&#x60;: disabled  - &#x60;1&#x60;: enabled | [optional] [default to undefined]
 

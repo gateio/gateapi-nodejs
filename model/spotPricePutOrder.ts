@@ -27,7 +27,7 @@ export class SpotPricePutOrder {
      */
     'amount': string;
     /**
-     * Trading type  - normal: spot trading - margin: margin trading
+     * Trading account type.  Portfolio margin account must set to `cross_margin`  - normal: spot trading - margin: margin trading - cross_margin: cross_margin trading
      */
     'account': SpotPricePutOrder.Account;
     /**
@@ -83,6 +83,7 @@ export namespace SpotPricePutOrder {
     export enum Account {
         Normal = <any>'normal',
         Margin = <any>'margin',
+        CrossMargin = <any>'cross_margin',
     }
     export enum TimeInForce {
         Gtc = <any>'gtc',
