@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getOptionsContract**](OptionsApi.md#getOptionsContract) | **GET** /options/contracts/{contract} | Query specified contract detail
 [**listOptionsSettlements**](OptionsApi.md#listOptionsSettlements) | **GET** /options/settlements | List settlement history
 [**getOptionsSettlement**](OptionsApi.md#getOptionsSettlement) | **GET** /options/settlements/{contract} | Get specified contract\&#39;s settlement
+[**listMyOptionsSettlements**](OptionsApi.md#listMyOptionsSettlements) | **GET** /options/my_settlements | List my options settlements
 [**listOptionsOrderBook**](OptionsApi.md#listOptionsOrderBook) | **GET** /options/order_book | Futures order book
 [**listOptionsTickers**](OptionsApi.md#listOptionsTickers) | **GET** /options/tickers | List tickers of options contracts
 [**listOptionsUnderlyingTickers**](OptionsApi.md#listOptionsUnderlyingTickers) | **GET** /options/underlying/tickers/{underlying} | Get underlying ticker
@@ -283,6 +284,61 @@ Promise<{ response: AxiosResponse; body: OptionsSettlement; }> [OptionsSettlemen
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listMyOptionsSettlements
+
+> Promise<{ response: http.IncomingMessage; body: Array<OptionsMySettlements>; }> listMyOptionsSettlements(underlying, opts)
+
+List my options settlements
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const underlying = "BTC_USDT"; // string | Underlying
+const opts = {
+  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'offset': 0, // number | List offset, starting from 0
+  'from': 1547706332, // number | Start timestamp
+  'to': 1547706332 // number | End timestamp
+};
+api.listMyOptionsSettlements(underlying, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**| Underlying | [default to undefined]
+ **contract** | **string**| Contract name | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+ **from** | **number**| Start timestamp | [optional] [default to undefined]
+ **to** | **number**| End timestamp | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements>; }> [OptionsMySettlements](OptionsMySettlements.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

@@ -37,6 +37,30 @@ export class CrossMarginAccount {
      * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
      */
     'risk'?: string;
+    /**
+     * Total initial margin
+     */
+    'totalInitialMargin'?: string;
+    /**
+     * Total margin balance
+     */
+    'totalMarginBalance'?: string;
+    /**
+     * Total maintenance margin
+     */
+    'totalMaintenanceMargin'?: string;
+    /**
+     * Total initial margin rate
+     */
+    'totalInitialMarginRate'?: string;
+    /**
+     * Total maintenance margin rate
+     */
+    'totalMaintenanceMarginRate'?: string;
+    /**
+     * Total available margin
+     */
+    'totalAvailableMargin'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -74,6 +98,36 @@ export class CrossMarginAccount {
         {
             name: 'risk',
             baseName: 'risk',
+            type: 'string',
+        },
+        {
+            name: 'totalInitialMargin',
+            baseName: 'total_initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'totalMarginBalance',
+            baseName: 'total_margin_balance',
+            type: 'string',
+        },
+        {
+            name: 'totalMaintenanceMargin',
+            baseName: 'total_maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'totalInitialMarginRate',
+            baseName: 'total_initial_margin_rate',
+            type: 'string',
+        },
+        {
+            name: 'totalMaintenanceMarginRate',
+            baseName: 'total_maintenance_margin_rate',
+            type: 'string',
+        },
+        {
+            name: 'totalAvailableMargin',
+            baseName: 'total_available_margin',
             type: 'string',
         },
     ];

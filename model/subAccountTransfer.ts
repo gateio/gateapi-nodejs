@@ -39,7 +39,7 @@ export class SubAccountTransfer {
      */
     'source'?: string;
     /**
-     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account
+     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `cross_margin` - cross margin account
      */
     'subAccountType'?: SubAccountTransfer.SubAccountType;
 
@@ -101,5 +101,6 @@ export namespace SubAccountTransfer {
     export enum SubAccountType {
         Spot = <any>'spot',
         Futures = <any>'futures',
+        CrossMargin = <any>'cross_margin',
     }
 }

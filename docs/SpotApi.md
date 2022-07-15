@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot accounts
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Create a batch of orders
 [**listAllOpenOrders**](SpotApi.md#listAllOpenOrders) | **GET** /spot/open_orders | List all open orders
+[**createCrossLiquidateOrder**](SpotApi.md#createCrossLiquidateOrder) | **POST** /spot/cross_liquidate_orders | close position when cross-currency is disabled
 [**listOrders**](SpotApi.md#listOrders) | **GET** /spot/orders | List orders
 [**createOrder**](SpotApi.md#createOrder) | **POST** /spot/orders | Create an order
 [**cancelOrders**](SpotApi.md#cancelOrders) | **DELETE** /spot/orders | Cancel all &#x60;open&#x60; orders in specified currency pair
@@ -23,11 +24,12 @@ Method | HTTP request | Description
 [**getOrder**](SpotApi.md#getOrder) | **GET** /spot/orders/{order_id} | Get a single order
 [**cancelOrder**](SpotApi.md#cancelOrder) | **DELETE** /spot/orders/{order_id} | Cancel a single order
 [**listMyTrades**](SpotApi.md#listMyTrades) | **GET** /spot/my_trades | List personal trading history
+[**getSystemTime**](SpotApi.md#getSystemTime) | **GET** /spot/time | Get server current time
 [**listSpotPriceTriggeredOrders**](SpotApi.md#listSpotPriceTriggeredOrders) | **GET** /spot/price_orders | Retrieve running auto order list
 [**createSpotPriceTriggeredOrder**](SpotApi.md#createSpotPriceTriggeredOrder) | **POST** /spot/price_orders | Create a price-triggered order
 [**cancelSpotPriceTriggeredOrderList**](SpotApi.md#cancelSpotPriceTriggeredOrderList) | **DELETE** /spot/price_orders | Cancel all open orders
 [**getSpotPriceTriggeredOrder**](SpotApi.md#getSpotPriceTriggeredOrder) | **GET** /spot/price_orders/{order_id} | Get a single order
-[**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | Cancel a single order
+[**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | cancel a price-triggered order
 
 
 ## listCurrencies
@@ -206,7 +208,8 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.SpotApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT" // string | Currency pair
+  'currencyPair': "BTC_USDT", // string | Currency pair
+  'timezone': "utc0" // 'utc0' | 'utc8' | 'all' | Timezone
 };
 api.listTickers(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -219,6 +222,7 @@ api.listTickers(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+ **timezone** | **Timezone**| Timezone | [optional] [default to undefined]
 
 ### Return type
 
@@ -553,7 +557,7 @@ const api = new GateApi.SpotApi(client);
 const opts = {
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records returned in one page in each currency pair
-  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
 };
 api.listAllOpenOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -567,7 +571,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records returned in one page in each currency pair | [optional] [default to 100]
- **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
 ### Return type
 
@@ -580,6 +584,51 @@ Promise<{ response: AxiosResponse; body: Array<OpenOrders>; }> [OpenOrders](Open
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createCrossLiquidateOrder
+
+> Promise<{ response: http.IncomingMessage; body: Order; }> createCrossLiquidateOrder(liquidateOrder)
+
+close position when cross-currency is disabled
+
+Currently, only cross-margin accounts are supported to close position when cross currencies are disabled.  Maximum buy quantity &#x3D; (unpaid principal and interest - currency balance - the amount of the currency in the order book) / 0.998
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.SpotApi(client);
+const liquidateOrder = new LiquidateOrder(); // LiquidateOrder | 
+api.createCrossLiquidateOrder(liquidateOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liquidateOrder** | [**LiquidateOrder**](LiquidateOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## listOrders
@@ -606,7 +655,7 @@ const status = "open"; // 'open' | 'finished' | List orders based on status  `op
 const opts = {
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned. If `status` is `open`, maximum of `limit` is 100
-  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650, // number | Time range ending, default to current time
   'side': "sell" // 'buy' | 'sell' | All bids or asks. Both included if not specified
@@ -625,7 +674,7 @@ Name | Type | Description  | Notes
  **status** | **Status**| List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled  | [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100 | [optional] [default to 100]
- **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
@@ -710,7 +759,7 @@ const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'side': "sell", // 'buy' | 'sell' | All bids or asks. Both included if not specified
-  'account': "spot" // 'spot' | 'margin' | 'cross_margin' | Specify account type. Default to all account types being included
+  'account': "spot" // 'spot' | 'margin' | 'cross_margin' | Specify account type  - classic account：Default to all account types being included   - portfolio margin account：`cross_margin` only
 };
 api.cancelOrders(currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -724,7 +773,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
- **account** | **Account**| Specify account type. Default to all account types being included | [optional] [default to undefined]
+ **account** | **Account**| Specify account type  - classic account：Default to all account types being included   - portfolio margin account：&#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
 ### Return type
 
@@ -790,7 +839,7 @@ Promise<{ response: AxiosResponse; body: Array<CancelOrderResult>; }> [CancelOrd
 
 Get a single order
 
-Spot and margin orders are queried by default. If cross margin orders are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;
+Spot and margin orders are queried by default. If cross margin orders are needed or portfolio margin account are used, account must be set to cross_margin.
 
 ### Example
 
@@ -806,7 +855,7 @@ const api = new GateApi.SpotApi(client);
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
 };
 api.getOrder(orderId, currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -820,7 +869,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
 ### Return type
 
@@ -841,7 +890,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 Cancel a single order
 
-Spot and margin orders are cancelled by default. If trying to cancel cross margin orders, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;
+Spot and margin orders are cancelled by default. If trying to cancel cross margin orders or portfolio margin account are used, account must be set to cross_margin
 
 ### Example
 
@@ -857,7 +906,7 @@ const api = new GateApi.SpotApi(client);
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
 };
 api.cancelOrder(orderId, currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -871,7 +920,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
 ### Return type
 
@@ -910,7 +959,7 @@ const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'page': 1, // number | Page number
   'orderId': "12345", // string | Filter trades with specified order ID. `currency_pair` is also required if this field is present
-  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account
+  'account': "cross_margin", // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650 // number | Time range ending, default to current time
 };
@@ -928,7 +977,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **page** | **number**| Page number | [optional] [default to 1]
  **orderId** | **string**| Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present | [optional] [default to undefined]
- **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account | [optional] [default to undefined]
+ **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
 
@@ -939,6 +988,43 @@ Promise<{ response: AxiosResponse; body: Array<Trade>; }> [Trade](Trade.md)
 ### Authorization
 
 [apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getSystemTime
+
+> Promise<{ response: http.IncomingMessage; body: SystemTime; }> getSystemTime()
+
+Get server current time
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.SpotApi(client);
+api.getSystemTime()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: SystemTime; }> [SystemTime](SystemTime.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 
@@ -1135,7 +1221,7 @@ Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder; }> [SpotPriceT
 
 > Promise<{ response: http.IncomingMessage; body: SpotPriceTriggeredOrder; }> cancelSpotPriceTriggeredOrder(orderId)
 
-Cancel a single order
+cancel a price-triggered order
 
 ### Example
 

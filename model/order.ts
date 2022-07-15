@@ -50,7 +50,7 @@ export class Order {
      */
     'type'?: Order.Type;
     /**
-     * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account
+     * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account. Portfolio margin account must set to `cross-margin`
      */
     'account'?: Order.Account;
     /**

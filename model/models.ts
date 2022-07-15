@@ -29,6 +29,7 @@ export * from './fundingBookItem';
 export * from './fundingRateRecord';
 export * from './futuresAccount';
 export * from './futuresAccountBook';
+export * from './futuresAccountHistory';
 export * from './futuresCandlestick';
 export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
@@ -44,6 +45,7 @@ export * from './futuresTrade';
 export * from './indexConstituent';
 export * from './insuranceRecord';
 export * from './ledgerRecord';
+export * from './liquidateOrder';
 export * from './loan';
 export * from './loanPatch';
 export * from './loanRecord';
@@ -59,6 +61,7 @@ export * from './openOrders';
 export * from './optionsAccount';
 export * from './optionsAccountBook';
 export * from './optionsContract';
+export * from './optionsMySettlements';
 export * from './optionsMyTrade';
 export * from './optionsOrder';
 export * from './optionsPosition';
@@ -82,6 +85,7 @@ export * from './subAccountBalance';
 export * from './subAccountFuturesBalance';
 export * from './subAccountMarginBalance';
 export * from './subAccountTransfer';
+export * from './systemTime';
 export * from './ticker';
 export * from './totalBalance';
 export * from './trade';
@@ -126,6 +130,7 @@ import { FundingBookItem } from './fundingBookItem';
 import { FundingRateRecord } from './fundingRateRecord';
 import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
+import { FuturesAccountHistory } from './futuresAccountHistory';
 import { FuturesCandlestick } from './futuresCandlestick';
 import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
@@ -141,6 +146,7 @@ import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
 import { InsuranceRecord } from './insuranceRecord';
 import { LedgerRecord } from './ledgerRecord';
+import { LiquidateOrder } from './liquidateOrder';
 import { Loan } from './loan';
 import { LoanPatch } from './loanPatch';
 import { LoanRecord } from './loanRecord';
@@ -156,6 +162,7 @@ import { OpenOrders } from './openOrders';
 import { OptionsAccount } from './optionsAccount';
 import { OptionsAccountBook } from './optionsAccountBook';
 import { OptionsContract } from './optionsContract';
+import { OptionsMySettlements } from './optionsMySettlements';
 import { OptionsMyTrade } from './optionsMyTrade';
 import { OptionsOrder } from './optionsOrder';
 import { OptionsPosition } from './optionsPosition';
@@ -179,6 +186,7 @@ import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountFuturesBalance } from './subAccountFuturesBalance';
 import { SubAccountMarginBalance } from './subAccountMarginBalance';
 import { SubAccountTransfer } from './subAccountTransfer';
+import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
@@ -280,6 +288,7 @@ const typeMap: { [index: string]: any } = {
     FundingRateRecord: FundingRateRecord,
     FuturesAccount: FuturesAccount,
     FuturesAccountBook: FuturesAccountBook,
+    FuturesAccountHistory: FuturesAccountHistory,
     FuturesCandlestick: FuturesCandlestick,
     FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
@@ -295,6 +304,7 @@ const typeMap: { [index: string]: any } = {
     IndexConstituent: IndexConstituent,
     InsuranceRecord: InsuranceRecord,
     LedgerRecord: LedgerRecord,
+    LiquidateOrder: LiquidateOrder,
     Loan: Loan,
     LoanPatch: LoanPatch,
     LoanRecord: LoanRecord,
@@ -310,6 +320,7 @@ const typeMap: { [index: string]: any } = {
     OptionsAccount: OptionsAccount,
     OptionsAccountBook: OptionsAccountBook,
     OptionsContract: OptionsContract,
+    OptionsMySettlements: OptionsMySettlements,
     OptionsMyTrade: OptionsMyTrade,
     OptionsOrder: OptionsOrder,
     OptionsPosition: OptionsPosition,
@@ -333,6 +344,7 @@ const typeMap: { [index: string]: any } = {
     SubAccountFuturesBalance: SubAccountFuturesBalance,
     SubAccountMarginBalance: SubAccountMarginBalance,
     SubAccountTransfer: SubAccountTransfer,
+    SystemTime: SystemTime,
     Ticker: Ticker,
     TotalBalance: TotalBalance,
     Trade: Trade,

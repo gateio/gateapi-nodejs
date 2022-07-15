@@ -15,11 +15,13 @@ import { CancelOrder } from '../model/cancelOrder';
 import { CancelOrderResult } from '../model/cancelOrderResult';
 import { Currency } from '../model/currency';
 import { CurrencyPair } from '../model/currencyPair';
+import { LiquidateOrder } from '../model/liquidateOrder';
 import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
 import { SpotAccount } from '../model/spotAccount';
 import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
+import { SystemTime } from '../model/systemTime';
 import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
 import { TradeFee } from '../model/tradeFee';
@@ -175,9 +177,11 @@ export class SpotApi {
      * @summary Retrieve ticker information
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
+     * @param opts.timezone Timezone
      */
     public async listTickers(opts: {
         currencyPair?: string;
+        timezone?: 'utc0' | 'utc8' | 'all';
     }): Promise<{ response: AxiosResponse; body: Array<Ticker> }> {
         const localVarPath = this.client.basePath + '/spot/tickers';
         const localVarQueryParameters: any = {};
@@ -193,6 +197,10 @@ export class SpotApi {
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
             localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        if (opts.timezone !== undefined) {
+            localVarQueryParameters['timezone'] = ObjectSerializer.serialize(opts.timezone, "'utc0' | 'utc8' | 'all'");
         }
 
         const config: AxiosRequestConfig = {
@@ -509,7 +517,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records returned in one page in each currency pair
-     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      */
     public async listAllOpenOrders(opts: {
         page?: number;
@@ -552,6 +560,44 @@ export class SpotApi {
     }
 
     /**
+     * Currently, only cross-margin accounts are supported to close position when cross currencies are disabled.  Maximum buy quantity = (unpaid principal and interest - currency balance - the amount of the currency in the order book) / 0.998
+     * @summary close position when cross-currency is disabled
+     * @param liquidateOrder
+     */
+    public async createCrossLiquidateOrder(
+        liquidateOrder: LiquidateOrder,
+    ): Promise<{ response: AxiosResponse; body: Order }> {
+        const localVarPath = this.client.basePath + '/spot/cross_liquidate_orders';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'liquidateOrder' is not null or undefined
+        if (liquidateOrder === null || liquidateOrder === undefined) {
+            throw new Error(
+                'Required parameter liquidateOrder was null or undefined when calling createCrossLiquidateOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(liquidateOrder, 'LiquidateOrder'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Order>(config, 'Order', authSettings);
+    }
+
+    /**
      * Spot and margin orders are returned by default. If cross margin orders are needed, `account` must be set to `cross_margin`  When `status` is `open`, i.e., listing open orders, only pagination parameters `page` and `limit` are supported and `limit` cannot be larger than 100. Query by `side` and time range parameters `from` and `to` are not supported.  When `status` is `finished`, i.e., listing finished orders, pagination parameters, time range parameters `from` and `to`, and `side` parameters are all supported. Time range parameters are handled as order finish time.
      * @summary List orders
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
@@ -559,7 +605,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
-     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.side All bids or asks. Both included if not specified
@@ -670,7 +716,7 @@ export class SpotApi {
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.side All bids or asks. Both included if not specified
-     * @param opts.account Specify account type. Default to all account types being included
+     * @param opts.account Specify account type  - classic account：Default to all account types being included   - portfolio margin account：&#x60;cross_margin&#x60; only
      */
     public async cancelOrders(
         currencyPair: string,
@@ -754,12 +800,12 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin orders are queried by default. If cross margin orders are needed, `account` must be set to `cross_margin`
+     * Spot and margin orders are queried by default. If cross margin orders are needed or portfolio margin account are used, account must be set to cross_margin.
      * @summary Get a single order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      */
     public async getOrder(
         orderId: string,
@@ -808,12 +854,12 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin orders are cancelled by default. If trying to cancel cross margin orders, `account` must be set to `cross_margin`
+     * Spot and margin orders are cancelled by default. If trying to cancel cross margin orders or portfolio margin account are used, account must be set to cross_margin
      * @summary Cancel a single order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      */
     public async cancelOrder(
         orderId: string,
@@ -869,7 +915,7 @@ export class SpotApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
-     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      */
@@ -929,6 +975,33 @@ export class SpotApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<Trade>>(config, 'Array<Trade>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get server current time
+     */
+    public async getSystemTime(): Promise<{ response: AxiosResponse; body: SystemTime }> {
+        const localVarPath = this.client.basePath + '/spot/time';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<SystemTime>(config, 'SystemTime', authSettings);
     }
 
     /**
@@ -1122,7 +1195,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Cancel a single order
+     * @summary cancel a price-triggered order
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelSpotPriceTriggeredOrder(

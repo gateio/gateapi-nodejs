@@ -31,6 +31,14 @@ export class Ticker {
      */
     'changePercentage'?: string;
     /**
+     * utc0 timezone, the percentage change in the last 24 hours
+     */
+    'changeUtc0'?: string;
+    /**
+     * utc8 timezone, the percentage change in the last 24 hours
+     */
+    'changeUtc8'?: string;
+    /**
      * Base currency trade volume in the last 24h
      */
     'baseVolume'?: string;
@@ -89,6 +97,16 @@ export class Ticker {
         {
             name: 'changePercentage',
             baseName: 'change_percentage',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc0',
+            baseName: 'change_utc0',
+            type: 'string',
+        },
+        {
+            name: 'changeUtc8',
+            baseName: 'change_utc8',
             type: 'string',
         },
         {

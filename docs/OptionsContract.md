@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Futures contract | [optional] [default to undefined]
-**tag** | **string** | 标记 | [optional] [default to undefined]
+**tag** | **string** | tag | [optional] [default to undefined]
 **createTime** | **number** | Creation time | [optional] [default to undefined]
 **expirationTime** | **number** | Expiration time | [optional] [default to undefined]
 **isCall** | **boolean** | &#x60;true&#x60; means call options, while &#x60;false&#x60; is put options | [optional] [default to undefined]

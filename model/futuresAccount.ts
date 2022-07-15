@@ -9,9 +9,11 @@
  * Do not edit the class manually.
  */
 
+import { FuturesAccountHistory } from './futuresAccountHistory';
+
 export class FuturesAccount {
     /**
-     * Total assets, total = position_margin + order_margin + available
+     * total = position_margin + order_margin + available
      */
     'total'?: string;
     /**
@@ -27,7 +29,7 @@ export class FuturesAccount {
      */
     'orderMargin'?: string;
     /**
-     * Available balance to transfer out or trade
+     * The available balance for transferring or trading
      */
     'available'?: string;
     /**
@@ -42,6 +44,23 @@ export class FuturesAccount {
      * Whether dual mode is enabled
      */
     'inDualMode'?: boolean;
+    /**
+     * Whether portfolio margin account mode is enabled
+     */
+    'enableCredit'?: boolean;
+    /**
+     * Initial margin position, applicable to the portfolio margin account model
+     */
+    'positionInitialMargin'?: string;
+    /**
+     * Maintenance margin position, applicable to the portfolio margin account model
+     */
+    'maintenanceMargin'?: string;
+    /**
+     * Perpetual Contract Bonus
+     */
+    'bonus'?: string;
+    'history'?: FuturesAccountHistory;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +104,31 @@ export class FuturesAccount {
             name: 'inDualMode',
             baseName: 'in_dual_mode',
             type: 'boolean',
+        },
+        {
+            name: 'enableCredit',
+            baseName: 'enable_credit',
+            type: 'boolean',
+        },
+        {
+            name: 'positionInitialMargin',
+            baseName: 'position_initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'bonus',
+            baseName: 'bonus',
+            type: 'string',
+        },
+        {
+            name: 'history',
+            baseName: 'history',
+            type: 'FuturesAccountHistory',
         },
     ];
 

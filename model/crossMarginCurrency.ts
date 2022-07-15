@@ -42,6 +42,10 @@ export class CrossMarginCurrency {
      * Price change between this currency and USDT
      */
     'price'?: string;
+    /**
+     * status  - `0` : disable  - `1` : enable
+     */
+    'status'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +89,11 @@ export class CrossMarginCurrency {
             name: 'price',
             baseName: 'price',
             type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'number',
         },
     ];
 

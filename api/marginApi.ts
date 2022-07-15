@@ -1326,7 +1326,7 @@ export class MarginApi {
 
     /**
      *
-     * @summary Repay cross margin loan
+     * @summary When the liquidity of the currency is insufficient and the transaction risk is high, the currency will be disabled, and funds cannot be transferred.When the available balance of cross-margin is insufficient, the balance of the spot account can be used for repayment. Please ensure that the balance of the spot account is sufficient, and system uses cross-margin account for repayment first
      * @param crossMarginRepayRequest
      */
     public async repayCrossMarginLoan(

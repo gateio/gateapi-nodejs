@@ -18,7 +18,7 @@ export class OptionsContract {
      */
     'name'?: string;
     /**
-     * 标记
+     * tag
      */
     'tag'?: string;
     /**

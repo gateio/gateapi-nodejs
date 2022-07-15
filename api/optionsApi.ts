@@ -16,6 +16,7 @@ import { FuturesTrade } from '../model/futuresTrade';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsContract } from '../model/optionsContract';
+import { OptionsMySettlements } from '../model/optionsMySettlements';
 import { OptionsMyTrade } from '../model/optionsMyTrade';
 import { OptionsOrder } from '../model/optionsOrder';
 import { OptionsPosition } from '../model/optionsPosition';
@@ -298,6 +299,73 @@ export class OptionsApi {
 
         const authSettings = [];
         return this.client.request<OptionsSettlement>(config, 'OptionsSettlement', authSettings);
+    }
+
+    /**
+     *
+     * @summary List my options settlements
+     * @param underlying Underlying
+     * @param opts Optional parameters
+     * @param opts.contract Contract name
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
+     */
+    public async listMyOptionsSettlements(
+        underlying: string,
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements> }> {
+        const localVarPath = this.client.basePath + '/options/my_settlements';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'underlying' is not null or undefined
+        if (underlying === null || underlying === undefined) {
+            throw new Error(
+                'Required parameter underlying was null or undefined when calling listMyOptionsSettlements.',
+            );
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
+
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<OptionsMySettlements>>(config, 'Array<OptionsMySettlements>', authSettings);
     }
 
     /**

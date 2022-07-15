@@ -64,6 +64,14 @@ export class Position {
      */
     'markPrice'?: string;
     /**
+     * The initial margin occupied by the position, applicable to the portfolio margin account
+     */
+    'initialMargin'?: string;
+    /**
+     * Maintenance margin required for the position, applicable to portfolio margin account
+     */
+    'maintenanceMargin'?: string;
+    /**
      * Unrealized PNL
      */
     'unrealisedPnl'?: string;
@@ -166,6 +174,16 @@ export class Position {
         {
             name: 'markPrice',
             baseName: 'mark_price',
+            type: 'string',
+        },
+        {
+            name: 'initialMargin',
+            baseName: 'initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
             type: 'string',
         },
         {

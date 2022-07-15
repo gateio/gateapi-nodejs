@@ -9,60 +9,56 @@
  * Do not edit the class manually.
  */
 
-export class MyFuturesTrade {
+export class OptionsMySettlements {
     /**
-     * Trade ID
+     * Settlement time
      */
-    'id'?: number;
+    'time'?: number;
     /**
-     * Trading time
+     * Underlying
      */
-    'createTime'?: number;
+    'underlying'?: string;
     /**
      * Futures contract
      */
     'contract'?: string;
     /**
-     * Order ID related
+     * Strike price
      */
-    'orderId'?: string;
+    'strikePrice'?: string;
     /**
-     * Trading size
+     * settlement price
+     */
+    'settlePrice'?: string;
+    /**
+     * Size
      */
     'size'?: number;
     /**
-     * Trading price
+     * Settlement profit
      */
-    'price'?: string;
+    'settleProfit'?: string;
     /**
-     * Trade role. Available values are `taker` and `maker`
-     */
-    'role'?: MyFuturesTrade.Role;
-    /**
-     * User defined information
-     */
-    'text'?: string;
-    /**
-     * Fee deducted
+     * Fee
      */
     'fee'?: string;
     /**
-     * Points used to deduct fee
+     * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc.
      */
-    'pointFee'?: string;
+    'realisedPnl'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'time',
+            baseName: 'time',
             type: 'number',
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
         },
         {
             name: 'contract',
@@ -70,8 +66,13 @@ export class MyFuturesTrade {
             type: 'string',
         },
         {
-            name: 'orderId',
-            baseName: 'order_id',
+            name: 'strikePrice',
+            baseName: 'strike_price',
+            type: 'string',
+        },
+        {
+            name: 'settlePrice',
+            baseName: 'settle_price',
             type: 'string',
         },
         {
@@ -80,18 +81,8 @@ export class MyFuturesTrade {
             type: 'number',
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
-        },
-        {
-            name: 'role',
-            baseName: 'role',
-            type: 'MyFuturesTrade.Role',
-        },
-        {
-            name: 'text',
-            baseName: 'text',
+            name: 'settleProfit',
+            baseName: 'settle_profit',
             type: 'string',
         },
         {
@@ -100,20 +91,13 @@ export class MyFuturesTrade {
             type: 'string',
         },
         {
-            name: 'pointFee',
-            baseName: 'point_fee',
+            name: 'realisedPnl',
+            baseName: 'realised_pnl',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return MyFuturesTrade.attributeTypeMap;
-    }
-}
-
-export namespace MyFuturesTrade {
-    export enum Role {
-        Taker = <any>'taker',
-        Maker = <any>'maker',
+        return OptionsMySettlements.attributeTypeMap;
     }
 }

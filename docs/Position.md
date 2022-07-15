@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **entryPrice** | **string** | Entry price | [optional] [readonly] [default to undefined]
 **liqPrice** | **string** | Liquidation price | [optional] [readonly] [default to undefined]
 **markPrice** | **string** | Current mark price | [optional] [readonly] [default to undefined]
+**initialMargin** | **string** | The initial margin occupied by the position, applicable to the portfolio margin account | [optional] [readonly] [default to undefined]
+**maintenanceMargin** | **string** | Maintenance margin required for the position, applicable to portfolio margin account | [optional] [readonly] [default to undefined]
 **unrealisedPnl** | **string** | Unrealized PNL | [optional] [readonly] [default to undefined]
 **realisedPnl** | **string** | Realized PNL | [optional] [readonly] [default to undefined]
 **historyPnl** | **string** | History realized PNL | [optional] [readonly] [default to undefined]

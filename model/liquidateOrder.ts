@@ -10,43 +10,52 @@
  */
 
 /**
- * Info of order to be cancelled
+ * Liquidate Order detail
  */
-export class CancelOrder {
+export class LiquidateOrder {
     /**
-     * Order currency pair
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     */
+    'text'?: string;
+    /**
+     * Currency pair
      */
     'currencyPair': string;
     /**
-     * Order ID or user custom ID. Custom ID are accepted only within 30 minutes after order creation
+     * Trade amount
      */
-    'id': string;
+    'amount': string;
     /**
-     * If cancelled order is cross margin order or is portfolio margin account\'s API key, this field must be set and can only be `cross_margin`If cancelled order is cross margin order, this field must be set and can only be `cross_margin`
+     * Order price
      */
-    'account'?: string;
+    'price': string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
         {
             name: 'currencyPair',
             baseName: 'currency_pair',
             type: 'string',
         },
         {
-            name: 'id',
-            baseName: 'id',
+            name: 'amount',
+            baseName: 'amount',
             type: 'string',
         },
         {
-            name: 'account',
-            baseName: 'account',
+            name: 'price',
+            baseName: 'price',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return CancelOrder.attributeTypeMap;
+        return LiquidateOrder.attributeTypeMap;
     }
 }

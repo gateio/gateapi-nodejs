@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **size** | **number** | Trading size | [optional] [default to undefined]
 **price** | **string** | Trading price | [optional] [default to undefined]
 **role** | **string** | Trade role. Available values are &#x60;taker&#x60; and &#x60;maker&#x60; | [optional] [default to undefined]
+**text** | **string** | User defined information | [optional] [default to undefined]
+**fee** | **string** | Fee deducted | [optional] [default to undefined]
+**pointFee** | **string** | Points used to deduct fee | [optional] [default to undefined]
 
 ## Enum: MyFuturesTrade.Role
 

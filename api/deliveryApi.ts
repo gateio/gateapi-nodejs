@@ -1546,7 +1546,7 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Cancel a single order
+     * @summary cancel a price-triggered order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */
