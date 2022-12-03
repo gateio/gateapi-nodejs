@@ -11,7 +11,7 @@
 
 export class FuturesOrderBookItem {
     /**
-     * Price
+     * Price (quote currency)
      */
     'p'?: string;
     /**

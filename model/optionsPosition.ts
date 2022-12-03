@@ -9,10 +9,10 @@
  * Do not edit the class manually.
  */
 
-import { PositionCloseOrder } from './positionCloseOrder';
+import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 
 /**
- * Futures position details
+ * Options position information
  */
 export class OptionsPosition {
     /**
@@ -20,19 +20,19 @@ export class OptionsPosition {
      */
     'user'?: number;
     /**
-     * Futures contract
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Position size
+     * Position size (contract size)
      */
     'size'?: number;
     /**
-     * Entry price
+     * Entry size (quote currency)
      */
     'entryPrice'?: string;
     /**
-     * Current mark price
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
@@ -47,7 +47,7 @@ export class OptionsPosition {
      * Current open orders
      */
     'pendingOrders'?: number;
-    'closeOrder'?: PositionCloseOrder | null;
+    'closeOrder'?: OptionsPositionCloseOrder | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -95,7 +95,7 @@ export class OptionsPosition {
         {
             name: 'closeOrder',
             baseName: 'close_order',
-            type: 'PositionCloseOrder',
+            type: 'OptionsPositionCloseOrder',
         },
     ];
 

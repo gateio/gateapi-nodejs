@@ -10,8 +10,10 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { BatchFuturesOrder } from '../model/batchFuturesOrder';
 import { Contract } from '../model/contract';
 import { ContractStat } from '../model/contractStat';
+import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuturesTask';
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
@@ -21,6 +23,7 @@ import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
 import { FuturesOrderAmendment } from '../model/futuresOrderAmendment';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
+import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
@@ -29,6 +32,7 @@ import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { Position } from '../model/position';
 import { PositionClose } from '../model/positionClose';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
+import { TriggerTime } from '../model/triggerTime';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -202,6 +206,7 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
      * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time
@@ -209,7 +214,7 @@ export class FuturesApi {
     public async listFuturesTrades(
         settle: 'btc' | 'usdt' | 'usd',
         contract: string,
-        opts: { limit?: number; lastId?: string; from?: number; to?: number },
+        opts: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
@@ -239,6 +244,10 @@ export class FuturesApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.lastId !== undefined) {
@@ -355,6 +364,83 @@ export class FuturesApi {
 
         const authSettings = [];
         return this.client.request<Array<FuturesCandlestick>>(config, 'Array<FuturesCandlestick>', authSettings);
+    }
+
+    /**
+     * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+     * @summary Premium Index K-Line
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
+     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Interval time between data points
+     */
+    public async listFuturesPremiumIndex(
+        settle: 'btc' | 'usdt' | 'usd',
+        contract: string,
+        opts: {
+            from?: number;
+            to?: number;
+            limit?: number;
+            interval?: '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d';
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/premium_index'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listFuturesPremiumIndex.');
+        }
+
+        // verify required parameter 'contract' is not null or undefined
+        if (contract === null || contract === undefined) {
+            throw new Error('Required parameter contract was null or undefined when calling listFuturesPremiumIndex.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.interval !== undefined) {
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d'",
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<FuturesPremiumIndex>>(config, 'Array<FuturesPremiumIndex>', authSettings);
     }
 
     /**
@@ -1349,13 +1435,12 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listFuturesOrders(
         settle: 'btc' | 'usdt' | 'usd',
         contract: string,
         status: 'open' | 'finished',
-        opts: { limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
+        opts: { limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1400,10 +1485,6 @@ export class FuturesApi {
 
         if (opts.lastId !== undefined) {
             localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
-        }
-
-        if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const config: AxiosRequestConfig = {
@@ -1517,10 +1598,57 @@ export class FuturesApi {
     }
 
     /**
+     * - Up to 10 orders per request - If any of the order\'s parameters are missing or in the wrong format, all of them will not be executed, and a http status 400 error will be returned directly - If the parameters are checked and passed, all are executed. Even if there is a business logic error in the middle (such as insufficient funds), it will not affect other execution orders - The returned result is in array format, and the order corresponds to the orders in the request body - In the returned result, the `succeeded` field of type bool indicates whether the execution was successful or not - If the execution is successful, the normal order content is included; if the execution fails, the `label` field is included to indicate the cause of the error - In the rate limiting, each order is counted individually
+     * @summary Create a batch of futures orders
+     * @param settle Settle currency
+     * @param futuresOrder
+     */
+    public async createBatchFuturesOrder(
+        settle: 'btc' | 'usdt' | 'usd',
+        futuresOrder: Array<FuturesOrder>,
+    ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/batch_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling createBatchFuturesOrder.');
+        }
+
+        // verify required parameter 'futuresOrder' is not null or undefined
+        if (futuresOrder === null || futuresOrder === undefined) {
+            throw new Error(
+                'Required parameter futuresOrder was null or undefined when calling createBatchFuturesOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(futuresOrder, 'Array<FuturesOrder>'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<BatchFuturesOrder>>(config, 'Array<BatchFuturesOrder>', authSettings);
+    }
+
+    /**
      * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Get a single order
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
      */
     public async getFuturesOrder(
         settle: 'btc' | 'usdt' | 'usd',
@@ -1566,7 +1694,7 @@ export class FuturesApi {
      *
      * @summary Amend an order
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
      * @param futuresOrderAmendment
      */
     public async amendFuturesOrder(
@@ -1622,7 +1750,7 @@ export class FuturesApi {
      *
      * @summary Cancel a single order
      * @param settle Settle currency
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
      */
     public async cancelFuturesOrder(
         settle: 'btc' | 'usdt' | 'usd',
@@ -1674,18 +1802,10 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
-     * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyTrades(
         settle: 'btc' | 'usdt' | 'usd',
-        opts: {
-            contract?: string;
-            order?: number;
-            limit?: number;
-            offset?: number;
-            lastId?: string;
-            countTotal?: 0 | 1;
-        },
+        opts: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
         const localVarPath =
             this.client.basePath +
@@ -1724,10 +1844,6 @@ export class FuturesApi {
 
         if (opts.lastId !== undefined) {
             localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
-        }
-
-        if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
 
         const config: AxiosRequestConfig = {
@@ -1859,6 +1975,53 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<FuturesLiquidate>>(config, 'Array<FuturesLiquidate>', authSettings);
+    }
+
+    /**
+     * When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown`timeout` is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified `market` will be automatically cancelled, if no `market` is specified, all market pending orders will be cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+     * @summary Countdown cancel orders
+     * @param settle Settle currency
+     * @param countdownCancelAllFuturesTask
+     */
+    public async countdownCancelAllFutures(
+        settle: 'btc' | 'usdt' | 'usd',
+        countdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
+    ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/countdown_cancel_all'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling countdownCancelAllFutures.');
+        }
+
+        // verify required parameter 'countdownCancelAllFuturesTask' is not null or undefined
+        if (countdownCancelAllFuturesTask === null || countdownCancelAllFuturesTask === undefined) {
+            throw new Error(
+                'Required parameter countdownCancelAllFuturesTask was null or undefined when calling countdownCancelAllFutures.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(countdownCancelAllFuturesTask, 'CountdownCancelAllFuturesTask'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerTime>(config, 'TriggerTime', authSettings);
     }
 
     /**
@@ -2032,7 +2195,7 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get a single order
+     * @summary Get a price-triggered order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */

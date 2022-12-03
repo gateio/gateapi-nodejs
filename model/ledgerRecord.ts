@@ -45,7 +45,7 @@ export class LedgerRecord {
     /**
      * Name of the chain used in withdrawals
      */
-    'chain'?: string;
+    'chain': string;
     /**
      * Fee
      */

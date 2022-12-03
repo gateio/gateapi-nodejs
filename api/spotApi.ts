@@ -13,6 +13,7 @@
 import { BatchOrder } from '../model/batchOrder';
 import { CancelOrder } from '../model/cancelOrder';
 import { CancelOrderResult } from '../model/cancelOrderResult';
+import { CountdownCancelAllSpotTask } from '../model/countdownCancelAllSpotTask';
 import { Currency } from '../model/currency';
 import { CurrencyPair } from '../model/currencyPair';
 import { LiquidateOrder } from '../model/liquidateOrder';
@@ -26,6 +27,7 @@ import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
 import { TradeFee } from '../model/tradeFee';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
+import { TriggerTime } from '../model/triggerTime';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -274,7 +276,7 @@ export class SpotApi {
      * @summary Retrieve market trades
      * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.limit Maximum number of records to be returned in a single list.  Default: 100, Minimum: 1, Maximum: 1000
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.reverse Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
      * @param opts.from Start timestamp of the query
@@ -802,7 +804,7 @@ export class SpotApi {
     /**
      * Spot and margin orders are queried by default. If cross margin orders are needed or portfolio margin account are used, account must be set to cross_margin.
      * @summary Get a single order
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
@@ -856,7 +858,7 @@ export class SpotApi {
     /**
      * Spot and margin orders are cancelled by default. If trying to cancel cross margin orders or portfolio margin account are used, account must be set to cross_margin
      * @summary Cancel a single order
-     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
@@ -908,10 +910,10 @@ export class SpotApi {
     }
 
     /**
-     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range Time range parameters are handled as order finish time.
+     * Spot and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range. If you don\'t specify `from` and/or `to` parameters, only the last 7 days of data will be retured. The range of `from` and `to` is not alloed to exceed 30 days.  Time range parameters are handled as order finish time.
      * @summary List personal trading history
-     * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
      * @param opts Optional parameters
+     * @param opts.currencyPair Retrieve results with specified currency pair
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
@@ -919,10 +921,15 @@ export class SpotApi {
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      */
-    public async listMyTrades(
-        currencyPair: string,
-        opts: { limit?: number; page?: number; orderId?: string; account?: string; from?: number; to?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
+    public async listMyTrades(opts: {
+        currencyPair?: string;
+        limit?: number;
+        page?: number;
+        orderId?: string;
+        account?: string;
+        from?: number;
+        to?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -934,13 +941,10 @@ export class SpotApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling listMyTrades.');
-        }
-
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
@@ -1002,6 +1006,44 @@ export class SpotApi {
 
         const authSettings = [];
         return this.client.request<SystemTime>(config, 'SystemTime', authSettings);
+    }
+
+    /**
+     * When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown`timeout` is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified `market` will be automatically cancelled, if no `market` is specified, all market pending orders will be cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+     * @summary Countdown cancel orders
+     * @param countdownCancelAllSpotTask
+     */
+    public async countdownCancelAllSpot(
+        countdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
+        const localVarPath = this.client.basePath + '/spot/countdown_cancel_all';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'countdownCancelAllSpotTask' is not null or undefined
+        if (countdownCancelAllSpotTask === null || countdownCancelAllSpotTask === undefined) {
+            throw new Error(
+                'Required parameter countdownCancelAllSpotTask was null or undefined when calling countdownCancelAllSpot.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(countdownCancelAllSpotTask, 'CountdownCancelAllSpotTask'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerTime>(config, 'TriggerTime', authSettings);
     }
 
     /**
@@ -1162,7 +1204,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get a single order
+     * @summary Get a price-triggered order
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getSpotPriceTriggeredOrder(

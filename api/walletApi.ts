@@ -18,6 +18,7 @@ import { SubAccountBalance } from '../model/subAccountBalance';
 import { SubAccountCrossMarginBalance } from '../model/subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from '../model/subAccountFuturesBalance';
 import { SubAccountMarginBalance } from '../model/subAccountMarginBalance';
+import { SubAccountToSubAccount } from '../model/subAccountToSubAccount';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
 import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
@@ -273,7 +274,7 @@ export class WalletApi {
      * Record time range cannot exceed 30 days  > Note: only records after 2020-04-10 can be retrieved
      * @summary Retrieve transfer records between main and sub accounts
      * @param opts Optional parameters
-     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
      * @param opts.limit Maximum number of records to be returned in a single list
@@ -362,6 +363,37 @@ export class WalletApi {
 
     /**
      *
+     * @summary Sub-account transfers to sub-account
+     * @param subAccountToSubAccount
+     */
+    public async subAccountToSubAccount(
+        subAccountToSubAccount: SubAccountToSubAccount,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/wallet/sub_account_to_sub_account';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'subAccountToSubAccount' is not null or undefined
+        if (subAccountToSubAccount === null || subAccountToSubAccount === undefined) {
+            throw new Error(
+                'Required parameter subAccountToSubAccount was null or undefined when calling subAccountToSubAccount.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(subAccountToSubAccount, 'SubAccountToSubAccount'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
      * @summary Retrieve withdrawal status
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
@@ -400,7 +432,7 @@ export class WalletApi {
      *
      * @summary Retrieve sub account balances
      * @param opts Optional parameters
-     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
     public async listSubAccountBalances(opts: {
         subUid?: string;
@@ -436,7 +468,7 @@ export class WalletApi {
      *
      * @summary Query sub accounts\' margin balances
      * @param opts Optional parameters
-     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
     public async listSubAccountMarginBalances(opts: {
         subUid?: string;
@@ -476,7 +508,7 @@ export class WalletApi {
      *
      * @summary Query sub accounts\' futures account balances
      * @param opts Optional parameters
-     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      * @param opts.settle Query only balances of specified settle currency
      */
     public async listSubAccountFuturesBalances(opts: {
@@ -522,7 +554,7 @@ export class WalletApi {
      *
      * @summary Query subaccount\'s cross_margin account info
      * @param opts Optional parameters
-     * @param opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
     public async listSubAccountCrossMarginBalances(opts: {
         subUid?: string;
@@ -613,8 +645,12 @@ export class WalletApi {
      * @summary Retrieve personal trading fee
      * @param opts Optional parameters
      * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
+     * @param opts.settle Specify the settlement currency of the contract to get more accurate rate settings  This field is optional. Generally, the rate settings for all settlement currencies are the same.
      */
-    public async getTradeFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: TradeFee }> {
+    public async getTradeFee(opts: {
+        currencyPair?: string;
+        settle?: 'BTC' | 'USDT' | 'USD';
+    }): Promise<{ response: AxiosResponse; body: TradeFee }> {
         const localVarPath = this.client.basePath + '/wallet/fee';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -629,6 +665,10 @@ export class WalletApi {
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
             localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        if (opts.settle !== undefined) {
+            localVarQueryParameters['settle'] = ObjectSerializer.serialize(opts.settle, "'BTC' | 'USDT' | 'USD'");
         }
 
         const config: AxiosRequestConfig = {

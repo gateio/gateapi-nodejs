@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/{settle}/order_book | Futures order book
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/{settle}/trades | Futures trading history
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/{settle}/candlesticks | Get futures candlesticks
+[**listFuturesPremiumIndex**](FuturesApi.md#listFuturesPremiumIndex) | **GET** /futures/{settle}/premium_index | Premium Index K-Line
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/{settle}/tickers | List futures tickers
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Funding rate history
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures insurance balance history
@@ -30,16 +31,18 @@ Method | HTTP request | Description
 [**listFuturesOrders**](FuturesApi.md#listFuturesOrders) | **GET** /futures/{settle}/orders | List futures orders
 [**createFuturesOrder**](FuturesApi.md#createFuturesOrder) | **POST** /futures/{settle}/orders | Create a futures order
 [**cancelFuturesOrders**](FuturesApi.md#cancelFuturesOrders) | **DELETE** /futures/{settle}/orders | Cancel all &#x60;open&#x60; orders matched
+[**createBatchFuturesOrder**](FuturesApi.md#createBatchFuturesOrder) | **POST** /futures/{settle}/batch_orders | Create a batch of futures orders
 [**getFuturesOrder**](FuturesApi.md#getFuturesOrder) | **GET** /futures/{settle}/orders/{order_id} | Get a single order
 [**amendFuturesOrder**](FuturesApi.md#amendFuturesOrder) | **PUT** /futures/{settle}/orders/{order_id} | Amend an order
 [**cancelFuturesOrder**](FuturesApi.md#cancelFuturesOrder) | **DELETE** /futures/{settle}/orders/{order_id} | Cancel a single order
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/{settle}/my_trades | List personal trading history
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/{settle}/position_close | List position close history
 [**listLiquidates**](FuturesApi.md#listLiquidates) | **GET** /futures/{settle}/liquidates | List liquidation history
+[**countdownCancelAllFutures**](FuturesApi.md#countdownCancelAllFutures) | **POST** /futures/{settle}/countdown_cancel_all | Countdown cancel orders
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | List all auto orders
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create a price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all open orders
-[**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Get a single order
+[**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Get a price-triggered order
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | cancel a price-triggered order
 
 
@@ -199,6 +202,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
+  'offset': 0, // number | List offset, starting from 0
   'lastId': "12345", // string | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use `from` and `to` instead to limit time range
   'from': 1546905600, // number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
   'to': 1546935600 // number | Specify end time in Unix seconds, default to current time
@@ -216,6 +220,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] [default to undefined]
  **from** | **number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] [default to undefined]
  **to** | **number**| Specify end time in Unix seconds, default to current time | [optional] [default to undefined]
@@ -278,6 +283,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick>; }> [FuturesCandlestick](FuturesCandlestick.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listFuturesPremiumIndex
+
+> Promise<{ response: http.IncomingMessage; body: Array<FuturesPremiumIndex>; }> listFuturesPremiumIndex(settle, contract, opts)
+
+Premium Index K-Line
+
+Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const contract = "BTC_USDT"; // string | Futures contract
+const opts = {
+  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d' | Interval time between data points
+};
+api.listFuturesPremiumIndex(settle, contract, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract | [default to undefined]
+ **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
+ **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
+ **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex>; }> [FuturesPremiumIndex](FuturesPremiumIndex.md)
 
 ### Authorization
 
@@ -1165,8 +1225,7 @@ const status = "open"; // 'open' | 'finished' | Only list the orders with this s
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
-  'countTotal': 0 // 0 | 1 | Whether to return total number matched. Default to 0(no return)
+  'lastId': "12345" // string | Specify list staring point using the `id` of last record in previous list-query results
 };
 api.listFuturesOrders(settle, contract, status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1184,7 +1243,6 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
- **countTotal** | **CountTotal**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
 
 ### Return type
 
@@ -1297,6 +1355,53 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## createBatchFuturesOrder
+
+> Promise<{ response: http.IncomingMessage; body: Array<BatchFuturesOrder>; }> createBatchFuturesOrder(settle, futuresOrder)
+
+Create a batch of futures orders
+
+- Up to 10 orders per request - If any of the order\&#39;s parameters are missing or in the wrong format, all of them will not be executed, and a http status 400 error will be returned directly - If the parameters are checked and passed, all are executed. Even if there is a business logic error in the middle (such as insufficient funds), it will not affect other execution orders - The returned result is in array format, and the order corresponds to the orders in the request body - In the returned result, the &#x60;succeeded&#x60; field of type bool indicates whether the execution was successful or not - If the execution is successful, the normal order content is included; if the execution fails, the &#x60;label&#x60; field is included to indicate the cause of the error - In the rate limiting, each order is counted individually
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const futuresOrder = [new FuturesOrder()]; // Array<FuturesOrder> | 
+api.createBatchFuturesOrder(settle, futuresOrder)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **futuresOrder** | [**Array&lt;FuturesOrder&gt;**](FuturesOrder.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder>; }> [BatchFuturesOrder](BatchFuturesOrder.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## getFuturesOrder
 
 > Promise<{ response: http.IncomingMessage; body: FuturesOrder; }> getFuturesOrder(settle, orderId)
@@ -1317,7 +1422,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
-const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
 api.getFuturesOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1329,7 +1434,7 @@ api.getFuturesOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted. | [default to undefined]
 
 ### Return type
 
@@ -1362,7 +1467,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
-const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
 const futuresOrderAmendment = new FuturesOrderAmendment(); // FuturesOrderAmendment | 
 api.amendFuturesOrder(settle, orderId, futuresOrderAmendment)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1375,7 +1480,7 @@ api.amendFuturesOrder(settle, orderId, futuresOrderAmendment)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted. | [default to undefined]
  **futuresOrderAmendment** | [**FuturesOrderAmendment**](FuturesOrderAmendment.md)|  | 
 
 ### Return type
@@ -1409,7 +1514,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
-const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
 api.cancelFuturesOrder(settle, orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1421,7 +1526,7 @@ api.cancelFuturesOrder(settle, orderId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted. | [default to undefined]
 
 ### Return type
 
@@ -1459,8 +1564,7 @@ const opts = {
   'order': 12345, // number | Futures order ID, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
-  'countTotal': 0 // 0 | 1 | Whether to return total number matched. Default to 0(no return)
+  'lastId': "12345" // string | Specify list staring point using the `id` of last record in previous list-query results
 };
 api.getMyTrades(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1478,7 +1582,6 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
- **countTotal** | **CountTotal**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
 
 ### Return type
 
@@ -1597,6 +1700,53 @@ Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate>; }> [FuturesLiq
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## countdownCancelAllFutures
+
+> Promise<{ response: http.IncomingMessage; body: TriggerTime; }> countdownCancelAllFutures(settle, countdownCancelAllFuturesTask)
+
+Countdown cancel orders
+
+When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown&#x60;timeout&#x60; is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified &#x60;market&#x60; will be automatically cancelled, if no &#x60;market&#x60; is specified, all market pending orders will be cancelled. If the &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const countdownCancelAllFuturesTask = new CountdownCancelAllFuturesTask(); // CountdownCancelAllFuturesTask | 
+api.countdownCancelAllFutures(settle, countdownCancelAllFuturesTask)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **countdownCancelAllFuturesTask** | [**CountdownCancelAllFuturesTask**](CountdownCancelAllFuturesTask.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: TriggerTime; }> [TriggerTime](TriggerTime.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## listPriceTriggeredOrders
@@ -1746,7 +1896,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> [
 
 > Promise<{ response: http.IncomingMessage; body: FuturesPriceTriggeredOrder; }> getPriceTriggeredOrder(settle, orderId)
 
-Get a single order
+Get a price-triggered order
 
 ### Example
 

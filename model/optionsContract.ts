@@ -10,11 +10,11 @@
  */
 
 /**
- * Futures contract details
+ * Options contract detail
  */
 export class OptionsContract {
     /**
-     * Futures contract
+     * Options contract name
      */
     'name'?: string;
     /**
@@ -42,7 +42,7 @@ export class OptionsContract {
      */
     'underlying'?: string;
     /**
-     * Underlying price
+     * Underlying price (quote currency)
      */
     'underlyingPrice'?: string;
     /**
@@ -50,11 +50,11 @@ export class OptionsContract {
      */
     'lastPrice'?: string;
     /**
-     * Current mark price
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
-     * Current index price
+     * Current index price (quote currency)
      */
     'indexPrice'?: string;
     /**

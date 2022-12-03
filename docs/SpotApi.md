@@ -25,10 +25,11 @@ Method | HTTP request | Description
 [**cancelOrder**](SpotApi.md#cancelOrder) | **DELETE** /spot/orders/{order_id} | Cancel a single order
 [**listMyTrades**](SpotApi.md#listMyTrades) | **GET** /spot/my_trades | List personal trading history
 [**getSystemTime**](SpotApi.md#getSystemTime) | **GET** /spot/time | Get server current time
+[**countdownCancelAllSpot**](SpotApi.md#countdownCancelAllSpot) | **POST** /spot/countdown_cancel_all | Countdown cancel orders
 [**listSpotPriceTriggeredOrders**](SpotApi.md#listSpotPriceTriggeredOrders) | **GET** /spot/price_orders | Retrieve running auto order list
 [**createSpotPriceTriggeredOrder**](SpotApi.md#createSpotPriceTriggeredOrder) | **POST** /spot/price_orders | Create a price-triggered order
 [**cancelSpotPriceTriggeredOrderList**](SpotApi.md#cancelSpotPriceTriggeredOrderList) | **DELETE** /spot/price_orders | Cancel all open orders
-[**getSpotPriceTriggeredOrder**](SpotApi.md#getSpotPriceTriggeredOrder) | **GET** /spot/price_orders/{order_id} | Get a single order
+[**getSpotPriceTriggeredOrder**](SpotApi.md#getSpotPriceTriggeredOrder) | **GET** /spot/price_orders/{order_id} | Get a price-triggered order
 [**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | cancel a price-triggered order
 
 
@@ -307,7 +308,7 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'limit': 100, // number | Maximum number of records to be returned in a single list.  Default: 100, Minimum: 1, Maximum: 1000
   'lastId': "12345", // string | Specify list staring point using the `id` of last record in previous list-query results
   'reverse': true, // boolean | Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
   'from': 1627706330, // number | Start timestamp of the query
@@ -325,7 +326,7 @@ api.listTrades(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list.  Default: 100, Minimum: 1, Maximum: 1000 | [optional] [default to 100]
  **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
  **reverse** | **boolean**| Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to undefined]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
@@ -852,7 +853,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
@@ -867,7 +868,7 @@ api.getOrder(orderId, currencyPair, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted. | [default to undefined]
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
@@ -903,7 +904,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted.
+const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'account': "cross_margin" // string | Specify operation account. Default to spot and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
@@ -918,7 +919,7 @@ api.cancelOrder(orderId, currencyPair, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID are accepted only in the first 30 minutes after order creation.After that, only order ID is accepted. | [default to undefined]
+ **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted. | [default to undefined]
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **account** | **string**| Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
@@ -937,11 +938,11 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 ## listMyTrades
 
-> Promise<{ response: http.IncomingMessage; body: Array<Trade>; }> listMyTrades(currencyPair, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<Trade>; }> listMyTrades(opts)
 
 List personal trading history
 
-Spot and margin trades are queried by default. If cross margin trades are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;  You can also set &#x60;from&#x60; and(or) &#x60;to&#x60; to query by time range Time range parameters are handled as order finish time.
+Spot and margin trades are queried by default. If cross margin trades are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;  You can also set &#x60;from&#x60; and(or) &#x60;to&#x60; to query by time range. If you don\&#39;t specify &#x60;from&#x60; and/or &#x60;to&#x60; parameters, only the last 7 days of data will be retured. The range of &#x60;from&#x60; and &#x60;to&#x60; is not alloed to exceed 30 days.  Time range parameters are handled as order finish time.
 
 ### Example
 
@@ -954,8 +955,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const currencyPair = "BTC_USDT"; // string | Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
 const opts = {
+  'currencyPair': "BTC_USDT", // string | Retrieve results with specified currency pair
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'page': 1, // number | Page number
   'orderId': "12345", // string | Filter trades with specified order ID. `currency_pair` is also required if this field is present
@@ -963,7 +964,7 @@ const opts = {
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650 // number | Time range ending, default to current time
 };
-api.listMyTrades(currencyPair, opts)
+api.listMyTrades(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -973,7 +974,7 @@ api.listMyTrades(currencyPair, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones. | [default to undefined]
+ **currencyPair** | **string**| Retrieve results with specified currency pair | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **page** | **number**| Page number | [optional] [default to 1]
  **orderId** | **string**| Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present | [optional] [default to undefined]
@@ -1029,6 +1030,51 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## countdownCancelAllSpot
+
+> Promise<{ response: http.IncomingMessage; body: TriggerTime; }> countdownCancelAllSpot(countdownCancelAllSpotTask)
+
+Countdown cancel orders
+
+When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown&#x60;timeout&#x60; is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified &#x60;market&#x60; will be automatically cancelled, if no &#x60;market&#x60; is specified, all market pending orders will be cancelled. If the &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.SpotApi(client);
+const countdownCancelAllSpotTask = new CountdownCancelAllSpotTask(); // CountdownCancelAllSpotTask | 
+api.countdownCancelAllSpot(countdownCancelAllSpotTask)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countdownCancelAllSpotTask** | [**CountdownCancelAllSpotTask**](CountdownCancelAllSpotTask.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: TriggerTime; }> [TriggerTime](TriggerTime.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ## listSpotPriceTriggeredOrders
@@ -1178,7 +1224,7 @@ Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder>; }> [Spo
 
 > Promise<{ response: http.IncomingMessage; body: SpotPriceTriggeredOrder; }> getSpotPriceTriggeredOrder(orderId)
 
-Get a single order
+Get a price-triggered order
 
 ### Example
 

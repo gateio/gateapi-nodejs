@@ -11,10 +11,10 @@ Method | HTTP request | Description
 [**listOptionsSettlements**](OptionsApi.md#listOptionsSettlements) | **GET** /options/settlements | List settlement history
 [**getOptionsSettlement**](OptionsApi.md#getOptionsSettlement) | **GET** /options/settlements/{contract} | Get specified contract\&#39;s settlement
 [**listMyOptionsSettlements**](OptionsApi.md#listMyOptionsSettlements) | **GET** /options/my_settlements | List my options settlements
-[**listOptionsOrderBook**](OptionsApi.md#listOptionsOrderBook) | **GET** /options/order_book | Futures order book
+[**listOptionsOrderBook**](OptionsApi.md#listOptionsOrderBook) | **GET** /options/order_book | Options order book
 [**listOptionsTickers**](OptionsApi.md#listOptionsTickers) | **GET** /options/tickers | List tickers of options contracts
 [**listOptionsUnderlyingTickers**](OptionsApi.md#listOptionsUnderlyingTickers) | **GET** /options/underlying/tickers/{underlying} | Get underlying ticker
-[**listOptionsCandlesticks**](OptionsApi.md#listOptionsCandlesticks) | **GET** /options/candlesticks | Get futures candlesticks
+[**listOptionsCandlesticks**](OptionsApi.md#listOptionsCandlesticks) | **GET** /options/candlesticks | Get options candlesticks
 [**listOptionsUnderlyingCandlesticks**](OptionsApi.md#listOptionsUnderlyingCandlesticks) | **GET** /options/underlying/candlesticks | Mark price candlesticks of an underlying
 [**listOptionsTrades**](OptionsApi.md#listOptionsTrades) | **GET** /options/trades | Options trade history
 [**listOptionsAccount**](OptionsApi.md#listOptionsAccount) | **GET** /options/accounts | List options account
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**listOptionsPositions**](OptionsApi.md#listOptionsPositions) | **GET** /options/positions | List user\&#39;s positions of specified underlying
 [**getOptionsPosition**](OptionsApi.md#getOptionsPosition) | **GET** /options/positions/{contract} | Get specified contract position
 [**listOptionsPositionClose**](OptionsApi.md#listOptionsPositionClose) | **GET** /options/position_close | List user\&#39;s liquidation history of specified underlying
-[**listOptionsOrders**](OptionsApi.md#listOptionsOrders) | **GET** /options/orders | List futures orders
+[**listOptionsOrders**](OptionsApi.md#listOptionsOrders) | **GET** /options/orders | List options orders
 [**createOptionsOrder**](OptionsApi.md#createOptionsOrder) | **POST** /options/orders | Create an options order
 [**cancelOptionsOrders**](OptionsApi.md#cancelOptionsOrders) | **DELETE** /options/orders | Cancel all &#x60;open&#x60; orders matched
 [**getOptionsOrder**](OptionsApi.md#getOptionsOrder) | **GET** /options/orders/{order_id} | Get a single order
@@ -82,7 +82,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 api.listOptionsExpirations(underlying)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -93,7 +93,7 @@ api.listOptionsExpirations(underlying)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
 
 ### Return type
 
@@ -123,7 +123,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
   'expiration': 1636588800 // number | Unix timestamp of the expiration time
 };
@@ -137,7 +137,7 @@ api.listOptionsContracts(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **expiration** | **number**| Unix timestamp of the expiration time | [optional] [default to undefined]
 
 ### Return type
@@ -209,7 +209,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
@@ -226,7 +226,7 @@ api.listOptionsSettlements(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
@@ -261,7 +261,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.OptionsApi(client);
 const contract = "BTC_USDT-20211130-65000-C"; // string | 
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const at = 56; // number | 
 api.getOptionsSettlement(contract, underlying, at)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -274,7 +274,7 @@ api.getOptionsSettlement(contract, underlying, at)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **string**|  | [default to undefined]
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **at** | **number**|  | [default to undefined]
 
 ### Return type
@@ -307,9 +307,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'from': 1547706332, // number | Start timestamp
@@ -325,8 +325,8 @@ api.listMyOptionsSettlements(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
@@ -349,7 +349,7 @@ Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements>; }> [Option
 
 > Promise<{ response: http.IncomingMessage; body: FuturesOrderBook; }> listOptionsOrderBook(contract, opts)
 
-Futures order book
+Options order book
 
 Bids will be sorted by price from high to low, while asks sorted reversely
 
@@ -362,7 +362,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const contract = "BTC_USDT"; // string | Futures contract
+const contract = "BTC_USDT-20210916-5000-C"; // string | Options contract name
 const opts = {
   'interval': '0', // '0' | '0.1' | '0.01' | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10, // number | Maximum number of order depth data in asks or bids
@@ -378,7 +378,7 @@ api.listOptionsOrderBook(contract, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contract** | **string**| Futures contract | [default to undefined]
+ **contract** | **string**| Options contract name | [default to undefined]
  **interval** | **Interval**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
  **withId** | **boolean**| Whether the order book update ID will be returned. This ID increases by 1 on every order book update | [optional] [default to undefined]
@@ -411,7 +411,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 api.listOptionsTickers(underlying)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -422,7 +422,7 @@ api.listOptionsTickers(underlying)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
 
 ### Return type
 
@@ -480,9 +480,9 @@ No authorization required
 
 ## listOptionsCandlesticks
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesCandlestick>; }> listOptionsCandlesticks(contract, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<OptionsCandlestick>; }> listOptionsCandlesticks(contract, opts)
 
-Get futures candlesticks
+Get options candlesticks
 
 ### Example
 
@@ -493,7 +493,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const contract = "BTC_USDT"; // string | Futures contract
+const contract = "BTC_USDT-20210916-5000-C"; // string | Options contract name
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1547706332, // number | Start timestamp
@@ -510,7 +510,7 @@ api.listOptionsCandlesticks(contract, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contract** | **string**| Futures contract | [default to undefined]
+ **contract** | **string**| Options contract name | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick>; }> [FuturesCandlestick](FuturesCandlestick.md)
+Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick>; }> [OptionsCandlestick](OptionsCandlestick.md)
 
 ### Authorization
 
@@ -544,7 +544,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1547706332, // number | Start timestamp
@@ -561,7 +561,7 @@ api.listOptionsUnderlyingCandlesticks(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
@@ -596,7 +596,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.OptionsApi(client);
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'type': "1546935600", // string | `C` is call, while `P` is put
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
@@ -613,7 +613,7 @@ api.listOptionsTrades(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
  **type** | **string**| &#x60;C&#x60; is call, while &#x60;P&#x60; is put | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -830,9 +830,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C" // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C" // string | Options contract name
 };
 api.listOptionsPositionClose(underlying, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -844,8 +844,8 @@ api.listOptionsPositionClose(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
 
 ### Return type
 
@@ -864,7 +864,7 @@ Promise<{ response: AxiosResponse; body: Array<OptionsPositionClose>; }> [Option
 
 > Promise<{ response: http.IncomingMessage; body: Array<OptionsOrder>; }> listOptionsOrders(status, opts)
 
-List futures orders
+List options orders
 
 ### Example
 
@@ -879,7 +879,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.OptionsApi(client);
 const status = "open"; // 'open' | 'finished' | Only list the orders with this status
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'underlying': "BTC_USDT", // string | Underlying
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
@@ -897,7 +897,7 @@ api.listOptionsOrders(status, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **Status**| Only list the orders with this status | [default to undefined]
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
  **underlying** | **string**| Underlying | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -978,7 +978,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OptionsApi(client);
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'underlying': "BTC_USDT", // string | Underlying
   'side': "ask" // 'ask' | 'bid' | All bids or asks. Both included if not specified
 };
@@ -992,7 +992,7 @@ api.cancelOptionsOrders(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
  **underlying** | **string**| Underlying | [optional] [default to undefined]
  **side** | **Side**| All bids or asks. Both included if not specified | [optional] [default to undefined]
 
@@ -1112,9 +1112,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.OptionsApi(client);
-const underlying = "BTC_USDT"; // string | Underlying
+const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
-  'contract': "BTC_USDT-20210916-5000-C", // string | Contract name
+  'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'from': 1547706332, // number | Start timestamp
@@ -1130,8 +1130,8 @@ api.listMyOptionsTrades(underlying, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **underlying** | **string**| Underlying | [default to undefined]
- **contract** | **string**| Contract name | [optional] [default to undefined]
+ **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
+ **contract** | **string**| Options contract name | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp | [optional] [default to undefined]

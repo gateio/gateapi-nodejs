@@ -19,15 +19,15 @@ export class OptionsMySettlements {
      */
     'underlying'?: string;
     /**
-     * Futures contract
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Strike price
+     * Strike price (quote currency)
      */
     'strikePrice'?: string;
     /**
-     * settlement price
+     * Settlement price (quote currency)
      */
     'settlePrice'?: string;
     /**
@@ -35,15 +35,15 @@ export class OptionsMySettlements {
      */
     'size'?: number;
     /**
-     * Settlement profit
+     * Settlement profit (quote currency)
      */
     'settleProfit'?: string;
     /**
-     * Fee
+     * Fee (quote currency)
      */
     'fee'?: string;
     /**
-     * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc.
+     * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc. (quote currency)
      */
     'realisedPnl'?: string;
 

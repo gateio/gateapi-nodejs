@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Options contract name | [optional] [default to undefined]
-**lastPrice** | **string** | Last trading price | [optional] [default to undefined]
-**markPrice** | **string** | Current mark price | [optional] [default to undefined]
-**indexPrice** | **string** | Current index price | [optional] [default to undefined]
+**lastPrice** | **string** | Last trading price (quote currency) | [optional] [default to undefined]
+**markPrice** | **string** | Current mark price (quote currency) | [optional] [default to undefined]
+**indexPrice** | **string** | Current index price (quote currency) | [optional] [default to undefined]
 **ask1Size** | **number** | Best ask size | [optional] [default to undefined]
 **ask1Price** | **string** | Best ask price | [optional] [default to undefined]
 **bid1Size** | **number** | Best bid size | [optional] [default to undefined]

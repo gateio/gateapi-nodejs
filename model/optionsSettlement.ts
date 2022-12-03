@@ -15,23 +15,23 @@ export class OptionsSettlement {
      */
     'time'?: number;
     /**
-     * Contract name
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Settlement profit per size
+     * Settlement profit per size (quote currency)
      */
     'profit'?: string;
     /**
-     * Settlement fee per size
+     * Settlement fee per size (quote currency)
      */
     'fee'?: string;
     /**
-     * Strike price
+     * Strike price (quote currency)
      */
     'strikePrice'?: string;
     /**
-     * settlement price
+     * Settlement price (quote currency)
      */
     'settlePrice'?: string;
 

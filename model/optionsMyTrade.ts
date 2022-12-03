@@ -19,7 +19,7 @@ export class OptionsMyTrade {
      */
     'createTime'?: number;
     /**
-     * Futures contract
+     * Options contract name
      */
     'contract'?: string;
     /**
@@ -31,11 +31,11 @@ export class OptionsMyTrade {
      */
     'size'?: number;
     /**
-     * Trading price
+     * Trading price (quote currency)
      */
     'price'?: string;
     /**
-     * Underlying price
+     * Underlying price (quote currency)
      */
     'underlyingPrice'?: string;
     /**

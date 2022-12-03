@@ -50,7 +50,7 @@ export class OptionsOrder {
      */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc`
+     * Order price. 0 for market order with `tif` set as `ioc` (USDT)
      */
     'price'?: string;
     /**
@@ -74,7 +74,7 @@ export class OptionsOrder {
      */
     'isLiq'?: boolean;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, reduce-only
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
      */
     'tif'?: OptionsOrder.Tif;
     /**
@@ -101,6 +101,10 @@ export class OptionsOrder {
      * Reference user ID
      */
     'refu'?: number;
+    /**
+     * Referrer rebate
+     */
+    'refr'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -214,6 +218,11 @@ export class OptionsOrder {
             name: 'refu',
             baseName: 'refu',
             type: 'number',
+        },
+        {
+            name: 'refr',
+            baseName: 'refr',
+            type: 'string',
         },
     ];
 

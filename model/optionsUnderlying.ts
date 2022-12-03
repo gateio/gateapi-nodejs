@@ -15,7 +15,7 @@ export class OptionsUnderlying {
      */
     'name'?: string;
     /**
-     * Spot index price
+     * Spot index price (quote currency)
      */
     'indexPrice'?: string;
 

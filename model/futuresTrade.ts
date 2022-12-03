@@ -31,7 +31,7 @@ export class FuturesTrade {
      */
     'size'?: number;
     /**
-     * Trading price
+     * Trading price (quote currency)
      */
     'price'?: string;
 

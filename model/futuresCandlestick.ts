@@ -18,23 +18,23 @@ export class FuturesCandlestick {
      */
     't'?: number;
     /**
-     * size volume. Only returned if `contract` is not prefixed
+     * size volume (contract size). Only returned if `contract` is not prefixed
      */
     'v'?: number;
     /**
-     * Close price
+     * Close price (quote currency)
      */
     'c'?: string;
     /**
-     * Highest price
+     * Highest price (quote currency)
      */
     'h'?: string;
     /**
-     * Lowest price
+     * Lowest price (quote currency)
      */
     'l'?: string;
     /**
-     * Open price
+     * Open price (quote currency)
      */
     'o'?: string;
 

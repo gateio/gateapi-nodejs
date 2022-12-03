@@ -22,7 +22,7 @@ export class OptionsUnderlyingTicker {
      */
     'tradeCall'?: number;
     /**
-     * Index price
+     * Index price (quote currency)
      */
     'indexPrice'?: string;
 

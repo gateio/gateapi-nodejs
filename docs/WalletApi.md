@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between trading accounts
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Retrieve transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
+[**subAccountToSubAccount**](WalletApi.md#subAccountToSubAccount) | **POST** /wallet/sub_account_to_sub_account | Sub-account transfers to sub-account
 [**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Retrieve withdrawal status
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub accounts\&#39; margin balances
@@ -280,7 +281,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003", // string | Sub account user ID. Return records related to all sub accounts if not specified
+  'subUid': "10003", // string | User ID of sub-account, you can query multiple records separated by `,`. If not specified, it will return the records of all sub accounts
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -296,7 +297,7 @@ api.listSubAccountTransfers(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+ **subUid** | **string**| User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
@@ -346,6 +347,49 @@ api.transferWithSubAccount(subAccountTransfer)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subAccountTransfer** | [**SubAccountTransfer**](SubAccountTransfer.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## subAccountToSubAccount
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> subAccountToSubAccount(subAccountToSubAccount)
+
+Sub-account transfers to sub-account
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const subAccountToSubAccount = new SubAccountToSubAccount(); // SubAccountToSubAccount | 
+api.subAccountToSubAccount(subAccountToSubAccount)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subAccountToSubAccount** | [**SubAccountToSubAccount**](SubAccountToSubAccount.md)|  | 
 
 ### Return type
 
@@ -423,7 +467,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003" // string | Sub account user ID. Return records related to all sub accounts if not specified
+  'subUid': "10003" // string | User ID of sub-account, you can query multiple records separated by `,`. If not specified, it will return the records of all sub accounts
 };
 api.listSubAccountBalances(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -435,7 +479,7 @@ api.listSubAccountBalances(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+ **subUid** | **string**| User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts | [optional] [default to undefined]
 
 ### Return type
 
@@ -468,7 +512,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003" // string | Sub account user ID. Return records related to all sub accounts if not specified
+  'subUid': "10003" // string | User ID of sub-account, you can query multiple records separated by `,`. If not specified, it will return the records of all sub accounts
 };
 api.listSubAccountMarginBalances(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -480,7 +524,7 @@ api.listSubAccountMarginBalances(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+ **subUid** | **string**| User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts | [optional] [default to undefined]
 
 ### Return type
 
@@ -513,7 +557,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003", // string | Sub account user ID. Return records related to all sub accounts if not specified
+  'subUid': "10003", // string | User ID of sub-account, you can query multiple records separated by `,`. If not specified, it will return the records of all sub accounts
   'settle': "usdt" // string | Query only balances of specified settle currency
 };
 api.listSubAccountFuturesBalances(opts)
@@ -526,7 +570,7 @@ api.listSubAccountFuturesBalances(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+ **subUid** | **string**| User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts | [optional] [default to undefined]
  **settle** | **string**| Query only balances of specified settle currency | [optional] [default to undefined]
 
 ### Return type
@@ -560,7 +604,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'subUid': "10003" // string | Sub account user ID. Return records related to all sub accounts if not specified
+  'subUid': "10003" // string | User ID of sub-account, you can query multiple records separated by `,`. If not specified, it will return the records of all sub accounts
 };
 api.listSubAccountCrossMarginBalances(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -572,7 +616,7 @@ api.listSubAccountCrossMarginBalances(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subUid** | **string**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] [default to undefined]
+ **subUid** | **string**| User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts | [optional] [default to undefined]
 
 ### Return type
 
@@ -654,7 +698,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.WalletApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT" // string | Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
+  'currencyPair': "BTC_USDT", // string | Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
+  'settle': "BTC" // 'BTC' | 'USDT' | 'USD' | Specify the settlement currency of the contract to get more accurate rate settings  This field is optional. Generally, the rate settings for all settlement currencies are the same.
 };
 api.getTradeFee(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -667,6 +712,7 @@ api.getTradeFee(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs | [optional] [default to undefined]
+ **settle** | **Settle**| Specify the settlement currency of the contract to get more accurate rate settings  This field is optional. Generally, the rate settings for all settlement currencies are the same. | [optional] [default to undefined]
 
 ### Return type
 

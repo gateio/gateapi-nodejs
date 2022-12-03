@@ -15,7 +15,7 @@ export class OptionsPositionClose {
      */
     'time'?: number;
     /**
-     * Futures contract
+     * Options contract name
      */
     'contract'?: string;
     /**

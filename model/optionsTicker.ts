@@ -18,15 +18,15 @@ export class OptionsTicker {
      */
     'name'?: string;
     /**
-     * Last trading price
+     * Last trading price (quote currency)
      */
     'lastPrice'?: string;
     /**
-     * Current mark price
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
-     * Current index price
+     * Current index price (quote currency)
      */
     'indexPrice'?: string;
     /**

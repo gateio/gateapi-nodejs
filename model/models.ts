@@ -1,10 +1,14 @@
 export * from './accountBalance';
+export * from './apiV4KeyPerm';
 export * from './autoRepaySetting';
+export * from './batchFuturesOrder';
 export * from './batchOrder';
 export * from './cancelOrder';
 export * from './cancelOrderResult';
 export * from './contract';
 export * from './contractStat';
+export * from './countdownCancelAllFuturesTask';
+export * from './countdownCancelAllSpotTask';
 export * from './crossMarginAccount';
 export * from './crossMarginAccountBook';
 export * from './crossMarginBalance';
@@ -38,6 +42,7 @@ export * from './futuresOrder';
 export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
+export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
 export * from './futuresPriceTriggeredOrder';
 export * from './futuresTicker';
@@ -60,12 +65,14 @@ export * from './myFuturesTrade';
 export * from './openOrders';
 export * from './optionsAccount';
 export * from './optionsAccountBook';
+export * from './optionsCandlestick';
 export * from './optionsContract';
 export * from './optionsMySettlements';
 export * from './optionsMyTrade';
 export * from './optionsOrder';
 export * from './optionsPosition';
 export * from './optionsPositionClose';
+export * from './optionsPositionCloseOrder';
 export * from './optionsSettlement';
 export * from './optionsTicker';
 export * from './optionsUnderlying';
@@ -82,10 +89,13 @@ export * from './spotAccount';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
+export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
 export * from './subAccountFuturesBalance';
+export * from './subAccountKey';
 export * from './subAccountMarginBalance';
+export * from './subAccountToSubAccount';
 export * from './subAccountTransfer';
 export * from './subCrossMarginAccount';
 export * from './systemTime';
@@ -96,6 +106,7 @@ export * from './tradeFee';
 export * from './transactionID';
 export * from './transfer';
 export * from './triggerOrderResponse';
+export * from './triggerTime';
 export * from './withdrawStatus';
 
 import { AxiosRequestConfig } from 'axios';
@@ -104,12 +115,16 @@ import crypto = require('crypto');
 import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
+import { ApiV4KeyPerm } from './apiV4KeyPerm';
 import { AutoRepaySetting } from './autoRepaySetting';
+import { BatchFuturesOrder } from './batchFuturesOrder';
 import { BatchOrder } from './batchOrder';
 import { CancelOrder } from './cancelOrder';
 import { CancelOrderResult } from './cancelOrderResult';
 import { Contract } from './contract';
 import { ContractStat } from './contractStat';
+import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
+import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
 import { CrossMarginAccount } from './crossMarginAccount';
 import { CrossMarginAccountBook } from './crossMarginAccountBook';
 import { CrossMarginBalance } from './crossMarginBalance';
@@ -143,6 +158,7 @@ import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
+import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesTicker } from './futuresTicker';
@@ -165,12 +181,14 @@ import { MyFuturesTrade } from './myFuturesTrade';
 import { OpenOrders } from './openOrders';
 import { OptionsAccount } from './optionsAccount';
 import { OptionsAccountBook } from './optionsAccountBook';
+import { OptionsCandlestick } from './optionsCandlestick';
 import { OptionsContract } from './optionsContract';
 import { OptionsMySettlements } from './optionsMySettlements';
 import { OptionsMyTrade } from './optionsMyTrade';
 import { OptionsOrder } from './optionsOrder';
 import { OptionsPosition } from './optionsPosition';
 import { OptionsPositionClose } from './optionsPositionClose';
+import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 import { OptionsSettlement } from './optionsSettlement';
 import { OptionsTicker } from './optionsTicker';
 import { OptionsUnderlying } from './optionsUnderlying';
@@ -187,10 +205,13 @@ import { SpotAccount } from './spotAccount';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
+import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from './subAccountFuturesBalance';
+import { SubAccountKey } from './subAccountKey';
 import { SubAccountMarginBalance } from './subAccountMarginBalance';
+import { SubAccountToSubAccount } from './subAccountToSubAccount';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { SubCrossMarginAccount } from './subCrossMarginAccount';
 import { SystemTime } from './systemTime';
@@ -201,6 +222,7 @@ import { TradeFee } from './tradeFee';
 import { TransactionID } from './transactionID';
 import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
+import { TriggerTime } from './triggerTime';
 import { WithdrawStatus } from './withdrawStatus';
 
 /* tslint:disable:no-unused-variable */
@@ -208,7 +230,12 @@ const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', '
 
 const enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
+    'ApiV4KeyPerm.Name': ApiV4KeyPerm.Name,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
+    'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
+    'BatchFuturesOrder.Status': BatchFuturesOrder.Status,
+    'BatchFuturesOrder.Tif': BatchFuturesOrder.Tif,
+    'BatchFuturesOrder.AutoSize': BatchFuturesOrder.AutoSize,
     'BatchOrder.Status': BatchOrder.Status,
     'BatchOrder.Type': BatchOrder.Type,
     'BatchOrder.Account': BatchOrder.Account,
@@ -256,6 +283,8 @@ const enumsMap: { [index: string]: any } = {
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
     'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
     'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
+    'SubAccountToSubAccount.SubAccountFromType': SubAccountToSubAccount.SubAccountFromType,
+    'SubAccountToSubAccount.SubAccountToType': SubAccountToSubAccount.SubAccountToType,
     'SubAccountTransfer.Direction': SubAccountTransfer.Direction,
     'SubAccountTransfer.SubAccountType': SubAccountTransfer.SubAccountType,
     'Trade.Side': Trade.Side,
@@ -266,12 +295,16 @@ const enumsMap: { [index: string]: any } = {
 
 const typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
+    ApiV4KeyPerm: ApiV4KeyPerm,
     AutoRepaySetting: AutoRepaySetting,
+    BatchFuturesOrder: BatchFuturesOrder,
     BatchOrder: BatchOrder,
     CancelOrder: CancelOrder,
     CancelOrderResult: CancelOrderResult,
     Contract: Contract,
     ContractStat: ContractStat,
+    CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
+    CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
     CrossMarginAccount: CrossMarginAccount,
     CrossMarginAccountBook: CrossMarginAccountBook,
     CrossMarginBalance: CrossMarginBalance,
@@ -305,6 +338,7 @@ const typeMap: { [index: string]: any } = {
     FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
     FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     FuturesTicker: FuturesTicker,
@@ -327,12 +361,14 @@ const typeMap: { [index: string]: any } = {
     OpenOrders: OpenOrders,
     OptionsAccount: OptionsAccount,
     OptionsAccountBook: OptionsAccountBook,
+    OptionsCandlestick: OptionsCandlestick,
     OptionsContract: OptionsContract,
     OptionsMySettlements: OptionsMySettlements,
     OptionsMyTrade: OptionsMyTrade,
     OptionsOrder: OptionsOrder,
     OptionsPosition: OptionsPosition,
     OptionsPositionClose: OptionsPositionClose,
+    OptionsPositionCloseOrder: OptionsPositionCloseOrder,
     OptionsSettlement: OptionsSettlement,
     OptionsTicker: OptionsTicker,
     OptionsUnderlying: OptionsUnderlying,
@@ -349,10 +385,13 @@ const typeMap: { [index: string]: any } = {
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    SubAccount: SubAccount,
     SubAccountBalance: SubAccountBalance,
     SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
     SubAccountFuturesBalance: SubAccountFuturesBalance,
+    SubAccountKey: SubAccountKey,
     SubAccountMarginBalance: SubAccountMarginBalance,
+    SubAccountToSubAccount: SubAccountToSubAccount,
     SubAccountTransfer: SubAccountTransfer,
     SubCrossMarginAccount: SubCrossMarginAccount,
     SystemTime: SystemTime,
@@ -363,6 +402,7 @@ const typeMap: { [index: string]: any } = {
     TransactionID: TransactionID,
     Transfer: Transfer,
     TriggerOrderResponse: TriggerOrderResponse,
+    TriggerTime: TriggerTime,
     WithdrawStatus: WithdrawStatus,
 };
 

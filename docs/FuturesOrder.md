@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **reduceOnly** | **boolean** | Set as &#x60;true&#x60; to be reduce-only order | [optional] [default to undefined]
 **isReduceOnly** | **boolean** | Is the order reduce-only | [optional] [readonly] [default to undefined]
 **isLiq** | **boolean** | Is the order for liquidation | [optional] [readonly] [default to undefined]
-**tif** | **string** | Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, reduce-only | [optional] [default to &#39;gtc&#39;]
+**tif** | **string** | Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none | [optional] [default to &#39;gtc&#39;]
 **left** | **number** | Size left to be traded | [optional] [readonly] [default to undefined]
 **fillPrice** | **string** | Fill price of the order | [optional] [readonly] [default to undefined]
 **text** | **string** | User defined information. If not empty, must follow the rules below:  1. prefixed with &#x60;t-&#x60; 2. no longer than 28 bytes without &#x60;t-&#x60; prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance  | [optional] [default to undefined]
@@ -61,6 +61,8 @@ Name | Type | Description | Notes
 * `Ioc` (value: `'ioc'`)
 
 * `Poc` (value: `'poc'`)
+
+* `Fok` (value: `'fok'`)
 
 
 ## Enum: FuturesOrder.AutoSize

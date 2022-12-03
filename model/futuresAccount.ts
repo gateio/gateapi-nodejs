@@ -13,7 +13,7 @@ import { FuturesAccountHistory } from './futuresAccountHistory';
 
 export class FuturesAccount {
     /**
-     * total = position_margin + order_margin + available
+     * total is the balance after the user\'s accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
      */
     'total'?: string;
     /**

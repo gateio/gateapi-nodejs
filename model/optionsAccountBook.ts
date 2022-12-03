@@ -15,11 +15,11 @@ export class OptionsAccountBook {
      */
     'time'?: number;
     /**
-     * Amount changed
+     * Amount changed (USDT)
      */
     'change'?: string;
     /**
-     * Account total balance after change
+     * Account total balance after change (USDT)
      */
     'balance'?: string;
     /**

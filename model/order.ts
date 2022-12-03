@@ -46,7 +46,7 @@ export class Order {
      */
     'currencyPair': string;
     /**
-     * Order type. limit - limit order
+     * Order Type   - limit : Limit Order - market : Market Order
      */
     'type'?: Order.Type;
     /**
@@ -58,15 +58,15 @@ export class Order {
      */
     'side': Order.Side;
     /**
-     * Trade amount
+     * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
      */
     'amount': string;
     /**
-     * Order price
+     * Price can\'t be empty when `type`= `limit`
      */
-    'price': string;
+    'price'?: string;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none Only `ioc` and `fok` are supported when `type`=`market`
      */
     'timeInForce'?: Order.TimeInForce;
     /**
@@ -109,6 +109,14 @@ export class Order {
      * GT used to deduct fee
      */
     'gtFee'?: string;
+    /**
+     * GT used to deduct maker fee
+     */
+    'gtMakerFee'?: string;
+    /**
+     * GT used to deduct taker fee
+     */
+    'gtTakerFee'?: string;
     /**
      * Whether GT fee discount is used
      */
@@ -246,6 +254,16 @@ export class Order {
             type: 'string',
         },
         {
+            name: 'gtMakerFee',
+            baseName: 'gt_maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'gtTakerFee',
+            baseName: 'gt_taker_fee',
+            type: 'string',
+        },
+        {
             name: 'gtDiscount',
             baseName: 'gt_discount',
             type: 'boolean',
@@ -275,6 +293,7 @@ export namespace Order {
     }
     export enum Type {
         Limit = <any>'limit',
+        Market = <any>'market',
     }
     export enum Account {
         Spot = <any>'spot',

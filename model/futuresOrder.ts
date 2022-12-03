@@ -74,7 +74,7 @@ export class FuturesOrder {
      */
     'isLiq'?: boolean;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, reduce-only
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
      */
     'tif'?: FuturesOrder.Tif;
     /**
@@ -250,6 +250,7 @@ export namespace FuturesOrder {
         Gtc = <any>'gtc',
         Ioc = <any>'ioc',
         Poc = <any>'poc',
+        Fok = <any>'fok',
     }
     export enum AutoSize {
         Long = <any>'close_long',

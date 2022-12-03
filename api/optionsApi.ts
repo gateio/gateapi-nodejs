@@ -15,6 +15,7 @@ import { FuturesOrderBook } from '../model/futuresOrderBook';
 import { FuturesTrade } from '../model/futuresTrade';
 import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
+import { OptionsCandlestick } from '../model/optionsCandlestick';
 import { OptionsContract } from '../model/optionsContract';
 import { OptionsMySettlements } from '../model/optionsMySettlements';
 import { OptionsMyTrade } from '../model/optionsMyTrade';
@@ -74,7 +75,7 @@ export class OptionsApi {
     /**
      *
      * @summary List all expiration times
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      */
     public async listOptionsExpirations(underlying: string): Promise<{ response: AxiosResponse; body: Array<number> }> {
         const localVarPath = this.client.basePath + '/options/expirations';
@@ -109,7 +110,7 @@ export class OptionsApi {
     /**
      *
      * @summary List all the contracts with specified underlying and expiration time
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.expiration Unix timestamp of the expiration time
      */
@@ -189,7 +190,7 @@ export class OptionsApi {
     /**
      *
      * @summary List settlement history
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -250,7 +251,7 @@ export class OptionsApi {
      *
      * @summary Get specified contract\'s settlement
      * @param contract
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param at
      */
     public async getOptionsSettlement(
@@ -304,9 +305,9 @@ export class OptionsApi {
     /**
      *
      * @summary List my options settlements
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp
@@ -370,8 +371,8 @@ export class OptionsApi {
 
     /**
      * Bids will be sorted by price from high to low, while asks sorted reversely
-     * @summary Futures order book
-     * @param contract Futures contract
+     * @summary Options order book
+     * @param contract Options contract name
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
@@ -426,7 +427,7 @@ export class OptionsApi {
     /**
      *
      * @summary List tickers of options contracts
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      */
     public async listOptionsTickers(
         underlying: string,
@@ -504,8 +505,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get futures candlesticks
-     * @param contract Futures contract
+     * @summary Get options candlesticks
+     * @param contract Options contract name
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp
@@ -515,7 +516,7 @@ export class OptionsApi {
     public async listOptionsCandlesticks(
         contract: string,
         opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/candlesticks';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -562,13 +563,13 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesCandlestick>>(config, 'Array<FuturesCandlestick>', authSettings);
+        return this.client.request<Array<OptionsCandlestick>>(config, 'Array<OptionsCandlestick>', authSettings);
     }
 
     /**
      *
      * @summary Mark price candlesticks of an underlying
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp
@@ -634,7 +635,7 @@ export class OptionsApi {
      *
      * @summary Options trade history
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      * @param opts.type &#x60;C&#x60; is call, while &#x60;P&#x60; is put
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -860,9 +861,9 @@ export class OptionsApi {
     /**
      *
      * @summary List user\'s liquidation history of specified underlying
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      */
     public async listOptionsPositionClose(
         underlying: string,
@@ -906,10 +907,10 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List futures orders
+     * @summary List options orders
      * @param status Only list the orders with this status
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      * @param opts.underlying Underlying
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
@@ -1014,7 +1015,7 @@ export class OptionsApi {
      *
      * @summary Cancel all `open` orders matched
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      * @param opts.underlying Underlying
      * @param opts.side All bids or asks. Both included if not specified
      */
@@ -1131,9 +1132,9 @@ export class OptionsApi {
     /**
      *
      * @summary List personal trading history
-     * @param underlying Underlying
+     * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
-     * @param opts.contract Contract name
+     * @param opts.contract Options contract name
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp

@@ -78,6 +78,14 @@ export class FuturesTicker {
      * Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types
      */
     'quantoBaseRate'?: string;
+    /**
+     * Basis rate
+     */
+    'basisRate'?: string;
+    /**
+     * Basis value
+     */
+    'basisValue'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -165,6 +173,16 @@ export class FuturesTicker {
         {
             name: 'quantoBaseRate',
             baseName: 'quanto_base_rate',
+            type: 'string',
+        },
+        {
+            name: 'basisRate',
+            baseName: 'basis_rate',
+            type: 'string',
+        },
+        {
+            name: 'basisValue',
+            baseName: 'basis_value',
             type: 'string',
         },
     ];

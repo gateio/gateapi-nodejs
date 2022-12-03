@@ -15,7 +15,7 @@ export class FuturesOrderAmendment {
      */
     'size'?: number;
     /**
-     * New order price. New price cannot take any orders
+     * New order price.
      */
     'price'?: string;
 
