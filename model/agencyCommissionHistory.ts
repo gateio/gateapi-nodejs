@@ -9,41 +9,43 @@
  * Do not edit the class manually.
  */
 
-export class FundingBookItem {
+import { AgencyCommission } from './agencyCommission';
+
+export class AgencyCommissionHistory {
     /**
-     * Loan rate (daily rate)
+     * Currency pair
      */
-    'rate'?: string;
+    'currencyPair'?: string;
     /**
-     * Borrowable amount
+     * Total
      */
-    'amount'?: string;
+    'total'?: number;
     /**
-     * The number of days till the loan repayment\'s dateline
+     * List of comission history
      */
-    'days'?: number;
+    'list'?: Array<AgencyCommission>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'rate',
-            baseName: 'rate',
+            name: 'currencyPair',
+            baseName: 'currency_pair',
             type: 'string',
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-        {
-            name: 'days',
-            baseName: 'days',
+            name: 'total',
+            baseName: 'total',
             type: 'number',
+        },
+        {
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<AgencyCommission>',
         },
     ];
 
     static getAttributeTypeMap() {
-        return FundingBookItem.attributeTypeMap;
+        return AgencyCommissionHistory.attributeTypeMap;
     }
 }

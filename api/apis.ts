@@ -9,6 +9,8 @@ export * from './marginApi';
 import { MarginApi } from './marginApi';
 export * from './optionsApi';
 import { OptionsApi } from './optionsApi';
+export * from './rebateApi';
+import { RebateApi } from './rebateApi';
 export * from './spotApi';
 import { SpotApi } from './spotApi';
 export * from './subAccountApi';
@@ -24,6 +26,7 @@ export const APIS = [
     FuturesApi,
     MarginApi,
     OptionsApi,
+    RebateApi,
     SpotApi,
     SubAccountApi,
     WalletApi,

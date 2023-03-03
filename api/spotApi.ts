@@ -20,7 +20,9 @@ import { LiquidateOrder } from '../model/liquidateOrder';
 import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
+import { OrderPatch } from '../model/orderPatch';
 import { SpotAccount } from '../model/spotAccount';
+import { SpotFee } from '../model/spotFee';
 import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
 import { SystemTime } from '../model/systemTime';
 import { Ticker } from '../model/ticker';
@@ -138,7 +140,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get details of a specifc order
+     * @summary Get details of a specifc currency pair
      * @param currencyPair Currency pair
      */
     public async getCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: CurrencyPair }> {
@@ -441,6 +443,43 @@ export class SpotApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<TradeFee>(config, 'TradeFee', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query a batch of user trading fee rates
+     * @param currencyPairs A request can only query up to 50 currency pairs
+     */
+    public async getBatchSpotFee(
+        currencyPairs: string,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee } }> {
+        const localVarPath = this.client.basePath + '/spot/batch_fee';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPairs' is not null or undefined
+        if (currencyPairs === null || currencyPairs === undefined) {
+            throw new Error('Required parameter currencyPairs was null or undefined when calling getBatchSpotFee.');
+        }
+
+        localVarQueryParameters['currency_pairs'] = ObjectSerializer.serialize(currencyPairs, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<{ [key: string]: SpotFee }>(config, '{ [key: string]: SpotFee; }', authSettings);
     }
 
     /**
@@ -903,6 +942,68 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Order>(config, 'Order', authSettings);
+    }
+
+    /**
+     * By default, the orders of spot and margin account are updated.  If you need to modify orders of the `cross-margin` account, you must specify account as `cross_margin`.  For portfolio margin account, only `cross_margin` account is supported.  Currently, only supports modification of `price` or `amount` fields.  Regarding rate limiting: modify order and create order sharing rate limiting rules. Regarding matching priority: only modifying the amount does not affect the priority. If the price is modified, the priority will be adjusted to the last of the new price. Note: If the modified amount is less than the fill amount, the order will be cancelled.
+     * @summary Amend an order
+     * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
+     * @param currencyPair Currency pair
+     * @param orderPatch
+     * @param opts Optional parameters
+     * @param opts.account Specify operation account. Default to spot and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
+     */
+    public async amendOrder(
+        orderId: string,
+        currencyPair: string,
+        orderPatch: OrderPatch,
+        opts: { account?: string },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new Error('Required parameter orderId was null or undefined when calling amendOrder.');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling amendOrder.');
+        }
+
+        // verify required parameter 'orderPatch' is not null or undefined
+        if (orderPatch === null || orderPatch === undefined) {
+            throw new Error('Required parameter orderPatch was null or undefined when calling amendOrder.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        if (opts.account !== undefined) {
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PATCH',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(orderPatch, 'OrderPatch'),
         };
 
         const authSettings = ['apiv4'];

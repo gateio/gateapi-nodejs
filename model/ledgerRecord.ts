@@ -19,6 +19,10 @@ export class LedgerRecord {
      */
     'txid'?: string;
     /**
+     * Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     */
+    'withdrawOrderId'?: string;
+    /**
      * Operation time
      */
     'timestamp'?: string;
@@ -62,6 +66,11 @@ export class LedgerRecord {
         {
             name: 'txid',
             baseName: 'txid',
+            type: 'string',
+        },
+        {
+            name: 'withdrawOrderId',
+            baseName: 'withdraw_order_id',
             type: 'string',
         },
         {

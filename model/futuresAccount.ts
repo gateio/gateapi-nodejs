@@ -29,7 +29,7 @@ export class FuturesAccount {
      */
     'orderMargin'?: string;
     /**
-     * The available balance for transferring or trading
+     * The available balance for transferring or trading(including bonus.  Bonus can\'t be be withdrawn. The transfer amount needs to deduct the bonus)
      */
     'available'?: string;
     /**

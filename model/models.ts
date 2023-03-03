@@ -1,4 +1,8 @@
 export * from './accountBalance';
+export * from './agencyCommission';
+export * from './agencyCommissionHistory';
+export * from './agencyTransaction';
+export * from './agencyTransactionHistory';
 export * from './apiV4KeyPerm';
 export * from './autoRepaySetting';
 export * from './batchFuturesOrder';
@@ -34,6 +38,7 @@ export * from './fundingRateRecord';
 export * from './futuresAccount';
 export * from './futuresAccountBook';
 export * from './futuresAccountHistory';
+export * from './futuresAutoDeleverage';
 export * from './futuresCandlestick';
 export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
@@ -79,6 +84,7 @@ export * from './optionsUnderlying';
 export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
+export * from './orderPatch';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
@@ -86,6 +92,7 @@ export * from './repayRequest';
 export * from './repayment';
 export * from './savedAddress';
 export * from './spotAccount';
+export * from './spotFee';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
@@ -115,6 +122,10 @@ import crypto = require('crypto');
 import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
+import { AgencyCommission } from './agencyCommission';
+import { AgencyCommissionHistory } from './agencyCommissionHistory';
+import { AgencyTransaction } from './agencyTransaction';
+import { AgencyTransactionHistory } from './agencyTransactionHistory';
 import { ApiV4KeyPerm } from './apiV4KeyPerm';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { BatchFuturesOrder } from './batchFuturesOrder';
@@ -150,6 +161,7 @@ import { FundingRateRecord } from './fundingRateRecord';
 import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesAccountHistory } from './futuresAccountHistory';
+import { FuturesAutoDeleverage } from './futuresAutoDeleverage';
 import { FuturesCandlestick } from './futuresCandlestick';
 import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
@@ -195,6 +207,7 @@ import { OptionsUnderlying } from './optionsUnderlying';
 import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
+import { OrderPatch } from './orderPatch';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
@@ -202,6 +215,7 @@ import { RepayRequest } from './repayRequest';
 import { Repayment } from './repayment';
 import { SavedAddress } from './savedAddress';
 import { SpotAccount } from './spotAccount';
+import { SpotFee } from './spotFee';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
@@ -295,6 +309,10 @@ const enumsMap: { [index: string]: any } = {
 
 const typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
+    AgencyCommission: AgencyCommission,
+    AgencyCommissionHistory: AgencyCommissionHistory,
+    AgencyTransaction: AgencyTransaction,
+    AgencyTransactionHistory: AgencyTransactionHistory,
     ApiV4KeyPerm: ApiV4KeyPerm,
     AutoRepaySetting: AutoRepaySetting,
     BatchFuturesOrder: BatchFuturesOrder,
@@ -330,6 +348,7 @@ const typeMap: { [index: string]: any } = {
     FuturesAccount: FuturesAccount,
     FuturesAccountBook: FuturesAccountBook,
     FuturesAccountHistory: FuturesAccountHistory,
+    FuturesAutoDeleverage: FuturesAutoDeleverage,
     FuturesCandlestick: FuturesCandlestick,
     FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
@@ -375,6 +394,7 @@ const typeMap: { [index: string]: any } = {
     OptionsUnderlyingTicker: OptionsUnderlyingTicker,
     Order: Order,
     OrderBook: OrderBook,
+    OrderPatch: OrderPatch,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
@@ -382,6 +402,7 @@ const typeMap: { [index: string]: any } = {
     Repayment: Repayment,
     SavedAddress: SavedAddress,
     SpotAccount: SpotAccount,
+    SpotFee: SpotFee,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,

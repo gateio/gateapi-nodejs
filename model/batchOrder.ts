@@ -58,7 +58,7 @@ export class BatchOrder {
      */
     'currencyPair'?: string;
     /**
-     * Order type. limit - limit order
+     * Order Type    - limit : Limit Order - market : Market Order
      */
     'type'?: BatchOrder.Type;
     /**
@@ -82,7 +82,7 @@ export class BatchOrder {
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the order completely
+     * Amount to display for the iceberg order. Null or 0 for normal orders.  Hiding all amount is not supported.
      */
     'iceberg'?: string;
     /**
@@ -302,6 +302,7 @@ export namespace BatchOrder {
     }
     export enum Type {
         Limit = <any>'limit',
+        Market = <any>'market',
     }
     export enum Account {
         Spot = <any>'spot',

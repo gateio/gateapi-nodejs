@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **status** | **string** | Loan status  open - not fully loaned loaned - all loaned out for lending loan; loaned in for borrowing side finished - loan is finished, either being all repaid or cancelled by the lender auto_repaid - automatically repaid by the system | [optional] [readonly] [default to undefined]
 **side** | **string** | Loan side | [default to undefined]
 **currency** | **string** | Loan currency | [default to undefined]
-**rate** | **string** | Loan rate. Only rates in [0.0002, 0.002] are supported.  Not required in lending. Market rate calculated from recent rates will be used if not set | [optional] [default to undefined]
+**rate** | **string** | Loan rate. Only rates in [0.0001, 0.01] are supported.  Not required in lending. Market rate calculated from recent rates will be used if not set | [optional] [default to undefined]
 **amount** | **string** | Loan amount | [default to undefined]
 **days** | **number** | Loan days. Only 10 is supported for now | [optional] [default to undefined]
 **autoRenew** | **boolean** | Whether to auto renew the loan upon expiration | [optional] [default to undefined]

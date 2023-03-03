@@ -9,41 +9,35 @@
  * Do not edit the class manually.
  */
 
-export class FundingBookItem {
+/**
+ * Spot order details
+ */
+export class OrderPatch {
     /**
-     * Loan rate (daily rate)
-     */
-    'rate'?: string;
-    /**
-     * Borrowable amount
+     * New order amount. `amount` and `price` must specify one of them
      */
     'amount'?: string;
     /**
-     * The number of days till the loan repayment\'s dateline
+     * New order price. `amount` and `Price` must specify one of them\"
      */
-    'days'?: number;
+    'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
-        {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
         {
             name: 'amount',
             baseName: 'amount',
             type: 'string',
         },
         {
-            name: 'days',
-            baseName: 'days',
-            type: 'number',
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return FundingBookItem.attributeTypeMap;
+        return OrderPatch.attributeTypeMap;
     }
 }

@@ -15,7 +15,7 @@ export class CrossMarginCurrency {
      */
     'name'?: string;
     /**
-     * Loan rate
+     * Minimum lending rate (hourly rate)
      */
     'rate'?: string;
     /**

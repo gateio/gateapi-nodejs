@@ -141,6 +141,14 @@ export class Contract {
      * Maximum number of open orders
      */
     'ordersLimit'?: number;
+    /**
+     * Whether bouns is enabled
+     */
+    'enableBonus'?: boolean;
+    /**
+     * Whether portfolio margin account is enabled
+     */
+    'enableCredit'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -304,6 +312,16 @@ export class Contract {
             name: 'ordersLimit',
             baseName: 'orders_limit',
             type: 'number',
+        },
+        {
+            name: 'enableBonus',
+            baseName: 'enable_bonus',
+            type: 'boolean',
+        },
+        {
+            name: 'enableCredit',
+            baseName: 'enable_credit',
+            type: 'boolean',
         },
     ];
 

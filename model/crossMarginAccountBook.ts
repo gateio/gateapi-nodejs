@@ -31,7 +31,7 @@ export class CrossMarginAccountBook {
      */
     'balance'?: string;
     /**
-     * Account change type, including:  - in: transferals into cross margin account - out: transferals out from cross margin account - repay: loan repayment - borrow: borrowed loan - new_order: new order locked - order_fill: order fills - referral_fee: fee refund from referrals - order_fee: order fee generated from fills - unknown: unknown type
+     * Account change type, including:  - in: transferals into cross margin account - out: transferals out from cross margin account - repay: loan repayment - borrow: borrowed loan - interest: interest - new_order: new order locked - order_fill: order fills - referral_fee: fee refund from referrals - order_fee: order fee generated from fills - unknown: unknown type
      */
     'type'?: CrossMarginAccountBook.Type;
 
@@ -81,6 +81,7 @@ export namespace CrossMarginAccountBook {
         Out = <any>'out',
         Repay = <any>'repay',
         Borrow = <any>'borrow',
+        Interest = <any>'interest',
         NewOrder = <any>'new_order',
         OrderFill = <any>'order_fill',
         ReferralFee = <any>'referral_fee',

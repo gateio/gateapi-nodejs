@@ -10,4 +10,5 @@ Name | Type | Description | Notes
 **h** | **string** | Highest price (quote currency) | [optional] [default to undefined]
 **l** | **string** | Lowest price (quote currency) | [optional] [default to undefined]
 **o** | **string** | Open price (quote currency) | [optional] [default to undefined]
+**sum** | **string** | Trading volume (unit: Quote currency) | [optional] [default to undefined]
 

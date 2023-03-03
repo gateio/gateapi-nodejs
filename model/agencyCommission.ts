@@ -9,80 +9,68 @@
  * Do not edit the class manually.
  */
 
-/**
- * data point in every timestamp
- */
-export class FuturesCandlestick {
+export class AgencyCommission {
     /**
-     * Unix timestamp in seconds
+     * Commission Time. (unix timestamp)
      */
-    't'?: number;
+    'commissionTime'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed
+     * User ID
      */
-    'v'?: number;
+    'userId'?: number;
     /**
-     * Close price (quote currency)
+     * Group name
      */
-    'c'?: string;
+    'groupName'?: string;
     /**
-     * Highest price (quote currency)
+     * Commission Amount
      */
-    'h'?: string;
+    'commissionAmount'?: string;
     /**
-     * Lowest price (quote currency)
+     * Commission Asset
      */
-    'l'?: string;
+    'commissionAsset'?: string;
     /**
-     * Open price (quote currency)
+     * Source.  SPOT - SPOT Rebate, FUTURES - Futures Rebate
      */
-    'o'?: string;
-    /**
-     * Trading volume (unit: Quote currency)
-     */
-    'sum'?: string;
+    'source'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 't',
-            baseName: 't',
+            name: 'commissionTime',
+            baseName: 'commission_time',
             type: 'number',
         },
         {
-            name: 'v',
-            baseName: 'v',
+            name: 'userId',
+            baseName: 'user_id',
             type: 'number',
         },
         {
-            name: 'c',
-            baseName: 'c',
+            name: 'groupName',
+            baseName: 'group_name',
             type: 'string',
         },
         {
-            name: 'h',
-            baseName: 'h',
+            name: 'commissionAmount',
+            baseName: 'commission_amount',
             type: 'string',
         },
         {
-            name: 'l',
-            baseName: 'l',
+            name: 'commissionAsset',
+            baseName: 'commission_asset',
             type: 'string',
         },
         {
-            name: 'o',
-            baseName: 'o',
-            type: 'string',
-        },
-        {
-            name: 'sum',
-            baseName: 'sum',
+            name: 'source',
+            baseName: 'source',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return FuturesCandlestick.attributeTypeMap;
+        return AgencyCommission.attributeTypeMap;
     }
 }

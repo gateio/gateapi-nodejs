@@ -31,6 +31,10 @@ export class SubAccount {
      */
     'state'?: number;
     /**
+     * Type: 1-Sub-account
+     */
+    'type'?: number;
+    /**
      * The user id of the sub-account
      */
     'userId'?: number;
@@ -65,6 +69,11 @@ export class SubAccount {
         {
             name: 'state',
             baseName: 'state',
+            type: 'number',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'number',
         },
         {

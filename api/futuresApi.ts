@@ -17,6 +17,7 @@ import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuture
 import { FundingRateRecord } from '../model/fundingRateRecord';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
+import { FuturesAutoDeleverage } from '../model/futuresAutoDeleverage';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesIndexConstituents } from '../model/futuresIndexConstituents';
 import { FuturesLiquidate } from '../model/futuresLiquidate';
@@ -1859,6 +1860,71 @@ export class FuturesApi {
 
     /**
      *
+     * @summary List personal trading history by time range
+     * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async getMyTradesWithTimeRange(
+        settle: 'btc' | 'usdt' | 'usd',
+        opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/my_trades_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getMyTradesWithTimeRange.');
+        }
+
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MyFuturesTrade>>(config, 'Array<MyFuturesTrade>', authSettings);
+    }
+
+    /**
+     *
      * @summary List position close history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -1975,6 +2041,61 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<FuturesLiquidate>>(config, 'Array<FuturesLiquidate>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List Auto-Deleveraging History
+     * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.at Specify an auto-deleveraging timestamp
+     */
+    public async listAutoDeleverages(
+        settle: 'btc' | 'usdt' | 'usd',
+        opts: { contract?: string; limit?: number; at?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/auto_deleverages'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listAutoDeleverages.');
+        }
+
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.at !== undefined) {
+            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<FuturesAutoDeleverage>>(config, 'Array<FuturesAutoDeleverage>', authSettings);
     }
 
     /**

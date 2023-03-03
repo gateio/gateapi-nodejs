@@ -61,6 +61,10 @@ export class CrossMarginAccount {
      * Total available margin
      */
     'totalAvailableMargin'?: string;
+    /**
+     * Total amount of the portfolio margin account
+     */
+    'portfolioMarginTotal'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -128,6 +132,11 @@ export class CrossMarginAccount {
         {
             name: 'totalAvailableMargin',
             baseName: 'total_available_margin',
+            type: 'string',
+        },
+        {
+            name: 'portfolioMarginTotal',
+            baseName: 'portfolio_margin_total',
             type: 'string',
         },
     ];

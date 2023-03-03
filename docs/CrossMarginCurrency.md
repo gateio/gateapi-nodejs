@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Currency name | [optional] [default to undefined]
-**rate** | **string** | Loan rate | [optional] [default to undefined]
+**rate** | **string** | Minimum lending rate (hourly rate) | [optional] [default to undefined]
 **prec** | **string** | Currency precision | [optional] [default to undefined]
 **discount** | **string** | Currency value discount, which is used in total value calculation | [optional] [default to undefined]
 **minBorrowAmount** | **string** | Minimum currency borrow amount. Unit is currency itself | [optional] [default to undefined]

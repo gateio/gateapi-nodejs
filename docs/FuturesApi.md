@@ -36,8 +36,10 @@ Method | HTTP request | Description
 [**amendFuturesOrder**](FuturesApi.md#amendFuturesOrder) | **PUT** /futures/{settle}/orders/{order_id} | Amend an order
 [**cancelFuturesOrder**](FuturesApi.md#cancelFuturesOrder) | **DELETE** /futures/{settle}/orders/{order_id} | Cancel a single order
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/{settle}/my_trades | List personal trading history
+[**getMyTradesWithTimeRange**](FuturesApi.md#getMyTradesWithTimeRange) | **GET** /futures/{settle}/my_trades_timerange | List personal trading history by time range
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/{settle}/position_close | List position close history
 [**listLiquidates**](FuturesApi.md#listLiquidates) | **GET** /futures/{settle}/liquidates | List liquidation history
+[**listAutoDeleverages**](FuturesApi.md#listAutoDeleverages) | **GET** /futures/{settle}/auto_deleverages | List Auto-Deleveraging History
 [**countdownCancelAllFutures**](FuturesApi.md#countdownCancelAllFutures) | **POST** /futures/{settle}/countdown_cancel_all | Countdown cancel orders
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | List all auto orders
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create a price-triggered order
@@ -1596,6 +1598,61 @@ Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTra
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## getMyTradesWithTimeRange
+
+> Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }> getMyTradesWithTimeRange(settle, opts)
+
+List personal trading history by time range
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const opts = {
+  'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
+  'from': 1547706332, // number | Start timestamp
+  'to': 1547706332, // number | End timestamp
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'offset': 0 // number | List offset, starting from 0
+};
+api.getMyTradesWithTimeRange(settle, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
+ **from** | **number**| Start timestamp | [optional] [default to undefined]
+ **to** | **number**| End timestamp | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTrade](MyFuturesTrade.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## listPositionClose
 
 > Promise<{ response: http.IncomingMessage; body: Array<PositionClose>; }> listPositionClose(settle, opts)
@@ -1692,6 +1749,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate>; }> [FuturesLiquidate](FuturesLiquidate.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listAutoDeleverages
+
+> Promise<{ response: http.IncomingMessage; body: Array<FuturesAutoDeleverage>; }> listAutoDeleverages(settle, opts)
+
+List Auto-Deleveraging History
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
+const opts = {
+  'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'at': 0 // number | Specify an auto-deleveraging timestamp
+};
+api.listAutoDeleverages(settle, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **at** | **number**| Specify an auto-deleveraging timestamp | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage>; }> [FuturesAutoDeleverage](FuturesAutoDeleverage.md)
 
 ### Authorization
 

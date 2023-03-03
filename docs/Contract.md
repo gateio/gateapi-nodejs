@@ -36,6 +36,8 @@ Name | Type | Description | Notes
 **configChangeTime** | **number** | Last changed time of configuration | [optional] [default to undefined]
 **inDelisting** | **boolean** | Contract is delisting | [optional] [default to undefined]
 **ordersLimit** | **number** | Maximum number of open orders | [optional] [default to undefined]
+**enableBonus** | **boolean** | Whether bouns is enabled | [optional] [default to undefined]
+**enableCredit** | **boolean** | Whether portfolio margin account is enabled | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

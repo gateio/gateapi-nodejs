@@ -18,7 +18,7 @@ export class Order {
      */
     'id'?: string;
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  Besides user defined information, reserved contents are listed below, denoting how the order is created:  - 101: from android - 102: from IOS - 103: from IPAD - 104: from webapp - 3: from web - 2: from apiv2 - apiv4: from apiv4
      */
     'text'?: string;
     /**
@@ -46,7 +46,7 @@ export class Order {
      */
     'currencyPair': string;
     /**
-     * Order Type   - limit : Limit Order - market : Market Order
+     * Order Type    - limit : Limit Order - market : Market Order
      */
     'type'?: Order.Type;
     /**
@@ -70,7 +70,7 @@ export class Order {
      */
     'timeInForce'?: Order.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders. Set to -1 to hide the order completely
+     * Amount to display for the iceberg order. Null or 0 for normal orders.  Hiding all amount is not supported.
      */
     'iceberg'?: string;
     /**
@@ -93,6 +93,10 @@ export class Order {
      * Total filled in quote currency
      */
     'filledTotal'?: string;
+    /**
+     * Average fill price
+     */
+    'avgDealPrice'?: string;
     /**
      * Fee deducted
      */
@@ -231,6 +235,11 @@ export class Order {
         {
             name: 'filledTotal',
             baseName: 'filled_total',
+            type: 'string',
+        },
+        {
+            name: 'avgDealPrice',
+            baseName: 'avg_deal_price',
             type: 'string',
         },
         {
