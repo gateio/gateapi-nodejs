@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **feeCurrency** | **string** | Fee currency unit. No value in public endpoints | [optional] [default to undefined]
 **pointFee** | **string** | Points used to deduct fee. No value in public endpoints | [optional] [default to undefined]
 **gtFee** | **string** | GT used to deduct fee. No value in public endpoints | [optional] [default to undefined]
+**amendText** | **string** | The custom data that the user remarked when amending the order | [optional] [default to undefined]
 
 ## Enum: Trade.Side
 

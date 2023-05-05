@@ -11,7 +11,7 @@
 
 export class CrossMarginLoan {
     /**
-     * Borrow loan ID
+     * Loan record ID
      */
     'id'?: string;
     /**

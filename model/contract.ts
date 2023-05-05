@@ -149,6 +149,10 @@ export class Contract {
      * Whether portfolio margin account is enabled
      */
     'enableCredit'?: boolean;
+    /**
+     * Created time of the contract
+     */
+    'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -322,6 +326,11 @@ export class Contract {
             name: 'enableCredit',
             baseName: 'enable_credit',
             type: 'boolean',
+        },
+        {
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
     ];
 

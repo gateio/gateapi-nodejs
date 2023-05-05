@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## listSubAccounts
 
-> Promise<{ response: http.IncomingMessage; body: Array<SubAccount>; }> listSubAccounts()
+> Promise<{ response: http.IncomingMessage; body: Array<SubAccount>; }> listSubAccounts(opts)
 
 List sub-accounts
 
@@ -33,14 +33,20 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-api.listSubAccounts()
+const opts = {
+  'type': "0" // string | `0` to list all types of sub-accounts (currently supporting cross margin accounts and sub-accounts).  `1` to list sub-accounts only. If no parameter is passed, only sub-accounts will be listed by default.
+};
+api.listSubAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| &#x60;0&#x60; to list all types of sub-accounts (currently supporting cross margin accounts and sub-accounts).  &#x60;1&#x60; to list sub-accounts only. If no parameter is passed, only sub-accounts will be listed by default. | [optional] [default to undefined]
 
 ### Return type
 

@@ -34,8 +34,12 @@ export class SubAccountApi {
     /**
      *
      * @summary List sub-accounts
+     * @param opts Optional parameters
+     * @param opts.type &#x60;0&#x60; to list all types of sub-accounts (currently supporting cross margin accounts and sub-accounts).  &#x60;1&#x60; to list sub-accounts only. If no parameter is passed, only sub-accounts will be listed by default.
      */
-    public async listSubAccounts(): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
+    public async listSubAccounts(opts: {
+        type?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
         const localVarPath = this.client.basePath + '/sub_accounts';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -45,6 +49,11 @@ export class SubAccountApi {
             localVarHeaderParams.Accept = 'application/json';
         } else {
             localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         const config: AxiosRequestConfig = {

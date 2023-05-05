@@ -30,6 +30,7 @@ import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
+import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
 import { Position } from '../model/position';
 import { PositionClose } from '../model/positionClose';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
@@ -1500,7 +1501,7 @@ export class FuturesApi {
     }
 
     /**
-     * - Creating futures orders requires `size`, which is number of contracts instead of currency amount. You can use `quanto_multiplier` in contract detail response to know how much currency 1 size contract represents - Zero-filled order cannot be retrieved 10 minutes after order cancellation. You will get a 404 not found for such orders - Set `reduce_only` to `true` can keep the position from changing side when reducing position size - In single position mode, to close a position, you need to set `size` to 0 and `close` to `true` - In dual position mode, to close one side position, you need to set `auto_size` side, `reduce_only` to true and `size` to 0
+     * - Creating futures orders requires `size`, which is number of contracts instead of currency amount. You can use `quanto_multiplier` in contract detail response to know how much currency 1 size contract represents - Zero-filled order cannot be retrieved 10 minutes after order cancellation. You will get a 404 not found for such orders - Set `reduce_only` to `true` can keep the position from changing side when reducing position size - In single position mode, to close a position, you need to set `size` to 0 and `close` to `true` - In dual position mode, to close one side position, you need to set `auto_size` side, `reduce_only` to true and `size` to 0 - Set `stp_act` to decide the strategy of self-trade prevention. For detailed usage, refer to the `stp_act` parameter in request body
      * @summary Create a futures order
      * @param settle Settle currency
      * @param futuresOrder
@@ -1802,7 +1803,7 @@ export class FuturesApi {
      * @param opts.order Futures order ID, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;.
      */
     public async getMyTrades(
         settle: 'btc' | 'usdt' | 'usd',
@@ -1872,7 +1873,7 @@ export class FuturesApi {
     public async getMyTradesWithTimeRange(
         settle: 'btc' | 'usdt' | 'usd',
         opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange> }> {
         const localVarPath =
             this.client.basePath +
             '/futures/{settle}/my_trades_timerange'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -1920,7 +1921,11 @@ export class FuturesApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<MyFuturesTrade>>(config, 'Array<MyFuturesTrade>', authSettings);
+        return this.client.request<Array<MyFuturesTradeTimeRange>>(
+            config,
+            'Array<MyFuturesTradeTimeRange>',
+            authSettings,
+        );
     }
 
     /**

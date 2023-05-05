@@ -21,6 +21,10 @@ export class OrderPatch {
      * New order price. `amount` and `Price` must specify one of them\"
      */
     'price'?: string;
+    /**
+     * Custom info during amending order
+     */
+    'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,6 +37,11 @@ export class OrderPatch {
         {
             name: 'price',
             baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'amendText',
+            baseName: 'amend_text',
             type: 'string',
         },
     ];

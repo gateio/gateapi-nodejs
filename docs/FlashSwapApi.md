@@ -193,7 +193,7 @@ Promise<{ response: AxiosResponse; body: FlashSwapOrder; }> [FlashSwapOrder](Fla
 
 ## previewFlashSwapOrder
 
-> Promise<{ response: http.IncomingMessage; body: FlashSwapOrderPreview; }> previewFlashSwapOrder(flashSwapOrderRequest)
+> Promise<{ response: http.IncomingMessage; body: FlashSwapOrderPreview; }> previewFlashSwapOrder(flashSwapPreviewRequest)
 
 Initiate a flash swap order preview
 
@@ -208,8 +208,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FlashSwapApi(client);
-const flashSwapOrderRequest = new FlashSwapOrderRequest(); // FlashSwapOrderRequest | 
-api.previewFlashSwapOrder(flashSwapOrderRequest)
+const flashSwapPreviewRequest = new FlashSwapPreviewRequest(); // FlashSwapPreviewRequest | 
+api.previewFlashSwapOrder(flashSwapPreviewRequest)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -219,7 +219,7 @@ api.previewFlashSwapOrder(flashSwapOrderRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **flashSwapOrderRequest** | [**FlashSwapOrderRequest**](FlashSwapOrderRequest.md)|  | 
+ **flashSwapPreviewRequest** | [**FlashSwapPreviewRequest**](FlashSwapPreviewRequest.md)|  | 
 
 ### Return type
 

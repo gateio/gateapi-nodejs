@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { CrossMarginBalance } from './crossMarginBalance';
+import { CrossMarginBalance1 } from './crossMarginBalance1';
 
 export class SubCrossMarginAccount {
     /**
@@ -20,7 +20,7 @@ export class SubCrossMarginAccount {
      * Whether account is locked
      */
     'locked'?: boolean;
-    'balances'?: { [key: string]: CrossMarginBalance };
+    'balances'?: { [key: string]: CrossMarginBalance1 };
     /**
      * Total account value in USDT, i.e., the sum of all currencies\' `(available+freeze)*price*discount`
      */
@@ -90,7 +90,7 @@ export class SubCrossMarginAccount {
         {
             name: 'balances',
             baseName: 'balances',
-            type: '{ [key: string]: CrossMarginBalance; }',
+            type: '{ [key: string]: CrossMarginBalance1; }',
         },
         {
             name: 'total',

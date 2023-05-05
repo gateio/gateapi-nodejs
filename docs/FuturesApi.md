@@ -1265,7 +1265,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> [FuturesOrder](
 
 Create a futures order
 
-- Creating futures orders requires &#x60;size&#x60;, which is number of contracts instead of currency amount. You can use &#x60;quanto_multiplier&#x60; in contract detail response to know how much currency 1 size contract represents - Zero-filled order cannot be retrieved 10 minutes after order cancellation. You will get a 404 not found for such orders - Set &#x60;reduce_only&#x60; to &#x60;true&#x60; can keep the position from changing side when reducing position size - In single position mode, to close a position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In dual position mode, to close one side position, you need to set &#x60;auto_size&#x60; side, &#x60;reduce_only&#x60; to true and &#x60;size&#x60; to 0
+- Creating futures orders requires &#x60;size&#x60;, which is number of contracts instead of currency amount. You can use &#x60;quanto_multiplier&#x60; in contract detail response to know how much currency 1 size contract represents - Zero-filled order cannot be retrieved 10 minutes after order cancellation. You will get a 404 not found for such orders - Set &#x60;reduce_only&#x60; to &#x60;true&#x60; can keep the position from changing side when reducing position size - In single position mode, to close a position, you need to set &#x60;size&#x60; to 0 and &#x60;close&#x60; to &#x60;true&#x60; - In dual position mode, to close one side position, you need to set &#x60;auto_size&#x60; side, &#x60;reduce_only&#x60; to true and &#x60;size&#x60; to 0 - Set &#x60;stp_act&#x60; to decide the strategy of self-trade prevention. For detailed usage, refer to the &#x60;stp_act&#x60; parameter in request body 
 
 ### Example
 
@@ -1566,7 +1566,7 @@ const opts = {
   'order': 12345, // number | Futures order ID, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345" // string | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': "12345" // string | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \'GET /futures/{settle}/my_trades_timerange\'.
 };
 api.getMyTrades(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1583,7 +1583,7 @@ Name | Type | Description  | Notes
  **order** | **number**| Futures order ID, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
+ **lastId** | **string**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;. | [optional] [default to undefined]
 
 ### Return type
 
@@ -1600,7 +1600,7 @@ Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTra
 
 ## getMyTradesWithTimeRange
 
-> Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }> getMyTradesWithTimeRange(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTradeTimeRange>; }> getMyTradesWithTimeRange(settle, opts)
 
 List personal trading history by time range
 
@@ -1642,7 +1642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> [MyFuturesTrade](MyFuturesTrade.md)
+Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange>; }> [MyFuturesTradeTimeRange](MyFuturesTradeTimeRange.md)
 
 ### Authorization
 

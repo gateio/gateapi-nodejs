@@ -22,6 +22,10 @@ export class Order {
      */
     'text'?: string;
     /**
+     * The custom data that the user remarked when amending the order
+     */
+    'amendText'?: string;
+    /**
      * Creation time of order
      */
     'createTime'?: string;
@@ -133,6 +137,18 @@ export class Order {
      * Rebated fee currency unit
      */
     'rebatedFeeCurrency'?: string;
+    /**
+     * Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
+     */
+    'stpId'?: number;
+    /**
+     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
+     */
+    'stpAct'?: Order.StpAct;
+    /**
+     * How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
+     */
+    'finishAs'?: Order.FinishAs;
 
     static discriminator: string | undefined = undefined;
 
@@ -145,6 +161,11 @@ export class Order {
         {
             name: 'text',
             baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'amendText',
+            baseName: 'amend_text',
             type: 'string',
         },
         {
@@ -287,6 +308,21 @@ export class Order {
             baseName: 'rebated_fee_currency',
             type: 'string',
         },
+        {
+            name: 'stpId',
+            baseName: 'stp_id',
+            type: 'number',
+        },
+        {
+            name: 'stpAct',
+            baseName: 'stp_act',
+            type: 'Order.StpAct',
+        },
+        {
+            name: 'finishAs',
+            baseName: 'finish_as',
+            type: 'Order.FinishAs',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -318,5 +354,18 @@ export namespace Order {
         Ioc = <any>'ioc',
         Poc = <any>'poc',
         Fok = <any>'fok',
+    }
+    export enum StpAct {
+        Cn = <any>'cn',
+        Co = <any>'co',
+        Cb = <any>'cb',
+        Minus = <any>'-',
+    }
+    export enum FinishAs {
+        Open = <any>'open',
+        Filled = <any>'filled',
+        Cancelled = <any>'cancelled',
+        Ioc = <any>'ioc',
+        Stp = <any>'stp',
     }
 }

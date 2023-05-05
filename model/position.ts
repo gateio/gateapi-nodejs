@@ -96,7 +96,7 @@ export class Position {
      */
     'historyPoint'?: string;
     /**
-     * ADL ranking, ranging from 1 to 5
+     * Ranking of auto deleveraging, a total of 1-5 grades, `1` is the highest, `5` is the lowest, and `6` is the special case when there is no position held or in liquidation
      */
     'adlRanking'?: number;
     /**

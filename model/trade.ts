@@ -62,6 +62,10 @@ export class Trade {
      * GT used to deduct fee. No value in public endpoints
      */
     'gtFee'?: string;
+    /**
+     * The custom data that the user remarked when amending the order
+     */
+    'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -129,6 +133,11 @@ export class Trade {
         {
             name: 'gtFee',
             baseName: 'gt_fee',
+            type: 'string',
+        },
+        {
+            name: 'amendText',
+            baseName: 'amend_text',
             type: 'string',
         },
     ];

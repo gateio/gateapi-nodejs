@@ -14,6 +14,7 @@ import { FlashSwapCurrency } from '../model/flashSwapCurrency';
 import { FlashSwapOrder } from '../model/flashSwapOrder';
 import { FlashSwapOrderPreview } from '../model/flashSwapOrderPreview';
 import { FlashSwapOrderRequest } from '../model/flashSwapOrderRequest';
+import { FlashSwapPreviewRequest } from '../model/flashSwapPreviewRequest';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -202,10 +203,10 @@ export class FlashSwapApi {
     /**
      *
      * @summary Initiate a flash swap order preview
-     * @param flashSwapOrderRequest
+     * @param flashSwapPreviewRequest
      */
     public async previewFlashSwapOrder(
-        flashSwapOrderRequest: FlashSwapOrderRequest,
+        flashSwapPreviewRequest: FlashSwapPreviewRequest,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders/preview';
         const localVarQueryParameters: any = {};
@@ -218,10 +219,10 @@ export class FlashSwapApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'flashSwapOrderRequest' is not null or undefined
-        if (flashSwapOrderRequest === null || flashSwapOrderRequest === undefined) {
+        // verify required parameter 'flashSwapPreviewRequest' is not null or undefined
+        if (flashSwapPreviewRequest === null || flashSwapPreviewRequest === undefined) {
             throw new Error(
-                'Required parameter flashSwapOrderRequest was null or undefined when calling previewFlashSwapOrder.',
+                'Required parameter flashSwapPreviewRequest was null or undefined when calling previewFlashSwapOrder.',
             );
         }
 
@@ -230,7 +231,7 @@ export class FlashSwapApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(flashSwapOrderRequest, 'FlashSwapOrderRequest'),
+            data: ObjectSerializer.serialize(flashSwapPreviewRequest, 'FlashSwapPreviewRequest'),
         };
 
         const authSettings = ['apiv4'];

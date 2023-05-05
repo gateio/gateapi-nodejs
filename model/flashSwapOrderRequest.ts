@@ -16,23 +16,23 @@ export class FlashSwapOrderRequest {
     /**
      * Preview result ID
      */
-    'previewId'?: string;
+    'previewId': string;
     /**
      * Currency to sell which can be retrieved from supported currency list API `GET /flash_swap/currencies`
      */
     'sellCurrency': string;
     /**
-     * Amount to sell. It is required to choose one parameter between `sell_amount` and `buy_amount`
+     * Amount to sell (based on the preview result)
      */
-    'sellAmount'?: string;
+    'sellAmount': string;
     /**
      * Currency to buy which can be retrieved from supported currency list API `GET /flash_swap/currencies`
      */
     'buyCurrency': string;
     /**
-     * Amount to buy. It is required to choose one parameter between `sell_amount` and `buy_amount`
+     * Amount to buy (based on the preview result)
      */
-    'buyAmount'?: string;
+    'buyAmount': string;
 
     static discriminator: string | undefined = undefined;
 

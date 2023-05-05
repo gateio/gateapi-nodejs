@@ -31,7 +31,7 @@ export class SubAccount {
      */
     'state'?: number;
     /**
-     * Type: 1-Sub-account
+     * \"Sub-account type: 1 - sub-account, 3 - cross margin account
      */
     'type'?: number;
     /**

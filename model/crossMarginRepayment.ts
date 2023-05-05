@@ -19,7 +19,7 @@ export class CrossMarginRepayment {
      */
     'createTime'?: number;
     /**
-     * Borrow loan ID
+     * Loan record ID
      */
     'loanId'?: string;
     /**

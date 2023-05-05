@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Borrow loan ID | [optional] [readonly] [default to undefined]
+**id** | **string** | Loan record ID | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Creation timestamp, in milliseconds | [optional] [readonly] [default to undefined]
 **updateTime** | **number** | Update timestamp, in milliseconds | [optional] [readonly] [default to undefined]
 **currency** | **string** | Currency name | [default to undefined]

@@ -1,12 +1,18 @@
 export * from './apiClient';
+export * from './accountApi';
+import { AccountApi } from './accountApi';
 export * from './deliveryApi';
 import { DeliveryApi } from './deliveryApi';
+export * from './earnUniApi';
+import { EarnUniApi } from './earnUniApi';
 export * from './flashSwapApi';
 import { FlashSwapApi } from './flashSwapApi';
 export * from './futuresApi';
 import { FuturesApi } from './futuresApi';
 export * from './marginApi';
 import { MarginApi } from './marginApi';
+export * from './marginUniApi';
+import { MarginUniApi } from './marginUniApi';
 export * from './optionsApi';
 import { OptionsApi } from './optionsApi';
 export * from './rebateApi';
@@ -21,10 +27,13 @@ export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
 export const APIS = [
+    AccountApi,
     DeliveryApi,
+    EarnUniApi,
     FlashSwapApi,
     FuturesApi,
     MarginApi,
+    MarginUniApi,
     OptionsApi,
     RebateApi,
     SpotApi,

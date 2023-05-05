@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **lastClosePnl** | **string** | PNL of last position close | [optional] [readonly] [default to undefined]
 **realisedPoint** | **string** | Realized POINT PNL | [optional] [readonly] [default to undefined]
 **historyPoint** | **string** | History realized POINT PNL | [optional] [readonly] [default to undefined]
-**adlRanking** | **number** | ADL ranking, ranging from 1 to 5 | [optional] [readonly] [default to undefined]
+**adlRanking** | **number** | Ranking of auto deleveraging, a total of 1-5 grades, &#x60;1&#x60; is the highest, &#x60;5&#x60; is the lowest, and &#x60;6&#x60; is the special case when there is no position held or in liquidation | [optional] [readonly] [default to undefined]
 **pendingOrders** | **number** | Current open orders | [optional] [readonly] [default to undefined]
 **closeOrder** | [**PositionCloseOrder**](PositionCloseOrder.md) |  | [optional] [default to undefined]
 **mode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]

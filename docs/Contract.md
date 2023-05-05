@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **ordersLimit** | **number** | Maximum number of open orders | [optional] [default to undefined]
 **enableBonus** | **boolean** | Whether bouns is enabled | [optional] [default to undefined]
 **enableCredit** | **boolean** | Whether portfolio margin account is enabled | [optional] [default to undefined]
+**createTime** | **number** | Created time of the contract | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

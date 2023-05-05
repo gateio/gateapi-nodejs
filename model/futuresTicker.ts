@@ -86,6 +86,14 @@ export class FuturesTicker {
      * Basis value
      */
     'basisValue'?: string;
+    /**
+     * Recent lowest ask
+     */
+    'lowestAsk'?: string;
+    /**
+     * Recent highest bid
+     */
+    'highestBid'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -183,6 +191,16 @@ export class FuturesTicker {
         {
             name: 'basisValue',
             baseName: 'basis_value',
+            type: 'string',
+        },
+        {
+            name: 'lowestAsk',
+            baseName: 'lowest_ask',
+            type: 'string',
+        },
+        {
+            name: 'highestBid',
+            baseName: 'highest_bid',
             type: 'string',
         },
     ];

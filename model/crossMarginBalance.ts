@@ -26,6 +26,26 @@ export class CrossMarginBalance {
      * Unpaid interests
      */
     'interest'?: string;
+    /**
+     * Negative Liabilities. Formula:Min[available+total+unrealized_pnl,0]
+     */
+    'negativeLiab'?: string;
+    /**
+     * Borrowing to Open Positions in Futures
+     */
+    'futuresPosLiab'?: string;
+    /**
+     * Equity. Formula: available + freeze - borrowed + total + unrealized_pnl
+     */
+    'equity'?: string;
+    /**
+     * Total freeze. Formula: position_initial_margin + order_margin
+     */
+    'totalFreeze'?: string;
+    /**
+     * Total liabilities. Formula: Max[Abs[Min[quity - total_freeze,0], borrowed]] - futures_pos_liab
+     */
+    'totalLiab'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -48,6 +68,31 @@ export class CrossMarginBalance {
         {
             name: 'interest',
             baseName: 'interest',
+            type: 'string',
+        },
+        {
+            name: 'negativeLiab',
+            baseName: 'negative_liab',
+            type: 'string',
+        },
+        {
+            name: 'futuresPosLiab',
+            baseName: 'futures_pos_liab',
+            type: 'string',
+        },
+        {
+            name: 'equity',
+            baseName: 'equity',
+            type: 'string',
+        },
+        {
+            name: 'totalFreeze',
+            baseName: 'total_freeze',
+            type: 'string',
+        },
+        {
+            name: 'totalLiab',
+            baseName: 'total_liab',
             type: 'string',
         },
     ];

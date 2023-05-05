@@ -34,6 +34,9 @@ Name | Type | Description | Notes
 **gtDiscount** | **boolean** | Whether GT fee discount is used | [optional] [readonly] [default to undefined]
 **rebatedFee** | **string** | Rebated fee | [optional] [readonly] [default to undefined]
 **rebatedFeeCurrency** | **string** | Rebated fee currency unit | [optional] [readonly] [default to undefined]
+**stpId** | **number** | Orders between users in the same &#x60;stp_id&#x60; group are not allowed to be self-traded  1. If the &#x60;stp_id&#x60; of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the &#x60;stp_act&#x60; of the taker. 2. &#x60;stp_id&#x60; returns &#x60;0&#x60; by default for orders that have not been set for &#x60;STP group&#x60; | [optional] [readonly] [default to undefined]
+**stpAct** | **string** | Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the &#x60;STP Group&#x60;, he can pass &#x60;stp_act&#x60; to limit the user\&#39;s self-trade prevetion strategy. If &#x60;stp_act&#x60; is not passed, the default is &#x60;cn&#x60; strategy。 2. When the user does not join the &#x60;STP group&#x60;, an error will be returned when passing the &#x60;stp_act&#x60; parameter。 3. If the user did not use \&#39;stp_act\&#39; when placing the order, \&#39;stp_act\&#39; will return \&#39;-\&#39;  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled | [optional] [default to undefined]
+**finishAs** | **string** | How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is &#x60;IOC&#x60;, finish immediately - stp: cancelled because self trade prevention  | [optional] [readonly] [default to undefined]
 
 ## Enum: BatchOrder.Status
 
@@ -76,5 +79,29 @@ Name | Type | Description | Notes
 * `Poc` (value: `'poc'`)
 
 * `Fok` (value: `'fok'`)
+
+
+## Enum: BatchOrder.StpAct
+
+* `Cn` (value: `'cn'`)
+
+* `Co` (value: `'co'`)
+
+* `Cb` (value: `'cb'`)
+
+* `Minus` (value: `'-'`)
+
+
+## Enum: BatchOrder.FinishAs
+
+* `Open` (value: `'open'`)
+
+* `Filled` (value: `'filled'`)
+
+* `Cancelled` (value: `'cancelled'`)
+
+* `Ioc` (value: `'ioc'`)
+
+* `Stp` (value: `'stp'`)
 
 

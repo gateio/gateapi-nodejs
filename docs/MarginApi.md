@@ -4,27 +4,27 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listMarginCurrencyPairs**](MarginApi.md#listMarginCurrencyPairs) | **GET** /margin/currency_pairs | List all supported currency pairs supported in margin trading
-[**getMarginCurrencyPair**](MarginApi.md#getMarginCurrencyPair) | **GET** /margin/currency_pairs/{currency_pair} | Query one single margin currency pair
-[**listFundingBook**](MarginApi.md#listFundingBook) | **GET** /margin/funding_book | Order book of lending loans
 [**listMarginAccounts**](MarginApi.md#listMarginAccounts) | **GET** /margin/accounts | Margin account list
 [**listMarginAccountBook**](MarginApi.md#listMarginAccountBook) | **GET** /margin/account_book | List margin account balance change history
 [**listFundingAccounts**](MarginApi.md#listFundingAccounts) | **GET** /margin/funding_accounts | Funding account list
-[**listLoans**](MarginApi.md#listLoans) | **GET** /margin/loans | List all loans
-[**createLoan**](MarginApi.md#createLoan) | **POST** /margin/loans | Lend or borrow
-[**mergeLoans**](MarginApi.md#mergeLoans) | **POST** /margin/merged_loans | Merge multiple lending loans
-[**getLoan**](MarginApi.md#getLoan) | **GET** /margin/loans/{loan_id} | Retrieve one single loan detail
-[**cancelLoan**](MarginApi.md#cancelLoan) | **DELETE** /margin/loans/{loan_id} | Cancel lending loan
-[**updateLoan**](MarginApi.md#updateLoan) | **PATCH** /margin/loans/{loan_id} | Modify a loan
-[**listLoanRepayments**](MarginApi.md#listLoanRepayments) | **GET** /margin/loans/{loan_id}/repayment | List loan repayment records
-[**repayLoan**](MarginApi.md#repayLoan) | **POST** /margin/loans/{loan_id}/repayment | Repay a loan
-[**listLoanRecords**](MarginApi.md#listLoanRecords) | **GET** /margin/loan_records | List repayment records of a specific loan
-[**getLoanRecord**](MarginApi.md#getLoanRecord) | **GET** /margin/loan_records/{loan_record_id} | Get one single loan record
-[**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
 [**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
 [**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
 [**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Get the max transferable amount for a specific margin currency
-[**getMarginBorrowable**](MarginApi.md#getMarginBorrowable) | **GET** /margin/borrowable | Get the max borrowable amount for a specific margin currency
+[**listMarginCurrencyPairs**](MarginApi.md#listMarginCurrencyPairs) | **GET** /margin/currency_pairs | List all supported currency pairs supported in margin trading(Deprecated)
+[**getMarginCurrencyPair**](MarginApi.md#getMarginCurrencyPair) | **GET** /margin/currency_pairs/{currency_pair} | Query one single margin currency pair(Deprecated)
+[**listFundingBook**](MarginApi.md#listFundingBook) | **GET** /margin/funding_book | Order book of lending loans(Deprecated)
+[**listLoans**](MarginApi.md#listLoans) | **GET** /margin/loans | List all loans(Deprecated)
+[**createLoan**](MarginApi.md#createLoan) | **POST** /margin/loans | Lend or borrow(Deprecated)
+[**mergeLoans**](MarginApi.md#mergeLoans) | **POST** /margin/merged_loans | Merge multiple lending loans(Deprecated)
+[**getLoan**](MarginApi.md#getLoan) | **GET** /margin/loans/{loan_id} | Retrieve one single loan detail(Deprecated)
+[**cancelLoan**](MarginApi.md#cancelLoan) | **DELETE** /margin/loans/{loan_id} | Cancel lending loan(Deprecated)
+[**updateLoan**](MarginApi.md#updateLoan) | **PATCH** /margin/loans/{loan_id} | Modify a loan(Deprecated)
+[**listLoanRepayments**](MarginApi.md#listLoanRepayments) | **GET** /margin/loans/{loan_id}/repayment | List loan repayment records(Deprecated)
+[**repayLoan**](MarginApi.md#repayLoan) | **POST** /margin/loans/{loan_id}/repayment | Repay a loan(Deprecated)
+[**listLoanRecords**](MarginApi.md#listLoanRecords) | **GET** /margin/loan_records | List repayment records of a specific loan(Deprecated)
+[**getLoanRecord**](MarginApi.md#getLoanRecord) | **GET** /margin/loan_records/{loan_record_id} | Get one single loan record(Deprecated)
+[**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record(Deprecated)
+[**getMarginBorrowable**](MarginApi.md#getMarginBorrowable) | **GET** /margin/borrowable | Get the max borrowable amount for a specific margin currency(Deprecated)
 [**listCrossMarginCurrencies**](MarginApi.md#listCrossMarginCurrencies) | **GET** /margin/cross/currencies | Currencies supported by cross margin.
 [**getCrossMarginCurrency**](MarginApi.md#getCrossMarginCurrency) | **GET** /margin/cross/currencies/{currency} | Retrieve detail of one single currency supported by cross margin
 [**getCrossMarginAccount**](MarginApi.md#getCrossMarginAccount) | **GET** /margin/cross/accounts | Retrieve cross margin account
@@ -34,128 +34,10 @@ Method | HTTP request | Description
 [**getCrossMarginLoan**](MarginApi.md#getCrossMarginLoan) | **GET** /margin/cross/loans/{loan_id} | Retrieve single borrow loan detail
 [**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments
 [**repayCrossMarginLoan**](MarginApi.md#repayCrossMarginLoan) | **POST** /margin/cross/repayments | Cross margin repayments
+[**getCrossMarginInterestRecords**](MarginApi.md#getCrossMarginInterestRecords) | **GET** /margin/cross/interest_records | Interest records for the cross margin account
 [**getCrossMarginTransferable**](MarginApi.md#getCrossMarginTransferable) | **GET** /margin/cross/transferable | Get the max transferable amount for a specific cross margin currency
 [**getCrossMarginBorrowable**](MarginApi.md#getCrossMarginBorrowable) | **GET** /margin/cross/borrowable | Get the max borrowable amount for a specific cross margin currency
 
-
-## listMarginCurrencyPairs
-
-> Promise<{ response: http.IncomingMessage; body: Array<MarginCurrencyPair>; }> listMarginCurrencyPairs()
-
-List all supported currency pairs supported in margin trading
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-
-const api = new GateApi.MarginApi(client);
-api.listMarginCurrencyPairs()
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<MarginCurrencyPair>; }> [MarginCurrencyPair](MarginCurrencyPair.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## getMarginCurrencyPair
-
-> Promise<{ response: http.IncomingMessage; body: MarginCurrencyPair; }> getMarginCurrencyPair(currencyPair)
-
-Query one single margin currency pair
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-
-const api = new GateApi.MarginApi(client);
-const currencyPair = "BTC_USDT"; // string | Margin currency pair
-api.getMarginCurrencyPair(currencyPair)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Margin currency pair | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: MarginCurrencyPair; }> [MarginCurrencyPair](MarginCurrencyPair.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## listFundingBook
-
-> Promise<{ response: http.IncomingMessage; body: Array<FundingBookItem>; }> listFundingBook(currency)
-
-Order book of lending loans
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-
-const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieve data of the specified currency
-api.listFundingBook(currency)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<FundingBookItem>; }> [FundingBookItem](FundingBookItem.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 ## listMarginAccounts
 
@@ -304,523 +186,6 @@ Promise<{ response: AxiosResponse; body: Array<FundingAccount>; }> [FundingAccou
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
-## listLoans
-
-> Promise<{ response: http.IncomingMessage; body: Array<Loan>; }> listLoans(status, side, opts)
-
-List all loans
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const status = "open"; // 'open' | 'loaned' | 'finished' | 'auto_repaid' | Loan status
-const side = "lend"; // 'lend' | 'borrow' | Lend or borrow
-const opts = {
-  'currency': "BTC", // string | Retrieve data of the specified currency
-  'currencyPair': "BTC_USDT", // string | Currency pair
-  'sortBy': "rate", // 'create_time' | 'rate' | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
-  'reverseSort': false, // boolean | Whether to sort in descending order. Default to `true`
-  'page': 1, // number | Page number
-  'limit': 100 // number | Maximum number of records to be returned in a single list
-};
-api.listLoans(status, side, opts)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **status** | **Status**| Loan status | [default to undefined]
- **side** | **Side**| Lend or borrow | [default to undefined]
- **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
- **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
- **sortBy** | **SortBy**| Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60; | [optional] [default to undefined]
- **reverseSort** | **boolean**| Whether to sort in descending order. Default to &#x60;true&#x60; | [optional] [default to undefined]
- **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<Loan>; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## createLoan
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> createLoan(loan)
-
-Lend or borrow
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loan = new Loan(); // Loan | 
-api.createLoan(loan)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loan** | [**Loan**](Loan.md)|  | 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-## mergeLoans
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> mergeLoans(currency, ids)
-
-Merge multiple lending loans
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieve data of the specified currency
-const ids = "123,234,345"; // string | A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
-api.mergeLoans(currency, ids)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
- **ids** | **string**| A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## getLoan
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> getLoan(loanId, side)
-
-Retrieve one single loan detail
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-const side = "lend"; // 'lend' | 'borrow' | Lend or borrow
-api.getLoan(loanId, side)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
- **side** | **Side**| Lend or borrow | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## cancelLoan
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> cancelLoan(loanId, currency)
-
-Cancel lending loan
-
-Only lent loans can be cancelled
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-const currency = "BTC"; // string | Retrieve data of the specified currency
-api.cancelLoan(loanId, currency)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
- **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## updateLoan
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> updateLoan(loanId, loanPatch)
-
-Modify a loan
-
-Only &#x60;auto_renew&#x60; modification is supported currently
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-const loanPatch = new LoanPatch(); // LoanPatch | 
-api.updateLoan(loanId, loanPatch)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
- **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-## listLoanRepayments
-
-> Promise<{ response: http.IncomingMessage; body: Array<Repayment>; }> listLoanRepayments(loanId)
-
-List loan repayment records
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-api.listLoanRepayments(loanId)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<Repayment>; }> [Repayment](Repayment.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## repayLoan
-
-> Promise<{ response: http.IncomingMessage; body: Loan; }> repayLoan(loanId, repayRequest)
-
-Repay a loan
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-const repayRequest = new RepayRequest(); // RepayRequest | 
-api.repayLoan(loanId, repayRequest)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
- **repayRequest** | [**RepayRequest**](RepayRequest.md)|  | 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-## listLoanRecords
-
-> Promise<{ response: http.IncomingMessage; body: Array<LoanRecord>; }> listLoanRecords(loanId, opts)
-
-List repayment records of a specific loan
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanId = "12345"; // string | Loan ID
-const opts = {
-  'status': "loaned", // 'loaned' | 'finished' | Loan record status
-  'page': 1, // number | Page number
-  'limit': 100 // number | Maximum number of records to be returned in a single list
-};
-api.listLoanRecords(loanId, opts)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanId** | **string**| Loan ID | [default to undefined]
- **status** | **Status**| Loan record status | [optional] [default to undefined]
- **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<LoanRecord>; }> [LoanRecord](LoanRecord.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## getLoanRecord
-
-> Promise<{ response: http.IncomingMessage; body: LoanRecord; }> getLoanRecord(loanRecordId, loanId)
-
-Get one single loan record
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanRecordId = "12345"; // string | Loan record ID
-const loanId = "12345"; // string | Loan ID
-api.getLoanRecord(loanRecordId, loanId)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanRecordId** | **string**| Loan record ID | [default to undefined]
- **loanId** | **string**| Loan ID | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## updateLoanRecord
-
-> Promise<{ response: http.IncomingMessage; body: LoanRecord; }> updateLoanRecord(loanRecordId, loanPatch)
-
-Modify a loan record
-
-Only &#x60;auto_renew&#x60; modification is supported currently
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const loanRecordId = "12345"; // string | Loan record ID
-const loanPatch = new LoanPatch(); // LoanPatch | 
-api.updateLoanRecord(loanRecordId, loanPatch)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loanRecordId** | **string**| Loan record ID | [default to undefined]
- **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
 ## getAutoRepayStatus
 
 > Promise<{ response: http.IncomingMessage; body: AutoRepaySetting; }> getAutoRepayStatus()
@@ -950,11 +315,647 @@ Promise<{ response: AxiosResponse; body: MarginTransferable; }> [MarginTransfera
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## listMarginCurrencyPairs
+
+> Promise<{ response: http.IncomingMessage; body: Array<MarginCurrencyPair>; }> listMarginCurrencyPairs()
+
+List all supported currency pairs supported in margin trading(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+api.listMarginCurrencyPairs()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<MarginCurrencyPair>; }> [MarginCurrencyPair](MarginCurrencyPair.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getMarginCurrencyPair
+
+> Promise<{ response: http.IncomingMessage; body: MarginCurrencyPair; }> getMarginCurrencyPair(currencyPair)
+
+Query one single margin currency pair(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+const currencyPair = "BTC_USDT"; // string | Margin currency pair
+api.getMarginCurrencyPair(currencyPair)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Margin currency pair | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: MarginCurrencyPair; }> [MarginCurrencyPair](MarginCurrencyPair.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listFundingBook
+
+> Promise<{ response: http.IncomingMessage; body: Array<FundingBookItem>; }> listFundingBook(currency)
+
+Order book of lending loans(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieve data of the specified currency
+api.listFundingBook(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FundingBookItem>; }> [FundingBookItem](FundingBookItem.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listLoans
+
+> Promise<{ response: http.IncomingMessage; body: Array<Loan>; }> listLoans(status, side, opts)
+
+List all loans(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const status = "open"; // 'open' | 'loaned' | 'finished' | 'auto_repaid' | Loan status
+const side = "lend"; // 'lend' | 'borrow' | Lend or borrow
+const opts = {
+  'currency': "BTC", // string | Retrieve data of the specified currency
+  'currencyPair': "BTC_USDT", // string | Currency pair
+  'sortBy': "rate", // 'create_time' | 'rate' | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
+  'reverseSort': false, // boolean | Whether to sort in descending order. Default to `true`
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of records to be returned in a single list
+};
+api.listLoans(status, side, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **Status**| Loan status | [default to undefined]
+ **side** | **Side**| Lend or borrow | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+ **sortBy** | **SortBy**| Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60; | [optional] [default to undefined]
+ **reverseSort** | **boolean**| Whether to sort in descending order. Default to &#x60;true&#x60; | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<Loan>; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## createLoan
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> createLoan(loan)
+
+Lend or borrow(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loan = new Loan(); // Loan | 
+api.createLoan(loan)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loan** | [**Loan**](Loan.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## mergeLoans
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> mergeLoans(currency, ids)
+
+Merge multiple lending loans(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currency = "BTC"; // string | Retrieve data of the specified currency
+const ids = "123,234,345"; // string | A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
+api.mergeLoans(currency, ids)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+ **ids** | **string**| A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getLoan
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> getLoan(loanId, side)
+
+Retrieve one single loan detail(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+const side = "lend"; // 'lend' | 'borrow' | Lend or borrow
+api.getLoan(loanId, side)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+ **side** | **Side**| Lend or borrow | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## cancelLoan
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> cancelLoan(loanId, currency)
+
+Cancel lending loan(Deprecated)
+
+Only lent loans can be cancelled
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+const currency = "BTC"; // string | Retrieve data of the specified currency
+api.cancelLoan(loanId, currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+ **currency** | **string**| Retrieve data of the specified currency | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## updateLoan
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> updateLoan(loanId, loanPatch)
+
+Modify a loan(Deprecated)
+
+Only &#x60;auto_renew&#x60; modification is supported currently
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+const loanPatch = new LoanPatch(); // LoanPatch | 
+api.updateLoan(loanId, loanPatch)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+ **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## listLoanRepayments
+
+> Promise<{ response: http.IncomingMessage; body: Array<Repayment>; }> listLoanRepayments(loanId)
+
+List loan repayment records(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+api.listLoanRepayments(loanId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<Repayment>; }> [Repayment](Repayment.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## repayLoan
+
+> Promise<{ response: http.IncomingMessage; body: Loan; }> repayLoan(loanId, repayRequest)
+
+Repay a loan(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+const repayRequest = new RepayRequest(); // RepayRequest | 
+api.repayLoan(loanId, repayRequest)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+ **repayRequest** | [**RepayRequest**](RepayRequest.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Loan; }> [Loan](Loan.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## listLoanRecords
+
+> Promise<{ response: http.IncomingMessage; body: Array<LoanRecord>; }> listLoanRecords(loanId, opts)
+
+List repayment records of a specific loan(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanId = "12345"; // string | Loan ID
+const opts = {
+  'status': "loaned", // 'loaned' | 'finished' | Loan record status
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of records to be returned in a single list
+};
+api.listLoanRecords(loanId, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **string**| Loan ID | [default to undefined]
+ **status** | **Status**| Loan record status | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<LoanRecord>; }> [LoanRecord](LoanRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getLoanRecord
+
+> Promise<{ response: http.IncomingMessage; body: LoanRecord; }> getLoanRecord(loanRecordId, loanId)
+
+Get one single loan record(Deprecated)
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanRecordId = "12345"; // string | Loan record ID
+const loanId = "12345"; // string | Loan ID
+api.getLoanRecord(loanRecordId, loanId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanRecordId** | **string**| Loan record ID | [default to undefined]
+ **loanId** | **string**| Loan ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## updateLoanRecord
+
+> Promise<{ response: http.IncomingMessage; body: LoanRecord; }> updateLoanRecord(loanRecordId, loanPatch)
+
+Modify a loan record(Deprecated)
+
+Only &#x60;auto_renew&#x60; modification is supported currently
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const loanRecordId = "12345"; // string | Loan record ID
+const loanPatch = new LoanPatch(); // LoanPatch | 
+api.updateLoanRecord(loanRecordId, loanPatch)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanRecordId** | **string**| Loan record ID | [default to undefined]
+ **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: LoanRecord; }> [LoanRecord](LoanRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## getMarginBorrowable
 
 > Promise<{ response: http.IncomingMessage; body: MarginBorrowable; }> getMarginBorrowable(currency, opts)
 
-Get the max borrowable amount for a specific margin currency
+Get the max borrowable amount for a specific margin currency(Deprecated)
 
 ### Example
 
@@ -1412,6 +1413,55 @@ Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMargin
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## getCrossMarginInterestRecords
+
+> Promise<{ response: http.IncomingMessage; body: Array<UniLoanInterestRecord>; }> getCrossMarginInterestRecords(opts)
+
+Interest records for the cross margin account
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const opts = {
+  'currency': "BTC", // string | Retrieve data of the specified currency
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+};
+api.getCrossMarginInterestRecords(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 100 | [optional] [default to 100]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord>; }> [UniLoanInterestRecord](UniLoanInterestRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## getCrossMarginTransferable

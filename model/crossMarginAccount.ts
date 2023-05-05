@@ -17,6 +17,10 @@ export class CrossMarginAccount {
      */
     'userId'?: number;
     /**
+     * Time of the most recent refresh
+     */
+    'refreshTime'?: number;
+    /**
      * Whether account is locked
      */
     'locked'?: boolean;
@@ -42,7 +46,7 @@ export class CrossMarginAccount {
      */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance
+     * Total Margin Balance (∑(positive equity ＊ index price * discount) + ∑(negative equity * index price))
      */
     'totalMarginBalance'?: string;
     /**
@@ -65,6 +69,14 @@ export class CrossMarginAccount {
      * Total amount of the portfolio margin account
      */
     'portfolioMarginTotal'?: string;
+    /**
+     * Total liabilities of the portfolio margin account
+     */
+    'portfolioMarginTotalLiab'?: string;
+    /**
+     * Total equity of the portfolio margin account
+     */
+    'portfolioMarginTotalEquity'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -72,6 +84,11 @@ export class CrossMarginAccount {
         {
             name: 'userId',
             baseName: 'user_id',
+            type: 'number',
+        },
+        {
+            name: 'refreshTime',
+            baseName: 'refresh_time',
             type: 'number',
         },
         {
@@ -137,6 +154,16 @@ export class CrossMarginAccount {
         {
             name: 'portfolioMarginTotal',
             baseName: 'portfolio_margin_total',
+            type: 'string',
+        },
+        {
+            name: 'portfolioMarginTotalLiab',
+            baseName: 'portfolio_margin_total_liab',
+            type: 'string',
+        },
+        {
+            name: 'portfolioMarginTotalEquity',
+            baseName: 'portfolio_margin_total_equity',
             type: 'string',
         },
     ];

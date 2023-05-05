@@ -18,6 +18,10 @@ export class FuturesOrderAmendment {
      * New order price.
      */
     'price'?: string;
+    /**
+     * Custom info during amending order
+     */
+    'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,6 +34,11 @@ export class FuturesOrderAmendment {
         {
             name: 'price',
             baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'amendText',
+            baseName: 'amend_text',
             type: 'string',
         },
     ];

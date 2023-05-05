@@ -31,6 +31,7 @@ import { MarginCurrencyPair } from '../model/marginCurrencyPair';
 import { MarginTransferable } from '../model/marginTransferable';
 import { RepayRequest } from '../model/repayRequest';
 import { Repayment } from '../model/repayment';
+import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -48,110 +49,6 @@ export class MarginApi {
         } else {
             this.client = new ApiClient();
         }
-    }
-
-    /**
-     *
-     * @summary List all supported currency pairs supported in margin trading
-     */
-    public async listMarginCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<MarginCurrencyPair> }> {
-        const localVarPath = this.client.basePath + '/margin/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<Array<MarginCurrencyPair>>(config, 'Array<MarginCurrencyPair>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Query one single margin currency pair
-     * @param currencyPair Margin currency pair
-     */
-    public async getMarginCurrencyPair(
-        currencyPair: string,
-    ): Promise<{ response: AxiosResponse; body: MarginCurrencyPair }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/currency_pairs/{currency_pair}'.replace(
-                '{' + 'currency_pair' + '}',
-                encodeURIComponent(String(currencyPair)),
-            );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error(
-                'Required parameter currencyPair was null or undefined when calling getMarginCurrencyPair.',
-            );
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<MarginCurrencyPair>(config, 'MarginCurrencyPair', authSettings);
-    }
-
-    /**
-     *
-     * @summary Order book of lending loans
-     * @param currency Retrieve data of the specified currency
-     */
-    public async listFundingBook(currency: string): Promise<{ response: AxiosResponse; body: Array<FundingBookItem> }> {
-        const localVarPath = this.client.basePath + '/margin/funding_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling listFundingBook.');
-        }
-
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<Array<FundingBookItem>>(config, 'Array<FundingBookItem>', authSettings);
     }
 
     /**
@@ -294,532 +191,6 @@ export class MarginApi {
 
     /**
      *
-     * @summary List all loans
-     * @param status Loan status
-     * @param side Lend or borrow
-     * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.currencyPair Currency pair
-     * @param opts.sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
-     * @param opts.reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     */
-    public async listLoans(
-        status: 'open' | 'loaned' | 'finished' | 'auto_repaid',
-        side: 'lend' | 'borrow',
-        opts: {
-            currency?: string;
-            currencyPair?: string;
-            sortBy?: 'create_time' | 'rate';
-            reverseSort?: boolean;
-            page?: number;
-            limit?: number;
-        },
-    ): Promise<{ response: AxiosResponse; body: Array<Loan> }> {
-        const localVarPath = this.client.basePath + '/margin/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'status' is not null or undefined
-        if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listLoans.');
-        }
-
-        // verify required parameter 'side' is not null or undefined
-        if (side === null || side === undefined) {
-            throw new Error('Required parameter side was null or undefined when calling listLoans.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(
-            status,
-            "'open' | 'loaned' | 'finished' | 'auto_repaid'",
-        );
-
-        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
-
-        if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
-        }
-
-        if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
-        }
-
-        if (opts.sortBy !== undefined) {
-            localVarQueryParameters['sort_by'] = ObjectSerializer.serialize(opts.sortBy, "'create_time' | 'rate'");
-        }
-
-        if (opts.reverseSort !== undefined) {
-            localVarQueryParameters['reverse_sort'] = ObjectSerializer.serialize(opts.reverseSort, 'boolean');
-        }
-
-        if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
-        }
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<Loan>>(config, 'Array<Loan>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Lend or borrow
-     * @param loan
-     */
-    public async createLoan(loan: Loan): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath = this.client.basePath + '/margin/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loan' is not null or undefined
-        if (loan === null || loan === undefined) {
-            throw new Error('Required parameter loan was null or undefined when calling createLoan.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(loan, 'Loan'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary Merge multiple lending loans
-     * @param currency Retrieve data of the specified currency
-     * @param ids A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
-     */
-    public async mergeLoans(currency: string, ids: string): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath = this.client.basePath + '/margin/merged_loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling mergeLoans.');
-        }
-
-        // verify required parameter 'ids' is not null or undefined
-        if (ids === null || ids === undefined) {
-            throw new Error('Required parameter ids was null or undefined when calling mergeLoans.');
-        }
-
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
-
-        localVarQueryParameters['ids'] = ObjectSerializer.serialize(ids, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary Retrieve one single loan detail
-     * @param loanId Loan ID
-     * @param side Lend or borrow
-     */
-    public async getLoan(loanId: string, side: 'lend' | 'borrow'): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling getLoan.');
-        }
-
-        // verify required parameter 'side' is not null or undefined
-        if (side === null || side === undefined) {
-            throw new Error('Required parameter side was null or undefined when calling getLoan.');
-        }
-
-        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     * Only lent loans can be cancelled
-     * @summary Cancel lending loan
-     * @param loanId Loan ID
-     * @param currency Retrieve data of the specified currency
-     */
-    public async cancelLoan(loanId: string, currency: string): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling cancelLoan.');
-        }
-
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling cancelLoan.');
-        }
-
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'DELETE',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     * Only `auto_renew` modification is supported currently
-     * @summary Modify a loan
-     * @param loanId Loan ID
-     * @param loanPatch
-     */
-    public async updateLoan(loanId: string, loanPatch: LoanPatch): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling updateLoan.');
-        }
-
-        // verify required parameter 'loanPatch' is not null or undefined
-        if (loanPatch === null || loanPatch === undefined) {
-            throw new Error('Required parameter loanPatch was null or undefined when calling updateLoan.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'PATCH',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(loanPatch, 'LoanPatch'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary List loan repayment records
-     * @param loanId Loan ID
-     */
-    public async listLoanRepayments(loanId: string): Promise<{ response: AxiosResponse; body: Array<Repayment> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling listLoanRepayments.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<Repayment>>(config, 'Array<Repayment>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Repay a loan
-     * @param loanId Loan ID
-     * @param repayRequest
-     */
-    public async repayLoan(
-        loanId: string,
-        repayRequest: RepayRequest,
-    ): Promise<{ response: AxiosResponse; body: Loan }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling repayLoan.');
-        }
-
-        // verify required parameter 'repayRequest' is not null or undefined
-        if (repayRequest === null || repayRequest === undefined) {
-            throw new Error('Required parameter repayRequest was null or undefined when calling repayLoan.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(repayRequest, 'RepayRequest'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Loan>(config, 'Loan', authSettings);
-    }
-
-    /**
-     *
-     * @summary List repayment records of a specific loan
-     * @param loanId Loan ID
-     * @param opts Optional parameters
-     * @param opts.status Loan record status
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     */
-    public async listLoanRecords(
-        loanId: string,
-        opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
-    ): Promise<{ response: AxiosResponse; body: Array<LoanRecord> }> {
-        const localVarPath = this.client.basePath + '/margin/loan_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling listLoanRecords.');
-        }
-
-        opts = opts || {};
-        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
-
-        if (opts.status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
-        }
-
-        if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
-        }
-
-        if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<LoanRecord>>(config, 'Array<LoanRecord>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Get one single loan record
-     * @param loanRecordId Loan record ID
-     * @param loanId Loan ID
-     */
-    public async getLoanRecord(
-        loanRecordId: string,
-        loanId: string,
-    ): Promise<{ response: AxiosResponse; body: LoanRecord }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loan_records/{loan_record_id}'.replace(
-                '{' + 'loan_record_id' + '}',
-                encodeURIComponent(String(loanRecordId)),
-            );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanRecordId' is not null or undefined
-        if (loanRecordId === null || loanRecordId === undefined) {
-            throw new Error('Required parameter loanRecordId was null or undefined when calling getLoanRecord.');
-        }
-
-        // verify required parameter 'loanId' is not null or undefined
-        if (loanId === null || loanId === undefined) {
-            throw new Error('Required parameter loanId was null or undefined when calling getLoanRecord.');
-        }
-
-        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<LoanRecord>(config, 'LoanRecord', authSettings);
-    }
-
-    /**
-     * Only `auto_renew` modification is supported currently
-     * @summary Modify a loan record
-     * @param loanRecordId Loan record ID
-     * @param loanPatch
-     */
-    public async updateLoanRecord(
-        loanRecordId: string,
-        loanPatch: LoanPatch,
-    ): Promise<{ response: AxiosResponse; body: LoanRecord }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/loan_records/{loan_record_id}'.replace(
-                '{' + 'loan_record_id' + '}',
-                encodeURIComponent(String(loanRecordId)),
-            );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'loanRecordId' is not null or undefined
-        if (loanRecordId === null || loanRecordId === undefined) {
-            throw new Error('Required parameter loanRecordId was null or undefined when calling updateLoanRecord.');
-        }
-
-        // verify required parameter 'loanPatch' is not null or undefined
-        if (loanPatch === null || loanPatch === undefined) {
-            throw new Error('Required parameter loanPatch was null or undefined when calling updateLoanRecord.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'PATCH',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(loanPatch, 'LoanPatch'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<LoanRecord>(config, 'LoanRecord', authSettings);
-    }
-
-    /**
-     *
      * @summary Retrieve user auto repayment setting
      */
     public async getAutoRepayStatus(): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
@@ -927,7 +298,637 @@ export class MarginApi {
 
     /**
      *
-     * @summary Get the max borrowable amount for a specific margin currency
+     * @summary List all supported currency pairs supported in margin trading(Deprecated)
+     */
+    public async listMarginCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<MarginCurrencyPair> }> {
+        const localVarPath = this.client.basePath + '/margin/currency_pairs';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<MarginCurrencyPair>>(config, 'Array<MarginCurrencyPair>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query one single margin currency pair(Deprecated)
+     * @param currencyPair Margin currency pair
+     */
+    public async getMarginCurrencyPair(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: MarginCurrencyPair }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/currency_pairs/{currency_pair}'.replace(
+                '{' + 'currency_pair' + '}',
+                encodeURIComponent(String(currencyPair)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error(
+                'Required parameter currencyPair was null or undefined when calling getMarginCurrencyPair.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<MarginCurrencyPair>(config, 'MarginCurrencyPair', authSettings);
+    }
+
+    /**
+     *
+     * @summary Order book of lending loans(Deprecated)
+     * @param currency Retrieve data of the specified currency
+     */
+    public async listFundingBook(currency: string): Promise<{ response: AxiosResponse; body: Array<FundingBookItem> }> {
+        const localVarPath = this.client.basePath + '/margin/funding_book';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling listFundingBook.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<FundingBookItem>>(config, 'Array<FundingBookItem>', authSettings);
+    }
+
+    /**
+     *
+     * @summary List all loans(Deprecated)
+     * @param status Loan status
+     * @param side Lend or borrow
+     * @param opts Optional parameters
+     * @param opts.currency Retrieve data of the specified currency
+     * @param opts.currencyPair Currency pair
+     * @param opts.sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
+     * @param opts.reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records to be returned in a single list
+     */
+    public async listLoans(
+        status: 'open' | 'loaned' | 'finished' | 'auto_repaid',
+        side: 'lend' | 'borrow',
+        opts: {
+            currency?: string;
+            currencyPair?: string;
+            sortBy?: 'create_time' | 'rate';
+            reverseSort?: boolean;
+            page?: number;
+            limit?: number;
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<Loan> }> {
+        const localVarPath = this.client.basePath + '/margin/loans';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling listLoans.');
+        }
+
+        // verify required parameter 'side' is not null or undefined
+        if (side === null || side === undefined) {
+            throw new Error('Required parameter side was null or undefined when calling listLoans.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(
+            status,
+            "'open' | 'loaned' | 'finished' | 'auto_repaid'",
+        );
+
+        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
+
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        if (opts.sortBy !== undefined) {
+            localVarQueryParameters['sort_by'] = ObjectSerializer.serialize(opts.sortBy, "'create_time' | 'rate'");
+        }
+
+        if (opts.reverseSort !== undefined) {
+            localVarQueryParameters['reverse_sort'] = ObjectSerializer.serialize(opts.reverseSort, 'boolean');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Loan>>(config, 'Array<Loan>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Lend or borrow(Deprecated)
+     * @param loan
+     */
+    public async createLoan(loan: Loan): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath = this.client.basePath + '/margin/loans';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loan' is not null or undefined
+        if (loan === null || loan === undefined) {
+            throw new Error('Required parameter loan was null or undefined when calling createLoan.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(loan, 'Loan'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary Merge multiple lending loans(Deprecated)
+     * @param currency Retrieve data of the specified currency
+     * @param ids A comma-separated (,) list of IDs of the loans lent. Maximum of 20 IDs are allowed in a request
+     */
+    public async mergeLoans(currency: string, ids: string): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath = this.client.basePath + '/margin/merged_loans';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling mergeLoans.');
+        }
+
+        // verify required parameter 'ids' is not null or undefined
+        if (ids === null || ids === undefined) {
+            throw new Error('Required parameter ids was null or undefined when calling mergeLoans.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        localVarQueryParameters['ids'] = ObjectSerializer.serialize(ids, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary Retrieve one single loan detail(Deprecated)
+     * @param loanId Loan ID
+     * @param side Lend or borrow
+     */
+    public async getLoan(loanId: string, side: 'lend' | 'borrow'): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling getLoan.');
+        }
+
+        // verify required parameter 'side' is not null or undefined
+        if (side === null || side === undefined) {
+            throw new Error('Required parameter side was null or undefined when calling getLoan.');
+        }
+
+        localVarQueryParameters['side'] = ObjectSerializer.serialize(side, "'lend' | 'borrow'");
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     * Only lent loans can be cancelled
+     * @summary Cancel lending loan(Deprecated)
+     * @param loanId Loan ID
+     * @param currency Retrieve data of the specified currency
+     */
+    public async cancelLoan(loanId: string, currency: string): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling cancelLoan.');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling cancelLoan.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'DELETE',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     * Only `auto_renew` modification is supported currently
+     * @summary Modify a loan(Deprecated)
+     * @param loanId Loan ID
+     * @param loanPatch
+     */
+    public async updateLoan(loanId: string, loanPatch: LoanPatch): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling updateLoan.');
+        }
+
+        // verify required parameter 'loanPatch' is not null or undefined
+        if (loanPatch === null || loanPatch === undefined) {
+            throw new Error('Required parameter loanPatch was null or undefined when calling updateLoan.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PATCH',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(loanPatch, 'LoanPatch'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary List loan repayment records(Deprecated)
+     * @param loanId Loan ID
+     */
+    public async listLoanRepayments(loanId: string): Promise<{ response: AxiosResponse; body: Array<Repayment> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling listLoanRepayments.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Repayment>>(config, 'Array<Repayment>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Repay a loan(Deprecated)
+     * @param loanId Loan ID
+     * @param repayRequest
+     */
+    public async repayLoan(
+        loanId: string,
+        repayRequest: RepayRequest,
+    ): Promise<{ response: AxiosResponse; body: Loan }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loans/{loan_id}/repayment'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling repayLoan.');
+        }
+
+        // verify required parameter 'repayRequest' is not null or undefined
+        if (repayRequest === null || repayRequest === undefined) {
+            throw new Error('Required parameter repayRequest was null or undefined when calling repayLoan.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(repayRequest, 'RepayRequest'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Loan>(config, 'Loan', authSettings);
+    }
+
+    /**
+     *
+     * @summary List repayment records of a specific loan(Deprecated)
+     * @param loanId Loan ID
+     * @param opts Optional parameters
+     * @param opts.status Loan record status
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records to be returned in a single list
+     */
+    public async listLoanRecords(
+        loanId: string,
+        opts: { status?: 'loaned' | 'finished'; page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<LoanRecord> }> {
+        const localVarPath = this.client.basePath + '/margin/loan_records';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling listLoanRecords.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
+
+        if (opts.status !== undefined) {
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "'loaned' | 'finished'");
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<LoanRecord>>(config, 'Array<LoanRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get one single loan record(Deprecated)
+     * @param loanRecordId Loan record ID
+     * @param loanId Loan ID
+     */
+    public async getLoanRecord(
+        loanRecordId: string,
+        loanId: string,
+    ): Promise<{ response: AxiosResponse; body: LoanRecord }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loan_records/{loan_record_id}'.replace(
+                '{' + 'loan_record_id' + '}',
+                encodeURIComponent(String(loanRecordId)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanRecordId' is not null or undefined
+        if (loanRecordId === null || loanRecordId === undefined) {
+            throw new Error('Required parameter loanRecordId was null or undefined when calling getLoanRecord.');
+        }
+
+        // verify required parameter 'loanId' is not null or undefined
+        if (loanId === null || loanId === undefined) {
+            throw new Error('Required parameter loanId was null or undefined when calling getLoanRecord.');
+        }
+
+        localVarQueryParameters['loan_id'] = ObjectSerializer.serialize(loanId, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<LoanRecord>(config, 'LoanRecord', authSettings);
+    }
+
+    /**
+     * Only `auto_renew` modification is supported currently
+     * @summary Modify a loan record(Deprecated)
+     * @param loanRecordId Loan record ID
+     * @param loanPatch
+     */
+    public async updateLoanRecord(
+        loanRecordId: string,
+        loanPatch: LoanPatch,
+    ): Promise<{ response: AxiosResponse; body: LoanRecord }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/loan_records/{loan_record_id}'.replace(
+                '{' + 'loan_record_id' + '}',
+                encodeURIComponent(String(loanRecordId)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'loanRecordId' is not null or undefined
+        if (loanRecordId === null || loanRecordId === undefined) {
+            throw new Error('Required parameter loanRecordId was null or undefined when calling updateLoanRecord.');
+        }
+
+        // verify required parameter 'loanPatch' is not null or undefined
+        if (loanPatch === null || loanPatch === undefined) {
+            throw new Error('Required parameter loanPatch was null or undefined when calling updateLoanRecord.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PATCH',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(loanPatch, 'LoanPatch'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<LoanRecord>(config, 'LoanRecord', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get the max borrowable amount for a specific margin currency(Deprecated)
      * @param currency Retrieve data of the specified currency
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
@@ -1360,6 +1361,54 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<CrossMarginLoan>>(config, 'Array<CrossMarginLoan>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Interest records for the cross margin account
+     * @param opts Optional parameters
+     * @param opts.currency Retrieve data of the specified currency
+     * @param opts.page Page number
+     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     */
+    public async getCrossMarginInterestRecords(opts: {
+        currency?: string;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
+        const localVarPath = this.client.basePath + '/margin/cross/interest_records';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<UniLoanInterestRecord>>(config, 'Array<UniLoanInterestRecord>', authSettings);
     }
 
     /**
