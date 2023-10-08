@@ -18,7 +18,7 @@ export class FlashSwapOrderRequest {
      */
     'previewId': string;
     /**
-     * Currency to sell which can be retrieved from supported currency list API `GET /flash_swap/currencies`
+     * 卖出的资产名称， 根据接口`查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs`获取
      */
     'sellCurrency': string;
     /**
@@ -26,7 +26,7 @@ export class FlashSwapOrderRequest {
      */
     'sellAmount': string;
     /**
-     * Currency to buy which can be retrieved from supported currency list API `GET /flash_swap/currencies`
+     * 买入的资产名称， 根据接口`查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs`获取
      */
     'buyCurrency': string;
     /**

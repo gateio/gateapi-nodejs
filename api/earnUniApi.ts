@@ -207,12 +207,16 @@ export class EarnUniApi {
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
      * @param opts.type type: lend - lend, redeem - redeem
      */
     public async listUniLendRecords(opts: {
         currency?: string;
         page?: number;
         limit?: number;
+        from?: number;
+        to?: number;
         type?: 'lend' | 'redeem';
     }): Promise<{ response: AxiosResponse; body: Array<UniLendRecord> }> {
         const localVarPath = this.client.basePath + '/earn/uni/lend_records';
@@ -237,6 +241,14 @@ export class EarnUniApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.type !== undefined) {

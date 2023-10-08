@@ -4,7 +4,8 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listFlashSwapCurrencies**](FlashSwapApi.md#listFlashSwapCurrencies) | **GET** /flash_swap/currencies | List all supported currencies in flash swap
+[**listFlashSwapCurrencies**](FlashSwapApi.md#listFlashSwapCurrencies) | **GET** /flash_swap/currencies | List All Supported Currencies In Flash Swap (deprecated)
+[**listFlashSwapCurrencyPair**](FlashSwapApi.md#listFlashSwapCurrencyPair) | **GET** /flash_swap/currency_pairs | List All Supported Currency Pairs In Flash Swap
 [**listFlashSwapOrders**](FlashSwapApi.md#listFlashSwapOrders) | **GET** /flash_swap/orders | List all flash swap orders
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Get a single flash swap order\&#39;s detail
@@ -15,7 +16,7 @@ Method | HTTP request | Description
 
 > Promise<{ response: http.IncomingMessage; body: Array<FlashSwapCurrency>; }> listFlashSwapCurrencies()
 
-List all supported currencies in flash swap
+List All Supported Currencies In Flash Swap (deprecated)
 
 ### Example
 
@@ -38,6 +39,51 @@ This endpoint does not need any parameter.
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrency>; }> [FlashSwapCurrency](FlashSwapCurrency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listFlashSwapCurrencyPair
+
+> Promise<{ response: http.IncomingMessage; body: Array<FlashSwapCurrencyPair>; }> listFlashSwapCurrencyPair(opts)
+
+List All Supported Currency Pairs In Flash Swap
+
+&#x60;BTC_GT&#x60; represents selling BTC and buying GT. The limits for each currency may vary across different currency pairs.  It is not necessary that two currencies that can be swapped instantaneously can be exchanged with each other. For example, it is possible to sell BTC and buy GT, but it does not necessarily mean that GT can be sold to buy BTC.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FlashSwapApi(client);
+const opts = {
+  'currency': "BTC" // string | Retrieve data of the specified currency
+};
+api.listFlashSwapCurrencyPair(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair>; }> [FlashSwapCurrencyPair](FlashSwapCurrencyPair.md)
 
 ### Authorization
 

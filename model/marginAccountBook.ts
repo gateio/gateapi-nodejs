@@ -38,6 +38,10 @@ export class MarginAccountBook {
      * Balance after change
      */
     'balance'?: string;
+    /**
+     * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
+     */
+    'type'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -75,6 +79,11 @@ export class MarginAccountBook {
         {
             name: 'balance',
             baseName: 'balance',
+            type: 'string',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
     ];

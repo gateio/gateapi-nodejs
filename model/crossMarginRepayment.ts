@@ -34,6 +34,10 @@ export class CrossMarginRepayment {
      * Repaid interest
      */
     'interest'?: string;
+    /**
+     * 还款类型 , none - 无还款类型, manual_repay - 手动还款 , auto_repay - 自动还款, cancel_auto_repay - 撤单后自动还款
+     */
+    'repaymentType'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -66,6 +70,11 @@ export class CrossMarginRepayment {
         {
             name: 'interest',
             baseName: 'interest',
+            type: 'string',
+        },
+        {
+            name: 'repaymentType',
+            baseName: 'repayment_type',
             type: 'string',
         },
     ];

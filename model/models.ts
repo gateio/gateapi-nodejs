@@ -1,5 +1,6 @@
 export * from './accountBalance';
 export * from './accountDetail';
+export * from './accountDetailKey';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
@@ -8,19 +9,23 @@ export * from './apiV4KeyPerm';
 export * from './autoRepaySetting';
 export * from './batchFuturesOrder';
 export * from './batchOrder';
-export * from './cancelOrder';
+export * from './cancelBatchOrder';
 export * from './cancelOrderResult';
+export * from './collateralAlign';
+export * from './collateralLoanCurrency';
+export * from './collateralOrder';
+export * from './collateralRecord';
 export * from './contract';
 export * from './contractStat';
 export * from './countdownCancelAllFuturesTask';
 export * from './countdownCancelAllSpotTask';
+export * from './createCollateralOrder';
 export * from './createUniLend';
 export * from './createUniLoan';
 export * from './crossMarginAccount';
 export * from './crossMarginAccountBook';
 export * from './crossMarginBalance';
 export * from './crossMarginBalance1';
-export * from './crossMarginBorrowable';
 export * from './crossMarginCurrency';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayRequest';
@@ -29,10 +34,12 @@ export * from './crossMarginTransferable';
 export * from './currency';
 export * from './currencyChain';
 export * from './currencyPair';
+export * from './deliveryCandlestick';
 export * from './deliveryContract';
 export * from './deliverySettlement';
 export * from './depositAddress';
 export * from './flashSwapCurrency';
+export * from './flashSwapCurrencyPair';
 export * from './flashSwapOrder';
 export * from './flashSwapOrderPreview';
 export * from './flashSwapOrderRequest';
@@ -45,8 +52,10 @@ export * from './futuresAccountBook';
 export * from './futuresAccountHistory';
 export * from './futuresAutoDeleverage';
 export * from './futuresCandlestick';
+export * from './futuresFee';
 export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
+export * from './futuresLiqOrder';
 export * from './futuresLiquidate';
 export * from './futuresOrder';
 export * from './futuresOrderAmendment';
@@ -92,18 +101,32 @@ export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
 export * from './orderPatch';
+export * from './orderResp';
 export * from './patchUniLend';
+export * from './portfolioAccount';
+export * from './portfolioBorrowable';
+export * from './portfolioLoan';
+export * from './portfolioLoanRecord';
+export * from './portfolioMarginBalance';
+export * from './portfolioMode';
+export * from './portfolioTransferable';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
+export * from './repayLoan';
+export * from './repayRecord';
 export * from './repayRequest';
+export * from './repayResp';
 export * from './repayment';
 export * from './savedAddress';
 export * from './spotAccount';
+export * from './spotAccountBook';
 export * from './spotFee';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
+export * from './stpGroup';
+export * from './stpGroupUser';
 export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
@@ -131,6 +154,8 @@ export * from './uniLendRecord';
 export * from './uniLoan';
 export * from './uniLoanInterestRecord';
 export * from './uniLoanRecord';
+export * from './userLtvInfo';
+export * from './userTotalAmount';
 export * from './withdrawStatus';
 
 import { AxiosRequestConfig } from 'axios';
@@ -140,6 +165,7 @@ import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
 import { AccountDetail } from './accountDetail';
+import { AccountDetailKey } from './accountDetailKey';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
@@ -148,19 +174,23 @@ import { ApiV4KeyPerm } from './apiV4KeyPerm';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { BatchFuturesOrder } from './batchFuturesOrder';
 import { BatchOrder } from './batchOrder';
-import { CancelOrder } from './cancelOrder';
+import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrderResult } from './cancelOrderResult';
+import { CollateralAlign } from './collateralAlign';
+import { CollateralLoanCurrency } from './collateralLoanCurrency';
+import { CollateralOrder } from './collateralOrder';
+import { CollateralRecord } from './collateralRecord';
 import { Contract } from './contract';
 import { ContractStat } from './contractStat';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
+import { CreateCollateralOrder } from './createCollateralOrder';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
 import { CrossMarginAccount } from './crossMarginAccount';
 import { CrossMarginAccountBook } from './crossMarginAccountBook';
 import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginBalance1 } from './crossMarginBalance1';
-import { CrossMarginBorrowable } from './crossMarginBorrowable';
 import { CrossMarginCurrency } from './crossMarginCurrency';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
@@ -169,10 +199,12 @@ import { CrossMarginTransferable } from './crossMarginTransferable';
 import { Currency } from './currency';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
+import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
 import { DepositAddress } from './depositAddress';
 import { FlashSwapCurrency } from './flashSwapCurrency';
+import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
 import { FlashSwapOrder } from './flashSwapOrder';
 import { FlashSwapOrderPreview } from './flashSwapOrderPreview';
 import { FlashSwapOrderRequest } from './flashSwapOrderRequest';
@@ -185,8 +217,10 @@ import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesAccountHistory } from './futuresAccountHistory';
 import { FuturesAutoDeleverage } from './futuresAutoDeleverage';
 import { FuturesCandlestick } from './futuresCandlestick';
+import { FuturesFee } from './futuresFee';
 import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
+import { FuturesLiqOrder } from './futuresLiqOrder';
 import { FuturesLiquidate } from './futuresLiquidate';
 import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
@@ -232,18 +266,32 @@ import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
 import { OrderPatch } from './orderPatch';
+import { OrderResp } from './orderResp';
 import { PatchUniLend } from './patchUniLend';
+import { PortfolioAccount } from './portfolioAccount';
+import { PortfolioBorrowable } from './portfolioBorrowable';
+import { PortfolioLoan } from './portfolioLoan';
+import { PortfolioLoanRecord } from './portfolioLoanRecord';
+import { PortfolioMarginBalance } from './portfolioMarginBalance';
+import { PortfolioMode } from './portfolioMode';
+import { PortfolioTransferable } from './portfolioTransferable';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
+import { RepayLoan } from './repayLoan';
+import { RepayRecord } from './repayRecord';
 import { RepayRequest } from './repayRequest';
+import { RepayResp } from './repayResp';
 import { Repayment } from './repayment';
 import { SavedAddress } from './savedAddress';
 import { SpotAccount } from './spotAccount';
+import { SpotAccountBook } from './spotAccountBook';
 import { SpotFee } from './spotFee';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
+import { StpGroup } from './stpGroup';
+import { StpGroupUser } from './stpGroupUser';
 import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
@@ -271,6 +319,8 @@ import { UniLendRecord } from './uniLendRecord';
 import { UniLoan } from './uniLoan';
 import { UniLoanInterestRecord } from './uniLoanInterestRecord';
 import { UniLoanRecord } from './uniLoanRecord';
+import { UserLtvInfo } from './userLtvInfo';
+import { UserTotalAmount } from './userTotalAmount';
 import { WithdrawStatus } from './withdrawStatus';
 
 /* tslint:disable:no-unused-variable */
@@ -296,7 +346,6 @@ const enumsMap: { [index: string]: any } = {
     'Contract.MarkType': Contract.MarkType,
     'CreateUniLend.Type': CreateUniLend.Type,
     'CreateUniLoan.Type': CreateUniLoan.Type,
-    'CrossMarginAccountBook.Type': CrossMarginAccountBook.Type,
     'CrossMarginLoan.Status': CrossMarginLoan.Status,
     'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
     'DeliveryContract.Cycle': DeliveryContract.Cycle,
@@ -333,6 +382,7 @@ const enumsMap: { [index: string]: any } = {
     'Order.TimeInForce': Order.TimeInForce,
     'Order.StpAct': Order.StpAct,
     'Order.FinishAs': Order.FinishAs,
+    'PortfolioLoan.Type': PortfolioLoan.Type,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'RepayRequest.Mode': RepayRequest.Mode,
@@ -353,6 +403,7 @@ const enumsMap: { [index: string]: any } = {
 const typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
     AccountDetail: AccountDetail,
+    AccountDetailKey: AccountDetailKey,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
@@ -361,19 +412,23 @@ const typeMap: { [index: string]: any } = {
     AutoRepaySetting: AutoRepaySetting,
     BatchFuturesOrder: BatchFuturesOrder,
     BatchOrder: BatchOrder,
-    CancelOrder: CancelOrder,
+    CancelBatchOrder: CancelBatchOrder,
     CancelOrderResult: CancelOrderResult,
+    CollateralAlign: CollateralAlign,
+    CollateralLoanCurrency: CollateralLoanCurrency,
+    CollateralOrder: CollateralOrder,
+    CollateralRecord: CollateralRecord,
     Contract: Contract,
     ContractStat: ContractStat,
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    CreateCollateralOrder: CreateCollateralOrder,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
     CrossMarginAccount: CrossMarginAccount,
     CrossMarginAccountBook: CrossMarginAccountBook,
     CrossMarginBalance: CrossMarginBalance,
     CrossMarginBalance1: CrossMarginBalance1,
-    CrossMarginBorrowable: CrossMarginBorrowable,
     CrossMarginCurrency: CrossMarginCurrency,
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayRequest: CrossMarginRepayRequest,
@@ -382,10 +437,12 @@ const typeMap: { [index: string]: any } = {
     Currency: Currency,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
+    DeliveryCandlestick: DeliveryCandlestick,
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
     DepositAddress: DepositAddress,
     FlashSwapCurrency: FlashSwapCurrency,
+    FlashSwapCurrencyPair: FlashSwapCurrencyPair,
     FlashSwapOrder: FlashSwapOrder,
     FlashSwapOrderPreview: FlashSwapOrderPreview,
     FlashSwapOrderRequest: FlashSwapOrderRequest,
@@ -398,8 +455,10 @@ const typeMap: { [index: string]: any } = {
     FuturesAccountHistory: FuturesAccountHistory,
     FuturesAutoDeleverage: FuturesAutoDeleverage,
     FuturesCandlestick: FuturesCandlestick,
+    FuturesFee: FuturesFee,
     FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
+    FuturesLiqOrder: FuturesLiqOrder,
     FuturesLiquidate: FuturesLiquidate,
     FuturesOrder: FuturesOrder,
     FuturesOrderAmendment: FuturesOrderAmendment,
@@ -445,18 +504,32 @@ const typeMap: { [index: string]: any } = {
     Order: Order,
     OrderBook: OrderBook,
     OrderPatch: OrderPatch,
+    OrderResp: OrderResp,
     PatchUniLend: PatchUniLend,
+    PortfolioAccount: PortfolioAccount,
+    PortfolioBorrowable: PortfolioBorrowable,
+    PortfolioLoan: PortfolioLoan,
+    PortfolioLoanRecord: PortfolioLoanRecord,
+    PortfolioMarginBalance: PortfolioMarginBalance,
+    PortfolioMode: PortfolioMode,
+    PortfolioTransferable: PortfolioTransferable,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
+    RepayLoan: RepayLoan,
+    RepayRecord: RepayRecord,
     RepayRequest: RepayRequest,
+    RepayResp: RepayResp,
     Repayment: Repayment,
     SavedAddress: SavedAddress,
     SpotAccount: SpotAccount,
+    SpotAccountBook: SpotAccountBook,
     SpotFee: SpotFee,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    StpGroup: StpGroup,
+    StpGroupUser: StpGroupUser,
     SubAccount: SubAccount,
     SubAccountBalance: SubAccountBalance,
     SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
@@ -484,6 +557,8 @@ const typeMap: { [index: string]: any } = {
     UniLoan: UniLoan,
     UniLoanInterestRecord: UniLoanInterestRecord,
     UniLoanRecord: UniLoanRecord,
+    UserLtvInfo: UserLtvInfo,
+    UserTotalAmount: UserTotalAmount,
     WithdrawStatus: WithdrawStatus,
 };
 

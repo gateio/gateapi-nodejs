@@ -20,6 +20,14 @@ export class OptionsPosition {
      */
     'user'?: number;
     /**
+     * Underlying
+     */
+    'underlying'?: string;
+    /**
+     * Underlying price (quote currency)
+     */
+    'underlyingPrice'?: string;
+    /**
      * Options contract name
      */
     'contract'?: string;
@@ -36,6 +44,10 @@ export class OptionsPosition {
      */
     'markPrice'?: string;
     /**
+     * Implied volatility
+     */
+    'markIv'?: string;
+    /**
      * Realized PNL
      */
     'realisedPnl'?: string;
@@ -48,6 +60,22 @@ export class OptionsPosition {
      */
     'pendingOrders'?: number;
     'closeOrder'?: OptionsPositionCloseOrder | null;
+    /**
+     * Delta
+     */
+    'delta'?: string;
+    /**
+     * Gamma
+     */
+    'gamma'?: string;
+    /**
+     * Vega
+     */
+    'vega'?: string;
+    /**
+     * Theta
+     */
+    'theta'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -56,6 +84,16 @@ export class OptionsPosition {
             name: 'user',
             baseName: 'user',
             type: 'number',
+        },
+        {
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
+        },
+        {
+            name: 'underlyingPrice',
+            baseName: 'underlying_price',
+            type: 'string',
         },
         {
             name: 'contract',
@@ -78,6 +116,11 @@ export class OptionsPosition {
             type: 'string',
         },
         {
+            name: 'markIv',
+            baseName: 'mark_iv',
+            type: 'string',
+        },
+        {
             name: 'realisedPnl',
             baseName: 'realised_pnl',
             type: 'string',
@@ -96,6 +139,26 @@ export class OptionsPosition {
             name: 'closeOrder',
             baseName: 'close_order',
             type: 'OptionsPositionCloseOrder',
+        },
+        {
+            name: 'delta',
+            baseName: 'delta',
+            type: 'string',
+        },
+        {
+            name: 'gamma',
+            baseName: 'gamma',
+            type: 'string',
+        },
+        {
+            name: 'vega',
+            baseName: 'vega',
+            type: 'string',
+        },
+        {
+            name: 'theta',
+            baseName: 'theta',
+            type: 'string',
         },
     ];
 

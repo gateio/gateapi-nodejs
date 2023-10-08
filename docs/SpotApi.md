@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query user trading fee rates
 [**getBatchSpotFee**](SpotApi.md#getBatchSpotFee) | **GET** /spot/batch_fee | Query a batch of user trading fee rates
 [**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot accounts
+[**listSpotAccountBook**](SpotApi.md#listSpotAccountBook) | **GET** /spot/account_book | Query account book
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Create a batch of orders
 [**listAllOpenOrders**](SpotApi.md#listAllOpenOrders) | **GET** /spot/open_orders | List all open orders
 [**createCrossLiquidateOrder**](SpotApi.md#createCrossLiquidateOrder) | **POST** /spot/cross_liquidate_orders | close position when cross-currency is disabled
@@ -367,8 +368,8 @@ const client = new GateApi.ApiClient();
 const api = new GateApi.SpotApi(client);
 const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
-  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'limit': 100, // number | 指定数据点的数量，适用于取最近 `limit` 数量的数据，该字段与 `from`, `to` 互斥，如果指定了 `from`, `to` 中的任意字段，该字段会被拒绝
+  'from': 1546905600, // number | 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'interval': '30m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d' | Interval time between data points. Note that `30d` means 1 natual month, not 30 days
 };
@@ -383,8 +384,8 @@ api.listCandlesticks(currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [default to undefined]
- **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
+ **limit** | **number**| 指定数据点的数量，适用于取最近 &#x60;limit&#x60; 数量的数据，该字段与 &#x60;from&#x60;, &#x60;to&#x60; 互斥，如果指定了 &#x60;from&#x60;, &#x60;to&#x60; 中的任意字段，该字段会被拒绝 | [optional] [default to 100]
+ **from** | **number**| 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间 | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
  **interval** | **Interval**| Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days | [optional] [default to &#39;30m&#39;]
 
@@ -526,6 +527,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<SpotAccount>; }> [SpotAccount](SpotAccount.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSpotAccountBook
+
+> Promise<{ response: http.IncomingMessage; body: Array<SpotAccountBook>; }> listSpotAccountBook(opts)
+
+Query account book
+
+Record time range cannot exceed 30 days
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.SpotApi(client);
+const opts = {
+  'currency': "BTC", // string | Retrieve data of the specified currency
+  'from': 1627706330, // number | Start timestamp of the query
+  'to': 1635329650, // number | Time range ending, default to current time
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'type': "lend" // string | Only retrieve changes of the specified type. All types will be returned if not specified.
+};
+api.listSpotAccountBook(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+ **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
+ **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **type** | **string**| Only retrieve changes of the specified type. All types will be returned if not specified. | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SpotAccountBook>; }> [SpotAccountBook](SpotAccountBook.md)
 
 ### Authorization
 
@@ -744,7 +802,7 @@ Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 Create an order
 
-You can place orders with spot, margin or cross margin account through setting the &#x60;account &#x60;field. It defaults to &#x60;spot&#x60;, which means spot account is used to place orders.  When margin account is used, i.e., &#x60;account&#x60; is &#x60;margin&#x60;, &#x60;auto_borrow&#x60; field can be set to &#x60;true&#x60; to enable the server to borrow the amount lacked using &#x60;POST /margin/loans&#x60; when your account\&#39;s balance is not enough. Whether margin orders\&#39; fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using &#x60;/margin/auto_repay&#x60; API.  When cross margin account is used, i.e., &#x60;account&#x60; is &#x60;cross_margin&#x60;, &#x60;auto_borrow&#x60; can also be enabled to achieve borrowing the insufficient amount automatically if cross account\&#39;s balance is not enough. But it differs from margin account that automatic repayment is determined by order\&#39;s &#x60;auto_repay&#x60; field and only current order\&#39;s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either &#x60;cancelled&#x60; or &#x60;closed&#x60;.  **Order status**  An order waiting to be filled is &#x60;open&#x60;, and it stays &#x60;open&#x60; until it is filled totally. If fully filled, order is finished and its status turns to &#x60;closed&#x60;.If the order is cancelled before it is totally filled, whether or not partially filled, its status is &#x60;cancelled&#x60;. **Iceberg order**  &#x60;iceberg&#x60; field can be used to set the amount shown. Set to &#x60;-1&#x60; to hide the order completely. Note that the hidden part\&#39;s fee will be charged using taker\&#39;s fee rate. **Self Trade Prevention**  - Set &#x60;stp_act&#x60; to decide the strategy of self-trade prevention. For detailed usage, refer to the &#x60;stp_act&#x60; parameter in request body 
+支持现货、杠杆、全仓杠杆下单。通过 &#x60;account&#x60; 字段来使用不同的账户，默认为 &#x60;spot&#x60; ，即使用现货账户下单。  使用杠杆账户交易，即 &#x60;account&#x60; 设置为 &#x60;margin&#x60; 的时候，可以设置 &#x60;auto_borrow&#x60; 为 &#x60;true&#x60;， 在账户余额不足的情况，由系统自动执行 &#x60;POST /margin/loans&#x60; 借入不足部分。 杠杆下单成交之后的获取到的资产是否自动用于归还逐仓杠杆账户的借入单，取决于用户逐仓杠杆**账户**的自动还款设置， 该账户自动还款设置可以通过 &#x60;/margin/auto_repay&#x60; 来查询和设置。  使用全仓杠杆账户交易，即 &#x60;account&#x60; 设置为 &#x60;cross_margin&#x60; 的时候，同样可以启用 &#x60;auto_borrow&#x60; 来实现自动借入不足部分，但是与逐仓杠杆账户不同的是，全仓杠杆账户的委托是否自动还款取决于下单时的 &#x60;auto_repay&#x60; 设置，该设置只对当前委托生效，即只有该委托成交之后获取到的资产会用来还款全仓杠杆账户的借入单。 全仓杠杆账户下单目前支持同时开启 &#x60;auto_borrow&#x60; 和 &#x60;auto_repay&#x60;。  自动还款会在订单结束时触发，即 &#x60;status&#x60; 为 &#x60;cancelled&#x60; 或者 &#x60;closed&#x60; 。  **委托状态**  挂单中的委托状态是 &#x60;open&#x60; ，在数量全部成交之前保持为 &#x60;open&#x60; 。如果被全部吃掉，则订单结束，状态变成 &#x60;closed&#x60; 。 假如全部成交之前，订单被撤销，不管是否有部分成交，状态都会变为 &#x60;cancelled&#x60;  **冰山委托**  &#x60;iceberg&#x60; 用来设置冰山委托显示的数量，如果需要完全隐藏，设置为 &#x60;-1&#x60; 。注意隐藏部分成交时按照 taker 的手续费率收取。  **限制用户自成交**  设置 &#x60;stp_act&#x60; 来决定使用限制用户自成交的策略
 
 ### Example
 
@@ -836,7 +894,7 @@ Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 ## cancelBatchOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult>; }> cancelBatchOrders(cancelOrder)
+> Promise<{ response: http.IncomingMessage; body: Array<CancelOrderResult>; }> cancelBatchOrders(cancelBatchOrder)
 
 Cancel a batch of orders with an ID list
 
@@ -853,8 +911,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
-const cancelOrder = [new CancelOrder()]; // Array<CancelOrder> | 
-api.cancelBatchOrders(cancelOrder)
+const cancelBatchOrder = [new CancelBatchOrder()]; // Array<CancelBatchOrder> | 
+api.cancelBatchOrders(cancelBatchOrder)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -864,7 +922,7 @@ api.cancelBatchOrders(cancelOrder)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelOrder** | [**Array&lt;CancelOrder&gt;**](CancelOrder.md)|  | 
+ **cancelBatchOrder** | [**Array&lt;CancelBatchOrder&gt;**](CancelBatchOrder.md)|  | 
 
 ### Return type
 
@@ -987,7 +1045,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 Amend an order
 
-By default, the orders of spot and margin account are updated.  If you need to modify orders of the &#x60;cross-margin&#x60; account, you must specify account as &#x60;cross_margin&#x60;.  For portfolio margin account, only &#x60;cross_margin&#x60; account is supported.  Currently, only supports modification of &#x60;price&#x60; or &#x60;amount&#x60; fields.  Regarding rate limiting: modify order and create order sharing rate limiting rules. Regarding matching priority: only modifying the amount does not affect the priority. If the price is modified, the priority will be adjusted to the last of the new price. Note: If the modified amount is less than the fill amount, the order will be cancelled.
+默认修改现货、逐仓杠杆账户的订单，如果需要修改全仓杠杆账户订单，必须指定 &#x60;account&#x60; 为 &#x60;cross_margin&#x60;，统一账户 &#x60;account&#x60; 只能指定为 &#x60;cross_margin&#x60;。   目前只支持修改价格或数量（二选一）  关于限速：修改订单和创建订单共享限速规则  关于匹配优先级：只修改数量变小不影响匹配优先级，修改价格或修改数量变大则优先级将调整到新价格最后面    注意事项:修改数量小于已成交数量会触发撤单操作
 
 ### Example
 

@@ -31,9 +31,9 @@ export class CrossMarginAccountBook {
      */
     'balance'?: string;
     /**
-     * Account change type, including:  - in: transferals into cross margin account - out: transferals out from cross margin account - repay: loan repayment - borrow: borrowed loan - interest: interest - new_order: new order locked - order_fill: order fills - referral_fee: fee refund from referrals - order_fee: order fee generated from fills - futures_in: transfer into futures account - futures_out: transfer out of futures account - unknown: unknown type
+     * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
      */
-    'type'?: CrossMarginAccountBook.Type;
+    'type'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -66,28 +66,11 @@ export class CrossMarginAccountBook {
         {
             name: 'type',
             baseName: 'type',
-            type: 'CrossMarginAccountBook.Type',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
         return CrossMarginAccountBook.attributeTypeMap;
-    }
-}
-
-export namespace CrossMarginAccountBook {
-    export enum Type {
-        In = <any>'in',
-        Out = <any>'out',
-        Repay = <any>'repay',
-        Borrow = <any>'borrow',
-        Interest = <any>'interest',
-        NewOrder = <any>'new_order',
-        OrderFill = <any>'order_fill',
-        ReferralFee = <any>'referral_fee',
-        OrderFee = <any>'order_fee',
-        FuturesIn = <any>'futures_in',
-        FuturesOut = <any>'futures_out',
-        Unknown = <any>'unknown',
     }
 }

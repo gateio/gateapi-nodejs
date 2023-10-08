@@ -101,6 +101,45 @@ export class MarginUniApi {
     }
 
     /**
+     * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+     * @summary Estimate interest Rate
+     * @param currencies An array of up to 10 specifying the currency name
+     */
+    public async getMarginUniEstimateRate(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/margin/uni/estimate_rate';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error(
+                'Required parameter currencies was null or undefined when calling getMarginUniEstimateRate.',
+            );
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
+    }
+
+    /**
      *
      * @summary List loans
      * @param opts Optional parameters

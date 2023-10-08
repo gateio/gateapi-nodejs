@@ -10,7 +10,7 @@
  */
 
 /**
- * Loan record
+ * Loan records
  */
 export class UniLoanRecord {
     /**

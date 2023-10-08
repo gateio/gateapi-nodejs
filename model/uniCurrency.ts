@@ -18,11 +18,11 @@ export class UniCurrency {
      */
     'currency'?: string;
     /**
-     * Minimum lend amount
+     * The minimum lending amount, in the unit of the currency.
      */
     'minLendAmount'?: string;
     /**
-     * Maximum lend amount
+     * The total maximum lending amount, in USDT
      */
     'maxLendAmount'?: string;
     /**

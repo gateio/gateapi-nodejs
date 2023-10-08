@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listUniCurrencyPairs**](MarginUniApi.md#listUniCurrencyPairs) | **GET** /margin/uni/currency_pairs | List lending markets
 [**getUniCurrencyPair**](MarginUniApi.md#getUniCurrencyPair) | **GET** /margin/uni/currency_pairs/{currency_pair} | Get detail of lending market
+[**getMarginUniEstimateRate**](MarginUniApi.md#getMarginUniEstimateRate) | **GET** /margin/uni/estimate_rate | Estimate interest Rate
 [**listUniLoans**](MarginUniApi.md#listUniLoans) | **GET** /margin/uni/loans | List loans
 [**createUniLoan**](MarginUniApi.md#createUniLoan) | **POST** /margin/uni/loans | Borrow or repay
 [**listUniLoanRecords**](MarginUniApi.md#listUniLoanRecords) | **GET** /margin/uni/loan_records | Get load records
@@ -85,6 +86,51 @@ Promise<{ response: AxiosResponse; body: UniCurrencyPair; }> [UniCurrencyPair](U
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getMarginUniEstimateRate
+
+> Promise<{ response: http.IncomingMessage; body: { [key: string]: string; }; }> getMarginUniEstimateRate(currencies)
+
+Estimate interest Rate
+
+Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginUniApi(client);
+const currencies = [["BTC","GT"]]; // Array<string> | An array of up to 10 specifying the currency name
+api.getMarginUniEstimateRate(currencies)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencies** | [**Array&lt;string&gt;**](string.md)| An array of up to 10 specifying the currency name | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string](string.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 

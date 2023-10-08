@@ -35,7 +35,7 @@ export class CrossMarginLoan {
      */
     'text'?: string;
     /**
-     * Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete
+     * Deprecated. Currently, all statuses have been set to 2.  Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete
      */
     'status'?: CrossMarginLoan.Status;
     /**

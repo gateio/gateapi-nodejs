@@ -31,6 +31,10 @@ export class SubAccountTransfer {
      */
     'uid'?: string;
     /**
+     * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
+     */
+    'clientOrderId'?: string;
+    /**
      * Transfer timestamp
      */
     'timest'?: string;
@@ -69,6 +73,11 @@ export class SubAccountTransfer {
         {
             name: 'uid',
             baseName: 'uid',
+            type: 'string',
+        },
+        {
+            name: 'clientOrderId',
+            baseName: 'client_order_id',
             type: 'string',
         },
         {

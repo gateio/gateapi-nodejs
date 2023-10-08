@@ -9,6 +9,8 @@
  * Do not edit the class manually.
  */
 
+import { AccountDetailKey } from './accountDetailKey';
+
 /**
  * Account detail
  */
@@ -25,6 +27,7 @@ export class AccountDetail {
      * User ID
      */
     'userId'?: number;
+    'key'?: AccountDetailKey;
 
     static discriminator: string | undefined = undefined;
 
@@ -43,6 +46,11 @@ export class AccountDetail {
             name: 'userId',
             baseName: 'user_id',
             type: 'number',
+        },
+        {
+            name: 'key',
+            baseName: 'key',
+            type: 'AccountDetailKey',
         },
     ];
 

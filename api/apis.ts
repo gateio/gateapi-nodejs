@@ -1,6 +1,8 @@
 export * from './apiClient';
 export * from './accountApi';
 import { AccountApi } from './accountApi';
+export * from './collateralLoanApi';
+import { CollateralLoanApi } from './collateralLoanApi';
 export * from './deliveryApi';
 import { DeliveryApi } from './deliveryApi';
 export * from './earnUniApi';
@@ -15,6 +17,8 @@ export * from './marginUniApi';
 import { MarginUniApi } from './marginUniApi';
 export * from './optionsApi';
 import { OptionsApi } from './optionsApi';
+export * from './portfolioApi';
+import { PortfolioApi } from './portfolioApi';
 export * from './rebateApi';
 import { RebateApi } from './rebateApi';
 export * from './spotApi';
@@ -28,6 +32,7 @@ import { WithdrawalApi } from './withdrawalApi';
 
 export const APIS = [
     AccountApi,
+    CollateralLoanApi,
     DeliveryApi,
     EarnUniApi,
     FlashSwapApi,
@@ -35,6 +40,7 @@ export const APIS = [
     MarginApi,
     MarginUniApi,
     OptionsApi,
+    PortfolioApi,
     RebateApi,
     SpotApi,
     SubAccountApi,

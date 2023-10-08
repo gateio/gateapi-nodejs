@@ -13,7 +13,6 @@
 import { AutoRepaySetting } from '../model/autoRepaySetting';
 import { CrossMarginAccount } from '../model/crossMarginAccount';
 import { CrossMarginAccountBook } from '../model/crossMarginAccountBook';
-import { CrossMarginBorrowable } from '../model/crossMarginBorrowable';
 import { CrossMarginCurrency } from '../model/crossMarginCurrency';
 import { CrossMarginLoan } from '../model/crossMarginLoan';
 import { CrossMarginRepayRequest } from '../model/crossMarginRepayRequest';
@@ -29,6 +28,7 @@ import { MarginAccountBook } from '../model/marginAccountBook';
 import { MarginBorrowable } from '../model/marginBorrowable';
 import { MarginCurrencyPair } from '../model/marginCurrencyPair';
 import { MarginTransferable } from '../model/marginTransferable';
+import { PortfolioBorrowable } from '../model/portfolioBorrowable';
 import { RepayRequest } from '../model/repayRequest';
 import { Repayment } from '../model/repayment';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
@@ -93,6 +93,7 @@ export class MarginApi {
      * @param opts Optional parameters
      * @param opts.currency List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required.
      * @param opts.currencyPair List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided
+     * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
@@ -101,6 +102,7 @@ export class MarginApi {
     public async listMarginAccountBook(opts: {
         currency?: string;
         currencyPair?: string;
+        type?: string;
         from?: number;
         to?: number;
         page?: number;
@@ -124,6 +126,10 @@ export class MarginApi {
 
         if (opts.currencyPair !== undefined) {
             localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         if (opts.from !== undefined) {
@@ -1135,7 +1141,7 @@ export class MarginApi {
     /**
      * Sort by creation time in descending order by default. Set `reverse=false` to return ascending results.
      * @summary List cross margin borrow history
-     * @param status Filter by status. Supported values are 2 and 3.
+     * @param status Filter by status. Supported values are 2 and 3. (deprecated.)
      * @param opts Optional parameters
      * @param opts.currency Filter by currency
      * @param opts.limit Maximum number of records to be returned in a single list
@@ -1451,13 +1457,52 @@ export class MarginApi {
     }
 
     /**
+     * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+     * @summary Estimated interest rates
+     * @param currencies An array of up to 10 specifying the currency name
+     */
+    public async getCrossMarginEstimateRate(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/margin/cross/estimate_rate';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error(
+                'Required parameter currencies was null or undefined when calling getCrossMarginEstimateRate.',
+            );
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
+    }
+
+    /**
      *
      * @summary Get the max borrowable amount for a specific cross margin currency
      * @param currency Retrieve data of the specified currency
      */
     public async getCrossMarginBorrowable(
         currency: string,
-    ): Promise<{ response: AxiosResponse; body: CrossMarginBorrowable }> {
+    ): Promise<{ response: AxiosResponse; body: PortfolioBorrowable }> {
         const localVarPath = this.client.basePath + '/margin/cross/borrowable';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1484,6 +1529,6 @@ export class MarginApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<CrossMarginBorrowable>(config, 'CrossMarginBorrowable', authSettings);
+        return this.client.request<PortfolioBorrowable>(config, 'PortfolioBorrowable', authSettings);
     }
 }

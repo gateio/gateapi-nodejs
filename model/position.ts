@@ -112,6 +112,10 @@ export class Position {
      * Cross margin leverage(valid only when `leverage` is 0)
      */
     'crossLeverageLimit'?: string;
+    /**
+     * Last update time
+     */
+    'updateTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -240,6 +244,11 @@ export class Position {
             name: 'crossLeverageLimit',
             baseName: 'cross_leverage_limit',
             type: 'string',
+        },
+        {
+            name: 'updateTime',
+            baseName: 'update_time',
+            type: 'number',
         },
     ];
 

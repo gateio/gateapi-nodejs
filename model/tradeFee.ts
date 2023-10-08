@@ -50,6 +50,14 @@ export class TradeFee {
      * Future trading maker fee
      */
     'futuresMakerFee'?: string;
+    /**
+     * 交割合约 taker 费率
+     */
+    'deliveryTakerFee'?: string;
+    /**
+     * 交割合约 maker 费率
+     */
+    'deliveryMakerFee'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -102,6 +110,16 @@ export class TradeFee {
         {
             name: 'futuresMakerFee',
             baseName: 'futures_maker_fee',
+            type: 'string',
+        },
+        {
+            name: 'deliveryTakerFee',
+            baseName: 'delivery_taker_fee',
+            type: 'string',
+        },
+        {
+            name: 'deliveryMakerFee',
+            baseName: 'delivery_maker_fee',
             type: 'string',
         },
     ];

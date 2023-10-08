@@ -11,6 +11,7 @@
 
 /* tslint:disable:no-unused-locals */
 import { FlashSwapCurrency } from '../model/flashSwapCurrency';
+import { FlashSwapCurrencyPair } from '../model/flashSwapCurrencyPair';
 import { FlashSwapOrder } from '../model/flashSwapOrder';
 import { FlashSwapOrderPreview } from '../model/flashSwapOrderPreview';
 import { FlashSwapOrderRequest } from '../model/flashSwapOrderRequest';
@@ -36,7 +37,7 @@ export class FlashSwapApi {
 
     /**
      *
-     * @summary List all supported currencies in flash swap
+     * @summary List All Supported Currencies In Flash Swap (deprecated)
      */
     public async listFlashSwapCurrencies(): Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrency> }> {
         const localVarPath = this.client.basePath + '/flash_swap/currencies';
@@ -59,6 +60,42 @@ export class FlashSwapApi {
 
         const authSettings = [];
         return this.client.request<Array<FlashSwapCurrency>>(config, 'Array<FlashSwapCurrency>', authSettings);
+    }
+
+    /**
+     * `BTC_GT` represents selling BTC and buying GT. The limits for each currency may vary across different currency pairs.  It is not necessary that two currencies that can be swapped instantaneously can be exchanged with each other. For example, it is possible to sell BTC and buy GT, but it does not necessarily mean that GT can be sold to buy BTC.
+     * @summary List All Supported Currency Pairs In Flash Swap
+     * @param opts Optional parameters
+     * @param opts.currency Retrieve data of the specified currency
+     */
+    public async listFlashSwapCurrencyPair(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair> }> {
+        const localVarPath = this.client.basePath + '/flash_swap/currency_pairs';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<FlashSwapCurrencyPair>>(config, 'Array<FlashSwapCurrencyPair>', authSettings);
     }
 
     /**

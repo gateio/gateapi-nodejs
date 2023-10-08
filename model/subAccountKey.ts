@@ -17,6 +17,10 @@ export class SubAccountKey {
      */
     'userId'?: string;
     /**
+     * Mode: 1 - classic 2 - portfolio account
+     */
+    'mode'?: number;
+    /**
      * API key name
      */
     'name'?: string;
@@ -49,6 +53,11 @@ export class SubAccountKey {
             name: 'userId',
             baseName: 'user_id',
             type: 'string',
+        },
+        {
+            name: 'mode',
+            baseName: 'mode',
+            type: 'number',
         },
         {
             name: 'name',

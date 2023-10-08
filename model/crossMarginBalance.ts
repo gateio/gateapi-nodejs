@@ -35,11 +35,11 @@ export class CrossMarginBalance {
      */
     'futuresPosLiab'?: string;
     /**
-     * Equity. Formula: available + freeze - borrowed + total + unrealized_pnl
+     * Equity. Formula: available + freeze - borrowed + futures account\'s total + unrealized_pnl
      */
     'equity'?: string;
     /**
-     * Total freeze. Formula: position_initial_margin + order_margin
+     * Total freeze. Formula: freeze + position_initial_margin + order_margin
      */
     'totalFreeze'?: string;
     /**

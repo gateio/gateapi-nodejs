@@ -36,6 +36,7 @@ Method | HTTP request | Description
 [**repayCrossMarginLoan**](MarginApi.md#repayCrossMarginLoan) | **POST** /margin/cross/repayments | Cross margin repayments
 [**getCrossMarginInterestRecords**](MarginApi.md#getCrossMarginInterestRecords) | **GET** /margin/cross/interest_records | Interest records for the cross margin account
 [**getCrossMarginTransferable**](MarginApi.md#getCrossMarginTransferable) | **GET** /margin/cross/transferable | Get the max transferable amount for a specific cross margin currency
+[**getCrossMarginEstimateRate**](MarginApi.md#getCrossMarginEstimateRate) | **GET** /margin/cross/estimate_rate | Estimated interest rates
 [**getCrossMarginBorrowable**](MarginApi.md#getCrossMarginBorrowable) | **GET** /margin/cross/borrowable | Get the max borrowable amount for a specific cross margin currency
 
 
@@ -106,6 +107,7 @@ const api = new GateApi.MarginApi(client);
 const opts = {
   'currency': "currency_example", // string | List records related to specified currency only. If specified, `currency_pair` is also required.
   'currencyPair': "currencyPair_example", // string | List records related to specified currency pair. Used in combination with `currency`. Ignored if `currency` is not provided
+  'type': "lend", // string | Only retrieve changes of the specified type. All types will be returned if not specified.
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650, // number | Time range ending, default to current time
   'page': 1, // number | Page number
@@ -123,6 +125,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required. | [optional] [default to undefined]
  **currencyPair** | **string**| List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided | [optional] [default to undefined]
+ **type** | **string**| Only retrieve changes of the specified type. All types will be returned if not specified. | [optional] [default to undefined]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
@@ -1191,7 +1194,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const status = 56; // number | Filter by status. Supported values are 2 and 3.
+const status = 56; // number | Filter by status. Supported values are 2 and 3. (deprecated.)
 const opts = {
   'currency': "currency_example", // string | Filter by currency
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -1208,7 +1211,7 @@ api.listCrossMarginLoans(status, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **number**| Filter by status. Supported values are 2 and 3. | [default to undefined]
+ **status** | **number**| Filter by status. Supported values are 2 and 3. (deprecated.) | [default to undefined]
  **currency** | **string**| Filter by currency | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
@@ -1507,9 +1510,54 @@ Promise<{ response: AxiosResponse; body: CrossMarginTransferable; }> [CrossMargi
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## getCrossMarginEstimateRate
+
+> Promise<{ response: http.IncomingMessage; body: { [key: string]: string; }; }> getCrossMarginEstimateRate(currencies)
+
+Estimated interest rates
+
+Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currencies = [["BTC","GT"]]; // Array<string> | An array of up to 10 specifying the currency name
+api.getCrossMarginEstimateRate(currencies)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencies** | [**Array&lt;string&gt;**](string.md)| An array of up to 10 specifying the currency name | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string](string.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## getCrossMarginBorrowable
 
-> Promise<{ response: http.IncomingMessage; body: CrossMarginBorrowable; }> getCrossMarginBorrowable(currency)
+> Promise<{ response: http.IncomingMessage; body: PortfolioBorrowable; }> getCrossMarginBorrowable(currency)
 
 Get the max borrowable amount for a specific cross margin currency
 
@@ -1539,7 +1587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: CrossMarginBorrowable; }> [CrossMarginBorrowable](CrossMarginBorrowable.md)
+Promise<{ response: AxiosResponse; body: PortfolioBorrowable; }> [PortfolioBorrowable](PortfolioBorrowable.md)
 
 ### Authorization
 

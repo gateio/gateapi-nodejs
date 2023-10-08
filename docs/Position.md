@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **closeOrder** | [**PositionCloseOrder**](PositionCloseOrder.md) |  | [optional] [default to undefined]
 **mode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]
 **crossLeverageLimit** | **string** | Cross margin leverage(valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
+**updateTime** | **number** | Last update time | [optional] [readonly] [default to undefined]
 
 ## Enum: Position.Mode
 

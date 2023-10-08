@@ -23,6 +23,10 @@ export class CurrencyChain {
      */
     'nameEn'?: string;
     /**
+     * 币种智能合约地址，如果没有地址则为空字串
+     */
+    'contractAddress'?: string;
+    /**
      * If it is disabled. 0 means NOT being disabled
      */
     'isDisabled'?: number;
@@ -51,6 +55,11 @@ export class CurrencyChain {
         {
             name: 'nameEn',
             baseName: 'name_en',
+            type: 'string',
+        },
+        {
+            name: 'contractAddress',
+            baseName: 'contract_address',
             type: 'string',
         },
         {
