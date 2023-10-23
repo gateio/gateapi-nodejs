@@ -9,35 +9,32 @@
  * Do not edit the class manually.
  */
 
-/**
- * Total borrowed amount and pledged collateral amount by the user
- */
-export class UserTotalAmount {
+export class UniCurrencyInterest {
     /**
-     * Total borrowing amount, calculated in USDT
+     * Currency
      */
-    'borrowAmount'?: string;
+    'currency'?: string;
     /**
-     * Total collateral amount, calculated in USDT
+     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
      */
-    'collateralAmount'?: string;
+    'interestStatus'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'borrowAmount',
-            baseName: 'borrow_amount',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'collateralAmount',
-            baseName: 'collateral_amount',
+            name: 'interestStatus',
+            baseName: 'interest_status',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return UserTotalAmount.attributeTypeMap;
+        return UniCurrencyInterest.attributeTypeMap;
     }
 }

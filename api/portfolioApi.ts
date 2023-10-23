@@ -74,7 +74,7 @@ export class PortfolioApi {
     }
 
     /**
-     * cross_margin - 现货全仓保证金
+     * cross_margin - cross margin
      * @summary Retrieve the account\'s portfolio mode
      */
     public async listAccountPortfolioMode(): Promise<{ response: AxiosResponse; body: { [key: string]: boolean } }> {

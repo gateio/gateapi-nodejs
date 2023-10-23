@@ -11,19 +11,19 @@
 
 export class CollateralAlign {
     /**
-     * 订单id
+     * Order ID
      */
     'orderId': number;
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency': string;
     /**
-     * 质押数量
+     * Collateral amount
      */
     'collateralAmount': string;
     /**
-     * 操作类型, append - 补充 , redeem - 提取
+     * Operation types: append - for adding collateral, redeem - for withdrawing collateral
      */
     'type': string;
 

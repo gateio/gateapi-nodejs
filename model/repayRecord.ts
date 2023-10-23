@@ -10,15 +10,15 @@
  */
 
 /**
- * 还款记录
+ * Repayment record
  */
 export class RepayRecord {
     /**
-     * 订单id
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * 还款记录 id
+     * Repayment record ID
      */
     'recordId'?: number;
     /**
@@ -26,43 +26,43 @@ export class RepayRecord {
      */
     'repaidAmount'?: string;
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency'?: string;
     /**
-     * 初始质押率
+     * The initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * 借款时间，时间戳
+     * Borrowing time, timestamp
      */
     'borrowTime'?: number;
     /**
-     * 还款时间，时间戳
+     * Repayment time, timestamp
      */
     'repayTime'?: number;
     /**
-     * 总计息
+     * Total interest
      */
     'totalInterest'?: string;
     /**
-     * 还款前待还本金
+     * Principal to be repaid before repayment
      */
     'beforeLeftPrincipal'?: string;
     /**
-     * 还款后待还本金
+     * Principal to be repaid after repayment
      */
     'afterLeftPrincipal'?: string;
     /**
-     * 还款前质押物数量
+     * Collateral quantity before repayment
      */
     'beforeLeftCollateral'?: string;
     /**
-     * 还款后质押物数量
+     * Collateral quantity after repayment
      */
     'afterLeftCollateral'?: string;
 

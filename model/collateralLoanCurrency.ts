@@ -10,15 +10,15 @@
  */
 
 /**
- * 支持的借款币种和抵押币种
+ * Supported borrowing and collateral currencies
  */
 export class CollateralLoanCurrency {
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'loanCurrency'?: string;
     /**
-     * 支持的抵押币种列表
+     * List of supported collateral currencies
      */
     'collateralCurrency'?: Array<string>;
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **previewId** | **string** | Preview result ID | [default to undefined]
-**sellCurrency** | **string** | 卖出的资产名称， 根据接口&#x60;查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs&#x60;获取 | [default to undefined]
+**sellCurrency** | **string** | The name of the asset being sold, as obtained from the \&quot;GET /flash_swap/currency_pairs\&quot; API, which retrieves a list of supported flash swap currency pairs. | [default to undefined]
 **sellAmount** | **string** | Amount to sell (based on the preview result) | [default to undefined]
-**buyCurrency** | **string** | 买入的资产名称， 根据接口&#x60;查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs&#x60;获取 | [default to undefined]
+**buyCurrency** | **string** | The name of the asset being purchased, as obtained from the \&quot;GET /flash_swap/currency_pairs\&quot; API, which provides a list of supported flash swap currency pairs. | [default to undefined]
 **buyAmount** | **string** | Amount to buy (based on the preview result) | [default to undefined]
 

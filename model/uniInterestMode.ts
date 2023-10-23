@@ -10,34 +10,34 @@
  */
 
 /**
- * Total borrowed amount and pledged collateral amount by the user
+ * 余币宝利息复投开关
  */
-export class UserTotalAmount {
+export class UniInterestMode {
     /**
-     * Total borrowing amount, calculated in USDT
+     * Currency
      */
-    'borrowAmount'?: string;
+    'currency': string;
     /**
-     * Total collateral amount, calculated in USDT
+     * Interest toggle settings, true - interest reinvestment, false - regular dividend
      */
-    'collateralAmount'?: string;
+    'status': boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'borrowAmount',
-            baseName: 'borrow_amount',
+            name: 'currency',
+            baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'collateralAmount',
-            baseName: 'collateral_amount',
-            type: 'string',
+            name: 'status',
+            baseName: 'status',
+            type: 'boolean',
         },
     ];
 
     static getAttributeTypeMap() {
-        return UserTotalAmount.attributeTypeMap;
+        return UniInterestMode.attributeTypeMap;
     }
 }

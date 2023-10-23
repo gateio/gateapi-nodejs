@@ -54,7 +54,7 @@ export class Order {
      */
     'type'?: Order.Type;
     /**
-     * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account. Portfolio margin account must set to `cross-margin`
+     * Account type, spot - spot account, margin - margin account, cross_margin - cross margin account, portfolio - portfolio account  Portfolio margin account must set to `cross_margin`
      */
     'account'?: Order.Account;
     /**
@@ -344,6 +344,7 @@ export namespace Order {
         Spot = <any>'spot',
         Margin = <any>'margin',
         CrossMargin = <any>'cross_margin',
+        Portfolio = <any>'portfolio',
     }
     export enum Side {
         Buy = <any>'buy',

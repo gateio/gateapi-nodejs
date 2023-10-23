@@ -34,6 +34,10 @@ export class SpotAccountBook {
      * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
      */
     'type'?: string;
+    /**
+     * Additional information
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -66,6 +70,11 @@ export class SpotAccountBook {
         {
             name: 'type',
             baseName: 'type',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

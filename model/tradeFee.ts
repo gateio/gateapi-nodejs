@@ -51,11 +51,11 @@ export class TradeFee {
      */
     'futuresMakerFee'?: string;
     /**
-     * 交割合约 taker 费率
+     * Delivery trading taker fee
      */
     'deliveryTakerFee'?: string;
     /**
-     * 交割合约 maker 费率
+     * Delivery trading maker fee
      */
     'deliveryMakerFee'?: string;
 

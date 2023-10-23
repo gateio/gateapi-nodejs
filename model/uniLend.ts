@@ -38,6 +38,14 @@ export class UniLend {
      */
     'minRate'?: string;
     /**
+     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
+     */
+    'interestStatus'?: string;
+    /**
+     * Amount not reinvested
+     */
+    'reinvestLeftAmount'?: string;
+    /**
      * Created time of the lending order
      */
     'createTime'?: number;
@@ -77,6 +85,16 @@ export class UniLend {
         {
             name: 'minRate',
             baseName: 'min_rate',
+            type: 'string',
+        },
+        {
+            name: 'interestStatus',
+            baseName: 'interest_status',
+            type: 'string',
+        },
+        {
+            name: 'reinvestLeftAmount',
+            baseName: 'reinvest_left_amount',
             type: 'string',
         },
         {

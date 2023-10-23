@@ -14,7 +14,7 @@
  */
 export class FlashSwapPreviewRequest {
     /**
-     * 卖出的资产名称， 根据接口`查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs`获取
+     * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs.
      */
     'sellCurrency': string;
     /**
@@ -22,7 +22,7 @@ export class FlashSwapPreviewRequest {
      */
     'sellAmount'?: string;
     /**
-     * 买入的资产名称， 根据接口`查询支持闪兑的所有交易对列表 GET /flash_swap/currency_pairs`获取
+     * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs.
      */
     'buyCurrency': string;
     /**

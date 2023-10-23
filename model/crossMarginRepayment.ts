@@ -35,7 +35,7 @@ export class CrossMarginRepayment {
      */
     'interest'?: string;
     /**
-     * 还款类型 , none - 无还款类型, manual_repay - 手动还款 , auto_repay - 自动还款, cancel_auto_repay - 撤单后自动还款
+     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
      */
     'repaymentType'?: string;
 

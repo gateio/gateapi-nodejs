@@ -262,10 +262,10 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1546905600, // number | 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间
+  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'limit': 100, // number | 指定数据点的数量，适用于取最近 `limit` 数量的数据，该字段与 `from`, `to` 互斥，如果指定了 `from`, `to` 中的任意字段，该字段会被拒绝
-  'interval': '5m' // '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d' | 数据点的时间间隔，注意 1w 代表一个自然周，7d 的时间是和 Unix 初始时间对齐, 30d 代表一个自然月
+  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'interval': '5m' // '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d' | Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days
 };
 api.listFuturesCandlesticks(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -279,10 +279,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间 | [optional] [default to undefined]
+ **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
- **limit** | **number**| 指定数据点的数量，适用于取最近 &#x60;limit&#x60; 数量的数据，该字段与 &#x60;from&#x60;, &#x60;to&#x60; 互斥，如果指定了 &#x60;from&#x60;, &#x60;to&#x60; 中的任意字段，该字段会被拒绝 | [optional] [default to 100]
- **interval** | **Interval**| 数据点的时间间隔，注意 1w 代表一个自然周，7d 的时间是和 Unix 初始时间对齐, 30d 代表一个自然月 | [optional] [default to &#39;5m&#39;]
+ **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **interval** | **Interval**| Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days | [optional] [default to &#39;5m&#39;]
 
 ### Return type
 
@@ -317,9 +317,9 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'from': 1546905600, // number | 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间
+  'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'limit': 100, // number | 指定数据点的数量，适用于取最近 `limit` 数量的数据，该字段与 `from`, `to` 互斥，如果指定了 `from`, `to` 中的任意字段，该字段会被拒绝
+  'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d' | Interval time between data points
 };
 api.listFuturesPremiumIndex(settle, contract, opts)
@@ -334,9 +334,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **from** | **number**| 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间 | [optional] [default to undefined]
+ **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
- **limit** | **number**| 指定数据点的数量，适用于取最近 &#x60;limit&#x60; 数量的数据，该字段与 &#x60;from&#x60;, &#x60;to&#x60; 互斥，如果指定了 &#x60;from&#x60;, &#x60;to&#x60; 中的任意字段，该字段会被拒绝 | [optional] [default to 100]
+ **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
 ### Return type
@@ -751,7 +751,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
-  'holding': true // boolean | 只返回真实持仓-true,全部返回-false
+  'holding': true // boolean | Return only real positions - true, return all - false.
 };
 api.listPositions(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -764,7 +764,7 @@ api.listPositions(settle, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **holding** | **boolean**| 只返回真实持仓-true,全部返回-false | [optional] [default to undefined]
+ **holding** | **boolean**| Return only real positions - true, return all - false. | [optional] [default to undefined]
 
 ### Return type
 
@@ -1683,7 +1683,7 @@ const opts = {
   'to': 1547706332, // number | End timestamp
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'role': "maker" // string | 查询角色，Maker 或 Taker
+  'role': "maker" // string | Query role, maker or taker.
 };
 api.getMyTradesWithTimeRange(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1701,7 +1701,7 @@ Name | Type | Description  | Notes
  **to** | **number**| End timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **role** | **string**| 查询角色，Maker 或 Taker | [optional] [default to undefined]
+ **role** | **string**| Query role, maker or taker. | [optional] [default to undefined]
 
 ### Return type
 
@@ -1740,8 +1740,8 @@ const opts = {
   'offset': 0, // number | List offset, starting from 0
   'from': 1547706332, // number | Start timestamp
   'to': 1547706332, // number | End timestamp
-  'side': "short", // string | 方向筛选，做多(long)或做空(short)
-  'pnl': "profit" // string | 盈亏判断，盈利(profit)或亏损(loss)
+  'side': "short", // string | Query side.  long or shot
+  'pnl': "profit" // string | Query profit or loss
 };
 api.listPositionClose(settle, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1759,8 +1759,8 @@ Name | Type | Description  | Notes
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
- **side** | **string**| 方向筛选，做多(long)或做空(short) | [optional] [default to undefined]
- **pnl** | **string**| 盈亏判断，盈利(profit)或亏损(loss) | [optional] [default to undefined]
+ **side** | **string**| Query side.  long or shot | [optional] [default to undefined]
+ **pnl** | **string**| Query profit or loss | [optional] [default to undefined]
 
 ### Return type
 

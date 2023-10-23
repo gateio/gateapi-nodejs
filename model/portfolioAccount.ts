@@ -62,15 +62,15 @@ export class PortfolioAccount {
      */
     'totalAvailableMargin'?: string;
     /**
-     * Total amount of the portfolio margin account
+     * Total margin balance of the account
      */
     'portfolioMarginTotal'?: string;
     /**
-     * Total liabilities of the portfolio margin account
+     * Total liabilities of the account
      */
     'portfolioMarginTotalLiab'?: string;
     /**
-     * Total equity of the portfolio margin account
+     * Total equity of the account
      */
     'portfolioMarginTotalEquity'?: string;
 

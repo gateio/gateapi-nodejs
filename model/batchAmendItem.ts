@@ -10,54 +10,40 @@
  */
 
 /**
- * Loan records
+ * Order information that needs to be modified
  */
-export class PortfolioLoanRecord {
+export class BatchAmendItem {
     /**
-     * id
+     * The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the \'text\' field).
      */
-    'id'?: number;
-    /**
-     * type: borrow - borrow, repay - repay
-     */
-    'type'?: string;
-    /**
-     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
-     */
-    'repaymentType'?: string;
+    'orderId': string;
     /**
      * Currency pair
      */
-    'currencyPair'?: string;
+    'currencyPair': string;
     /**
-     * Currency
+     * Default to spot, portfolio, and margin accounts if not specified. Use \'cross_margin\' to query cross margin accounts. Only \'cross_margin\' can be specified for portfolio margin accounts.
      */
-    'currency'?: string;
+    'account'?: string;
     /**
-     * The amount of lending or repaying
+     * trade amount, only one of amount and price can be specified
      */
     'amount'?: string;
     /**
-     * Created time
+     * trade price, only one of amount and price can be specified
      */
-    'createTime'?: number;
+    'price'?: string;
+    /**
+     * Custom info during amending order
+     */
+    'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
-        },
-        {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
-        },
-        {
-            name: 'repaymentType',
-            baseName: 'repayment_type',
+            name: 'orderId',
+            baseName: 'order_id',
             type: 'string',
         },
         {
@@ -66,8 +52,8 @@ export class PortfolioLoanRecord {
             type: 'string',
         },
         {
-            name: 'currency',
-            baseName: 'currency',
+            name: 'account',
+            baseName: 'account',
             type: 'string',
         },
         {
@@ -76,13 +62,18 @@ export class PortfolioLoanRecord {
             type: 'string',
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'amendText',
+            baseName: 'amend_text',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return PortfolioLoanRecord.attributeTypeMap;
+        return BatchAmendItem.attributeTypeMap;
     }
 }

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mode** | **string** | 保证金模式 - cross_margin : 现货全仓保证金 | [default to undefined]
-**enabled** | **boolean** | 是否启用 | [default to undefined]
+**mode** | **string** | Portfolio mode - cross_margin : cross margin | [default to undefined]
+**enabled** | **boolean** | Is it enabled? | [default to undefined]
 

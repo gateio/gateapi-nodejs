@@ -4,23 +4,23 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCollateralLoanOrders**](CollateralLoanApi.md#listCollateralLoanOrders) | **GET** /loan/collateral/orders | 查询抵押借币订单列表
-[**createCollateralLoan**](CollateralLoanApi.md#createCollateralLoan) | **POST** /loan/collateral/orders | 抵押借币借贷下单
+[**listCollateralLoanOrders**](CollateralLoanApi.md#listCollateralLoanOrders) | **GET** /loan/collateral/orders | List Orders
+[**createCollateralLoan**](CollateralLoanApi.md#createCollateralLoan) | **POST** /loan/collateral/orders | Place order
 [**getCollateralLoanOrderDetail**](CollateralLoanApi.md#getCollateralLoanOrderDetail) | **GET** /loan/collateral/orders/{order_id} | Get a single order
-[**repayCollateralLoan**](CollateralLoanApi.md#repayCollateralLoan) | **POST** /loan/collateral/repay | 抵押借币还款
-[**listRepayRecords**](CollateralLoanApi.md#listRepayRecords) | **GET** /loan/collateral/repay_records | 查询抵押借币还款记录
-[**listCollateralRecords**](CollateralLoanApi.md#listCollateralRecords) | **GET** /loan/collateral/collaterals | 查询质押物调整记录
-[**operateCollateral**](CollateralLoanApi.md#operateCollateral) | **POST** /loan/collateral/collaterals | 增加或赎回质押物
-[**getUserTotalAmount**](CollateralLoanApi.md#getUserTotalAmount) | **GET** /loan/collateral/total_amount | 查询用户总借贷与质押数量
-[**getUserLtvInfo**](CollateralLoanApi.md#getUserLtvInfo) | **GET** /loan/collateral/ltv | 查询用户质押率和可借剩余币种
-[**listCollateralCurrencies**](CollateralLoanApi.md#listCollateralCurrencies) | **GET** /loan/collateral/currencies | 查询支持的借款币种和抵押币种
+[**repayCollateralLoan**](CollateralLoanApi.md#repayCollateralLoan) | **POST** /loan/collateral/repay | Repayment
+[**listRepayRecords**](CollateralLoanApi.md#listRepayRecords) | **GET** /loan/collateral/repay_records | Repayment history
+[**listCollateralRecords**](CollateralLoanApi.md#listCollateralRecords) | **GET** /loan/collateral/collaterals | Query collateral adjustment records
+[**operateCollateral**](CollateralLoanApi.md#operateCollateral) | **POST** /loan/collateral/collaterals | Increase or redeem collateral
+[**getUserTotalAmount**](CollateralLoanApi.md#getUserTotalAmount) | **GET** /loan/collateral/total_amount | Query the total borrowing and collateral amount for the user
+[**getUserLtvInfo**](CollateralLoanApi.md#getUserLtvInfo) | **GET** /loan/collateral/ltv | Query user\&#39;s collateralization ratio
+[**listCollateralCurrencies**](CollateralLoanApi.md#listCollateralCurrencies) | **GET** /loan/collateral/currencies | Query supported borrowing and collateral currencies
 
 
 ## listCollateralLoanOrders
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralOrder>; }> listCollateralLoanOrders(opts)
 
-查询抵押借币订单列表
+List Orders
 
 ### Example
 
@@ -36,8 +36,8 @@ const api = new GateApi.CollateralLoanApi(client);
 const opts = {
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned in a single list
-  'collateralCurrency': "BTC", // string | 质押币种
-  'borrowCurrency': "USDT" // string | 借款币种
+  'collateralCurrency': "BTC", // string | Collateral
+  'borrowCurrency': "USDT" // string | Borrowed currency
 };
 api.listCollateralLoanOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -51,8 +51,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
- **collateralCurrency** | **string**| 质押币种 | [optional] [default to undefined]
- **borrowCurrency** | **string**| 借款币种 | [optional] [default to undefined]
+ **collateralCurrency** | **string**| Collateral | [optional] [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -71,7 +71,7 @@ Promise<{ response: AxiosResponse; body: Array<CollateralOrder>; }> [CollateralO
 
 > Promise<{ response: http.IncomingMessage; body: OrderResp; }> createCollateralLoan(createCollateralOrder)
 
-抵押借币借贷下单
+Place order
 
 ### Example
 
@@ -157,7 +157,7 @@ Promise<{ response: AxiosResponse; body: CollateralOrder; }> [CollateralOrder](C
 
 > Promise<{ response: http.IncomingMessage; body: RepayResp; }> repayCollateralLoan(repayLoan)
 
-抵押借币还款
+Repayment
 
 ### Example
 
@@ -200,7 +200,7 @@ Promise<{ response: AxiosResponse; body: RepayResp; }> [RepayResp](RepayResp.md)
 
 > Promise<{ response: http.IncomingMessage; body: Array<RepayRecord>; }> listRepayRecords(source, opts)
 
-查询抵押借币还款记录
+Repayment history
 
 ### Example
 
@@ -213,10 +213,10 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
-const source = "repay"; // string | 操作类型 ;  repay - 普通还款, liquidate - 平仓
+const source = "repay"; // string | Operation type: repay - Regular repayment, liquidate - Liquidation
 const opts = {
-  'borrowCurrency': "USDT", // string | 借款币种
-  'collateralCurrency': "BTC", // string | 质押币种
+  'borrowCurrency': "USDT", // string | Borrowed currency
+  'collateralCurrency': "BTC", // string | Collateral
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1609459200, // number | Start timestamp of the query
@@ -232,9 +232,9 @@ api.listRepayRecords(source, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **string**| 操作类型 ;  repay - 普通还款, liquidate - 平仓 | [default to undefined]
- **borrowCurrency** | **string**| 借款币种 | [optional] [default to undefined]
- **collateralCurrency** | **string**| 质押币种 | [optional] [default to undefined]
+ **source** | **string**| Operation type: repay - Regular repayment, liquidate - Liquidation | [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
+ **collateralCurrency** | **string**| Collateral | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
@@ -257,7 +257,7 @@ Promise<{ response: AxiosResponse; body: Array<RepayRecord>; }> [RepayRecord](Re
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralRecord>; }> listCollateralRecords(opts)
 
-查询质押物调整记录
+Query collateral adjustment records
 
 ### Example
 
@@ -275,8 +275,8 @@ const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1609459200, // number | Start timestamp of the query
   'to': 1609459200, // number | Time range ending, default to current time
-  'borrowCurrency': "USDT", // string | 借款币种
-  'collateralCurrency': "BTC" // string | 质押币种
+  'borrowCurrency': "USDT", // string | Borrowed currency
+  'collateralCurrency': "BTC" // string | Collateral
 };
 api.listCollateralRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -292,8 +292,8 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **borrowCurrency** | **string**| 借款币种 | [optional] [default to undefined]
- **collateralCurrency** | **string**| 质押币种 | [optional] [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
+ **collateralCurrency** | **string**| Collateral | [optional] [default to undefined]
 
 ### Return type
 
@@ -312,7 +312,7 @@ Promise<{ response: AxiosResponse; body: Array<CollateralRecord>; }> [Collateral
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> operateCollateral(collateralAlign)
 
-增加或赎回质押物
+Increase or redeem collateral
 
 ### Example
 
@@ -355,7 +355,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: UserTotalAmount; }> getUserTotalAmount()
 
-查询用户总借贷与质押数量
+Query the total borrowing and collateral amount for the user
 
 ### Example
 
@@ -394,7 +394,7 @@ Promise<{ response: AxiosResponse; body: UserTotalAmount; }> [UserTotalAmount](U
 
 > Promise<{ response: http.IncomingMessage; body: UserLtvInfo; }> getUserLtvInfo(collateralCurrency, borrowCurrency)
 
-查询用户质押率和可借剩余币种
+Query user\&#39;s collateralization ratio
 
 ### Example
 
@@ -407,8 +407,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
-const collateralCurrency = "BTC"; // string | 质押币种
-const borrowCurrency = "USDT"; // string | 借款币种
+const collateralCurrency = "BTC"; // string | Collateral
+const borrowCurrency = "USDT"; // string | Borrowed currency
 api.getUserLtvInfo(collateralCurrency, borrowCurrency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -419,8 +419,8 @@ api.getUserLtvInfo(collateralCurrency, borrowCurrency)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collateralCurrency** | **string**| 质押币种 | [default to undefined]
- **borrowCurrency** | **string**| 借款币种 | [default to undefined]
+ **collateralCurrency** | **string**| Collateral | [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [default to undefined]
 
 ### Return type
 
@@ -439,7 +439,7 @@ Promise<{ response: AxiosResponse; body: UserLtvInfo; }> [UserLtvInfo](UserLtvIn
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralLoanCurrency>; }> listCollateralCurrencies(opts)
 
-查询支持的借款币种和抵押币种
+Query supported borrowing and collateral currencies
 
 ### Example
 
@@ -451,7 +451,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.CollateralLoanApi(client);
 const opts = {
-  'loanCurrency': "BTC" // string | 借款币种参数,当loan_currency没传时会返回支持的所有借款币种,当传loan_currency时会查询该借款币种支持的抵押币种数组
+  'loanCurrency': "BTC" // string | The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency.
 };
 api.listCollateralCurrencies(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -463,7 +463,7 @@ api.listCollateralCurrencies(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loanCurrency** | **string**| 借款币种参数,当loan_currency没传时会返回支持的所有借款币种,当传loan_currency时会查询该借款币种支持的抵押币种数组 | [optional] [default to undefined]
+ **loanCurrency** | **string**| The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency. | [optional] [default to undefined]
 
 ### Return type
 

@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**listUniLendRecords**](EarnUniApi.md#listUniLendRecords) | **GET** /earn/uni/lend_records | List records of lending
 [**getUniInterest**](EarnUniApi.md#getUniInterest) | **GET** /earn/uni/interests/{currency} | Get the user\&#39;s total interest income of specified currency
 [**listUniInterestRecords**](EarnUniApi.md#listUniInterestRecords) | **GET** /earn/uni/interest_records | List interest records
+[**switchInterestReinvest**](EarnUniApi.md#switchInterestReinvest) | **PUT** /earn/uni/interest_reinvest | Set interest reinvestment toggle
+[**getUniInterestStatus**](EarnUniApi.md#getUniInterestStatus) | **GET** /earn/uni/interest_status/{currency} | query currency interest compounding status
 
 
 ## listUniCurrencies
@@ -368,6 +370,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Array<UniInterestRecord>; }> [UniInterestRecord](UniInterestRecord.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## switchInterestReinvest
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> switchInterestReinvest(uniInterestMode)
+
+Set interest reinvestment toggle
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnUniApi(client);
+const uniInterestMode = new UniInterestMode(); // UniInterestMode | 
+api.switchInterestReinvest(uniInterestMode)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uniInterestMode** | [**UniInterestMode**](UniInterestMode.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## getUniInterestStatus
+
+> Promise<{ response: http.IncomingMessage; body: UniCurrencyInterest; }> getUniInterestStatus(currency)
+
+query currency interest compounding status
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnUniApi(client);
+const currency = "btc"; // string | Currency
+api.getUniInterestStatus(currency)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: UniCurrencyInterest; }> [UniCurrencyInterest](UniCurrencyInterest.md)
 
 ### Authorization
 

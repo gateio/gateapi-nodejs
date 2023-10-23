@@ -283,10 +283,10 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.from 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间
+     * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param opts.limit 指定数据点的数量，适用于取最近 &#x60;limit&#x60; 数量的数据，该字段与 &#x60;from&#x60;, &#x60;to&#x60; 互斥，如果指定了 &#x60;from&#x60;, &#x60;to&#x60; 中的任意字段，该字段会被拒绝
-     * @param opts.interval 数据点的时间间隔，注意 1w 代表一个自然周，7d 的时间是和 Unix 初始时间对齐, 30d 代表一个自然月
+     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days
      */
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt' | 'usd',
@@ -376,9 +376,9 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.from 指定 K 线图的起始时间，注意时间格式为秒(s)精度的 Unix 时间戳，不指定则默认为 to - 100 * interval，即向前最多 100 个点的时间
+     * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param opts.limit 指定数据点的数量，适用于取最近 &#x60;limit&#x60; 数量的数据，该字段与 &#x60;from&#x60;, &#x60;to&#x60; 互斥，如果指定了 &#x60;from&#x60;, &#x60;to&#x60; 中的任意字段，该字段会被拒绝
+     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points
      */
     public async listFuturesPremiumIndex(
@@ -878,7 +878,7 @@ export class FuturesApi {
      * @summary List all positions of a user
      * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.holding 只返回真实持仓-true,全部返回-false
+     * @param opts.holding Return only real positions - true, return all - false.
      */
     public async listPositions(
         settle: 'btc' | 'usdt' | 'usd',
@@ -1940,7 +1940,7 @@ export class FuturesApi {
      * @param opts.to End timestamp
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.role 查询角色，Maker 或 Taker
+     * @param opts.role Query role, maker or taker.
      */
     public async getMyTradesWithTimeRange(
         settle: 'btc' | 'usdt' | 'usd',
@@ -2014,8 +2014,8 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
-     * @param opts.side 方向筛选，做多(long)或做空(short)
-     * @param opts.pnl 盈亏判断，盈利(profit)或亏损(loss)
+     * @param opts.side Query side.  long or shot
+     * @param opts.pnl Query profit or loss
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt' | 'usd',

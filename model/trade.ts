@@ -66,6 +66,14 @@ export class Trade {
      * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
+    /**
+     * Represents a unique and consecutive trade ID within a single market. It is used to track and identify trades in the specific market
+     */
+    'sequenceId'?: string;
+    /**
+     * User defined information. No value in public endpoints
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -138,6 +146,16 @@ export class Trade {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'sequenceId',
+            baseName: 'sequence_id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

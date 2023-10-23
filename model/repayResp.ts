@@ -10,11 +10,11 @@
  */
 
 /**
- * 还款
+ * Repay
  */
 export class RepayResp {
     /**
-     * 本金
+     * Principal
      */
     'repaidPrincipal'?: string;
     /**

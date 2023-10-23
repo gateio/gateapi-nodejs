@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **totalInitialMarginRate** | **string** | Total initial margin rate | [optional] [default to undefined]
 **totalMaintenanceMarginRate** | **string** | Total maintenance margin rate | [optional] [default to undefined]
 **totalAvailableMargin** | **string** | Total available margin | [optional] [default to undefined]
-**portfolioMarginTotal** | **string** | Total amount of the portfolio margin account | [optional] [default to undefined]
-**portfolioMarginTotalLiab** | **string** | Total liabilities of the portfolio margin account | [optional] [default to undefined]
-**portfolioMarginTotalEquity** | **string** | Total equity of the portfolio margin account | [optional] [default to undefined]
+**portfolioMarginTotal** | **string** | Total margin balance of the account | [optional] [default to undefined]
+**portfolioMarginTotalLiab** | **string** | Total liabilities of the account | [optional] [default to undefined]
+**portfolioMarginTotalEquity** | **string** | Total equity of the account | [optional] [default to undefined]
 

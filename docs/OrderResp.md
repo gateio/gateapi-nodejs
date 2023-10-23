@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | 订单id | [optional] [default to undefined]
+**orderId** | **number** | Order ID | [optional] [default to undefined]
 

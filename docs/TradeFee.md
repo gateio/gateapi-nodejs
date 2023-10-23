@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **pointType** | **string** | Point type. 0 - Initial version. 1 - new version since 202009 | [optional] [default to undefined]
 **futuresTakerFee** | **string** | Futures trading taker fee | [optional] [default to undefined]
 **futuresMakerFee** | **string** | Future trading maker fee | [optional] [default to undefined]
-**deliveryTakerFee** | **string** | 交割合约 taker 费率 | [optional] [default to undefined]
-**deliveryMakerFee** | **string** | 交割合约 maker 费率 | [optional] [default to undefined]
+**deliveryTakerFee** | **string** | Delivery trading taker fee | [optional] [default to undefined]
+**deliveryMakerFee** | **string** | Delivery trading maker fee | [optional] [default to undefined]
 

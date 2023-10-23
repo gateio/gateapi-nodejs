@@ -11,7 +11,7 @@
 
 export class OrderResp {
     /**
-     * 订单id
+     * Order ID
      */
     'orderId'?: number;
 

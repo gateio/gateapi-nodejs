@@ -5,8 +5,10 @@ export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
 export * from './agencyTransactionHistory';
+export * from './amendOrderResult';
 export * from './apiV4KeyPerm';
 export * from './autoRepaySetting';
+export * from './batchAmendItem';
 export * from './batchFuturesOrder';
 export * from './batchOrder';
 export * from './cancelBatchOrder';
@@ -146,7 +148,9 @@ export * from './transfer';
 export * from './triggerOrderResponse';
 export * from './triggerTime';
 export * from './uniCurrency';
+export * from './uniCurrencyInterest';
 export * from './uniCurrencyPair';
+export * from './uniInterestMode';
 export * from './uniInterestRecord';
 export * from './uniLend';
 export * from './uniLendInterest';
@@ -170,8 +174,10 @@ import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
 import { AgencyTransactionHistory } from './agencyTransactionHistory';
+import { AmendOrderResult } from './amendOrderResult';
 import { ApiV4KeyPerm } from './apiV4KeyPerm';
 import { AutoRepaySetting } from './autoRepaySetting';
+import { BatchAmendItem } from './batchAmendItem';
 import { BatchFuturesOrder } from './batchFuturesOrder';
 import { BatchOrder } from './batchOrder';
 import { CancelBatchOrder } from './cancelBatchOrder';
@@ -311,7 +317,9 @@ import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 import { TriggerTime } from './triggerTime';
 import { UniCurrency } from './uniCurrency';
+import { UniCurrencyInterest } from './uniCurrencyInterest';
 import { UniCurrencyPair } from './uniCurrencyPair';
+import { UniInterestMode } from './uniInterestMode';
 import { UniInterestRecord } from './uniInterestRecord';
 import { UniLend } from './uniLend';
 import { UniLendInterest } from './uniLendInterest';
@@ -408,8 +416,10 @@ const typeMap: { [index: string]: any } = {
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
     AgencyTransactionHistory: AgencyTransactionHistory,
+    AmendOrderResult: AmendOrderResult,
     ApiV4KeyPerm: ApiV4KeyPerm,
     AutoRepaySetting: AutoRepaySetting,
+    BatchAmendItem: BatchAmendItem,
     BatchFuturesOrder: BatchFuturesOrder,
     BatchOrder: BatchOrder,
     CancelBatchOrder: CancelBatchOrder,
@@ -549,7 +559,9 @@ const typeMap: { [index: string]: any } = {
     TriggerOrderResponse: TriggerOrderResponse,
     TriggerTime: TriggerTime,
     UniCurrency: UniCurrency,
+    UniCurrencyInterest: UniCurrencyInterest,
     UniCurrencyPair: UniCurrencyPair,
+    UniInterestMode: UniInterestMode,
     UniInterestRecord: UniInterestRecord,
     UniLend: UniLend,
     UniLendInterest: UniLendInterest,

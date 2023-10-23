@@ -68,7 +68,7 @@ Promise<{ response: AxiosResponse; body: PortfolioAccount; }> [PortfolioAccount]
 
 Retrieve the account\&#39;s portfolio mode
 
-cross_margin - 现货全仓保证金
+cross_margin - cross margin
 
 ### Example
 

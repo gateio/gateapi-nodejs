@@ -13,6 +13,8 @@
 import { CreateUniLend } from '../model/createUniLend';
 import { PatchUniLend } from '../model/patchUniLend';
 import { UniCurrency } from '../model/uniCurrency';
+import { UniCurrencyInterest } from '../model/uniCurrencyInterest';
+import { UniInterestMode } from '../model/uniInterestMode';
 import { UniInterestRecord } from '../model/uniInterestRecord';
 import { UniLend } from '../model/uniLend';
 import { UniLendInterest } from '../model/uniLendInterest';
@@ -347,5 +349,76 @@ export class EarnUniApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<UniInterestRecord>>(config, 'Array<UniInterestRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Set interest reinvestment toggle
+     * @param uniInterestMode
+     */
+    public async switchInterestReinvest(
+        uniInterestMode: UniInterestMode,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/uni/interest_reinvest';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'uniInterestMode' is not null or undefined
+        if (uniInterestMode === null || uniInterestMode === undefined) {
+            throw new Error(
+                'Required parameter uniInterestMode was null or undefined when calling switchInterestReinvest.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(uniInterestMode, 'UniInterestMode'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary query currency interest compounding status
+     * @param currency Currency
+     */
+    public async getUniInterestStatus(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: UniCurrencyInterest }> {
+        const localVarPath =
+            this.client.basePath +
+            '/earn/uni/interest_status/{currency}'.replace(
+                '{' + 'currency' + '}',
+                encodeURIComponent(String(currency)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getUniInterestStatus.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UniCurrencyInterest>(config, 'UniCurrencyInterest', authSettings);
     }
 }

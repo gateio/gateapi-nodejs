@@ -208,8 +208,8 @@ export class AccountApi {
     }
 
     /**
-     * - 只允许创建此STP组的主账号删除STP用户组用户 - 只允许删除当前主账户下的账户，不允许跨主账户
-     * @summary STP用户组中删除用户
+     * - Only the main account that created this STP group is allowed to delete users from the STP user group - Deletion is limited to accounts under the current main account; cross-account deletion is not permitted
+     * @summary Delete the user in the STP group
      * @param stpId STP Group ID
      * @param requestBody User ID
      */

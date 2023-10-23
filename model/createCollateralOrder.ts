@@ -11,19 +11,19 @@
 
 export class CreateCollateralOrder {
     /**
-     * 质押数量
+     * Collateral amount
      */
     'collateralAmount': string;
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency': string;
     /**
-     * 借款数量
+     * Borrowing amount
      */
     'borrowAmount': string;
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'borrowCurrency': string;
 

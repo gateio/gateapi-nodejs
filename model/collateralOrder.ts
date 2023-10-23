@@ -10,71 +10,71 @@
  */
 
 /**
- * 抵押借币订单
+ * Collateral Order
  */
 export class CollateralOrder {
     /**
-     * 订单id
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency'?: string;
     /**
-     * 质押数量
+     * Collateral amount
      */
     'collateralAmount'?: string;
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * 借款数量
+     * Borrowing amount
      */
     'borrowAmount'?: string;
     /**
-     * 已还款数量
+     * Repaid amount
      */
     'repaidAmount'?: string;
     /**
-     * 已还本金
+     * Repaid principal
      */
     'repaidPrincipal'?: string;
     /**
-     * 已还利息
+     * Repaid interest
      */
     'repaidInterest'?: string;
     /**
-     * 初始质押率
+     * The initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * 当前质押率
+     * The current collateralization rate
      */
     'currentLtv'?: string;
     /**
-     * 平仓质押率
+     * The liquidation collateralization rate
      */
     'liquidateLtv'?: string;
     /**
-     * 订单状态: - initial: 下单初始状态 - collateral_deducted: 扣除质押物成功 - collateral_returning: 放款失败-待退回质押物 - lent: 放款成功 - repaying: 还款中 - liquidating: 平仓中 - finished: 已完成 - closed_liquidated: 已结束-平仓还款结束
+     * Order status: - initial: Initial state after placing the order - collateral_deducted: Collateral deduction successful - collateral_returning: Loan failed - Collateral return pending - lent: Loan successful - repaying: Repayment in progress - liquidating: Liquidation in progress - finished: Order completed - closed_liquidated: Liquidation and repayment completed
      */
     'status'?: string;
     /**
-     * 借款时间，时间戳，单位秒
+     * Borrowing time, timestamp in seconds
      */
     'borrowTime'?: number;
     /**
-     * 待还本息（待还本金+待还利息）
+     * Outstanding principal and interest (outstanding principal + outstanding interest)
      */
     'leftRepayTotal'?: string;
     /**
-     * 待还本金
+     * outstanding principal
      */
     'leftRepayPrincipal'?: string;
     /**
-     * 待还利息
+     * outstanding interest
      */
     'leftRepayInterest'?: string;
 

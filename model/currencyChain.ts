@@ -23,7 +23,7 @@ export class CurrencyChain {
      */
     'nameEn'?: string;
     /**
-     * 币种智能合约地址，如果没有地址则为空字串
+     * Smart contract address for the currency; if no address is available, it will be an empty string
      */
     'contractAddress'?: string;
     /**

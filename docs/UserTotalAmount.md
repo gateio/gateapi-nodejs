@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**borrowAmount** | **string** | 借贷总额，以 USDT 计算 | [optional] [default to undefined]
-**collateralAmount** | **string** | 质押总额，以 USDT 计算 | [optional] [default to undefined]
+**borrowAmount** | **string** | Total borrowing amount, calculated in USDT | [optional] [default to undefined]
+**collateralAmount** | **string** | Total collateral amount, calculated in USDT | [optional] [default to undefined]
 

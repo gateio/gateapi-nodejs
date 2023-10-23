@@ -30,6 +30,10 @@ export class UniInterestRecord {
      */
     'interest'?: string;
     /**
+     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
+     */
+    'interestStatus'?: string;
+    /**
      * Created time
      */
     'createTime'?: number;
@@ -55,6 +59,11 @@ export class UniInterestRecord {
         {
             name: 'interest',
             baseName: 'interest',
+            type: 'string',
+        },
+        {
+            name: 'interestStatus',
+            baseName: 'interest_status',
             type: 'string',
         },
         {

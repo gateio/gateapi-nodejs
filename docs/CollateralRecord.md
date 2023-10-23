@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderId** | **number** | 订单id | [optional] [default to undefined]
-**recordId** | **number** | 质押物记录 id | [optional] [default to undefined]
-**borrowCurrency** | **string** | 借款币种 | [optional] [default to undefined]
-**borrowAmount** | **string** | 借款数量 | [optional] [default to undefined]
-**collateralCurrency** | **string** | 质押币种 | [optional] [default to undefined]
-**beforeCollateral** | **string** | 调整前质押数量 | [optional] [default to undefined]
-**afterCollateral** | **string** | 调整后质押数量 | [optional] [default to undefined]
-**beforeLtv** | **string** | 调整前质押率 | [optional] [default to undefined]
-**afterLtv** | **string** | 调整后质押率 | [optional] [default to undefined]
-**operateTime** | **number** | 操作时间，时间戳，单位秒 | [optional] [default to undefined]
+**orderId** | **number** | Order ID | [optional] [default to undefined]
+**recordId** | **number** | Collateral record ID | [optional] [default to undefined]
+**borrowCurrency** | **string** | Borrowed currency | [optional] [default to undefined]
+**borrowAmount** | **string** | Borrowing amount | [optional] [default to undefined]
+**collateralCurrency** | **string** | Collateral | [optional] [default to undefined]
+**beforeCollateral** | **string** | The collateral amount before adjustment | [optional] [default to undefined]
+**afterCollateral** | **string** | The collateral amount after adjustment | [optional] [default to undefined]
+**beforeLtv** | **string** | The collateral ratio before adjustment | [optional] [default to undefined]
+**afterLtv** | **string** | The collateral ratio after adjustment | [optional] [default to undefined]
+**operateTime** | **number** | Timestamp of the operation, in seconds | [optional] [default to undefined]
 

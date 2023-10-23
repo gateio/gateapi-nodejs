@@ -11,11 +11,11 @@
 
 export class PortfolioMode {
     /**
-     * 保证金模式 - cross_margin : 现货全仓保证金
+     * Portfolio mode - cross_margin : cross margin
      */
     'mode': string;
     /**
-     * 是否启用
+     * Is it enabled?
      */
     'enabled': boolean;
 

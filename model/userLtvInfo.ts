@@ -10,35 +10,35 @@
  */
 
 /**
- * 用户币种统计数据
+ * User\'s currency statistics data
  */
 export class UserLtvInfo {
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency'?: string;
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * 初始质押率
+     * The initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * 预警质押率
+     * Warning collateralization ratio
      */
     'alertLtv'?: string;
     /**
-     * 平仓质押率
+     * The liquidation collateralization rate
      */
     'liquidateLtv'?: string;
     /**
-     * 借款币种的最小可借数量
+     * Minimum borrowable amount for the loan currency
      */
     'minBorrowAmount'?: string;
     /**
-     * 借款币种的剩余可借数量
+     * Remaining borrowable amount for the loan currency
      */
     'leftBorrowableAmount'?: string;
 

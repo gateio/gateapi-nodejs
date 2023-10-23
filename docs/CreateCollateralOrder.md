@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**collateralAmount** | **string** | 质押数量 | [default to undefined]
-**collateralCurrency** | **string** | 质押币种 | [default to undefined]
-**borrowAmount** | **string** | 借款数量 | [default to undefined]
-**borrowCurrency** | **string** | 借款币种 | [default to undefined]
+**collateralAmount** | **string** | Collateral amount | [default to undefined]
+**collateralCurrency** | **string** | Collateral | [default to undefined]
+**borrowAmount** | **string** | Borrowing amount | [default to undefined]
+**borrowCurrency** | **string** | Borrowed currency | [default to undefined]
 

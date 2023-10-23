@@ -62,7 +62,7 @@ export class BatchOrder {
      */
     'type'?: BatchOrder.Type;
     /**
-     * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account
+     * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account, portfolio - portfolio account
      */
     'account'?: BatchOrder.Account;
     /**
@@ -335,6 +335,7 @@ export namespace BatchOrder {
         Spot = <any>'spot',
         Margin = <any>'margin',
         CrossMargin = <any>'cross_margin',
+        Portfolio = <any>'portfolio',
     }
     export enum Side {
         Buy = <any>'buy',

@@ -10,47 +10,47 @@
  */
 
 /**
- * 质押物记录
+ * Collateral record
  */
 export class CollateralRecord {
     /**
-     * 订单id
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * 质押物记录 id
+     * Collateral record ID
      */
     'recordId'?: number;
     /**
-     * 借款币种
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * 借款数量
+     * Borrowing amount
      */
     'borrowAmount'?: string;
     /**
-     * 质押币种
+     * Collateral
      */
     'collateralCurrency'?: string;
     /**
-     * 调整前质押数量
+     * The collateral amount before adjustment
      */
     'beforeCollateral'?: string;
     /**
-     * 调整后质押数量
+     * The collateral amount after adjustment
      */
     'afterCollateral'?: string;
     /**
-     * 调整前质押率
+     * The collateral ratio before adjustment
      */
     'beforeLtv'?: string;
     /**
-     * 调整后质押率
+     * The collateral ratio after adjustment
      */
     'afterLtv'?: string;
     /**
-     * 操作时间，时间戳，单位秒
+     * Timestamp of the operation, in seconds
      */
     'operateTime'?: number;
 

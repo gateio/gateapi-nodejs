@@ -42,12 +42,12 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询抵押借币订单列表
+     * @summary List Orders
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.collateralCurrency 质押币种
-     * @param opts.borrowCurrency 借款币种
+     * @param opts.collateralCurrency Collateral
+     * @param opts.borrowCurrency Borrowed currency
      */
     public async listCollateralLoanOrders(opts: {
         page?: number;
@@ -99,7 +99,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 抵押借币借贷下单
+     * @summary Place order
      * @param createCollateralOrder
      */
     public async createCollateralLoan(
@@ -176,7 +176,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 抵押借币还款
+     * @summary Repayment
      * @param repayLoan
      */
     public async repayCollateralLoan(repayLoan: RepayLoan): Promise<{ response: AxiosResponse; body: RepayResp }> {
@@ -210,11 +210,11 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询抵押借币还款记录
-     * @param source 操作类型 ;  repay - 普通还款, liquidate - 平仓
+     * @summary Repayment history
+     * @param source Operation type: repay - Regular repayment, liquidate - Liquidation
      * @param opts Optional parameters
-     * @param opts.borrowCurrency 借款币种
-     * @param opts.collateralCurrency 质押币种
+     * @param opts.borrowCurrency Borrowed currency
+     * @param opts.collateralCurrency Collateral
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp of the query
@@ -290,14 +290,14 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询质押物调整记录
+     * @summary Query collateral adjustment records
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
-     * @param opts.borrowCurrency 借款币种
-     * @param opts.collateralCurrency 质押币种
+     * @param opts.borrowCurrency Borrowed currency
+     * @param opts.collateralCurrency Collateral
      */
     public async listCollateralRecords(opts: {
         page?: number;
@@ -359,7 +359,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 增加或赎回质押物
+     * @summary Increase or redeem collateral
      * @param collateralAlign
      */
     public async operateCollateral(collateralAlign: CollateralAlign): Promise<{ response: AxiosResponse; body?: any }> {
@@ -386,7 +386,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询用户总借贷与质押数量
+     * @summary Query the total borrowing and collateral amount for the user
      */
     public async getUserTotalAmount(): Promise<{ response: AxiosResponse; body: UserTotalAmount }> {
         const localVarPath = this.client.basePath + '/loan/collateral/total_amount';
@@ -413,9 +413,9 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询用户质押率和可借剩余币种
-     * @param collateralCurrency 质押币种
-     * @param borrowCurrency 借款币种
+     * @summary Query user\'s collateralization ratio
+     * @param collateralCurrency Collateral
+     * @param borrowCurrency Borrowed currency
      */
     public async getUserLtvInfo(
         collateralCurrency: string,
@@ -459,9 +459,9 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary 查询支持的借款币种和抵押币种
+     * @summary Query supported borrowing and collateral currencies
      * @param opts Optional parameters
-     * @param opts.loanCurrency 借款币种参数,当loan_currency没传时会返回支持的所有借款币种,当传loan_currency时会查询该借款币种支持的抵押币种数组
+     * @param opts.loanCurrency The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency.
      */
     public async listCollateralCurrencies(opts: {
         loanCurrency?: string;
