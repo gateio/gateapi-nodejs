@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **fee** | **string** | Trading fee | [optional] [default to undefined]
 **minBaseAmount** | **string** | Minimum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **minQuoteAmount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
+**maxBaseAmount** | **string** | Maximum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
+**maxQuoteAmount** | **string** | Maximum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **amountPrecision** | **number** | Amount scale | [optional] [default to undefined]
 **precision** | **number** | Price scale | [optional] [default to undefined]
 **tradeStatus** | **string** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] [default to undefined]

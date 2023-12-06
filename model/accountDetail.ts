@@ -27,6 +27,10 @@ export class AccountDetail {
      * User ID
      */
     'userId'?: number;
+    /**
+     * User VIP level
+     */
+    'tier'?: number;
     'key'?: AccountDetailKey;
 
     static discriminator: string | undefined = undefined;
@@ -45,6 +49,11 @@ export class AccountDetail {
         {
             name: 'userId',
             baseName: 'user_id',
+            type: 'number',
+        },
+        {
+            name: 'tier',
+            baseName: 'tier',
             type: 'number',
         },
         {

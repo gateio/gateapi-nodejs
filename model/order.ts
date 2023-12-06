@@ -54,9 +54,9 @@ export class Order {
      */
     'type'?: Order.Type;
     /**
-     * Account type, spot - spot account, margin - margin account, cross_margin - cross margin account, portfolio - portfolio account  Portfolio margin account must set to `cross_margin`
+     * Account types， spot - spot account, margin - margin account, unified - unified account, cross_margin - cross margin account.  Portfolio margin accounts can only be set to `cross_margin`
      */
-    'account'?: Order.Account;
+    'account'?: string;
     /**
      * Order side
      */
@@ -206,7 +206,7 @@ export class Order {
         {
             name: 'account',
             baseName: 'account',
-            type: 'Order.Account',
+            type: 'string',
         },
         {
             name: 'side',
@@ -339,12 +339,6 @@ export namespace Order {
     export enum Type {
         Limit = <any>'limit',
         Market = <any>'market',
-    }
-    export enum Account {
-        Spot = <any>'spot',
-        Margin = <any>'margin',
-        CrossMargin = <any>'cross_margin',
-        Portfolio = <any>'portfolio',
     }
     export enum Side {
         Buy = <any>'buy',

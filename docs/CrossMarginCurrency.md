@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **userMaxBorrowAmount** | **string** | Maximum borrow value allowed per user, in USDT | [optional] [default to undefined]
 **totalMaxBorrowAmount** | **string** | Maximum borrow value allowed for this currency, in USDT | [optional] [default to undefined]
 **price** | **string** | Price change between this currency and USDT | [optional] [default to undefined]
+**loanable** | **boolean** | Whether currency is borrowed | [optional] [default to undefined]
 **status** | **number** | status  - &#x60;0&#x60; : disable  - &#x60;1&#x60; : enable | [optional] [default to undefined]
 

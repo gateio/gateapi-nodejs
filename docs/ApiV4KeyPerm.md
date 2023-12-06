@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Permission name (all permissions will be removed if no value is passed)  - wallet: wallet - spot: spot/margin - futures: perpetual contract - delivery: delivery - earn: earn - options: options- account: Account - portfolio: Portfolio - loan: Loan | [optional] [default to undefined]
+**name** | **string** | Permission name (all permissions will be removed if no value is passed)  - wallet: wallet - spot: spot/margin - futures: perpetual contract - delivery: delivery - earn: earn - options: options\\m- account: Account - unified: unified - loan: Loan | [optional] [default to undefined]
 **readOnly** | **boolean** | read only | [optional] [default to undefined]
 
 ## Enum: ApiV4KeyPerm.Name
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 * `Account` (value: `'account'`)
 
-* `Portfolio` (value: `'portfolio'`)
+* `Unified` (value: `'unified'`)
 
 * `Loan` (value: `'loan'`)
 

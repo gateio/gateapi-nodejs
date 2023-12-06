@@ -11,9 +11,9 @@
 
 export class SpotPricePutOrder {
     /**
-     * Order type, default to `limit`
+     * Order type，default to `limit`  - limit : Limit Order - market : Market Order
      */
-    'type'?: string;
+    'type'?: SpotPricePutOrder.Type;
     /**
      * Order side  - buy: buy side - sell: sell side
      */
@@ -23,7 +23,7 @@ export class SpotPricePutOrder {
      */
     'price': string;
     /**
-     * Order amount
+     * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
      */
     'amount': string;
     /**
@@ -41,7 +41,7 @@ export class SpotPricePutOrder {
         {
             name: 'type',
             baseName: 'type',
-            type: 'string',
+            type: 'SpotPricePutOrder.Type',
         },
         {
             name: 'side',
@@ -76,6 +76,10 @@ export class SpotPricePutOrder {
 }
 
 export namespace SpotPricePutOrder {
+    export enum Type {
+        Limit = <any>'limit',
+        Market = <any>'market',
+    }
     export enum Side {
         Buy = <any>'buy',
         Sell = <any>'sell',

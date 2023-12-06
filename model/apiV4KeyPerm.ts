@@ -11,7 +11,7 @@
 
 export class ApiV4KeyPerm {
     /**
-     * Permission name (all permissions will be removed if no value is passed)  - wallet: wallet - spot: spot/margin - futures: perpetual contract - delivery: delivery - earn: earn - options: options- account: Account - portfolio: Portfolio - loan: Loan
+     * Permission name (all permissions will be removed if no value is passed)  - wallet: wallet - spot: spot/margin - futures: perpetual contract - delivery: delivery - earn: earn - options: options\\m- account: Account - unified: unified - loan: Loan
      */
     'name'?: ApiV4KeyPerm.Name;
     /**
@@ -48,7 +48,7 @@ export namespace ApiV4KeyPerm {
         Earn = <any>'earn',
         Options = <any>'options',
         Account = <any>'account',
-        Portfolio = <any>'portfolio',
+        Unified = <any>'unified',
         Loan = <any>'loan',
     }
 }

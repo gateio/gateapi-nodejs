@@ -10,7 +10,7 @@
  */
 
 /**
- * 余币宝利息复投开关
+ * Lend & Earn interest reinvestment toggle
  */
 export class UniInterestMode {
     /**

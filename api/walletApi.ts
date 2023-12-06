@@ -25,6 +25,7 @@ import { TradeFee } from '../model/tradeFee';
 import { TransactionID } from '../model/transactionID';
 import { Transfer } from '../model/transfer';
 import { WithdrawStatus } from '../model/withdrawStatus';
+import { WithdrawalRecord } from '../model/withdrawalRecord';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -132,7 +133,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<LedgerRecord> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -173,7 +174,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(config, 'Array<LedgerRecord>', authSettings);
+        return this.client.request<Array<WithdrawalRecord>>(config, 'Array<WithdrawalRecord>', authSettings);
     }
 
     /**

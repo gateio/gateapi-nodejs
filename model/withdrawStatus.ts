@@ -54,6 +54,10 @@ export class WithdrawStatus {
      * Fixed withdrawal fee on multiple chains
      */
     'withdrawFixOnChains'?: { [key: string]: string };
+    /**
+     * Percentage withdrawal fee on multiple chains
+     */
+    'withdrawPercentOnChains'?: { [key: string]: string };
 
     static discriminator: string | undefined = undefined;
 
@@ -111,6 +115,11 @@ export class WithdrawStatus {
         {
             name: 'withdrawFixOnChains',
             baseName: 'withdraw_fix_on_chains',
+            type: '{ [key: string]: string; }',
+        },
+        {
+            name: 'withdrawPercentOnChains',
+            baseName: 'withdraw_percent_on_chains',
             type: '{ [key: string]: string; }',
         },
     ];

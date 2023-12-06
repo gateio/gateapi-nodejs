@@ -117,6 +117,10 @@ export class FuturesOrder {
      * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
+    /**
+     * Additional information
+     */
+    'bizInfo'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -249,6 +253,11 @@ export class FuturesOrder {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'bizInfo',
+            baseName: 'biz_info',
             type: 'string',
         },
     ];

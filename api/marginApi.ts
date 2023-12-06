@@ -28,10 +28,10 @@ import { MarginAccountBook } from '../model/marginAccountBook';
 import { MarginBorrowable } from '../model/marginBorrowable';
 import { MarginCurrencyPair } from '../model/marginCurrencyPair';
 import { MarginTransferable } from '../model/marginTransferable';
-import { PortfolioBorrowable } from '../model/portfolioBorrowable';
 import { RepayRequest } from '../model/repayRequest';
 import { Repayment } from '../model/repayment';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
+import { UnifiedBorrowable } from '../model/unifiedBorrowable';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -1502,7 +1502,7 @@ export class MarginApi {
      */
     public async getCrossMarginBorrowable(
         currency: string,
-    ): Promise<{ response: AxiosResponse; body: PortfolioBorrowable }> {
+    ): Promise<{ response: AxiosResponse; body: UnifiedBorrowable }> {
         const localVarPath = this.client.basePath + '/margin/cross/borrowable';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1529,6 +1529,6 @@ export class MarginApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<PortfolioBorrowable>(config, 'PortfolioBorrowable', authSettings);
+        return this.client.request<UnifiedBorrowable>(config, 'UnifiedBorrowable', authSettings);
     }
 }

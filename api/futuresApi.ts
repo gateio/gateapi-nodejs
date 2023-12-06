@@ -806,10 +806,11 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * If the `contract` field is provided, it can only filter records that include this field after 2023-10-30.
      * @summary Query account book
      * @param settle Settle currency
      * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
@@ -818,6 +819,7 @@ export class FuturesApi {
     public async listFuturesAccountBook(
         settle: 'btc' | 'usdt' | 'usd',
         opts: {
+            contract?: string;
             limit?: number;
             from?: number;
             to?: number;
@@ -843,6 +845,10 @@ export class FuturesApi {
         }
 
         opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
+
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
@@ -1438,7 +1444,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
+     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
      * @summary List futures orders
      * @param settle Settle currency
      * @param status Only list the orders with this status
@@ -1718,7 +1724,7 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation
+     * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
      * @summary Get a single order
      * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
@@ -1866,7 +1872,7 @@ export class FuturesApi {
     }
 
     /**
-     *
+     * By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/my_trades_timerange`.
      * @summary List personal trading history
      * @param settle Settle currency
      * @param opts Optional parameters

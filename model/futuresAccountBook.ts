@@ -30,6 +30,14 @@ export class FuturesAccountBook {
      * Comment
      */
     'text'?: string;
+    /**
+     * Futures contract, the field is only available for data after 2023-10-30.
+     */
+    'contract'?: string;
+    /**
+     * trade id
+     */
+    'tradeId'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -57,6 +65,16 @@ export class FuturesAccountBook {
         {
             name: 'text',
             baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
+        },
+        {
+            name: 'tradeId',
+            baseName: 'trade_id',
             type: 'string',
         },
     ];

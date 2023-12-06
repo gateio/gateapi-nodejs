@@ -40,6 +40,9 @@ export * from './deliveryCandlestick';
 export * from './deliveryContract';
 export * from './deliverySettlement';
 export * from './depositAddress';
+export * from './dualGetOrders';
+export * from './dualGetPlans';
+export * from './eth2Swap';
 export * from './flashSwapCurrency';
 export * from './flashSwapCurrencyPair';
 export * from './flashSwapOrder';
@@ -105,13 +108,7 @@ export * from './orderBook';
 export * from './orderPatch';
 export * from './orderResp';
 export * from './patchUniLend';
-export * from './portfolioAccount';
-export * from './portfolioBorrowable';
-export * from './portfolioLoan';
-export * from './portfolioLoanRecord';
-export * from './portfolioMarginBalance';
-export * from './portfolioMode';
-export * from './portfolioTransferable';
+export * from './placeDualInvestmentOrder';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
@@ -129,6 +126,11 @@ export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
 export * from './stpGroup';
 export * from './stpGroupUser';
+export * from './structuredBuy';
+export * from './structuredGetProjectList';
+export * from './structuredGetProjectListRequest';
+export * from './structuredOrderList';
+export * from './structuredOrderListRequest';
 export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
@@ -158,9 +160,17 @@ export * from './uniLendRecord';
 export * from './uniLoan';
 export * from './uniLoanInterestRecord';
 export * from './uniLoanRecord';
+export * from './unifiedAccount';
+export * from './unifiedBalance';
+export * from './unifiedBorrowable';
+export * from './unifiedLoan';
+export * from './unifiedLoanRecord';
+export * from './unifiedMode';
+export * from './unifiedTransferable';
 export * from './userLtvInfo';
 export * from './userTotalAmount';
 export * from './withdrawStatus';
+export * from './withdrawalRecord';
 
 import { AxiosRequestConfig } from 'axios';
 import querystring = require('querystring');
@@ -209,6 +219,9 @@ import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
 import { DepositAddress } from './depositAddress';
+import { DualGetOrders } from './dualGetOrders';
+import { DualGetPlans } from './dualGetPlans';
+import { Eth2Swap } from './eth2Swap';
 import { FlashSwapCurrency } from './flashSwapCurrency';
 import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
 import { FlashSwapOrder } from './flashSwapOrder';
@@ -274,13 +287,7 @@ import { OrderBook } from './orderBook';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
 import { PatchUniLend } from './patchUniLend';
-import { PortfolioAccount } from './portfolioAccount';
-import { PortfolioBorrowable } from './portfolioBorrowable';
-import { PortfolioLoan } from './portfolioLoan';
-import { PortfolioLoanRecord } from './portfolioLoanRecord';
-import { PortfolioMarginBalance } from './portfolioMarginBalance';
-import { PortfolioMode } from './portfolioMode';
-import { PortfolioTransferable } from './portfolioTransferable';
+import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
@@ -298,6 +305,11 @@ import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
 import { StpGroup } from './stpGroup';
 import { StpGroupUser } from './stpGroupUser';
+import { StructuredBuy } from './structuredBuy';
+import { StructuredGetProjectList } from './structuredGetProjectList';
+import { StructuredGetProjectListRequest } from './structuredGetProjectListRequest';
+import { StructuredOrderList } from './structuredOrderList';
+import { StructuredOrderListRequest } from './structuredOrderListRequest';
 import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
@@ -327,9 +339,17 @@ import { UniLendRecord } from './uniLendRecord';
 import { UniLoan } from './uniLoan';
 import { UniLoanInterestRecord } from './uniLoanInterestRecord';
 import { UniLoanRecord } from './uniLoanRecord';
+import { UnifiedAccount } from './unifiedAccount';
+import { UnifiedBalance } from './unifiedBalance';
+import { UnifiedBorrowable } from './unifiedBorrowable';
+import { UnifiedLoan } from './unifiedLoan';
+import { UnifiedLoanRecord } from './unifiedLoanRecord';
+import { UnifiedMode } from './unifiedMode';
+import { UnifiedTransferable } from './unifiedTransferable';
 import { UserLtvInfo } from './userLtvInfo';
 import { UserTotalAmount } from './userTotalAmount';
 import { WithdrawStatus } from './withdrawStatus';
+import { WithdrawalRecord } from './withdrawalRecord';
 
 /* tslint:disable:no-unused-variable */
 const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
@@ -385,15 +405,14 @@ const enumsMap: { [index: string]: any } = {
     'OptionsPositionClose.Side': OptionsPositionClose.Side,
     'Order.Status': Order.Status,
     'Order.Type': Order.Type,
-    'Order.Account': Order.Account,
     'Order.Side': Order.Side,
     'Order.TimeInForce': Order.TimeInForce,
     'Order.StpAct': Order.StpAct,
     'Order.FinishAs': Order.FinishAs,
-    'PortfolioLoan.Type': PortfolioLoan.Type,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
     'RepayRequest.Mode': RepayRequest.Mode,
+    'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
     'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
     'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
@@ -406,6 +425,8 @@ const enumsMap: { [index: string]: any } = {
     'Trade.Role': Trade.Role,
     'Transfer.From': Transfer.From,
     'Transfer.To': Transfer.To,
+    'UnifiedLoan.Type': UnifiedLoan.Type,
+    'WithdrawalRecord.Status': WithdrawalRecord.Status,
 };
 
 const typeMap: { [index: string]: any } = {
@@ -451,6 +472,9 @@ const typeMap: { [index: string]: any } = {
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
     DepositAddress: DepositAddress,
+    DualGetOrders: DualGetOrders,
+    DualGetPlans: DualGetPlans,
+    Eth2Swap: Eth2Swap,
     FlashSwapCurrency: FlashSwapCurrency,
     FlashSwapCurrencyPair: FlashSwapCurrencyPair,
     FlashSwapOrder: FlashSwapOrder,
@@ -516,13 +540,7 @@ const typeMap: { [index: string]: any } = {
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
     PatchUniLend: PatchUniLend,
-    PortfolioAccount: PortfolioAccount,
-    PortfolioBorrowable: PortfolioBorrowable,
-    PortfolioLoan: PortfolioLoan,
-    PortfolioLoanRecord: PortfolioLoanRecord,
-    PortfolioMarginBalance: PortfolioMarginBalance,
-    PortfolioMode: PortfolioMode,
-    PortfolioTransferable: PortfolioTransferable,
+    PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
@@ -540,6 +558,11 @@ const typeMap: { [index: string]: any } = {
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     StpGroup: StpGroup,
     StpGroupUser: StpGroupUser,
+    StructuredBuy: StructuredBuy,
+    StructuredGetProjectList: StructuredGetProjectList,
+    StructuredGetProjectListRequest: StructuredGetProjectListRequest,
+    StructuredOrderList: StructuredOrderList,
+    StructuredOrderListRequest: StructuredOrderListRequest,
     SubAccount: SubAccount,
     SubAccountBalance: SubAccountBalance,
     SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
@@ -569,9 +592,17 @@ const typeMap: { [index: string]: any } = {
     UniLoan: UniLoan,
     UniLoanInterestRecord: UniLoanInterestRecord,
     UniLoanRecord: UniLoanRecord,
+    UnifiedAccount: UnifiedAccount,
+    UnifiedBalance: UnifiedBalance,
+    UnifiedBorrowable: UnifiedBorrowable,
+    UnifiedLoan: UnifiedLoan,
+    UnifiedLoanRecord: UnifiedLoanRecord,
+    UnifiedMode: UnifiedMode,
+    UnifiedTransferable: UnifiedTransferable,
     UserLtvInfo: UserLtvInfo,
     UserTotalAmount: UserTotalAmount,
     WithdrawStatus: WithdrawStatus,
+    WithdrawalRecord: WithdrawalRecord,
 };
 
 export class ObjectSerializer {

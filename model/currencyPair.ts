@@ -38,6 +38,14 @@ export class CurrencyPair {
      */
     'minQuoteAmount'?: string;
     /**
+     * Maximum amount of base currency to trade, `null` means no limit
+     */
+    'maxBaseAmount'?: string;
+    /**
+     * Maximum amount of quote currency to trade, `null` means no limit
+     */
+    'maxQuoteAmount'?: string;
+    /**
      * Amount scale
      */
     'amountPrecision'?: number;
@@ -89,6 +97,16 @@ export class CurrencyPair {
         {
             name: 'minQuoteAmount',
             baseName: 'min_quote_amount',
+            type: 'string',
+        },
+        {
+            name: 'maxBaseAmount',
+            baseName: 'max_base_amount',
+            type: 'string',
+        },
+        {
+            name: 'maxQuoteAmount',
+            baseName: 'max_quote_amount',
             type: 'string',
         },
         {

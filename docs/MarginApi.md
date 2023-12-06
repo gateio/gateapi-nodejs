@@ -1557,7 +1557,7 @@ Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string]
 
 ## getCrossMarginBorrowable
 
-> Promise<{ response: http.IncomingMessage; body: PortfolioBorrowable; }> getCrossMarginBorrowable(currency)
+> Promise<{ response: http.IncomingMessage; body: UnifiedBorrowable; }> getCrossMarginBorrowable(currency)
 
 Get the max borrowable amount for a specific cross margin currency
 
@@ -1587,7 +1587,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: PortfolioBorrowable; }> [PortfolioBorrowable](PortfolioBorrowable.md)
+Promise<{ response: AxiosResponse; body: UnifiedBorrowable; }> [UnifiedBorrowable](UnifiedBorrowable.md)
 
 ### Authorization
 

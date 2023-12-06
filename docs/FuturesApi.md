@@ -685,6 +685,8 @@ Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](Fut
 
 Query account book
 
+If the &#x60;contract&#x60; field is provided, it can only filter records that include this field after 2023-10-30.
+
 ### Example
 
 ```typescript
@@ -698,6 +700,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | 'usd' | Settle currency
 const opts = {
+  'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'from': 1547706332, // number | Start timestamp
   'to': 1547706332, // number | End timestamp
@@ -714,6 +717,7 @@ api.listFuturesAccountBook(settle, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp | [optional] [default to undefined]
  **to** | **number**| End timestamp | [optional] [default to undefined]
@@ -1214,7 +1218,7 @@ Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position
 
 List futures orders
 
-Zero-filled order cannot be retrieved 10 minutes after order cancellation
+- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/orders_timerange&#x60;.
 
 ### Example
 
@@ -1471,7 +1475,7 @@ Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder>; }> [BatchFutu
 
 Get a single order
 
-Zero-filled order cannot be retrieved 10 minutes after order cancellation
+- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  
 
 ### Example
 
@@ -1609,6 +1613,8 @@ Promise<{ response: AxiosResponse; body: FuturesOrder; }> [FuturesOrder](Futures
 > Promise<{ response: http.IncomingMessage; body: Array<MyFuturesTrade>; }> getMyTrades(settle, opts)
 
 List personal trading history
+
+By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use &#x60;GET /futures/{settle}/my_trades_timerange&#x60;.
 
 ### Example
 

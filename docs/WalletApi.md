@@ -108,7 +108,7 @@ Promise<{ response: AxiosResponse; body: DepositAddress; }> [DepositAddress](Dep
 
 ## listWithdrawals
 
-> Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }> listWithdrawals(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<WithdrawalRecord>; }> listWithdrawals(opts)
 
 Retrieve withdrawal records
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord>; }> [WithdrawalRecord](WithdrawalRecord.md)
 
 ### Authorization
 

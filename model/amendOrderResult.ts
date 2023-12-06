@@ -42,7 +42,7 @@ export class AmendOrderResult {
      */
     'message'?: string;
     /**
-     * Account types， spot - spot account, margin - margin account, portfolio - portfolio margin account, cross_margin - cross margin account.Portfolio margin accounts can only be set to `cross_margin`
+     * Account types， spot - spot account, margin - margin account, unified - unified account, cross_margin - cross margin account.Portfolio margin accounts can only be set to `cross_margin`
      */
     'account'?: string;
 

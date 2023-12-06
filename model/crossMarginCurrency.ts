@@ -43,6 +43,10 @@ export class CrossMarginCurrency {
      */
     'price'?: string;
     /**
+     * Whether currency is borrowed
+     */
+    'loanable'?: boolean;
+    /**
      * status  - `0` : disable  - `1` : enable
      */
     'status'?: number;
@@ -89,6 +93,11 @@ export class CrossMarginCurrency {
             name: 'price',
             baseName: 'price',
             type: 'string',
+        },
+        {
+            name: 'loanable',
+            baseName: 'loanable',
+            type: 'boolean',
         },
         {
             name: 'status',

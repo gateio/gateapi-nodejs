@@ -153,6 +153,10 @@ export class Contract {
      * Created time of the contract
      */
     'createTime'?: number;
+    /**
+     * The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
+     */
+    'fundingCapRatio'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -331,6 +335,11 @@ export class Contract {
             name: 'createTime',
             baseName: 'create_time',
             type: 'number',
+        },
+        {
+            name: 'fundingCapRatio',
+            baseName: 'funding_cap_ratio',
+            type: 'string',
         },
     ];
 
