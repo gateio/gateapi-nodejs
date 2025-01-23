@@ -21,58 +21,70 @@ export class UnifiedAccount {
      */
     'refreshTime'?: number;
     /**
-     * Whether account is locked
+     * 账户是否被锁定,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是false
      */
     'locked'?: boolean;
     'balances'?: { [key: string]: UnifiedBalance };
     /**
-     * The total asset value in USDT. Sum of `(available + freeze) * price`
+     * 折算成 USD 的账户总资产，即所有币种 `(available + freeze) * price` 之和,(已废弃，待下线字段，用unified_account_total代替)
      */
     'total'?: string;
     /**
-     * The total borrowed amount in USDT equivalent. Sum of `borrowed * price`
+     * 折算成 USD 的账户总借入数量，即所有币种(不包括点卡)的 `borrowed * price` 之和,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'borrowed'?: string;
     /**
-     * Total initial margin
+     * 总初始保证金,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance
+     * 总保证金余额,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin
+     * 总维持保证金,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate
+     * 总初始保证金率,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate
+     * 总维持保证金率,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalMaintenanceMarginRate'?: string;
     /**
-     * Total available margin
+     * 可用的保证金额度,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalAvailableMargin'?: string;
     /**
-     * Total amount of the portfolio margin account
+     * 统一账户总资产,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
      */
     'unifiedAccountTotal'?: string;
     /**
-     * Total liabilities of the portfolio margin account
+     * 统一账户总借贷,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'unifiedAccountTotalLiab'?: string;
     /**
-     * Total equity of the portfolio margin account
+     * 统一账户总权益,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
      */
     'unifiedAccountTotalEquity'?: string;
     /**
-     * Leverage
+     * 实际杠杆,在跨币种保证金/组合保证金模式下有效
      */
     'leverage'?: string;
+    /**
+     * 总挂单损失,单位USDT,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
+     */
+    'spotOrderLoss'?: string;
+    /**
+     * 现货对冲状态, true - 启用，false - 未启用
+     */
+    'spotHedge'?: boolean;
+    /**
+     * 是否将余币宝理财资金作为保证金
+     */
+    'useFunding'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -156,6 +168,21 @@ export class UnifiedAccount {
             name: 'leverage',
             baseName: 'leverage',
             type: 'string',
+        },
+        {
+            name: 'spotOrderLoss',
+            baseName: 'spot_order_loss',
+            type: 'string',
+        },
+        {
+            name: 'spotHedge',
+            baseName: 'spot_hedge',
+            type: 'boolean',
+        },
+        {
+            name: 'useFunding',
+            baseName: 'use_funding',
+            type: 'boolean',
         },
     ];
 

@@ -34,6 +34,10 @@ export class UniLoanInterestRecord {
      */
     'status'?: number;
     /**
+     * Type, platform - platform，margin - margin
+     */
+    'type'?: string;
+    /**
      * Created time
      */
     'createTime'?: number;
@@ -65,6 +69,11 @@ export class UniLoanInterestRecord {
             name: 'status',
             baseName: 'status',
             type: 'number',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
             name: 'createTime',

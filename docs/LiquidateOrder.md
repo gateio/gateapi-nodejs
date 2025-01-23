@@ -8,4 +8,5 @@ Name | Type | Description | Notes
 **currencyPair** | **string** | Currency pair | [default to undefined]
 **amount** | **string** | Trade amount | [default to undefined]
 **price** | **string** | Order price | [default to undefined]
+**actionMode** | **string** | Processing Mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request, and it is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default) | [optional] [default to undefined]
 

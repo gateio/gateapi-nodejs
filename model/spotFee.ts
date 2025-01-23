@@ -46,6 +46,10 @@ export class SpotFee {
      * Currency pair
      */
     'currencyPair'?: string;
+    /**
+     * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
+     */
+    'debitFee'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -94,6 +98,11 @@ export class SpotFee {
             name: 'currencyPair',
             baseName: 'currency_pair',
             type: 'string',
+        },
+        {
+            name: 'debitFee',
+            baseName: 'debit_fee',
+            type: 'number',
         },
     ];
 

@@ -17,6 +17,8 @@ export * from './marginApi';
 import { MarginApi } from './marginApi';
 export * from './marginUniApi';
 import { MarginUniApi } from './marginUniApi';
+export * from './multiCollateralLoanApi';
+import { MultiCollateralLoanApi } from './multiCollateralLoanApi';
 export * from './optionsApi';
 import { OptionsApi } from './optionsApi';
 export * from './rebateApi';
@@ -42,6 +44,7 @@ export const APIS = [
     FuturesApi,
     MarginApi,
     MarginUniApi,
+    MultiCollateralLoanApi,
     OptionsApi,
     RebateApi,
     SpotApi,

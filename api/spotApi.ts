@@ -10,7 +10,6 @@
  */
 
 /* tslint:disable:no-unused-locals */
-import { AmendOrderResult } from '../model/amendOrderResult';
 import { BatchAmendItem } from '../model/batchAmendItem';
 import { BatchOrder } from '../model/batchOrder';
 import { CancelBatchOrder } from '../model/cancelBatchOrder';
@@ -22,15 +21,16 @@ import { LiquidateOrder } from '../model/liquidateOrder';
 import { OpenOrders } from '../model/openOrders';
 import { Order } from '../model/order';
 import { OrderBook } from '../model/orderBook';
+import { OrderCancel } from '../model/orderCancel';
 import { OrderPatch } from '../model/orderPatch';
 import { SpotAccount } from '../model/spotAccount';
 import { SpotAccountBook } from '../model/spotAccountBook';
 import { SpotFee } from '../model/spotFee';
+import { SpotInsuranceHistory } from '../model/spotInsuranceHistory';
 import { SpotPriceTriggeredOrder } from '../model/spotPriceTriggeredOrder';
 import { SystemTime } from '../model/systemTime';
 import { Ticker } from '../model/ticker';
 import { Trade } from '../model/trade';
-import { TradeFee } from '../model/tradeFee';
 import { TriggerOrderResponse } from '../model/triggerOrderResponse';
 import { TriggerTime } from '../model/triggerTime';
 import { ObjectSerializer } from '../model/models';
@@ -277,7 +277,7 @@ export class SpotApi {
     }
 
     /**
-     * You can use `from` and `to` to query by time range, or use `last_id` by scrolling page. The default behavior is by time range.  Scrolling query using `last_id` is not recommended any more. If `last_id` is specified, time range query parameters will be ignored.
+     * 支持指定 `from` 和 `to` 按时间范围查询或基于 `last_id` 的翻页查询。默认按时间范围查询,查询范围为最近30天。  基于 `last_id` 翻页的查询方式不再推荐继续使用。如果指定 `last_id` ，时间范围查询参数会被忽略。  使用 limit&page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) <= 100000。
      * @summary Retrieve market trades
      * @param currencyPair Currency pair
      * @param opts Optional parameters
@@ -420,7 +420,7 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
      */
-    public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: TradeFee }> {
+    public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
         const localVarPath = this.client.basePath + '/spot/fee';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -445,7 +445,7 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TradeFee>(config, 'TradeFee', authSettings);
+        return this.client.request<SpotFee>(config, 'SpotFee', authSettings);
     }
 
     /**
@@ -522,7 +522,7 @@ export class SpotApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days
+     * 记录查询时间范围不允许超过 30 天。  使用 limit&page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) <= 100000。
      * @summary Query account book
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
@@ -591,8 +591,13 @@ export class SpotApi {
      * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 10 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders
      * @summary Create a batch of orders
      * @param order
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
-    public async createBatchOrders(order: Array<Order>): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
+    public async createBatchOrders(
+        order: Array<Order>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -607,6 +612,11 @@ export class SpotApi {
         // verify required parameter 'order' is not null or undefined
         if (order === null || order === undefined) {
             throw new Error('Required parameter order was null or undefined when calling createBatchOrders.');
+        }
+
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -722,8 +732,8 @@ export class SpotApi {
      */
     public async listOrders(
         currencyPair: string,
-        status: 'open' | 'finished',
-        opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: 'buy' | 'sell' },
+        status: string,
+        opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
@@ -749,7 +759,7 @@ export class SpotApi {
         opts = opts || {};
         localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
 
         if (opts.page !== undefined) {
             localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
@@ -772,7 +782,7 @@ export class SpotApi {
         }
 
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -787,11 +797,16 @@ export class SpotApi {
     }
 
     /**
-     * You can place orders with spot, portfolio, margin or cross margin account through setting the `account `field. It defaults to `spot`, which means spot account is used to place orders.  If the user is using unified account, it defaults to the unified account.  When margin account is used, i.e., `account` is `margin`, `auto_borrow` field can be set to `true` to enable the server to borrow the amount lacked using `POST /margin/loans` when your account\'s balance is not enough. Whether margin orders\' fill will be used to repay margin loans automatically is determined by the auto repayment setting in your **margin account**, which can be updated or queried using `/margin/auto_repay` API.  When cross margin account is used, i.e., `account` is `cross_margin`, `auto_borrow` can also be enabled to achieve borrowing the insufficient amount automatically if cross account\'s balance is not enough. But it differs from margin account that automatic repayment is determined by order\'s `auto_repay` field and only current order\'s fill will be used to repay cross margin loans.  Automatic repayment will be triggered when the order is finished, i.e., its status is either `cancelled` or `closed`.  **Order status**  An order waiting to be filled is `open`, and it stays `open` until it is filled totally. If fully filled, order is finished and its status turns to `closed`.If the order is cancelled before it is totally filled, whether or not partially filled, its status is `cancelled`. **Iceberg order**  `iceberg` field can be used to set the amount shown. Set to `-1` to hide the order completely. Note that the hidden part\'s fee will be charged using taker\'s fee rate. **Self Trade Prevention**  - Set `stp_act` to decide the strategy of self-trade prevention. For detailed usage, refer to the `stp_act` parameter in request body
+     * 支持现货、保证金、杠杆、全仓杠杆下单。通过 `account` 字段来使用不同的账户，默认为 `spot` ，即使用现货账户下单，如果用户是 `unified` 账户，默认是用统一账户下单  使用杠杆账户交易，即 `account` 设置为 `margin` 的时候，可以设置 `auto_borrow` 为 `true`， 在账户余额不足的情况，由系统自动执行 `POST /margin/uni/loans` 借入不足部分。 杠杆下单成交之后的获取到的资产是否自动用于归还逐仓杠杆账户的借入单，取决于用户逐仓杠杆**账户**的自动还款设置， 该账户自动还款设置可以通过 `/margin/auto_repay` 来查询和设置。  使用全仓杠杆账户交易，即 `account` 设置为 `cross_margin` 的时候，同样可以启用 `auto_borrow` 来实现自动借入不足部分，但是与逐仓杠杆账户不同的是，全仓杠杆账户的委托是否自动还款取决于下单时的 `auto_repay` 设置，该设置只对当前委托生效，即只有该委托成交之后获取到的资产会用来还款全仓杠杆账户的借入单。 全仓杠杆账户下单目前支持同时开启 `auto_borrow` 和 `auto_repay`。  自动还款会在订单结束时触发，即 `status` 为 `cancelled` 或者 `closed` 。  **委托状态**  挂单中的委托状态是 `open` ，在数量全部成交之前保持为 `open` 。如果被全部吃掉，则订单结束，状态变成 `closed` 。 假如全部成交之前，订单被撤销，不管是否有部分成交，状态都会变为 `cancelled`  **冰山委托**  `iceberg` 用来设置冰山委托显示的数量，如果需要完全隐藏，设置为 `-1` 。注意隐藏部分成交时按照 taker 的手续费率收取。  **限制用户自成交**  设置 `stp_act` 来决定使用限制用户自成交的策略
      * @summary Create an order
      * @param order
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
-    public async createOrder(order: Order): Promise<{ response: AxiosResponse; body: Order }> {
+    public async createOrder(
+        order: Order,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -808,6 +823,11 @@ export class SpotApi {
             throw new Error('Required parameter order was null or undefined when calling createOrder.');
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -821,17 +841,22 @@ export class SpotApi {
     }
 
     /**
-     * If `account` is not set, all open orders, including spot, portfolio, margin and cross margin ones, will be cancelled.  You can set `account` to cancel only orders within the specified account
+     * 不指定 `account` 参数时，包括现货、保证金、逐仓杠杆和全仓杠杆在内的所有挂单都会执行撤销操作。 不指定 `currency_pair`时，会撤销所有交易对的挂单 可以单独指定某一种账户，撤销指定账户下的所有挂单
      * @summary Cancel all `open` orders in specified currency pair
-     * @param currencyPair Currency pair
      * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
      * @param opts.side All bids or asks. Both included if not specified
-     * @param opts.account Specify account type  - classic account：Default to all account types being included   - portfolio margin account：&#x60;cross_margin&#x60; only
+     * @param opts.account 指定账户类型  - 经典账户：不指定则全部包含   - 统一账户：指定&#x60;unified&#x60; - 统一账户(旧)：只能指定&#x60;cross_margin&#x60;
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
-    public async cancelOrders(
-        currencyPair: string,
-        opts: { side?: 'buy' | 'sell'; account?: 'spot' | 'margin' | 'cross_margin' },
-    ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
+    public async cancelOrders(opts: {
+        currencyPair?: string;
+        side?: string;
+        account?: string;
+        actionMode?: string;
+        xGateExptime?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -843,23 +868,25 @@ export class SpotApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling cancelOrders.');
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
-        opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'buy' | 'sell'");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(
-                opts.account,
-                "'spot' | 'margin' | 'cross_margin'",
-            );
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
+
+        if (opts.actionMode !== undefined) {
+            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, 'string');
+        }
+
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -870,16 +897,19 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Order>>(config, 'Array<Order>', authSettings);
+        return this.client.request<Array<OrderCancel>>(config, 'Array<OrderCancel>', authSettings);
     }
 
     /**
      * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
      * @summary Cancel a batch of orders with an ID list
      * @param cancelBatchOrder
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async cancelBatchOrders(
         cancelBatchOrder: Array<CancelBatchOrder>,
+        opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
         const localVarQueryParameters: any = {};
@@ -899,6 +929,11 @@ export class SpotApi {
             );
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -915,7 +950,7 @@ export class SpotApi {
      * Spot, portfolio and margin orders are queried by default. If cross margin orders are needed or portfolio margin account are used, account must be set to cross_margin.
      * @summary Get a single order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
-     * @param currencyPair Currency pair
+     * @param currencyPair 指定交易对查询。如果查询挂单的记录，该字段必选。如果查询已成交的记录，该字段可以不指定
      * @param opts Optional parameters
      * @param opts.account Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
      */
@@ -972,11 +1007,13 @@ export class SpotApi {
      * @param currencyPair Currency pair
      * @param opts Optional parameters
      * @param opts.account Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async cancelOrder(
         orderId: string,
         currencyPair: string,
-        opts: { account?: string },
+        opts: { account?: string; actionMode?: string; xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1008,6 +1045,14 @@ export class SpotApi {
             localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
+        if (opts.actionMode !== undefined) {
+            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, 'string');
+        }
+
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -1020,19 +1065,19 @@ export class SpotApi {
     }
 
     /**
-     * By default, the orders of spot, portfolio and margin account are updated.  If you need to modify orders of the `cross-margin` account, you must specify account as `cross_margin`.  For portfolio margin account, only `cross_margin` account is supported.  Currently, only supports modification of `price` or `amount` fields.  Regarding rate limiting: modify order and create order sharing rate limiting rules. Regarding matching priority: Only reducing the quantity without modifying the priority of matching, altering the price or increasing the quantity will adjust the priority to the new price at the end Note: If the modified amount is less than the fill amount, the order will be cancelled.
+     * 默认修改现货、保证金和逐仓杠杆账户的订单，如果需要修改全仓杠杆账户订单，必须指定 `account` 为 `cross_margin`，统一账户 `account` 只能指定为 `cross_margin`。  目前请求体和query都支持currency_pair和account传参，但请求体优先级更高  currency_pair必须在请求体或query中二选一填入  目前只支持修改价格或数量（二选一）  关于限速：修改订单和创建订单共享限速规则  关于匹配优先级：只修改数量变小不影响匹配优先级，修改价格或修改数量变大则优先级将调整到新价格最后面    注意事项:修改数量小于已成交数量会触发撤单操作
      * @summary Amend an order
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
-     * @param currencyPair Currency pair
      * @param orderPatch
      * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
      * @param opts.account Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async amendOrder(
         orderId: string,
-        currencyPair: string,
         orderPatch: OrderPatch,
-        opts: { account?: string },
+        opts: { currencyPair?: string; account?: string; xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1052,21 +1097,22 @@ export class SpotApi {
             throw new Error('Required parameter orderId was null or undefined when calling amendOrder.');
         }
 
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling amendOrder.');
-        }
-
         // verify required parameter 'orderPatch' is not null or undefined
         if (orderPatch === null || orderPatch === undefined) {
             throw new Error('Required parameter orderPatch was null or undefined when calling amendOrder.');
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
 
         if (opts.account !== undefined) {
             localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
+        }
+
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1082,11 +1128,11 @@ export class SpotApi {
     }
 
     /**
-     * Spot,portfolio and margin trades are queried by default. If cross margin trades are needed, `account` must be set to `cross_margin`  You can also set `from` and(or) `to` to query by time range. If you don\'t specify `from` and/or `to` parameters, only the last 7 days of data will be retured. The range of `from` and `to` is not alloed to exceed 30 days.  Time range parameters are handled as order finish time.
+     * 默认查询现货、保证金和逐仓杠杆账户的成交记录，如果需要查询全仓杠杆账户的成交记录，必须指定 `account` 为 `cross_margin` 。  可以通过指定 `from` 或(和) `to` 来查询指定时间范围内的历史。  - 如果不指定任何时间参数，只能获取最近 7 天的数据。 - 如果只指定 `from` 或 `to` 的任一参数，也同样只返回指定时间开始（或结束）的 7 天范围的数据。 - `from` 和 `to` 的范围不允许超过 30 天 。  时间范围筛选的参数均是按订单**结束**时间来处理。  使用 limit&page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) <= 100000。
      * @summary List personal trading history
      * @param opts Optional parameters
      * @param opts.currencyPair Retrieve results with specified currency pair
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.limit Maximum number of records to be returned in a single list.  Default: 100, Minimum: 1, Maximum: 1000
      * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
      * @param opts.account Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only
@@ -1222,10 +1268,13 @@ export class SpotApi {
      * Default modification of orders for spot, portfolio, and margin accounts. To modify orders for a cross margin account, the `account` parameter must be specified as `cross_margin`.  For portfolio margin accounts, the `account` parameter can only be specified as `cross_margin`. Currently, only modifications to price or quantity (choose one) are supported. When modifying unfinished orders, a maximum of 5 orders can be batch-modified in one request. The request parameters should be passed in an array format. During batch modification, if one order modification fails, the modification process will continue with the next order. After execution, the response will include corresponding failure information for the failed orders. The sequence of calling for batch order modification should be consistent with the order in the order list. The response content order for batch order modification will also be consistent with the order in the order list.
      * @summary Batch modification of orders
      * @param batchAmendItem
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async amendBatchOrders(
         batchAmendItem: Array<BatchAmendItem>,
-    ): Promise<{ response: AxiosResponse; body: Array<AmendOrderResult> }> {
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -1242,6 +1291,11 @@ export class SpotApi {
             throw new Error('Required parameter batchAmendItem was null or undefined when calling amendBatchOrders.');
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -1251,7 +1305,84 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AmendOrderResult>>(config, 'Array<AmendOrderResult>', authSettings);
+        return this.client.request<Array<BatchOrder>>(config, 'Array<BatchOrder>', authSettings);
+    }
+
+    /**
+     *
+     * @summary 查询现货保险基金历史数据
+     * @param business 杠杆业务，margin - 逐仓；unified - 统一账户
+     * @param currency Currency
+     * @param from 起始时间戳，秒级
+     * @param to 终止时间戳，秒级
+     * @param opts Optional parameters
+     * @param opts.page Page number
+     * @param opts.limit 列表返回的最大数量, 默认值30
+     */
+    public async getSpotInsuranceHistory(
+        business: string,
+        currency: string,
+        from: number,
+        to: number,
+        opts: { page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory> }> {
+        const localVarPath = this.client.basePath + '/spot/insurance_history';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'business' is not null or undefined
+        if (business === null || business === undefined) {
+            throw new Error('Required parameter business was null or undefined when calling getSpotInsuranceHistory.');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getSpotInsuranceHistory.');
+        }
+
+        // verify required parameter 'from' is not null or undefined
+        if (from === null || from === undefined) {
+            throw new Error('Required parameter from was null or undefined when calling getSpotInsuranceHistory.');
+        }
+
+        // verify required parameter 'to' is not null or undefined
+        if (to === null || to === undefined) {
+            throw new Error('Required parameter to was null or undefined when calling getSpotInsuranceHistory.');
+        }
+
+        opts = opts || {};
+        localVarQueryParameters['business'] = ObjectSerializer.serialize(business, 'string');
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        localVarQueryParameters['from'] = ObjectSerializer.serialize(from, 'number');
+
+        localVarQueryParameters['to'] = ObjectSerializer.serialize(to, 'number');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<SpotInsuranceHistory>>(config, 'Array<SpotInsuranceHistory>', authSettings);
     }
 
     /**

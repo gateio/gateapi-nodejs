@@ -16,4 +16,5 @@ Name | Type | Description | Notes
 **futuresMakerFee** | **string** | Future trading maker fee | [optional] [default to undefined]
 **deliveryTakerFee** | **string** | Delivery trading taker fee | [optional] [default to undefined]
 **deliveryMakerFee** | **string** | Delivery trading maker fee | [optional] [default to undefined]
+**debitFee** | **number** | Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates | [optional] [default to undefined]
 

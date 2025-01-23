@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
 import { FuturesTrade } from '../model/futuresTrade';
@@ -17,6 +18,8 @@ import { OptionsAccount } from '../model/optionsAccount';
 import { OptionsAccountBook } from '../model/optionsAccountBook';
 import { OptionsCandlestick } from '../model/optionsCandlestick';
 import { OptionsContract } from '../model/optionsContract';
+import { OptionsMMP } from '../model/optionsMMP';
+import { OptionsMMPReset } from '../model/optionsMMPReset';
 import { OptionsMySettlements } from '../model/optionsMySettlements';
 import { OptionsMyTrade } from '../model/optionsMyTrade';
 import { OptionsOrder } from '../model/optionsOrder';
@@ -26,6 +29,7 @@ import { OptionsSettlement } from '../model/optionsSettlement';
 import { OptionsTicker } from '../model/optionsTicker';
 import { OptionsUnderlying } from '../model/optionsUnderlying';
 import { OptionsUnderlyingTicker } from '../model/optionsUnderlyingTicker';
+import { TriggerTime } from '../model/triggerTime';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -1130,6 +1134,44 @@ export class OptionsApi {
     }
 
     /**
+     * 期权订单心跳检测，在到达用户设置的`timeout`时间时如果没有取消既有倒计时或设置新的倒计时将会自动取消相关的`期权挂单`。   该接口可重复调用，以便设置新的倒计时或取消倒计时。 用法示例： 以30s的间隔重复此接口，每次倒计时`timeout`设置为30(秒)。 如果在30秒内未再次调用此接口，则您指定的`underlying` `contract`上的所有挂单都会被自动撤销，若未指定`underlying` `contract`则会自动撤销用户的全部挂单 如果在30秒内以将`timeout`设置为0，则倒数计时器将终止，自动撤单功能取消。
+     * @summary Countdown cancel orders
+     * @param countdownCancelAllOptionsTask
+     */
+    public async countdownCancelAllOptions(
+        countdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
+    ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
+        const localVarPath = this.client.basePath + '/options/countdown_cancel_all';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'countdownCancelAllOptionsTask' is not null or undefined
+        if (countdownCancelAllOptionsTask === null || countdownCancelAllOptionsTask === undefined) {
+            throw new Error(
+                'Required parameter countdownCancelAllOptionsTask was null or undefined when calling countdownCancelAllOptions.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(countdownCancelAllOptionsTask, 'CountdownCancelAllOptionsTask'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<TriggerTime>(config, 'TriggerTime', authSettings);
+    }
+
+    /**
      *
      * @summary List personal trading history
      * @param underlying Underlying (Obtained by listing underlying endpoint)
@@ -1192,5 +1234,111 @@ export class OptionsApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<OptionsMyTrade>>(config, 'Array<OptionsMyTrade>', authSettings);
+    }
+
+    /**
+     *
+     * @summary MMP查询
+     * @param opts Optional parameters
+     * @param opts.underlying Underlying
+     */
+    public async getOptionsMMP(opts: {
+        underlying?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsMMP> }> {
+        const localVarPath = this.client.basePath + '/options/mmp';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.underlying !== undefined) {
+            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<OptionsMMP>>(config, 'Array<OptionsMMP>', authSettings);
+    }
+
+    /**
+     *
+     * @summary MMP设置
+     * @param optionsMMP
+     */
+    public async setOptionsMMP(optionsMMP: OptionsMMP): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
+        const localVarPath = this.client.basePath + '/options/mmp';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'optionsMMP' is not null or undefined
+        if (optionsMMP === null || optionsMMP === undefined) {
+            throw new Error('Required parameter optionsMMP was null or undefined when calling setOptionsMMP.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(optionsMMP, 'OptionsMMP'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OptionsMMP>(config, 'OptionsMMP', authSettings);
+    }
+
+    /**
+     *
+     * @summary MMP重置
+     * @param optionsMMPReset
+     */
+    public async resetOptionsMMP(
+        optionsMMPReset: OptionsMMPReset,
+    ): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
+        const localVarPath = this.client.basePath + '/options/mmp/reset';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'optionsMMPReset' is not null or undefined
+        if (optionsMMPReset === null || optionsMMPReset === undefined) {
+            throw new Error('Required parameter optionsMMPReset was null or undefined when calling resetOptionsMMP.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(optionsMMPReset, 'OptionsMMPReset'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<OptionsMMP>(config, 'OptionsMMP', authSettings);
     }
 }

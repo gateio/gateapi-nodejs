@@ -16,9 +16,7 @@ import { Eth2Swap } from '../model/eth2Swap';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { StructuredBuy } from '../model/structuredBuy';
 import { StructuredGetProjectList } from '../model/structuredGetProjectList';
-import { StructuredGetProjectListRequest } from '../model/structuredGetProjectListRequest';
 import { StructuredOrderList } from '../model/structuredOrderList';
-import { StructuredOrderListRequest } from '../model/structuredOrderListRequest';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -152,39 +150,16 @@ export class EarnApi {
 
     /**
      *
-     * @summary Cancel Dual Investment order
-     * @param orderId Order ID
-     */
-    public async cancelDualOrder(orderId: number): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath =
-            this.client.basePath +
-            '/earn/dual/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-
-        // verify required parameter 'orderId' is not null or undefined
-        if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelDualOrder.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'DELETE',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
-    }
-
-    /**
-     *
      * @summary Structured Product List
-     * @param structuredGetProjectListRequest
+     * @param status Status (default: all)  &#x60;in_process&#x60;-processing  &#x60;will_begin&#x60;-unstarted  &#x60;wait_settlement&#x60;-unsettled  &#x60;done&#x60;-finish
+     * @param opts Optional parameters
+     * @param opts.type Product Type (default all)  &#x60;SharkFin2.0&#x60;-SharkFin  &#x60;BullishSharkFin&#x60;-BullishSharkFin  &#x60;BearishSharkFin&#x60;-BearishSharkFin &#x60;DoubleNoTouch&#x60;-DoubleNoTouch &#x60;RangeAccrual&#x60;-RangeAccrual &#x60;SnowBall&#x60;-SnowBall
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listStructuredProducts(
-        structuredGetProjectListRequest: StructuredGetProjectListRequest,
+        status: string,
+        opts: { type?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/products';
         const localVarQueryParameters: any = {};
@@ -197,11 +172,24 @@ export class EarnApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'structuredGetProjectListRequest' is not null or undefined
-        if (structuredGetProjectListRequest === null || structuredGetProjectListRequest === undefined) {
-            throw new Error(
-                'Required parameter structuredGetProjectListRequest was null or undefined when calling listStructuredProducts.',
-            );
+        // verify required parameter 'status' is not null or undefined
+        if (status === null || status === undefined) {
+            throw new Error('Required parameter status was null or undefined when calling listStructuredProducts.');
+        }
+
+        opts = opts || {};
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+        }
+
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -209,7 +197,6 @@ export class EarnApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(structuredGetProjectListRequest, 'StructuredGetProjectListRequest'),
         };
 
         const authSettings = [];
@@ -223,11 +210,18 @@ export class EarnApi {
     /**
      *
      * @summary Structured Product Order List
-     * @param structuredOrderListRequest
+     * @param opts Optional parameters
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listStructuredOrders(
-        structuredOrderListRequest: StructuredOrderListRequest,
-    ): Promise<{ response: AxiosResponse; body: Array<StructuredOrderList> }> {
+    public async listStructuredOrders(opts: {
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<StructuredOrderList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -239,11 +233,21 @@ export class EarnApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-        // verify required parameter 'structuredOrderListRequest' is not null or undefined
-        if (structuredOrderListRequest === null || structuredOrderListRequest === undefined) {
-            throw new Error(
-                'Required parameter structuredOrderListRequest was null or undefined when calling listStructuredOrders.',
-            );
+        opts = opts || {};
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -251,7 +255,6 @@ export class EarnApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(structuredOrderListRequest, 'StructuredOrderListRequest'),
         };
 
         const authSettings = ['apiv4'];

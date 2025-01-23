@@ -27,6 +27,7 @@ Method | HTTP request | Description
 [**listDeliveryPositionClose**](DeliveryApi.md#listDeliveryPositionClose) | **GET** /delivery/{settle}/position_close | List position close history
 [**listDeliveryLiquidates**](DeliveryApi.md#listDeliveryLiquidates) | **GET** /delivery/{settle}/liquidates | List liquidation history
 [**listDeliverySettlements**](DeliveryApi.md#listDeliverySettlements) | **GET** /delivery/{settle}/settlements | List settlement history
+[**listDeliveryRiskLimitTiers**](DeliveryApi.md#listDeliveryRiskLimitTiers) | **GET** /delivery/{settle}/risk_limit_tiers | List risk limit tiers
 [**listPriceTriggeredDeliveryOrders**](DeliveryApi.md#listPriceTriggeredDeliveryOrders) | **GET** /delivery/{settle}/price_orders | List all auto orders
 [**createPriceTriggeredDeliveryOrder**](DeliveryApi.md#createPriceTriggeredDeliveryOrder) | **POST** /delivery/{settle}/price_orders | Create a price-triggered order
 [**cancelPriceTriggeredDeliveryOrderList**](DeliveryApi.md#cancelPriceTriggeredDeliveryOrderList) | **DELETE** /delivery/{settle}/price_orders | Cancel all open orders
@@ -1145,6 +1146,57 @@ Promise<{ response: AxiosResponse; body: Array<DeliverySettlement>; }> [Delivery
 ### Authorization
 
 [apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listDeliveryRiskLimitTiers
+
+> Promise<{ response: http.IncomingMessage; body: Array<FuturesLimitRiskTiers>; }> listDeliveryRiskLimitTiers(settle, opts)
+
+List risk limit tiers
+
+contract 参数不传,默认查询前 100 个市场的风险限额,limit 和 offset 对应市场维度的分页查询,不对应返回数组的长度,仅当 contract 参数为空时生效
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.DeliveryApi(client);
+const settle = "usdt"; // 'usdt' | Settle currency
+const opts = {
+  'contract': "BTC_USDT_20200814", // string | Futures contract
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'offset': 0 // number | List offset, starting from 0
+};
+api.listDeliveryRiskLimitTiers(settle, opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **contract** | **string**| Futures contract | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers>; }> [FuturesLimitRiskTiers](FuturesLimitRiskTiers.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

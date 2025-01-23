@@ -21,6 +21,14 @@ export class AccountBalance {
      * Currency
      */
     'currency'?: AccountBalance.Currency;
+    /**
+     * Unrealised_pnl, this field will only appear in futures, options, delivery, and total accounts
+     */
+    'unrealisedPnl'?: string;
+    /**
+     * Borrowed，this field will only appear in margin and cross_margin accounts
+     */
+    'borrowed'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -34,6 +42,16 @@ export class AccountBalance {
             name: 'currency',
             baseName: 'currency',
             type: 'AccountBalance.Currency',
+        },
+        {
+            name: 'unrealisedPnl',
+            baseName: 'unrealised_pnl',
+            type: 'string',
+        },
+        {
+            name: 'borrowed',
+            baseName: 'borrowed',
+            type: 'string',
         },
     ];
 

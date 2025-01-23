@@ -11,37 +11,81 @@
 
 export class UnifiedBalance {
     /**
-     * Available amount
+     * 可用额度,在单币种保证金/跨币种保证金/组合保证金模式模式下有效，不同模式计算不一样
      */
     'available'?: string;
     /**
-     * Locked amount
+     * 被锁定的额度,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
      */
     'freeze'?: string;
     /**
-     * Borrowed amount
+     * 借入额度,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'borrowed'?: string;
     /**
-     * Negative Liabilities
+     * 负余额借贷,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'negativeLiab'?: string;
     /**
-     * Borrowing to Open Positions in Futures
+     * 合约开仓借币(已废弃,待下线字段)
      */
     'futuresPosLiab'?: string;
     /**
-     * Equity
+     * 权益,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
      */
     'equity'?: string;
     /**
-     * Total freeze
+     * 总占用(已废弃,待下线字段)
      */
     'totalFreeze'?: string;
     /**
-     * Total liabilities
+     * 总借款,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
      */
     'totalLiab'?: string;
+    /**
+     * 现货对冲占用数量,在组合保证金模式下有效，其他如单币种、跨币种保证金模式下是0
+     */
+    'spotInUse'?: string;
+    /**
+     * 余币宝理财数量,在余币宝理财作为统一账户保证金开关打开有效
+     */
+    'funding'?: string;
+    /**
+     * 余币宝理财版本号
+     */
+    'fundingVersion'?: string;
+    /**
+     * 全仓余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'crossBalance'?: string;
+    /**
+     * 逐仓余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'isoBalance'?: string;
+    /**
+     * 全仓初始保证金,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'im'?: string;
+    /**
+     * 全仓维持保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'mm'?: string;
+    /**
+     * 全仓初始保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'imr'?: string;
+    /**
+     * 全仓维持保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'mmr'?: string;
+    /**
+     * 全仓保证金余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'marginBalance'?: string;
+    /**
+     * 全仓可用保证金,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
+     */
+    'availableMargin'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -84,6 +128,61 @@ export class UnifiedBalance {
         {
             name: 'totalLiab',
             baseName: 'total_liab',
+            type: 'string',
+        },
+        {
+            name: 'spotInUse',
+            baseName: 'spot_in_use',
+            type: 'string',
+        },
+        {
+            name: 'funding',
+            baseName: 'funding',
+            type: 'string',
+        },
+        {
+            name: 'fundingVersion',
+            baseName: 'funding_version',
+            type: 'string',
+        },
+        {
+            name: 'crossBalance',
+            baseName: 'cross_balance',
+            type: 'string',
+        },
+        {
+            name: 'isoBalance',
+            baseName: 'iso_balance',
+            type: 'string',
+        },
+        {
+            name: 'im',
+            baseName: 'im',
+            type: 'string',
+        },
+        {
+            name: 'mm',
+            baseName: 'mm',
+            type: 'string',
+        },
+        {
+            name: 'imr',
+            baseName: 'imr',
+            type: 'string',
+        },
+        {
+            name: 'mmr',
+            baseName: 'mmr',
+            type: 'string',
+        },
+        {
+            name: 'marginBalance',
+            baseName: 'margin_balance',
+            type: 'string',
+        },
+        {
+            name: 'availableMargin',
+            baseName: 'available_margin',
             type: 'string',
         },
     ];

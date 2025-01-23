@@ -22,6 +22,14 @@ export class FuturesOrderAmendment {
      * Custom info during amending order
      */
     'amendText'?: string;
+    /**
+     * 用户可以备注这次修改的信息，比如ao。
+     */
+    'bizInfo'?: string;
+    /**
+     * 用户可以对手价进行修改。
+     */
+    'bbo'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -39,6 +47,16 @@ export class FuturesOrderAmendment {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'bizInfo',
+            baseName: 'biz_info',
+            type: 'string',
+        },
+        {
+            name: 'bbo',
+            baseName: 'bbo',
             type: 'string',
         },
     ];

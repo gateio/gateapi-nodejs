@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Retrieve transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**subAccountToSubAccount**](WalletApi.md#subAccountToSubAccount) | **POST** /wallet/sub_account_to_sub_account | Sub-account transfers to sub-account
+[**getTransferOrderStatus**](WalletApi.md#getTransferOrderStatus) | **GET** /wallet/order_status | 划转状态查询
 [**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Retrieve withdrawal status
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub accounts\&#39; margin balances
@@ -20,6 +21,10 @@ Method | HTTP request | Description
 [**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query saved address
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Retrieve personal trading fee
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Retrieve user\&#39;s total balances
+[**listSmallBalance**](WalletApi.md#listSmallBalance) | **GET** /wallet/small_balance | List small balance
+[**convertSmallBalance**](WalletApi.md#convertSmallBalance) | **POST** /wallet/small_balance | Convert small balance
+[**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | List small balance history
+[**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | 获取UID转帐历史纪录
 
 
 ## listCurrencyChains
@@ -184,7 +189,7 @@ const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
-  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'limit': 100, // number | The maximum number of entries returned in the list is limited to 500 transactions.
   'offset': 0 // number | List offset, starting from 0
 };
 api.listDeposits(opts)
@@ -200,7 +205,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Filter by currency. Return all currency records if not specified | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **limit** | **number**| The maximum number of entries returned in the list is limited to 500 transactions. | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -222,7 +227,7 @@ Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](
 
 Transfer between trading accounts
 
-Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin 5. spot - options
+个人交易账户之间的余额互转，目前支持以下互转操作：  1. 现货账户 - 杠杆账户 2. 现货账户 - 永续合约账户 3. 现货账户 - 交割合约账户 4. 现货账户 - 期权账户
 
 ### Example
 
@@ -318,7 +323,7 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer>; }> [SubAccou
 
 ## transferWithSubAccount
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> transferWithSubAccount(subAccountTransfer)
+> Promise<{ response: http.IncomingMessage; body: TransactionID; }> transferWithSubAccount(subAccountTransfer)
 
 Transfer between main and sub accounts
 
@@ -337,7 +342,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const subAccountTransfer = new SubAccountTransfer(); // SubAccountTransfer | 
 api.transferWithSubAccount(subAccountTransfer)
-   .then(value => console.log('API called successfully.'),
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -350,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](TransactionID.md)
 
 ### Authorization
 
@@ -359,11 +364,11 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ## subAccountToSubAccount
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> subAccountToSubAccount(subAccountToSubAccount)
+> Promise<{ response: http.IncomingMessage; body: TransactionID; }> subAccountToSubAccount(subAccountToSubAccount)
 
 Sub-account transfers to sub-account
 
@@ -382,7 +387,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const subAccountToSubAccount = new SubAccountToSubAccount(); // SubAccountToSubAccount | 
 api.subAccountToSubAccount(subAccountToSubAccount)
-   .then(value => console.log('API called successfully.'),
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -395,7 +400,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](TransactionID.md)
 
 ### Authorization
 
@@ -404,7 +409,56 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
+
+## getTransferOrderStatus
+
+> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> getTransferOrderStatus(opts)
+
+划转状态查询
+
+支持根据用户自定义client_order_id或者划转接口返回的tx_id查询划转状态
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'clientOrderId': "da3ce7a088c8b0372b741419c7829033", // string | The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
+  'txId': "59636381286" // string | 划转操作单号，和client_order_id不能同时为空
+};
+api.getTransferOrderStatus(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientOrderId** | **string**| The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;, with a length ranging from 1 to 64 characters. | [optional] [default to undefined]
+ **txId** | **string**| 划转操作单号，和client_order_id不能同时为空 | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ## listWithdrawStatus
 
@@ -653,7 +707,8 @@ const api = new GateApi.WalletApi(client);
 const currency = "USDT"; // string | Currency
 const opts = {
   'chain': '', // string | Chain name
-  'limit': '50' // string | Maximum number returned, 100 at most
+  'limit': '50', // string | Maximum number returned, 100 at most
+  'page': 1 // number | Page number
 };
 api.listSavedAddress(currency, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -668,6 +723,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Currency | [default to undefined]
  **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
  **limit** | **string**| Maximum number returned, 100 at most | [optional] [default to &#39;50&#39;]
+ **page** | **number**| Page number | [optional] [default to 1]
 
 ### Return type
 
@@ -766,6 +822,192 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: TotalBalance; }> [TotalBalance](TotalBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listSmallBalance
+
+> Promise<{ response: http.IncomingMessage; body: Array<SmallBalance>; }> listSmallBalance()
+
+List small balance
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+api.listSmallBalance()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SmallBalance>; }> [SmallBalance](SmallBalance.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## convertSmallBalance
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> convertSmallBalance(convertSmallBalance)
+
+Convert small balance
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const convertSmallBalance = new ConvertSmallBalance(); // ConvertSmallBalance | 
+api.convertSmallBalance(convertSmallBalance)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **convertSmallBalance** | [**ConvertSmallBalance**](ConvertSmallBalance.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## listSmallBalanceHistory
+
+> Promise<{ response: http.IncomingMessage; body: Array<SmallBalanceHistory>; }> listSmallBalanceHistory(opts)
+
+List small balance history
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'currency': "currency_example", // string | Currency
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+};
+api.listSmallBalanceHistory(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 100 | [optional] [default to 100]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory>; }> [SmallBalanceHistory](SmallBalanceHistory.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listPushOrders
+
+> Promise<{ response: http.IncomingMessage; body: Array<UidPushOrder>; }> listPushOrders(opts)
+
+获取UID转帐历史纪录
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.WalletApi(client);
+const opts = {
+  'id': 56, // number | Order ID
+  'from': 56, // number | 查询记录的起始时间,不指定则默认从当前时间开始向前推7天,秒级Unix的时间戳
+  'to': 56, // number | 查询记录的结束时间,不指定则默认为当前时间,秒级Unix的时间戳
+  'limit': 100, // number | 列表返回的最大数量，默认值是 100
+  'offset': 0, // number | List offset, starting from 0
+  'transactionType': 'withdraw' // string | 列表返回订单类型 `withdraw`,  `deposit`,默认为`withdraw`.
+};
+api.listPushOrders(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **number**| Order ID | [optional] [default to undefined]
+ **from** | **number**| 查询记录的起始时间,不指定则默认从当前时间开始向前推7天,秒级Unix的时间戳 | [optional] [default to undefined]
+ **to** | **number**| 查询记录的结束时间,不指定则默认为当前时间,秒级Unix的时间戳 | [optional] [default to undefined]
+ **limit** | **number**| 列表返回的最大数量，默认值是 100 | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
+ **transactionType** | **string**| 列表返回订单类型 &#x60;withdraw&#x60;,  &#x60;deposit&#x60;,默认为&#x60;withdraw&#x60;. | [optional] [default to &#39;withdraw&#39;]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<UidPushOrder>; }> [UidPushOrder](UidPushOrder.md)
 
 ### Authorization
 

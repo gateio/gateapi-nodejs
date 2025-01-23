@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **finishAs** | **string** | How order is finished | [optional] [readonly] [default to undefined]
 **reason** | **string** | Additional remarks on how the order was finished | [optional] [readonly] [default to undefined]
 **orderType** | **string** | Take-profit/stop-loss types, which include:  - &#x60;close-long-order&#x60;: order take-profit/stop-loss, close long position - &#x60;close-short-order&#x60;: order take-profit/stop-loss, close short position - &#x60;close-long-position&#x60;: position take-profit/stop-loss, close long position - &#x60;close-short-position&#x60;: position take-profit/stop-loss, close short position - &#x60;plan-close-long-position&#x60;: position planned take-profit/stop-loss, close long position - &#x60;plan-close-short-position&#x60;: position planned take-profit/stop-loss, close short position  The order take-profit/stop-loss can not be passed by request. These two types are read only. | [optional] [default to undefined]
-**meOrderId** | **string** | Corresponding order ID of order take-profit/stop-loss. | [optional] [readonly] [default to undefined]
+**meOrderId** | **number** | Corresponding order ID of order take-profit/stop-loss. | [optional] [readonly] [default to undefined]
 
 ## Enum: FuturesPriceTriggeredOrder.Status
 

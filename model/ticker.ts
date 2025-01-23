@@ -23,9 +23,17 @@ export class Ticker {
      */
     'lowestAsk'?: string;
     /**
+     * 最新卖方最低价数量；批量查询时不存在；单个查询时存在,如果没有数据时为空
+     */
+    'lowestSize'?: string;
+    /**
      * Recent highest bid
      */
     'highestBid'?: string;
+    /**
+     * 最新买方最高价数量；批量查询时不存在；单个查询时存在,如果没有数据时为空
+     */
+    'highestSize'?: string;
     /**
      * Change percentage in the last 24h
      */
@@ -90,8 +98,18 @@ export class Ticker {
             type: 'string',
         },
         {
+            name: 'lowestSize',
+            baseName: 'lowest_size',
+            type: 'string',
+        },
+        {
             name: 'highestBid',
             baseName: 'highest_bid',
+            type: 'string',
+        },
+        {
+            name: 'highestSize',
+            baseName: 'highest_size',
             type: 'string',
         },
         {

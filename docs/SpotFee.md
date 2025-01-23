@@ -13,4 +13,5 @@ Name | Type | Description | Notes
 **loanFee** | **string** | Loan fee rate of margin lending | [optional] [default to undefined]
 **pointType** | **string** | Point type. 0 - Initial version. 1 - new version since 202009 | [optional] [default to undefined]
 **currencyPair** | **string** | Currency pair | [optional] [default to undefined]
+**debitFee** | **number** | Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates | [optional] [default to undefined]
 

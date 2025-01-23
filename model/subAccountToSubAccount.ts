@@ -23,17 +23,17 @@ export class SubAccountToSubAccount {
      */
     'subAccountFrom': string;
     /**
-     * Transfer from the account.  `spot` - spot account, `futures` - perpetual contract account, `cross_margin` - cross margin account
+     * 转出的子账号交易账户, spot - 现货账户, futures - 永续合约账户, delivery - 交割合约账户
      */
-    'subAccountFromType': SubAccountToSubAccount.SubAccountFromType;
+    'subAccountFromType': string;
     /**
      * Transfer to the user id of the sub-account
      */
     'subAccountTo': string;
     /**
-     * Transfer to the account.  `spot` - spot account, `futures` - perpetual contract account, `cross_margin` - cross margin account
+     * 转入的子账号交易账户, spot - 现货账户, futures - 永续合约账户, delivery - 交割合约账户
      */
-    'subAccountToType': SubAccountToSubAccount.SubAccountToType;
+    'subAccountToType': string;
     /**
      * Transfer amount
      */
@@ -60,7 +60,7 @@ export class SubAccountToSubAccount {
         {
             name: 'subAccountFromType',
             baseName: 'sub_account_from_type',
-            type: 'SubAccountToSubAccount.SubAccountFromType',
+            type: 'string',
         },
         {
             name: 'subAccountTo',
@@ -70,7 +70,7 @@ export class SubAccountToSubAccount {
         {
             name: 'subAccountToType',
             baseName: 'sub_account_to_type',
-            type: 'SubAccountToSubAccount.SubAccountToType',
+            type: 'string',
         },
         {
             name: 'amount',
@@ -81,18 +81,5 @@ export class SubAccountToSubAccount {
 
     static getAttributeTypeMap() {
         return SubAccountToSubAccount.attributeTypeMap;
-    }
-}
-
-export namespace SubAccountToSubAccount {
-    export enum SubAccountFromType {
-        Spot = <any>'spot',
-        Futures = <any>'futures',
-        CrossMargin = <any>'cross_margin',
-    }
-    export enum SubAccountToType {
-        Spot = <any>'spot',
-        Futures = <any>'futures',
-        CrossMargin = <any>'cross_margin',
     }
 }

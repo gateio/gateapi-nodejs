@@ -26,6 +26,10 @@ export class UniLoan {
      */
     'amount'?: string;
     /**
+     * Loan type, platform - platform, margin - margin
+     */
+    'type'?: string;
+    /**
      * Created time
      */
     'createTime'?: number;
@@ -50,6 +54,11 @@ export class UniLoan {
         {
             name: 'amount',
             baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
             type: 'string',
         },
         {

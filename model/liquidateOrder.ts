@@ -29,6 +29,10 @@ export class LiquidateOrder {
      * Order price
      */
     'price': string;
+    /**
+     * Processing Mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request, and it is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+     */
+    'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,6 +55,11 @@ export class LiquidateOrder {
         {
             name: 'price',
             baseName: 'price',
+            type: 'string',
+        },
+        {
+            name: 'actionMode',
+            baseName: 'action_mode',
             type: 'string',
         },
     ];

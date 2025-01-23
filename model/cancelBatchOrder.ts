@@ -22,9 +22,9 @@ export class CancelBatchOrder {
      */
     'id': string;
     /**
-     * If cancelled order is cross margin order or is portfolio margin account\'s API key, this field must be set and can only be `cross_margin`If cancelled order is cross margin order, this field must be set and can only be `cross_margin`
+     * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
      */
-    'account'?: string;
+    'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,8 +40,8 @@ export class CancelBatchOrder {
             type: 'string',
         },
         {
-            name: 'account',
-            baseName: 'account',
+            name: 'actionMode',
+            baseName: 'action_mode',
             type: 'string',
         },
     ];

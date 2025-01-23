@@ -11,6 +11,9 @@
 
 /* tslint:disable:no-unused-locals */
 import { AccountDetail } from '../model/accountDetail';
+import { AccountRateLimit } from '../model/accountRateLimit';
+import { InlineObject1 } from '../model/inlineObject1';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
 import { StpGroup } from '../model/stpGroup';
 import { StpGroupUser } from '../model/stpGroupUser';
 import { ObjectSerializer } from '../model/models';
@@ -57,6 +60,33 @@ export class AccountApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<AccountDetail>(config, 'AccountDetail', authSettings);
+    }
+
+    /**
+     *
+     * @summary 获取用户成交比率限频信息
+     */
+    public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {
+        const localVarPath = this.client.basePath + '/account/rate_limit';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<AccountRateLimit>>(config, 'Array<AccountRateLimit>', authSettings);
     }
 
     /**
@@ -211,11 +241,11 @@ export class AccountApi {
      * - Only the main account that created this STP group is allowed to delete users from the STP user group - Deletion is limited to accounts under the current main account; cross-account deletion is not permitted
      * @summary Delete the user in the STP group
      * @param stpId STP Group ID
-     * @param requestBody User ID
+     * @param userId STP user ID, multiple can be separated by commas
      */
     public async deleteSTPGroupUsers(
         stpId: number,
-        requestBody: Array<number>,
+        userId: number,
     ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
         const localVarPath =
             this.client.basePath +
@@ -235,20 +265,75 @@ export class AccountApi {
             throw new Error('Required parameter stpId was null or undefined when calling deleteSTPGroupUsers.');
         }
 
-        // verify required parameter 'requestBody' is not null or undefined
-        if (requestBody === null || requestBody === undefined) {
-            throw new Error('Required parameter requestBody was null or undefined when calling deleteSTPGroupUsers.');
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling deleteSTPGroupUsers.');
         }
+
+        localVarQueryParameters['user_id'] = ObjectSerializer.serialize(userId, 'number');
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(requestBody, 'Array<number>'),
         };
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<StpGroupUser>>(config, 'Array<StpGroupUser>', authSettings);
+    }
+
+    /**
+     * 查询当前帐户的GT抵扣配置
+     * @summary 查询GT抵扣配置
+     */
+    public async getDebitFee(): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+        const localVarPath = this.client.basePath + '/account/debit_fee';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+    }
+
+    /**
+     * 开启或关闭当前帐户的GT抵扣
+     * @summary 设定GT抵扣
+     * @param inlineObject1
+     */
+    public async setDebitFee(inlineObject1: InlineObject1): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/account/debit_fee';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'inlineObject1' is not null or undefined
+        if (inlineObject1 === null || inlineObject1 === undefined) {
+            throw new Error('Required parameter inlineObject1 was null or undefined when calling setDebitFee.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
     }
 }

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**deleteSubAccountKeys**](SubAccountApi.md#deleteSubAccountKeys) | **DELETE** /sub_accounts/{user_id}/keys/{key} | Delete API key of the sub-account
 [**lockSubAccount**](SubAccountApi.md#lockSubAccount) | **POST** /sub_accounts/{user_id}/lock | Lock the sub-account
 [**unlockSubAccount**](SubAccountApi.md#unlockSubAccount) | **POST** /sub_accounts/{user_id}/unlock | Unlock the sub-account
+[**listUnifiedMode**](SubAccountApi.md#listUnifiedMode) | **GET** /sub_accounts/unified_mode | 获取子帐号模式
 
 
 ## listSubAccounts
@@ -457,3 +458,44 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+## listUnifiedMode
+
+> Promise<{ response: http.IncomingMessage; body: Array<SubUserMode>; }> listUnifiedMode()
+
+获取子帐号模式
+
+统一账户模式： - &#x60;classic&#x60;: 经典账户模式 - &#x60;multi_currency&#x60;: 跨币种保证金模式 - &#x60;portfolio&#x60;: 组合保证金模式
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.SubAccountApi(client);
+api.listUnifiedMode()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<SubUserMode>; }> [SubUserMode](SubUserMode.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json

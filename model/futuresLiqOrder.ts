@@ -23,6 +23,10 @@ export class FuturesLiqOrder {
      */
     'size'?: number;
     /**
+     * 强平委托数量
+     */
+    'orderSize'?: number;
+    /**
      * Liquidation order price
      */
     'orderPrice'?: string;
@@ -51,6 +55,11 @@ export class FuturesLiqOrder {
         {
             name: 'size',
             baseName: 'size',
+            type: 'number',
+        },
+        {
+            name: 'orderSize',
+            baseName: 'order_size',
             type: 'number',
         },
         {

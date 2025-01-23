@@ -58,6 +58,10 @@ export class TradeFee {
      * Delivery trading maker fee
      */
     'deliveryMakerFee'?: string;
+    /**
+     * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
+     */
+    'debitFee'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -121,6 +125,11 @@ export class TradeFee {
             name: 'deliveryMakerFee',
             baseName: 'delivery_maker_fee',
             type: 'string',
+        },
+        {
+            name: 'debitFee',
+            baseName: 'debit_fee',
+            type: 'number',
         },
     ];
 

@@ -23,7 +23,7 @@ export class FuturesAccountBook {
      */
     'balance'?: string;
     /**
-     * Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     * Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
      */
     'type'?: FuturesAccountBook.Type;
     /**
@@ -38,6 +38,10 @@ export class FuturesAccountBook {
      * trade id
      */
     'tradeId'?: string;
+    /**
+     * 账户变更记录 id
+     */
+    'id'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -77,6 +81,11 @@ export class FuturesAccountBook {
             baseName: 'trade_id',
             type: 'string',
         },
+        {
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
+        },
     ];
 
     static getAttributeTypeMap() {
@@ -94,5 +103,6 @@ export namespace FuturesAccountBook {
         PointDnw = <any>'point_dnw',
         PointFee = <any>'point_fee',
         PointRefr = <any>'point_refr',
+        BonusOffset = <any>'bonus_offset',
     }
 }

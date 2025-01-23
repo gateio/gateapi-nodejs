@@ -24,5 +24,7 @@ Name | Type | Description | Notes
 **basisRate** | **string** | Basis rate | [optional] [default to undefined]
 **basisValue** | **string** | Basis value | [optional] [default to undefined]
 **lowestAsk** | **string** | Recent lowest ask | [optional] [default to undefined]
+**lowestSize** | **string** | 最新卖方最低价的挂单量 | [optional] [default to undefined]
 **highestBid** | **string** | Recent highest bid | [optional] [default to undefined]
+**highestSize** | **string** | 最新买方最高价的挂单量 | [optional] [default to undefined]
 

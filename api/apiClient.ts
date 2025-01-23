@@ -12,6 +12,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import { Authentication, GateApiV4Auth, HttpBasicAuth, HttpBearerAuth, OAuth, ObjectSerializer } from '../model/models';
+
+import JSONBig from 'json-bigint';
 import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export class ApiClient {
@@ -24,6 +26,17 @@ export class ApiClient {
 
     constructor(basePath?: string, protected axiosInstance: AxiosInstance = globalAxios) {
         this._basePath = basePath || this._basePath;
+
+        this.axiosInstance.defaults.transformResponse = [
+            (data) => {
+                try {
+                    return JSONBig.parse(data);
+                } catch (error) {
+                    console.error('Failed to parse JSON:', error);
+                    return data;
+                }
+            },
+        ];
     }
 
     set basePath(basePath: string) {

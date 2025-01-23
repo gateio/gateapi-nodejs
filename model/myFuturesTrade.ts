@@ -31,6 +31,10 @@ export class MyFuturesTrade {
      */
     'size'?: number;
     /**
+     * 平仓数量:  close_size=0 && size＞0       开多 close_size=0 && size＜0       开空 close_size>0 && size>0 && size <= close_size 平空 close_size>0 && size>0 && size > close_size 平空且开多 close_size<0 && size<0 && size >= close_size 平多 close_size<0 && size<0 && size < close_size 平多且开空
+     */
+    'closeSize'?: number;
+    /**
      * Trading price
      */
     'price'?: string;
@@ -77,6 +81,11 @@ export class MyFuturesTrade {
         {
             name: 'size',
             baseName: 'size',
+            type: 'number',
+        },
+        {
+            name: 'closeSize',
+            baseName: 'close_size',
             type: 'number',
         },
         {

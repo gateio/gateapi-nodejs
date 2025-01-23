@@ -1,27 +1,43 @@
 export * from './accountBalance';
 export * from './accountDetail';
 export * from './accountDetailKey';
+export * from './accountRateLimit';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
 export * from './agencyTransactionHistory';
-export * from './amendOrderResult';
-export * from './apiV4KeyPerm';
 export * from './autoRepaySetting';
 export * from './batchAmendItem';
+export * from './batchAmendOrderReq';
 export * from './batchFuturesOrder';
 export * from './batchOrder';
+export * from './borrowCurrencyInfo';
+export * from './brokerCommission';
+export * from './brokerCommission1';
+export * from './brokerTransaction';
+export * from './brokerTransaction1';
 export * from './cancelBatchOrder';
 export * from './cancelOrderResult';
+export * from './collateralAdjust';
+export * from './collateralAdjustRes';
 export * from './collateralAlign';
+export * from './collateralCurrency';
+export * from './collateralCurrencyInfo';
+export * from './collateralCurrencyRes';
+export * from './collateralCurrentRate';
+export * from './collateralFixRate';
 export * from './collateralLoanCurrency';
+export * from './collateralLtv';
 export * from './collateralOrder';
 export * from './collateralRecord';
 export * from './contract';
 export * from './contractStat';
+export * from './convertSmallBalance';
 export * from './countdownCancelAllFuturesTask';
+export * from './countdownCancelAllOptionsTask';
 export * from './countdownCancelAllSpotTask';
 export * from './createCollateralOrder';
+export * from './createMultiCollateralOrder';
 export * from './createUniLend';
 export * from './createUniLoan';
 export * from './crossMarginAccount';
@@ -36,6 +52,7 @@ export * from './crossMarginTransferable';
 export * from './currency';
 export * from './currencyChain';
 export * from './currencyPair';
+export * from './currencyQuota';
 export * from './deliveryCandlestick';
 export * from './deliveryContract';
 export * from './deliverySettlement';
@@ -43,23 +60,24 @@ export * from './depositAddress';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
 export * from './eth2Swap';
-export * from './flashSwapCurrency';
 export * from './flashSwapCurrencyPair';
 export * from './flashSwapOrder';
 export * from './flashSwapOrderPreview';
 export * from './flashSwapOrderRequest';
 export * from './flashSwapPreviewRequest';
 export * from './fundingAccount';
-export * from './fundingBookItem';
 export * from './fundingRateRecord';
+export * from './futureCancelOrderResult';
 export * from './futuresAccount';
 export * from './futuresAccountBook';
 export * from './futuresAccountHistory';
 export * from './futuresAutoDeleverage';
+export * from './futuresBatchAmendOrderRequest';
 export * from './futuresCandlestick';
 export * from './futuresFee';
 export * from './futuresIndexConstituents';
 export * from './futuresInitialOrder';
+export * from './futuresLimitRiskTiers';
 export * from './futuresLiqOrder';
 export * from './futuresLiquidate';
 export * from './futuresOrder';
@@ -72,20 +90,37 @@ export * from './futuresPriceTriggeredOrder';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './indexConstituent';
+export * from './inlineObject';
+export * from './inlineObject1';
+export * from './inlineResponse200';
+export * from './inlineResponse2001';
 export * from './insuranceRecord';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
-export * from './loan';
-export * from './loanPatch';
-export * from './loanRecord';
 export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
-export * from './marginBorrowable';
-export * from './marginCurrencyPair';
+export * from './marginTiers';
 export * from './marginTransferable';
 export * from './maxUniBorrowable';
+export * from './mockFuturesOrder';
+export * from './mockFuturesPosition';
+export * from './mockMarginResult';
+export * from './mockOptionsOrder';
+export * from './mockOptionsPosition';
+export * from './mockRiskUnit';
+export * from './mockSpotBalance';
+export * from './mockSpotOrder';
 export * from './multiChainAddressItem';
+export * from './multiCollateralCurrency';
+export * from './multiCollateralItem';
+export * from './multiCollateralOrder';
+export * from './multiCollateralRecord';
+export * from './multiCollateralRecordCurrency';
+export * from './multiLoanItem';
+export * from './multiLoanRepayItem';
+export * from './multiRepayRecord';
+export * from './multiRepayResp';
 export * from './myFuturesTrade';
 export * from './myFuturesTradeTimeRange';
 export * from './openOrders';
@@ -93,6 +128,8 @@ export * from './optionsAccount';
 export * from './optionsAccountBook';
 export * from './optionsCandlestick';
 export * from './optionsContract';
+export * from './optionsMMP';
+export * from './optionsMMPReset';
 export * from './optionsMySettlements';
 export * from './optionsMyTrade';
 export * from './optionsOrder';
@@ -105,22 +142,37 @@ export * from './optionsUnderlying';
 export * from './optionsUnderlyingTicker';
 export * from './order';
 export * from './orderBook';
+export * from './orderCancel';
 export * from './orderPatch';
 export * from './orderResp';
+export * from './partnerCommissionHistory';
+export * from './partnerSub';
+export * from './partnerSubList';
+export * from './partnerTransactionHistory';
 export * from './patchUniLend';
 export * from './placeDualInvestmentOrder';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
+export * from './profitLossRange';
+export * from './rebateUserInfo';
+export * from './repayCurrencyRes';
 export * from './repayLoan';
+export * from './repayMultiLoan';
 export * from './repayRecord';
-export * from './repayRequest';
+export * from './repayRecordCurrency';
+export * from './repayRecordLeftInterest';
+export * from './repayRecordRepaidCurrency';
+export * from './repayRecordTotalInterest';
 export * from './repayResp';
-export * from './repayment';
+export * from './riskUnits';
 export * from './savedAddress';
+export * from './smallBalance';
+export * from './smallBalanceHistory';
 export * from './spotAccount';
 export * from './spotAccountBook';
 export * from './spotFee';
+export * from './spotInsuranceHistory';
 export * from './spotPricePutOrder';
 export * from './spotPriceTrigger';
 export * from './spotPriceTriggeredOrder';
@@ -128,18 +180,18 @@ export * from './stpGroup';
 export * from './stpGroupUser';
 export * from './structuredBuy';
 export * from './structuredGetProjectList';
-export * from './structuredGetProjectListRequest';
 export * from './structuredOrderList';
-export * from './structuredOrderListRequest';
 export * from './subAccount';
 export * from './subAccountBalance';
 export * from './subAccountCrossMarginBalance';
 export * from './subAccountFuturesBalance';
 export * from './subAccountKey';
+export * from './subAccountKeyPerms';
 export * from './subAccountMarginBalance';
 export * from './subAccountToSubAccount';
 export * from './subAccountTransfer';
 export * from './subCrossMarginAccount';
+export * from './subUserMode';
 export * from './systemTime';
 export * from './ticker';
 export * from './totalBalance';
@@ -149,6 +201,9 @@ export * from './transactionID';
 export * from './transfer';
 export * from './triggerOrderResponse';
 export * from './triggerTime';
+export * from './uidPushOrder';
+export * from './uidPushWithdrawal';
+export * from './uidPushWithdrawalResp';
 export * from './uniCurrency';
 export * from './uniCurrencyInterest';
 export * from './uniCurrencyPair';
@@ -163,11 +218,24 @@ export * from './uniLoanRecord';
 export * from './unifiedAccount';
 export * from './unifiedBalance';
 export * from './unifiedBorrowable';
+export * from './unifiedDiscount';
+export * from './unifiedDiscountTiers';
+export * from './unifiedHistoryLoanRate';
+export * from './unifiedHistoryLoanRateRates';
+export * from './unifiedLeverageConfig';
+export * from './unifiedLeverageSetting';
 export * from './unifiedLoan';
 export * from './unifiedLoanRecord';
-export * from './unifiedMode';
+export * from './unifiedMarginTiers';
+export * from './unifiedModeSet';
+export * from './unifiedPortfolioInput';
+export * from './unifiedPortfolioOutput';
+export * from './unifiedRiskUnits';
+export * from './unifiedSettings';
 export * from './unifiedTransferable';
 export * from './userLtvInfo';
+export * from './userSub';
+export * from './userSubRelation';
 export * from './userTotalAmount';
 export * from './withdrawStatus';
 export * from './withdrawalRecord';
@@ -180,27 +248,43 @@ import { URL } from 'url';
 import { AccountBalance } from './accountBalance';
 import { AccountDetail } from './accountDetail';
 import { AccountDetailKey } from './accountDetailKey';
+import { AccountRateLimit } from './accountRateLimit';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
 import { AgencyTransactionHistory } from './agencyTransactionHistory';
-import { AmendOrderResult } from './amendOrderResult';
-import { ApiV4KeyPerm } from './apiV4KeyPerm';
 import { AutoRepaySetting } from './autoRepaySetting';
 import { BatchAmendItem } from './batchAmendItem';
+import { BatchAmendOrderReq } from './batchAmendOrderReq';
 import { BatchFuturesOrder } from './batchFuturesOrder';
 import { BatchOrder } from './batchOrder';
+import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
+import { BrokerCommission } from './brokerCommission';
+import { BrokerCommission1 } from './brokerCommission1';
+import { BrokerTransaction } from './brokerTransaction';
+import { BrokerTransaction1 } from './brokerTransaction1';
 import { CancelBatchOrder } from './cancelBatchOrder';
 import { CancelOrderResult } from './cancelOrderResult';
+import { CollateralAdjust } from './collateralAdjust';
+import { CollateralAdjustRes } from './collateralAdjustRes';
 import { CollateralAlign } from './collateralAlign';
+import { CollateralCurrency } from './collateralCurrency';
+import { CollateralCurrencyInfo } from './collateralCurrencyInfo';
+import { CollateralCurrencyRes } from './collateralCurrencyRes';
+import { CollateralCurrentRate } from './collateralCurrentRate';
+import { CollateralFixRate } from './collateralFixRate';
 import { CollateralLoanCurrency } from './collateralLoanCurrency';
+import { CollateralLtv } from './collateralLtv';
 import { CollateralOrder } from './collateralOrder';
 import { CollateralRecord } from './collateralRecord';
 import { Contract } from './contract';
 import { ContractStat } from './contractStat';
+import { ConvertSmallBalance } from './convertSmallBalance';
 import { CountdownCancelAllFuturesTask } from './countdownCancelAllFuturesTask';
+import { CountdownCancelAllOptionsTask } from './countdownCancelAllOptionsTask';
 import { CountdownCancelAllSpotTask } from './countdownCancelAllSpotTask';
 import { CreateCollateralOrder } from './createCollateralOrder';
+import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
 import { CrossMarginAccount } from './crossMarginAccount';
@@ -215,6 +299,7 @@ import { CrossMarginTransferable } from './crossMarginTransferable';
 import { Currency } from './currency';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
+import { CurrencyQuota } from './currencyQuota';
 import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
@@ -222,23 +307,24 @@ import { DepositAddress } from './depositAddress';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
 import { Eth2Swap } from './eth2Swap';
-import { FlashSwapCurrency } from './flashSwapCurrency';
 import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
 import { FlashSwapOrder } from './flashSwapOrder';
 import { FlashSwapOrderPreview } from './flashSwapOrderPreview';
 import { FlashSwapOrderRequest } from './flashSwapOrderRequest';
 import { FlashSwapPreviewRequest } from './flashSwapPreviewRequest';
 import { FundingAccount } from './fundingAccount';
-import { FundingBookItem } from './fundingBookItem';
 import { FundingRateRecord } from './fundingRateRecord';
+import { FutureCancelOrderResult } from './futureCancelOrderResult';
 import { FuturesAccount } from './futuresAccount';
 import { FuturesAccountBook } from './futuresAccountBook';
 import { FuturesAccountHistory } from './futuresAccountHistory';
 import { FuturesAutoDeleverage } from './futuresAutoDeleverage';
+import { FuturesBatchAmendOrderRequest } from './futuresBatchAmendOrderRequest';
 import { FuturesCandlestick } from './futuresCandlestick';
 import { FuturesFee } from './futuresFee';
 import { FuturesIndexConstituents } from './futuresIndexConstituents';
 import { FuturesInitialOrder } from './futuresInitialOrder';
+import { FuturesLimitRiskTiers } from './futuresLimitRiskTiers';
 import { FuturesLiqOrder } from './futuresLiqOrder';
 import { FuturesLiquidate } from './futuresLiquidate';
 import { FuturesOrder } from './futuresOrder';
@@ -251,20 +337,37 @@ import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
+import { InlineObject } from './inlineObject';
+import { InlineObject1 } from './inlineObject1';
+import { InlineResponse200 } from './inlineResponse200';
+import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
-import { Loan } from './loan';
-import { LoanPatch } from './loanPatch';
-import { LoanRecord } from './loanRecord';
 import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
-import { MarginBorrowable } from './marginBorrowable';
-import { MarginCurrencyPair } from './marginCurrencyPair';
+import { MarginTiers } from './marginTiers';
 import { MarginTransferable } from './marginTransferable';
 import { MaxUniBorrowable } from './maxUniBorrowable';
+import { MockFuturesOrder } from './mockFuturesOrder';
+import { MockFuturesPosition } from './mockFuturesPosition';
+import { MockMarginResult } from './mockMarginResult';
+import { MockOptionsOrder } from './mockOptionsOrder';
+import { MockOptionsPosition } from './mockOptionsPosition';
+import { MockRiskUnit } from './mockRiskUnit';
+import { MockSpotBalance } from './mockSpotBalance';
+import { MockSpotOrder } from './mockSpotOrder';
 import { MultiChainAddressItem } from './multiChainAddressItem';
+import { MultiCollateralCurrency } from './multiCollateralCurrency';
+import { MultiCollateralItem } from './multiCollateralItem';
+import { MultiCollateralOrder } from './multiCollateralOrder';
+import { MultiCollateralRecord } from './multiCollateralRecord';
+import { MultiCollateralRecordCurrency } from './multiCollateralRecordCurrency';
+import { MultiLoanItem } from './multiLoanItem';
+import { MultiLoanRepayItem } from './multiLoanRepayItem';
+import { MultiRepayRecord } from './multiRepayRecord';
+import { MultiRepayResp } from './multiRepayResp';
 import { MyFuturesTrade } from './myFuturesTrade';
 import { MyFuturesTradeTimeRange } from './myFuturesTradeTimeRange';
 import { OpenOrders } from './openOrders';
@@ -272,6 +375,8 @@ import { OptionsAccount } from './optionsAccount';
 import { OptionsAccountBook } from './optionsAccountBook';
 import { OptionsCandlestick } from './optionsCandlestick';
 import { OptionsContract } from './optionsContract';
+import { OptionsMMP } from './optionsMMP';
+import { OptionsMMPReset } from './optionsMMPReset';
 import { OptionsMySettlements } from './optionsMySettlements';
 import { OptionsMyTrade } from './optionsMyTrade';
 import { OptionsOrder } from './optionsOrder';
@@ -284,22 +389,37 @@ import { OptionsUnderlying } from './optionsUnderlying';
 import { OptionsUnderlyingTicker } from './optionsUnderlyingTicker';
 import { Order } from './order';
 import { OrderBook } from './orderBook';
+import { OrderCancel } from './orderCancel';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
+import { PartnerCommissionHistory } from './partnerCommissionHistory';
+import { PartnerSub } from './partnerSub';
+import { PartnerSubList } from './partnerSubList';
+import { PartnerTransactionHistory } from './partnerTransactionHistory';
 import { PatchUniLend } from './patchUniLend';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
+import { ProfitLossRange } from './profitLossRange';
+import { RebateUserInfo } from './rebateUserInfo';
+import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayLoan } from './repayLoan';
+import { RepayMultiLoan } from './repayMultiLoan';
 import { RepayRecord } from './repayRecord';
-import { RepayRequest } from './repayRequest';
+import { RepayRecordCurrency } from './repayRecordCurrency';
+import { RepayRecordLeftInterest } from './repayRecordLeftInterest';
+import { RepayRecordRepaidCurrency } from './repayRecordRepaidCurrency';
+import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 import { RepayResp } from './repayResp';
-import { Repayment } from './repayment';
+import { RiskUnits } from './riskUnits';
 import { SavedAddress } from './savedAddress';
+import { SmallBalance } from './smallBalance';
+import { SmallBalanceHistory } from './smallBalanceHistory';
 import { SpotAccount } from './spotAccount';
 import { SpotAccountBook } from './spotAccountBook';
 import { SpotFee } from './spotFee';
+import { SpotInsuranceHistory } from './spotInsuranceHistory';
 import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 import { SpotPriceTriggeredOrder } from './spotPriceTriggeredOrder';
@@ -307,18 +427,18 @@ import { StpGroup } from './stpGroup';
 import { StpGroupUser } from './stpGroupUser';
 import { StructuredBuy } from './structuredBuy';
 import { StructuredGetProjectList } from './structuredGetProjectList';
-import { StructuredGetProjectListRequest } from './structuredGetProjectListRequest';
 import { StructuredOrderList } from './structuredOrderList';
-import { StructuredOrderListRequest } from './structuredOrderListRequest';
 import { SubAccount } from './subAccount';
 import { SubAccountBalance } from './subAccountBalance';
 import { SubAccountCrossMarginBalance } from './subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from './subAccountFuturesBalance';
 import { SubAccountKey } from './subAccountKey';
+import { SubAccountKeyPerms } from './subAccountKeyPerms';
 import { SubAccountMarginBalance } from './subAccountMarginBalance';
 import { SubAccountToSubAccount } from './subAccountToSubAccount';
 import { SubAccountTransfer } from './subAccountTransfer';
 import { SubCrossMarginAccount } from './subCrossMarginAccount';
+import { SubUserMode } from './subUserMode';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
 import { TotalBalance } from './totalBalance';
@@ -328,6 +448,9 @@ import { TransactionID } from './transactionID';
 import { Transfer } from './transfer';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 import { TriggerTime } from './triggerTime';
+import { UidPushOrder } from './uidPushOrder';
+import { UidPushWithdrawal } from './uidPushWithdrawal';
+import { UidPushWithdrawalResp } from './uidPushWithdrawalResp';
 import { UniCurrency } from './uniCurrency';
 import { UniCurrencyInterest } from './uniCurrencyInterest';
 import { UniCurrencyPair } from './uniCurrencyPair';
@@ -342,21 +465,33 @@ import { UniLoanRecord } from './uniLoanRecord';
 import { UnifiedAccount } from './unifiedAccount';
 import { UnifiedBalance } from './unifiedBalance';
 import { UnifiedBorrowable } from './unifiedBorrowable';
+import { UnifiedDiscount } from './unifiedDiscount';
+import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
+import { UnifiedHistoryLoanRate } from './unifiedHistoryLoanRate';
+import { UnifiedHistoryLoanRateRates } from './unifiedHistoryLoanRateRates';
+import { UnifiedLeverageConfig } from './unifiedLeverageConfig';
+import { UnifiedLeverageSetting } from './unifiedLeverageSetting';
 import { UnifiedLoan } from './unifiedLoan';
 import { UnifiedLoanRecord } from './unifiedLoanRecord';
-import { UnifiedMode } from './unifiedMode';
+import { UnifiedMarginTiers } from './unifiedMarginTiers';
+import { UnifiedModeSet } from './unifiedModeSet';
+import { UnifiedPortfolioInput } from './unifiedPortfolioInput';
+import { UnifiedPortfolioOutput } from './unifiedPortfolioOutput';
+import { UnifiedRiskUnits } from './unifiedRiskUnits';
+import { UnifiedSettings } from './unifiedSettings';
 import { UnifiedTransferable } from './unifiedTransferable';
 import { UserLtvInfo } from './userLtvInfo';
+import { UserSub } from './userSub';
+import { UserSubRelation } from './userSubRelation';
 import { UserTotalAmount } from './userTotalAmount';
 import { WithdrawStatus } from './withdrawStatus';
 import { WithdrawalRecord } from './withdrawalRecord';
 
 /* tslint:disable:no-unused-variable */
-const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any'];
+const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
 
 const enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
-    'ApiV4KeyPerm.Name': ApiV4KeyPerm.Name,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
     'BatchFuturesOrder.Status': BatchFuturesOrder.Status,
@@ -392,12 +527,9 @@ const enumsMap: { [index: string]: any } = {
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
     'LedgerRecord.Status': LedgerRecord.Status,
-    'Loan.Status': Loan.Status,
-    'Loan.Side': Loan.Side,
-    'LoanPatch.Side': LoanPatch.Side,
-    'LoanRecord.Status': LoanRecord.Status,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
+    'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
     'OptionsMyTrade.Role': OptionsMyTrade.Role,
     'OptionsOrder.FinishAs': OptionsOrder.FinishAs,
     'OptionsOrder.Status': OptionsOrder.Status,
@@ -409,18 +541,19 @@ const enumsMap: { [index: string]: any } = {
     'Order.TimeInForce': Order.TimeInForce,
     'Order.StpAct': Order.StpAct,
     'Order.FinishAs': Order.FinishAs,
+    'OrderCancel.Status': OrderCancel.Status,
+    'OrderCancel.Type': OrderCancel.Type,
+    'OrderCancel.Side': OrderCancel.Side,
+    'OrderCancel.TimeInForce': OrderCancel.TimeInForce,
+    'OrderCancel.StpAct': OrderCancel.StpAct,
+    'OrderCancel.FinishAs': OrderCancel.FinishAs,
     'Position.Mode': Position.Mode,
     'PositionClose.Side': PositionClose.Side,
-    'RepayRequest.Mode': RepayRequest.Mode,
     'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
     'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
     'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
     'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
     'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
-    'SubAccountToSubAccount.SubAccountFromType': SubAccountToSubAccount.SubAccountFromType,
-    'SubAccountToSubAccount.SubAccountToType': SubAccountToSubAccount.SubAccountToType,
-    'SubAccountTransfer.Direction': SubAccountTransfer.Direction,
-    'SubAccountTransfer.SubAccountType': SubAccountTransfer.SubAccountType,
     'Trade.Side': Trade.Side,
     'Trade.Role': Trade.Role,
     'Transfer.From': Transfer.From,
@@ -433,27 +566,43 @@ const typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
+    AccountRateLimit: AccountRateLimit,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
     AgencyTransactionHistory: AgencyTransactionHistory,
-    AmendOrderResult: AmendOrderResult,
-    ApiV4KeyPerm: ApiV4KeyPerm,
     AutoRepaySetting: AutoRepaySetting,
     BatchAmendItem: BatchAmendItem,
+    BatchAmendOrderReq: BatchAmendOrderReq,
     BatchFuturesOrder: BatchFuturesOrder,
     BatchOrder: BatchOrder,
+    BorrowCurrencyInfo: BorrowCurrencyInfo,
+    BrokerCommission: BrokerCommission,
+    BrokerCommission1: BrokerCommission1,
+    BrokerTransaction: BrokerTransaction,
+    BrokerTransaction1: BrokerTransaction1,
     CancelBatchOrder: CancelBatchOrder,
     CancelOrderResult: CancelOrderResult,
+    CollateralAdjust: CollateralAdjust,
+    CollateralAdjustRes: CollateralAdjustRes,
     CollateralAlign: CollateralAlign,
+    CollateralCurrency: CollateralCurrency,
+    CollateralCurrencyInfo: CollateralCurrencyInfo,
+    CollateralCurrencyRes: CollateralCurrencyRes,
+    CollateralCurrentRate: CollateralCurrentRate,
+    CollateralFixRate: CollateralFixRate,
     CollateralLoanCurrency: CollateralLoanCurrency,
+    CollateralLtv: CollateralLtv,
     CollateralOrder: CollateralOrder,
     CollateralRecord: CollateralRecord,
     Contract: Contract,
     ContractStat: ContractStat,
+    ConvertSmallBalance: ConvertSmallBalance,
     CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
+    CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
     CreateCollateralOrder: CreateCollateralOrder,
+    CreateMultiCollateralOrder: CreateMultiCollateralOrder,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
     CrossMarginAccount: CrossMarginAccount,
@@ -468,6 +617,7 @@ const typeMap: { [index: string]: any } = {
     Currency: Currency,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
+    CurrencyQuota: CurrencyQuota,
     DeliveryCandlestick: DeliveryCandlestick,
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
@@ -475,23 +625,24 @@ const typeMap: { [index: string]: any } = {
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
     Eth2Swap: Eth2Swap,
-    FlashSwapCurrency: FlashSwapCurrency,
     FlashSwapCurrencyPair: FlashSwapCurrencyPair,
     FlashSwapOrder: FlashSwapOrder,
     FlashSwapOrderPreview: FlashSwapOrderPreview,
     FlashSwapOrderRequest: FlashSwapOrderRequest,
     FlashSwapPreviewRequest: FlashSwapPreviewRequest,
     FundingAccount: FundingAccount,
-    FundingBookItem: FundingBookItem,
     FundingRateRecord: FundingRateRecord,
+    FutureCancelOrderResult: FutureCancelOrderResult,
     FuturesAccount: FuturesAccount,
     FuturesAccountBook: FuturesAccountBook,
     FuturesAccountHistory: FuturesAccountHistory,
     FuturesAutoDeleverage: FuturesAutoDeleverage,
+    FuturesBatchAmendOrderRequest: FuturesBatchAmendOrderRequest,
     FuturesCandlestick: FuturesCandlestick,
     FuturesFee: FuturesFee,
     FuturesIndexConstituents: FuturesIndexConstituents,
     FuturesInitialOrder: FuturesInitialOrder,
+    FuturesLimitRiskTiers: FuturesLimitRiskTiers,
     FuturesLiqOrder: FuturesLiqOrder,
     FuturesLiquidate: FuturesLiquidate,
     FuturesOrder: FuturesOrder,
@@ -504,20 +655,37 @@ const typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     IndexConstituent: IndexConstituent,
+    InlineObject: InlineObject,
+    InlineObject1: InlineObject1,
+    InlineResponse200: InlineResponse200,
+    InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
-    Loan: Loan,
-    LoanPatch: LoanPatch,
-    LoanRecord: LoanRecord,
     MarginAccount: MarginAccount,
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
-    MarginBorrowable: MarginBorrowable,
-    MarginCurrencyPair: MarginCurrencyPair,
+    MarginTiers: MarginTiers,
     MarginTransferable: MarginTransferable,
     MaxUniBorrowable: MaxUniBorrowable,
+    MockFuturesOrder: MockFuturesOrder,
+    MockFuturesPosition: MockFuturesPosition,
+    MockMarginResult: MockMarginResult,
+    MockOptionsOrder: MockOptionsOrder,
+    MockOptionsPosition: MockOptionsPosition,
+    MockRiskUnit: MockRiskUnit,
+    MockSpotBalance: MockSpotBalance,
+    MockSpotOrder: MockSpotOrder,
     MultiChainAddressItem: MultiChainAddressItem,
+    MultiCollateralCurrency: MultiCollateralCurrency,
+    MultiCollateralItem: MultiCollateralItem,
+    MultiCollateralOrder: MultiCollateralOrder,
+    MultiCollateralRecord: MultiCollateralRecord,
+    MultiCollateralRecordCurrency: MultiCollateralRecordCurrency,
+    MultiLoanItem: MultiLoanItem,
+    MultiLoanRepayItem: MultiLoanRepayItem,
+    MultiRepayRecord: MultiRepayRecord,
+    MultiRepayResp: MultiRepayResp,
     MyFuturesTrade: MyFuturesTrade,
     MyFuturesTradeTimeRange: MyFuturesTradeTimeRange,
     OpenOrders: OpenOrders,
@@ -525,6 +693,8 @@ const typeMap: { [index: string]: any } = {
     OptionsAccountBook: OptionsAccountBook,
     OptionsCandlestick: OptionsCandlestick,
     OptionsContract: OptionsContract,
+    OptionsMMP: OptionsMMP,
+    OptionsMMPReset: OptionsMMPReset,
     OptionsMySettlements: OptionsMySettlements,
     OptionsMyTrade: OptionsMyTrade,
     OptionsOrder: OptionsOrder,
@@ -537,22 +707,37 @@ const typeMap: { [index: string]: any } = {
     OptionsUnderlyingTicker: OptionsUnderlyingTicker,
     Order: Order,
     OrderBook: OrderBook,
+    OrderCancel: OrderCancel,
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
+    PartnerCommissionHistory: PartnerCommissionHistory,
+    PartnerSub: PartnerSub,
+    PartnerSubList: PartnerSubList,
+    PartnerTransactionHistory: PartnerTransactionHistory,
     PatchUniLend: PatchUniLend,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
+    ProfitLossRange: ProfitLossRange,
+    RebateUserInfo: RebateUserInfo,
+    RepayCurrencyRes: RepayCurrencyRes,
     RepayLoan: RepayLoan,
+    RepayMultiLoan: RepayMultiLoan,
     RepayRecord: RepayRecord,
-    RepayRequest: RepayRequest,
+    RepayRecordCurrency: RepayRecordCurrency,
+    RepayRecordLeftInterest: RepayRecordLeftInterest,
+    RepayRecordRepaidCurrency: RepayRecordRepaidCurrency,
+    RepayRecordTotalInterest: RepayRecordTotalInterest,
     RepayResp: RepayResp,
-    Repayment: Repayment,
+    RiskUnits: RiskUnits,
     SavedAddress: SavedAddress,
+    SmallBalance: SmallBalance,
+    SmallBalanceHistory: SmallBalanceHistory,
     SpotAccount: SpotAccount,
     SpotAccountBook: SpotAccountBook,
     SpotFee: SpotFee,
+    SpotInsuranceHistory: SpotInsuranceHistory,
     SpotPricePutOrder: SpotPricePutOrder,
     SpotPriceTrigger: SpotPriceTrigger,
     SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
@@ -560,18 +745,18 @@ const typeMap: { [index: string]: any } = {
     StpGroupUser: StpGroupUser,
     StructuredBuy: StructuredBuy,
     StructuredGetProjectList: StructuredGetProjectList,
-    StructuredGetProjectListRequest: StructuredGetProjectListRequest,
     StructuredOrderList: StructuredOrderList,
-    StructuredOrderListRequest: StructuredOrderListRequest,
     SubAccount: SubAccount,
     SubAccountBalance: SubAccountBalance,
     SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
     SubAccountFuturesBalance: SubAccountFuturesBalance,
     SubAccountKey: SubAccountKey,
+    SubAccountKeyPerms: SubAccountKeyPerms,
     SubAccountMarginBalance: SubAccountMarginBalance,
     SubAccountToSubAccount: SubAccountToSubAccount,
     SubAccountTransfer: SubAccountTransfer,
     SubCrossMarginAccount: SubCrossMarginAccount,
+    SubUserMode: SubUserMode,
     SystemTime: SystemTime,
     Ticker: Ticker,
     TotalBalance: TotalBalance,
@@ -581,6 +766,9 @@ const typeMap: { [index: string]: any } = {
     Transfer: Transfer,
     TriggerOrderResponse: TriggerOrderResponse,
     TriggerTime: TriggerTime,
+    UidPushOrder: UidPushOrder,
+    UidPushWithdrawal: UidPushWithdrawal,
+    UidPushWithdrawalResp: UidPushWithdrawalResp,
     UniCurrency: UniCurrency,
     UniCurrencyInterest: UniCurrencyInterest,
     UniCurrencyPair: UniCurrencyPair,
@@ -595,11 +783,24 @@ const typeMap: { [index: string]: any } = {
     UnifiedAccount: UnifiedAccount,
     UnifiedBalance: UnifiedBalance,
     UnifiedBorrowable: UnifiedBorrowable,
+    UnifiedDiscount: UnifiedDiscount,
+    UnifiedDiscountTiers: UnifiedDiscountTiers,
+    UnifiedHistoryLoanRate: UnifiedHistoryLoanRate,
+    UnifiedHistoryLoanRateRates: UnifiedHistoryLoanRateRates,
+    UnifiedLeverageConfig: UnifiedLeverageConfig,
+    UnifiedLeverageSetting: UnifiedLeverageSetting,
     UnifiedLoan: UnifiedLoan,
     UnifiedLoanRecord: UnifiedLoanRecord,
-    UnifiedMode: UnifiedMode,
+    UnifiedMarginTiers: UnifiedMarginTiers,
+    UnifiedModeSet: UnifiedModeSet,
+    UnifiedPortfolioInput: UnifiedPortfolioInput,
+    UnifiedPortfolioOutput: UnifiedPortfolioOutput,
+    UnifiedRiskUnits: UnifiedRiskUnits,
+    UnifiedSettings: UnifiedSettings,
     UnifiedTransferable: UnifiedTransferable,
     UserLtvInfo: UserLtvInfo,
+    UserSub: UserSub,
+    UserSubRelation: UserSubRelation,
     UserTotalAmount: UserTotalAmount,
     WithdrawStatus: WithdrawStatus,
     WithdrawalRecord: WithdrawalRecord,
@@ -645,6 +846,9 @@ export class ObjectSerializer {
         if (data == undefined) {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+            if (type.toLowerCase() === 'bigint') {
+                return data.toString();
+            }
             return data;
         } else if (type.lastIndexOf('Array<', 0) === 0) {
             // string.startsWith pre es6
@@ -690,6 +894,9 @@ export class ObjectSerializer {
         if (data == undefined) {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
+            if (type.toLowerCase() === 'bigint') {
+                return BigInt(data);
+            }
             return data;
         } else if (type.lastIndexOf('Array<', 0) === 0) {
             // string.startsWith pre es6

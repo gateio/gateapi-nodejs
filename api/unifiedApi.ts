@@ -10,13 +10,22 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { InlineObject } from '../model/inlineObject';
 import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
+import { UnifiedDiscount } from '../model/unifiedDiscount';
+import { UnifiedHistoryLoanRate } from '../model/unifiedHistoryLoanRate';
+import { UnifiedLeverageConfig } from '../model/unifiedLeverageConfig';
+import { UnifiedLeverageSetting } from '../model/unifiedLeverageSetting';
 import { UnifiedLoan } from '../model/unifiedLoan';
 import { UnifiedLoanRecord } from '../model/unifiedLoanRecord';
-import { UnifiedMode } from '../model/unifiedMode';
+import { UnifiedMarginTiers } from '../model/unifiedMarginTiers';
+import { UnifiedModeSet } from '../model/unifiedModeSet';
+import { UnifiedPortfolioInput } from '../model/unifiedPortfolioInput';
+import { UnifiedPortfolioOutput } from '../model/unifiedPortfolioOutput';
+import { UnifiedRiskUnits } from '../model/unifiedRiskUnits';
 import { UnifiedTransferable } from '../model/unifiedTransferable';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
@@ -71,69 +80,6 @@ export class UnifiedApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<UnifiedAccount>(config, 'UnifiedAccount', authSettings);
-    }
-
-    /**
-     * cross_margin - cross margin, usdt_futures - usdt futures
-     * @summary Query mode of the unified account
-     */
-    public async listUnifiedAccountMode(): Promise<{ response: AxiosResponse; body: { [key: string]: boolean } }> {
-        const localVarPath = this.client.basePath + '/unified/account_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<{ [key: string]: boolean }>(config, '{ [key: string]: boolean; }', authSettings);
-    }
-
-    /**
-     *
-     * @summary Set mode of the unified account
-     * @param unifiedMode
-     */
-    public async setUnifiedAccountMode(
-        unifiedMode: UnifiedMode,
-    ): Promise<{ response: AxiosResponse; body: { [key: string]: boolean } }> {
-        const localVarPath = this.client.basePath + '/unified/account_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'unifiedMode' is not null or undefined
-        if (unifiedMode === null || unifiedMode === undefined) {
-            throw new Error('Required parameter unifiedMode was null or undefined when calling setUnifiedAccountMode.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(unifiedMode, 'UnifiedMode'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<{ [key: string]: boolean }>(config, '{ [key: string]: boolean; }', authSettings);
     }
 
     /**
@@ -215,11 +161,13 @@ export class UnifiedApi {
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.type Loan type, platform - platform, margin - margin
      */
     public async listUnifiedLoans(opts: {
         currency?: string;
         page?: number;
         limit?: number;
+        type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoan> }> {
         const localVarPath = this.client.basePath + '/unified/loans';
         const localVarQueryParameters: any = {};
@@ -243,6 +191,10 @@ export class UnifiedApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -293,7 +245,7 @@ export class UnifiedApi {
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
      */
     public async listUnifiedLoanRecords(opts: {
-        type?: 'borrow' | 'repay';
+        type?: string;
         currency?: string;
         page?: number;
         limit?: number;
@@ -311,7 +263,7 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "'borrow' | 'repay'");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         if (opts.currency !== undefined) {
@@ -344,11 +296,17 @@ export class UnifiedApi {
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.from Start timestamp of the query
+     * @param opts.to Time range ending, default to current time
+     * @param opts.type 借贷类型，平台借币 - platform，杠杆借币 - margin，不传时默认为margin
      */
     public async listUnifiedLoanInterestRecords(opts: {
         currency?: string;
         page?: number;
         limit?: number;
+        from?: number;
+        to?: number;
+        type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/unified/interest_records';
         const localVarQueryParameters: any = {};
@@ -374,6 +332,18 @@ export class UnifiedApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -383,5 +353,376 @@ export class UnifiedApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<UniLoanInterestRecord>>(config, 'Array<UniLoanInterestRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary 获取用户风险单元详情，仅在组合保证金模式有效
+     */
+    public async getUnifiedRiskUnits(): Promise<{ response: AxiosResponse; body: UnifiedRiskUnits }> {
+        const localVarPath = this.client.basePath + '/unified/risk_units';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedRiskUnits>(config, 'UnifiedRiskUnits', authSettings);
+    }
+
+    /**
+     * 统一账户模式： - `classic`: 经典账户模式 - `multi_currency`: 跨币种保证金模式 - `portfolio`: 组合保证金模式 - `single_currency`: 单币种保证金模式
+     * @summary Query mode of the unified account
+     */
+    public async getUnifiedMode(): Promise<{ response: AxiosResponse; body: UnifiedModeSet }> {
+        const localVarPath = this.client.basePath + '/unified/unified_mode';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedModeSet>(config, 'UnifiedModeSet', authSettings);
+    }
+
+    /**
+     * 每种账户模式的切换只需要传对应账户模式的参数，同时支持在切换账户模式时打开或关闭对应账户模式下的配置开关   - 开通经典账户模式时，mode=classic ```     PUT /unified/unified_mode     {       \"mode\": \"classic\"     } ``` - 开通跨币种保证金模式，mode=multi_currency ```     PUT /unified/unified_mode     {       \"mode\": \"multi_currency\",       \"settings\": {          \"usdt_futures\": true       }     } ``` - 开通组合保证金模式时，mode=portfolio ```     PUT /unified/unified_mode     {       \"mode\": \"portfolio\",       \"settings\": {          \"spot_hedge\": true       }     } ``` - 开通组合保证金模式时，mode=single_currency ```     PUT /unified/unified_mode     {       \"mode\": \"single_currency\"     } ```
+     * @summary Set mode of the unified account
+     * @param unifiedModeSet
+     */
+    public async setUnifiedMode(unifiedModeSet: UnifiedModeSet): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/unified/unified_mode';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'unifiedModeSet' is not null or undefined
+        if (unifiedModeSet === null || unifiedModeSet === undefined) {
+            throw new Error('Required parameter unifiedModeSet was null or undefined when calling setUnifiedMode.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(unifiedModeSet, 'UnifiedModeSet'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     * Due to fluctuations in lending depth, hourly interest rates may vary, and thus, I cannot provide exact rates. When a currency is not supported, the interest rate returned will be an empty string.
+     * @summary Get unified estimate rate
+     * @param currencies Specify the currency names for querying in an array, separated by commas, with a maximum of 10 currencies.
+     */
+    public async getUnifiedEstimateRate(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/unified/estimate_rate';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error('Required parameter currencies was null or undefined when calling getUnifiedEstimateRate.');
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
+    }
+
+    /**
+     *
+     * @summary list currency discount tiers
+     */
+    public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
+        const localVarPath = this.client.basePath + '/unified/currency_discount_tiers';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<UnifiedDiscount>>(config, 'Array<UnifiedDiscount>', authSettings);
+    }
+
+    /**
+     *
+     * @summary 查询统一账户借贷梯度保证金
+     */
+    public async listLoanMarginTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedMarginTiers> }> {
+        const localVarPath = this.client.basePath + '/unified/loan_margin_tiers';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<UnifiedMarginTiers>>(config, 'Array<UnifiedMarginTiers>', authSettings);
+    }
+
+    /**
+     * 组合保证金计算器  当输入为模拟仓位组合时，每个仓位包括仓位名和持有量，只支持市场范围：BTC、ETH的永续合约、期权、现货 当输入为模拟挂单时，每个挂单包括市场标识、挂单价、挂单量，只支持市场范围：BTC、ETH的永续合约、期权、现货。挂单不包括市价单
+     * @summary 组合保证金计算器计算
+     * @param unifiedPortfolioInput
+     */
+    public async calculatePortfolioMargin(
+        unifiedPortfolioInput: UnifiedPortfolioInput,
+    ): Promise<{ response: AxiosResponse; body: UnifiedPortfolioOutput }> {
+        const localVarPath = this.client.basePath + '/unified/portfolio_calculator';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'unifiedPortfolioInput' is not null or undefined
+        if (unifiedPortfolioInput === null || unifiedPortfolioInput === undefined) {
+            throw new Error(
+                'Required parameter unifiedPortfolioInput was null or undefined when calling calculatePortfolioMargin.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(unifiedPortfolioInput, 'UnifiedPortfolioInput'),
+        };
+
+        const authSettings = [];
+        return this.client.request<UnifiedPortfolioOutput>(config, 'UnifiedPortfolioOutput', authSettings);
+    }
+
+    /**
+     *
+     * @summary 用户最大、最小可设置币种杠杆倍数
+     * @param currency Currency
+     */
+    public async getUserLeverageCurrencyConfig(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: UnifiedLeverageConfig }> {
+        const localVarPath = this.client.basePath + '/unified/leverage/user_currency_config';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error(
+                'Required parameter currency was null or undefined when calling getUserLeverageCurrencyConfig.',
+            );
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedLeverageConfig>(config, 'UnifiedLeverageConfig', authSettings);
+    }
+
+    /**
+     *
+     * @summary 获取用户币种杠杆倍数，currency不传则查询全部币种
+     * @param opts Optional parameters
+     * @param opts.currency Currency
+     */
+    public async getUserLeverageCurrencySetting(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting }> {
+        const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedLeverageSetting>(config, 'UnifiedLeverageSetting', authSettings);
+    }
+
+    /**
+     *
+     * @summary 设置借贷币种杠杆倍数
+     * @param inlineObject
+     */
+    public async setUserLeverageCurrencySetting(
+        inlineObject: InlineObject,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'inlineObject' is not null or undefined
+        if (inlineObject === null || inlineObject === undefined) {
+            throw new Error(
+                'Required parameter inlineObject was null or undefined when calling setUserLeverageCurrencySetting.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(inlineObject, 'InlineObject'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary 获取历史借币利率
+     * @param currency Currency
+     * @param opts Optional parameters
+     * @param opts.tier 需要查询的上浮费率的vip等级
+     * @param opts.page Page number
+     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     */
+    public async getHistoryLoanRate(
+        currency: string,
+        opts: { tier?: string; page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate }> {
+        const localVarPath = this.client.basePath + '/unified/history_loan_rate';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getHistoryLoanRate.');
+        }
+
+        opts = opts || {};
+        if (opts.tier !== undefined) {
+            localVarQueryParameters['tier'] = ObjectSerializer.serialize(opts.tier, 'string');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedHistoryLoanRate>(config, 'UnifiedHistoryLoanRate', authSettings);
     }
 }

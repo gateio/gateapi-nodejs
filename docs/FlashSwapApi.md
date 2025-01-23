@@ -4,50 +4,12 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listFlashSwapCurrencies**](FlashSwapApi.md#listFlashSwapCurrencies) | **GET** /flash_swap/currencies | List All Supported Currencies In Flash Swap (deprecated)
 [**listFlashSwapCurrencyPair**](FlashSwapApi.md#listFlashSwapCurrencyPair) | **GET** /flash_swap/currency_pairs | List All Supported Currency Pairs In Flash Swap
 [**listFlashSwapOrders**](FlashSwapApi.md#listFlashSwapOrders) | **GET** /flash_swap/orders | List all flash swap orders
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Get a single flash swap order\&#39;s detail
 [**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Initiate a flash swap order preview
 
-
-## listFlashSwapCurrencies
-
-> Promise<{ response: http.IncomingMessage; body: Array<FlashSwapCurrency>; }> listFlashSwapCurrencies()
-
-List All Supported Currencies In Flash Swap (deprecated)
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-
-const api = new GateApi.FlashSwapApi(client);
-api.listFlashSwapCurrencies()
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrency>; }> [FlashSwapCurrency](FlashSwapCurrency.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 ## listFlashSwapCurrencyPair
 
@@ -67,7 +29,9 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.FlashSwapApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieve data of the specified currency
+  'currency': "BTC", // string | Retrieve data of the specified currency
+  'page': 1, // number | Page number
+  'limit': 1000 // number | 列表返回的最大数量。默认为1000，最小1，最大1000。
 };
 api.listFlashSwapCurrencyPair(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -80,6 +44,8 @@ api.listFlashSwapCurrencyPair(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| 列表返回的最大数量。默认为1000，最小1，最大1000。 | [optional] [default to 1000]
 
 ### Return type
 

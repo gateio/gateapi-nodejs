@@ -1,6 +1,6 @@
 {
     "name": "gate-api",
-    "version": "5.60.1",
+    "version": "5.90.1",
     "description": "NodeJS client for gate-api",
     "repository": "gateio/gateapi-nodejs",
     "main": "dist/api.js",
@@ -19,7 +19,8 @@
     "license": "Unlicense",
     "dependencies": {
         "axios": "^0.21.1",
-        "@types/node": "^8.10.48"
+        "@types/node": "^8.10.48",
+        "json-bigint": "^1.0.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^3.7.0",

@@ -20,6 +20,9 @@ Name | Type | Description | Notes
 **maintenanceMargin** | **string** | Maintenance margin required for the position, applicable to portfolio margin account | [optional] [readonly] [default to undefined]
 **unrealisedPnl** | **string** | Unrealized PNL | [optional] [readonly] [default to undefined]
 **realisedPnl** | **string** | Realized PNL | [optional] [readonly] [default to undefined]
+**pnlPnl** | **string** | Realized PNL - Position P/L | [optional] [readonly] [default to undefined]
+**pnlFund** | **string** | Realized PNL -  Funding Fees | [optional] [readonly] [default to undefined]
+**pnlFee** | **string** | Realized PNL - Transaction Fees | [optional] [readonly] [default to undefined]
 **historyPnl** | **string** | History realized PNL | [optional] [readonly] [default to undefined]
 **lastClosePnl** | **string** | PNL of last position close | [optional] [readonly] [default to undefined]
 **realisedPoint** | **string** | Realized POINT PNL | [optional] [readonly] [default to undefined]
@@ -30,6 +33,8 @@ Name | Type | Description | Notes
 **mode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]
 **crossLeverageLimit** | **string** | Cross margin leverage(valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
 **updateTime** | **number** | Last update time | [optional] [readonly] [default to undefined]
+**updateId** | **number** | 更新id，仓位每更新一次，数值会+1 | [optional] [readonly] [default to undefined]
+**openTime** | **number** | First Open Time | [optional] [default to undefined]
 
 ## Enum: Position.Mode
 

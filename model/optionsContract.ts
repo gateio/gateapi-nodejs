@@ -82,7 +82,7 @@ export class OptionsContract {
      */
     'orderSizeMax'?: number;
     /**
-     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
+     * 下单价与当前标记价格允许的正负偏移量， 即下单价 `order_price` 需满足如下条件:      order_price 在mark_price +/- order_price_deviate * underlying_price 范围内，不区分买单卖单
      */
     'orderPriceDeviate'?: string;
     /**

@@ -2,15 +2,15 @@
     "compilerOptions": {
         "module": "commonjs",
         "noImplicitAny": false,
-        "suppressImplicitAnyIndexErrors": true,
-        "target": "es2017",
+        "target": "es2020",
         "strict": true,
         "moduleResolution": "node",
+        "esModuleInterop": true,
         "removeComments": true,
         "sourceMap": false,
         "noLib": false,
         "declaration": true,
-        "lib": ["es2017"],
+        "lib": ["es2020"],
         "outDir": "dist",
         "typeRoots": [
             "node_modules/@types"

@@ -305,7 +305,9 @@ const opts = {
   'currencyPair': "BTC_USDT", // string | Currency pair
   'currency': "BTC", // string | Retrieve data of the specified currency
   'page': 1, // number | Page number
-  'limit': 100 // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+  'limit': 100, // number | Maximum number of records to be returned in a single list
+  'from': 1547706332, // number | Start timestamp
+  'to': 1547706332 // number | End timestamp
 };
 api.listUniLoanInterestRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -320,7 +322,9 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
  **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 100 | [optional] [default to 100]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **from** | **number**| Start timestamp | [optional] [default to undefined]
+ **to** | **number**| End timestamp | [optional] [default to undefined]
 
 ### Return type
 

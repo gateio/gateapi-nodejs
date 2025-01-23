@@ -22,6 +22,10 @@ export class SpotAccount {
      * Locked amount, used in trading
      */
     'locked'?: string;
+    /**
+     * 版本号
+     */
+    'updateId'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,6 +44,11 @@ export class SpotAccount {
             name: 'locked',
             baseName: 'locked',
             type: 'string',
+        },
+        {
+            name: 'updateId',
+            baseName: 'update_id',
+            type: 'number',
         },
     ];
 

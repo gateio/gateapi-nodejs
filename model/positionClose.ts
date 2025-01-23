@@ -27,9 +27,41 @@ export class PositionClose {
      */
     'pnl'?: string;
     /**
+     * PNL - Position P/L
+     */
+    'pnlPnl'?: string;
+    /**
+     * PNL - Funding Fees
+     */
+    'pnlFund'?: string;
+    /**
+     * PNL - Transaction Fees
+     */
+    'pnlFee'?: string;
+    /**
      * Text of close order
      */
     'text'?: string;
+    /**
+     * Max Trade Size
+     */
+    'maxSize'?: string;
+    /**
+     * 累计平仓量
+     */
+    'accumSize'?: string;
+    /**
+     * First Open Time
+     */
+    'firstOpenTime'?: number;
+    /**
+     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price.
+     */
+    'longPrice'?: string;
+    /**
+     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price
+     */
+    'shortPrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -55,8 +87,48 @@ export class PositionClose {
             type: 'string',
         },
         {
+            name: 'pnlPnl',
+            baseName: 'pnl_pnl',
+            type: 'string',
+        },
+        {
+            name: 'pnlFund',
+            baseName: 'pnl_fund',
+            type: 'string',
+        },
+        {
+            name: 'pnlFee',
+            baseName: 'pnl_fee',
+            type: 'string',
+        },
+        {
             name: 'text',
             baseName: 'text',
+            type: 'string',
+        },
+        {
+            name: 'maxSize',
+            baseName: 'max_size',
+            type: 'string',
+        },
+        {
+            name: 'accumSize',
+            baseName: 'accum_size',
+            type: 'string',
+        },
+        {
+            name: 'firstOpenTime',
+            baseName: 'first_open_time',
+            type: 'number',
+        },
+        {
+            name: 'longPrice',
+            baseName: 'long_price',
+            type: 'string',
+        },
+        {
+            name: 'shortPrice',
+            baseName: 'short_price',
             type: 'string',
         },
     ];

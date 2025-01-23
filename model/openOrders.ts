@@ -17,7 +17,7 @@ export class OpenOrders {
      */
     'currencyPair'?: string;
     /**
-     * Total open orders in this currency pair
+     * The total number of pending orders for this trading pair on the current page
      */
     'total'?: number;
     'orders'?: Array<Order>;

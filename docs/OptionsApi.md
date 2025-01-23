@@ -27,7 +27,11 @@ Method | HTTP request | Description
 [**cancelOptionsOrders**](OptionsApi.md#cancelOptionsOrders) | **DELETE** /options/orders | Cancel all &#x60;open&#x60; orders matched
 [**getOptionsOrder**](OptionsApi.md#getOptionsOrder) | **GET** /options/orders/{order_id} | Get a single order
 [**cancelOptionsOrder**](OptionsApi.md#cancelOptionsOrder) | **DELETE** /options/orders/{order_id} | Cancel a single order
+[**countdownCancelAllOptions**](OptionsApi.md#countdownCancelAllOptions) | **POST** /options/countdown_cancel_all | Countdown cancel orders
 [**listMyOptionsTrades**](OptionsApi.md#listMyOptionsTrades) | **GET** /options/my_trades | List personal trading history
+[**getOptionsMMP**](OptionsApi.md#getOptionsMMP) | **GET** /options/mmp | MMP查询
+[**setOptionsMMP**](OptionsApi.md#setOptionsMMP) | **POST** /options/mmp | MMP设置
+[**resetOptionsMMP**](OptionsApi.md#resetOptionsMMP) | **POST** /options/mmp/reset | MMP重置
 
 
 ## listOptionsUnderlyings
@@ -1095,6 +1099,51 @@ Promise<{ response: AxiosResponse; body: OptionsOrder; }> [OptionsOrder](Options
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+## countdownCancelAllOptions
+
+> Promise<{ response: http.IncomingMessage; body: TriggerTime; }> countdownCancelAllOptions(countdownCancelAllOptionsTask)
+
+Countdown cancel orders
+
+期权订单心跳检测，在到达用户设置的&#x60;timeout&#x60;时间时如果没有取消既有倒计时或设置新的倒计时将会自动取消相关的&#x60;期权挂单&#x60;。   该接口可重复调用，以便设置新的倒计时或取消倒计时。 用法示例： 以30s的间隔重复此接口，每次倒计时&#x60;timeout&#x60;设置为30(秒)。 如果在30秒内未再次调用此接口，则您指定的&#x60;underlying&#x60; &#x60;contract&#x60;上的所有挂单都会被自动撤销，若未指定&#x60;underlying&#x60; &#x60;contract&#x60;则会自动撤销用户的全部挂单 如果在30秒内以将&#x60;timeout&#x60;设置为0，则倒数计时器将终止，自动撤单功能取消。
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const countdownCancelAllOptionsTask = new CountdownCancelAllOptionsTask(); // CountdownCancelAllOptionsTask | 
+api.countdownCancelAllOptions(countdownCancelAllOptionsTask)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countdownCancelAllOptionsTask** | [**CountdownCancelAllOptionsTask**](CountdownCancelAllOptionsTask.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: TriggerTime; }> [TriggerTime](TriggerTime.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 ## listMyOptionsTrades
 
 > Promise<{ response: http.IncomingMessage; body: Array<OptionsMyTrade>; }> listMyOptionsTrades(underlying, opts)
@@ -1148,4 +1197,135 @@ Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade>; }> [OptionsMyTra
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getOptionsMMP
+
+> Promise<{ response: http.IncomingMessage; body: Array<OptionsMMP>; }> getOptionsMMP(opts)
+
+MMP查询
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const opts = {
+  'underlying': "BTC_USDT" // string | Underlying
+};
+api.getOptionsMMP(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**| Underlying | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<OptionsMMP>; }> [OptionsMMP](OptionsMMP.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setOptionsMMP
+
+> Promise<{ response: http.IncomingMessage; body: OptionsMMP; }> setOptionsMMP(optionsMMP)
+
+MMP设置
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const optionsMMP = new OptionsMMP(); // OptionsMMP | 
+api.setOptionsMMP(optionsMMP)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **optionsMMP** | [**OptionsMMP**](OptionsMMP.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OptionsMMP; }> [OptionsMMP](OptionsMMP.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## resetOptionsMMP
+
+> Promise<{ response: http.IncomingMessage; body: OptionsMMP; }> resetOptionsMMP(optionsMMPReset)
+
+MMP重置
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.OptionsApi(client);
+const optionsMMPReset = new OptionsMMPReset(); // OptionsMMPReset | 
+api.resetOptionsMMP(optionsMMPReset)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **optionsMMPReset** | [**OptionsMMPReset**](OptionsMMPReset.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: OptionsMMP; }> [OptionsMMP](OptionsMMP.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json

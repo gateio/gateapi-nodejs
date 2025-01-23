@@ -53,13 +53,49 @@ export class FuturesAccount {
      */
     'positionInitialMargin'?: string;
     /**
-     * Maintenance margin position, applicable to the portfolio margin account model
+     * 头寸占用的维持保证金，适用于新经典账户保证金模式和统一账户模式
      */
     'maintenanceMargin'?: string;
     /**
      * Perpetual Contract Bonus
      */
     'bonus'?: string;
+    /**
+     * 经典账户保证金模式,true-新模式,false-老模式
+     */
+    'enableEvolvedClassic'?: boolean;
+    /**
+     * 全仓挂单保证金，适用于新经典账户保证金模式
+     */
+    'crossOrderMargin'?: string;
+    /**
+     * 全仓初始保证金，适用于新经典账户保证金模式
+     */
+    'crossInitialMargin'?: string;
+    /**
+     * 全仓维持保证金，适用于新经典账户保证金模式
+     */
+    'crossMaintenanceMargin'?: string;
+    /**
+     * 全仓未实现盈亏，适用于新经典账户保证金模式
+     */
+    'crossUnrealisedPnl'?: string;
+    /**
+     * 全仓可用额度，适用于新经典账户保证金模式
+     */
+    'crossAvailable'?: string;
+    /**
+     * 逐仓仓位保证金，适用于新经典账户保证金模式
+     */
+    'isolatedPositionMargin'?: string;
+    /**
+     * 是否开启新的双向持仓模式
+     */
+    'enableNewDualMode'?: boolean;
+    /**
+     * 保证金模式，0-经典保证金模式，1-跨币种保证金模式，2-组合保证金模式
+     */
+    'marginMode'?: number;
     'history'?: FuturesAccountHistory;
 
     static discriminator: string | undefined = undefined;
@@ -124,6 +160,51 @@ export class FuturesAccount {
             name: 'bonus',
             baseName: 'bonus',
             type: 'string',
+        },
+        {
+            name: 'enableEvolvedClassic',
+            baseName: 'enable_evolved_classic',
+            type: 'boolean',
+        },
+        {
+            name: 'crossOrderMargin',
+            baseName: 'cross_order_margin',
+            type: 'string',
+        },
+        {
+            name: 'crossInitialMargin',
+            baseName: 'cross_initial_margin',
+            type: 'string',
+        },
+        {
+            name: 'crossMaintenanceMargin',
+            baseName: 'cross_maintenance_margin',
+            type: 'string',
+        },
+        {
+            name: 'crossUnrealisedPnl',
+            baseName: 'cross_unrealised_pnl',
+            type: 'string',
+        },
+        {
+            name: 'crossAvailable',
+            baseName: 'cross_available',
+            type: 'string',
+        },
+        {
+            name: 'isolatedPositionMargin',
+            baseName: 'isolated_position_margin',
+            type: 'string',
+        },
+        {
+            name: 'enableNewDualMode',
+            baseName: 'enable_new_dual_mode',
+            type: 'boolean',
+        },
+        {
+            name: 'marginMode',
+            baseName: 'margin_mode',
+            type: 'number',
         },
         {
             name: 'history',

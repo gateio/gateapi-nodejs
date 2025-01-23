@@ -32,6 +32,10 @@ export class AccountDetail {
      */
     'tier'?: number;
     'key'?: AccountDetailKey;
+    /**
+     * 用户角色： 0 - 普通用户  1 - 带单者  2 - 跟单者 3 - 带单者与跟单者
+     */
+    'copyTradingRole'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -60,6 +64,11 @@ export class AccountDetail {
             name: 'key',
             baseName: 'key',
             type: 'AccountDetailKey',
+        },
+        {
+            name: 'copyTradingRole',
+            baseName: 'copy_trading_role',
+            type: 'number',
         },
     ];
 

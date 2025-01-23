@@ -16,7 +16,7 @@ export class FuturesOrder {
     /**
      * Futures order ID
      */
-    'id'?: number;
+    'id'?: bigint;
     /**
      * User ID
      */
@@ -128,7 +128,7 @@ export class FuturesOrder {
         {
             name: 'id',
             baseName: 'id',
-            type: 'number',
+            type: 'bigint',
         },
         {
             name: 'user',

@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { SubAccount } from '../model/subAccount';
 import { SubAccountKey } from '../model/subAccountKey';
+import { SubUserMode } from '../model/subUserMode';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -403,5 +404,32 @@ export class SubAccountApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     * 统一账户模式： - `classic`: 经典账户模式 - `multi_currency`: 跨币种保证金模式 - `portfolio`: 组合保证金模式
+     * @summary 获取子帐号模式
+     */
+    public async listUnifiedMode(): Promise<{ response: AxiosResponse; body: Array<SubUserMode> }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/unified_mode';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SubUserMode>>(config, 'Array<SubUserMode>', authSettings);
     }
 }

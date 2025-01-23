@@ -21,7 +21,7 @@ export class SubAccountTransfer {
     /**
      * Transfer direction. to - transfer into sub account; from - transfer out from sub account
      */
-    'direction': SubAccountTransfer.Direction;
+    'direction': string;
     /**
      * Transfer amount
      */
@@ -43,9 +43,9 @@ export class SubAccountTransfer {
      */
     'source'?: string;
     /**
-     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `cross_margin` - cross margin account, `delivery` - delivery account
+     * 操作的子账号交易账户， spot - 现货账户， futures - 永续合约账户， delivery - 交割合约账户
      */
-    'subAccountType'?: SubAccountTransfer.SubAccountType;
+    'subAccountType'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -63,7 +63,7 @@ export class SubAccountTransfer {
         {
             name: 'direction',
             baseName: 'direction',
-            type: 'SubAccountTransfer.Direction',
+            type: 'string',
         },
         {
             name: 'amount',
@@ -93,24 +93,11 @@ export class SubAccountTransfer {
         {
             name: 'subAccountType',
             baseName: 'sub_account_type',
-            type: 'SubAccountTransfer.SubAccountType',
+            type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
         return SubAccountTransfer.attributeTypeMap;
-    }
-}
-
-export namespace SubAccountTransfer {
-    export enum Direction {
-        To = <any>'to',
-        From = <any>'from',
-    }
-    export enum SubAccountType {
-        Spot = <any>'spot',
-        Futures = <any>'futures',
-        CrossMargin = <any>'cross_margin',
-        Delivery = <any>'delivery',
     }
 }

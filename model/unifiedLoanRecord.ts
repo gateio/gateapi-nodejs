@@ -26,6 +26,10 @@ export class UnifiedLoanRecord {
      */
     'repaymentType'?: string;
     /**
+     * 借款类型, 查询借款记录时返回，manual_borrow - 手动还款 , auto_borrow - 自动还款
+     */
+    'borrowType'?: string;
+    /**
      * Currency pair
      */
     'currencyPair'?: string;
@@ -58,6 +62,11 @@ export class UnifiedLoanRecord {
         {
             name: 'repaymentType',
             baseName: 'repayment_type',
+            type: 'string',
+        },
+        {
+            name: 'borrowType',
+            baseName: 'borrow_type',
             type: 'string',
         },
         {

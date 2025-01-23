@@ -21,8 +21,6 @@ Name | Type | Description | Notes
 
 * `Delivery` (value: `'delivery'`)
 
-* `CrossMargin` (value: `'cross_margin'`)
-
 * `Options` (value: `'options'`)
 
 
@@ -35,8 +33,6 @@ Name | Type | Description | Notes
 * `Futures` (value: `'futures'`)
 
 * `Delivery` (value: `'delivery'`)
-
-* `CrossMargin` (value: `'cross_margin'`)
 
 * `Options` (value: `'options'`)
 

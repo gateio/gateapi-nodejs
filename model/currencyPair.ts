@@ -65,6 +65,10 @@ export class CurrencyPair {
      * Buy start unix timestamp in seconds
      */
     'buyStart'?: number;
+    /**
+     * 交易对类型，normal:常规, premarket:盘前
+     */
+    'type'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -133,6 +137,11 @@ export class CurrencyPair {
             name: 'buyStart',
             baseName: 'buy_start',
             type: 'number',
+        },
+        {
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
     ];
 

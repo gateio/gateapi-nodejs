@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **actualRate** | **string** | Actual rate | [optional] [readonly] [default to undefined]
 **interest** | **string** | Interest | [optional] [readonly] [default to undefined]
 **status** | **number** | Status: 0 - fail, 1 - success | [optional] [readonly] [default to undefined]
+**type** | **string** | Type, platform - platform，margin - margin | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
 

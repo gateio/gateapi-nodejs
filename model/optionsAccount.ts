@@ -15,13 +15,33 @@ export class OptionsAccount {
      */
     'user'?: number;
     /**
-     * Total account balance
+     * 账户余额
      */
     'total'?: string;
+    /**
+     * 仓位价值，做多仓位价值为正，做空仓位价值为负
+     */
+    'positionValue'?: string;
+    /**
+     * 账户权益，账户余额与仓位价值的和
+     */
+    'equity'?: string;
     /**
      * If the account is allowed to short
      */
     'shortEnabled'?: boolean;
+    /**
+     * 是否启用MMP
+     */
+    'mmpEnabled'?: boolean;
+    /**
+     * 是否触发仓位强平
+     */
+    'liqTriggered'?: boolean;
+    /**
+     * ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
+     */
+    'marginMode'?: OptionsAccount.MarginMode;
     /**
      * Unrealized PNL
      */
@@ -39,6 +59,14 @@ export class OptionsAccount {
      */
     'orderMargin'?: string;
     /**
+     * 未完成卖单的保证金
+     */
+    'askOrderMargin'?: string;
+    /**
+     * 未完成买单的保证金
+     */
+    'bidOrderMargin'?: string;
+    /**
      * Available balance to transfer out or trade
      */
     'available'?: string;
@@ -50,6 +78,14 @@ export class OptionsAccount {
      * Settle currency
      */
     'currency'?: string;
+    /**
+     * 未完成订单数量上限
+     */
+    'ordersLimit'?: number;
+    /**
+     * 名义价值上限，包含仓位以及未完成订单的名义价值
+     */
+    'positionNotionalLimit'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -65,9 +101,34 @@ export class OptionsAccount {
             type: 'string',
         },
         {
+            name: 'positionValue',
+            baseName: 'position_value',
+            type: 'string',
+        },
+        {
+            name: 'equity',
+            baseName: 'equity',
+            type: 'string',
+        },
+        {
             name: 'shortEnabled',
             baseName: 'short_enabled',
             type: 'boolean',
+        },
+        {
+            name: 'mmpEnabled',
+            baseName: 'mmp_enabled',
+            type: 'boolean',
+        },
+        {
+            name: 'liqTriggered',
+            baseName: 'liq_triggered',
+            type: 'boolean',
+        },
+        {
+            name: 'marginMode',
+            baseName: 'margin_mode',
+            type: 'OptionsAccount.MarginMode',
         },
         {
             name: 'unrealisedPnl',
@@ -90,6 +151,16 @@ export class OptionsAccount {
             type: 'string',
         },
         {
+            name: 'askOrderMargin',
+            baseName: 'ask_order_margin',
+            type: 'string',
+        },
+        {
+            name: 'bidOrderMargin',
+            baseName: 'bid_order_margin',
+            type: 'string',
+        },
+        {
             name: 'available',
             baseName: 'available',
             type: 'string',
@@ -104,9 +175,27 @@ export class OptionsAccount {
             baseName: 'currency',
             type: 'string',
         },
+        {
+            name: 'ordersLimit',
+            baseName: 'orders_limit',
+            type: 'number',
+        },
+        {
+            name: 'positionNotionalLimit',
+            baseName: 'position_notional_limit',
+            type: 'number',
+        },
     ];
 
     static getAttributeTypeMap() {
         return OptionsAccount.attributeTypeMap;
+    }
+}
+
+export namespace OptionsAccount {
+    export enum MarginMode {
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
 }

@@ -91,9 +91,17 @@ export class FuturesTicker {
      */
     'lowestAsk'?: string;
     /**
+     * 最新卖方最低价的挂单量
+     */
+    'lowestSize'?: string;
+    /**
      * Recent highest bid
      */
     'highestBid'?: string;
+    /**
+     * 最新买方最高价的挂单量
+     */
+    'highestSize'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -199,8 +207,18 @@ export class FuturesTicker {
             type: 'string',
         },
         {
+            name: 'lowestSize',
+            baseName: 'lowest_size',
+            type: 'string',
+        },
+        {
             name: 'highestBid',
             baseName: 'highest_bid',
+            type: 'string',
+        },
+        {
+            name: 'highestSize',
+            baseName: 'highest_size',
             type: 'string',
         },
     ];

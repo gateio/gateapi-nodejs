@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **markPriceRound** | **string** | Minimum mark price increment | [optional] [default to undefined]
 **orderSizeMin** | **number** | Minimum order size the contract allowed | [optional] [default to undefined]
 **orderSizeMax** | **number** | Maximum order size the contract allowed | [optional] [default to undefined]
-**orderPriceDeviate** | **string** | deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) &lt;&#x3D; mark_price * order_price_deviate | [optional] [default to undefined]
+**orderPriceDeviate** | **string** | 下单价与当前标记价格允许的正负偏移量， 即下单价 &#x60;order_price&#x60; 需满足如下条件:      order_price 在mark_price +/- order_price_deviate * underlying_price 范围内，不区分买单卖单 | [optional] [default to undefined]
 **refDiscountRate** | **string** | Referral fee rate discount | [optional] [default to undefined]
 **refRebateRate** | **string** | Referrer commission rate | [optional] [default to undefined]
 **orderbookId** | **number** | Current orderbook ID | [optional] [default to undefined]

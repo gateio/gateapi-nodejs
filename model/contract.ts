@@ -82,15 +82,15 @@ export class Contract {
      */
     'fundingNextApply'?: number;
     /**
-     * Risk limit base
+     * Risk limit base,deprecated
      */
     'riskLimitBase'?: string;
     /**
-     * Step of adjusting risk limit
+     * Step of adjusting risk limit,deprecated
      */
     'riskLimitStep'?: string;
     /**
-     * Maximum risk limit the contract allowed
+     * Maximum risk limit the contract allowed,deprecated,It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits.
      */
     'riskLimitMax'?: string;
     /**
@@ -134,7 +134,7 @@ export class Contract {
      */
     'configChangeTime'?: number;
     /**
-     * Contract is delisting
+     * `in_delisting=true` 并且position_size>0时候 表示该合约处于下线过渡期 `in_delisting=true`` 并且position_size=0时候 表示该合约处于下线状态
      */
     'inDelisting'?: boolean;
     /**

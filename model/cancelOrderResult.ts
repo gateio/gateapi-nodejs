@@ -22,6 +22,10 @@ export class CancelOrderResult {
      */
     'id'?: string;
     /**
+     * 订单自定义信息
+     */
+    'text'?: string;
+    /**
      * Whether cancellation succeeded
      */
     'succeeded'?: boolean;
@@ -49,6 +53,11 @@ export class CancelOrderResult {
         {
             name: 'id',
             baseName: 'id',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
         {

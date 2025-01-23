@@ -57,7 +57,7 @@ export class FuturesPriceTriggeredOrder {
     /**
      * Corresponding order ID of order take-profit/stop-loss.
      */
-    'meOrderId'?: string;
+    'meOrderId'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -120,7 +120,7 @@ export class FuturesPriceTriggeredOrder {
         {
             name: 'meOrderId',
             baseName: 'me_order_id',
-            type: 'string',
+            type: 'number',
         },
     ];
 

@@ -10,7 +10,7 @@
  */
 
 /**
- * Accounts available to transfer:  - `spot`: spot account - `margin`: margin account - `futures`: perpetual futures account - `delivery`: delivery futures account - `cross_margin`: cross margin account - `options`: options account
+ * 转入转出账户列表:  - `spot`: 现货账户 - `margin`: 杠杆账户 - `futures`: 永续合约账户 - `delivery`: 交割合约账户 - `options`: 期权账户
  */
 export class Transfer {
     /**
@@ -84,7 +84,6 @@ export namespace Transfer {
         Margin = <any>'margin',
         Futures = <any>'futures',
         Delivery = <any>'delivery',
-        CrossMargin = <any>'cross_margin',
         Options = <any>'options',
     }
     export enum To {
@@ -92,7 +91,6 @@ export namespace Transfer {
         Margin = <any>'margin',
         Futures = <any>'futures',
         Delivery = <any>'delivery',
-        CrossMargin = <any>'cross_margin',
         Options = <any>'options',
     }
 }

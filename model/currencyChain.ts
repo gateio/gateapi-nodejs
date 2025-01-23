@@ -38,6 +38,10 @@ export class CurrencyChain {
      * Is withdrawal disabled. 0 means not
      */
     'isWithdrawDisabled'?: number;
+    /**
+     * Withdrawal precision
+     */
+    'decimal'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -76,6 +80,11 @@ export class CurrencyChain {
             name: 'isWithdrawDisabled',
             baseName: 'is_withdraw_disabled',
             type: 'number',
+        },
+        {
+            name: 'decimal',
+            baseName: 'decimal',
+            type: 'string',
         },
     ];
 

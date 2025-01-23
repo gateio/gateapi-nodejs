@@ -18,9 +18,17 @@ export class PlaceDualInvestmentOrder {
      */
     'planId': string;
     /**
-     * Copies
+     * 份数,与amount 字段互斥,即将废弃.即将废弃,建议使用amount传参
      */
-    'copies': string;
+    'copies'?: string;
+    /**
+     * 是否最大申购,与amount字段互斥.即将废弃,建议使用amount传参
+     */
+    'isMax'?: number;
+    /**
+     * 申购金额,与copies字段互斥
+     */
+    'amount': string;
 
     static discriminator: string | undefined = undefined;
 
@@ -33,6 +41,16 @@ export class PlaceDualInvestmentOrder {
         {
             name: 'copies',
             baseName: 'copies',
+            type: 'string',
+        },
+        {
+            name: 'isMax',
+            baseName: 'is_max',
+            type: 'number',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
             type: 'string',
         },
     ];

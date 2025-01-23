@@ -37,6 +37,10 @@ export class BatchAmendItem {
      * Custom info during amending order
      */
     'amendText'?: string;
+    /**
+     * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+     */
+    'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -69,6 +73,11 @@ export class BatchAmendItem {
         {
             name: 'amendText',
             baseName: 'amend_text',
+            type: 'string',
+        },
+        {
+            name: 'actionMode',
+            baseName: 'action_mode',
             type: 'string',
         },
     ];

@@ -10,10 +10,14 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { ConvertSmallBalance } from '../model/convertSmallBalance';
 import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
+import { InlineResponse200 } from '../model/inlineResponse200';
 import { LedgerRecord } from '../model/ledgerRecord';
 import { SavedAddress } from '../model/savedAddress';
+import { SmallBalance } from '../model/smallBalance';
+import { SmallBalanceHistory } from '../model/smallBalanceHistory';
 import { SubAccountBalance } from '../model/subAccountBalance';
 import { SubAccountCrossMarginBalance } from '../model/subAccountCrossMarginBalance';
 import { SubAccountFuturesBalance } from '../model/subAccountFuturesBalance';
@@ -24,6 +28,7 @@ import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
 import { TransactionID } from '../model/transactionID';
 import { Transfer } from '../model/transfer';
+import { UidPushOrder } from '../model/uidPushOrder';
 import { WithdrawStatus } from '../model/withdrawStatus';
 import { WithdrawalRecord } from '../model/withdrawalRecord';
 import { ObjectSerializer } from '../model/models';
@@ -184,7 +189,7 @@ export class WalletApi {
      * @param opts.currency Filter by currency. Return all currency records if not specified
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.limit The maximum number of entries returned in the list is limited to 500 transactions.
      * @param opts.offset List offset, starting from 0
      */
     public async listDeposits(opts: {
@@ -238,7 +243,7 @@ export class WalletApi {
     }
 
     /**
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - cross margin 5. spot - options
+     * 个人交易账户之间的余额互转，目前支持以下互转操作：  1. 现货账户 - 杠杆账户 2. 现货账户 - 永续合约账户 3. 现货账户 - 交割合约账户 4. 现货账户 - 期权账户
      * @summary Transfer between trading accounts
      * @param transfer
      */
@@ -338,10 +343,17 @@ export class WalletApi {
      */
     public async transferWithSubAccount(
         subAccountTransfer: SubAccountTransfer,
-    ): Promise<{ response: AxiosResponse; body?: any }> {
+    ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
         // verify required parameter 'subAccountTransfer' is not null or undefined
         if (subAccountTransfer === null || subAccountTransfer === undefined) {
@@ -359,7 +371,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
     }
 
     /**
@@ -369,10 +381,17 @@ export class WalletApi {
      */
     public async subAccountToSubAccount(
         subAccountToSubAccount: SubAccountToSubAccount,
-    ): Promise<{ response: AxiosResponse; body?: any }> {
+    ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_to_sub_account';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
         // verify required parameter 'subAccountToSubAccount' is not null or undefined
         if (subAccountToSubAccount === null || subAccountToSubAccount === undefined) {
@@ -390,7 +409,49 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
+    }
+
+    /**
+     * 支持根据用户自定义client_order_id或者划转接口返回的tx_id查询划转状态
+     * @summary 划转状态查询
+     * @param opts Optional parameters
+     * @param opts.clientOrderId The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;, with a length ranging from 1 to 64 characters.
+     * @param opts.txId 划转操作单号，和client_order_id不能同时为空
+     */
+    public async getTransferOrderStatus(opts: {
+        clientOrderId?: string;
+        txId?: string;
+    }): Promise<{ response: AxiosResponse; body: InlineResponse200 }> {
+        const localVarPath = this.client.basePath + '/wallet/order_status';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.clientOrderId !== undefined) {
+            localVarQueryParameters['client_order_id'] = ObjectSerializer.serialize(opts.clientOrderId, 'string');
+        }
+
+        if (opts.txId !== undefined) {
+            localVarQueryParameters['tx_id'] = ObjectSerializer.serialize(opts.txId, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<InlineResponse200>(config, 'InlineResponse200', authSettings);
     }
 
     /**
@@ -598,10 +659,11 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.chain Chain name
      * @param opts.limit Maximum number returned, 100 at most
+     * @param opts.page Page number
      */
     public async listSavedAddress(
         currency: string,
-        opts: { chain?: string; limit?: string },
+        opts: { chain?: string; limit?: string; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
         const localVarPath = this.client.basePath + '/wallet/saved_address';
         const localVarQueryParameters: any = {};
@@ -628,6 +690,10 @@ export class WalletApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'string');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -717,5 +783,177 @@ export class WalletApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<TotalBalance>(config, 'TotalBalance', authSettings);
+    }
+
+    /**
+     *
+     * @summary List small balance
+     */
+    public async listSmallBalance(): Promise<{ response: AxiosResponse; body: Array<SmallBalance> }> {
+        const localVarPath = this.client.basePath + '/wallet/small_balance';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SmallBalance>>(config, 'Array<SmallBalance>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Convert small balance
+     * @param convertSmallBalance
+     */
+    public async convertSmallBalance(
+        convertSmallBalance: ConvertSmallBalance,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/wallet/small_balance';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'convertSmallBalance' is not null or undefined
+        if (convertSmallBalance === null || convertSmallBalance === undefined) {
+            throw new Error(
+                'Required parameter convertSmallBalance was null or undefined when calling convertSmallBalance.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(convertSmallBalance, 'ConvertSmallBalance'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary List small balance history
+     * @param opts Optional parameters
+     * @param opts.currency Currency
+     * @param opts.page Page number
+     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     */
+    public async listSmallBalanceHistory(opts: {
+        currency?: string;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory> }> {
+        const localVarPath = this.client.basePath + '/wallet/small_balance_history';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<SmallBalanceHistory>>(config, 'Array<SmallBalanceHistory>', authSettings);
+    }
+
+    /**
+     *
+     * @summary 获取UID转帐历史纪录
+     * @param opts Optional parameters
+     * @param opts.id Order ID
+     * @param opts.from 查询记录的起始时间,不指定则默认从当前时间开始向前推7天,秒级Unix的时间戳
+     * @param opts.to 查询记录的结束时间,不指定则默认为当前时间,秒级Unix的时间戳
+     * @param opts.limit 列表返回的最大数量，默认值是 100
+     * @param opts.offset List offset, starting from 0
+     * @param opts.transactionType 列表返回订单类型 &#x60;withdraw&#x60;,  &#x60;deposit&#x60;,默认为&#x60;withdraw&#x60;.
+     */
+    public async listPushOrders(opts: {
+        id?: number;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+        transactionType?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<UidPushOrder> }> {
+        const localVarPath = this.client.basePath + '/wallet/push';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.id !== undefined) {
+            localVarQueryParameters['id'] = ObjectSerializer.serialize(opts.id, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        if (opts.transactionType !== undefined) {
+            localVarQueryParameters['transaction_type'] = ObjectSerializer.serialize(opts.transactionType, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<UidPushOrder>>(config, 'Array<UidPushOrder>', authSettings);
     }
 }

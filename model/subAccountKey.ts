@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { ApiV4KeyPerm } from './apiV4KeyPerm';
+import { SubAccountKeyPerms } from './subAccountKeyPerms';
 
 export class SubAccountKey {
     /**
@@ -24,7 +24,7 @@ export class SubAccountKey {
      * API key name
      */
     'name'?: string;
-    'perms'?: Array<ApiV4KeyPerm>;
+    'perms'?: Array<SubAccountKeyPerms>;
     /**
      * ip white list (list will be removed if no value is passed)
      */
@@ -40,11 +40,15 @@ export class SubAccountKey {
     /**
      * Creation time
      */
-    'createdAt'?: string;
+    'createdAt'?: number;
     /**
      * Last update time
      */
-    'updatedAt'?: string;
+    'updatedAt'?: number;
+    /**
+     * 最近使用时间
+     */
+    'lastAccess'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,7 +71,7 @@ export class SubAccountKey {
         {
             name: 'perms',
             baseName: 'perms',
-            type: 'Array<ApiV4KeyPerm>',
+            type: 'Array<SubAccountKeyPerms>',
         },
         {
             name: 'ipWhitelist',
@@ -87,12 +91,17 @@ export class SubAccountKey {
         {
             name: 'createdAt',
             baseName: 'created_at',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'updatedAt',
             baseName: 'updated_at',
-            type: 'string',
+            type: 'number',
+        },
+        {
+            name: 'lastAccess',
+            baseName: 'last_access',
+            type: 'number',
         },
     ];
 

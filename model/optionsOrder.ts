@@ -30,7 +30,7 @@ export class OptionsOrder {
      */
     'finishTime'?: number;
     /**
-     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close
+     * 结束方式，包括：  - filled: 完全成交 - cancelled: 用户撤销 - liquidated: 强制平仓撤销 - ioc: 未立即完全成交，因为tif设置为ioc - auto_deleveraged: 自动减仓撤销 - reduce_only: 增持仓位撤销，因为设置reduce_only或平仓 - position_closed: 因为仓位平掉了，所以挂单被撤掉 - reduce_out: 只减仓被排除的不容易成交的挂单 - mmp_cancelled: MMP撤销
      */
     'finishAs'?: OptionsOrder.FinishAs;
     /**
@@ -73,6 +73,14 @@ export class OptionsOrder {
      * Is the order for liquidation
      */
     'isLiq'?: boolean;
+    /**
+     * 设置为 true 的时候，为MMP委托
+     */
+    'mmp'?: boolean;
+    /**
+     * 是否为MMP委托。对应请求中的`mmp`。
+     */
+    'isMmp'?: boolean;
     /**
      * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
      */
@@ -185,6 +193,16 @@ export class OptionsOrder {
             type: 'boolean',
         },
         {
+            name: 'mmp',
+            baseName: 'mmp',
+            type: 'boolean',
+        },
+        {
+            name: 'isMmp',
+            baseName: 'is_mmp',
+            type: 'boolean',
+        },
+        {
             name: 'tif',
             baseName: 'tif',
             type: 'OptionsOrder.Tif',
@@ -241,6 +259,7 @@ export namespace OptionsOrder {
         ReduceOnly = <any>'reduce_only',
         PositionClosed = <any>'position_closed',
         ReduceOut = <any>'reduce_out',
+        MmpCancelled = <any>'mmp_cancelled',
     }
     export enum Status {
         Open = <any>'open',

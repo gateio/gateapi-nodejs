@@ -80,6 +80,18 @@ export class Position {
      */
     'realisedPnl'?: string;
     /**
+     * Realized PNL - Position P/L
+     */
+    'pnlPnl'?: string;
+    /**
+     * Realized PNL -  Funding Fees
+     */
+    'pnlFund'?: string;
+    /**
+     * Realized PNL - Transaction Fees
+     */
+    'pnlFee'?: string;
+    /**
      * History realized PNL
      */
     'historyPnl'?: string;
@@ -116,6 +128,14 @@ export class Position {
      * Last update time
      */
     'updateTime'?: number;
+    /**
+     * 更新id，仓位每更新一次，数值会+1
+     */
+    'updateId'?: number;
+    /**
+     * First Open Time
+     */
+    'openTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -201,6 +221,21 @@ export class Position {
             type: 'string',
         },
         {
+            name: 'pnlPnl',
+            baseName: 'pnl_pnl',
+            type: 'string',
+        },
+        {
+            name: 'pnlFund',
+            baseName: 'pnl_fund',
+            type: 'string',
+        },
+        {
+            name: 'pnlFee',
+            baseName: 'pnl_fee',
+            type: 'string',
+        },
+        {
             name: 'historyPnl',
             baseName: 'history_pnl',
             type: 'string',
@@ -248,6 +283,16 @@ export class Position {
         {
             name: 'updateTime',
             baseName: 'update_time',
+            type: 'number',
+        },
+        {
+            name: 'updateId',
+            baseName: 'update_id',
+            type: 'number',
+        },
+        {
+            name: 'openTime',
+            baseName: 'open_time',
             type: 'number',
         },
     ];

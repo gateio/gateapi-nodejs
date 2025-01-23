@@ -287,13 +287,17 @@ export class MarginUniApi {
      * @param opts.currencyPair Currency pair
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
      */
     public async listUniLoanInterestRecords(opts: {
         currencyPair?: string;
         currency?: string;
         page?: number;
         limit?: number;
+        from?: number;
+        to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/margin/uni/interest_records';
         const localVarQueryParameters: any = {};
@@ -321,6 +325,14 @@ export class MarginUniApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         const config: AxiosRequestConfig = {

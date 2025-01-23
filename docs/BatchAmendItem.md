@@ -10,4 +10,5 @@ Name | Type | Description | Notes
 **amount** | **string** | trade amount, only one of amount and price can be specified | [optional] [default to undefined]
 **price** | **string** | trade price, only one of amount and price can be specified | [optional] [default to undefined]
 **amendText** | **string** | Custom info during amending order | [optional] [default to undefined]
+**actionMode** | **string** | Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default) | [optional] [default to undefined]
 

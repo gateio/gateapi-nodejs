@@ -34,6 +34,10 @@ export class SpotPricePutOrder {
      * time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
      */
     'timeInForce'?: SpotPricePutOrder.TimeInForce;
+    /**
+     * The source of the order, including: - web: web - api: api - app: app
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,6 +71,11 @@ export class SpotPricePutOrder {
             name: 'timeInForce',
             baseName: 'time_in_force',
             type: 'SpotPricePutOrder.TimeInForce',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
     ];
 

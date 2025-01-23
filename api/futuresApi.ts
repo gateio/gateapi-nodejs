@@ -10,17 +10,20 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { BatchAmendOrderReq } from '../model/batchAmendOrderReq';
 import { BatchFuturesOrder } from '../model/batchFuturesOrder';
 import { Contract } from '../model/contract';
 import { ContractStat } from '../model/contractStat';
 import { CountdownCancelAllFuturesTask } from '../model/countdownCancelAllFuturesTask';
 import { FundingRateRecord } from '../model/fundingRateRecord';
+import { FutureCancelOrderResult } from '../model/futureCancelOrderResult';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesAutoDeleverage } from '../model/futuresAutoDeleverage';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
 import { FuturesFee } from '../model/futuresFee';
 import { FuturesIndexConstituents } from '../model/futuresIndexConstituents';
+import { FuturesLimitRiskTiers } from '../model/futuresLimitRiskTiers';
 import { FuturesLiqOrder } from '../model/futuresLiqOrder';
 import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
@@ -60,9 +63,13 @@ export class FuturesApi {
      *
      * @summary List all futures contracts
      * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listFuturesContracts(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
+        opts: { limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Contract> }> {
         const localVarPath =
             this.client.basePath +
@@ -80,6 +87,15 @@ export class FuturesApi {
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
             throw new Error('Required parameter settle was null or undefined when calling listFuturesContracts.');
+        }
+
+        opts = opts || {};
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -100,7 +116,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getFuturesContract(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Contract }> {
         const localVarPath =
@@ -150,9 +166,9 @@ export class FuturesApi {
      * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
     public async listFuturesOrderBook(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
+        opts: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath =
             this.client.basePath +
@@ -181,7 +197,7 @@ export class FuturesApi {
         localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         if (opts.limit !== undefined) {
@@ -216,7 +232,7 @@ export class FuturesApi {
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
     public async listFuturesTrades(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         opts: { limit?: number; offset?: number; lastId?: string; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
@@ -289,30 +305,9 @@ export class FuturesApi {
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days
      */
     public async listFuturesCandlesticks(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: {
-            from?: number;
-            to?: number;
-            limit?: number;
-            interval?:
-                | '10s'
-                | '30s'
-                | '1m'
-                | '5m'
-                | '15m'
-                | '30m'
-                | '1h'
-                | '2h'
-                | '4h'
-                | '6h'
-                | '8h'
-                | '12h'
-                | '1d'
-                | '7d'
-                | '1w'
-                | '30d';
-        },
+        opts: { from?: number; to?: number; limit?: number; interval?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath =
             this.client.basePath +
@@ -353,10 +348,7 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
-                opts.interval,
-                "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'",
-            );
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -382,14 +374,9 @@ export class FuturesApi {
      * @param opts.interval Interval time between data points
      */
     public async listFuturesPremiumIndex(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: {
-            from?: number;
-            to?: number;
-            limit?: number;
-            interval?: '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d';
-        },
+        opts: { from?: number; to?: number; limit?: number; interval?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex> }> {
         const localVarPath =
             this.client.basePath +
@@ -430,10 +417,7 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
-                opts.interval,
-                "'1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '6h' | '8h' | '1d' | '7d' | '30d'",
-            );
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -455,7 +439,7 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async listFuturesTickers(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
         const localVarPath =
@@ -499,11 +483,13 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.from Start timestamp
+     * @param opts.to End timestamp
      */
     public async listFuturesFundingRateHistory(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: { limit?: number },
+        opts: { limit?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FundingRateRecord> }> {
         const localVarPath =
             this.client.basePath +
@@ -539,6 +525,14 @@ export class FuturesApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -558,7 +552,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listFuturesInsuranceLedger(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
         const localVarPath =
@@ -606,9 +600,9 @@ export class FuturesApi {
      * @param opts.limit
      */
     public async listContractStats(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: { from?: number; interval?: '5m' | '15m' | '30m' | '1h' | '4h' | '1d'; limit?: number },
+        opts: { from?: number; interval?: string; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<ContractStat> }> {
         const localVarPath =
             this.client.basePath +
@@ -641,10 +635,7 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
-                opts.interval,
-                "'5m' | '15m' | '30m' | '1h' | '4h' | '1d'",
-            );
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         if (opts.limit !== undefined) {
@@ -669,7 +660,7 @@ export class FuturesApi {
      * @param index Index name
      */
     public async getIndexConstituents(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         index: string,
     ): Promise<{ response: AxiosResponse; body: FuturesIndexConstituents }> {
         const localVarPath =
@@ -719,7 +710,7 @@ export class FuturesApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listLiquidatedOrders(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; from?: number; to?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiqOrder> }> {
         const localVarPath =
@@ -769,12 +760,67 @@ export class FuturesApi {
     }
 
     /**
+     * contract 参数不传,默认查询前 100 个市场的风险限额,limit 和 offset 对应市场维度的分页查询,不对应返回数组的长度,仅当 contract 参数为空时生效
+     * @summary List risk limit tiers
+     * @param settle Settle currency
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
+     */
+    public async listFuturesRiskLimitTiers(
+        settle: 'btc' | 'usdt',
+        opts: { contract?: string; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/risk_limit_tiers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling listFuturesRiskLimitTiers.');
+        }
+
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<FuturesLimitRiskTiers>>(config, 'Array<FuturesLimitRiskTiers>', authSettings);
+    }
+
+    /**
      *
      * @summary Query futures account
      * @param settle Settle currency
      */
     public async listFuturesAccounts(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
             this.client.basePath +
@@ -812,19 +858,14 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
-     * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     * @param opts.type Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
      */
     public async listFuturesAccountBook(
-        settle: 'btc' | 'usdt' | 'usd',
-        opts: {
-            contract?: string;
-            limit?: number;
-            from?: number;
-            to?: number;
-            type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr';
-        },
+        settle: 'btc' | 'usdt',
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; type?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
         const localVarPath =
             this.client.basePath +
@@ -853,6 +894,10 @@ export class FuturesApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
         if (opts.from !== undefined) {
             localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
@@ -862,10 +907,7 @@ export class FuturesApi {
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(
-                opts.type,
-                "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
-            );
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -885,10 +927,12 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.holding Return only real positions - true, return all - false.
+     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPositions(
-        settle: 'btc' | 'usdt' | 'usd',
-        opts: { holding?: boolean },
+        settle: 'btc' | 'usdt',
+        opts: { holding?: boolean; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -913,6 +957,14 @@ export class FuturesApi {
             localVarQueryParameters['holding'] = ObjectSerializer.serialize(opts.holding, 'boolean');
         }
 
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -931,7 +983,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getPosition(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
@@ -978,7 +1030,7 @@ export class FuturesApi {
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
     public async updatePositionMargin(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         change: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -1035,7 +1087,7 @@ export class FuturesApi {
      * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updatePositionLeverage(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
         opts: { crossLeverageLimit?: string },
@@ -1096,10 +1148,10 @@ export class FuturesApi {
      * @summary Update position risk limit
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param riskLimit New position risk limit
+     * @param riskLimit 新的风险限额价值
      */
     public async updatePositionRiskLimit(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Position }> {
@@ -1153,7 +1205,7 @@ export class FuturesApi {
      * @param dualMode Whether to enable dual mode
      */
     public async setDualMode(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         dualMode: boolean,
     ): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
@@ -1199,7 +1251,7 @@ export class FuturesApi {
      * @param contract Futures contract
      */
     public async getDualModePosition(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -1247,10 +1299,10 @@ export class FuturesApi {
      * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         change: string,
-        dualSide: 'dual_long' | 'dual_short',
+        dualSide: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
             this.client.basePath +
@@ -1297,7 +1349,7 @@ export class FuturesApi {
 
         localVarQueryParameters['change'] = ObjectSerializer.serialize(change, 'string');
 
-        localVarQueryParameters['dual_side'] = ObjectSerializer.serialize(dualSide, "'dual_long' | 'dual_short'");
+        localVarQueryParameters['dual_side'] = ObjectSerializer.serialize(dualSide, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -1320,7 +1372,7 @@ export class FuturesApi {
      * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0)
      */
     public async updateDualModePositionLeverage(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         leverage: string,
         opts: { crossLeverageLimit?: string },
@@ -1387,10 +1439,10 @@ export class FuturesApi {
      * @summary Update position risk limit in dual mode
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param riskLimit New position risk limit
+     * @param riskLimit 新的风险限额价值
      */
     public async updateDualModePositionRiskLimit(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
         riskLimit: string,
     ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
@@ -1455,8 +1507,8 @@ export class FuturesApi {
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      */
     public async listFuturesOrders(
-        settle: 'btc' | 'usdt' | 'usd',
-        status: 'open' | 'finished',
+        settle: 'btc' | 'usdt',
+        status: string,
         opts: { contract?: string; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
@@ -1487,7 +1539,7 @@ export class FuturesApi {
             localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
@@ -1517,10 +1569,13 @@ export class FuturesApi {
      * @summary Create a futures order
      * @param settle Settle currency
      * @param futuresOrder
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async createFuturesOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         futuresOrder: FuturesOrder,
+        opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1545,6 +1600,11 @@ export class FuturesApi {
             throw new Error('Required parameter futuresOrder was null or undefined when calling createFuturesOrder.');
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -1563,12 +1623,13 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      * @param opts.side All bids or asks. Both included if not specified
      */
     public async cancelFuturesOrders(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         contract: string,
-        opts: { side?: 'ask' | 'bid' },
+        opts: { xGateExptime?: number; side?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1597,7 +1658,11 @@ export class FuturesApi {
         localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
+        }
+
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1623,7 +1688,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async getOrdersWithTimeRange(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
@@ -1681,10 +1746,13 @@ export class FuturesApi {
      * @summary Create a batch of futures orders
      * @param settle Settle currency
      * @param futuresOrder
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async createBatchFuturesOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         futuresOrder: Array<FuturesOrder>,
+        opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1711,6 +1779,11 @@ export class FuturesApi {
             );
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -1730,7 +1803,7 @@ export class FuturesApi {
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
      */
     public async getFuturesOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
@@ -1775,11 +1848,14 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
      * @param futuresOrderAmendment
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async amendFuturesOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         orderId: string,
         futuresOrderAmendment: FuturesOrderAmendment,
+        opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1813,6 +1889,11 @@ export class FuturesApi {
             );
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'PUT',
             params: localVarQueryParameters,
@@ -1830,10 +1911,13 @@ export class FuturesApi {
      * @summary Cancel a single order
      * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
      */
     public async cancelFuturesOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         orderId: string,
+        opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1860,6 +1944,11 @@ export class FuturesApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelFuturesOrder.');
         }
 
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -1883,7 +1972,7 @@ export class FuturesApi {
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;.
      */
     public async getMyTrades(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; order?: number; limit?: number; offset?: number; lastId?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
         const localVarPath =
@@ -1949,7 +2038,7 @@ export class FuturesApi {
      * @param opts.role Query role, maker or taker.
      */
     public async getMyTradesWithTimeRange(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; from?: number; to?: number; limit?: number; offset?: number; role?: string },
     ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTradeTimeRange> }> {
         const localVarPath =
@@ -2024,7 +2113,7 @@ export class FuturesApi {
      * @param opts.pnl Query profit or loss
      */
     public async listPositionClose(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: {
             contract?: string;
             limit?: number;
@@ -2103,7 +2192,7 @@ export class FuturesApi {
      * @param opts.at Specify a liquidation timestamp
      */
     public async listLiquidates(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
@@ -2158,7 +2247,7 @@ export class FuturesApi {
      * @param opts.at Specify an auto-deleveraging timestamp
      */
     public async listAutoDeleverages(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string; limit?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
         const localVarPath =
@@ -2210,7 +2299,7 @@ export class FuturesApi {
      * @param countdownCancelAllFuturesTask
      */
     public async countdownCancelAllFutures(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         countdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath =
@@ -2258,7 +2347,7 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      */
     public async getFuturesFee(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee } }> {
         const localVarPath =
@@ -2300,6 +2389,120 @@ export class FuturesApi {
     }
 
     /**
+     * Multiple distinct order ID list can be specified。Each request can cancel a maximum of 20 records.
+     * @summary Cancel a batch of orders with an ID list
+     * @param settle Settle currency
+     * @param requestBody
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+     */
+    public async cancelBatchFutureOrders(
+        settle: 'btc' | 'usdt',
+        requestBody: Array<string>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/batch_cancel_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling cancelBatchFutureOrders.');
+        }
+
+        // verify required parameter 'requestBody' is not null or undefined
+        if (requestBody === null || requestBody === undefined) {
+            throw new Error(
+                'Required parameter requestBody was null or undefined when calling cancelBatchFutureOrders.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(requestBody, 'Array<string>'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<FutureCancelOrderResult>>(
+            config,
+            'Array<FutureCancelOrderResult>',
+            authSettings,
+        );
+    }
+
+    /**
+     * 可以指定多个不同的订单id。一次请求最多只能修改 10 个订单
+     * @summary 批量修改指定 ID 的订单
+     * @param settle Settle currency
+     * @param batchAmendOrderReq
+     * @param opts Optional parameters
+     * @param opts.xGateExptime 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+     */
+    public async amendBatchFutureOrders(
+        settle: 'btc' | 'usdt',
+        batchAmendOrderReq: Array<BatchAmendOrderReq>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/batch_amend_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling amendBatchFutureOrders.');
+        }
+
+        // verify required parameter 'batchAmendOrderReq' is not null or undefined
+        if (batchAmendOrderReq === null || batchAmendOrderReq === undefined) {
+            throw new Error(
+                'Required parameter batchAmendOrderReq was null or undefined when calling amendBatchFutureOrders.',
+            );
+        }
+
+        opts = opts || {};
+        if (opts.xGateExptime !== undefined) {
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(batchAmendOrderReq, 'Array<BatchAmendOrderReq>'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<BatchFuturesOrder>>(config, 'Array<BatchFuturesOrder>', authSettings);
+    }
+
+    /**
      *
      * @summary List all auto orders
      * @param settle Settle currency
@@ -2310,7 +2513,7 @@ export class FuturesApi {
      * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredOrders(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         status: 'open' | 'finished',
         opts: { contract?: string; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
@@ -2374,7 +2577,7 @@ export class FuturesApi {
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath =
@@ -2418,11 +2621,12 @@ export class FuturesApi {
      *
      * @summary Cancel all open orders
      * @param settle Settle currency
-     * @param contract Futures contract
+     * @param opts Optional parameters
+     * @param opts.contract Futures contract, return related data only if specified
      */
     public async cancelPriceTriggeredOrderList(
-        settle: 'btc' | 'usdt' | 'usd',
-        contract: string,
+        settle: 'btc' | 'usdt',
+        opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2444,14 +2648,10 @@ export class FuturesApi {
             );
         }
 
-        // verify required parameter 'contract' is not null or undefined
-        if (contract === null || contract === undefined) {
-            throw new Error(
-                'Required parameter contract was null or undefined when calling cancelPriceTriggeredOrderList.',
-            );
+        opts = opts || {};
+        if (opts.contract !== undefined) {
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
-
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -2475,7 +2675,7 @@ export class FuturesApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async getPriceTriggeredOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =
@@ -2521,7 +2721,7 @@ export class FuturesApi {
      * @param orderId Retrieve the data of the order with the specified ID
      */
     public async cancelPriceTriggeredOrder(
-        settle: 'btc' | 'usdt' | 'usd',
+        settle: 'btc' | 'usdt',
         orderId: string,
     ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
         const localVarPath =

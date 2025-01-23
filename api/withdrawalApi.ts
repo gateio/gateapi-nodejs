@@ -11,6 +11,8 @@
 
 /* tslint:disable:no-unused-locals */
 import { LedgerRecord } from '../model/ledgerRecord';
+import { UidPushWithdrawal } from '../model/uidPushWithdrawal';
+import { UidPushWithdrawalResp } from '../model/uidPushWithdrawalResp';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -31,7 +33,7 @@ export class WithdrawalApi {
     }
 
     /**
-     *
+     * 如果对方的链上地址也是Gate的话, 则不收取手续费
      * @summary Withdraw
      * @param ledgerRecord
      */
@@ -62,6 +64,44 @@ export class WithdrawalApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
+    }
+
+    /**
+     * 现货主账号之间转帐,转帐双方不可为子账号
+     * @summary UID 转帐
+     * @param uidPushWithdrawal
+     */
+    public async withdrawPushOrder(
+        uidPushWithdrawal: UidPushWithdrawal,
+    ): Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp }> {
+        const localVarPath = this.client.basePath + '/withdrawals/push';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'uidPushWithdrawal' is not null or undefined
+        if (uidPushWithdrawal === null || uidPushWithdrawal === undefined) {
+            throw new Error(
+                'Required parameter uidPushWithdrawal was null or undefined when calling withdrawPushOrder.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(uidPushWithdrawal, 'UidPushWithdrawal'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UidPushWithdrawalResp>(config, 'UidPushWithdrawalResp', authSettings);
     }
 
     /**
