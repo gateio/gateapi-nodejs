@@ -13,5 +13,5 @@ Name | Type | Description | Notes
 **state** | **number** | State 1 - normal 2 - locked 3 - frozen | [optional] [readonly] [default to undefined]
 **createdAt** | **number** | Creation time | [optional] [readonly] [default to undefined]
 **updatedAt** | **number** | Last update time | [optional] [readonly] [default to undefined]
-**lastAccess** | **number** | 最近使用时间 | [optional] [readonly] [default to undefined]
+**lastAccess** | **number** | Last access time | [optional] [readonly] [default to undefined]
 

@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Lend & Earn interest reinvestment toggle
- */
+* Lend & Earn interest reinvestment toggle
+*/
 export class UniInterestMode {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency': string;
     /**
-     * Interest toggle settings, true - interest reinvestment, false - regular dividend
-     */
+    * Interest toggle settings, true - interest reinvestment, false - regular dividend
+    */
     'status': boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'boolean',
-        },
-    ];
+            "name": "status",
+            "baseName": "status",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniInterestMode.attributeTypeMap;
     }
 }
+

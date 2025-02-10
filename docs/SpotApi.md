@@ -30,7 +30,7 @@ Method | HTTP request | Description
 [**getSystemTime**](SpotApi.md#getSystemTime) | **GET** /spot/time | Get server current time
 [**countdownCancelAllSpot**](SpotApi.md#countdownCancelAllSpot) | **POST** /spot/countdown_cancel_all | Countdown cancel orders
 [**amendBatchOrders**](SpotApi.md#amendBatchOrders) | **POST** /spot/amend_batch_orders | Batch modification of orders
-[**getSpotInsuranceHistory**](SpotApi.md#getSpotInsuranceHistory) | **GET** /spot/insurance_history | 查询现货保险基金历史数据
+[**getSpotInsuranceHistory**](SpotApi.md#getSpotInsuranceHistory) | **GET** /spot/insurance_history | Query spot insurance fund historical data
 [**listSpotPriceTriggeredOrders**](SpotApi.md#listSpotPriceTriggeredOrders) | **GET** /spot/price_orders | Retrieve running auto order list
 [**createSpotPriceTriggeredOrder**](SpotApi.md#createSpotPriceTriggeredOrder) | **POST** /spot/price_orders | Create a price-triggered order
 [**cancelSpotPriceTriggeredOrderList**](SpotApi.md#cancelSpotPriceTriggeredOrderList) | **DELETE** /spot/price_orders | Cancel all open orders
@@ -300,7 +300,7 @@ No authorization required
 
 Retrieve market trades
 
-支持指定 &#x60;from&#x60; 和 &#x60;to&#x60; 按时间范围查询或基于 &#x60;last_id&#x60; 的翻页查询。默认按时间范围查询,查询范围为最近30天。  基于 &#x60;last_id&#x60; 翻页的查询方式不再推荐继续使用。如果指定 &#x60;last_id&#x60; ，时间范围查询参数会被忽略。  使用 limit&amp;page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) &lt;&#x3D; 100000。
+Supports specifying &#x60;from&#x60; and &#x60;to&#x60; to query by time range or paging query based on &#x60;last_id&#x60;. The default query is by time range, and the query range is the last 30 days.  The query method based on &#x60;last_id&#x60; paging is no longer recommended. If &#x60;last_id&#x60; is specified, the time range query parameter will be ignored.  When using the limit&amp;page paging function to retrieve data, the maximum number of pages is 100,000, that is, (limit page - 1) &lt;&#x3D; 100000.
 
 ### Example
 
@@ -545,7 +545,7 @@ Promise<{ response: AxiosResponse; body: Array<SpotAccount>; }> [SpotAccount](Sp
 
 Query account book
 
-记录查询时间范围不允许超过 30 天。  使用 limit&amp;page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) &lt;&#x3D; 100000。
+The record query time range is not allowed to exceed 30 days.  When using the limit&amp;page paging function to retrieve data, the maximum number of pages is 100,000, that is, (limit page - 1) &lt;&#x3D; 100000.
 
 ### Example
 
@@ -617,7 +617,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const order = [new Order()]; // Array<Order> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createBatchOrders(order, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -630,7 +630,7 @@ api.createBatchOrders(order, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Array&lt;Order&gt;**](Order.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -808,7 +808,7 @@ Promise<{ response: AxiosResponse; body: Array<Order>; }> [Order](Order.md)
 
 Create an order
 
-支持现货、保证金、杠杆、全仓杠杆下单。通过 &#x60;account&#x60; 字段来使用不同的账户，默认为 &#x60;spot&#x60; ，即使用现货账户下单，如果用户是 &#x60;unified&#x60; 账户，默认是用统一账户下单  使用杠杆账户交易，即 &#x60;account&#x60; 设置为 &#x60;margin&#x60; 的时候，可以设置 &#x60;auto_borrow&#x60; 为 &#x60;true&#x60;， 在账户余额不足的情况，由系统自动执行 &#x60;POST /margin/uni/loans&#x60; 借入不足部分。 杠杆下单成交之后的获取到的资产是否自动用于归还逐仓杠杆账户的借入单，取决于用户逐仓杠杆**账户**的自动还款设置， 该账户自动还款设置可以通过 &#x60;/margin/auto_repay&#x60; 来查询和设置。  使用全仓杠杆账户交易，即 &#x60;account&#x60; 设置为 &#x60;cross_margin&#x60; 的时候，同样可以启用 &#x60;auto_borrow&#x60; 来实现自动借入不足部分，但是与逐仓杠杆账户不同的是，全仓杠杆账户的委托是否自动还款取决于下单时的 &#x60;auto_repay&#x60; 设置，该设置只对当前委托生效，即只有该委托成交之后获取到的资产会用来还款全仓杠杆账户的借入单。 全仓杠杆账户下单目前支持同时开启 &#x60;auto_borrow&#x60; 和 &#x60;auto_repay&#x60;。  自动还款会在订单结束时触发，即 &#x60;status&#x60; 为 &#x60;cancelled&#x60; 或者 &#x60;closed&#x60; 。  **委托状态**  挂单中的委托状态是 &#x60;open&#x60; ，在数量全部成交之前保持为 &#x60;open&#x60; 。如果被全部吃掉，则订单结束，状态变成 &#x60;closed&#x60; 。 假如全部成交之前，订单被撤销，不管是否有部分成交，状态都会变为 &#x60;cancelled&#x60;  **冰山委托**  &#x60;iceberg&#x60; 用来设置冰山委托显示的数量，如果需要完全隐藏，设置为 &#x60;-1&#x60; 。注意隐藏部分成交时按照 taker 的手续费率收取。  **限制用户自成交**  设置 &#x60;stp_act&#x60; 来决定使用限制用户自成交的策略
+Supports spot, margin, leverage, and cross margin orders. Use different accounts through the &#x60;account&#x60; field, the default is &#x60;spot&#x60;, that is, use the spot account to place orders, if the user is &#x60;unified&#x60; account, the default is to use the unified account to place orders  When using margin account trading, that is, when &#x60;account&#x60; is set to &#x60;margin&#x60;, you can set &#x60;auto_borrow&#x60; to &#x60;true&#x60;, When the account balance is insufficient, the system automatically executes &#x60;POST marginuniloans&#x60; to borrow the insufficient amount. Whether the assets obtained after placing a margin order are automatically used to return the borrowing order of the isolated margin account depends on the automatic repayment settings of the user\&#39;s isolated margin account, The automatic repayment settings of this account can be queried and set through &#x60;marginauto_repay&#x60;.  When using cross margin account trading, that is, when &#x60;account&#x60; is set to &#x60;cross_margin&#x60;, &#x60;auto_borrow&#x60; To realize the automatic borrowing of the insufficient part, but unlike the isolated margin account, whether the entrustment of the cross margin account is automatically repaid depends on the time when the order is placed &#x60;auto_repay&#x60; setting, this setting only takes effect for the current order, that is, only the assets obtained after the order is completed will be used to repay the borrowing order of the cross margin account. Placing orders on cross margin accounts currently supports enabling &#x60;auto_borrow&#x60; and &#x60;auto_repay&#x60; at the same time.  Automatic repayment will be triggered when the order ends, that is, the &#x60;status&#x60; is &#x60;cancelled&#x60; or &#x60;closed&#x60;.  Delegation status  The order status in the pending order is &#x60;open&#x60; and remains &#x60;open&#x60; until all the quantities are filled. If all are filled, the order ends and the status becomes &#x60;closed&#x60;. If the order is canceled before all transactions are completed, the status will change to &#x60;cancelled&#x60; regardless of whether there is partial execution or not.  Iceberg Commission  &#x60;iceberg&#x60; is used to set the number of iceberg orders displayed. If you need to hide it completely, set it to &#x60;-1&#x60;. Note that when hiding partial transactions, follow the instructions The taker\&#39;s handling fee is charged.  Restrict users to self-transact  Set &#x60;stp_act&#x60; to decide to use a strategy that limits users\&#39; self-transactions
 
 ### Example
 
@@ -823,7 +823,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const order = new Order(); // Order | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createOrder(order, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -836,7 +836,7 @@ api.createOrder(order, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Order**](Order.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -857,7 +857,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 Cancel all &#x60;open&#x60; orders in specified currency pair
 
-不指定 &#x60;account&#x60; 参数时，包括现货、保证金、逐仓杠杆和全仓杠杆在内的所有挂单都会执行撤销操作。 不指定 &#x60;currency_pair&#x60;时，会撤销所有交易对的挂单 可以单独指定某一种账户，撤销指定账户下的所有挂单
+If &#x60;account&#x60; is not set, all open orders, including spot, portfolio, margin and cross margin ones, will be cancelled. If &#x60;currency_pair&#x60; is not specified, all pending orders for trading pairs will be cancelled. You can set &#x60;account&#x60; to cancel only orders within the specified account
 
 ### Example
 
@@ -873,9 +873,9 @@ const api = new GateApi.SpotApi(client);
 const opts = {
   'currencyPair': "BTC_USDT", // string | Currency pair
   'side': "sell", // string | All bids or asks. Both included if not specified
-  'account': "spot", // string | 指定账户类型  - 经典账户：不指定则全部包含   - 统一账户：指定`unified` - 统一账户(旧)：只能指定`cross_margin`
+  'account': "spot", // string | Specify account type:  - Classic account: Includes all if not specified - Unified account: Specify `unified` - Unified account (legacy): Can only specify `cross_margin`
   'actionMode': "ACK", // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -889,9 +889,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
  **side** | **string**| All bids or asks. Both included if not specified | [optional] [default to undefined]
- **account** | **string**| 指定账户类型  - 经典账户：不指定则全部包含   - 统一账户：指定&#x60;unified&#x60; - 统一账户(旧)：只能指定&#x60;cross_margin&#x60; | [optional] [default to undefined]
+ **account** | **string**| Specify account type:  - Classic account: Includes all if not specified - Unified account: Specify &#x60;unified&#x60; - Unified account (legacy): Can only specify &#x60;cross_margin&#x60; | [optional] [default to undefined]
  **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default) | [optional] [default to undefined]
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -927,7 +927,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const cancelBatchOrder = [new CancelBatchOrder()]; // Array<CancelBatchOrder> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelBatchOrders(cancelBatchOrder, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -940,7 +940,7 @@ api.cancelBatchOrders(cancelBatchOrder, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelBatchOrder** | [**Array&lt;CancelBatchOrder&gt;**](CancelBatchOrder.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -975,7 +975,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SpotApi(client);
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted.
-const currencyPair = "BTC_USDT"; // string | 指定交易对查询。如果查询挂单的记录，该字段必选。如果查询已成交的记录，该字段可以不指定
+const currencyPair = "BTC_USDT"; // string | Specify the transaction pair to query. If you are querying pending order records, this field is required. If you are querying traded records, this field can be left blank.
 const opts = {
   'account': "cross_margin" // string | Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
 };
@@ -990,7 +990,7 @@ api.getOrder(orderId, currencyPair, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 1 hour after the end of the order.  After that, only order ID is accepted. | [default to undefined]
- **currencyPair** | **string**| 指定交易对查询。如果查询挂单的记录，该字段必选。如果查询已成交的记录，该字段可以不指定 | [default to undefined]
+ **currencyPair** | **string**| Specify the transaction pair to query. If you are querying pending order records, this field is required. If you are querying traded records, this field can be left blank. | [default to undefined]
  **account** | **string**| Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
 
 ### Return type
@@ -1030,7 +1030,7 @@ const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'account': "cross_margin", // string | Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
   'actionMode': "ACK", // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelOrder(orderId, currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1046,7 +1046,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **account** | **string**| Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
  **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default) | [optional] [default to undefined]
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1067,7 +1067,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 Amend an order
 
-默认修改现货、保证金和逐仓杠杆账户的订单，如果需要修改全仓杠杆账户订单，必须指定 &#x60;account&#x60; 为 &#x60;cross_margin&#x60;，统一账户 &#x60;account&#x60; 只能指定为 &#x60;cross_margin&#x60;。  目前请求体和query都支持currency_pair和account传参，但请求体优先级更高  currency_pair必须在请求体或query中二选一填入  目前只支持修改价格或数量（二选一）  关于限速：修改订单和创建订单共享限速规则  关于匹配优先级：只修改数量变小不影响匹配优先级，修改价格或修改数量变大则优先级将调整到新价格最后面    注意事项:修改数量小于已成交数量会触发撤单操作
+By default, orders for spot, margin and isolated margin accounts are modified. If you need to modify orders for cross margin accounts, you must specify &#x60;account&#x60; as &#x60;cross_margin&#x60; and unify the account.&#x60;account&#x60; can only be specified as &#x60;cross_margin&#x60;.  Currently both the request body and query support currency_pair and account parameters, but the request body has a higher priority  currency_pair must be filled in either the request body or query  Currently only supports modifying price or quantity (choose one of the two)  About speed limit: Modify orders and create orders to share speed limit rules  About matching priority: only modifying the quantity to make it smaller will not affect the matching priority. If you modify the price or modify the quantity to become larger, the priority will be adjusted to the end of the new price  Note: The modified quantity is smaller than the completed quantity, which will trigger the order cancellation operation
 
 ### Example
 
@@ -1085,7 +1085,7 @@ const orderPatch = new OrderPatch(); // OrderPatch |
 const opts = {
   'currencyPair': "BTC_USDT", // string | Currency pair
   'account': "cross_margin", // string | Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to `cross_margin` to operate against margin account.  Portfolio margin account must set to `cross_margin` only
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendOrder(orderId, orderPatch, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1101,7 +1101,7 @@ Name | Type | Description  | Notes
  **orderPatch** | [**OrderPatch**](OrderPatch.md)|  | 
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
  **account** | **string**| Specify operation account. Default to spot ,portfolio and margin account if not specified. Set to &#x60;cross_margin&#x60; to operate against margin account.  Portfolio margin account must set to &#x60;cross_margin&#x60; only | [optional] [default to undefined]
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1122,7 +1122,7 @@ Promise<{ response: AxiosResponse; body: Order; }> [Order](Order.md)
 
 List personal trading history
 
-默认查询现货、保证金和逐仓杠杆账户的成交记录，如果需要查询全仓杠杆账户的成交记录，必须指定 &#x60;account&#x60; 为 &#x60;cross_margin&#x60; 。  可以通过指定 &#x60;from&#x60; 或(和) &#x60;to&#x60; 来查询指定时间范围内的历史。  - 如果不指定任何时间参数，只能获取最近 7 天的数据。 - 如果只指定 &#x60;from&#x60; 或 &#x60;to&#x60; 的任一参数，也同样只返回指定时间开始（或结束）的 7 天范围的数据。 - &#x60;from&#x60; 和 &#x60;to&#x60; 的范围不允许超过 30 天 。  时间范围筛选的参数均是按订单**结束**时间来处理。  使用 limit&amp;page分页功能检索数据时最大分页数量为100,000条，即 (limit * page - 1) &lt;&#x3D; 100000。
+Spot,portfolio and margin trades are queried by default. If cross margin trades are needed, &#x60;account&#x60; must be set to &#x60;cross_margin&#x60;  You can also set &#x60;from&#x60; and(or) &#x60;to&#x60; to query by time range. If you don\&#39;t specify &#x60;from&#x60; and/or &#x60;to&#x60; parameters, only the last 7 days of data will be retured. The range of &#x60;from&#x60; and &#x60;to&#x60; is not alloed to exceed 30 days.  Time range parameters are handled as order finish time. When using the limit&amp;page paging function to retrieve data, the maximum number of pages is 100,000, that is, (limit * page - 1) &lt;&#x3D; 100000.
 
 ### Example
 
@@ -1278,7 +1278,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const batchAmendItem = [new BatchAmendItem()]; // Array<BatchAmendItem> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendBatchOrders(batchAmendItem, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1291,7 +1291,7 @@ api.amendBatchOrders(batchAmendItem, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **batchAmendItem** | [**Array&lt;BatchAmendItem&gt;**](BatchAmendItem.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1310,7 +1310,7 @@ Promise<{ response: AxiosResponse; body: Array<BatchOrder>; }> [BatchOrder](Batc
 
 > Promise<{ response: http.IncomingMessage; body: Array<SpotInsuranceHistory>; }> getSpotInsuranceHistory(business, currency, from, to, opts)
 
-查询现货保险基金历史数据
+Query spot insurance fund historical data
 
 ### Example
 
@@ -1321,13 +1321,13 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.SpotApi(client);
-const business = "margin"; // string | 杠杆业务，margin - 逐仓；unified - 统一账户
+const business = "margin"; // string | Leverage business, margin - position by position; unified - unified account
 const currency = "BTC"; // string | Currency
-const from = 1547706332; // number | 起始时间戳，秒级
-const to = 1547706332; // number | 终止时间戳，秒级
+const from = 1547706332; // number | Start timestamp, seconds
+const to = 1547706332; // number | End timestamp, in seconds
 const opts = {
   'page': 1, // number | Page number
-  'limit': 30 // number | 列表返回的最大数量, 默认值30
+  'limit': 30 // number | The maximum number of items returned in the list, the default value is 30
 };
 api.getSpotInsuranceHistory(business, currency, from, to, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1339,12 +1339,12 @@ api.getSpotInsuranceHistory(business, currency, from, to, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **business** | **string**| 杠杆业务，margin - 逐仓；unified - 统一账户 | [default to undefined]
+ **business** | **string**| Leverage business, margin - position by position; unified - unified account | [default to undefined]
  **currency** | **string**| Currency | [default to undefined]
- **from** | **number**| 起始时间戳，秒级 | [default to undefined]
- **to** | **number**| 终止时间戳，秒级 | [default to undefined]
+ **from** | **number**| Start timestamp, seconds | [default to undefined]
+ **to** | **number**| End timestamp, in seconds | [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| 列表返回的最大数量, 默认值30 | [optional] [default to 30]
+ **limit** | **number**| The maximum number of items returned in the list, the default value is 30 | [optional] [default to 30]
 
 ### Return type
 

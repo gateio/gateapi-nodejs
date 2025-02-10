@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **pnlFee** | **string** | PNL - Transaction Fees | [optional] [readonly] [default to undefined]
 **text** | **string** | Text of close order | [optional] [readonly] [default to undefined]
 **maxSize** | **string** | Max Trade Size | [optional] [readonly] [default to undefined]
-**accumSize** | **string** | 累计平仓量 | [optional] [readonly] [default to undefined]
+**accumSize** | **string** | Cumulative closed position volume | [optional] [readonly] [default to undefined]
 **firstOpenTime** | **number** | First Open Time | [optional] [readonly] [default to undefined]
 **longPrice** | **string** | When \&#39;side\&#39; is \&#39;long,\&#39; it indicates the opening average price; when \&#39;side\&#39; is \&#39;short,\&#39; it indicates the closing average price. | [optional] [readonly] [default to undefined]
 **shortPrice** | **string** | When \&#39;side\&#39; is \&#39;long,\&#39; it indicates the opening average price; when \&#39;side\&#39; is \&#39;short,\&#39; it indicates the closing average price | [optional] [readonly] [default to undefined]

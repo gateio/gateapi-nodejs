@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Retrieve transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 [**subAccountToSubAccount**](WalletApi.md#subAccountToSubAccount) | **POST** /wallet/sub_account_to_sub_account | Sub-account transfers to sub-account
-[**getTransferOrderStatus**](WalletApi.md#getTransferOrderStatus) | **GET** /wallet/order_status | 划转状态查询
+[**getTransferOrderStatus**](WalletApi.md#getTransferOrderStatus) | **GET** /wallet/order_status | Transfer status query
 [**listWithdrawStatus**](WalletApi.md#listWithdrawStatus) | **GET** /wallet/withdraw_status | Retrieve withdrawal status
 [**listSubAccountBalances**](WalletApi.md#listSubAccountBalances) | **GET** /wallet/sub_account_balances | Retrieve sub account balances
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub accounts\&#39; margin balances
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**listSmallBalance**](WalletApi.md#listSmallBalance) | **GET** /wallet/small_balance | List small balance
 [**convertSmallBalance**](WalletApi.md#convertSmallBalance) | **POST** /wallet/small_balance | Convert small balance
 [**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | List small balance history
-[**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | 获取UID转帐历史纪录
+[**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | Retrieve the UID transfer history
 
 
 ## listCurrencyChains
@@ -227,7 +227,7 @@ Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](
 
 Transfer between trading accounts
 
-个人交易账户之间的余额互转，目前支持以下互转操作：  1. 现货账户 - 杠杆账户 2. 现货账户 - 永续合约账户 3. 现货账户 - 交割合约账户 4. 现货账户 - 期权账户
+Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - options
 
 ### Example
 
@@ -413,11 +413,11 @@ Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](Trans
 
 ## getTransferOrderStatus
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse200; }> getTransferOrderStatus(opts)
+> Promise<{ response: http.IncomingMessage; body: TransferOrderStatus; }> getTransferOrderStatus(opts)
 
-划转状态查询
+Transfer status query
 
-支持根据用户自定义client_order_id或者划转接口返回的tx_id查询划转状态
+Support querying transfer status based on user-defined client_order_id or tx_id returned by the transfer interface
 
 ### Example
 
@@ -432,7 +432,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'clientOrderId': "da3ce7a088c8b0372b741419c7829033", // string | The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
-  'txId': "59636381286" // string | 划转操作单号，和client_order_id不能同时为空
+  'txId': "59636381286" // string | The transfer operation number and client_order_id cannot be empty at the same time
 };
 api.getTransferOrderStatus(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -445,11 +445,11 @@ api.getTransferOrderStatus(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **clientOrderId** | **string**| The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;, with a length ranging from 1 to 64 characters. | [optional] [default to undefined]
- **txId** | **string**| 划转操作单号，和client_order_id不能同时为空 | [optional] [default to undefined]
+ **txId** | **string**| The transfer operation number and client_order_id cannot be empty at the same time | [optional] [default to undefined]
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse200; }> [InlineResponse200](InlineResponse200.md)
+Promise<{ response: AxiosResponse; body: TransferOrderStatus; }> [TransferOrderStatus](TransferOrderStatus.md)
 
 ### Authorization
 
@@ -967,7 +967,7 @@ Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory>; }> [SmallBa
 
 > Promise<{ response: http.IncomingMessage; body: Array<UidPushOrder>; }> listPushOrders(opts)
 
-获取UID转帐历史纪录
+Retrieve the UID transfer history
 
 ### Example
 
@@ -982,11 +982,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'id': 56, // number | Order ID
-  'from': 56, // number | 查询记录的起始时间,不指定则默认从当前时间开始向前推7天,秒级Unix的时间戳
-  'to': 56, // number | 查询记录的结束时间,不指定则默认为当前时间,秒级Unix的时间戳
-  'limit': 100, // number | 列表返回的最大数量，默认值是 100
+  'from': 56, // number | The start time of the query record. If not specified, it defaults to 7 days forward from the current time, in seconds Unix timestamp
+  'to': 56, // number | The end time of the query record. If not specified, the default is the current time, which is a Unix timestamp in seconds.
+  'limit': 100, // number | The maximum number of items returned in the list, the default value is 100
   'offset': 0, // number | List offset, starting from 0
-  'transactionType': 'withdraw' // string | 列表返回订单类型 `withdraw`,  `deposit`,默认为`withdraw`.
+  'transactionType': 'withdraw' // string | The list returns the order type `withdraw`, `deposit`, the default is `withdraw`.
 };
 api.listPushOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -999,11 +999,11 @@ api.listPushOrders(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **number**| Order ID | [optional] [default to undefined]
- **from** | **number**| 查询记录的起始时间,不指定则默认从当前时间开始向前推7天,秒级Unix的时间戳 | [optional] [default to undefined]
- **to** | **number**| 查询记录的结束时间,不指定则默认为当前时间,秒级Unix的时间戳 | [optional] [default to undefined]
- **limit** | **number**| 列表返回的最大数量，默认值是 100 | [optional] [default to 100]
+ **from** | **number**| The start time of the query record. If not specified, it defaults to 7 days forward from the current time, in seconds Unix timestamp | [optional] [default to undefined]
+ **to** | **number**| The end time of the query record. If not specified, the default is the current time, which is a Unix timestamp in seconds. | [optional] [default to undefined]
+ **limit** | **number**| The maximum number of items returned in the list, the default value is 100 | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **transactionType** | **string**| 列表返回订单类型 &#x60;withdraw&#x60;,  &#x60;deposit&#x60;,默认为&#x60;withdraw&#x60;. | [optional] [default to &#39;withdraw&#39;]
+ **transactionType** | **string**| The list returns the order type &#x60;withdraw&#x60;, &#x60;deposit&#x60;, the default is &#x60;withdraw&#x60;. | [optional] [default to &#39;withdraw&#39;]
 
 ### Return type
 

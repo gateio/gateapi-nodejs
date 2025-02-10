@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Currency detail
- */
+* Currency detail
+*/
 export class UniCurrency {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * The minimum lending amount, in the unit of the currency.
-     */
+    * The minimum lending amount, in the unit of the currency.
+    */
     'minLendAmount'?: string;
     /**
-     * The total maximum lending amount, in USDT
-     */
+    * The total maximum lending amount, in USDT
+    */
     'maxLendAmount'?: string;
     /**
-     * Maximum rate (Hourly)
-     */
+    * Maximum rate (Hourly)
+    */
     'maxRate'?: string;
     /**
-     * Minimum rate (Hourly)
-     */
+    * Minimum rate (Hourly)
+    */
     'minRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'minLendAmount',
-            baseName: 'min_lend_amount',
-            type: 'string',
+            "name": "minLendAmount",
+            "baseName": "min_lend_amount",
+            "type": "string"
         },
         {
-            name: 'maxLendAmount',
-            baseName: 'max_lend_amount',
-            type: 'string',
+            "name": "maxLendAmount",
+            "baseName": "max_lend_amount",
+            "type": "string"
         },
         {
-            name: 'maxRate',
-            baseName: 'max_rate',
-            type: 'string',
+            "name": "maxRate",
+            "baseName": "max_rate",
+            "type": "string"
         },
         {
-            name: 'minRate',
-            baseName: 'min_rate',
-            type: 'string',
-        },
-    ];
+            "name": "minRate",
+            "baseName": "min_rate",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniCurrency.attributeTypeMap;
     }
 }
+

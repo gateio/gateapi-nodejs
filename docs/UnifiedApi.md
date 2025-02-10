@@ -11,17 +11,17 @@ Method | HTTP request | Description
 [**createUnifiedLoan**](UnifiedApi.md#createUnifiedLoan) | **POST** /unified/loans | Borrow or repay
 [**listUnifiedLoanRecords**](UnifiedApi.md#listUnifiedLoanRecords) | **GET** /unified/loan_records | Get load records
 [**listUnifiedLoanInterestRecords**](UnifiedApi.md#listUnifiedLoanInterestRecords) | **GET** /unified/interest_records | List interest records
-[**getUnifiedRiskUnits**](UnifiedApi.md#getUnifiedRiskUnits) | **GET** /unified/risk_units | 获取用户风险单元详情，仅在组合保证金模式有效
+[**getUnifiedRiskUnits**](UnifiedApi.md#getUnifiedRiskUnits) | **GET** /unified/risk_units | Get user risk unit details
 [**getUnifiedMode**](UnifiedApi.md#getUnifiedMode) | **GET** /unified/unified_mode | Query mode of the unified account
 [**setUnifiedMode**](UnifiedApi.md#setUnifiedMode) | **PUT** /unified/unified_mode | Set mode of the unified account
 [**getUnifiedEstimateRate**](UnifiedApi.md#getUnifiedEstimateRate) | **GET** /unified/estimate_rate | Get unified estimate rate
-[**listCurrencyDiscountTiers**](UnifiedApi.md#listCurrencyDiscountTiers) | **GET** /unified/currency_discount_tiers | list currency discount tiers
-[**listLoanMarginTiers**](UnifiedApi.md#listLoanMarginTiers) | **GET** /unified/loan_margin_tiers | 查询统一账户借贷梯度保证金
-[**calculatePortfolioMargin**](UnifiedApi.md#calculatePortfolioMargin) | **POST** /unified/portfolio_calculator | 组合保证金计算器计算
-[**getUserLeverageCurrencyConfig**](UnifiedApi.md#getUserLeverageCurrencyConfig) | **GET** /unified/leverage/user_currency_config | 用户最大、最小可设置币种杠杆倍数
-[**getUserLeverageCurrencySetting**](UnifiedApi.md#getUserLeverageCurrencySetting) | **GET** /unified/leverage/user_currency_setting | 获取用户币种杠杆倍数，currency不传则查询全部币种
-[**setUserLeverageCurrencySetting**](UnifiedApi.md#setUserLeverageCurrencySetting) | **POST** /unified/leverage/user_currency_setting | 设置借贷币种杠杆倍数
-[**getHistoryLoanRate**](UnifiedApi.md#getHistoryLoanRate) | **GET** /unified/history_loan_rate | 获取历史借币利率
+[**listCurrencyDiscountTiers**](UnifiedApi.md#listCurrencyDiscountTiers) | **GET** /unified/currency_discount_tiers | List currency discount tiers
+[**listLoanMarginTiers**](UnifiedApi.md#listLoanMarginTiers) | **GET** /unified/loan_margin_tiers | List loan margin tiers
+[**calculatePortfolioMargin**](UnifiedApi.md#calculatePortfolioMargin) | **POST** /unified/portfolio_calculator | Portfolio margin calculator
+[**getUserLeverageCurrencyConfig**](UnifiedApi.md#getUserLeverageCurrencyConfig) | **GET** /unified/leverage/user_currency_config | Minimum currency leverage that can be set
+[**getUserLeverageCurrencySetting**](UnifiedApi.md#getUserLeverageCurrencySetting) | **GET** /unified/leverage/user_currency_setting | Get the leverage multiple of the user currency
+[**setUserLeverageCurrencySetting**](UnifiedApi.md#setUserLeverageCurrencySetting) | **POST** /unified/leverage/user_currency_setting | Set the loan currency leverage
+[**getHistoryLoanRate**](UnifiedApi.md#getHistoryLoanRate) | **GET** /unified/history_loan_rate | get historical lending rates
 
 
 ## listUnifiedAccounts
@@ -327,7 +327,7 @@ const opts = {
   'limit': 100, // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 100
   'from': 1627706330, // number | Start timestamp of the query
   'to': 1635329650, // number | Time range ending, default to current time
-  'type': "platform" // string | 借贷类型，平台借币 - platform，杠杆借币 - margin，不传时默认为margin
+  'type': "platform" // string | Loan type, platform loan - platform, leverage loan - margin, if not passed, defaults to margin
 };
 api.listUnifiedLoanInterestRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 100 | [optional] [default to 100]
  **from** | **number**| Start timestamp of the query | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
- **type** | **string**| 借贷类型，平台借币 - platform，杠杆借币 - margin，不传时默认为margin | [optional] [default to undefined]
+ **type** | **string**| Loan type, platform loan - platform, leverage loan - margin, if not passed, defaults to margin | [optional] [default to undefined]
 
 ### Return type
 
@@ -363,7 +363,9 @@ Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord>; }> [UniLo
 
 > Promise<{ response: http.IncomingMessage; body: UnifiedRiskUnits; }> getUnifiedRiskUnits()
 
-获取用户风险单元详情，仅在组合保证金模式有效
+Get user risk unit details
+
+Retrieve user risk unit details, only valid in portfolio margin mode
 
 ### Example
 
@@ -404,7 +406,7 @@ Promise<{ response: AxiosResponse; body: UnifiedRiskUnits; }> [UnifiedRiskUnits]
 
 Query mode of the unified account
 
-统一账户模式： - &#x60;classic&#x60;: 经典账户模式 - &#x60;multi_currency&#x60;: 跨币种保证金模式 - &#x60;portfolio&#x60;: 组合保证金模式 - &#x60;single_currency&#x60;: 单币种保证金模式
+Unified account mode: - &#x60;classic&#x60;: Classic account mode - &#x60;multi_currency&#x60;: Cross-currency margin mode - &#x60;portfolio&#x60;: Portfolio margin mode - &#x60;single_currency&#x60;: Single-currency margin mode
 
 ### Example
 
@@ -445,7 +447,7 @@ Promise<{ response: AxiosResponse; body: UnifiedModeSet; }> [UnifiedModeSet](Uni
 
 Set mode of the unified account
 
-每种账户模式的切换只需要传对应账户模式的参数，同时支持在切换账户模式时打开或关闭对应账户模式下的配置开关   - 开通经典账户模式时，mode&#x3D;classic &#x60;&#x60;&#x60;     PUT /unified/unified_mode     {       \&quot;mode\&quot;: \&quot;classic\&quot;     } &#x60;&#x60;&#x60; - 开通跨币种保证金模式，mode&#x3D;multi_currency &#x60;&#x60;&#x60;     PUT /unified/unified_mode     {       \&quot;mode\&quot;: \&quot;multi_currency\&quot;,       \&quot;settings\&quot;: {          \&quot;usdt_futures\&quot;: true       }     } &#x60;&#x60;&#x60; - 开通组合保证金模式时，mode&#x3D;portfolio &#x60;&#x60;&#x60;     PUT /unified/unified_mode     {       \&quot;mode\&quot;: \&quot;portfolio\&quot;,       \&quot;settings\&quot;: {          \&quot;spot_hedge\&quot;: true       }     } &#x60;&#x60;&#x60; - 开通组合保证金模式时，mode&#x3D;single_currency &#x60;&#x60;&#x60;     PUT /unified/unified_mode     {       \&quot;mode\&quot;: \&quot;single_currency\&quot;     } &#x60;&#x60;&#x60;
+Switching each account mode only requires passing the parameters of the corresponding account mode, and supports turning on or off the configuration switch in the corresponding account mode when switching the account mode  - When opening the classic account mode, mode&#x3D;classic &#x60;&#x60;&#x60;  PUT /unified/unified_mode  {  \&quot;mode\&quot;: \&quot;classic\&quot;  } &#x60;&#x60;&#x60; - Open the cross-currency margin mode, mode&#x3D;multi_currency &#x60;&#x60;&#x60;  PUT /unified/unified_mode  {  \&quot;mode\&quot;: \&quot;multi_currency\&quot;,  \&quot;settings\&quot;: {  \&quot;usdt_futures\&quot;: true  }  } &#x60;&#x60;&#x60; - When the portfolio margin mode is enabled, mode&#x3D;portfolio &#x60;&#x60;&#x60;  PUT /unified/unified_mode  {  \&quot;mode\&quot;: \&quot;portfolio\&quot;,  \&quot;settings\&quot;: {  \&quot;spot_hedge\&quot;: true  }  } &#x60;&#x60;&#x60; - When opening a single currency margin mode, mode&#x3D;single_currency &#x60;&#x60;&#x60;  PUT /unified/unified_mode  {  \&quot;mode\&quot;: \&quot;single_currency\&quot;  } &#x60;&#x60;&#x60;
 
 ### Example
 
@@ -533,7 +535,7 @@ Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string]
 
 > Promise<{ response: http.IncomingMessage; body: Array<UnifiedDiscount>; }> listCurrencyDiscountTiers()
 
-list currency discount tiers
+List currency discount tiers
 
 ### Example
 
@@ -570,7 +572,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: Array<UnifiedMarginTiers>; }> listLoanMarginTiers()
 
-查询统一账户借贷梯度保证金
+List loan margin tiers
 
 ### Example
 
@@ -607,9 +609,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: UnifiedPortfolioOutput; }> calculatePortfolioMargin(unifiedPortfolioInput)
 
-组合保证金计算器计算
+Portfolio margin calculator
 
-组合保证金计算器  当输入为模拟仓位组合时，每个仓位包括仓位名和持有量，只支持市场范围：BTC、ETH的永续合约、期权、现货 当输入为模拟挂单时，每个挂单包括市场标识、挂单价、挂单量，只支持市场范围：BTC、ETH的永续合约、期权、现货。挂单不包括市价单
+Portfolio Margin Calculator When inputting a simulated position portfolio, each position includes the position name and quantity held, supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. When inputting simulated orders, each order includes the market identifier, order price, and order quantity,  supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. Market orders are not included.
 
 ### Example
 
@@ -650,7 +652,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: UnifiedLeverageConfig; }> getUserLeverageCurrencyConfig(currency)
 
-用户最大、最小可设置币种杠杆倍数
+Minimum currency leverage that can be set
 
 ### Example
 
@@ -693,7 +695,9 @@ Promise<{ response: AxiosResponse; body: UnifiedLeverageConfig; }> [UnifiedLever
 
 > Promise<{ response: http.IncomingMessage; body: UnifiedLeverageSetting; }> getUserLeverageCurrencySetting(opts)
 
-获取用户币种杠杆倍数，currency不传则查询全部币种
+Get the leverage multiple of the user currency
+
+Get the user\&#39;s currency leverage. If currency is not passed, query all currencies.
 
 ### Example
 
@@ -736,9 +740,9 @@ Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting; }> [UnifiedLeve
 
 ## setUserLeverageCurrencySetting
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> setUserLeverageCurrencySetting(inlineObject)
+> Promise<{ response: http.IncomingMessage; body?: any; }> setUserLeverageCurrencySetting(unifiedLeverageSetting)
 
-设置借贷币种杠杆倍数
+Set the loan currency leverage
 
 ### Example
 
@@ -751,8 +755,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.UnifiedApi(client);
-const inlineObject = new InlineObject(); // InlineObject | 
-api.setUserLeverageCurrencySetting(inlineObject)
+const unifiedLeverageSetting = new UnifiedLeverageSetting(); // UnifiedLeverageSetting | 
+api.setUserLeverageCurrencySetting(unifiedLeverageSetting)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
 ```
@@ -762,7 +766,7 @@ api.setUserLeverageCurrencySetting(inlineObject)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | 
+ **unifiedLeverageSetting** | [**UnifiedLeverageSetting**](UnifiedLeverageSetting.md)|  | 
 
 ### Return type
 
@@ -781,7 +785,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: UnifiedHistoryLoanRate; }> getHistoryLoanRate(currency, opts)
 
-获取历史借币利率
+get historical lending rates
 
 ### Example
 
@@ -796,7 +800,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.UnifiedApi(client);
 const currency = "USDT"; // string | Currency
 const opts = {
-  'tier': "1", // string | 需要查询的上浮费率的vip等级
+  'tier': "1", // string | The VIP level of the floating rate that needs to be queried
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 100
 };
@@ -811,7 +815,7 @@ api.getHistoryLoanRate(currency, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Currency | [default to undefined]
- **tier** | **string**| 需要查询的上浮费率的vip等级 | [optional] [default to undefined]
+ **tier** | **string**| The VIP level of the floating rate that needs to be queried | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 100 | [optional] [default to 100]
 

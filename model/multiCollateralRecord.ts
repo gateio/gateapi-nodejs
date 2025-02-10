@@ -12,79 +12,79 @@
 import { MultiCollateralRecordCurrency } from './multiCollateralRecordCurrency';
 
 /**
- * Multi-Collateral adjustment record.
- */
+* Multi-Collateral adjustment record.
+*/
 export class MultiCollateralRecord {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: number;
     /**
-     * Collateral record ID
-     */
+    * Collateral record ID
+    */
     'recordId'?: number;
     /**
-     * The collateral ratio before adjustment
-     */
+    * The collateral ratio before adjustment
+    */
     'beforeLtv'?: string;
     /**
-     * The collateral ratio before adjustment
-     */
+    * The collateral ratio before adjustment
+    */
     'afterLtv'?: string;
     /**
-     * Operation time, timestamp in seconds.
-     */
+    * Operation time, timestamp in seconds.
+    */
     'operateTime'?: number;
     /**
-     * Borrowing Currency List
-     */
+    * Borrowing Currency List
+    */
     'borrowCurrencies'?: Array<MultiCollateralRecordCurrency>;
     /**
-     * Collateral Currency List
-     */
+    * Collateral Currency List
+    */
     'collateralCurrencies'?: Array<MultiCollateralRecordCurrency>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'recordId',
-            baseName: 'record_id',
-            type: 'number',
+            "name": "recordId",
+            "baseName": "record_id",
+            "type": "number"
         },
         {
-            name: 'beforeLtv',
-            baseName: 'before_ltv',
-            type: 'string',
+            "name": "beforeLtv",
+            "baseName": "before_ltv",
+            "type": "string"
         },
         {
-            name: 'afterLtv',
-            baseName: 'after_ltv',
-            type: 'string',
+            "name": "afterLtv",
+            "baseName": "after_ltv",
+            "type": "string"
         },
         {
-            name: 'operateTime',
-            baseName: 'operate_time',
-            type: 'number',
+            "name": "operateTime",
+            "baseName": "operate_time",
+            "type": "number"
         },
         {
-            name: 'borrowCurrencies',
-            baseName: 'borrow_currencies',
-            type: 'Array<MultiCollateralRecordCurrency>',
+            "name": "borrowCurrencies",
+            "baseName": "borrow_currencies",
+            "type": "Array<MultiCollateralRecordCurrency>"
         },
         {
-            name: 'collateralCurrencies',
-            baseName: 'collateral_currencies',
-            type: 'Array<MultiCollateralRecordCurrency>',
-        },
-    ];
+            "name": "collateralCurrencies",
+            "baseName": "collateral_currencies",
+            "type": "Array<MultiCollateralRecordCurrency>"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiCollateralRecord.attributeTypeMap;
     }
 }
+

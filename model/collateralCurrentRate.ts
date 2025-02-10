@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 多币质押活期利率
- */
+* Multi-currency pledge current interest rate
+*/
 export class CollateralCurrentRate {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * 币种活期利率
-     */
+    * Currency current interest rate
+    */
     'currentRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'currentRate',
-            baseName: 'current_rate',
-            type: 'string',
-        },
-    ];
+            "name": "currentRate",
+            "baseName": "current_rate",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralCurrentRate.attributeTypeMap;
     }
 }
+

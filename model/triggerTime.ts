@@ -9,23 +9,24 @@
  * Do not edit the class manually.
  */
 
+
 export class TriggerTime {
     /**
-     * Timestamp of the end of the countdown, in milliseconds
-     */
+    * Timestamp of the end of the countdown, in milliseconds
+    */
     'triggerTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'triggerTime',
-            baseName: 'triggerTime',
-            type: 'number',
-        },
-    ];
+            "name": "triggerTime",
+            "baseName": "triggerTime",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return TriggerTime.attributeTypeMap;
     }
 }
+

@@ -9,77 +9,78 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedLeverageConfig {
     /**
-     * 当前杠杆倍数
-     */
+    * Current leverage ratio
+    */
     'currentLeverage'?: string;
     /**
-     * 最小可调杠杆倍数
-     */
+    * Minimum adjustable leverage ratio
+    */
     'minLeverage'?: string;
     /**
-     * 最大可调杠杆倍数
-     */
+    * Maximum adjustable leverage ratio
+    */
     'maxLeverage'?: string;
     /**
-     * 当前负债
-     */
+    * Current liabilities
+    */
     'debit'?: string;
     /**
-     * 可用保证金
-     */
+    * Available Margin
+    */
     'availableMargin'?: string;
     /**
-     * 当前选择杠杆可借
-     */
+    * The current leverage you can choose is
+    */
     'borrowable'?: string;
     /**
-     * 保证金最大可借、余币宝最大可借，两者取较小的值
-     */
+    * The maximum amount of margin that can be borrowed and the maximum amount of Uniloan that can be borrowed, whichever is smaller
+    */
     'exceptLeverageBorrowable'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currentLeverage',
-            baseName: 'current_leverage',
-            type: 'string',
+            "name": "currentLeverage",
+            "baseName": "current_leverage",
+            "type": "string"
         },
         {
-            name: 'minLeverage',
-            baseName: 'min_leverage',
-            type: 'string',
+            "name": "minLeverage",
+            "baseName": "min_leverage",
+            "type": "string"
         },
         {
-            name: 'maxLeverage',
-            baseName: 'max_leverage',
-            type: 'string',
+            "name": "maxLeverage",
+            "baseName": "max_leverage",
+            "type": "string"
         },
         {
-            name: 'debit',
-            baseName: 'debit',
-            type: 'string',
+            "name": "debit",
+            "baseName": "debit",
+            "type": "string"
         },
         {
-            name: 'availableMargin',
-            baseName: 'available_margin',
-            type: 'string',
+            "name": "availableMargin",
+            "baseName": "available_margin",
+            "type": "string"
         },
         {
-            name: 'borrowable',
-            baseName: 'borrowable',
-            type: 'string',
+            "name": "borrowable",
+            "baseName": "borrowable",
+            "type": "string"
         },
         {
-            name: 'exceptLeverageBorrowable',
-            baseName: 'except_leverage_borrowable',
-            type: 'string',
-        },
-    ];
+            "name": "exceptLeverageBorrowable",
+            "baseName": "except_leverage_borrowable",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedLeverageConfig.attributeTypeMap;
     }
 }
+

@@ -9,167 +9,168 @@
  * Do not edit the class manually.
  */
 
+
 export class Ticker {
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Last trading price
-     */
+    * Last trading price
+    */
     'last'?: string;
     /**
-     * Recent lowest ask
-     */
+    * Recent lowest ask
+    */
     'lowestAsk'?: string;
     /**
-     * 最新卖方最低价数量；批量查询时不存在；单个查询时存在,如果没有数据时为空
-     */
+    * The latest seller\'s lowest price quantity; does not exist for batch query; exists for single query, and is empty if there is no data
+    */
     'lowestSize'?: string;
     /**
-     * Recent highest bid
-     */
+    * Recent highest bid
+    */
     'highestBid'?: string;
     /**
-     * 最新买方最高价数量；批量查询时不存在；单个查询时存在,如果没有数据时为空
-     */
+    * The latest buyer\'s highest price quantity; does not exist for batch query; exists for single query, and is empty if there is no data
+    */
     'highestSize'?: string;
     /**
-     * Change percentage in the last 24h
-     */
+    * Change percentage in the last 24h
+    */
     'changePercentage'?: string;
     /**
-     * utc0 timezone, the percentage change in the last 24 hours
-     */
+    * utc0 timezone, the percentage change in the last 24 hours
+    */
     'changeUtc0'?: string;
     /**
-     * utc8 timezone, the percentage change in the last 24 hours
-     */
+    * utc8 timezone, the percentage change in the last 24 hours
+    */
     'changeUtc8'?: string;
     /**
-     * Base currency trade volume in the last 24h
-     */
+    * Base currency trade volume in the last 24h
+    */
     'baseVolume'?: string;
     /**
-     * Quote currency trade volume in the last 24h
-     */
+    * Quote currency trade volume in the last 24h
+    */
     'quoteVolume'?: string;
     /**
-     * Highest price in 24h
-     */
+    * Highest price in 24h
+    */
     'high24h'?: string;
     /**
-     * Lowest price in 24h
-     */
+    * Lowest price in 24h
+    */
     'low24h'?: string;
     /**
-     * ETF net value
-     */
+    * ETF net value
+    */
     'etfNetValue'?: string;
     /**
-     * ETF previous net value at re-balancing time
-     */
+    * ETF previous net value at re-balancing time
+    */
     'etfPreNetValue'?: string | null;
     /**
-     * ETF previous re-balancing time
-     */
+    * ETF previous re-balancing time
+    */
     'etfPreTimestamp'?: number | null;
     /**
-     * ETF current leverage
-     */
+    * ETF current leverage
+    */
     'etfLeverage'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'last',
-            baseName: 'last',
-            type: 'string',
+            "name": "last",
+            "baseName": "last",
+            "type": "string"
         },
         {
-            name: 'lowestAsk',
-            baseName: 'lowest_ask',
-            type: 'string',
+            "name": "lowestAsk",
+            "baseName": "lowest_ask",
+            "type": "string"
         },
         {
-            name: 'lowestSize',
-            baseName: 'lowest_size',
-            type: 'string',
+            "name": "lowestSize",
+            "baseName": "lowest_size",
+            "type": "string"
         },
         {
-            name: 'highestBid',
-            baseName: 'highest_bid',
-            type: 'string',
+            "name": "highestBid",
+            "baseName": "highest_bid",
+            "type": "string"
         },
         {
-            name: 'highestSize',
-            baseName: 'highest_size',
-            type: 'string',
+            "name": "highestSize",
+            "baseName": "highest_size",
+            "type": "string"
         },
         {
-            name: 'changePercentage',
-            baseName: 'change_percentage',
-            type: 'string',
+            "name": "changePercentage",
+            "baseName": "change_percentage",
+            "type": "string"
         },
         {
-            name: 'changeUtc0',
-            baseName: 'change_utc0',
-            type: 'string',
+            "name": "changeUtc0",
+            "baseName": "change_utc0",
+            "type": "string"
         },
         {
-            name: 'changeUtc8',
-            baseName: 'change_utc8',
-            type: 'string',
+            "name": "changeUtc8",
+            "baseName": "change_utc8",
+            "type": "string"
         },
         {
-            name: 'baseVolume',
-            baseName: 'base_volume',
-            type: 'string',
+            "name": "baseVolume",
+            "baseName": "base_volume",
+            "type": "string"
         },
         {
-            name: 'quoteVolume',
-            baseName: 'quote_volume',
-            type: 'string',
+            "name": "quoteVolume",
+            "baseName": "quote_volume",
+            "type": "string"
         },
         {
-            name: 'high24h',
-            baseName: 'high_24h',
-            type: 'string',
+            "name": "high24h",
+            "baseName": "high_24h",
+            "type": "string"
         },
         {
-            name: 'low24h',
-            baseName: 'low_24h',
-            type: 'string',
+            "name": "low24h",
+            "baseName": "low_24h",
+            "type": "string"
         },
         {
-            name: 'etfNetValue',
-            baseName: 'etf_net_value',
-            type: 'string',
+            "name": "etfNetValue",
+            "baseName": "etf_net_value",
+            "type": "string"
         },
         {
-            name: 'etfPreNetValue',
-            baseName: 'etf_pre_net_value',
-            type: 'string',
+            "name": "etfPreNetValue",
+            "baseName": "etf_pre_net_value",
+            "type": "string"
         },
         {
-            name: 'etfPreTimestamp',
-            baseName: 'etf_pre_timestamp',
-            type: 'number',
+            "name": "etfPreTimestamp",
+            "baseName": "etf_pre_timestamp",
+            "type": "number"
         },
         {
-            name: 'etfLeverage',
-            baseName: 'etf_leverage',
-            type: 'string',
-        },
-    ];
+            "name": "etfLeverage",
+            "baseName": "etf_leverage",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return Ticker.attributeTypeMap;
     }
 }
+

@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 修改合约订单参数
- */
+* Modify contract order parameters
+*/
 export class BatchAmendOrderReq {
     /**
-     * 订单id，order_id和text至少传一个
-     */
+    * Order id, order_id and text must contain at least one
+    */
     'orderId'?: number;
     /**
-     * 用户自定义订单text，order_id和text至少传一个
-     */
+    * User-defined order text, at least one of order_id and text must be passed
+    */
     'text'?: string;
     /**
-     * 新的委托大小。包括已成交委托的部分。 - 如果小于等于已成交数量，则撤销委托。 - 新的委托买卖方向必须跟原有的一致。 - 不能修改平仓单的size。 - 对于只减仓委托，如果调大size，则可能踢出其他只减仓委托。 - 如果不修改价格，则调小size不会影响深度排队，调大size会排到当前价位最后。
-     */
+    * The new order size, including the executed order size. - If it is less than or equal to the executed quantity, the order will be cancelled. - The new order direction must be consistent with the original one. - The size of the closing order cannot be modified. - For orders that only reduce positions, if the size is increased, other orders that only reduce positions may be kicked out. - If the price is not modified, reducing the size will not affect the depth of the queue, and increasing the size will place it at the end of the current price.
+    */
     'size'?: number;
     /**
-     * New order price.
-     */
+    * New order price.
+    */
     'price'?: string;
     /**
-     * Custom info during amending order
-     */
+    * Custom info during amending order
+    */
     'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            "name": "size",
+            "baseName": "size",
+            "type": "number"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'amendText',
-            baseName: 'amend_text',
-            type: 'string',
-        },
-    ];
+            "name": "amendText",
+            "baseName": "amend_text",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return BatchAmendOrderReq.attributeTypeMap;
     }
 }
+

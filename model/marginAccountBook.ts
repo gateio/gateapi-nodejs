@@ -9,86 +9,87 @@
  * Do not edit the class manually.
  */
 
+
 export class MarginAccountBook {
     /**
-     * Balance change record ID
-     */
+    * Balance change record ID
+    */
     'id'?: string;
     /**
-     * Balance changed timestamp
-     */
+    * Balance changed timestamp
+    */
     'time'?: string;
     /**
-     * The timestamp of the change (in milliseconds)
-     */
+    * The timestamp of the change (in milliseconds)
+    */
     'timeMs'?: number;
     /**
-     * Currency changed
-     */
+    * Currency changed
+    */
     'currency'?: string;
     /**
-     * Account currency pair
-     */
+    * Account currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Amount changed. Positive value means transferring in, while negative out
-     */
+    * Amount changed. Positive value means transferring in, while negative out
+    */
     'change'?: string;
     /**
-     * Balance after change
-     */
+    * Balance after change
+    */
     'balance'?: string;
     /**
-     * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
-     */
+    * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
+    */
     'type'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'time',
-            baseName: 'time',
-            type: 'string',
+            "name": "time",
+            "baseName": "time",
+            "type": "string"
         },
         {
-            name: 'timeMs',
-            baseName: 'time_ms',
-            type: 'number',
+            "name": "timeMs",
+            "baseName": "time_ms",
+            "type": "number"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'change',
-            baseName: 'change',
-            type: 'string',
+            "name": "change",
+            "baseName": "change",
+            "type": "string"
         },
         {
-            name: 'balance',
-            baseName: 'balance',
-            type: 'string',
+            "name": "balance",
+            "baseName": "balance",
+            "type": "string"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
-        },
-    ];
+            "name": "type",
+            "baseName": "type",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MarginAccountBook.attributeTypeMap;
     }
 }
+

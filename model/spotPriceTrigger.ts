@@ -9,39 +9,39 @@
  * Do not edit the class manually.
  */
 
+
 export class SpotPriceTrigger {
     /**
-     * Trigger price
-     */
+    * Trigger price
+    */
     'price': string;
     /**
-     * Price trigger condition  - >=: triggered when market price larger than or equal to `price` field - <=: triggered when market price less than or equal to `price` field
-     */
+    * Price trigger condition  - >=: triggered when market price larger than or equal to `price` field - <=: triggered when market price less than or equal to `price` field 
+    */
     'rule': SpotPriceTrigger.Rule;
     /**
-     * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
-     */
+    * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
+    */
     'expiration': number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'rule',
-            baseName: 'rule',
-            type: 'SpotPriceTrigger.Rule',
+            "name": "rule",
+            "baseName": "rule",
+            "type": "SpotPriceTrigger.Rule"
         },
         {
-            name: 'expiration',
-            baseName: 'expiration',
-            type: 'number',
-        },
-    ];
+            "name": "expiration",
+            "baseName": "expiration",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return SpotPriceTrigger.attributeTypeMap;
@@ -50,7 +50,7 @@ export class SpotPriceTrigger {
 
 export namespace SpotPriceTrigger {
     export enum Rule {
-        GreaterThanOrEqualTo = <any>'>=',
-        LessThanOrEqualTo = <any>'<=',
+        GreaterThanOrEqualTo = <any> '>=',
+        LessThanOrEqualTo = <any> '<='
     }
 }

@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class IndexConstituent {
     /**
-     * Exchange
-     */
+    * Exchange
+    */
     'exchange'?: string;
     /**
-     * Symbol list
-     */
+    * Symbol list
+    */
     'symbols'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'exchange',
-            baseName: 'exchange',
-            type: 'string',
+            "name": "exchange",
+            "baseName": "exchange",
+            "type": "string"
         },
         {
-            name: 'symbols',
-            baseName: 'symbols',
-            type: 'Array<string>',
-        },
-    ];
+            "name": "symbols",
+            "baseName": "symbols",
+            "type": "Array<string>"
+        }    ];
 
     static getAttributeTypeMap() {
         return IndexConstituent.attributeTypeMap;
     }
 }
+

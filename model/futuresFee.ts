@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * The returned result is a map type, where the key represents the market and the value represents the taker and maker fee rates.
- */
+* The returned result is a map type, where the key represents the market and the value represents the taker and maker fee rates.
+*/
 export class FuturesFee {
     /**
-     * Taker fee
-     */
+    * Taker fee
+    */
     'takerFee'?: string;
     /**
-     * maker fee
-     */
+    * maker fee
+    */
     'makerFee'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'takerFee',
-            baseName: 'taker_fee',
-            type: 'string',
+            "name": "takerFee",
+            "baseName": "taker_fee",
+            "type": "string"
         },
         {
-            name: 'makerFee',
-            baseName: 'maker_fee',
-            type: 'string',
-        },
-    ];
+            "name": "makerFee",
+            "baseName": "maker_fee",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return FuturesFee.attributeTypeMap;
     }
 }
+

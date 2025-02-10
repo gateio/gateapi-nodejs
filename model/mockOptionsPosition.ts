@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 期权仓位
- */
+* Options positions
+*/
 export class MockOptionsPosition {
     /**
-     * 期权名称，目前只支持BTC、ETH的USDT期权
-     */
+    * Option name, currently only supports options for BTC and ETH with USDT.
+    */
     'optionsName': string;
     /**
-     * 仓位大小，单位是张数
-     */
+    * Position size, measured in contract units.
+    */
     'size': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'optionsName',
-            baseName: 'options_name',
-            type: 'string',
+            "name": "optionsName",
+            "baseName": "options_name",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'string',
-        },
-    ];
+            "name": "size",
+            "baseName": "size",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockOptionsPosition.attributeTypeMap;
     }
 }
+

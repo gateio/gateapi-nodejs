@@ -9,104 +9,105 @@
  * Do not edit the class manually.
  */
 
+
 export class CrossMarginCurrency {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'name'?: string;
     /**
-     * Minimum lending rate (hourly rate)
-     */
+    * Minimum lending rate (hourly rate)
+    */
     'rate'?: string;
     /**
-     * Currency precision
-     */
+    * Currency precision
+    */
     'prec'?: string;
     /**
-     * Currency value discount, which is used in total value calculation
-     */
+    * Currency value discount, which is used in total value calculation
+    */
     'discount'?: string;
     /**
-     * Minimum currency borrow amount. Unit is currency itself
-     */
+    * Minimum currency borrow amount. Unit is currency itself
+    */
     'minBorrowAmount'?: string;
     /**
-     * Maximum borrow value allowed per user, in USDT
-     */
+    * Maximum borrow value allowed per user, in USDT
+    */
     'userMaxBorrowAmount'?: string;
     /**
-     * Maximum borrow value allowed for this currency, in USDT
-     */
+    * Maximum borrow value allowed for this currency, in USDT
+    */
     'totalMaxBorrowAmount'?: string;
     /**
-     * Price change between this currency and USDT
-     */
+    * Price change between this currency and USDT
+    */
     'price'?: string;
     /**
-     * Whether currency is borrowed
-     */
+    * Whether currency is borrowed
+    */
     'loanable'?: boolean;
     /**
-     * status  - `0` : disable  - `1` : enable
-     */
+    * status  - `0` : disable  - `1` : enable
+    */
     'status'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         },
         {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
+            "name": "rate",
+            "baseName": "rate",
+            "type": "string"
         },
         {
-            name: 'prec',
-            baseName: 'prec',
-            type: 'string',
+            "name": "prec",
+            "baseName": "prec",
+            "type": "string"
         },
         {
-            name: 'discount',
-            baseName: 'discount',
-            type: 'string',
+            "name": "discount",
+            "baseName": "discount",
+            "type": "string"
         },
         {
-            name: 'minBorrowAmount',
-            baseName: 'min_borrow_amount',
-            type: 'string',
+            "name": "minBorrowAmount",
+            "baseName": "min_borrow_amount",
+            "type": "string"
         },
         {
-            name: 'userMaxBorrowAmount',
-            baseName: 'user_max_borrow_amount',
-            type: 'string',
+            "name": "userMaxBorrowAmount",
+            "baseName": "user_max_borrow_amount",
+            "type": "string"
         },
         {
-            name: 'totalMaxBorrowAmount',
-            baseName: 'total_max_borrow_amount',
-            type: 'string',
+            "name": "totalMaxBorrowAmount",
+            "baseName": "total_max_borrow_amount",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'loanable',
-            baseName: 'loanable',
-            type: 'boolean',
+            "name": "loanable",
+            "baseName": "loanable",
+            "type": "boolean"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'number',
-        },
-    ];
+            "name": "status",
+            "baseName": "status",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return CrossMarginCurrency.attributeTypeMap;
     }
 }
+

@@ -9,71 +9,72 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Retrieve risk limit configurations for different tiers under a specified contract.
- */
+* Retrieve risk limit configurations for different tiers under a specified contract.
+*/
 export class FuturesLimitRiskTiers {
     /**
-     * Tier
-     */
+    * Tier
+    */
     'tier'?: number;
     /**
-     * Position risk limit
-     */
+    * Position risk limit
+    */
     'riskLimit'?: string;
     /**
-     * Initial margin rate
-     */
+    * Initial margin rate
+    */
     'initialRate'?: string;
     /**
-     * Maintenance margin rate
-     */
+    * Maintenance margin rate
+    */
     'maintenanceRate'?: string;
     /**
-     * Maximum leverage
-     */
+    * Maximum leverage
+    */
     'leverageMax'?: string;
     /**
-     * 市场,仅当市场分页请求时可见
-     */
+    * Markets, visible only during market pagination requests
+    */
     'contract'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'number',
+            "name": "tier",
+            "baseName": "tier",
+            "type": "number"
         },
         {
-            name: 'riskLimit',
-            baseName: 'risk_limit',
-            type: 'string',
+            "name": "riskLimit",
+            "baseName": "risk_limit",
+            "type": "string"
         },
         {
-            name: 'initialRate',
-            baseName: 'initial_rate',
-            type: 'string',
+            "name": "initialRate",
+            "baseName": "initial_rate",
+            "type": "string"
         },
         {
-            name: 'maintenanceRate',
-            baseName: 'maintenance_rate',
-            type: 'string',
+            "name": "maintenanceRate",
+            "baseName": "maintenance_rate",
+            "type": "string"
         },
         {
-            name: 'leverageMax',
-            baseName: 'leverage_max',
-            type: 'string',
+            "name": "leverageMax",
+            "baseName": "leverage_max",
+            "type": "string"
         },
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
-        },
-    ];
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return FuturesLimitRiskTiers.attributeTypeMap;
     }
 }
+

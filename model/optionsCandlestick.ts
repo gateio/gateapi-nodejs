@@ -9,71 +9,72 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * data point in every timestamp
- */
+* data point in every timestamp
+*/
 export class OptionsCandlestick {
     /**
-     * Unix timestamp in seconds
-     */
+    * Unix timestamp in seconds
+    */
     't'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed
-     */
+    * size volume (contract size). Only returned if `contract` is not prefixed
+    */
     'v'?: number;
     /**
-     * Close price (quote currency, unit: underlying corresponding option price)
-     */
+    * Close price (quote currency, unit: underlying corresponding option price)
+    */
     'c'?: string;
     /**
-     * Highest price (quote currency, unit: underlying corresponding option price)
-     */
+    * Highest price (quote currency, unit: underlying corresponding option price)
+    */
     'h'?: string;
     /**
-     * Lowest price (quote currency, unit: underlying corresponding option price)
-     */
+    * Lowest price (quote currency, unit: underlying corresponding option price)
+    */
     'l'?: string;
     /**
-     * Open price (quote currency, unit: underlying corresponding option price)
-     */
+    * Open price (quote currency, unit: underlying corresponding option price)
+    */
     'o'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 't',
-            baseName: 't',
-            type: 'number',
+            "name": "t",
+            "baseName": "t",
+            "type": "number"
         },
         {
-            name: 'v',
-            baseName: 'v',
-            type: 'number',
+            "name": "v",
+            "baseName": "v",
+            "type": "number"
         },
         {
-            name: 'c',
-            baseName: 'c',
-            type: 'string',
+            "name": "c",
+            "baseName": "c",
+            "type": "string"
         },
         {
-            name: 'h',
-            baseName: 'h',
-            type: 'string',
+            "name": "h",
+            "baseName": "h",
+            "type": "string"
         },
         {
-            name: 'l',
-            baseName: 'l',
-            type: 'string',
+            "name": "l",
+            "baseName": "l",
+            "type": "string"
         },
         {
-            name: 'o',
-            baseName: 'o',
-            type: 'string',
-        },
-    ];
+            "name": "o",
+            "baseName": "o",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return OptionsCandlestick.attributeTypeMap;
     }
 }
+

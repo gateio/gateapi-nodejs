@@ -9,131 +9,132 @@
  * Do not edit the class manually.
  */
 
+
 export class DualGetPlans {
     /**
-     * Plan ID
-     */
+    * Plan ID
+    */
     'id'?: number;
     /**
-     * Instrument Name
-     */
+    * Instrument Name
+    */
     'instrumentName'?: string;
     /**
-     * Investment Currency
-     */
+    * Investment Currency
+    */
     'investCurrency'?: string;
     /**
-     * Strike Currency
-     */
+    * Strike Currency
+    */
     'exerciseCurrency'?: string;
     /**
-     * Strike price
-     */
+    * Strike price
+    */
     'exercisePrice'?: number;
     /**
-     * Settlement time
-     */
+    * Settlement time
+    */
     'deliveryTime'?: number;
     /**
-     * Minimum Copies
-     */
+    * Minimum Copies
+    */
     'minCopies'?: number;
     /**
-     * Maximum Copies
-     */
+    * Maximum Copies
+    */
     'maxCopies'?: number;
     /**
-     * Per Unit Value
-     */
+    * Per Unit Value
+    */
     'perValue'?: string;
     /**
-     * APY
-     */
+    * APY
+    */
     'apyDisplay'?: string;
     /**
-     * start time
-     */
+    * start time
+    */
     'startTime'?: number;
     /**
-     * Finished time
-     */
+    * Finished time
+    */
     'endTime'?: number;
     /**
-     * Status:   `NOTSTARTED`-not started  `ONGOING`-ongoing  `ENDED`-ended
-     */
+    * Status:   `NOTSTARTED`-not started  `ONGOING`-ongoing  `ENDED`-ended
+    */
     'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'instrumentName',
-            baseName: 'instrument_name',
-            type: 'string',
+            "name": "instrumentName",
+            "baseName": "instrument_name",
+            "type": "string"
         },
         {
-            name: 'investCurrency',
-            baseName: 'invest_currency',
-            type: 'string',
+            "name": "investCurrency",
+            "baseName": "invest_currency",
+            "type": "string"
         },
         {
-            name: 'exerciseCurrency',
-            baseName: 'exercise_currency',
-            type: 'string',
+            "name": "exerciseCurrency",
+            "baseName": "exercise_currency",
+            "type": "string"
         },
         {
-            name: 'exercisePrice',
-            baseName: 'exercise_price',
-            type: 'number',
+            "name": "exercisePrice",
+            "baseName": "exercise_price",
+            "type": "number"
         },
         {
-            name: 'deliveryTime',
-            baseName: 'delivery_time',
-            type: 'number',
+            "name": "deliveryTime",
+            "baseName": "delivery_time",
+            "type": "number"
         },
         {
-            name: 'minCopies',
-            baseName: 'min_copies',
-            type: 'number',
+            "name": "minCopies",
+            "baseName": "min_copies",
+            "type": "number"
         },
         {
-            name: 'maxCopies',
-            baseName: 'max_copies',
-            type: 'number',
+            "name": "maxCopies",
+            "baseName": "max_copies",
+            "type": "number"
         },
         {
-            name: 'perValue',
-            baseName: 'per_value',
-            type: 'string',
+            "name": "perValue",
+            "baseName": "per_value",
+            "type": "string"
         },
         {
-            name: 'apyDisplay',
-            baseName: 'apy_display',
-            type: 'string',
+            "name": "apyDisplay",
+            "baseName": "apy_display",
+            "type": "string"
         },
         {
-            name: 'startTime',
-            baseName: 'start_time',
-            type: 'number',
+            "name": "startTime",
+            "baseName": "start_time",
+            "type": "number"
         },
         {
-            name: 'endTime',
-            baseName: 'end_time',
-            type: 'number',
+            "name": "endTime",
+            "baseName": "end_time",
+            "type": "number"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-    ];
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return DualGetPlans.attributeTypeMap;
     }
 }
+

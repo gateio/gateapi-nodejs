@@ -9,71 +9,72 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Spot order details
- */
+* Spot order details
+*/
 export class OrderPatch {
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * 指定查询账户。
-     */
+    * Specify query account.
+    */
     'account'?: string;
     /**
-     * New order amount. `amount` and `price` must specify one of them
-     */
+    * New order amount. `amount` and `price` must specify one of them
+    */
     'amount'?: string;
     /**
-     * New order price. `amount` and `Price` must specify one of them\"
-     */
+    * New order price. `amount` and `Price` must specify one of them\"
+    */
     'price'?: string;
     /**
-     * Custom info during amending order
-     */
+    * Custom info during amending order
+    */
     'amendText'?: string;
     /**
-     * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-     */
+    * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+    */
     'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'account',
-            baseName: 'account',
-            type: 'string',
+            "name": "account",
+            "baseName": "account",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'amendText',
-            baseName: 'amend_text',
-            type: 'string',
+            "name": "amendText",
+            "baseName": "amend_text",
+            "type": "string"
         },
         {
-            name: 'actionMode',
-            baseName: 'action_mode',
-            type: 'string',
-        },
-    ];
+            "name": "actionMode",
+            "baseName": "action_mode",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return OrderPatch.attributeTypeMap;
     }
 }
+

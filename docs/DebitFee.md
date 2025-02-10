@@ -1,4 +1,4 @@
-# InlineObject1
+# DebitFee
 
 ## Properties
 

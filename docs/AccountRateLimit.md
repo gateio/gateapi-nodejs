@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tier** | **string** | 限频等级（详细限频规则查看[成交比率限频](#成交比率限频)） | [optional] [default to undefined]
-**ratio** | **string** | 成交率 | [optional] [default to undefined]
-**mainRatio** | **string** | 主账户合计成交比率 | [optional] [default to undefined]
-**updatedAt** | **string** | 更新时间 | [optional] [default to undefined]
+**tier** | **string** | Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio)) | [optional] [default to undefined]
+**ratio** | **string** | Transaction rate | [optional] [default to undefined]
+**mainRatio** | **string** | Total transaction ratio of main account | [optional] [default to undefined]
+**updatedAt** | **string** | Update time | [optional] [default to undefined]
 

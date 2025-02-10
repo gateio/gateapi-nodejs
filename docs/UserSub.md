@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uid** | **number** | User ID | [optional] [default to undefined]
-**belong** | **string** | 用户所属体系(partner / referral)，为空表示不属于任何体系 | [optional] [default to undefined]
-**type** | **number** | 类型(0-不在体系 1-直接下级代理 2-间接下级代理 3-直接直客 4-间接直客 5-普通用户) | [optional] [default to undefined]
-**refUid** | **number** | 邀请人用户ID | [optional] [default to undefined]
+**belong** | **string** | The system to which the user belongs (partner referral). If empty, it means not belonging to any system. | [optional] [default to undefined]
+**type** | **number** | Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct direct customer 4-indirect direct customer 5-ordinary user) | [optional] [default to undefined]
+**refUid** | **number** | Inviter user ID | [optional] [default to undefined]
 

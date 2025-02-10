@@ -9,95 +9,96 @@
  * Do not edit the class manually.
  */
 
+
 export class CrossMarginBalance {
     /**
-     * Available amount
-     */
+    * Available amount
+    */
     'available'?: string;
     /**
-     * Locked amount
-     */
+    * Locked amount
+    */
     'freeze'?: string;
     /**
-     * Borrowed amount
-     */
+    * Borrowed amount
+    */
     'borrowed'?: string;
     /**
-     * Unpaid interests
-     */
+    * Unpaid interests
+    */
     'interest'?: string;
     /**
-     * Negative Liabilities. Formula:Min[available+total+unrealized_pnl,0]
-     */
+    * Negative Liabilities. Formula:Min[available+total+unrealized_pnl,0]
+    */
     'negativeLiab'?: string;
     /**
-     * Borrowing to Open Positions in Futures
-     */
+    * Borrowing to Open Positions in Futures
+    */
     'futuresPosLiab'?: string;
     /**
-     * Equity. Formula: available + freeze - borrowed + futures account\'s total + unrealized_pnl
-     */
+    * Equity. Formula: available + freeze - borrowed + futures account\'s total + unrealized_pnl
+    */
     'equity'?: string;
     /**
-     * Total freeze. Formula: freeze + position_initial_margin + order_margin
-     */
+    * Total freeze. Formula: freeze + position_initial_margin + order_margin
+    */
     'totalFreeze'?: string;
     /**
-     * Total liabilities. Formula: Max[Abs[Min[quity - total_freeze,0], borrowed]] - futures_pos_liab
-     */
+    * Total liabilities. Formula: Max[Abs[Min[quity - total_freeze,0], borrowed]] - futures_pos_liab
+    */
     'totalLiab'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'available',
-            baseName: 'available',
-            type: 'string',
+            "name": "available",
+            "baseName": "available",
+            "type": "string"
         },
         {
-            name: 'freeze',
-            baseName: 'freeze',
-            type: 'string',
+            "name": "freeze",
+            "baseName": "freeze",
+            "type": "string"
         },
         {
-            name: 'borrowed',
-            baseName: 'borrowed',
-            type: 'string',
+            "name": "borrowed",
+            "baseName": "borrowed",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
         },
         {
-            name: 'negativeLiab',
-            baseName: 'negative_liab',
-            type: 'string',
+            "name": "negativeLiab",
+            "baseName": "negative_liab",
+            "type": "string"
         },
         {
-            name: 'futuresPosLiab',
-            baseName: 'futures_pos_liab',
-            type: 'string',
+            "name": "futuresPosLiab",
+            "baseName": "futures_pos_liab",
+            "type": "string"
         },
         {
-            name: 'equity',
-            baseName: 'equity',
-            type: 'string',
+            "name": "equity",
+            "baseName": "equity",
+            "type": "string"
         },
         {
-            name: 'totalFreeze',
-            baseName: 'total_freeze',
-            type: 'string',
+            "name": "totalFreeze",
+            "baseName": "total_freeze",
+            "type": "string"
         },
         {
-            name: 'totalLiab',
-            baseName: 'total_liab',
-            type: 'string',
-        },
-    ];
+            "name": "totalLiab",
+            "baseName": "total_liab",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CrossMarginBalance.attributeTypeMap;
     }
 }
+

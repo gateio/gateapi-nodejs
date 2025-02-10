@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class PartnerSub {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * 用户加入体系的时间，秒级 Unix 时间戳
-     */
+    * The time when the user joined the system, in seconds Unix timestamp
+    */
     'userJoinTime'?: number;
     /**
-     * 类型(1-子代理 2-间接直客 3-直接直客)
-     */
+    * Type (1-Sub-agent 2-Indirect Customer 3-Direct Customer)
+    */
     'type'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'userJoinTime',
-            baseName: 'user_join_time',
-            type: 'number',
+            "name": "userJoinTime",
+            "baseName": "user_join_time",
+            "type": "number"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'number',
-        },
-    ];
+            "name": "type",
+            "baseName": "type",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return PartnerSub.attributeTypeMap;
     }
 }
+

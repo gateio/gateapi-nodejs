@@ -12,34 +12,34 @@
 import { CollateralCurrencyRes } from './collateralCurrencyRes';
 
 /**
- * Result of multi-collateral adjustment
- */
+* Result of multi-collateral adjustment
+*/
 export class CollateralAdjustRes {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: number;
     /**
-     * Collateral Currency Information
-     */
+    * Collateral Currency Information
+    */
     'collateralCurrencies'?: Array<CollateralCurrencyRes>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'collateralCurrencies',
-            baseName: 'collateral_currencies',
-            type: 'Array<CollateralCurrencyRes>',
-        },
-    ];
+            "name": "collateralCurrencies",
+            "baseName": "collateral_currencies",
+            "type": "Array<CollateralCurrencyRes>"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralAdjustRes.attributeTypeMap;
     }
 }
+

@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Currency Quota
- */
+* Currency Quota
+*/
 export class CurrencyQuota {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Minimum borrowing/collateral quota for the currency
-     */
+    * Minimum borrowing/collateral quota for the currency
+    */
     'minQuota'?: string;
     /**
-     * Remaining borrowing/collateral limit for the currency
-     */
+    * Remaining borrowing/collateral limit for the currency
+    */
     'leftQuota'?: string;
     /**
-     * Remaining currency limit converted to USDT
-     */
+    * Remaining currency limit converted to USDT
+    */
     'leftQuoteUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'minQuota',
-            baseName: 'min_quota',
-            type: 'string',
+            "name": "minQuota",
+            "baseName": "min_quota",
+            "type": "string"
         },
         {
-            name: 'leftQuota',
-            baseName: 'left_quota',
-            type: 'string',
+            "name": "leftQuota",
+            "baseName": "left_quota",
+            "type": "string"
         },
         {
-            name: 'leftQuoteUsdt',
-            baseName: 'left_quote_usdt',
-            type: 'string',
-        },
-    ];
+            "name": "leftQuoteUsdt",
+            "baseName": "left_quote_usdt",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CurrencyQuota.attributeTypeMap;
     }
 }
+

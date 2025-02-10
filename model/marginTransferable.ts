@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class MarginTransferable {
     /**
-     * Currency detail
-     */
+    * Currency detail
+    */
     'currency'?: string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Max transferable amount
-     */
+    * Max transferable amount
+    */
     'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MarginTransferable.attributeTypeMap;
     }
 }
+

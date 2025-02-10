@@ -12,290 +12,289 @@
 import { PositionCloseOrder } from './positionCloseOrder';
 
 /**
- * Futures position details
- */
+* Futures position details
+*/
 export class Position {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'user'?: number;
     /**
-     * Futures contract
-     */
+    * Futures contract
+    */
     'contract'?: string;
     /**
-     * Position size
-     */
+    * Position size
+    */
     'size'?: number;
     /**
-     * Position leverage. 0 means cross margin; positive number means isolated margin
-     */
+    * Position leverage. 0 means cross margin; positive number means isolated margin
+    */
     'leverage'?: string;
     /**
-     * Position risk limit
-     */
+    * Position risk limit
+    */
     'riskLimit'?: string;
     /**
-     * Maximum leverage under current risk limit
-     */
+    * Maximum leverage under current risk limit
+    */
     'leverageMax'?: string;
     /**
-     * Maintenance rate under current risk limit
-     */
+    * Maintenance rate under current risk limit
+    */
     'maintenanceRate'?: string;
     /**
-     * Position value calculated in settlement currency
-     */
+    * Position value calculated in settlement currency
+    */
     'value'?: string;
     /**
-     * Position margin
-     */
+    * Position margin
+    */
     'margin'?: string;
     /**
-     * Entry price
-     */
+    * Entry price
+    */
     'entryPrice'?: string;
     /**
-     * Liquidation price
-     */
+    * Liquidation price
+    */
     'liqPrice'?: string;
     /**
-     * Current mark price
-     */
+    * Current mark price
+    */
     'markPrice'?: string;
     /**
-     * The initial margin occupied by the position, applicable to the portfolio margin account
-     */
+    * The initial margin occupied by the position, applicable to the portfolio margin account
+    */
     'initialMargin'?: string;
     /**
-     * Maintenance margin required for the position, applicable to portfolio margin account
-     */
+    * Maintenance margin required for the position, applicable to portfolio margin account
+    */
     'maintenanceMargin'?: string;
     /**
-     * Unrealized PNL
-     */
+    * Unrealized PNL
+    */
     'unrealisedPnl'?: string;
     /**
-     * Realized PNL
-     */
+    * Realized PNL
+    */
     'realisedPnl'?: string;
     /**
-     * Realized PNL - Position P/L
-     */
+    * Realized PNL - Position P/L
+    */
     'pnlPnl'?: string;
     /**
-     * Realized PNL -  Funding Fees
-     */
+    * Realized PNL -  Funding Fees
+    */
     'pnlFund'?: string;
     /**
-     * Realized PNL - Transaction Fees
-     */
+    * Realized PNL - Transaction Fees
+    */
     'pnlFee'?: string;
     /**
-     * History realized PNL
-     */
+    * History realized PNL
+    */
     'historyPnl'?: string;
     /**
-     * PNL of last position close
-     */
+    * PNL of last position close
+    */
     'lastClosePnl'?: string;
     /**
-     * Realized POINT PNL
-     */
+    * Realized POINT PNL
+    */
     'realisedPoint'?: string;
     /**
-     * History realized POINT PNL
-     */
+    * History realized POINT PNL
+    */
     'historyPoint'?: string;
     /**
-     * Ranking of auto deleveraging, a total of 1-5 grades, `1` is the highest, `5` is the lowest, and `6` is the special case when there is no position held or in liquidation
-     */
+    * Ranking of auto deleveraging, a total of 1-5 grades, `1` is the highest, `5` is the lowest, and `6` is the special case when there is no position held or in liquidation
+    */
     'adlRanking'?: number;
     /**
-     * Current open orders
-     */
+    * Current open orders
+    */
     'pendingOrders'?: number;
     'closeOrder'?: PositionCloseOrder | null;
     /**
-     * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: short position in dual mode
-     */
+    * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: short position in dual mode
+    */
     'mode'?: Position.Mode;
     /**
-     * Cross margin leverage(valid only when `leverage` is 0)
-     */
+    * Cross margin leverage(valid only when `leverage` is 0)
+    */
     'crossLeverageLimit'?: string;
     /**
-     * Last update time
-     */
+    * Last update time
+    */
     'updateTime'?: number;
     /**
-     * 更新id，仓位每更新一次，数值会+1
-     */
+    * Update id. Each time the position is updated, the value will be +1.
+    */
     'updateId'?: number;
     /**
-     * First Open Time
-     */
+    * First Open Time
+    */
     'openTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'user',
-            baseName: 'user',
-            type: 'number',
+            "name": "user",
+            "baseName": "user",
+            "type": "number"
         },
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            "name": "size",
+            "baseName": "size",
+            "type": "number"
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
+            "name": "leverage",
+            "baseName": "leverage",
+            "type": "string"
         },
         {
-            name: 'riskLimit',
-            baseName: 'risk_limit',
-            type: 'string',
+            "name": "riskLimit",
+            "baseName": "risk_limit",
+            "type": "string"
         },
         {
-            name: 'leverageMax',
-            baseName: 'leverage_max',
-            type: 'string',
+            "name": "leverageMax",
+            "baseName": "leverage_max",
+            "type": "string"
         },
         {
-            name: 'maintenanceRate',
-            baseName: 'maintenance_rate',
-            type: 'string',
+            "name": "maintenanceRate",
+            "baseName": "maintenance_rate",
+            "type": "string"
         },
         {
-            name: 'value',
-            baseName: 'value',
-            type: 'string',
+            "name": "value",
+            "baseName": "value",
+            "type": "string"
         },
         {
-            name: 'margin',
-            baseName: 'margin',
-            type: 'string',
+            "name": "margin",
+            "baseName": "margin",
+            "type": "string"
         },
         {
-            name: 'entryPrice',
-            baseName: 'entry_price',
-            type: 'string',
+            "name": "entryPrice",
+            "baseName": "entry_price",
+            "type": "string"
         },
         {
-            name: 'liqPrice',
-            baseName: 'liq_price',
-            type: 'string',
+            "name": "liqPrice",
+            "baseName": "liq_price",
+            "type": "string"
         },
         {
-            name: 'markPrice',
-            baseName: 'mark_price',
-            type: 'string',
+            "name": "markPrice",
+            "baseName": "mark_price",
+            "type": "string"
         },
         {
-            name: 'initialMargin',
-            baseName: 'initial_margin',
-            type: 'string',
+            "name": "initialMargin",
+            "baseName": "initial_margin",
+            "type": "string"
         },
         {
-            name: 'maintenanceMargin',
-            baseName: 'maintenance_margin',
-            type: 'string',
+            "name": "maintenanceMargin",
+            "baseName": "maintenance_margin",
+            "type": "string"
         },
         {
-            name: 'unrealisedPnl',
-            baseName: 'unrealised_pnl',
-            type: 'string',
+            "name": "unrealisedPnl",
+            "baseName": "unrealised_pnl",
+            "type": "string"
         },
         {
-            name: 'realisedPnl',
-            baseName: 'realised_pnl',
-            type: 'string',
+            "name": "realisedPnl",
+            "baseName": "realised_pnl",
+            "type": "string"
         },
         {
-            name: 'pnlPnl',
-            baseName: 'pnl_pnl',
-            type: 'string',
+            "name": "pnlPnl",
+            "baseName": "pnl_pnl",
+            "type": "string"
         },
         {
-            name: 'pnlFund',
-            baseName: 'pnl_fund',
-            type: 'string',
+            "name": "pnlFund",
+            "baseName": "pnl_fund",
+            "type": "string"
         },
         {
-            name: 'pnlFee',
-            baseName: 'pnl_fee',
-            type: 'string',
+            "name": "pnlFee",
+            "baseName": "pnl_fee",
+            "type": "string"
         },
         {
-            name: 'historyPnl',
-            baseName: 'history_pnl',
-            type: 'string',
+            "name": "historyPnl",
+            "baseName": "history_pnl",
+            "type": "string"
         },
         {
-            name: 'lastClosePnl',
-            baseName: 'last_close_pnl',
-            type: 'string',
+            "name": "lastClosePnl",
+            "baseName": "last_close_pnl",
+            "type": "string"
         },
         {
-            name: 'realisedPoint',
-            baseName: 'realised_point',
-            type: 'string',
+            "name": "realisedPoint",
+            "baseName": "realised_point",
+            "type": "string"
         },
         {
-            name: 'historyPoint',
-            baseName: 'history_point',
-            type: 'string',
+            "name": "historyPoint",
+            "baseName": "history_point",
+            "type": "string"
         },
         {
-            name: 'adlRanking',
-            baseName: 'adl_ranking',
-            type: 'number',
+            "name": "adlRanking",
+            "baseName": "adl_ranking",
+            "type": "number"
         },
         {
-            name: 'pendingOrders',
-            baseName: 'pending_orders',
-            type: 'number',
+            "name": "pendingOrders",
+            "baseName": "pending_orders",
+            "type": "number"
         },
         {
-            name: 'closeOrder',
-            baseName: 'close_order',
-            type: 'PositionCloseOrder',
+            "name": "closeOrder",
+            "baseName": "close_order",
+            "type": "PositionCloseOrder"
         },
         {
-            name: 'mode',
-            baseName: 'mode',
-            type: 'Position.Mode',
+            "name": "mode",
+            "baseName": "mode",
+            "type": "Position.Mode"
         },
         {
-            name: 'crossLeverageLimit',
-            baseName: 'cross_leverage_limit',
-            type: 'string',
+            "name": "crossLeverageLimit",
+            "baseName": "cross_leverage_limit",
+            "type": "string"
         },
         {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'number',
+            "name": "updateTime",
+            "baseName": "update_time",
+            "type": "number"
         },
         {
-            name: 'updateId',
-            baseName: 'update_id',
-            type: 'number',
+            "name": "updateId",
+            "baseName": "update_id",
+            "type": "number"
         },
         {
-            name: 'openTime',
-            baseName: 'open_time',
-            type: 'number',
-        },
-    ];
+            "name": "openTime",
+            "baseName": "open_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return Position.attributeTypeMap;
@@ -304,8 +303,8 @@ export class Position {
 
 export namespace Position {
     export enum Mode {
-        Single = <any>'single',
-        DualLong = <any>'dual_long',
-        DualShort = <any>'dual_short',
+        Single = <any> 'single',
+        DualLong = <any> 'dual_long',
+        DualShort = <any> 'dual_short'
     }
 }

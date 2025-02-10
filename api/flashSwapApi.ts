@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+
 /* tslint:disable:no-unused-locals */
 import { FlashSwapCurrencyPair } from '../model/flashSwapCurrencyPair';
 import { FlashSwapOrder } from '../model/flashSwapOrder';
@@ -40,16 +41,12 @@ export class FlashSwapApi {
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
-     * @param opts.limit 列表返回的最大数量。默认为1000，最小1，最大1000。
+     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 1000
      */
-    public async listFlashSwapCurrencyPair(opts: {
-        currency?: string;
-        page?: number;
-        limit?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair> }> {
+    public async listFlashSwapCurrencyPair(opts: { currency?: string, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair>; }> {
         const localVarPath = this.client.basePath + '/flash_swap/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -60,16 +57,17 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -79,11 +77,11 @@ export class FlashSwapApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FlashSwapCurrencyPair>>(config, 'Array<FlashSwapCurrencyPair>', authSettings);
+        return this.client.request<Array<FlashSwapCurrencyPair>>(config, "Array<FlashSwapCurrencyPair>", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary List all flash swap orders
      * @param opts Optional parameters
      * @param opts.status Flash swap order status  &#x60;1&#x60; - success &#x60;2&#x60; - failure
@@ -93,17 +91,10 @@ export class FlashSwapApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.page Page number
      */
-    public async listFlashSwapOrders(opts: {
-        status?: number;
-        sellCurrency?: string;
-        buyCurrency?: string;
-        reverse?: boolean;
-        limit?: number;
-        page?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<FlashSwapOrder> }> {
+    public async listFlashSwapOrders(opts: { status?: number, sellCurrency?: string, buyCurrency?: string, reverse?: boolean, limit?: number, page?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FlashSwapOrder>; }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -114,28 +105,29 @@ export class FlashSwapApi {
 
         opts = opts || {};
         if (opts.status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, 'number');
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(opts.status, "number");
         }
 
         if (opts.sellCurrency !== undefined) {
-            localVarQueryParameters['sell_currency'] = ObjectSerializer.serialize(opts.sellCurrency, 'string');
+            localVarQueryParameters['sell_currency'] = ObjectSerializer.serialize(opts.sellCurrency, "string");
         }
 
         if (opts.buyCurrency !== undefined) {
-            localVarQueryParameters['buy_currency'] = ObjectSerializer.serialize(opts.buyCurrency, 'string');
+            localVarQueryParameters['buy_currency'] = ObjectSerializer.serialize(opts.buyCurrency, "string");
         }
 
         if (opts.reverse !== undefined) {
-            localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, 'boolean');
+            localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, "boolean");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -145,20 +137,18 @@ export class FlashSwapApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FlashSwapOrder>>(config, 'Array<FlashSwapOrder>', authSettings);
+        return this.client.request<Array<FlashSwapOrder>>(config, "Array<FlashSwapOrder>", authSettings);
     }
 
     /**
      * Initiate a flash swap preview in advance because order creation requires a preview result
      * @summary Create a flash swap order
-     * @param flashSwapOrderRequest
+     * @param flashSwapOrderRequest 
      */
-    public async createFlashSwapOrder(
-        flashSwapOrderRequest: FlashSwapOrderRequest,
-    ): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
+    public async createFlashSwapOrder(flashSwapOrderRequest: FlashSwapOrderRequest) : Promise<{ response: AxiosResponse; body: FlashSwapOrder; }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -169,34 +159,32 @@ export class FlashSwapApi {
 
         // verify required parameter 'flashSwapOrderRequest' is not null or undefined
         if (flashSwapOrderRequest === null || flashSwapOrderRequest === undefined) {
-            throw new Error(
-                'Required parameter flashSwapOrderRequest was null or undefined when calling createFlashSwapOrder.',
-            );
+            throw new Error('Required parameter flashSwapOrderRequest was null or undefined when calling createFlashSwapOrder.');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(flashSwapOrderRequest, 'FlashSwapOrderRequest'),
+            data: ObjectSerializer.serialize(flashSwapOrderRequest, "FlashSwapOrderRequest")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FlashSwapOrder>(config, 'FlashSwapOrder', authSettings);
+        return this.client.request<FlashSwapOrder>(config, "FlashSwapOrder", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Get a single flash swap order\'s detail
      * @param orderId Flash swap order ID
      */
-    public async getFlashSwapOrder(orderId: number): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
-        const localVarPath =
-            this.client.basePath +
-            '/flash_swap/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getFlashSwapOrder(orderId: number) : Promise<{ response: AxiosResponse; body: FlashSwapOrder; }> {
+        const localVarPath = this.client.basePath + '/flash_swap/orders/{order_id}'
+            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -210,6 +198,7 @@ export class FlashSwapApi {
             throw new Error('Required parameter orderId was null or undefined when calling getFlashSwapOrder.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -218,20 +207,18 @@ export class FlashSwapApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FlashSwapOrder>(config, 'FlashSwapOrder', authSettings);
+        return this.client.request<FlashSwapOrder>(config, "FlashSwapOrder", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Initiate a flash swap order preview
-     * @param flashSwapPreviewRequest
+     * @param flashSwapPreviewRequest 
      */
-    public async previewFlashSwapOrder(
-        flashSwapPreviewRequest: FlashSwapPreviewRequest,
-    ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview }> {
+    public async previewFlashSwapOrder(flashSwapPreviewRequest: FlashSwapPreviewRequest) : Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview; }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders/preview';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -242,20 +229,19 @@ export class FlashSwapApi {
 
         // verify required parameter 'flashSwapPreviewRequest' is not null or undefined
         if (flashSwapPreviewRequest === null || flashSwapPreviewRequest === undefined) {
-            throw new Error(
-                'Required parameter flashSwapPreviewRequest was null or undefined when calling previewFlashSwapOrder.',
-            );
+            throw new Error('Required parameter flashSwapPreviewRequest was null or undefined when calling previewFlashSwapOrder.');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(flashSwapPreviewRequest, 'FlashSwapPreviewRequest'),
+            data: ObjectSerializer.serialize(flashSwapPreviewRequest, "FlashSwapPreviewRequest")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FlashSwapOrderPreview>(config, 'FlashSwapOrderPreview', authSettings);
+        return this.client.request<FlashSwapOrderPreview>(config, "FlashSwapOrderPreview", authSettings);
     }
 }

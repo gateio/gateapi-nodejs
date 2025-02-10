@@ -9,69 +9,69 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 转入转出账户列表:  - `spot`: 现货账户 - `margin`: 杠杆账户 - `futures`: 永续合约账户 - `delivery`: 交割合约账户 - `options`: 期权账户
- */
+* Accounts available to transfer:  - `spot`: spot account - `margin`: margin account - `futures`: perpetual futures account - `delivery`: delivery futures account - `options`: options account
+*/
 export class Transfer {
     /**
-     * Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
-     */
+    * Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
+    */
     'currency': string;
     /**
-     * Account to transfer from
-     */
+    * Account to transfer from
+    */
     'from': Transfer.From;
     /**
-     * Account to transfer to
-     */
+    * Account to transfer to
+    */
     'to': Transfer.To;
     /**
-     * Transfer amount
-     */
+    * Transfer amount
+    */
     'amount': string;
     /**
-     * Margin currency pair. Required if transfer from or to margin account
-     */
+    * Margin currency pair. Required if transfer from or to margin account
+    */
     'currencyPair'?: string;
     /**
-     * Futures settle currency. Required if transferring from or to futures account
-     */
+    * Futures settle currency. Required if transferring from or to futures account
+    */
     'settle'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'from',
-            baseName: 'from',
-            type: 'Transfer.From',
+            "name": "from",
+            "baseName": "from",
+            "type": "Transfer.From"
         },
         {
-            name: 'to',
-            baseName: 'to',
-            type: 'Transfer.To',
+            "name": "to",
+            "baseName": "to",
+            "type": "Transfer.To"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'settle',
-            baseName: 'settle',
-            type: 'string',
-        },
-    ];
+            "name": "settle",
+            "baseName": "settle",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return Transfer.attributeTypeMap;
@@ -80,17 +80,17 @@ export class Transfer {
 
 export namespace Transfer {
     export enum From {
-        Spot = <any>'spot',
-        Margin = <any>'margin',
-        Futures = <any>'futures',
-        Delivery = <any>'delivery',
-        Options = <any>'options',
+        Spot = <any> 'spot',
+        Margin = <any> 'margin',
+        Futures = <any> 'futures',
+        Delivery = <any> 'delivery',
+        Options = <any> 'options'
     }
     export enum To {
-        Spot = <any>'spot',
-        Margin = <any>'margin',
-        Futures = <any>'futures',
-        Delivery = <any>'delivery',
-        Options = <any>'options',
+        Spot = <any> 'spot',
+        Margin = <any> 'margin',
+        Futures = <any> 'futures',
+        Delivery = <any> 'delivery',
+        Options = <any> 'options'
     }
 }

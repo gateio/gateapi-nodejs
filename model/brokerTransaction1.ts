@@ -9,86 +9,87 @@
  * Do not edit the class manually.
  */
 
+
 export class BrokerTransaction1 {
     /**
-     * Transaction Time. (unix timestamp)
-     */
+    * Transaction Time. (unix timestamp)
+    */
     'transactionTime'?: number;
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * Group name
-     */
+    * Group name
+    */
     'groupName'?: string;
     /**
-     * fee (usdt)
-     */
+    * fee (usdt)
+    */
     'fee'?: string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Commission Amount
-     */
+    * Commission Amount
+    */
     'amount'?: string;
     /**
-     * Fee currency
-     */
+    * Fee currency
+    */
     'feeAsset'?: string;
     /**
-     * Rebate Type: Spot、Futures、Options
-     */
+    * Rebate Type: Spot、Futures、Options
+    */
     'source'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'transactionTime',
-            baseName: 'transaction_time',
-            type: 'number',
+            "name": "transactionTime",
+            "baseName": "transaction_time",
+            "type": "number"
         },
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'groupName',
-            baseName: 'group_name',
-            type: 'string',
+            "name": "groupName",
+            "baseName": "group_name",
+            "type": "string"
         },
         {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
+            "name": "fee",
+            "baseName": "fee",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'feeAsset',
-            baseName: 'fee_asset',
-            type: 'string',
+            "name": "feeAsset",
+            "baseName": "fee_asset",
+            "type": "string"
         },
         {
-            name: 'source',
-            baseName: 'source',
-            type: 'string',
-        },
-    ];
+            "name": "source",
+            "baseName": "source",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return BrokerTransaction1.attributeTypeMap;
     }
 }
+

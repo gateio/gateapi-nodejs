@@ -9,44 +9,45 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 期权订单
- */
+* Option orders
+*/
 export class MockOptionsOrder {
     /**
-     * 期权名称，目前只支持BTC、ETH的USDT期权
-     */
+    * Option name, currently only supports options for BTC and ETH with USDT.
+    */
     'optionsName': string;
     /**
-     * 初始挂单张数，不参与实际计算
-     */
+    * Initial order quantity, not involved in actual calculation
+    */
     'size': string;
     /**
-     * 未成交张数，参与实际计算
-     */
+    * Unfilled contract quantity, involved in actual calculation
+    */
     'left': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'optionsName',
-            baseName: 'options_name',
-            type: 'string',
+            "name": "optionsName",
+            "baseName": "options_name",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'string',
+            "name": "size",
+            "baseName": "size",
+            "type": "string"
         },
         {
-            name: 'left',
-            baseName: 'left',
-            type: 'string',
-        },
-    ];
+            "name": "left",
+            "baseName": "left",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockOptionsOrder.attributeTypeMap;
     }
 }
+

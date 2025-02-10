@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class UserSub {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'uid'?: number;
     /**
-     * 用户所属体系(partner / referral)，为空表示不属于任何体系
-     */
+    * The system to which the user belongs (partner referral). If empty, it means not belonging to any system.
+    */
     'belong'?: string;
     /**
-     * 类型(0-不在体系 1-直接下级代理 2-间接下级代理 3-直接直客 4-间接直客 5-普通用户)
-     */
+    * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct direct customer 4-indirect direct customer 5-ordinary user)
+    */
     'type'?: number;
     /**
-     * 邀请人用户ID
-     */
+    * Inviter user ID
+    */
     'refUid'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'number',
+            "name": "uid",
+            "baseName": "uid",
+            "type": "number"
         },
         {
-            name: 'belong',
-            baseName: 'belong',
-            type: 'string',
+            "name": "belong",
+            "baseName": "belong",
+            "type": "string"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'number',
+            "name": "type",
+            "baseName": "type",
+            "type": "number"
         },
         {
-            name: 'refUid',
-            baseName: 'ref_uid',
-            type: 'number',
-        },
-    ];
+            "name": "refUid",
+            "baseName": "ref_uid",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return UserSub.attributeTypeMap;
     }
 }
+

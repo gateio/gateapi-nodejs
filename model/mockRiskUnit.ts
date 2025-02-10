@@ -12,97 +12,97 @@
 import { MockMarginResult } from './mockMarginResult';
 
 /**
- * 风险单元
- */
+* Risk unit
+*/
 export class MockRiskUnit {
     /**
-     * 风险单元名称
-     */
+    * Risk unit name
+    */
     'symbol'?: string;
     /**
-     * 现货对冲使用量
-     */
+    * Spot usage
+    */
     'spotInUse'?: string;
     /**
-     * 维持保证金
-     */
+    * Maintenance margin
+    */
     'maintainMargin'?: string;
     /**
-     * 起始保证金
-     */
+    * Initial margin
+    */
     'initialMargin'?: string;
     /**
-     * 保证金结果
-     */
+    * Margin result
+    */
     'marginResult'?: Array<MockMarginResult>;
     /**
-     * 风险单元的 总 delta
-     */
+    * Total Delta of risk unit
+    */
     'delta'?: string;
     /**
-     * 风险单元的 总 gamma
-     */
+    * Total Gamma of risk unit
+    */
     'gamma'?: string;
     /**
-     * 风险单元的 总 theta
-     */
+    * Total Theta of risk unit
+    */
     'theta'?: string;
     /**
-     * 风险单元的 总 vega
-     */
+    * Total Vega of risk unit
+    */
     'vega'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'symbol',
-            baseName: 'symbol',
-            type: 'string',
+            "name": "symbol",
+            "baseName": "symbol",
+            "type": "string"
         },
         {
-            name: 'spotInUse',
-            baseName: 'spot_in_use',
-            type: 'string',
+            "name": "spotInUse",
+            "baseName": "spot_in_use",
+            "type": "string"
         },
         {
-            name: 'maintainMargin',
-            baseName: 'maintain_margin',
-            type: 'string',
+            "name": "maintainMargin",
+            "baseName": "maintain_margin",
+            "type": "string"
         },
         {
-            name: 'initialMargin',
-            baseName: 'initial_margin',
-            type: 'string',
+            "name": "initialMargin",
+            "baseName": "initial_margin",
+            "type": "string"
         },
         {
-            name: 'marginResult',
-            baseName: 'margin_result',
-            type: 'Array<MockMarginResult>',
+            "name": "marginResult",
+            "baseName": "margin_result",
+            "type": "Array<MockMarginResult>"
         },
         {
-            name: 'delta',
-            baseName: 'delta',
-            type: 'string',
+            "name": "delta",
+            "baseName": "delta",
+            "type": "string"
         },
         {
-            name: 'gamma',
-            baseName: 'gamma',
-            type: 'string',
+            "name": "gamma",
+            "baseName": "gamma",
+            "type": "string"
         },
         {
-            name: 'theta',
-            baseName: 'theta',
-            type: 'string',
+            "name": "theta",
+            "baseName": "theta",
+            "type": "string"
         },
         {
-            name: 'vega',
-            baseName: 'vega',
-            type: 'string',
-        },
-    ];
+            "name": "vega",
+            "baseName": "vega",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockRiskUnit.attributeTypeMap;
     }
 }
+

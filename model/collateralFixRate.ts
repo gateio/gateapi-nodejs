@@ -9,53 +9,54 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Multi-collateral fixed interest rate
- */
+* Multi-collateral fixed interest rate
+*/
 export class CollateralFixRate {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Fixed interest rate for a lending period of 7 days
-     */
+    * Fixed interest rate for a lending period of 7 days
+    */
     'rate7d'?: string;
     /**
-     * Fixed interest rate for a lending period of 30 days
-     */
+    * Fixed interest rate for a lending period of 30 days
+    */
     'rate30d'?: string;
     /**
-     * Update time, timestamp, unit in seconds
-     */
+    * Update time, timestamp, unit in seconds
+    */
     'updateTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'rate7d',
-            baseName: 'rate_7d',
-            type: 'string',
+            "name": "rate7d",
+            "baseName": "rate_7d",
+            "type": "string"
         },
         {
-            name: 'rate30d',
-            baseName: 'rate_30d',
-            type: 'string',
+            "name": "rate30d",
+            "baseName": "rate_30d",
+            "type": "string"
         },
         {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'number',
-        },
-    ];
+            "name": "updateTime",
+            "baseName": "update_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralFixRate.attributeTypeMap;
     }
 }
+

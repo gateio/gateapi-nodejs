@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class UniLendInterest {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Interest
-     */
+    * Interest
+    */
     'interest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
-        },
-    ];
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniLendInterest.attributeTypeMap;
     }
 }
+

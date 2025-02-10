@@ -1158,7 +1158,7 @@ Promise<{ response: AxiosResponse; body: Array<DeliverySettlement>; }> [Delivery
 
 List risk limit tiers
 
-contract 参数不传,默认查询前 100 个市场的风险限额,limit 和 offset 对应市场维度的分页查询,不对应返回数组的长度,仅当 contract 参数为空时生效
+When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.\&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the \&#39;contract\&#39; parameter is empty.
 
 ### Example
 

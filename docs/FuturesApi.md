@@ -45,7 +45,7 @@ Method | HTTP request | Description
 [**countdownCancelAllFutures**](FuturesApi.md#countdownCancelAllFutures) | **POST** /futures/{settle}/countdown_cancel_all | Countdown cancel orders
 [**getFuturesFee**](FuturesApi.md#getFuturesFee) | **GET** /futures/{settle}/fee | Query user trading fee rates
 [**cancelBatchFutureOrders**](FuturesApi.md#cancelBatchFutureOrders) | **POST** /futures/{settle}/batch_cancel_orders | Cancel a batch of orders with an ID list
-[**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | 批量修改指定 ID 的订单
+[**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders with specified IDs
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | List all auto orders
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create a price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all open orders
@@ -655,7 +655,7 @@ No authorization required
 
 List risk limit tiers
 
-contract 参数不传,默认查询前 100 个市场的风险限额,limit 和 offset 对应市场维度的分页查询,不对应返回数组的长度,仅当 contract 参数为空时生效
+When the \&#39;contract\&#39; parameter is not passed, the default is to query the risk limits for the top 100 markets.\&#39;Limit\&#39; and \&#39;offset\&#39; correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the \&#39;contract\&#39; parameter is empty.
 
 ### Example
 
@@ -1015,7 +1015,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const riskLimit = "1000000"; // string | 新的风险限额价值
+const riskLimit = "1000000"; // string | New Risk Limit Value
 api.updatePositionRiskLimit(settle, contract, riskLimit)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **riskLimit** | **string**| 新的风险限额价值 | [default to undefined]
+ **riskLimit** | **string**| New Risk Limit Value | [default to undefined]
 
 ### Return type
 
@@ -1254,7 +1254,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const riskLimit = "1000000"; // string | 新的风险限额价值
+const riskLimit = "1000000"; // string | New Risk Limit Value
 api.updateDualModePositionRiskLimit(settle, contract, riskLimit)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -1267,7 +1267,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **riskLimit** | **string**| 新的风险限额价值 | [default to undefined]
+ **riskLimit** | **string**| New Risk Limit Value | [default to undefined]
 
 ### Return type
 
@@ -1361,7 +1361,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const futuresOrder = new FuturesOrder(); // FuturesOrder | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createFuturesOrder(settle, futuresOrder, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1375,7 +1375,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **futuresOrder** | [**FuturesOrder**](FuturesOrder.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1412,7 +1412,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
-  'xGateExptime': 1689560679123, // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123, // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
   'side': "ask" // string | All bids or asks. Both included if not specified
 };
 api.cancelFuturesOrders(settle, contract, opts)
@@ -1427,7 +1427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
  **side** | **string**| All bids or asks. Both included if not specified | [optional] [default to undefined]
 
 ### Return type
@@ -1520,7 +1520,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const futuresOrder = [new FuturesOrder()]; // Array<FuturesOrder> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createBatchFuturesOrder(settle, futuresOrder, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1534,7 +1534,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **futuresOrder** | [**Array&lt;FuturesOrder&gt;**](FuturesOrder.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1617,7 +1617,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
 const futuresOrderAmendment = new FuturesOrderAmendment(); // FuturesOrderAmendment | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendFuturesOrder(settle, orderId, futuresOrderAmendment, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1632,7 +1632,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted. | [default to undefined]
  **futuresOrderAmendment** | [**FuturesOrderAmendment**](FuturesOrderAmendment.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1667,7 +1667,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const orderId = "12345"; // string | Order ID returned, or user custom ID(i.e., `text` field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted.
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelFuturesOrder(settle, orderId, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1681,7 +1681,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **orderId** | **string**| Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook.  When the order is finished, it can be checked within 60 seconds after the end of the order.  After that, only order ID is accepted. | [default to undefined]
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -2087,7 +2087,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const requestBody = undefined; // Array<string> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelBatchFutureOrders(settle, requestBody, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -2101,7 +2101,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **requestBody** | [**Array&lt;string&gt;**](string.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -2120,9 +2120,9 @@ Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult>; }> [Fut
 
 > Promise<{ response: http.IncomingMessage; body: Array<BatchFuturesOrder>; }> amendBatchFutureOrders(settle, batchAmendOrderReq, opts)
 
-批量修改指定 ID 的订单
+Batch modify orders with specified IDs
 
-可以指定多个不同的订单id。一次请求最多只能修改 10 个订单
+You can specify multiple different order IDs. You can only modify up to 10 orders in one request.
 
 ### Example
 
@@ -2138,7 +2138,7 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const batchAmendOrderReq = [new BatchAmendOrderReq()]; // Array<BatchAmendOrderReq> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝
+  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendBatchFutureOrders(settle, batchAmendOrderReq, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -2152,7 +2152,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **batchAmendOrderReq** | [**Array&lt;BatchAmendOrderReq&gt;**](BatchAmendOrderReq.md)|  | 
- **xGateExptime** | **number**| 指定过期时间(毫秒); 如果 Gate 收到请求的时间大于过期时间, 请求将被拒绝 | [optional] [default to undefined]
+ **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 

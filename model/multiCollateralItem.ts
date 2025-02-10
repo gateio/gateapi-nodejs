@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class MultiCollateralItem {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Discount
-     */
+    * Discount
+    */
     'discount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'discount',
-            baseName: 'discount',
-            type: 'string',
-        },
-    ];
+            "name": "discount",
+            "baseName": "discount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiCollateralItem.attributeTypeMap;
     }
 }
+

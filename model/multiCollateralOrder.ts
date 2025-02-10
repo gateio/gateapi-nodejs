@@ -13,142 +13,142 @@ import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
 import { CollateralCurrencyInfo } from './collateralCurrencyInfo';
 
 /**
- * Multi-Collateral Order
- */
+* Multi-Collateral Order
+*/
 export class MultiCollateralOrder {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed
-     */
+    * current - current, fixed - fixed
+    */
     'orderType'?: string;
     /**
-     * Fixed interest rate loan periods: 7d - 7 days, 30d - 30 days.
-     */
+    * Fixed interest rate loan periods: 7d - 7 days, 30d - 30 days.
+    */
     'fixedType'?: string;
     /**
-     * Fixed interest rate
-     */
+    * Fixed interest rate
+    */
     'fixedRate'?: string;
     /**
-     * Expiration time, timestamp, unit in seconds.
-     */
+    * Expiration time, timestamp, unit in seconds.
+    */
     'expireTime'?: number;
     /**
-     * Fixed interest rate, automatic renewal
-     */
+    * Fixed interest rate, automatic renewal
+    */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment
-     */
+    * Fixed interest rate, automatic repayment
+    */
     'autoRepay'?: boolean;
     /**
-     * The current collateralization rate
-     */
+    * The current collateralization rate
+    */
     'currentLtv'?: string;
     /**
-     * Order status: - initial: Initial state after placing the order - collateral_deducted: Collateral deduction successful - collateral_returning: Loan failed - Collateral return pending - lent: Loan successful - repaying: Repayment in progress - liquidating: Liquidation in progress - finished: Order completed - closed_liquidated: Liquidation and repayment completed
-     */
+    * Order status: - initial: Initial state after placing the order - collateral_deducted: Collateral deduction successful - collateral_returning: Loan failed - Collateral return pending - lent: Loan successful - repaying: Repayment in progress - liquidating: Liquidation in progress - finished: Order completed - closed_liquidated: Liquidation and repayment completed
+    */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds
-     */
+    * Borrowing time, timestamp in seconds
+    */
     'borrowTime'?: number;
     /**
-     * Value of Left repay amount converted in USDT
-     */
+    * Value of Left repay amount converted in USDT
+    */
     'totalLeftRepayUsdt'?: string;
     /**
-     * Value of Collateral amount in USDT
-     */
+    * Value of Collateral amount in USDT
+    */
     'totalLeftCollateralUsdt'?: string;
     /**
-     * Borrowing Currency List
-     */
+    * Borrowing Currency List
+    */
     'borrowCurrencies'?: Array<BorrowCurrencyInfo>;
     /**
-     * Collateral Currency List
-     */
+    * Collateral Currency List
+    */
     'collateralCurrencies'?: Array<CollateralCurrencyInfo>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "string"
         },
         {
-            name: 'orderType',
-            baseName: 'order_type',
-            type: 'string',
+            "name": "orderType",
+            "baseName": "order_type",
+            "type": "string"
         },
         {
-            name: 'fixedType',
-            baseName: 'fixed_type',
-            type: 'string',
+            "name": "fixedType",
+            "baseName": "fixed_type",
+            "type": "string"
         },
         {
-            name: 'fixedRate',
-            baseName: 'fixed_rate',
-            type: 'string',
+            "name": "fixedRate",
+            "baseName": "fixed_rate",
+            "type": "string"
         },
         {
-            name: 'expireTime',
-            baseName: 'expire_time',
-            type: 'number',
+            "name": "expireTime",
+            "baseName": "expire_time",
+            "type": "number"
         },
         {
-            name: 'autoRenew',
-            baseName: 'auto_renew',
-            type: 'boolean',
+            "name": "autoRenew",
+            "baseName": "auto_renew",
+            "type": "boolean"
         },
         {
-            name: 'autoRepay',
-            baseName: 'auto_repay',
-            type: 'boolean',
+            "name": "autoRepay",
+            "baseName": "auto_repay",
+            "type": "boolean"
         },
         {
-            name: 'currentLtv',
-            baseName: 'current_ltv',
-            type: 'string',
+            "name": "currentLtv",
+            "baseName": "current_ltv",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
         },
         {
-            name: 'borrowTime',
-            baseName: 'borrow_time',
-            type: 'number',
+            "name": "borrowTime",
+            "baseName": "borrow_time",
+            "type": "number"
         },
         {
-            name: 'totalLeftRepayUsdt',
-            baseName: 'total_left_repay_usdt',
-            type: 'string',
+            "name": "totalLeftRepayUsdt",
+            "baseName": "total_left_repay_usdt",
+            "type": "string"
         },
         {
-            name: 'totalLeftCollateralUsdt',
-            baseName: 'total_left_collateral_usdt',
-            type: 'string',
+            "name": "totalLeftCollateralUsdt",
+            "baseName": "total_left_collateral_usdt",
+            "type": "string"
         },
         {
-            name: 'borrowCurrencies',
-            baseName: 'borrow_currencies',
-            type: 'Array<BorrowCurrencyInfo>',
+            "name": "borrowCurrencies",
+            "baseName": "borrow_currencies",
+            "type": "Array<BorrowCurrencyInfo>"
         },
         {
-            name: 'collateralCurrencies',
-            baseName: 'collateral_currencies',
-            type: 'Array<CollateralCurrencyInfo>',
-        },
-    ];
+            "name": "collateralCurrencies",
+            "baseName": "collateral_currencies",
+            "type": "Array<CollateralCurrencyInfo>"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiCollateralOrder.attributeTypeMap;
     }
 }
+

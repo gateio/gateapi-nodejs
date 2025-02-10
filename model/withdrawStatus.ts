@@ -9,122 +9,123 @@
  * Do not edit the class manually.
  */
 
+
 export class WithdrawStatus {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'name'?: string;
     /**
-     * Currency Chinese name
-     */
+    * Currency Chinese name
+    */
     'nameCn'?: string;
     /**
-     * Deposits fee
-     */
+    * Deposits fee
+    */
     'deposit'?: string;
     /**
-     * Withdrawal fee rate percentage
-     */
+    * Withdrawal fee rate percentage
+    */
     'withdrawPercent'?: string;
     /**
-     * Fixed withdrawal fee
-     */
+    * Fixed withdrawal fee
+    */
     'withdrawFix'?: string;
     /**
-     * Daily allowed withdrawal amount
-     */
+    * Daily allowed withdrawal amount
+    */
     'withdrawDayLimit'?: string;
     /**
-     * Minimum withdrawal amount
-     */
+    * Minimum withdrawal amount
+    */
     'withdrawAmountMini'?: string;
     /**
-     * Daily withdrawal amount left
-     */
+    * Daily withdrawal amount left
+    */
     'withdrawDayLimitRemain'?: string;
     /**
-     * Maximum amount for each withdrawal
-     */
+    * Maximum amount for each withdrawal
+    */
     'withdrawEachtimeLimit'?: string;
     /**
-     * Fixed withdrawal fee on multiple chains
-     */
-    'withdrawFixOnChains'?: { [key: string]: string };
+    * Fixed withdrawal fee on multiple chains
+    */
+    'withdrawFixOnChains'?: { [key: string]: string; };
     /**
-     * Percentage withdrawal fee on multiple chains
-     */
-    'withdrawPercentOnChains'?: { [key: string]: string };
+    * Percentage withdrawal fee on multiple chains
+    */
+    'withdrawPercentOnChains'?: { [key: string]: string; };
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         },
         {
-            name: 'nameCn',
-            baseName: 'name_cn',
-            type: 'string',
+            "name": "nameCn",
+            "baseName": "name_cn",
+            "type": "string"
         },
         {
-            name: 'deposit',
-            baseName: 'deposit',
-            type: 'string',
+            "name": "deposit",
+            "baseName": "deposit",
+            "type": "string"
         },
         {
-            name: 'withdrawPercent',
-            baseName: 'withdraw_percent',
-            type: 'string',
+            "name": "withdrawPercent",
+            "baseName": "withdraw_percent",
+            "type": "string"
         },
         {
-            name: 'withdrawFix',
-            baseName: 'withdraw_fix',
-            type: 'string',
+            "name": "withdrawFix",
+            "baseName": "withdraw_fix",
+            "type": "string"
         },
         {
-            name: 'withdrawDayLimit',
-            baseName: 'withdraw_day_limit',
-            type: 'string',
+            "name": "withdrawDayLimit",
+            "baseName": "withdraw_day_limit",
+            "type": "string"
         },
         {
-            name: 'withdrawAmountMini',
-            baseName: 'withdraw_amount_mini',
-            type: 'string',
+            "name": "withdrawAmountMini",
+            "baseName": "withdraw_amount_mini",
+            "type": "string"
         },
         {
-            name: 'withdrawDayLimitRemain',
-            baseName: 'withdraw_day_limit_remain',
-            type: 'string',
+            "name": "withdrawDayLimitRemain",
+            "baseName": "withdraw_day_limit_remain",
+            "type": "string"
         },
         {
-            name: 'withdrawEachtimeLimit',
-            baseName: 'withdraw_eachtime_limit',
-            type: 'string',
+            "name": "withdrawEachtimeLimit",
+            "baseName": "withdraw_eachtime_limit",
+            "type": "string"
         },
         {
-            name: 'withdrawFixOnChains',
-            baseName: 'withdraw_fix_on_chains',
-            type: '{ [key: string]: string; }',
+            "name": "withdrawFixOnChains",
+            "baseName": "withdraw_fix_on_chains",
+            "type": "{ [key: string]: string; }"
         },
         {
-            name: 'withdrawPercentOnChains',
-            baseName: 'withdraw_percent_on_chains',
-            type: '{ [key: string]: string; }',
-        },
-    ];
+            "name": "withdrawPercentOnChains",
+            "baseName": "withdraw_percent_on_chains",
+            "type": "{ [key: string]: string; }"
+        }    ];
 
     static getAttributeTypeMap() {
         return WithdrawStatus.attributeTypeMap;
     }
 }
+

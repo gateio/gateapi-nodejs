@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class MultiLoanItem {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Latest price of the currency
-     */
+    * Latest price of the currency
+    */
     'price'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
-        },
-    ];
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiLoanItem.attributeTypeMap;
     }
 }
+

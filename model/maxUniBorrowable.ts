@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class MaxUniBorrowable {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency': string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Maximum borrowable
-     */
+    * Maximum borrowable
+    */
     'borrowable': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'borrowable',
-            baseName: 'borrowable',
-            type: 'string',
-        },
-    ];
+            "name": "borrowable",
+            "baseName": "borrowable",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MaxUniBorrowable.attributeTypeMap;
     }
 }
+

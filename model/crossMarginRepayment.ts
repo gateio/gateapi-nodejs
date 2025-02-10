@@ -9,77 +9,78 @@
  * Do not edit the class manually.
  */
 
+
 export class CrossMarginRepayment {
     /**
-     * Loan record ID
-     */
+    * Loan record ID
+    */
     'id'?: string;
     /**
-     * Repayment time
-     */
+    * Repayment time
+    */
     'createTime'?: number;
     /**
-     * Loan record ID
-     */
+    * Loan record ID
+    */
     'loanId'?: string;
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * Repaid principal
-     */
+    * Repaid principal
+    */
     'principal'?: string;
     /**
-     * Repaid interest
-     */
+    * Repaid interest
+    */
     'interest'?: string;
     /**
-     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
-     */
+    * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
+    */
     'repaymentType'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
         },
         {
-            name: 'loanId',
-            baseName: 'loan_id',
-            type: 'string',
+            "name": "loanId",
+            "baseName": "loan_id",
+            "type": "string"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'principal',
-            baseName: 'principal',
-            type: 'string',
+            "name": "principal",
+            "baseName": "principal",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
         },
         {
-            name: 'repaymentType',
-            baseName: 'repayment_type',
-            type: 'string',
-        },
-    ];
+            "name": "repaymentType",
+            "baseName": "repayment_type",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CrossMarginRepayment.attributeTypeMap;
     }
 }
+

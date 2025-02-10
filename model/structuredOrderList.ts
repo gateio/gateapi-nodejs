@@ -9,80 +9,81 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Structured order
- */
+* Structured order
+*/
 export class StructuredOrderList {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'id'?: number;
     /**
-     * Plan ID
-     */
+    * Plan ID
+    */
     'pid'?: string;
     /**
-     * Locked coin
-     */
+    * Locked coin
+    */
     'lockCoin'?: string;
     /**
-     * Locked amount
-     */
+    * Locked amount
+    */
     'amount'?: string;
     /**
-     * Status:   SUCCESS - SUCCESS  FAILED - FAILED DONE - DONE
-     */
+    * Status:   SUCCESS - SUCCESS  FAILED - FAILED DONE - DONE
+    */
     'status'?: string;
     /**
-     * Income
-     */
+    * Income
+    */
     'income'?: string;
     /**
-     * Created time
-     */
+    * Created time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'pid',
-            baseName: 'pid',
-            type: 'string',
+            "name": "pid",
+            "baseName": "pid",
+            "type": "string"
         },
         {
-            name: 'lockCoin',
-            baseName: 'lock_coin',
-            type: 'string',
+            "name": "lockCoin",
+            "baseName": "lock_coin",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
         },
         {
-            name: 'income',
-            baseName: 'income',
-            type: 'string',
+            "name": "income",
+            "baseName": "income",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return StructuredOrderList.attributeTypeMap;
     }
 }
+

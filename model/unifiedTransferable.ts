@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedTransferable {
     /**
-     * Currency detail
-     */
+    * Currency detail
+    */
     'currency'?: string;
     /**
-     * The maximum amount that can be transferred out
-     */
+    * The maximum amount that can be transferred out
+    */
     'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedTransferable.attributeTypeMap;
     }
 }
+

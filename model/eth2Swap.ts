@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * ETH2 Staking
- */
+* ETH2 Staking
+*/
 export class Eth2Swap {
     /**
-     * 1-Forward Swap（ETH -> ETH2）, 2-Reverse Swap（ETH2 -> ETH）
-     */
+    * 1-Forward Swap（ETH -> ETH2）, 2-Reverse Swap（ETH2 -> ETH）
+    */
     'side': string;
     /**
-     * amount
-     */
+    * amount
+    */
     'amount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'side',
-            baseName: 'side',
-            type: 'string',
+            "name": "side",
+            "baseName": "side",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return Eth2Swap.attributeTypeMap;
     }
 }
+

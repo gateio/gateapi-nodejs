@@ -9,21 +9,21 @@
  * Do not edit the class manually.
  */
 
+
 export class AutoRepaySetting {
     /**
-     * Auto repayment status. `on` - enabled, `off` - disabled
-     */
+    * Auto repayment status. `on` - enabled, `off` - disabled
+    */
     'status'?: AutoRepaySetting.Status;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'AutoRepaySetting.Status',
-        },
-    ];
+            "name": "status",
+            "baseName": "status",
+            "type": "AutoRepaySetting.Status"
+        }    ];
 
     static getAttributeTypeMap() {
         return AutoRepaySetting.attributeTypeMap;
@@ -32,7 +32,7 @@ export class AutoRepaySetting {
 
 export namespace AutoRepaySetting {
     export enum Status {
-        On = <any>'on',
-        Off = <any>'off',
+        On = <any> 'on',
+        Off = <any> 'off'
     }
 }

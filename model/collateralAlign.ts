@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class CollateralAlign {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId': number;
     /**
-     * Collateral
-     */
+    * Collateral
+    */
     'collateralCurrency': string;
     /**
-     * Collateral amount
-     */
+    * Collateral amount
+    */
     'collateralAmount': string;
     /**
-     * Operation types: append - for adding collateral, redeem - for withdrawing collateral
-     */
+    * Operation types: append - for adding collateral, redeem - for withdrawing collateral
+    */
     'type': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'collateralCurrency',
-            baseName: 'collateral_currency',
-            type: 'string',
+            "name": "collateralCurrency",
+            "baseName": "collateral_currency",
+            "type": "string"
         },
         {
-            name: 'collateralAmount',
-            baseName: 'collateral_amount',
-            type: 'string',
+            "name": "collateralAmount",
+            "baseName": "collateral_amount",
+            "type": "string"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
-        },
-    ];
+            "name": "type",
+            "baseName": "type",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralAlign.attributeTypeMap;
     }
 }
+

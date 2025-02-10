@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class UidPushWithdrawal {
     /**
-     * 接收方uid
-     */
+    * Recipient UID
+    */
     'receiveUid': number;
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency': string;
     /**
-     * 转账数量
-     */
+    * Transfer amount
+    */
     'amount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'receiveUid',
-            baseName: 'receive_uid',
-            type: 'number',
+            "name": "receiveUid",
+            "baseName": "receive_uid",
+            "type": "number"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UidPushWithdrawal.attributeTypeMap;
     }
 }
+

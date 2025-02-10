@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse200 {
+
+export class TransferOrderStatus {
     /**
-     * Order id
-     */
+    * Order id
+    */
     'txId'?: string;
     /**
-     * 划转状态，PENDING - 处理中，SUCCESS - 划转成功，FAIL - 划转失败，PARTIAL_SUCCESS - 部分成功（子子划转时会出现此状态）
-     */
+    * Transfer status, PENDING - in process, SUCCESS - successful transfer, FAIL - failed transfer, PARTIAL_SUCCESS - Partially successful (this status will appear when transferring between sub-subs)
+    */
     'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'txId',
-            baseName: 'tx_id',
-            type: 'string',
+            "name": "txId",
+            "baseName": "tx_id",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
-        },
-    ];
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
-        return InlineResponse200.attributeTypeMap;
+        return TransferOrderStatus.attributeTypeMap;
     }
 }
+

@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+
 /* tslint:disable:no-unused-locals */
 import { AgencyCommissionHistory } from '../model/agencyCommissionHistory';
 import { AgencyTransactionHistory } from '../model/agencyTransactionHistory';
@@ -49,17 +50,10 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async agencyTransactionHistory(opts: {
-        currencyPair?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory> }> {
+    public async agencyTransactionHistory(opts: { currencyPair?: string, userId?: number, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory>; }> {
         const localVarPath = this.client.basePath + '/rebate/agency/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -70,28 +64,29 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -101,11 +96,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AgencyTransactionHistory>>(
-            config,
-            'Array<AgencyTransactionHistory>',
-            authSettings,
-        );
+        return this.client.request<Array<AgencyTransactionHistory>>(config, "Array<AgencyTransactionHistory>", authSettings);
     }
 
     /**
@@ -119,17 +110,10 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async agencyCommissionsHistory(opts: {
-        currency?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory> }> {
+    public async agencyCommissionsHistory(opts: { currency?: string, userId?: number, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory>; }> {
         const localVarPath = this.client.basePath + '/rebate/agency/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -140,28 +124,29 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -171,16 +156,12 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AgencyCommissionHistory>>(
-            config,
-            'Array<AgencyCommissionHistory>',
-            authSettings,
-        );
+        return this.client.request<Array<AgencyCommissionHistory>>(config, "Array<AgencyCommissionHistory>", authSettings);
     }
 
     /**
      * Record time range cannot exceed 30 days
-     * @summary 合伙人获取推荐用户的交易记录
+     * @summary Partner obtains transaction records of recommended users
      * @param opts Optional parameters
      * @param opts.currencyPair Specify the currency pair, if not specified, return all currency pairs
      * @param opts.userId User ID. If not specified, all user records will be returned
@@ -189,17 +170,10 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerTransactionHistory(opts: {
-        currencyPair?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: AxiosResponse; body: PartnerTransactionHistory }> {
+    public async partnerTransactionHistory(opts: { currencyPair?: string, userId?: number, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: PartnerTransactionHistory; }> {
         const localVarPath = this.client.basePath + '/rebate/partner/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -210,28 +184,29 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -241,12 +216,12 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<PartnerTransactionHistory>(config, 'PartnerTransactionHistory', authSettings);
+        return this.client.request<PartnerTransactionHistory>(config, "PartnerTransactionHistory", authSettings);
     }
 
     /**
      * Record time range cannot exceed 30 days
-     * @summary 合伙人获取推荐用户的返佣记录
+     * @summary Partner obtains commission records of recommended users
      * @param opts Optional parameters
      * @param opts.currency Filter by currency. Return all currency records if not specified
      * @param opts.userId User ID. If not specified, all user records will be returned
@@ -255,17 +230,10 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerCommissionsHistory(opts: {
-        currency?: string;
-        userId?: number;
-        from?: number;
-        to?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: AxiosResponse; body: PartnerCommissionHistory }> {
+    public async partnerCommissionsHistory(opts: { currency?: string, userId?: number, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: PartnerCommissionHistory; }> {
         const localVarPath = this.client.basePath + '/rebate/partner/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -276,28 +244,29 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -307,25 +276,21 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<PartnerCommissionHistory>(config, 'PartnerCommissionHistory', authSettings);
+        return this.client.request<PartnerCommissionHistory>(config, "PartnerCommissionHistory", authSettings);
     }
 
     /**
-     * 包含下级代理、直接直客、间接直客
-     * @summary 合伙人下级列表
+     * Including sub-agents, direct customers, indirect customers
+     * @summary Partner subordinate list
      * @param opts Optional parameters
      * @param opts.userId User ID. If not specified, all user records will be returned
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async partnerSubList(opts: {
-        userId?: number;
-        limit?: number;
-        offset?: number;
-    }): Promise<{ response: AxiosResponse; body: PartnerSubList }> {
+    public async partnerSubList(opts: { userId?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: PartnerSubList; }> {
         const localVarPath = this.client.basePath + '/rebate/partner/sub_list';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -336,16 +301,17 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -355,7 +321,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<PartnerSubList>(config, 'PartnerSubList', authSettings);
+        return this.client.request<PartnerSubList>(config, "PartnerSubList", authSettings);
     }
 
     /**
@@ -365,19 +331,13 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天
+     * @param opts.from The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
      * @param opts.to Time range ending, default to current time
      */
-    public async rebateBrokerCommissionHistory(opts: {
-        limit?: number;
-        offset?: number;
-        userId?: number;
-        from?: number;
-        to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<BrokerCommission> }> {
+    public async rebateBrokerCommissionHistory(opts: { limit?: number, offset?: number, userId?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<BrokerCommission>; }> {
         const localVarPath = this.client.basePath + '/rebate/broker/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -388,24 +348,25 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -415,7 +376,7 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BrokerCommission>>(config, 'Array<BrokerCommission>', authSettings);
+        return this.client.request<Array<BrokerCommission>>(config, "Array<BrokerCommission>", authSettings);
     }
 
     /**
@@ -425,19 +386,13 @@ export class RebateApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.userId User ID. If not specified, all user records will be returned
-     * @param opts.from 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天
+     * @param opts.from The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
      * @param opts.to Time range ending, default to current time
      */
-    public async rebateBrokerTransactionHistory(opts: {
-        limit?: number;
-        offset?: number;
-        userId?: number;
-        from?: number;
-        to?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<BrokerTransaction> }> {
+    public async rebateBrokerTransactionHistory(opts: { limit?: number, offset?: number, userId?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<BrokerTransaction>; }> {
         const localVarPath = this.client.basePath + '/rebate/broker/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -448,24 +403,25 @@ export class RebateApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
         }
 
         if (opts.userId !== undefined) {
-            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, 'number');
+            localVarQueryParameters['user_id'] = ObjectSerializer.serialize(opts.userId, "number");
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -475,17 +431,17 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BrokerTransaction>>(config, 'Array<BrokerTransaction>', authSettings);
+        return this.client.request<Array<BrokerTransaction>>(config, "Array<BrokerTransaction>", authSettings);
     }
 
     /**
-     *
-     * @summary 用户获取返佣信息
+     * 
+     * @summary User retrieves rebate information
      */
-    public async rebateUserInfo(): Promise<{ response: AxiosResponse; body: Array<RebateUserInfo> }> {
+    public async rebateUserInfo() : Promise<{ response: AxiosResponse; body: Array<RebateUserInfo>; }> {
         const localVarPath = this.client.basePath + '/rebate/user/info';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -494,6 +450,7 @@ export class RebateApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -502,18 +459,18 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<RebateUserInfo>>(config, 'Array<RebateUserInfo>', authSettings);
+        return this.client.request<Array<RebateUserInfo>>(config, "Array<RebateUserInfo>", authSettings);
     }
 
     /**
-     * 查询指定用户是否在体系内
-     * @summary 用户下级关系
-     * @param userIdList 查询用户的ID列表，以,分割，超过100个则取100个
+     * Query whether the specified user is in the system
+     * @summary User-subordinate relationship
+     * @param userIdList Query the user\&#39;s ID list, split by,, if there are more than 100, take 100
      */
-    public async userSubRelation(userIdList: string): Promise<{ response: AxiosResponse; body: UserSubRelation }> {
+    public async userSubRelation(userIdList: string) : Promise<{ response: AxiosResponse; body: UserSubRelation; }> {
         const localVarPath = this.client.basePath + '/rebate/user/sub_relation';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -527,7 +484,8 @@ export class RebateApi {
             throw new Error('Required parameter userIdList was null or undefined when calling userSubRelation.');
         }
 
-        localVarQueryParameters['user_id_list'] = ObjectSerializer.serialize(userIdList, 'string');
+        localVarQueryParameters['user_id_list'] = ObjectSerializer.serialize(userIdList, "string");
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -537,6 +495,6 @@ export class RebateApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UserSubRelation>(config, 'UserSubRelation', authSettings);
+        return this.client.request<UserSubRelation>(config, "UserSubRelation", authSettings);
     }
 }

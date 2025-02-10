@@ -9,77 +9,78 @@
  * Do not edit the class manually.
  */
 
+
 export class FuturesLiqOrder {
     /**
-     * Liquidation time
-     */
+    * Liquidation time
+    */
     'time'?: number;
     /**
-     * Futures contract
-     */
+    * Futures contract
+    */
     'contract'?: string;
     /**
-     * User position size
-     */
+    * User position size
+    */
     'size'?: number;
     /**
-     * 强平委托数量
-     */
+    * Number of forced liquidation orders
+    */
     'orderSize'?: number;
     /**
-     * Liquidation order price
-     */
+    * Liquidation order price
+    */
     'orderPrice'?: string;
     /**
-     * Liquidation order average taker price
-     */
+    * Liquidation order average taker price
+    */
     'fillPrice'?: string;
     /**
-     * System liquidation order maker size
-     */
+    * System liquidation order maker size
+    */
     'left'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'time',
-            baseName: 'time',
-            type: 'number',
+            "name": "time",
+            "baseName": "time",
+            "type": "number"
         },
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            "name": "size",
+            "baseName": "size",
+            "type": "number"
         },
         {
-            name: 'orderSize',
-            baseName: 'order_size',
-            type: 'number',
+            "name": "orderSize",
+            "baseName": "order_size",
+            "type": "number"
         },
         {
-            name: 'orderPrice',
-            baseName: 'order_price',
-            type: 'string',
+            "name": "orderPrice",
+            "baseName": "order_price",
+            "type": "string"
         },
         {
-            name: 'fillPrice',
-            baseName: 'fill_price',
-            type: 'string',
+            "name": "fillPrice",
+            "baseName": "fill_price",
+            "type": "string"
         },
         {
-            name: 'left',
-            baseName: 'left',
-            type: 'number',
-        },
-    ];
+            "name": "left",
+            "baseName": "left",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return FuturesLiqOrder.attributeTypeMap;
     }
 }
+

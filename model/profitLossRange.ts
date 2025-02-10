@@ -9,44 +9,45 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 盈亏范围
- */
+* Profit and loss range
+*/
 export class ProfitLossRange {
     /**
-     * 价格变动百分比
-     */
+    * Percentage change in price
+    */
     'pricePercentage'?: string;
     /**
-     * 隐含波动率变动百分比
-     */
+    * Percentage change in implied volatility
+    */
     'impliedVolatilityPercentage'?: string;
     /**
-     * PNL
-     */
+    * PNL
+    */
     'profitLoss'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'pricePercentage',
-            baseName: 'price_percentage',
-            type: 'string',
+            "name": "pricePercentage",
+            "baseName": "price_percentage",
+            "type": "string"
         },
         {
-            name: 'impliedVolatilityPercentage',
-            baseName: 'implied_volatility_percentage',
-            type: 'string',
+            "name": "impliedVolatilityPercentage",
+            "baseName": "implied_volatility_percentage",
+            "type": "string"
         },
         {
-            name: 'profitLoss',
-            baseName: 'profit_loss',
-            type: 'string',
-        },
-    ];
+            "name": "profitLoss",
+            "baseName": "profit_loss",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return ProfitLossRange.attributeTypeMap;
     }
 }
+

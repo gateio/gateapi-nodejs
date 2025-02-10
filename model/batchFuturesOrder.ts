@@ -9,267 +9,267 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Futures order details
- */
+* Futures order details
+*/
 export class BatchFuturesOrder {
     /**
-     * Whether the batch of orders succeeded
-     */
+    * Whether the batch of orders succeeded
+    */
     'succeeded'?: boolean;
     /**
-     * Error label, only exists if execution fails
-     */
+    * Error label, only exists if execution fails
+    */
     'label'?: string;
     /**
-     * Error detail, only present if execution failed and details need to be given
-     */
+    * Error detail, only present if execution failed and details need to be given
+    */
     'detail'?: string;
     /**
-     * Futures order ID
-     */
+    * Futures order ID
+    */
     'id'?: number;
     /**
-     * User ID
-     */
+    * User ID
+    */
     'user'?: number;
     /**
-     * Creation time of order
-     */
+    * Creation time of order
+    */
     'createTime'?: number;
     /**
-     * Order finished time. Not returned if order is open
-     */
+    * Order finished time. Not returned if order is open
+    */
     'finishTime'?: number;
     /**
-     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close - stp: cancelled because self trade prevention
-     */
+    * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close - position_closed: canceled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention 
+    */
     'finishAs'?: BatchFuturesOrder.FinishAs;
     /**
-     * Order status  - `open`: waiting to be traded - `finished`: finished
-     */
+    * Order status  - `open`: waiting to be traded - `finished`: finished
+    */
     'status'?: BatchFuturesOrder.Status;
     /**
-     * Futures contract
-     */
+    * Futures contract
+    */
     'contract'?: string;
     /**
-     * Order size. Specify positive number to make a bid, and negative number to ask
-     */
+    * Order size. Specify positive number to make a bid, and negative number to ask
+    */
     'size'?: number;
     /**
-     * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
-     */
+    * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
+    */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc`
-     */
+    * Order price. 0 for market order with `tif` set as `ioc`
+    */
     'price'?: string;
     /**
-     * Set as `true` to close the position, with `size` set to 0
-     */
+    * Set as `true` to close the position, with `size` set to 0
+    */
     'close'?: boolean;
     /**
-     * Is the order to close position
-     */
+    * Is the order to close position
+    */
     'isClose'?: boolean;
     /**
-     * Set as `true` to be reduce-only order
-     */
+    * Set as `true` to be reduce-only order
+    */
     'reduceOnly'?: boolean;
     /**
-     * Is the order reduce-only
-     */
+    * Is the order reduce-only
+    */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order for liquidation
-     */
+    * Is the order for liquidation
+    */
     'isLiq'?: boolean;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
-     */
+    * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none
+    */
     'tif'?: BatchFuturesOrder.Tif;
     /**
-     * Size left to be traded
-     */
+    * Size left to be traded
+    */
     'left'?: number;
     /**
-     * Fill price of the order
-     */
+    * Fill price of the order
+    */
     'fillPrice'?: string;
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance
-     */
+    * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance 
+    */
     'text'?: string;
     /**
-     * Taker fee
-     */
+    * Taker fee
+    */
     'tkfr'?: string;
     /**
-     * Maker fee
-     */
+    * Maker fee
+    */
     'mkfr'?: string;
     /**
-     * Reference user ID
-     */
+    * Reference user ID
+    */
     'refu'?: number;
     /**
-     * Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
-     */
+    * Set side to close dual-mode position. `close_long` closes the long side; while `close_short` the short one. Note `size` also needs to be set to 0
+    */
     'autoSize'?: BatchFuturesOrder.AutoSize;
     /**
-     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
-     */
+    * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
+    */
     'stpAct'?: BatchFuturesOrder.StpAct;
     /**
-     * Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
-     */
+    * Orders between users in the same `stp_id` group are not allowed to be self-traded  1. If the `stp_id` of two orders being matched is non-zero and equal, they will not be executed. Instead, the corresponding strategy will be executed based on the `stp_act` of the taker. 2. `stp_id` returns `0` by default for orders that have not been set for `STP group`
+    */
     'stpId'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'succeeded',
-            baseName: 'succeeded',
-            type: 'boolean',
+            "name": "succeeded",
+            "baseName": "succeeded",
+            "type": "boolean"
         },
         {
-            name: 'label',
-            baseName: 'label',
-            type: 'string',
+            "name": "label",
+            "baseName": "label",
+            "type": "string"
         },
         {
-            name: 'detail',
-            baseName: 'detail',
-            type: 'string',
+            "name": "detail",
+            "baseName": "detail",
+            "type": "string"
         },
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'user',
-            baseName: 'user',
-            type: 'number',
+            "name": "user",
+            "baseName": "user",
+            "type": "number"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
         },
         {
-            name: 'finishTime',
-            baseName: 'finish_time',
-            type: 'number',
+            "name": "finishTime",
+            "baseName": "finish_time",
+            "type": "number"
         },
         {
-            name: 'finishAs',
-            baseName: 'finish_as',
-            type: 'BatchFuturesOrder.FinishAs',
+            "name": "finishAs",
+            "baseName": "finish_as",
+            "type": "BatchFuturesOrder.FinishAs"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'BatchFuturesOrder.Status',
+            "name": "status",
+            "baseName": "status",
+            "type": "BatchFuturesOrder.Status"
         },
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'number',
+            "name": "size",
+            "baseName": "size",
+            "type": "number"
         },
         {
-            name: 'iceberg',
-            baseName: 'iceberg',
-            type: 'number',
+            "name": "iceberg",
+            "baseName": "iceberg",
+            "type": "number"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'close',
-            baseName: 'close',
-            type: 'boolean',
+            "name": "close",
+            "baseName": "close",
+            "type": "boolean"
         },
         {
-            name: 'isClose',
-            baseName: 'is_close',
-            type: 'boolean',
+            "name": "isClose",
+            "baseName": "is_close",
+            "type": "boolean"
         },
         {
-            name: 'reduceOnly',
-            baseName: 'reduce_only',
-            type: 'boolean',
+            "name": "reduceOnly",
+            "baseName": "reduce_only",
+            "type": "boolean"
         },
         {
-            name: 'isReduceOnly',
-            baseName: 'is_reduce_only',
-            type: 'boolean',
+            "name": "isReduceOnly",
+            "baseName": "is_reduce_only",
+            "type": "boolean"
         },
         {
-            name: 'isLiq',
-            baseName: 'is_liq',
-            type: 'boolean',
+            "name": "isLiq",
+            "baseName": "is_liq",
+            "type": "boolean"
         },
         {
-            name: 'tif',
-            baseName: 'tif',
-            type: 'BatchFuturesOrder.Tif',
+            "name": "tif",
+            "baseName": "tif",
+            "type": "BatchFuturesOrder.Tif"
         },
         {
-            name: 'left',
-            baseName: 'left',
-            type: 'number',
+            "name": "left",
+            "baseName": "left",
+            "type": "number"
         },
         {
-            name: 'fillPrice',
-            baseName: 'fill_price',
-            type: 'string',
+            "name": "fillPrice",
+            "baseName": "fill_price",
+            "type": "string"
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
         },
         {
-            name: 'tkfr',
-            baseName: 'tkfr',
-            type: 'string',
+            "name": "tkfr",
+            "baseName": "tkfr",
+            "type": "string"
         },
         {
-            name: 'mkfr',
-            baseName: 'mkfr',
-            type: 'string',
+            "name": "mkfr",
+            "baseName": "mkfr",
+            "type": "string"
         },
         {
-            name: 'refu',
-            baseName: 'refu',
-            type: 'number',
+            "name": "refu",
+            "baseName": "refu",
+            "type": "number"
         },
         {
-            name: 'autoSize',
-            baseName: 'auto_size',
-            type: 'BatchFuturesOrder.AutoSize',
+            "name": "autoSize",
+            "baseName": "auto_size",
+            "type": "BatchFuturesOrder.AutoSize"
         },
         {
-            name: 'stpAct',
-            baseName: 'stp_act',
-            type: 'BatchFuturesOrder.StpAct',
+            "name": "stpAct",
+            "baseName": "stp_act",
+            "type": "BatchFuturesOrder.StpAct"
         },
         {
-            name: 'stpId',
-            baseName: 'stp_id',
-            type: 'number',
-        },
-    ];
+            "name": "stpId",
+            "baseName": "stp_id",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return BatchFuturesOrder.attributeTypeMap;
@@ -278,34 +278,34 @@ export class BatchFuturesOrder {
 
 export namespace BatchFuturesOrder {
     export enum FinishAs {
-        Filled = <any>'filled',
-        Cancelled = <any>'cancelled',
-        Liquidated = <any>'liquidated',
-        Ioc = <any>'ioc',
-        AutoDeleveraged = <any>'auto_deleveraged',
-        ReduceOnly = <any>'reduce_only',
-        PositionClosed = <any>'position_closed',
-        ReduceOut = <any>'reduce_out',
-        Stp = <any>'stp',
+        Filled = <any> 'filled',
+        Cancelled = <any> 'cancelled',
+        Liquidated = <any> 'liquidated',
+        Ioc = <any> 'ioc',
+        AutoDeleveraged = <any> 'auto_deleveraged',
+        ReduceOnly = <any> 'reduce_only',
+        PositionClosed = <any> 'position_closed',
+        ReduceOut = <any> 'reduce_out',
+        Stp = <any> 'stp'
     }
     export enum Status {
-        Open = <any>'open',
-        Finished = <any>'finished',
+        Open = <any> 'open',
+        Finished = <any> 'finished'
     }
     export enum Tif {
-        Gtc = <any>'gtc',
-        Ioc = <any>'ioc',
-        Poc = <any>'poc',
-        Fok = <any>'fok',
+        Gtc = <any> 'gtc',
+        Ioc = <any> 'ioc',
+        Poc = <any> 'poc',
+        Fok = <any> 'fok'
     }
     export enum AutoSize {
-        Long = <any>'close_long',
-        Short = <any>'close_short',
+        Long = <any> 'close_long',
+        Short = <any> 'close_short'
     }
     export enum StpAct {
-        Co = <any>'co',
-        Cn = <any>'cn',
-        Cb = <any>'cb',
-        Minus = <any>'-',
+        Co = <any> 'co',
+        Cn = <any> 'cn',
+        Cb = <any> 'cb',
+        Minus = <any> '-'
     }
 }

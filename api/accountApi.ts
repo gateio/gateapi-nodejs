@@ -9,11 +9,11 @@
  * Do not edit the class manually.
  */
 
+
 /* tslint:disable:no-unused-locals */
 import { AccountDetail } from '../model/accountDetail';
 import { AccountRateLimit } from '../model/accountRateLimit';
-import { InlineObject1 } from '../model/inlineObject1';
-import { InlineResponse2001 } from '../model/inlineResponse2001';
+import { DebitFee } from '../model/debitFee';
 import { StpGroup } from '../model/stpGroup';
 import { StpGroupUser } from '../model/stpGroupUser';
 import { ObjectSerializer } from '../model/models';
@@ -36,13 +36,13 @@ export class AccountApi {
     }
 
     /**
-     *
+     * 
      * @summary Get account detail
      */
-    public async getAccountDetail(): Promise<{ response: AxiosResponse; body: AccountDetail }> {
+    public async getAccountDetail() : Promise<{ response: AxiosResponse; body: AccountDetail; }> {
         const localVarPath = this.client.basePath + '/account/detail';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -50,6 +50,7 @@ export class AccountApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -59,17 +60,17 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<AccountDetail>(config, 'AccountDetail', authSettings);
+        return this.client.request<AccountDetail>(config, "AccountDetail", authSettings);
     }
 
     /**
-     *
-     * @summary 获取用户成交比率限频信息
+     * 
+     * @summary Get user transaction rate limit information
      */
-    public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {
+    public async getAccountRateLimit() : Promise<{ response: AxiosResponse; body: Array<AccountRateLimit>; }> {
         const localVarPath = this.client.basePath + '/account/rate_limit';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -77,6 +78,7 @@ export class AccountApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -86,7 +88,7 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<AccountRateLimit>>(config, 'Array<AccountRateLimit>', authSettings);
+        return this.client.request<Array<AccountRateLimit>>(config, "Array<AccountRateLimit>", authSettings);
     }
 
     /**
@@ -95,10 +97,10 @@ export class AccountApi {
      * @param opts Optional parameters
      * @param opts.name Perform a fuzzy search based on the name
      */
-    public async listSTPGroups(opts: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
+    public async listSTPGroups(opts: { name?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<StpGroup>; }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -109,8 +111,9 @@ export class AccountApi {
 
         opts = opts || {};
         if (opts.name !== undefined) {
-            localVarQueryParameters['name'] = ObjectSerializer.serialize(opts.name, 'string');
+            localVarQueryParameters['name'] = ObjectSerializer.serialize(opts.name, "string");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -120,18 +123,18 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<StpGroup>>(config, 'Array<StpGroup>', authSettings);
+        return this.client.request<Array<StpGroup>>(config, "Array<StpGroup>", authSettings);
     }
 
     /**
      * Only the main account is allowed to create a new STP user group
      * @summary Create STP Group
-     * @param stpGroup
+     * @param stpGroup 
      */
-    public async createSTPGroup(stpGroup: StpGroup): Promise<{ response: AxiosResponse; body: StpGroup }> {
+    public async createSTPGroup(stpGroup: StpGroup) : Promise<{ response: AxiosResponse; body: StpGroup; }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -145,16 +148,17 @@ export class AccountApi {
             throw new Error('Required parameter stpGroup was null or undefined when calling createSTPGroup.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(stpGroup, 'StpGroup'),
+            data: ObjectSerializer.serialize(stpGroup, "StpGroup")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<StpGroup>(config, 'StpGroup', authSettings);
+        return this.client.request<StpGroup>(config, "StpGroup", authSettings);
     }
 
     /**
@@ -162,12 +166,11 @@ export class AccountApi {
      * @summary List users of the STP group
      * @param stpId STP Group ID
      */
-    public async listSTPGroupsUsers(stpId: number): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listSTPGroupsUsers(stpId: number) : Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> {
+        const localVarPath = this.client.basePath + '/account/stp_groups/{stp_id}/users'
+            .replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -181,6 +184,7 @@ export class AccountApi {
             throw new Error('Required parameter stpId was null or undefined when calling listSTPGroupsUsers.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -189,7 +193,7 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<StpGroupUser>>(config, 'Array<StpGroupUser>', authSettings);
+        return this.client.request<Array<StpGroupUser>>(config, "Array<StpGroupUser>", authSettings);
     }
 
     /**
@@ -198,15 +202,11 @@ export class AccountApi {
      * @param stpId STP Group ID
      * @param requestBody User ID
      */
-    public async addSTPGroupUsers(
-        stpId: number,
-        requestBody: Array<number>,
-    ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async addSTPGroupUsers(stpId: number, requestBody: Array<number>) : Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> {
+        const localVarPath = this.client.basePath + '/account/stp_groups/{stp_id}/users'
+            .replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -225,16 +225,17 @@ export class AccountApi {
             throw new Error('Required parameter requestBody was null or undefined when calling addSTPGroupUsers.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(requestBody, 'Array<number>'),
+            data: ObjectSerializer.serialize(requestBody, "Array<number>")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<StpGroupUser>>(config, 'Array<StpGroupUser>', authSettings);
+        return this.client.request<Array<StpGroupUser>>(config, "Array<StpGroupUser>", authSettings);
     }
 
     /**
@@ -243,15 +244,11 @@ export class AccountApi {
      * @param stpId STP Group ID
      * @param userId STP user ID, multiple can be separated by commas
      */
-    public async deleteSTPGroupUsers(
-        stpId: number,
-        userId: number,
-    ): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async deleteSTPGroupUsers(stpId: number, userId: number) : Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> {
+        const localVarPath = this.client.basePath + '/account/stp_groups/{stp_id}/users'
+            .replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -270,7 +267,8 @@ export class AccountApi {
             throw new Error('Required parameter userId was null or undefined when calling deleteSTPGroupUsers.');
         }
 
-        localVarQueryParameters['user_id'] = ObjectSerializer.serialize(userId, 'number');
+        localVarQueryParameters['user_id'] = ObjectSerializer.serialize(userId, "number");
+
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -280,17 +278,17 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<StpGroupUser>>(config, 'Array<StpGroupUser>', authSettings);
+        return this.client.request<Array<StpGroupUser>>(config, "Array<StpGroupUser>", authSettings);
     }
 
     /**
-     * 查询当前帐户的GT抵扣配置
-     * @summary 查询GT抵扣配置
+     * Query the current GT deduction configuration for the account.
+     * @summary Query GT deduction configuration.
      */
-    public async getDebitFee(): Promise<{ response: AxiosResponse; body: InlineResponse2001 }> {
+    public async getDebitFee() : Promise<{ response: AxiosResponse; body: DebitFee; }> {
         const localVarPath = this.client.basePath + '/account/debit_fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -298,6 +296,7 @@ export class AccountApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -307,33 +306,34 @@ export class AccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<InlineResponse2001>(config, 'InlineResponse2001', authSettings);
+        return this.client.request<DebitFee>(config, "DebitFee", authSettings);
     }
 
     /**
-     * 开启或关闭当前帐户的GT抵扣
-     * @summary 设定GT抵扣
-     * @param inlineObject1
+     * Enable or disable GT deduction for the current account.
+     * @summary Set GT deduction.
+     * @param debitFee 
      */
-    public async setDebitFee(inlineObject1: InlineObject1): Promise<{ response: AxiosResponse; body?: any }> {
+    public async setDebitFee(debitFee: DebitFee) : Promise<{ response: AxiosResponse; body?: any; }> {
         const localVarPath = this.client.basePath + '/account/debit_fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
-        // verify required parameter 'inlineObject1' is not null or undefined
-        if (inlineObject1 === null || inlineObject1 === undefined) {
-            throw new Error('Required parameter inlineObject1 was null or undefined when calling setDebitFee.');
+        // verify required parameter 'debitFee' is not null or undefined
+        if (debitFee === null || debitFee === undefined) {
+            throw new Error('Required parameter debitFee was null or undefined when calling setDebitFee.');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject1, 'InlineObject1'),
+            data: ObjectSerializer.serialize(debitFee, "DebitFee")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<any>(config, "", authSettings);
     }
 }

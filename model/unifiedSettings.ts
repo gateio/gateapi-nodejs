@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedSettings {
     /**
-     * USDT合约开关。跨币种保证金模式下只能打开不能关闭
-     */
+    * USDT contract switch. In cross-currency margin mode, it can only be turned on and not off
+    */
     'usdtFutures'?: boolean;
     /**
-     * 现货对冲开关。
-     */
+    * Spot hedging switch. 
+    */
     'spotHedge'?: boolean;
     /**
-     * 余币宝开关，当mode为跨币种保证金模式时,是否将余币宝理财资金作为保证金
-     */
+    * switch, when the mode is cross-currency margin mode, whether to use Uniloan financial funds as margin
+    */
     'useFunding'?: boolean;
     /**
-     * 期权开关。跨币种保证金模式下只能打开不能关闭
-     */
+    * Option switch. In cross-currency margin mode, it can only be turned on and not off
+    */
     'options'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'usdtFutures',
-            baseName: 'usdt_futures',
-            type: 'boolean',
+            "name": "usdtFutures",
+            "baseName": "usdt_futures",
+            "type": "boolean"
         },
         {
-            name: 'spotHedge',
-            baseName: 'spot_hedge',
-            type: 'boolean',
+            "name": "spotHedge",
+            "baseName": "spot_hedge",
+            "type": "boolean"
         },
         {
-            name: 'useFunding',
-            baseName: 'use_funding',
-            type: 'boolean',
+            "name": "useFunding",
+            "baseName": "use_funding",
+            "type": "boolean"
         },
         {
-            name: 'options',
-            baseName: 'options',
-            type: 'boolean',
-        },
-    ];
+            "name": "options",
+            "baseName": "options",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedSettings.attributeTypeMap;
     }
 }
+

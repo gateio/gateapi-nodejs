@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**usdtFutures** | **boolean** | USDT合约开关。跨币种保证金模式下只能打开不能关闭 | [optional] [default to undefined]
-**spotHedge** | **boolean** | 现货对冲开关。 | [optional] [default to undefined]
-**useFunding** | **boolean** | 余币宝开关，当mode为跨币种保证金模式时,是否将余币宝理财资金作为保证金 | [optional] [default to undefined]
-**options** | **boolean** | 期权开关。跨币种保证金模式下只能打开不能关闭 | [optional] [default to undefined]
+**usdtFutures** | **boolean** | USDT contract switch. In cross-currency margin mode, it can only be turned on and not off | [optional] [default to undefined]
+**spotHedge** | **boolean** | Spot hedging switch.  | [optional] [default to undefined]
+**useFunding** | **boolean** | switch, when the mode is cross-currency margin mode, whether to use Uniloan financial funds as margin | [optional] [default to undefined]
+**options** | **boolean** | Option switch. In cross-currency margin mode, it can only be turned on and not off | [optional] [default to undefined]
 

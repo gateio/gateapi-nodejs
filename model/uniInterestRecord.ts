@@ -9,71 +9,72 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Interest Record
- */
+* Interest Record
+*/
 export class UniInterestRecord {
     /**
-     * Status: 0 - fail, 1 - success
-     */
+    * Status: 0 - fail, 1 - success
+    */
     'status'?: number;
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Actual Rate
-     */
+    * Actual Rate
+    */
     'actualRate'?: string;
     /**
-     * Interest
-     */
+    * Interest
+    */
     'interest'?: string;
     /**
-     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
-     */
+    * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
+    */
     'interestStatus'?: string;
     /**
-     * Created time
-     */
+    * Created time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'number',
+            "name": "status",
+            "baseName": "status",
+            "type": "number"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'actualRate',
-            baseName: 'actual_rate',
-            type: 'string',
+            "name": "actualRate",
+            "baseName": "actual_rate",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
         },
         {
-            name: 'interestStatus',
-            baseName: 'interest_status',
-            type: 'string',
+            "name": "interestStatus",
+            "baseName": "interest_status",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniInterestRecord.attributeTypeMap;
     }
 }
+

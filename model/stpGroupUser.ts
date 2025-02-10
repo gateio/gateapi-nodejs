@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class StpGroupUser {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * STP Group ID
-     */
+    * STP Group ID
+    */
     'stpId'?: number;
     /**
-     * Creation time
-     */
+    * Creation time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'stpId',
-            baseName: 'stp_id',
-            type: 'number',
+            "name": "stpId",
+            "baseName": "stp_id",
+            "type": "number"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return StpGroupUser.attributeTypeMap;
     }
 }
+

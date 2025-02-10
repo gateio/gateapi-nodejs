@@ -31,7 +31,7 @@ const api = new GateApi.FlashSwapApi(client);
 const opts = {
   'currency': "BTC", // string | Retrieve data of the specified currency
   'page': 1, // number | Page number
-  'limit': 1000 // number | 列表返回的最大数量。默认为1000，最小1，最大1000。
+  'limit': 1000 // number | Maximum response items.  Default: 100, minimum: 1, Maximum: 1000
 };
 api.listFlashSwapCurrencyPair(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
- **limit** | **number**| 列表返回的最大数量。默认为1000，最小1，最大1000。 | [optional] [default to 1000]
+ **limit** | **number**| Maximum response items.  Default: 100, minimum: 1, Maximum: 1000 | [optional] [default to 1000]
 
 ### Return type
 

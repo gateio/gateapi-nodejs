@@ -9,68 +9,69 @@
  * Do not edit the class manually.
  */
 
+
 export class RepayRecordRepaidCurrency {
     /**
-     * Repayment currency
-     */
+    * Repayment currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Repayment amount
-     */
+    * Repayment amount
+    */
     'repaidAmount'?: string;
     /**
-     * Principal
-     */
+    * Principal
+    */
     'repaidPrincipal'?: string;
     /**
-     * Interest
-     */
+    * Interest
+    */
     'repaidInterest'?: string;
     /**
-     * Value of the repayment amount in USDT
-     */
+    * Value of the repayment amount in USDT
+    */
     'repaidAmountUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'repaidAmount',
-            baseName: 'repaid_amount',
-            type: 'string',
+            "name": "repaidAmount",
+            "baseName": "repaid_amount",
+            "type": "string"
         },
         {
-            name: 'repaidPrincipal',
-            baseName: 'repaid_principal',
-            type: 'string',
+            "name": "repaidPrincipal",
+            "baseName": "repaid_principal",
+            "type": "string"
         },
         {
-            name: 'repaidInterest',
-            baseName: 'repaid_interest',
-            type: 'string',
+            "name": "repaidInterest",
+            "baseName": "repaid_interest",
+            "type": "string"
         },
         {
-            name: 'repaidAmountUsdt',
-            baseName: 'repaid_amount_usdt',
-            type: 'string',
-        },
-    ];
+            "name": "repaidAmountUsdt",
+            "baseName": "repaid_amount_usdt",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return RepayRecordRepaidCurrency.attributeTypeMap;
     }
 }
+

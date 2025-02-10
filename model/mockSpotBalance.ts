@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 现货
- */
+* Spot
+*/
 export class MockSpotBalance {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency': string;
     /**
-     * 币种权益，权益 = 余额 - 已借，表示您在现货部位的净delta敞口，可以为负数。目前仅支持BTC、ETH三个币种
-     */
+    * Currency equity, where equity = balance - borrowed, represents the net delta exposure  of your spot positions, which can be negative. Currently only supports three currencies: BTC, ETH.
+    */
     'equity': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'equity',
-            baseName: 'equity',
-            type: 'string',
-        },
-    ];
+            "name": "equity",
+            "baseName": "equity",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockSpotBalance.attributeTypeMap;
     }
 }
+

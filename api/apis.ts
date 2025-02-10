@@ -1,4 +1,4 @@
-export * from './apiClient';
+export * from "./apiClient";
 export * from './accountApi';
 import { AccountApi } from './accountApi';
 export * from './collateralLoanApi';
@@ -34,22 +34,4 @@ import { WalletApi } from './walletApi';
 export * from './withdrawalApi';
 import { WithdrawalApi } from './withdrawalApi';
 
-export const APIS = [
-    AccountApi,
-    CollateralLoanApi,
-    DeliveryApi,
-    EarnApi,
-    EarnUniApi,
-    FlashSwapApi,
-    FuturesApi,
-    MarginApi,
-    MarginUniApi,
-    MultiCollateralLoanApi,
-    OptionsApi,
-    RebateApi,
-    SpotApi,
-    SubAccountApi,
-    UnifiedApi,
-    WalletApi,
-    WithdrawalApi,
-];
+export const APIS = [AccountApi, CollateralLoanApi, DeliveryApi, EarnApi, EarnUniApi, FlashSwapApi, FuturesApi, MarginApi, MarginUniApi, MultiCollateralLoanApi, OptionsApi, RebateApi, SpotApi, SubAccountApi, UnifiedApi, WalletApi, WithdrawalApi];

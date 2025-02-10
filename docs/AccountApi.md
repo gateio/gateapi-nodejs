@@ -5,14 +5,14 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAccountDetail**](AccountApi.md#getAccountDetail) | **GET** /account/detail | Get account detail
-[**getAccountRateLimit**](AccountApi.md#getAccountRateLimit) | **GET** /account/rate_limit | 获取用户成交比率限频信息
+[**getAccountRateLimit**](AccountApi.md#getAccountRateLimit) | **GET** /account/rate_limit | Get user transaction rate limit information
 [**listSTPGroups**](AccountApi.md#listSTPGroups) | **GET** /account/stp_groups | List STP Groups
 [**createSTPGroup**](AccountApi.md#createSTPGroup) | **POST** /account/stp_groups | Create STP Group
 [**listSTPGroupsUsers**](AccountApi.md#listSTPGroupsUsers) | **GET** /account/stp_groups/{stp_id}/users | List users of the STP group
 [**addSTPGroupUsers**](AccountApi.md#addSTPGroupUsers) | **POST** /account/stp_groups/{stp_id}/users | Add users to the STP group
 [**deleteSTPGroupUsers**](AccountApi.md#deleteSTPGroupUsers) | **DELETE** /account/stp_groups/{stp_id}/users | Delete the user in the STP group
-[**getDebitFee**](AccountApi.md#getDebitFee) | **GET** /account/debit_fee | 查询GT抵扣配置
-[**setDebitFee**](AccountApi.md#setDebitFee) | **POST** /account/debit_fee | 设定GT抵扣
+[**getDebitFee**](AccountApi.md#getDebitFee) | **GET** /account/debit_fee | Query GT deduction configuration.
+[**setDebitFee**](AccountApi.md#setDebitFee) | **POST** /account/debit_fee | Set GT deduction.
 
 
 ## getAccountDetail
@@ -58,7 +58,7 @@ Promise<{ response: AxiosResponse; body: AccountDetail; }> [AccountDetail](Accou
 
 > Promise<{ response: http.IncomingMessage; body: Array<AccountRateLimit>; }> getAccountRateLimit()
 
-获取用户成交比率限频信息
+Get user transaction rate limit information
 
 ### Example
 
@@ -326,11 +326,11 @@ Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> [StpGroupUser](
 
 ## getDebitFee
 
-> Promise<{ response: http.IncomingMessage; body: InlineResponse2001; }> getDebitFee()
+> Promise<{ response: http.IncomingMessage; body: DebitFee; }> getDebitFee()
 
-查询GT抵扣配置
+Query GT deduction configuration.
 
-查询当前帐户的GT抵扣配置
+Query the current GT deduction configuration for the account.
 
 ### Example
 
@@ -354,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2001](InlineResponse2001.md)
+Promise<{ response: AxiosResponse; body: DebitFee; }> [DebitFee](DebitFee.md)
 
 ### Authorization
 
@@ -367,11 +367,11 @@ Promise<{ response: AxiosResponse; body: InlineResponse2001; }> [InlineResponse2
 
 ## setDebitFee
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> setDebitFee(inlineObject1)
+> Promise<{ response: http.IncomingMessage; body?: any; }> setDebitFee(debitFee)
 
-设定GT抵扣
+Set GT deduction.
 
-开启或关闭当前帐户的GT抵扣
+Enable or disable GT deduction for the current account.
 
 ### Example
 
@@ -384,8 +384,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const inlineObject1 = new InlineObject1(); // InlineObject1 | 
-api.setDebitFee(inlineObject1)
+const debitFee = new DebitFee(); // DebitFee | 
+api.setDebitFee(debitFee)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
 ```
@@ -395,7 +395,7 @@ api.setDebitFee(inlineObject1)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject1** | [**InlineObject1**](InlineObject1.md)|  | 
+ **debitFee** | [**DebitFee**](DebitFee.md)|  | 
 
 ### Return type
 

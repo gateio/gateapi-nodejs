@@ -12,34 +12,34 @@
 import { MarginTiers } from './marginTiers';
 
 /**
- * 统一账户借贷保证金梯度
- */
+* Unified margin tiers
+*/
 export class UnifiedMarginTiers {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * 阶梯式保证金
-     */
+    * Margin tiers
+    */
     'marginTiers'?: Array<MarginTiers>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'marginTiers',
-            baseName: 'margin_tiers',
-            type: 'Array<MarginTiers>',
-        },
-    ];
+            "name": "marginTiers",
+            "baseName": "margin_tiers",
+            "type": "Array<MarginTiers>"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedMarginTiers.attributeTypeMap;
     }
 }
+

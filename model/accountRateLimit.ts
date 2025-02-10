@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class AccountRateLimit {
     /**
-     * 限频等级（详细限频规则查看[成交比率限频](#成交比率限频)）
-     */
+    * Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio))
+    */
     'tier'?: string;
     /**
-     * 成交率
-     */
+    * Transaction rate
+    */
     'ratio'?: string;
     /**
-     * 主账户合计成交比率
-     */
+    * Total transaction ratio of main account
+    */
     'mainRatio'?: string;
     /**
-     * 更新时间
-     */
+    * Update time
+    */
     'updatedAt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'string',
+            "name": "tier",
+            "baseName": "tier",
+            "type": "string"
         },
         {
-            name: 'ratio',
-            baseName: 'ratio',
-            type: 'string',
+            "name": "ratio",
+            "baseName": "ratio",
+            "type": "string"
         },
         {
-            name: 'mainRatio',
-            baseName: 'main_ratio',
-            type: 'string',
+            "name": "mainRatio",
+            "baseName": "main_ratio",
+            "type": "string"
         },
         {
-            name: 'updatedAt',
-            baseName: 'updated_at',
-            type: 'string',
-        },
-    ];
+            "name": "updatedAt",
+            "baseName": "updated_at",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return AccountRateLimit.attributeTypeMap;
     }
 }
+

@@ -9,80 +9,81 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * data point in every timestamp
- */
+* data point in every timestamp
+*/
 export class FuturesCandlestick {
     /**
-     * Unix timestamp in seconds
-     */
+    * Unix timestamp in seconds
+    */
     't'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed
-     */
+    * size volume (contract size). Only returned if `contract` is not prefixed
+    */
     'v'?: number;
     /**
-     * Close price (quote currency)
-     */
+    * Close price (quote currency)
+    */
     'c'?: string;
     /**
-     * Highest price (quote currency)
-     */
+    * Highest price (quote currency)
+    */
     'h'?: string;
     /**
-     * Lowest price (quote currency)
-     */
+    * Lowest price (quote currency)
+    */
     'l'?: string;
     /**
-     * Open price (quote currency)
-     */
+    * Open price (quote currency)
+    */
     'o'?: string;
     /**
-     * Trading volume (unit: Quote currency)
-     */
+    * Trading volume (unit: Quote currency)
+    */
     'sum'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 't',
-            baseName: 't',
-            type: 'number',
+            "name": "t",
+            "baseName": "t",
+            "type": "number"
         },
         {
-            name: 'v',
-            baseName: 'v',
-            type: 'number',
+            "name": "v",
+            "baseName": "v",
+            "type": "number"
         },
         {
-            name: 'c',
-            baseName: 'c',
-            type: 'string',
+            "name": "c",
+            "baseName": "c",
+            "type": "string"
         },
         {
-            name: 'h',
-            baseName: 'h',
-            type: 'string',
+            "name": "h",
+            "baseName": "h",
+            "type": "string"
         },
         {
-            name: 'l',
-            baseName: 'l',
-            type: 'string',
+            "name": "l",
+            "baseName": "l",
+            "type": "string"
         },
         {
-            name: 'o',
-            baseName: 'o',
-            type: 'string',
+            "name": "o",
+            "baseName": "o",
+            "type": "string"
         },
         {
-            name: 'sum',
-            baseName: 'sum',
-            type: 'string',
-        },
-    ];
+            "name": "sum",
+            "baseName": "sum",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return FuturesCandlestick.attributeTypeMap;
     }
 }
+

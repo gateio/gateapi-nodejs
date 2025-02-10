@@ -13,162 +13,162 @@ import { CrossMarginBalance } from './crossMarginBalance';
 
 export class CrossMarginAccount {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * Time of the most recent refresh
-     */
+    * Time of the most recent refresh
+    */
     'refreshTime'?: number;
     /**
-     * Whether account is locked
-     */
+    * Whether account is locked
+    */
     'locked'?: boolean;
-    'balances'?: { [key: string]: CrossMarginBalance };
+    'balances'?: { [key: string]: CrossMarginBalance; };
     /**
-     * Total account value in USDT, i.e., the sum of all currencies\' `(available+freeze)*price*discount`
-     */
+    * Total account value in USDT, i.e., the sum of all currencies\' `(available+freeze)*price*discount`
+    */
     'total'?: string;
     /**
-     * Total borrowed value in USDT, i.e., the sum of all currencies\' `borrowed*price*discount`
-     */
+    * Total borrowed value in USDT, i.e., the sum of all currencies\' `borrowed*price*discount`
+    */
     'borrowed'?: string;
     /**
-     * Total unpaid interests in USDT, i.e., the sum of all currencies\' `interest*price*discount`
-     */
+    * Total unpaid interests in USDT, i.e., the sum of all currencies\' `interest*price*discount`
+    */
     'interest'?: string;
     /**
-     * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
-     */
+    * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
+    */
     'risk'?: string;
     /**
-     * Total initial margin
-     */
+    * Total initial margin
+    */
     'totalInitialMargin'?: string;
     /**
-     * Total Margin Balance (∑(positive equity ＊ index price * discount) + ∑(negative equity * index price))
-     */
+    * Total Margin Balance (∑(positive equity ＊ index price * discount) + ∑(negative equity * index price))
+    */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin
-     */
+    * Total maintenance margin
+    */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate
-     */
+    * Total initial margin rate
+    */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate
-     */
+    * Total maintenance margin rate
+    */
     'totalMaintenanceMarginRate'?: string;
     /**
-     * Total available margin
-     */
+    * Total available margin
+    */
     'totalAvailableMargin'?: string;
     /**
-     * Total amount of the portfolio margin account
-     */
+    * Total amount of the portfolio margin account
+    */
     'portfolioMarginTotal'?: string;
     /**
-     * Total liabilities of the portfolio margin account
-     */
+    * Total liabilities of the portfolio margin account
+    */
     'portfolioMarginTotalLiab'?: string;
     /**
-     * Total equity of the portfolio margin account
-     */
+    * Total equity of the portfolio margin account
+    */
     'portfolioMarginTotalEquity'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'refreshTime',
-            baseName: 'refresh_time',
-            type: 'number',
+            "name": "refreshTime",
+            "baseName": "refresh_time",
+            "type": "number"
         },
         {
-            name: 'locked',
-            baseName: 'locked',
-            type: 'boolean',
+            "name": "locked",
+            "baseName": "locked",
+            "type": "boolean"
         },
         {
-            name: 'balances',
-            baseName: 'balances',
-            type: '{ [key: string]: CrossMarginBalance; }',
+            "name": "balances",
+            "baseName": "balances",
+            "type": "{ [key: string]: CrossMarginBalance; }"
         },
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'string',
+            "name": "total",
+            "baseName": "total",
+            "type": "string"
         },
         {
-            name: 'borrowed',
-            baseName: 'borrowed',
-            type: 'string',
+            "name": "borrowed",
+            "baseName": "borrowed",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
         },
         {
-            name: 'risk',
-            baseName: 'risk',
-            type: 'string',
+            "name": "risk",
+            "baseName": "risk",
+            "type": "string"
         },
         {
-            name: 'totalInitialMargin',
-            baseName: 'total_initial_margin',
-            type: 'string',
+            "name": "totalInitialMargin",
+            "baseName": "total_initial_margin",
+            "type": "string"
         },
         {
-            name: 'totalMarginBalance',
-            baseName: 'total_margin_balance',
-            type: 'string',
+            "name": "totalMarginBalance",
+            "baseName": "total_margin_balance",
+            "type": "string"
         },
         {
-            name: 'totalMaintenanceMargin',
-            baseName: 'total_maintenance_margin',
-            type: 'string',
+            "name": "totalMaintenanceMargin",
+            "baseName": "total_maintenance_margin",
+            "type": "string"
         },
         {
-            name: 'totalInitialMarginRate',
-            baseName: 'total_initial_margin_rate',
-            type: 'string',
+            "name": "totalInitialMarginRate",
+            "baseName": "total_initial_margin_rate",
+            "type": "string"
         },
         {
-            name: 'totalMaintenanceMarginRate',
-            baseName: 'total_maintenance_margin_rate',
-            type: 'string',
+            "name": "totalMaintenanceMarginRate",
+            "baseName": "total_maintenance_margin_rate",
+            "type": "string"
         },
         {
-            name: 'totalAvailableMargin',
-            baseName: 'total_available_margin',
-            type: 'string',
+            "name": "totalAvailableMargin",
+            "baseName": "total_available_margin",
+            "type": "string"
         },
         {
-            name: 'portfolioMarginTotal',
-            baseName: 'portfolio_margin_total',
-            type: 'string',
+            "name": "portfolioMarginTotal",
+            "baseName": "portfolio_margin_total",
+            "type": "string"
         },
         {
-            name: 'portfolioMarginTotalLiab',
-            baseName: 'portfolio_margin_total_liab',
-            type: 'string',
+            "name": "portfolioMarginTotalLiab",
+            "baseName": "portfolio_margin_total_liab",
+            "type": "string"
         },
         {
-            name: 'portfolioMarginTotalEquity',
-            baseName: 'portfolio_margin_total_equity',
-            type: 'string',
-        },
-    ];
+            "name": "portfolioMarginTotalEquity",
+            "baseName": "portfolio_margin_total_equity",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CrossMarginAccount.attributeTypeMap;
     }
 }
+

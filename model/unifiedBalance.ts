@@ -9,185 +9,186 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedBalance {
     /**
-     * 可用额度,在单币种保证金/跨币种保证金/组合保证金模式模式下有效，不同模式计算不一样
-     */
+    * Available amount is valid in single currency margin/cross-currency margin/combined margin mode, and the calculation is different in different modes
+    */
     'available'?: string;
     /**
-     * 被锁定的额度,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
-     */
+    * The locked amount is valid in single currency margin/cross-currency margin/combined margin mode
+    */
     'freeze'?: string;
     /**
-     * 借入额度,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
-     */
+    * Borrow limit, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+    */
     'borrowed'?: string;
     /**
-     * 负余额借贷,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
-     */
+    * Negative balance loan is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
+    */
     'negativeLiab'?: string;
     /**
-     * 合约开仓借币(已废弃,待下线字段)
-     */
+    * Contract opening position borrowing currency (abandoned, to be offline field)
+    */
     'futuresPosLiab'?: string;
     /**
-     * 权益,在单币种保证金/跨币种保证金/组合保证金模式模式下有效
-     */
+    * Equity, valid in single currency margin/cross currency margin/combined margin mode
+    */
     'equity'?: string;
     /**
-     * 总占用(已废弃,待下线字段)
-     */
+    * Total occupancy (discarded, to be offline field)
+    */
     'totalFreeze'?: string;
     /**
-     * 总借款,在跨币种保证金/组合保证金模式下有效，其他如单币种保证金模式下是0
-     */
+    * Total borrowing, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+    */
     'totalLiab'?: string;
     /**
-     * 现货对冲占用数量,在组合保证金模式下有效，其他如单币种、跨币种保证金模式下是0
-     */
+    * The amount of spot hedging is valid in the combined margin mode, and is 0 in other margin modes such as single currency and cross-currency margin modes
+    */
     'spotInUse'?: string;
     /**
-     * 余币宝理财数量,在余币宝理财作为统一账户保证金开关打开有效
-     */
+    * Uniloan financial management amount, effective when Uniloan financial management is turned on as a unified account margin switch
+    */
     'funding'?: string;
     /**
-     * 余币宝理财版本号
-     */
+    * Funding version
+    */
     'fundingVersion'?: string;
     /**
-     * 全仓余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode
+    */
     'crossBalance'?: string;
     /**
-     * 逐仓余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Isolated margin balance is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'isoBalance'?: string;
     /**
-     * 全仓初始保证金,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'im'?: string;
     /**
-     * 全仓维持保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'mm'?: string;
     /**
-     * 全仓初始保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'imr'?: string;
     /**
-     * 全仓维持保证金率,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'mmr'?: string;
     /**
-     * 全仓保证金余额,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode
+    */
     'marginBalance'?: string;
     /**
-     * 全仓可用保证金,在单币种保证金模式下有效，其他如跨币种保证金/组合保证金模式下是0
-     */
+    * Full margin available for full position is valid in single currency margin mode, and is 0 in other modes such as cross-currency margin/combined margin mode
+    */
     'availableMargin'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'available',
-            baseName: 'available',
-            type: 'string',
+            "name": "available",
+            "baseName": "available",
+            "type": "string"
         },
         {
-            name: 'freeze',
-            baseName: 'freeze',
-            type: 'string',
+            "name": "freeze",
+            "baseName": "freeze",
+            "type": "string"
         },
         {
-            name: 'borrowed',
-            baseName: 'borrowed',
-            type: 'string',
+            "name": "borrowed",
+            "baseName": "borrowed",
+            "type": "string"
         },
         {
-            name: 'negativeLiab',
-            baseName: 'negative_liab',
-            type: 'string',
+            "name": "negativeLiab",
+            "baseName": "negative_liab",
+            "type": "string"
         },
         {
-            name: 'futuresPosLiab',
-            baseName: 'futures_pos_liab',
-            type: 'string',
+            "name": "futuresPosLiab",
+            "baseName": "futures_pos_liab",
+            "type": "string"
         },
         {
-            name: 'equity',
-            baseName: 'equity',
-            type: 'string',
+            "name": "equity",
+            "baseName": "equity",
+            "type": "string"
         },
         {
-            name: 'totalFreeze',
-            baseName: 'total_freeze',
-            type: 'string',
+            "name": "totalFreeze",
+            "baseName": "total_freeze",
+            "type": "string"
         },
         {
-            name: 'totalLiab',
-            baseName: 'total_liab',
-            type: 'string',
+            "name": "totalLiab",
+            "baseName": "total_liab",
+            "type": "string"
         },
         {
-            name: 'spotInUse',
-            baseName: 'spot_in_use',
-            type: 'string',
+            "name": "spotInUse",
+            "baseName": "spot_in_use",
+            "type": "string"
         },
         {
-            name: 'funding',
-            baseName: 'funding',
-            type: 'string',
+            "name": "funding",
+            "baseName": "funding",
+            "type": "string"
         },
         {
-            name: 'fundingVersion',
-            baseName: 'funding_version',
-            type: 'string',
+            "name": "fundingVersion",
+            "baseName": "funding_version",
+            "type": "string"
         },
         {
-            name: 'crossBalance',
-            baseName: 'cross_balance',
-            type: 'string',
+            "name": "crossBalance",
+            "baseName": "cross_balance",
+            "type": "string"
         },
         {
-            name: 'isoBalance',
-            baseName: 'iso_balance',
-            type: 'string',
+            "name": "isoBalance",
+            "baseName": "iso_balance",
+            "type": "string"
         },
         {
-            name: 'im',
-            baseName: 'im',
-            type: 'string',
+            "name": "im",
+            "baseName": "im",
+            "type": "string"
         },
         {
-            name: 'mm',
-            baseName: 'mm',
-            type: 'string',
+            "name": "mm",
+            "baseName": "mm",
+            "type": "string"
         },
         {
-            name: 'imr',
-            baseName: 'imr',
-            type: 'string',
+            "name": "imr",
+            "baseName": "imr",
+            "type": "string"
         },
         {
-            name: 'mmr',
-            baseName: 'mmr',
-            type: 'string',
+            "name": "mmr",
+            "baseName": "mmr",
+            "type": "string"
         },
         {
-            name: 'marginBalance',
-            baseName: 'margin_balance',
-            type: 'string',
+            "name": "marginBalance",
+            "baseName": "margin_balance",
+            "type": "string"
         },
         {
-            name: 'availableMargin',
-            baseName: 'available_margin',
-            type: 'string',
-        },
-    ];
+            "name": "availableMargin",
+            "baseName": "available_margin",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedBalance.attributeTypeMap;
     }
 }
+

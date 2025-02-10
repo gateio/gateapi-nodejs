@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class SubAccountKeyPerms {
     /**
-     * 权限功能名称（不传值即为清空） - wallet: 钱包 - spot: 现货/杠杆 - futures: 永续合约 - delivery: 交割合约 - earn: 理财 - custody: 托管 - options: 期权 - account: 账户信息 - loan: 借贷 - margin: 杠杆 - unified: 统一账户 - copy: 跟单
-     */
+    * Permission function name (no value will be cleared) - wallet: wallet - spot: spot/leverage - futures: perpetual contract - delivery: delivery contract - earn: financial management - custody: custody - options: options - account: account information - loan: loan - margin: leverage - unified: unified account - copy: copy
+    */
     'name'?: string;
     /**
-     * read only
-     */
+    * read only
+    */
     'readOnly'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         },
         {
-            name: 'readOnly',
-            baseName: 'read_only',
-            type: 'boolean',
-        },
-    ];
+            "name": "readOnly",
+            "baseName": "read_only",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubAccountKeyPerms.attributeTypeMap;
     }
 }
+

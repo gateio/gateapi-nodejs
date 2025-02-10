@@ -13,30 +13,30 @@ import { FuturesAccount } from './futuresAccount';
 
 export class SubAccountFuturesBalance {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'uid'?: string;
     /**
-     * Futures account balances
-     */
-    'available'?: { [key: string]: FuturesAccount };
+    * Futures account balances
+    */
+    'available'?: { [key: string]: FuturesAccount; };
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'string',
+            "name": "uid",
+            "baseName": "uid",
+            "type": "string"
         },
         {
-            name: 'available',
-            baseName: 'available',
-            type: '{ [key: string]: FuturesAccount; }',
-        },
-    ];
+            "name": "available",
+            "baseName": "available",
+            "type": "{ [key: string]: FuturesAccount; }"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubAccountFuturesBalance.attributeTypeMap;
     }
 }
+

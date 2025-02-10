@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**deleteSubAccountKeys**](SubAccountApi.md#deleteSubAccountKeys) | **DELETE** /sub_accounts/{user_id}/keys/{key} | Delete API key of the sub-account
 [**lockSubAccount**](SubAccountApi.md#lockSubAccount) | **POST** /sub_accounts/{user_id}/lock | Lock the sub-account
 [**unlockSubAccount**](SubAccountApi.md#unlockSubAccount) | **POST** /sub_accounts/{user_id}/unlock | Unlock the sub-account
-[**listUnifiedMode**](SubAccountApi.md#listUnifiedMode) | **GET** /sub_accounts/unified_mode | 获取子帐号模式
+[**listUnifiedMode**](SubAccountApi.md#listUnifiedMode) | **GET** /sub_accounts/unified_mode | Get sub-account mode
 
 
 ## listSubAccounts
@@ -463,9 +463,9 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<SubUserMode>; }> listUnifiedMode()
 
-获取子帐号模式
+Get sub-account mode
 
-统一账户模式： - &#x60;classic&#x60;: 经典账户模式 - &#x60;multi_currency&#x60;: 跨币种保证金模式 - &#x60;portfolio&#x60;: 组合保证金模式
+Unified account mode： - &#x60;classic&#x60;: Classic account mode - &#x60;multi_currency&#x60;: Multi-currency margin mode - &#x60;portfolio&#x60;: Portfolio margin mode
 
 ### Example
 

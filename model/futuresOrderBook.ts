@@ -13,57 +13,57 @@ import { FuturesOrderBookItem } from './futuresOrderBookItem';
 
 export class FuturesOrderBook {
     /**
-     * Order Book ID. Increases by 1 on every order book change. Set `with_id=true` to include this field in response
-     */
+    * Order Book ID. Increases by 1 on every order book change. Set `with_id=true` to include this field in response
+    */
     'id'?: number;
     /**
-     * Response data generation timestamp
-     */
+    * Response data generation timestamp
+    */
     'current'?: number;
     /**
-     * Order book changed timestamp
-     */
+    * Order book changed timestamp
+    */
     'update'?: number;
     /**
-     * Asks order depth
-     */
+    * Asks order depth
+    */
     'asks': Array<FuturesOrderBookItem>;
     /**
-     * Bids order depth
-     */
+    * Bids order depth
+    */
     'bids': Array<FuturesOrderBookItem>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'current',
-            baseName: 'current',
-            type: 'number',
+            "name": "current",
+            "baseName": "current",
+            "type": "number"
         },
         {
-            name: 'update',
-            baseName: 'update',
-            type: 'number',
+            "name": "update",
+            "baseName": "update",
+            "type": "number"
         },
         {
-            name: 'asks',
-            baseName: 'asks',
-            type: 'Array<FuturesOrderBookItem>',
+            "name": "asks",
+            "baseName": "asks",
+            "type": "Array<FuturesOrderBookItem>"
         },
         {
-            name: 'bids',
-            baseName: 'bids',
-            type: 'Array<FuturesOrderBookItem>',
-        },
-    ];
+            "name": "bids",
+            "baseName": "bids",
+            "type": "Array<FuturesOrderBookItem>"
+        }    ];
 
     static getAttributeTypeMap() {
         return FuturesOrderBook.attributeTypeMap;
     }
 }
+

@@ -9,59 +9,60 @@
  * Do not edit the class manually.
  */
 
+
 export class MultiChainAddressItem {
     /**
-     * Name of the chain
-     */
+    * Name of the chain
+    */
     'chain'?: string;
     /**
-     * Deposit address
-     */
+    * Deposit address
+    */
     'address'?: string;
     /**
-     * Notes that some currencies required(e.g., Tag, Memo) when depositing
-     */
+    * Notes that some currencies required(e.g., Tag, Memo) when depositing
+    */
     'paymentId'?: string;
     /**
-     * Note type, `Tag` or `Memo`
-     */
+    * Note type, `Tag` or `Memo`
+    */
     'paymentName'?: string;
     /**
-     * The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
-     */
+    * The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
+    */
     'obtainFailed'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'chain',
-            baseName: 'chain',
-            type: 'string',
+            "name": "chain",
+            "baseName": "chain",
+            "type": "string"
         },
         {
-            name: 'address',
-            baseName: 'address',
-            type: 'string',
+            "name": "address",
+            "baseName": "address",
+            "type": "string"
         },
         {
-            name: 'paymentId',
-            baseName: 'payment_id',
-            type: 'string',
+            "name": "paymentId",
+            "baseName": "payment_id",
+            "type": "string"
         },
         {
-            name: 'paymentName',
-            baseName: 'payment_name',
-            type: 'string',
+            "name": "paymentName",
+            "baseName": "payment_name",
+            "type": "string"
         },
         {
-            name: 'obtainFailed',
-            baseName: 'obtain_failed',
-            type: 'number',
-        },
-    ];
+            "name": "obtainFailed",
+            "baseName": "obtain_failed",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiChainAddressItem.attributeTypeMap;
     }
 }
+

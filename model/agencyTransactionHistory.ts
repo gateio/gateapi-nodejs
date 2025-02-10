@@ -13,39 +13,39 @@ import { AgencyTransaction } from './agencyTransaction';
 
 export class AgencyTransactionHistory {
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Total
-     */
+    * Total
+    */
     'total'?: number;
     /**
-     * List of transaction history
-     */
+    * List of transaction history
+    */
     'list'?: Array<AgencyTransaction>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'number',
+            "name": "total",
+            "baseName": "total",
+            "type": "number"
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<AgencyTransaction>',
-        },
-    ];
+            "name": "list",
+            "baseName": "list",
+            "type": "Array<AgencyTransaction>"
+        }    ];
 
     static getAttributeTypeMap() {
         return AgencyTransactionHistory.attributeTypeMap;
     }
 }
+

@@ -9,23 +9,24 @@
  * Do not edit the class manually.
  */
 
+
 export class SystemTime {
     /**
-     * Server current time(ms)
-     */
+    * Server current time(ms)
+    */
     'serverTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'serverTime',
-            baseName: 'server_time',
-            type: 'number',
-        },
-    ];
+            "name": "serverTime",
+            "baseName": "server_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return SystemTime.attributeTypeMap;
     }
 }
+

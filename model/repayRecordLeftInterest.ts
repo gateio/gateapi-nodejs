@@ -9,68 +9,69 @@
  * Do not edit the class manually.
  */
 
+
 export class RepayRecordLeftInterest {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Interest amount before repayment
-     */
+    * Interest amount before repayment
+    */
     'beforeAmount'?: string;
     /**
-     * Converted value of interest before repayment in USDT
-     */
+    * Converted value of interest before repayment in USDT
+    */
     'beforeAmountUsdt'?: string;
     /**
-     * Interest amount after repayment
-     */
+    * Interest amount after repayment
+    */
     'afterAmount'?: string;
     /**
-     * Converted value of interest after repayment in USDT
-     */
+    * Converted value of interest after repayment in USDT
+    */
     'afterAmountUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'beforeAmount',
-            baseName: 'before_amount',
-            type: 'string',
+            "name": "beforeAmount",
+            "baseName": "before_amount",
+            "type": "string"
         },
         {
-            name: 'beforeAmountUsdt',
-            baseName: 'before_amount_usdt',
-            type: 'string',
+            "name": "beforeAmountUsdt",
+            "baseName": "before_amount_usdt",
+            "type": "string"
         },
         {
-            name: 'afterAmount',
-            baseName: 'after_amount',
-            type: 'string',
+            "name": "afterAmount",
+            "baseName": "after_amount",
+            "type": "string"
         },
         {
-            name: 'afterAmountUsdt',
-            baseName: 'after_amount_usdt',
-            type: 'string',
-        },
-    ];
+            "name": "afterAmountUsdt",
+            "baseName": "after_amount_usdt",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return RepayRecordLeftInterest.attributeTypeMap;
     }
 }
+

@@ -9,60 +9,60 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Borrow or repay
- */
+* Borrow or repay
+*/
 export class CreateUniLoan {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency': string;
     /**
-     * type: borrow - borrow, repay - repay
-     */
+    * type: borrow - borrow, repay - repay
+    */
     'type': CreateUniLoan.Type;
     /**
-     * The amount of lending or repaying
-     */
+    * The amount of lending or repaying
+    */
     'amount': string;
     /**
-     * Full repayment.  Repay operation only.  If the value is `true`, the amount will be ignored and the loan will be repaid in full.
-     */
+    * Full repayment.  Repay operation only.  If the value is `true`, the amount will be ignored and the loan will be repaid in full.
+    */
     'repaidAll'?: boolean;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'CreateUniLoan.Type',
+            "name": "type",
+            "baseName": "type",
+            "type": "CreateUniLoan.Type"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'repaidAll',
-            baseName: 'repaid_all',
-            type: 'boolean',
+            "name": "repaidAll",
+            "baseName": "repaid_all",
+            "type": "boolean"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
-        },
-    ];
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CreateUniLoan.attributeTypeMap;
@@ -71,7 +71,7 @@ export class CreateUniLoan {
 
 export namespace CreateUniLoan {
     export enum Type {
-        Borrow = <any>'borrow',
-        Repay = <any>'repay',
+        Borrow = <any> 'borrow',
+        Repay = <any> 'repay'
     }
 }

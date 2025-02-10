@@ -9,5 +9,5 @@ Name | Type | Description | Notes
 **userId** | **number** | User ID | [optional] [default to undefined]
 **tier** | **number** | User VIP level | [optional] [default to undefined]
 **key** | [**AccountDetailKey**](AccountDetailKey.md) |  | [optional] [default to undefined]
-**copyTradingRole** | **number** | 用户角色： 0 - 普通用户  1 - 带单者  2 - 跟单者 3 - 带单者与跟单者 | [optional] [default to undefined]
+**copyTradingRole** | **number** | User role: 0 - Ordinary user 1 - Order leader 2 - Follower 3 - Order leader and follower | [optional] [default to undefined]
 

@@ -12,52 +12,52 @@
 import { MockRiskUnit } from './mockRiskUnit';
 
 /**
- * 组合保证金计算器输出
- */
+* The output of the portfolio margin calculator.
+*/
 export class UnifiedPortfolioOutput {
     /**
-     * 总维持保证金，只包含risk unit的仓位的组合保证金计算结果，不包含借币保证金。如果存在借币，实际还会产生常规的借币保证金要求。
-     */
+    * Total maintenance margin, including only the portfolio margin calculation results for positions in the risk unit,  excluding borrowed margin. If borrowing exists, conventional borrowing margin requirements will still apply.
+    */
     'maintainMarginTotal'?: string;
     /**
-     * 总起始保证金，为以下三个组合的最大计算结果：仓位、仓位+正delta挂单、仓位+负delta挂单
-     */
+    * Total initial margin, calculated as the maximum of the following three combinations: position,  position + positive delta orders, position + negative delta orders.
+    */
     'initialMarginTotal'?: string;
     /**
-     * 计算时间
-     */
+    * Calculate time
+    */
     'calculateTime'?: number;
     /**
-     * 风险单元
-     */
+    * Risk unit
+    */
     'riskUnit'?: Array<MockRiskUnit>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'maintainMarginTotal',
-            baseName: 'maintain_margin_total',
-            type: 'string',
+            "name": "maintainMarginTotal",
+            "baseName": "maintain_margin_total",
+            "type": "string"
         },
         {
-            name: 'initialMarginTotal',
-            baseName: 'initial_margin_total',
-            type: 'string',
+            "name": "initialMarginTotal",
+            "baseName": "initial_margin_total",
+            "type": "string"
         },
         {
-            name: 'calculateTime',
-            baseName: 'calculate_time',
-            type: 'number',
+            "name": "calculateTime",
+            "baseName": "calculate_time",
+            "type": "number"
         },
         {
-            name: 'riskUnit',
-            baseName: 'risk_unit',
-            type: 'Array<MockRiskUnit>',
-        },
-    ];
+            "name": "riskUnit",
+            "baseName": "risk_unit",
+            "type": "Array<MockRiskUnit>"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedPortfolioOutput.attributeTypeMap;
     }
 }
+

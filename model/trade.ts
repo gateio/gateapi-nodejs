@@ -9,156 +9,156 @@
  * Do not edit the class manually.
  */
 
+
 export class Trade {
     /**
-     * Trade ID
-     */
+    * Trade ID
+    */
     'id'?: string;
     /**
-     * Trading time
-     */
+    * Trading time
+    */
     'createTime'?: string;
     /**
-     * Trading time, with millisecond precision
-     */
+    * Trading time, with millisecond precision
+    */
     'createTimeMs'?: string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Order side
-     */
+    * Order side
+    */
     'side'?: Trade.Side;
     /**
-     * Trade role. No value in public endpoints
-     */
+    * Trade role. No value in public endpoints
+    */
     'role'?: Trade.Role;
     /**
-     * Trade amount
-     */
+    * Trade amount
+    */
     'amount'?: string;
     /**
-     * Order price
-     */
+    * Order price
+    */
     'price'?: string;
     /**
-     * Related order ID. No value in public endpoints
-     */
+    * Related order ID. No value in public endpoints
+    */
     'orderId'?: string;
     /**
-     * Fee deducted. No value in public endpoints
-     */
+    * Fee deducted. No value in public endpoints
+    */
     'fee'?: string;
     /**
-     * Fee currency unit. No value in public endpoints
-     */
+    * Fee currency unit. No value in public endpoints
+    */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee. No value in public endpoints
-     */
+    * Points used to deduct fee. No value in public endpoints
+    */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee. No value in public endpoints
-     */
+    * GT used to deduct fee. No value in public endpoints
+    */
     'gtFee'?: string;
     /**
-     * The custom data that the user remarked when amending the order
-     */
+    * The custom data that the user remarked when amending the order
+    */
     'amendText'?: string;
     /**
-     * Represents a unique and consecutive trade ID within a single market. It is used to track and identify trades in the specific market
-     */
+    * Represents a unique and consecutive trade ID within a single market. It is used to track and identify trades in the specific market
+    */
     'sequenceId'?: string;
     /**
-     * User defined information. No value in public endpoints
-     */
+    * User defined information. No value in public endpoints
+    */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'string',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "string"
         },
         {
-            name: 'createTimeMs',
-            baseName: 'create_time_ms',
-            type: 'string',
+            "name": "createTimeMs",
+            "baseName": "create_time_ms",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'side',
-            baseName: 'side',
-            type: 'Trade.Side',
+            "name": "side",
+            "baseName": "side",
+            "type": "Trade.Side"
         },
         {
-            name: 'role',
-            baseName: 'role',
-            type: 'Trade.Role',
+            "name": "role",
+            "baseName": "role",
+            "type": "Trade.Role"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "string"
         },
         {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
+            "name": "fee",
+            "baseName": "fee",
+            "type": "string"
         },
         {
-            name: 'feeCurrency',
-            baseName: 'fee_currency',
-            type: 'string',
+            "name": "feeCurrency",
+            "baseName": "fee_currency",
+            "type": "string"
         },
         {
-            name: 'pointFee',
-            baseName: 'point_fee',
-            type: 'string',
+            "name": "pointFee",
+            "baseName": "point_fee",
+            "type": "string"
         },
         {
-            name: 'gtFee',
-            baseName: 'gt_fee',
-            type: 'string',
+            "name": "gtFee",
+            "baseName": "gt_fee",
+            "type": "string"
         },
         {
-            name: 'amendText',
-            baseName: 'amend_text',
-            type: 'string',
+            "name": "amendText",
+            "baseName": "amend_text",
+            "type": "string"
         },
         {
-            name: 'sequenceId',
-            baseName: 'sequence_id',
-            type: 'string',
+            "name": "sequenceId",
+            "baseName": "sequence_id",
+            "type": "string"
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
-        },
-    ];
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return Trade.attributeTypeMap;
@@ -167,11 +167,11 @@ export class Trade {
 
 export namespace Trade {
     export enum Side {
-        Buy = <any>'buy',
-        Sell = <any>'sell',
+        Buy = <any> 'buy',
+        Sell = <any> 'sell'
     }
     export enum Role {
-        Taker = <any>'taker',
-        Maker = <any>'maker',
+        Taker = <any> 'taker',
+        Maker = <any> 'maker'
     }
 }

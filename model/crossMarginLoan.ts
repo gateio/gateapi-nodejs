@@ -9,102 +9,102 @@
  * Do not edit the class manually.
  */
 
+
 export class CrossMarginLoan {
     /**
-     * Loan record ID
-     */
+    * Loan record ID
+    */
     'id'?: string;
     /**
-     * Creation timestamp, in milliseconds
-     */
+    * Creation timestamp, in milliseconds
+    */
     'createTime'?: number;
     /**
-     * Update timestamp, in milliseconds
-     */
+    * Update timestamp, in milliseconds
+    */
     'updateTime'?: number;
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency': string;
     /**
-     * Borrowed amount
-     */
+    * Borrowed amount
+    */
     'amount': string;
     /**
-     * User defined custom ID
-     */
+    * User defined custom ID
+    */
     'text'?: string;
     /**
-     * Deprecated. Currently, all statuses have been set to 2.  Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete
-     */
+    * Deprecated. Currently, all statuses have been set to 2.  Borrow loan status, which includes:  - 1: failed to borrow - 2: borrowed but not repaid - 3: repayment complete
+    */
     'status'?: CrossMarginLoan.Status;
     /**
-     * Repaid amount
-     */
+    * Repaid amount
+    */
     'repaid'?: string;
     /**
-     * Repaid interest
-     */
+    * Repaid interest
+    */
     'repaidInterest'?: string;
     /**
-     * Outstanding interest yet to be paid
-     */
+    * Outstanding interest yet to be paid
+    */
     'unpaidInterest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
         },
         {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'number',
+            "name": "updateTime",
+            "baseName": "update_time",
+            "type": "number"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'CrossMarginLoan.Status',
+            "name": "status",
+            "baseName": "status",
+            "type": "CrossMarginLoan.Status"
         },
         {
-            name: 'repaid',
-            baseName: 'repaid',
-            type: 'string',
+            "name": "repaid",
+            "baseName": "repaid",
+            "type": "string"
         },
         {
-            name: 'repaidInterest',
-            baseName: 'repaid_interest',
-            type: 'string',
+            "name": "repaidInterest",
+            "baseName": "repaid_interest",
+            "type": "string"
         },
         {
-            name: 'unpaidInterest',
-            baseName: 'unpaid_interest',
-            type: 'string',
-        },
-    ];
+            "name": "unpaidInterest",
+            "baseName": "unpaid_interest",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CrossMarginLoan.attributeTypeMap;
@@ -113,8 +113,8 @@ export class CrossMarginLoan {
 
 export namespace CrossMarginLoan {
     export enum Status {
-        NUMBER_1 = <any>1,
-        NUMBER_2 = <any>2,
-        NUMBER_3 = <any>3,
+        NUMBER_1 = <any> 1,
+        NUMBER_2 = <any> 2,
+        NUMBER_3 = <any> 3
     }
 }

@@ -9,23 +9,34 @@
  * Do not edit the class manually.
  */
 
+
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { Authentication, GateApiV4Auth, HttpBasicAuth, HttpBearerAuth, OAuth, ObjectSerializer } from '../model/models';
+import {
+    Authentication,
+    GateApiV4Auth,
+    HttpBasicAuth,
+    HttpBearerAuth,
+    OAuth,
+    ObjectSerializer
+} from "../model/models";
 
-import JSONBig from 'json-bigint';
+import JSONBig from 'json-bigint'; 
 import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+
 export class ApiClient {
-    protected _basePath = 'https://api.gateio.ws/api/v4';
+
+    protected _basePath: string = 'https://api.gateio.ws/api/v4';
     protected _defaultHeaders: any = {};
 
     protected authentications: { [key: string]: Authentication } = {
-        apiv4: new GateApiV4Auth(),
-    };
+        'apiv4': new GateApiV4Auth(),
+    }
 
     constructor(basePath?: string, protected axiosInstance: AxiosInstance = globalAxios) {
         this._basePath = basePath || this._basePath;
+
 
         this.axiosInstance.defaults.transformResponse = [
             (data) => {
@@ -35,7 +46,7 @@ export class ApiClient {
                     console.error('Failed to parse JSON:', error);
                     return data;
                 }
-            },
+            }
         ];
     }
 
@@ -56,14 +67,14 @@ export class ApiClient {
     }
 
     public setApiKeySecret(key: string, secret: string) {
-        const auth = this.authentications['apiv4'] as GateApiV4Auth;
+        let auth = this.authentications['apiv4'] as GateApiV4Auth;
         auth.key = key;
         auth.secret = secret;
     }
 
     public applyToRequest(config: AxiosRequestConfig, authSettings: Array<string>): AxiosRequestConfig {
-        for (const auth of authSettings) {
-            const authenticator = this.authentications[auth];
+        for (let auth of authSettings) {
+            let authenticator = this.authentications[auth];
             if (authenticator) {
                 config = authenticator.applyToRequest(config);
             }
@@ -71,21 +82,15 @@ export class ApiClient {
         return config;
     }
 
-    public async request<T>(
-        config: AxiosRequestConfig,
-        responseType: string,
-        authSettings: Array<string>,
-    ): Promise<{ response: AxiosResponse; body: T }> {
-        return Promise.resolve(config)
-            .then((c) => this.applyToRequest(c, authSettings))
-            .then((c) => {
-                return this.axiosInstance.request(c).then((rsp) => {
-                    let body = rsp.data;
-                    if (responseType.length > 0) {
-                        body = ObjectSerializer.deserialize(rsp.data, responseType);
-                    }
-                    return { response: rsp, body: body };
-                });
+    public async request<T>(config: AxiosRequestConfig, responseType: string, authSettings: Array<string>): Promise<{ response: AxiosResponse; body: T; }> {
+        return Promise.resolve(config).then(c => this.applyToRequest(c, authSettings)).then(c => {
+            return this.axiosInstance.request(c).then(rsp => {
+                let body = rsp.data;
+                if (responseType.length > 0) {
+                    body = ObjectSerializer.deserialize(rsp.data, responseType);
+                }
+                return { response: rsp, body: body };
             });
+        });
     }
 }

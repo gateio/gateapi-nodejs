@@ -13,30 +13,30 @@ import { AgencyCommission } from './agencyCommission';
 
 export class PartnerCommissionHistory {
     /**
-     * Total
-     */
+    * Total
+    */
     'total'?: number;
     /**
-     * List of comission history
-     */
+    * List of comission history
+    */
     'list'?: Array<AgencyCommission>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'number',
+            "name": "total",
+            "baseName": "total",
+            "type": "number"
         },
         {
-            name: 'list',
-            baseName: 'list',
-            type: 'Array<AgencyCommission>',
-        },
-    ];
+            "name": "list",
+            "baseName": "list",
+            "type": "Array<AgencyCommission>"
+        }    ];
 
     static getAttributeTypeMap() {
         return PartnerCommissionHistory.attributeTypeMap;
     }
 }
+

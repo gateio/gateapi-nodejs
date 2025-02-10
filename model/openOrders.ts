@@ -13,36 +13,36 @@ import { Order } from './order';
 
 export class OpenOrders {
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * The total number of pending orders for this trading pair on the current page
-     */
+    * The total number of pending orders for this trading pair on the current page
+    */
     'total'?: number;
     'orders'?: Array<Order>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'number',
+            "name": "total",
+            "baseName": "total",
+            "type": "number"
         },
         {
-            name: 'orders',
-            baseName: 'orders',
-            type: 'Array<Order>',
-        },
-    ];
+            "name": "orders",
+            "baseName": "orders",
+            "type": "Array<Order>"
+        }    ];
 
     static getAttributeTypeMap() {
         return OpenOrders.attributeTypeMap;
     }
 }
+

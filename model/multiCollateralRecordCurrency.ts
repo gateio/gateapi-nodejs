@@ -9,68 +9,69 @@
  * Do not edit the class manually.
  */
 
+
 export class MultiCollateralRecordCurrency {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Amount before the operation
-     */
+    * Amount before the operation
+    */
     'beforeAmount'?: string;
     /**
-     * USDT Amount before the operation.
-     */
+    * USDT Amount before the operation.
+    */
     'beforeAmountUsdt'?: string;
     /**
-     * Amount after the operation.
-     */
+    * Amount after the operation.
+    */
     'afterAmount'?: string;
     /**
-     * USDT Amount after the operation.
-     */
+    * USDT Amount after the operation.
+    */
     'afterAmountUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'beforeAmount',
-            baseName: 'before_amount',
-            type: 'string',
+            "name": "beforeAmount",
+            "baseName": "before_amount",
+            "type": "string"
         },
         {
-            name: 'beforeAmountUsdt',
-            baseName: 'before_amount_usdt',
-            type: 'string',
+            "name": "beforeAmountUsdt",
+            "baseName": "before_amount_usdt",
+            "type": "string"
         },
         {
-            name: 'afterAmount',
-            baseName: 'after_amount',
-            type: 'string',
+            "name": "afterAmount",
+            "baseName": "after_amount",
+            "type": "string"
         },
         {
-            name: 'afterAmountUsdt',
-            baseName: 'after_amount_usdt',
-            type: 'string',
-        },
-    ];
+            "name": "afterAmountUsdt",
+            "baseName": "after_amount_usdt",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiCollateralRecordCurrency.attributeTypeMap;
     }
 }
+

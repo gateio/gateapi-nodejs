@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**listMultiCollateralCurrencies**](MultiCollateralLoanApi.md#listMultiCollateralCurrencies) | **GET** /loan/multi_collateral/currencies | Query supported borrowing and collateral currencies in Multi-Collateral 
 [**getMultiCollateralLtv**](MultiCollateralLoanApi.md#getMultiCollateralLtv) | **GET** /loan/multi_collateral/ltv | Get Multi-Collateral ratio
 [**getMultiCollateralFixRate**](MultiCollateralLoanApi.md#getMultiCollateralFixRate) | **GET** /loan/multi_collateral/fixed_rate | Query fixed interest rates for the currency for 7 days and 30 days
-[**getMultiCollateralCurrentRate**](MultiCollateralLoanApi.md#getMultiCollateralCurrentRate) | **GET** /loan/multi_collateral/current_rate | 查询币种活期利率
+[**getMultiCollateralCurrentRate**](MultiCollateralLoanApi.md#getMultiCollateralCurrentRate) | **GET** /loan/multi_collateral/current_rate | Query the current interest rate of the currency
 
 
 ## listMultiCollateralOrders
@@ -511,9 +511,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralCurrentRate>; }> getMultiCollateralCurrentRate(currencies, opts)
 
-查询币种活期利率
+Query the current interest rate of the currency
 
-查询币种上一小时活期利率，活期利率每小时更新一次
+Query the current interest rate of the currency in the last hour. The current interest rate is updated every hour.
 
 ### Example
 
@@ -524,9 +524,9 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MultiCollateralLoanApi(client);
-const currencies = [["BTC","GT"]]; // Array<string> | 指定币种名称查询数组，数组用逗号分割，最大100个
+const currencies = [["BTC","GT"]]; // Array<string> | Specify the currency name to query the array. The array is separated by commas and has a maximum of 100 items.
 const opts = {
-  'vipLevel': '0' // string | vip等级，不传默认为0
+  'vipLevel': '0' // string | VIP level, defaults to 0 if not transferred
 };
 api.getMultiCollateralCurrentRate(currencies, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -538,8 +538,8 @@ api.getMultiCollateralCurrentRate(currencies, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| 指定币种名称查询数组，数组用逗号分割，最大100个 | [default to undefined]
- **vipLevel** | **string**| vip等级，不传默认为0 | [optional] [default to &#39;0&#39;]
+ **currencies** | [**Array&lt;string&gt;**](string.md)| Specify the currency name to query the array. The array is separated by commas and has a maximum of 100 items. | [default to undefined]
+ **vipLevel** | **string**| VIP level, defaults to 0 if not transferred | [optional] [default to &#39;0&#39;]
 
 ### Return type
 

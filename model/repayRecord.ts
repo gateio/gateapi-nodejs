@@ -9,134 +9,135 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Repayment record
- */
+* Repayment record
+*/
 export class RepayRecord {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: number;
     /**
-     * Repayment record ID
-     */
+    * Repayment record ID
+    */
     'recordId'?: number;
     /**
-     * Repayment amount
-     */
+    * Repayment amount
+    */
     'repaidAmount'?: string;
     /**
-     * Borrowed currency
-     */
+    * Borrowed currency
+    */
     'borrowCurrency'?: string;
     /**
-     * Collateral
-     */
+    * Collateral
+    */
     'collateralCurrency'?: string;
     /**
-     * The initial collateralization rate
-     */
+    * The initial collateralization rate
+    */
     'initLtv'?: string;
     /**
-     * Borrowing time, timestamp
-     */
+    * Borrowing time, timestamp
+    */
     'borrowTime'?: number;
     /**
-     * Repayment time, timestamp
-     */
+    * Repayment time, timestamp
+    */
     'repayTime'?: number;
     /**
-     * Total interest
-     */
+    * Total interest
+    */
     'totalInterest'?: string;
     /**
-     * Principal to be repaid before repayment
-     */
+    * Principal to be repaid before repayment
+    */
     'beforeLeftPrincipal'?: string;
     /**
-     * Principal to be repaid after repayment
-     */
+    * Principal to be repaid after repayment
+    */
     'afterLeftPrincipal'?: string;
     /**
-     * Collateral quantity before repayment
-     */
+    * Collateral quantity before repayment
+    */
     'beforeLeftCollateral'?: string;
     /**
-     * Collateral quantity after repayment
-     */
+    * Collateral quantity after repayment
+    */
     'afterLeftCollateral'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'recordId',
-            baseName: 'record_id',
-            type: 'number',
+            "name": "recordId",
+            "baseName": "record_id",
+            "type": "number"
         },
         {
-            name: 'repaidAmount',
-            baseName: 'repaid_amount',
-            type: 'string',
+            "name": "repaidAmount",
+            "baseName": "repaid_amount",
+            "type": "string"
         },
         {
-            name: 'borrowCurrency',
-            baseName: 'borrow_currency',
-            type: 'string',
+            "name": "borrowCurrency",
+            "baseName": "borrow_currency",
+            "type": "string"
         },
         {
-            name: 'collateralCurrency',
-            baseName: 'collateral_currency',
-            type: 'string',
+            "name": "collateralCurrency",
+            "baseName": "collateral_currency",
+            "type": "string"
         },
         {
-            name: 'initLtv',
-            baseName: 'init_ltv',
-            type: 'string',
+            "name": "initLtv",
+            "baseName": "init_ltv",
+            "type": "string"
         },
         {
-            name: 'borrowTime',
-            baseName: 'borrow_time',
-            type: 'number',
+            "name": "borrowTime",
+            "baseName": "borrow_time",
+            "type": "number"
         },
         {
-            name: 'repayTime',
-            baseName: 'repay_time',
-            type: 'number',
+            "name": "repayTime",
+            "baseName": "repay_time",
+            "type": "number"
         },
         {
-            name: 'totalInterest',
-            baseName: 'total_interest',
-            type: 'string',
+            "name": "totalInterest",
+            "baseName": "total_interest",
+            "type": "string"
         },
         {
-            name: 'beforeLeftPrincipal',
-            baseName: 'before_left_principal',
-            type: 'string',
+            "name": "beforeLeftPrincipal",
+            "baseName": "before_left_principal",
+            "type": "string"
         },
         {
-            name: 'afterLeftPrincipal',
-            baseName: 'after_left_principal',
-            type: 'string',
+            "name": "afterLeftPrincipal",
+            "baseName": "after_left_principal",
+            "type": "string"
         },
         {
-            name: 'beforeLeftCollateral',
-            baseName: 'before_left_collateral',
-            type: 'string',
+            "name": "beforeLeftCollateral",
+            "baseName": "before_left_collateral",
+            "type": "string"
         },
         {
-            name: 'afterLeftCollateral',
-            baseName: 'after_left_collateral',
-            type: 'string',
-        },
-    ];
+            "name": "afterLeftCollateral",
+            "baseName": "after_left_collateral",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return RepayRecord.attributeTypeMap;
     }
 }
+

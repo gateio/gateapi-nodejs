@@ -9,59 +9,60 @@
  * Do not edit the class manually.
  */
 
+
 export class CollateralCurrencyRes {
     /**
-     * Update success status
-     */
+    * Update success status
+    */
     'succeeded'?: boolean;
     /**
-     * Error identifier for unsuccessful operations; empty for successful.
-     */
+    * Error identifier for unsuccessful operations; empty for successful.
+    */
     'label'?: string;
     /**
-     * Error description in case of operation failure; empty when successful.
-     */
+    * Error description in case of operation failure; empty when successful.
+    */
     'message'?: string;
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Quantity of successful collateral operation; 0 if the operation fails.
-     */
+    * Quantity of successful collateral operation; 0 if the operation fails.
+    */
     'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'succeeded',
-            baseName: 'succeeded',
-            type: 'boolean',
+            "name": "succeeded",
+            "baseName": "succeeded",
+            "type": "boolean"
         },
         {
-            name: 'label',
-            baseName: 'label',
-            type: 'string',
+            "name": "label",
+            "baseName": "label",
+            "type": "string"
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
+            "name": "message",
+            "baseName": "message",
+            "type": "string"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralCurrencyRes.attributeTypeMap;
     }
 }
+

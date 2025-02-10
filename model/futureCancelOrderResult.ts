@@ -9,53 +9,54 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Order cancellation result
- */
+* Order cancellation result
+*/
 export class FutureCancelOrderResult {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'id'?: string;
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * Whether cancellation succeeded
-     */
+    * Whether cancellation succeeded
+    */
     'succeeded'?: boolean;
     /**
-     * Error message when failed to cancel the order; empty if succeeded
-     */
+    * Error message when failed to cancel the order; empty if succeeded
+    */
     'message'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'succeeded',
-            baseName: 'succeeded',
-            type: 'boolean',
+            "name": "succeeded",
+            "baseName": "succeeded",
+            "type": "boolean"
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
-        },
-    ];
+            "name": "message",
+            "baseName": "message",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return FutureCancelOrderResult.attributeTypeMap;
     }
 }
+

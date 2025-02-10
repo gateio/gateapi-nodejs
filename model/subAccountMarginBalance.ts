@@ -13,30 +13,30 @@ import { MarginAccount } from './marginAccount';
 
 export class SubAccountMarginBalance {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'uid'?: string;
     /**
-     * Margin account balances
-     */
+    * Margin account balances
+    */
     'available'?: Array<MarginAccount>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'string',
+            "name": "uid",
+            "baseName": "uid",
+            "type": "string"
         },
         {
-            name: 'available',
-            baseName: 'available',
-            type: 'Array<MarginAccount>',
-        },
-    ];
+            "name": "available",
+            "baseName": "available",
+            "type": "Array<MarginAccount>"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubAccountMarginBalance.attributeTypeMap;
     }
 }
+

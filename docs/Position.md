@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **mode** | **string** | Position mode, including:  - &#x60;single&#x60;: dual mode is not enabled- &#x60;dual_long&#x60;: long position in dual mode- &#x60;dual_short&#x60;: short position in dual mode | [optional] [default to undefined]
 **crossLeverageLimit** | **string** | Cross margin leverage(valid only when &#x60;leverage&#x60; is 0) | [optional] [default to undefined]
 **updateTime** | **number** | Last update time | [optional] [readonly] [default to undefined]
-**updateId** | **number** | 更新id，仓位每更新一次，数值会+1 | [optional] [readonly] [default to undefined]
+**updateId** | **number** | Update id. Each time the position is updated, the value will be +1. | [optional] [readonly] [default to undefined]
 **openTime** | **number** | First Open Time | [optional] [default to undefined]
 
 ## Enum: Position.Mode

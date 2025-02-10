@@ -9,86 +9,87 @@
  * Do not edit the class manually.
  */
 
+
 export class CurrencyChain {
     /**
-     * Chain name
-     */
+    * Chain name
+    */
     'chain'?: string;
     /**
-     * Chain name in Chinese
-     */
+    * Chain name in Chinese
+    */
     'nameCn'?: string;
     /**
-     * Chain name in English
-     */
+    * Chain name in English
+    */
     'nameEn'?: string;
     /**
-     * Smart contract address for the currency; if no address is available, it will be an empty string
-     */
+    * Smart contract address for the currency; if no address is available, it will be an empty string
+    */
     'contractAddress'?: string;
     /**
-     * If it is disabled. 0 means NOT being disabled
-     */
+    * If it is disabled. 0 means NOT being disabled
+    */
     'isDisabled'?: number;
     /**
-     * Is deposit disabled. 0 means not
-     */
+    * Is deposit disabled. 0 means not
+    */
     'isDepositDisabled'?: number;
     /**
-     * Is withdrawal disabled. 0 means not
-     */
+    * Is withdrawal disabled. 0 means not
+    */
     'isWithdrawDisabled'?: number;
     /**
-     * Withdrawal precision
-     */
+    * Withdrawal precision
+    */
     'decimal'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'chain',
-            baseName: 'chain',
-            type: 'string',
+            "name": "chain",
+            "baseName": "chain",
+            "type": "string"
         },
         {
-            name: 'nameCn',
-            baseName: 'name_cn',
-            type: 'string',
+            "name": "nameCn",
+            "baseName": "name_cn",
+            "type": "string"
         },
         {
-            name: 'nameEn',
-            baseName: 'name_en',
-            type: 'string',
+            "name": "nameEn",
+            "baseName": "name_en",
+            "type": "string"
         },
         {
-            name: 'contractAddress',
-            baseName: 'contract_address',
-            type: 'string',
+            "name": "contractAddress",
+            "baseName": "contract_address",
+            "type": "string"
         },
         {
-            name: 'isDisabled',
-            baseName: 'is_disabled',
-            type: 'number',
+            "name": "isDisabled",
+            "baseName": "is_disabled",
+            "type": "number"
         },
         {
-            name: 'isDepositDisabled',
-            baseName: 'is_deposit_disabled',
-            type: 'number',
+            "name": "isDepositDisabled",
+            "baseName": "is_deposit_disabled",
+            "type": "number"
         },
         {
-            name: 'isWithdrawDisabled',
-            baseName: 'is_withdraw_disabled',
-            type: 'number',
+            "name": "isWithdrawDisabled",
+            "baseName": "is_withdraw_disabled",
+            "type": "number"
         },
         {
-            name: 'decimal',
-            baseName: 'decimal',
-            type: 'string',
-        },
-    ];
+            "name": "decimal",
+            "baseName": "decimal",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CurrencyChain.attributeTypeMap;
     }
 }
+

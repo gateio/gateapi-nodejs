@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class PatchUniLend {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * Minimum interest rate
-     */
+    * Minimum interest rate
+    */
     'minRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'minRate',
-            baseName: 'min_rate',
-            type: 'string',
-        },
-    ];
+            "name": "minRate",
+            "baseName": "min_rate",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return PatchUniLend.attributeTypeMap;
     }
 }
+

@@ -13,39 +13,39 @@ import { RiskUnits } from './riskUnits';
 
 export class UnifiedRiskUnits {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * 现货对冲状态, true - 启用，false - 未启用
-     */
+    * Spot hedging status, true - enabled, false - not enabled.
+    */
     'spotHedge'?: boolean;
     /**
-     * 风险单元
-     */
+    * Risk unit
+    */
     'riskUnits'?: Array<RiskUnits>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'spotHedge',
-            baseName: 'spot_hedge',
-            type: 'boolean',
+            "name": "spotHedge",
+            "baseName": "spot_hedge",
+            "type": "boolean"
         },
         {
-            name: 'riskUnits',
-            baseName: 'risk_units',
-            type: 'Array<RiskUnits>',
-        },
-    ];
+            "name": "riskUnits",
+            "baseName": "risk_units",
+            "type": "Array<RiskUnits>"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedRiskUnits.attributeTypeMap;
     }
 }
+

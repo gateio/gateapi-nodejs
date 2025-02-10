@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class SubAccountBalance {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'uid'?: string;
     /**
-     * Available balances of currencies
-     */
-    'available'?: { [key: string]: string };
+    * Available balances of currencies
+    */
+    'available'?: { [key: string]: string; };
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'uid',
-            baseName: 'uid',
-            type: 'string',
+            "name": "uid",
+            "baseName": "uid",
+            "type": "string"
         },
         {
-            name: 'available',
-            baseName: 'available',
-            type: '{ [key: string]: string; }',
-        },
-    ];
+            "name": "available",
+            "baseName": "available",
+            "type": "{ [key: string]: string; }"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubAccountBalance.attributeTypeMap;
     }
 }
+

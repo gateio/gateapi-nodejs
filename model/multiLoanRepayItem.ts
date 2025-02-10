@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class MultiLoanRepayItem {
     /**
-     * Repayment currency
-     */
+    * Repayment currency
+    */
     'currency'?: string;
     /**
-     * Size
-     */
+    * Size
+    */
     'amount'?: string;
     /**
-     * Repayment method, set to true for full repayment, false for partial repayment.
-     */
+    * Repayment method, set to true for full repayment, false for partial repayment.
+    */
     'repaidAll'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'repaidAll',
-            baseName: 'repaid_all',
-            type: 'boolean',
-        },
-    ];
+            "name": "repaidAll",
+            "baseName": "repaid_all",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiLoanRepayItem.attributeTypeMap;
     }
 }
+

@@ -9,59 +9,60 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedDiscountTiers {
     /**
-     * Tier
-     */
+    * Tier
+    */
     'tier'?: string;
     /**
-     * Discount
-     */
+    * Discount
+    */
     'discount'?: string;
     /**
-     * Lower limit
-     */
+    * Lower limit
+    */
     'lowerLimit'?: string;
     /**
-     * Upper limit,＋ indicates positive infinity
-     */
+    * Upper limit,＋ indicates positive infinity
+    */
     'upperLimit'?: string;
     /**
-     * Position leverage
-     */
+    * Position leverage
+    */
     'leverage'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'string',
+            "name": "tier",
+            "baseName": "tier",
+            "type": "string"
         },
         {
-            name: 'discount',
-            baseName: 'discount',
-            type: 'string',
+            "name": "discount",
+            "baseName": "discount",
+            "type": "string"
         },
         {
-            name: 'lowerLimit',
-            baseName: 'lower_limit',
-            type: 'string',
+            "name": "lowerLimit",
+            "baseName": "lower_limit",
+            "type": "string"
         },
         {
-            name: 'upperLimit',
-            baseName: 'upper_limit',
-            type: 'string',
+            "name": "upperLimit",
+            "baseName": "upper_limit",
+            "type": "string"
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-    ];
+            "name": "leverage",
+            "baseName": "leverage",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedDiscountTiers.attributeTypeMap;
     }
 }
+

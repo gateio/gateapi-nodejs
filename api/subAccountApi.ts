@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+
 /* tslint:disable:no-unused-locals */
 import { SubAccount } from '../model/subAccount';
 import { SubAccountKey } from '../model/subAccountKey';
@@ -33,17 +34,15 @@ export class SubAccountApi {
     }
 
     /**
-     *
+     * 
      * @summary List sub-accounts
      * @param opts Optional parameters
      * @param opts.type &#x60;0&#x60; to list all types of sub-accounts (currently supporting cross margin accounts and sub-accounts).  &#x60;1&#x60; to list sub-accounts only. If no parameter is passed, only sub-accounts will be listed by default.
      */
-    public async listSubAccounts(opts: {
-        type?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
+    public async listSubAccounts(opts: { type?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccount>; }> {
         const localVarPath = this.client.basePath + '/sub_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -54,8 +53,9 @@ export class SubAccountApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -65,18 +65,18 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccount>>(config, 'Array<SubAccount>', authSettings);
+        return this.client.request<Array<SubAccount>>(config, "Array<SubAccount>", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Create a new sub-account
-     * @param subAccount
+     * @param subAccount 
      */
-    public async createSubAccounts(subAccount: SubAccount): Promise<{ response: AxiosResponse; body: SubAccount }> {
+    public async createSubAccounts(subAccount: SubAccount) : Promise<{ response: AxiosResponse; body: SubAccount; }> {
         const localVarPath = this.client.basePath + '/sub_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -90,29 +90,29 @@ export class SubAccountApi {
             throw new Error('Required parameter subAccount was null or undefined when calling createSubAccounts.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(subAccount, 'SubAccount'),
+            data: ObjectSerializer.serialize(subAccount, "SubAccount")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SubAccount>(config, 'SubAccount', authSettings);
+        return this.client.request<SubAccount>(config, "SubAccount", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Get the sub-account
      * @param userId Sub-account user id
      */
-    public async getSubAccount(userId: number): Promise<{ response: AxiosResponse; body: SubAccount }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getSubAccount(userId: number) : Promise<{ response: AxiosResponse; body: SubAccount; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -126,6 +126,7 @@ export class SubAccountApi {
             throw new Error('Required parameter userId was null or undefined when calling getSubAccount.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -134,20 +135,19 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SubAccount>(config, 'SubAccount', authSettings);
+        return this.client.request<SubAccount>(config, "SubAccount", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary List all API Key of the sub-account
      * @param userId Sub-account user id
      */
-    public async listSubAccountKeys(userId: number): Promise<{ response: AxiosResponse; body: Array<SubAccountKey> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listSubAccountKeys(userId: number) : Promise<{ response: AxiosResponse; body: Array<SubAccountKey>; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/keys'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -161,6 +161,7 @@ export class SubAccountApi {
             throw new Error('Required parameter userId was null or undefined when calling listSubAccountKeys.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -169,24 +170,20 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountKey>>(config, 'Array<SubAccountKey>', authSettings);
+        return this.client.request<Array<SubAccountKey>>(config, "Array<SubAccountKey>", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Create API Key of the sub-account
      * @param userId Sub-account user id
-     * @param subAccountKey
+     * @param subAccountKey 
      */
-    public async createSubAccountKeys(
-        userId: number,
-        subAccountKey: SubAccountKey,
-    ): Promise<{ response: AxiosResponse; body: Array<SubAccountKey> }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async createSubAccountKeys(userId: number, subAccountKey: SubAccountKey) : Promise<{ response: AxiosResponse; body: Array<SubAccountKey>; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/keys'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -202,40 +199,34 @@ export class SubAccountApi {
 
         // verify required parameter 'subAccountKey' is not null or undefined
         if (subAccountKey === null || subAccountKey === undefined) {
-            throw new Error(
-                'Required parameter subAccountKey was null or undefined when calling createSubAccountKeys.',
-            );
+            throw new Error('Required parameter subAccountKey was null or undefined when calling createSubAccountKeys.');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(subAccountKey, 'SubAccountKey'),
+            data: ObjectSerializer.serialize(subAccountKey, "SubAccountKey")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountKey>>(config, 'Array<SubAccountKey>', authSettings);
+        return this.client.request<Array<SubAccountKey>>(config, "Array<SubAccountKey>", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Get the API Key of the sub-account
      * @param userId Sub-account user id
      * @param key The API Key of the sub-account
      */
-    public async getSubAccountKey(
-        userId: number,
-        key: string,
-    ): Promise<{ response: AxiosResponse; body: SubAccountKey }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/keys/{key}'
-                .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
-                .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getSubAccountKey(userId: number, key: string) : Promise<{ response: AxiosResponse; body: SubAccountKey; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/keys/{key}'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
+            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -254,6 +245,7 @@ export class SubAccountApi {
             throw new Error('Required parameter key was null or undefined when calling getSubAccountKey.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -262,28 +254,22 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SubAccountKey>(config, 'SubAccountKey', authSettings);
+        return this.client.request<SubAccountKey>(config, "SubAccountKey", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Update API key of the sub-account
      * @param userId Sub-account user id
      * @param key The API Key of the sub-account
-     * @param subAccountKey
+     * @param subAccountKey 
      */
-    public async updateSubAccountKeys(
-        userId: number,
-        key: string,
-        subAccountKey: SubAccountKey,
-    ): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/keys/{key}'
-                .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
-                .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateSubAccountKeys(userId: number, key: string, subAccountKey: SubAccountKey) : Promise<{ response: AxiosResponse; body?: any; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/keys/{key}'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
+            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -297,37 +283,34 @@ export class SubAccountApi {
 
         // verify required parameter 'subAccountKey' is not null or undefined
         if (subAccountKey === null || subAccountKey === undefined) {
-            throw new Error(
-                'Required parameter subAccountKey was null or undefined when calling updateSubAccountKeys.',
-            );
+            throw new Error('Required parameter subAccountKey was null or undefined when calling updateSubAccountKeys.');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'PUT',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(subAccountKey, 'SubAccountKey'),
+            data: ObjectSerializer.serialize(subAccountKey, "SubAccountKey")
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<any>(config, "", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Delete API key of the sub-account
      * @param userId Sub-account user id
      * @param key The API Key of the sub-account
      */
-    public async deleteSubAccountKeys(userId: number, key: string): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/keys/{key}'
-                .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
-                .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async deleteSubAccountKeys(userId: number, key: string) : Promise<{ response: AxiosResponse; body?: any; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/keys/{key}'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
+            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -339,6 +322,7 @@ export class SubAccountApi {
             throw new Error('Required parameter key was null or undefined when calling deleteSubAccountKeys.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -347,26 +331,26 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<any>(config, "", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Lock the sub-account
      * @param userId The user id of the sub-account
      */
-    public async lockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/lock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async lockSubAccount(userId: number) : Promise<{ response: AxiosResponse; body?: any; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/lock'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
             throw new Error('Required parameter userId was null or undefined when calling lockSubAccount.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -375,26 +359,26 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<any>(config, "", authSettings);
     }
 
     /**
-     *
+     * 
      * @summary Unlock the sub-account
      * @param userId The user id of the sub-account
      */
-    public async unlockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath =
-            this.client.basePath +
-            '/sub_accounts/{user_id}/unlock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async unlockSubAccount(userId: number) : Promise<{ response: AxiosResponse; body?: any; }> {
+        const localVarPath = this.client.basePath + '/sub_accounts/{user_id}/unlock'
+            .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
             throw new Error('Required parameter userId was null or undefined when calling unlockSubAccount.');
         }
 
+
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
@@ -403,17 +387,17 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<any>(config, "", authSettings);
     }
 
     /**
-     * 统一账户模式： - `classic`: 经典账户模式 - `multi_currency`: 跨币种保证金模式 - `portfolio`: 组合保证金模式
-     * @summary 获取子帐号模式
+     * Unified account mode： - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
+     * @summary Get sub-account mode
      */
-    public async listUnifiedMode(): Promise<{ response: AxiosResponse; body: Array<SubUserMode> }> {
+    public async listUnifiedMode() : Promise<{ response: AxiosResponse; body: Array<SubUserMode>; }> {
         const localVarPath = this.client.basePath + '/sub_accounts/unified_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -421,6 +405,7 @@ export class SubAccountApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
+
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -430,6 +415,6 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubUserMode>>(config, 'Array<SubUserMode>', authSettings);
+        return this.client.request<Array<SubUserMode>>(config, "Array<SubUserMode>", authSettings);
     }
 }

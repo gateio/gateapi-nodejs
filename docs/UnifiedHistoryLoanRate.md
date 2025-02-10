@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **string** | Currency name | [optional] [default to undefined]
-**tier** | **string** | 需要获取的上浮费率的vip等级 | [optional] [default to undefined]
-**tierUpRate** | **string** | vip等级对应的上浮费率 | [optional] [default to undefined]
-**rates** | [**Array&lt;UnifiedHistoryLoanRateRates&gt;**](UnifiedHistoryLoanRateRates.md) | 历史利率信息，每个整点小时一个数据，数组大小根据接口请求参数提供的page和limit参数确定，按照时间从近到远排序 | [optional] [default to undefined]
+**tier** | **string** | The VIP level of the floating rate required | [optional] [default to undefined]
+**tierUpRate** | **string** | VIP level corresponding floating rate | [optional] [default to undefined]
+**rates** | [**Array&lt;UnifiedHistoryLoanRateRates&gt;**](UnifiedHistoryLoanRateRates.md) | Historical interest rate information, one data per hour, the array size is determined by the page and limit parameters provided by the interface request parameters, sorted from recent to far in time | [optional] [default to undefined]
 

@@ -9,107 +9,108 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Loan record
- */
+* Loan record
+*/
 export class UniLend {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Current amount
-     */
+    * Current amount
+    */
     'currentAmount'?: string;
     /**
-     * Total amount
-     */
+    * Total amount
+    */
     'amount'?: string;
     /**
-     * Lent amount
-     */
+    * Lent amount
+    */
     'lentAmount'?: string;
     /**
-     * Frozen amount
-     */
+    * Frozen amount
+    */
     'frozenAmount'?: string;
     /**
-     * Minimum interest rate
-     */
+    * Minimum interest rate
+    */
     'minRate'?: string;
     /**
-     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
-     */
+    * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
+    */
     'interestStatus'?: string;
     /**
-     * Amount not reinvested
-     */
+    * Amount not reinvested
+    */
     'reinvestLeftAmount'?: string;
     /**
-     * Created time of the lending order
-     */
+    * Created time of the lending order
+    */
     'createTime'?: number;
     /**
-     * Upated time of the lending order
-     */
+    * Upated time of the lending order
+    */
     'updateTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'currentAmount',
-            baseName: 'current_amount',
-            type: 'string',
+            "name": "currentAmount",
+            "baseName": "current_amount",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'lentAmount',
-            baseName: 'lent_amount',
-            type: 'string',
+            "name": "lentAmount",
+            "baseName": "lent_amount",
+            "type": "string"
         },
         {
-            name: 'frozenAmount',
-            baseName: 'frozen_amount',
-            type: 'string',
+            "name": "frozenAmount",
+            "baseName": "frozen_amount",
+            "type": "string"
         },
         {
-            name: 'minRate',
-            baseName: 'min_rate',
-            type: 'string',
+            "name": "minRate",
+            "baseName": "min_rate",
+            "type": "string"
         },
         {
-            name: 'interestStatus',
-            baseName: 'interest_status',
-            type: 'string',
+            "name": "interestStatus",
+            "baseName": "interest_status",
+            "type": "string"
         },
         {
-            name: 'reinvestLeftAmount',
-            baseName: 'reinvest_left_amount',
-            type: 'string',
+            "name": "reinvestLeftAmount",
+            "baseName": "reinvest_left_amount",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
         },
         {
-            name: 'updateTime',
-            baseName: 'update_time',
-            type: 'number',
-        },
-    ];
+            "name": "updateTime",
+            "baseName": "update_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniLend.attributeTypeMap;
     }
 }
+

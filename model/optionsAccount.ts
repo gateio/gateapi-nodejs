@@ -9,183 +9,183 @@
  * Do not edit the class manually.
  */
 
+
 export class OptionsAccount {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'user'?: number;
     /**
-     * 账户余额
-     */
+    * Account balance
+    */
     'total'?: string;
     /**
-     * 仓位价值，做多仓位价值为正，做空仓位价值为负
-     */
+    * Position value, long position value is positive, short position value is negative
+    */
     'positionValue'?: string;
     /**
-     * 账户权益，账户余额与仓位价值的和
-     */
+    * Account equity, the sum of account balance and position value
+    */
     'equity'?: string;
     /**
-     * If the account is allowed to short
-     */
+    * If the account is allowed to short
+    */
     'shortEnabled'?: boolean;
     /**
-     * 是否启用MMP
-     */
+    * Whether to enable MMP
+    */
     'mmpEnabled'?: boolean;
     /**
-     * 是否触发仓位强平
-     */
+    * Whether to trigger position liquidation
+    */
     'liqTriggered'?: boolean;
     /**
-     * ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
-     */
+    * ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
+    */
     'marginMode'?: OptionsAccount.MarginMode;
     /**
-     * Unrealized PNL
-     */
+    * Unrealized PNL
+    */
     'unrealisedPnl'?: string;
     /**
-     * Initial position margin
-     */
+    * Initial position margin
+    */
     'initMargin'?: string;
     /**
-     * Position maintenance margin
-     */
+    * Position maintenance margin
+    */
     'maintMargin'?: string;
     /**
-     * Order margin of unfinished orders
-     */
+    * Order margin of unfinished orders
+    */
     'orderMargin'?: string;
     /**
-     * 未完成卖单的保证金
-     */
+    * Margin for outstanding sell orders
+    */
     'askOrderMargin'?: string;
     /**
-     * 未完成买单的保证金
-     */
+    * Margin for outstanding buy orders
+    */
     'bidOrderMargin'?: string;
     /**
-     * Available balance to transfer out or trade
-     */
+    * Available balance to transfer out or trade
+    */
     'available'?: string;
     /**
-     * POINT amount
-     */
+    * POINT amount
+    */
     'point'?: string;
     /**
-     * Settle currency
-     */
+    * Settle currency
+    */
     'currency'?: string;
     /**
-     * 未完成订单数量上限
-     */
+    * Maximum number of outstanding orders
+    */
     'ordersLimit'?: number;
     /**
-     * 名义价值上限，包含仓位以及未完成订单的名义价值
-     */
+    * Notional value upper limit, including the nominal value of positions and outstanding orders
+    */
     'positionNotionalLimit'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'user',
-            baseName: 'user',
-            type: 'number',
+            "name": "user",
+            "baseName": "user",
+            "type": "number"
         },
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'string',
+            "name": "total",
+            "baseName": "total",
+            "type": "string"
         },
         {
-            name: 'positionValue',
-            baseName: 'position_value',
-            type: 'string',
+            "name": "positionValue",
+            "baseName": "position_value",
+            "type": "string"
         },
         {
-            name: 'equity',
-            baseName: 'equity',
-            type: 'string',
+            "name": "equity",
+            "baseName": "equity",
+            "type": "string"
         },
         {
-            name: 'shortEnabled',
-            baseName: 'short_enabled',
-            type: 'boolean',
+            "name": "shortEnabled",
+            "baseName": "short_enabled",
+            "type": "boolean"
         },
         {
-            name: 'mmpEnabled',
-            baseName: 'mmp_enabled',
-            type: 'boolean',
+            "name": "mmpEnabled",
+            "baseName": "mmp_enabled",
+            "type": "boolean"
         },
         {
-            name: 'liqTriggered',
-            baseName: 'liq_triggered',
-            type: 'boolean',
+            "name": "liqTriggered",
+            "baseName": "liq_triggered",
+            "type": "boolean"
         },
         {
-            name: 'marginMode',
-            baseName: 'margin_mode',
-            type: 'OptionsAccount.MarginMode',
+            "name": "marginMode",
+            "baseName": "margin_mode",
+            "type": "OptionsAccount.MarginMode"
         },
         {
-            name: 'unrealisedPnl',
-            baseName: 'unrealised_pnl',
-            type: 'string',
+            "name": "unrealisedPnl",
+            "baseName": "unrealised_pnl",
+            "type": "string"
         },
         {
-            name: 'initMargin',
-            baseName: 'init_margin',
-            type: 'string',
+            "name": "initMargin",
+            "baseName": "init_margin",
+            "type": "string"
         },
         {
-            name: 'maintMargin',
-            baseName: 'maint_margin',
-            type: 'string',
+            "name": "maintMargin",
+            "baseName": "maint_margin",
+            "type": "string"
         },
         {
-            name: 'orderMargin',
-            baseName: 'order_margin',
-            type: 'string',
+            "name": "orderMargin",
+            "baseName": "order_margin",
+            "type": "string"
         },
         {
-            name: 'askOrderMargin',
-            baseName: 'ask_order_margin',
-            type: 'string',
+            "name": "askOrderMargin",
+            "baseName": "ask_order_margin",
+            "type": "string"
         },
         {
-            name: 'bidOrderMargin',
-            baseName: 'bid_order_margin',
-            type: 'string',
+            "name": "bidOrderMargin",
+            "baseName": "bid_order_margin",
+            "type": "string"
         },
         {
-            name: 'available',
-            baseName: 'available',
-            type: 'string',
+            "name": "available",
+            "baseName": "available",
+            "type": "string"
         },
         {
-            name: 'point',
-            baseName: 'point',
-            type: 'string',
+            "name": "point",
+            "baseName": "point",
+            "type": "string"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'ordersLimit',
-            baseName: 'orders_limit',
-            type: 'number',
+            "name": "ordersLimit",
+            "baseName": "orders_limit",
+            "type": "number"
         },
         {
-            name: 'positionNotionalLimit',
-            baseName: 'position_notional_limit',
-            type: 'number',
-        },
-    ];
+            "name": "positionNotionalLimit",
+            "baseName": "position_notional_limit",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return OptionsAccount.attributeTypeMap;
@@ -194,8 +194,8 @@ export class OptionsAccount {
 
 export namespace OptionsAccount {
     export enum MarginMode {
-        NUMBER_0 = <any>0,
-        NUMBER_1 = <any>1,
-        NUMBER_2 = <any>2,
+        NUMBER_0 = <any> 0,
+        NUMBER_1 = <any> 1,
+        NUMBER_2 = <any> 2
     }
 }

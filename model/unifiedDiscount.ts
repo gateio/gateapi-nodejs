@@ -12,34 +12,34 @@
 import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
 
 /**
- * Currency discount tiers
- */
+* Currency discount tiers
+*/
 export class UnifiedDiscount {
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * Tiered discount
-     */
+    * Tiered discount
+    */
     'discountTiers'?: Array<UnifiedDiscountTiers>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'discountTiers',
-            baseName: 'discount_tiers',
-            type: 'Array<UnifiedDiscountTiers>',
-        },
-    ];
+            "name": "discountTiers",
+            "baseName": "discount_tiers",
+            "type": "Array<UnifiedDiscountTiers>"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedDiscount.attributeTypeMap;
     }
 }
+

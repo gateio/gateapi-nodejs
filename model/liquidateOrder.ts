@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Liquidate Order detail
- */
+* Liquidate Order detail
+*/
 export class LiquidateOrder {
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
-     */
+    * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) 
+    */
     'text'?: string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair': string;
     /**
-     * Trade amount
-     */
+    * Trade amount
+    */
     'amount': string;
     /**
-     * Order price
-     */
+    * Order price
+    */
     'price': string;
     /**
-     * Processing Mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request, and it is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-     */
+    * Processing Mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request, and it is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+    */
     'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'actionMode',
-            baseName: 'action_mode',
-            type: 'string',
-        },
-    ];
+            "name": "actionMode",
+            "baseName": "action_mode",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return LiquidateOrder.attributeTypeMap;
     }
 }
+

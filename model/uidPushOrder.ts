@@ -9,95 +9,96 @@
  * Do not edit the class manually.
  */
 
+
 export class UidPushOrder {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'id'?: number;
     /**
-     * 发起方用户ID
-     */
+    * Initiator User ID
+    */
     'pushUid'?: number;
     /**
-     * 接收方用户ID
-     */
+    * Recipient User ID
+    */
     'receiveUid'?: number;
     /**
-     * Currency name
-     */
+    * Currency name
+    */
     'currency'?: string;
     /**
-     * 转账数量
-     */
+    * Transfer amount
+    */
     'amount'?: string;
     /**
-     * Creation time
-     */
+    * Creation time
+    */
     'createTime'?: number;
     /**
-     * 提现状态:  - CREATING: 创建中 - PENDING: 等待接收 (请联系对方在 Gate 官网接受转帐) - CANCELLING: 撤销中 - CANCELLED: 已撤销 - REFUSING: 拒绝中 - REFUSED: 已拒绝 - RECEIVING: 正在接收 - RECEIVED: 成功
-     */
+    * Withdrawal Status  - CREATING: Creating - PENDING: Waiting for receiving(Please contact the other party to accept the transfer on the Gate official website) - CANCELLING: Cancelling - CANCELLED: Revoked - REFUSING: Rejection - REFUSED: Rejected - RECEIVING: Receiving - RECEIVED: Success
+    */
     'status'?: string;
     /**
-     * PENDING原因提示
-     */
+    * PENDING Reason Tips
+    */
     'message'?: string;
     /**
-     * 订单类型
-     */
+    * Order Type
+    */
     'transactionType'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'pushUid',
-            baseName: 'push_uid',
-            type: 'number',
+            "name": "pushUid",
+            "baseName": "push_uid",
+            "type": "number"
         },
         {
-            name: 'receiveUid',
-            baseName: 'receive_uid',
-            type: 'number',
+            "name": "receiveUid",
+            "baseName": "receive_uid",
+            "type": "number"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
+            "name": "message",
+            "baseName": "message",
+            "type": "string"
         },
         {
-            name: 'transactionType',
-            baseName: 'transaction_type',
-            type: 'string',
-        },
-    ];
+            "name": "transactionType",
+            "baseName": "transaction_type",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UidPushOrder.attributeTypeMap;
     }
 }
+

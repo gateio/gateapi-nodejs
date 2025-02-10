@@ -9,44 +9,45 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 合约订单
- */
+* Futures order
+*/
 export class MockFuturesOrder {
     /**
-     * 合约名，目前仅支持BTC、ETH的USDT永续合约
-     */
+    * Futures name, currently only supports perpetual futures for BTC and ETH with USDT.
+    */
     'contract': string;
     /**
-     * 合约张数，为初始挂单数量，不参与实际结算
-     */
+    * Futures quantity, representing the initial order quantity, not involved in actual settlement.
+    */
     'size': string;
     /**
-     * 未成交张数，参与实际计算
-     */
+    * Unfilled contract quantity, involved in actual calculation
+    */
     'left': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'string',
+            "name": "size",
+            "baseName": "size",
+            "type": "string"
         },
         {
-            name: 'left',
-            baseName: 'left',
-            type: 'string',
-        },
-    ];
+            "name": "left",
+            "baseName": "left",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockFuturesOrder.attributeTypeMap;
     }
 }
+

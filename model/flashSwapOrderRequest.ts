@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Parameters of flash swap order creation
- */
+* Parameters of flash swap order creation
+*/
 export class FlashSwapOrderRequest {
     /**
-     * Preview result ID
-     */
+    * Preview result ID
+    */
     'previewId': string;
     /**
-     * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs.
-     */
+    * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs.
+    */
     'sellCurrency': string;
     /**
-     * Amount to sell (based on the preview result)
-     */
+    * Amount to sell (based on the preview result)
+    */
     'sellAmount': string;
     /**
-     * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs.
-     */
+    * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs.
+    */
     'buyCurrency': string;
     /**
-     * Amount to buy (based on the preview result)
-     */
+    * Amount to buy (based on the preview result)
+    */
     'buyAmount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'previewId',
-            baseName: 'preview_id',
-            type: 'string',
+            "name": "previewId",
+            "baseName": "preview_id",
+            "type": "string"
         },
         {
-            name: 'sellCurrency',
-            baseName: 'sell_currency',
-            type: 'string',
+            "name": "sellCurrency",
+            "baseName": "sell_currency",
+            "type": "string"
         },
         {
-            name: 'sellAmount',
-            baseName: 'sell_amount',
-            type: 'string',
+            "name": "sellAmount",
+            "baseName": "sell_amount",
+            "type": "string"
         },
         {
-            name: 'buyCurrency',
-            baseName: 'buy_currency',
-            type: 'string',
+            "name": "buyCurrency",
+            "baseName": "buy_currency",
+            "type": "string"
         },
         {
-            name: 'buyAmount',
-            baseName: 'buy_amount',
-            type: 'string',
-        },
-    ];
+            "name": "buyAmount",
+            "baseName": "buy_amount",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return FlashSwapOrderRequest.attributeTypeMap;
     }
 }
+

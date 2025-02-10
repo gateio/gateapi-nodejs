@@ -9,59 +9,60 @@
  * Do not edit the class manually.
  */
 
+
 export class MarginTiers {
     /**
-     * Tier
-     */
+    * Tier
+    */
     'tier'?: string;
     /**
-     * Discount
-     */
+    * Discount
+    */
     'marginRate'?: string;
     /**
-     * Lower limit
-     */
+    * Lower limit
+    */
     'lowerLimit'?: string;
     /**
-     * 上限, \"\"表示大于(最后一个档位)
-     */
+    * Upper limit, \"\" indicates greater than (the last tier)
+    */
     'upperLimit'?: string;
     /**
-     * Position leverage
-     */
+    * Position leverage
+    */
     'leverage'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'tier',
-            baseName: 'tier',
-            type: 'string',
+            "name": "tier",
+            "baseName": "tier",
+            "type": "string"
         },
         {
-            name: 'marginRate',
-            baseName: 'margin_rate',
-            type: 'string',
+            "name": "marginRate",
+            "baseName": "margin_rate",
+            "type": "string"
         },
         {
-            name: 'lowerLimit',
-            baseName: 'lower_limit',
-            type: 'string',
+            "name": "lowerLimit",
+            "baseName": "lower_limit",
+            "type": "string"
         },
         {
-            name: 'upperLimit',
-            baseName: 'upper_limit',
-            type: 'string',
+            "name": "upperLimit",
+            "baseName": "upper_limit",
+            "type": "string"
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
-        },
-    ];
+            "name": "leverage",
+            "baseName": "leverage",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MarginTiers.attributeTypeMap;
     }
 }
+

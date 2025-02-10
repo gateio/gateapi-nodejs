@@ -9,80 +9,81 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Order cancellation result
- */
+* Order cancellation result
+*/
 export class CancelOrderResult {
     /**
-     * Order currency pair
-     */
+    * Order currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'id'?: string;
     /**
-     * 订单自定义信息
-     */
+    * Custom order information
+    */
     'text'?: string;
     /**
-     * Whether cancellation succeeded
-     */
+    * Whether cancellation succeeded
+    */
     'succeeded'?: boolean;
     /**
-     * Error label when failed to cancel the order; emtpy if succeeded
-     */
+    * Error label when failed to cancel the order; emtpy if succeeded
+    */
     'label'?: string;
     /**
-     * Error message when failed to cancel the order; empty if succeeded
-     */
+    * Error message when failed to cancel the order; empty if succeeded
+    */
     'message'?: string;
     /**
-     * Empty by default. If cancelled order is cross margin order, this field is set to `cross_margin`
-     */
+    * Empty by default. If cancelled order is cross margin order, this field is set to `cross_margin`
+    */
     'account'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'string',
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            name: 'text',
-            baseName: 'text',
-            type: 'string',
+            "name": "text",
+            "baseName": "text",
+            "type": "string"
         },
         {
-            name: 'succeeded',
-            baseName: 'succeeded',
-            type: 'boolean',
+            "name": "succeeded",
+            "baseName": "succeeded",
+            "type": "boolean"
         },
         {
-            name: 'label',
-            baseName: 'label',
-            type: 'string',
+            "name": "label",
+            "baseName": "label",
+            "type": "string"
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
+            "name": "message",
+            "baseName": "message",
+            "type": "string"
         },
         {
-            name: 'account',
-            baseName: 'account',
-            type: 'string',
-        },
-    ];
+            "name": "account",
+            "baseName": "account",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CancelOrderResult.attributeTypeMap;
     }
 }
+

@@ -9,62 +9,63 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Loan records
- */
+* Loan records
+*/
 export class UniLoanRecord {
     /**
-     * type: borrow - borrow, repay - repay
-     */
+    * type: borrow - borrow, repay - repay
+    */
     'type'?: string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * The amount of lending or repaying
-     */
+    * The amount of lending or repaying
+    */
     'amount'?: string;
     /**
-     * Created time
-     */
+    * Created time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'string',
+            "name": "type",
+            "baseName": "type",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return UniLoanRecord.attributeTypeMap;
     }
 }
+

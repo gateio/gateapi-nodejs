@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class StpGroup {
     /**
-     * STP Group ID
-     */
+    * STP Group ID
+    */
     'id'?: number;
     /**
-     * STP Group name
-     */
+    * STP Group name
+    */
     'name': string;
     /**
-     * Creator ID
-     */
+    * Creator ID
+    */
     'creatorId'?: number;
     /**
-     * Creation time
-     */
+    * Creation time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
         },
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         },
         {
-            name: 'creatorId',
-            baseName: 'creator_id',
-            type: 'number',
+            "name": "creatorId",
+            "baseName": "creator_id",
+            "type": "number"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return StpGroup.attributeTypeMap;
     }
 }
+

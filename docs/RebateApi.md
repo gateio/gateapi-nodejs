@@ -6,13 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**agencyTransactionHistory**](RebateApi.md#agencyTransactionHistory) | **GET** /rebate/agency/transaction_history | The agency obtains the transaction history of the recommended user
 [**agencyCommissionsHistory**](RebateApi.md#agencyCommissionsHistory) | **GET** /rebate/agency/commission_history | The agency obtains the commission history of the recommended user
-[**partnerTransactionHistory**](RebateApi.md#partnerTransactionHistory) | **GET** /rebate/partner/transaction_history | 合伙人获取推荐用户的交易记录
-[**partnerCommissionsHistory**](RebateApi.md#partnerCommissionsHistory) | **GET** /rebate/partner/commission_history | 合伙人获取推荐用户的返佣记录
-[**partnerSubList**](RebateApi.md#partnerSubList) | **GET** /rebate/partner/sub_list | 合伙人下级列表
+[**partnerTransactionHistory**](RebateApi.md#partnerTransactionHistory) | **GET** /rebate/partner/transaction_history | Partner obtains transaction records of recommended users
+[**partnerCommissionsHistory**](RebateApi.md#partnerCommissionsHistory) | **GET** /rebate/partner/commission_history | Partner obtains commission records of recommended users
+[**partnerSubList**](RebateApi.md#partnerSubList) | **GET** /rebate/partner/sub_list | Partner subordinate list
 [**rebateBrokerCommissionHistory**](RebateApi.md#rebateBrokerCommissionHistory) | **GET** /rebate/broker/commission_history | The broker obtains the user\&#39;s commission rebate records
 [**rebateBrokerTransactionHistory**](RebateApi.md#rebateBrokerTransactionHistory) | **GET** /rebate/broker/transaction_history | The broker obtains the user\&#39;s trading history
-[**rebateUserInfo**](RebateApi.md#rebateUserInfo) | **GET** /rebate/user/info | 用户获取返佣信息
-[**userSubRelation**](RebateApi.md#userSubRelation) | **GET** /rebate/user/sub_relation | 用户下级关系
+[**rebateUserInfo**](RebateApi.md#rebateUserInfo) | **GET** /rebate/user/info | User retrieves rebate information
+[**userSubRelation**](RebateApi.md#userSubRelation) | **GET** /rebate/user/sub_relation | User-subordinate relationship
 
 
 ## agencyTransactionHistory
@@ -133,7 +133,7 @@ Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory>; }> [Age
 
 > Promise<{ response: http.IncomingMessage; body: PartnerTransactionHistory; }> partnerTransactionHistory(opts)
 
-合伙人获取推荐用户的交易记录
+Partner obtains transaction records of recommended users
 
 Record time range cannot exceed 30 days
 
@@ -190,7 +190,7 @@ Promise<{ response: AxiosResponse; body: PartnerTransactionHistory; }> [PartnerT
 
 > Promise<{ response: http.IncomingMessage; body: PartnerCommissionHistory; }> partnerCommissionsHistory(opts)
 
-合伙人获取推荐用户的返佣记录
+Partner obtains commission records of recommended users
 
 Record time range cannot exceed 30 days
 
@@ -247,9 +247,9 @@ Promise<{ response: AxiosResponse; body: PartnerCommissionHistory; }> [PartnerCo
 
 > Promise<{ response: http.IncomingMessage; body: PartnerSubList; }> partnerSubList(opts)
 
-合伙人下级列表
+Partner subordinate list
 
-包含下级代理、直接直客、间接直客
+Including sub-agents, direct customers, indirect customers
 
 ### Example
 
@@ -317,7 +317,7 @@ const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1711929600, // number | 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天
+  'from': 1711929600, // number | The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
   'to': 1714521600 // number | Time range ending, default to current time
 };
 api.rebateBrokerCommissionHistory(opts)
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天 | [optional] [default to undefined]
+ **from** | **number**| The start time of the query record. If not specified, the default is to push forward 30 days from the current time. | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
 
 ### Return type
@@ -372,7 +372,7 @@ const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'userId': 10003, // number | User ID. If not specified, all user records will be returned
-  'from': 1711929600, // number | 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天
+  'from': 1711929600, // number | The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
   'to': 1714521600 // number | Time range ending, default to current time
 };
 api.rebateBrokerTransactionHistory(opts)
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **userId** | **number**| User ID. If not specified, all user records will be returned | [optional] [default to undefined]
- **from** | **number**| 查询记录的起始时间，不指定则默认从当前时间开始向前推 30 天 | [optional] [default to undefined]
+ **from** | **number**| The start time of the query record. If not specified, the default is to push forward 30 days from the current time. | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
 
 ### Return type
@@ -408,7 +408,7 @@ Promise<{ response: AxiosResponse; body: Array<BrokerTransaction>; }> [BrokerTra
 
 > Promise<{ response: http.IncomingMessage; body: Array<RebateUserInfo>; }> rebateUserInfo()
 
-用户获取返佣信息
+User retrieves rebate information
 
 ### Example
 
@@ -447,9 +447,9 @@ Promise<{ response: AxiosResponse; body: Array<RebateUserInfo>; }> [RebateUserIn
 
 > Promise<{ response: http.IncomingMessage; body: UserSubRelation; }> userSubRelation(userIdList)
 
-用户下级关系
+User-subordinate relationship
 
-查询指定用户是否在体系内
+Query whether the specified user is in the system
 
 ### Example
 
@@ -462,7 +462,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.RebateApi(client);
-const userIdList = "1, 2, 3"; // string | 查询用户的ID列表，以,分割，超过100个则取100个
+const userIdList = "1, 2, 3"; // string | Query the user\'s ID list, split by,, if there are more than 100, take 100
 api.userSubRelation(userIdList)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -473,7 +473,7 @@ api.userSubRelation(userIdList)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userIdList** | **string**| 查询用户的ID列表，以,分割，超过100个则取100个 | [default to undefined]
+ **userIdList** | **string**| Query the user\&#39;s ID list, split by,, if there are more than 100, take 100 | [default to undefined]
 
 ### Return type
 

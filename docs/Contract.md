@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **tradeSize** | **number** | Historical accumulated trade size | [optional] [default to undefined]
 **positionSize** | **number** | Current total long position size | [optional] [default to undefined]
 **configChangeTime** | **number** | Last changed time of configuration | [optional] [default to undefined]
-**inDelisting** | **boolean** | &#x60;in_delisting&#x3D;true&#x60; 并且position_size&gt;0时候 表示该合约处于下线过渡期 &#x60;in_delisting&#x3D;true&#x60;&#x60; 并且position_size&#x3D;0时候 表示该合约处于下线状态 | [optional] [default to undefined]
+**inDelisting** | **boolean** | &#x60;in_delisting&#x3D;true&#x60; And when position_size&gt;0, it means the contract is in the offline transition period &#x60;in_delisting&#x3D;true&#x60; And when position_size&#x3D;0, it means the contract is offline | [optional] [default to undefined]
 **ordersLimit** | **number** | Maximum number of open orders | [optional] [default to undefined]
 **enableBonus** | **boolean** | Whether bouns is enabled | [optional] [default to undefined]
 **enableCredit** | **boolean** | Whether portfolio margin account is enabled | [optional] [default to undefined]

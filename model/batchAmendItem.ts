@@ -9,80 +9,81 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Order information that needs to be modified
- */
+* Order information that needs to be modified
+*/
 export class BatchAmendItem {
     /**
-     * The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the \'text\' field).
-     */
+    * The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the \'text\' field).
+    */
     'orderId': string;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair': string;
     /**
-     * Default to spot, portfolio, and margin accounts if not specified. Use \'cross_margin\' to query cross margin accounts. Only \'cross_margin\' can be specified for portfolio margin accounts.
-     */
+    * Default to spot, portfolio, and margin accounts if not specified. Use \'cross_margin\' to query cross margin accounts. Only \'cross_margin\' can be specified for portfolio margin accounts.
+    */
     'account'?: string;
     /**
-     * trade amount, only one of amount and price can be specified
-     */
+    * trade amount, only one of amount and price can be specified
+    */
     'amount'?: string;
     /**
-     * trade price, only one of amount and price can be specified
-     */
+    * trade price, only one of amount and price can be specified
+    */
     'price'?: string;
     /**
-     * Custom info during amending order
-     */
+    * Custom info during amending order
+    */
     'amendText'?: string;
     /**
-     * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-     */
+    * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+    */
     'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "string"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'account',
-            baseName: 'account',
-            type: 'string',
+            "name": "account",
+            "baseName": "account",
+            "type": "string"
         },
         {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
+            "name": "amount",
+            "baseName": "amount",
+            "type": "string"
         },
         {
-            name: 'price',
-            baseName: 'price',
-            type: 'string',
+            "name": "price",
+            "baseName": "price",
+            "type": "string"
         },
         {
-            name: 'amendText',
-            baseName: 'amend_text',
-            type: 'string',
+            "name": "amendText",
+            "baseName": "amend_text",
+            "type": "string"
         },
         {
-            name: 'actionMode',
-            baseName: 'action_mode',
-            type: 'string',
-        },
-    ];
+            "name": "actionMode",
+            "baseName": "action_mode",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return BatchAmendItem.attributeTypeMap;
     }
 }
+

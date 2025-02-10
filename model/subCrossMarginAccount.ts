@@ -13,153 +13,153 @@ import { CrossMarginBalance1 } from './crossMarginBalance1';
 
 export class SubCrossMarginAccount {
     /**
-     * User ID of the cross margin account. 0 means that the subaccount has not yet opened a cross margin account
-     */
+    * User ID of the cross margin account. 0 means that the subaccount has not yet opened a cross margin account
+    */
     'userId'?: number;
     /**
-     * Whether account is locked
-     */
+    * Whether account is locked
+    */
     'locked'?: boolean;
-    'balances'?: { [key: string]: CrossMarginBalance1 };
+    'balances'?: { [key: string]: CrossMarginBalance1; };
     /**
-     * Total account value in USDT, i.e., the sum of all currencies\' `(available+freeze)*price*discount`
-     */
+    * Total account value in USDT, i.e., the sum of all currencies\' `(available+freeze)*price*discount`
+    */
     'total'?: string;
     /**
-     * Total borrowed value in USDT, i.e., the sum of all currencies\' `borrowed*price*discount`
-     */
+    * Total borrowed value in USDT, i.e., the sum of all currencies\' `borrowed*price*discount`
+    */
     'borrowed'?: string;
     /**
-     * Total borrowed value in USDT * borrowed factor
-     */
+    * Total borrowed value in USDT * borrowed factor
+    */
     'borrowedNet'?: string;
     /**
-     * Total net assets in USDT
-     */
+    * Total net assets in USDT
+    */
     'net'?: string;
     /**
-     * Position leverage
-     */
+    * Position leverage
+    */
     'leverage'?: string;
     /**
-     * Total unpaid interests in USDT, i.e., the sum of all currencies\' `interest*price*discount`
-     */
+    * Total unpaid interests in USDT, i.e., the sum of all currencies\' `interest*price*discount`
+    */
     'interest'?: string;
     /**
-     * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
-     */
+    * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
+    */
     'risk'?: string;
     /**
-     * Total initial margin
-     */
+    * Total initial margin
+    */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance
-     */
+    * Total margin balance
+    */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin
-     */
+    * Total maintenance margin
+    */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate
-     */
+    * Total initial margin rate
+    */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate
-     */
+    * Total maintenance margin rate
+    */
     'totalMaintenanceMarginRate'?: string;
     /**
-     * Total available margin
-     */
+    * Total available margin
+    */
     'totalAvailableMargin'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'locked',
-            baseName: 'locked',
-            type: 'boolean',
+            "name": "locked",
+            "baseName": "locked",
+            "type": "boolean"
         },
         {
-            name: 'balances',
-            baseName: 'balances',
-            type: '{ [key: string]: CrossMarginBalance1; }',
+            "name": "balances",
+            "baseName": "balances",
+            "type": "{ [key: string]: CrossMarginBalance1; }"
         },
         {
-            name: 'total',
-            baseName: 'total',
-            type: 'string',
+            "name": "total",
+            "baseName": "total",
+            "type": "string"
         },
         {
-            name: 'borrowed',
-            baseName: 'borrowed',
-            type: 'string',
+            "name": "borrowed",
+            "baseName": "borrowed",
+            "type": "string"
         },
         {
-            name: 'borrowedNet',
-            baseName: 'borrowed_net',
-            type: 'string',
+            "name": "borrowedNet",
+            "baseName": "borrowed_net",
+            "type": "string"
         },
         {
-            name: 'net',
-            baseName: 'net',
-            type: 'string',
+            "name": "net",
+            "baseName": "net",
+            "type": "string"
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
+            "name": "leverage",
+            "baseName": "leverage",
+            "type": "string"
         },
         {
-            name: 'interest',
-            baseName: 'interest',
-            type: 'string',
+            "name": "interest",
+            "baseName": "interest",
+            "type": "string"
         },
         {
-            name: 'risk',
-            baseName: 'risk',
-            type: 'string',
+            "name": "risk",
+            "baseName": "risk",
+            "type": "string"
         },
         {
-            name: 'totalInitialMargin',
-            baseName: 'total_initial_margin',
-            type: 'string',
+            "name": "totalInitialMargin",
+            "baseName": "total_initial_margin",
+            "type": "string"
         },
         {
-            name: 'totalMarginBalance',
-            baseName: 'total_margin_balance',
-            type: 'string',
+            "name": "totalMarginBalance",
+            "baseName": "total_margin_balance",
+            "type": "string"
         },
         {
-            name: 'totalMaintenanceMargin',
-            baseName: 'total_maintenance_margin',
-            type: 'string',
+            "name": "totalMaintenanceMargin",
+            "baseName": "total_maintenance_margin",
+            "type": "string"
         },
         {
-            name: 'totalInitialMarginRate',
-            baseName: 'total_initial_margin_rate',
-            type: 'string',
+            "name": "totalInitialMarginRate",
+            "baseName": "total_initial_margin_rate",
+            "type": "string"
         },
         {
-            name: 'totalMaintenanceMarginRate',
-            baseName: 'total_maintenance_margin_rate',
-            type: 'string',
+            "name": "totalMaintenanceMarginRate",
+            "baseName": "total_maintenance_margin_rate",
+            "type": "string"
         },
         {
-            name: 'totalAvailableMargin',
-            baseName: 'total_available_margin',
-            type: 'string',
-        },
-    ];
+            "name": "totalAvailableMargin",
+            "baseName": "total_available_margin",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubCrossMarginAccount.attributeTypeMap;
     }
 }
+

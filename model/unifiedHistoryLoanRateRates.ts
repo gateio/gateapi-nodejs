@@ -9,32 +9,33 @@
  * Do not edit the class manually.
  */
 
+
 export class UnifiedHistoryLoanRateRates {
     /**
-     * 该利率对应的整点小时时间戳，单位为毫秒
-     */
+    * The hourly timestamp corresponding to the interest rate, in milliseconds
+    */
     'time'?: number;
     /**
-     * 该整点小时的历史利率
-     */
+    * Historical interest rates for this hour
+    */
     'rate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'time',
-            baseName: 'time',
-            type: 'number',
+            "name": "time",
+            "baseName": "time",
+            "type": "number"
         },
         {
-            name: 'rate',
-            baseName: 'rate',
-            type: 'string',
-        },
-    ];
+            "name": "rate",
+            "baseName": "rate",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedHistoryLoanRateRates.attributeTypeMap;
     }
 }
+

@@ -9,50 +9,51 @@
  * Do not edit the class manually.
  */
 
+
 export class CollateralCurrencyInfo {
     /**
-     * Currency
-     */
+    * Currency
+    */
     'currency'?: string;
     /**
-     * Currency Index Price
-     */
+    * Currency Index Price
+    */
     'indexPrice'?: string;
     /**
-     * Left Collateral Amount
-     */
+    * Left Collateral Amount
+    */
     'leftCollateral'?: string;
     /**
-     * Value of left collateral amount in USDT
-     */
+    * Value of left collateral amount in USDT
+    */
     'leftCollateralUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'leftCollateral',
-            baseName: 'left_collateral',
-            type: 'string',
+            "name": "leftCollateral",
+            "baseName": "left_collateral",
+            "type": "string"
         },
         {
-            name: 'leftCollateralUsdt',
-            baseName: 'left_collateral_usdt',
-            type: 'string',
-        },
-    ];
+            "name": "leftCollateralUsdt",
+            "baseName": "left_collateral_usdt",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralCurrencyInfo.attributeTypeMap;
     }
 }
+

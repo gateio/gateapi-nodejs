@@ -15,124 +15,124 @@ import { RepayRecordRepaidCurrency } from './repayRecordRepaidCurrency';
 import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 
 /**
- * Mult Repay Record
- */
+* Mult Repay Record
+*/
 export class MultiRepayRecord {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: number;
     /**
-     * Repayment record ID
-     */
+    * Repayment record ID
+    */
     'recordId'?: number;
     /**
-     * The initial collateralization rate
-     */
+    * The initial collateralization rate
+    */
     'initLtv'?: string;
     /**
-     * Ltv before the operation
-     */
+    * Ltv before the operation
+    */
     'beforeLtv'?: string;
     /**
-     * Ltv after the operation
-     */
+    * Ltv after the operation
+    */
     'afterLtv'?: string;
     /**
-     * Borrowing time, timestamp in seconds.
-     */
+    * Borrowing time, timestamp in seconds.
+    */
     'borrowTime'?: number;
     /**
-     * Repayment time, timestamp in seconds.
-     */
+    * Repayment time, timestamp in seconds.
+    */
     'repayTime'?: number;
     /**
-     * List of borrowing information
-     */
+    * List of borrowing information
+    */
     'borrowCurrencies'?: Array<RepayRecordCurrency>;
     /**
-     * List of collateral information
-     */
+    * List of collateral information
+    */
     'collateralCurrencies'?: Array<RepayRecordCurrency>;
     /**
-     * Repay Currency List
-     */
+    * Repay Currency List
+    */
     'repaidCurrencies'?: Array<RepayRecordRepaidCurrency>;
     /**
-     * Total Interest List
-     */
+    * Total Interest List
+    */
     'totalInterestList'?: Array<RepayRecordTotalInterest>;
     /**
-     * List of left repay interest
-     */
+    * List of left repay interest
+    */
     'leftRepayInterestList'?: Array<RepayRecordLeftInterest>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'recordId',
-            baseName: 'record_id',
-            type: 'number',
+            "name": "recordId",
+            "baseName": "record_id",
+            "type": "number"
         },
         {
-            name: 'initLtv',
-            baseName: 'init_ltv',
-            type: 'string',
+            "name": "initLtv",
+            "baseName": "init_ltv",
+            "type": "string"
         },
         {
-            name: 'beforeLtv',
-            baseName: 'before_ltv',
-            type: 'string',
+            "name": "beforeLtv",
+            "baseName": "before_ltv",
+            "type": "string"
         },
         {
-            name: 'afterLtv',
-            baseName: 'after_ltv',
-            type: 'string',
+            "name": "afterLtv",
+            "baseName": "after_ltv",
+            "type": "string"
         },
         {
-            name: 'borrowTime',
-            baseName: 'borrow_time',
-            type: 'number',
+            "name": "borrowTime",
+            "baseName": "borrow_time",
+            "type": "number"
         },
         {
-            name: 'repayTime',
-            baseName: 'repay_time',
-            type: 'number',
+            "name": "repayTime",
+            "baseName": "repay_time",
+            "type": "number"
         },
         {
-            name: 'borrowCurrencies',
-            baseName: 'borrow_currencies',
-            type: 'Array<RepayRecordCurrency>',
+            "name": "borrowCurrencies",
+            "baseName": "borrow_currencies",
+            "type": "Array<RepayRecordCurrency>"
         },
         {
-            name: 'collateralCurrencies',
-            baseName: 'collateral_currencies',
-            type: 'Array<RepayRecordCurrency>',
+            "name": "collateralCurrencies",
+            "baseName": "collateral_currencies",
+            "type": "Array<RepayRecordCurrency>"
         },
         {
-            name: 'repaidCurrencies',
-            baseName: 'repaid_currencies',
-            type: 'Array<RepayRecordRepaidCurrency>',
+            "name": "repaidCurrencies",
+            "baseName": "repaid_currencies",
+            "type": "Array<RepayRecordRepaidCurrency>"
         },
         {
-            name: 'totalInterestList',
-            baseName: 'total_interest_list',
-            type: 'Array<RepayRecordTotalInterest>',
+            "name": "totalInterestList",
+            "baseName": "total_interest_list",
+            "type": "Array<RepayRecordTotalInterest>"
         },
         {
-            name: 'leftRepayInterestList',
-            baseName: 'left_repay_interest_list',
-            type: 'Array<RepayRecordLeftInterest>',
-        },
-    ];
+            "name": "leftRepayInterestList",
+            "baseName": "left_repay_interest_list",
+            "type": "Array<RepayRecordLeftInterest>"
+        }    ];
 
     static getAttributeTypeMap() {
         return MultiRepayRecord.attributeTypeMap;
     }
 }
+

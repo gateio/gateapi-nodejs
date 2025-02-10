@@ -9,26 +9,27 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 获取用户返佣信息
- */
+* Retrieve user rebate information
+*/
 export class RebateUserInfo {
     /**
-     * 我的邀请人UID
-     */
+    * My inviter\'s UID
+    */
     'inviteUid'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'inviteUid',
-            baseName: 'invite_uid',
-            type: 'number',
-        },
-    ];
+            "name": "inviteUid",
+            "baseName": "invite_uid",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return RebateUserInfo.attributeTypeMap;
     }
 }
+

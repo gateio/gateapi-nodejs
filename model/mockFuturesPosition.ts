@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * 合约仓位
- */
+* Futures positions
+*/
 export class MockFuturesPosition {
     /**
-     * 合约名，目前仅支持BTC、ETH的USDT永续合约
-     */
+    * Futures name, currently only supports perpetual futures for BTC and ETH with USDT.
+    */
     'contract': string;
     /**
-     * 仓位大小，单位是张数
-     */
+    * Position size, measured in contract units.
+    */
     'size': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'contract',
-            baseName: 'contract',
-            type: 'string',
+            "name": "contract",
+            "baseName": "contract",
+            "type": "string"
         },
         {
-            name: 'size',
-            baseName: 'size',
-            type: 'string',
-        },
-    ];
+            "name": "size",
+            "baseName": "size",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return MockFuturesPosition.attributeTypeMap;
     }
 }
+

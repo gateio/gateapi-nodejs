@@ -12,55 +12,55 @@
 import { MarginAccountCurrency } from './marginAccountCurrency';
 
 /**
- * Margin account detail. `base` refers to base currency, while `quotes to quote currency
- */
+* Margin account detail. `base` refers to base currency, while `quotes to quote currency
+*/
 export class MarginAccount {
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
     /**
-     * Whether account is locked
-     */
+    * Whether account is locked
+    */
     'locked'?: boolean;
     /**
-     * Current risk rate of margin account
-     */
+    * Current risk rate of margin account
+    */
     'risk'?: string;
     'base'?: MarginAccountCurrency;
     'quote'?: MarginAccountCurrency;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
         },
         {
-            name: 'locked',
-            baseName: 'locked',
-            type: 'boolean',
+            "name": "locked",
+            "baseName": "locked",
+            "type": "boolean"
         },
         {
-            name: 'risk',
-            baseName: 'risk',
-            type: 'string',
+            "name": "risk",
+            "baseName": "risk",
+            "type": "string"
         },
         {
-            name: 'base',
-            baseName: 'base',
-            type: 'MarginAccountCurrency',
+            "name": "base",
+            "baseName": "base",
+            "type": "MarginAccountCurrency"
         },
         {
-            name: 'quote',
-            baseName: 'quote',
-            type: 'MarginAccountCurrency',
-        },
-    ];
+            "name": "quote",
+            "baseName": "quote",
+            "type": "MarginAccountCurrency"
+        }    ];
 
     static getAttributeTypeMap() {
         return MarginAccount.attributeTypeMap;
     }
 }
+

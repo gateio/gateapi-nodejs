@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**optionsName** | **string** | 期权名称，目前只支持BTC、ETH的USDT期权 | [default to undefined]
-**size** | **string** | 仓位大小，单位是张数 | [default to undefined]
+**optionsName** | **string** | Option name, currently only supports options for BTC and ETH with USDT. | [default to undefined]
+**size** | **string** | Position size, measured in contract units. | [default to undefined]
 

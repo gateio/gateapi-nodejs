@@ -9,23 +9,24 @@
  * Do not edit the class manually.
  */
 
+
 export class UidPushWithdrawalResp {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'id'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'id',
-            baseName: 'id',
-            type: 'number',
-        },
-    ];
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return UidPushWithdrawalResp.attributeTypeMap;
     }
 }
+

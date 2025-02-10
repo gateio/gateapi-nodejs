@@ -9,161 +9,162 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Collateral Order
- */
+* Collateral Order
+*/
 export class CollateralOrder {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: number;
     /**
-     * Collateral
-     */
+    * Collateral
+    */
     'collateralCurrency'?: string;
     /**
-     * Collateral amount
-     */
+    * Collateral amount
+    */
     'collateralAmount'?: string;
     /**
-     * Borrowed currency
-     */
+    * Borrowed currency
+    */
     'borrowCurrency'?: string;
     /**
-     * Borrowing amount
-     */
+    * Borrowing amount
+    */
     'borrowAmount'?: string;
     /**
-     * Repaid amount
-     */
+    * Repaid amount
+    */
     'repaidAmount'?: string;
     /**
-     * Repaid principal
-     */
+    * Repaid principal
+    */
     'repaidPrincipal'?: string;
     /**
-     * Repaid interest
-     */
+    * Repaid interest
+    */
     'repaidInterest'?: string;
     /**
-     * The initial collateralization rate
-     */
+    * The initial collateralization rate
+    */
     'initLtv'?: string;
     /**
-     * The current collateralization rate
-     */
+    * The current collateralization rate
+    */
     'currentLtv'?: string;
     /**
-     * The liquidation collateralization rate
-     */
+    * The liquidation collateralization rate
+    */
     'liquidateLtv'?: string;
     /**
-     * Order status: - initial: Initial state after placing the order - collateral_deducted: Collateral deduction successful - collateral_returning: Loan failed - Collateral return pending - lent: Loan successful - repaying: Repayment in progress - liquidating: Liquidation in progress - finished: Order completed - closed_liquidated: Liquidation and repayment completed
-     */
+    * Order status: - initial: Initial state after placing the order - collateral_deducted: Collateral deduction successful - collateral_returning: Loan failed - Collateral return pending - lent: Loan successful - repaying: Repayment in progress - liquidating: Liquidation in progress - finished: Order completed - closed_liquidated: Liquidation and repayment completed
+    */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds
-     */
+    * Borrowing time, timestamp in seconds
+    */
     'borrowTime'?: number;
     /**
-     * Outstanding principal and interest (outstanding principal + outstanding interest)
-     */
+    * Outstanding principal and interest (outstanding principal + outstanding interest)
+    */
     'leftRepayTotal'?: string;
     /**
-     * outstanding principal
-     */
+    * outstanding principal
+    */
     'leftRepayPrincipal'?: string;
     /**
-     * outstanding interest
-     */
+    * outstanding interest
+    */
     'leftRepayInterest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'number',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "number"
         },
         {
-            name: 'collateralCurrency',
-            baseName: 'collateral_currency',
-            type: 'string',
+            "name": "collateralCurrency",
+            "baseName": "collateral_currency",
+            "type": "string"
         },
         {
-            name: 'collateralAmount',
-            baseName: 'collateral_amount',
-            type: 'string',
+            "name": "collateralAmount",
+            "baseName": "collateral_amount",
+            "type": "string"
         },
         {
-            name: 'borrowCurrency',
-            baseName: 'borrow_currency',
-            type: 'string',
+            "name": "borrowCurrency",
+            "baseName": "borrow_currency",
+            "type": "string"
         },
         {
-            name: 'borrowAmount',
-            baseName: 'borrow_amount',
-            type: 'string',
+            "name": "borrowAmount",
+            "baseName": "borrow_amount",
+            "type": "string"
         },
         {
-            name: 'repaidAmount',
-            baseName: 'repaid_amount',
-            type: 'string',
+            "name": "repaidAmount",
+            "baseName": "repaid_amount",
+            "type": "string"
         },
         {
-            name: 'repaidPrincipal',
-            baseName: 'repaid_principal',
-            type: 'string',
+            "name": "repaidPrincipal",
+            "baseName": "repaid_principal",
+            "type": "string"
         },
         {
-            name: 'repaidInterest',
-            baseName: 'repaid_interest',
-            type: 'string',
+            "name": "repaidInterest",
+            "baseName": "repaid_interest",
+            "type": "string"
         },
         {
-            name: 'initLtv',
-            baseName: 'init_ltv',
-            type: 'string',
+            "name": "initLtv",
+            "baseName": "init_ltv",
+            "type": "string"
         },
         {
-            name: 'currentLtv',
-            baseName: 'current_ltv',
-            type: 'string',
+            "name": "currentLtv",
+            "baseName": "current_ltv",
+            "type": "string"
         },
         {
-            name: 'liquidateLtv',
-            baseName: 'liquidate_ltv',
-            type: 'string',
+            "name": "liquidateLtv",
+            "baseName": "liquidate_ltv",
+            "type": "string"
         },
         {
-            name: 'status',
-            baseName: 'status',
-            type: 'string',
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
         },
         {
-            name: 'borrowTime',
-            baseName: 'borrow_time',
-            type: 'number',
+            "name": "borrowTime",
+            "baseName": "borrow_time",
+            "type": "number"
         },
         {
-            name: 'leftRepayTotal',
-            baseName: 'left_repay_total',
-            type: 'string',
+            "name": "leftRepayTotal",
+            "baseName": "left_repay_total",
+            "type": "string"
         },
         {
-            name: 'leftRepayPrincipal',
-            baseName: 'left_repay_principal',
-            type: 'string',
+            "name": "leftRepayPrincipal",
+            "baseName": "left_repay_principal",
+            "type": "string"
         },
         {
-            name: 'leftRepayInterest',
-            baseName: 'left_repay_interest',
-            type: 'string',
-        },
-    ];
+            "name": "leftRepayInterest",
+            "baseName": "left_repay_interest",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CollateralOrder.attributeTypeMap;
     }
 }
+

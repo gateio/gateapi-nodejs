@@ -9,41 +9,42 @@
  * Do not edit the class manually.
  */
 
+
 export class SubUserMode {
     /**
-     * User ID
-     */
+    * User ID
+    */
     'userId'?: number;
     /**
-     * 是否是统一账户
-     */
+    * Is it a unified account?
+    */
     'isUnified'?: boolean;
     /**
-     * 统一账户模式： - `classic`: 经典账户模式 - `multi_currency`: 跨币种保证金模式 - `portfolio`: 组合保证金模式
-     */
+    * Unified account mode： - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
+    */
     'mode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'isUnified',
-            baseName: 'is_unified',
-            type: 'boolean',
+            "name": "isUnified",
+            "baseName": "is_unified",
+            "type": "boolean"
         },
         {
-            name: 'mode',
-            baseName: 'mode',
-            type: 'string',
-        },
-    ];
+            "name": "mode",
+            "baseName": "mode",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubUserMode.attributeTypeMap;
     }
 }
+

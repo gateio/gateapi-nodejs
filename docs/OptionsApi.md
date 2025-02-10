@@ -29,9 +29,9 @@ Method | HTTP request | Description
 [**cancelOptionsOrder**](OptionsApi.md#cancelOptionsOrder) | **DELETE** /options/orders/{order_id} | Cancel a single order
 [**countdownCancelAllOptions**](OptionsApi.md#countdownCancelAllOptions) | **POST** /options/countdown_cancel_all | Countdown cancel orders
 [**listMyOptionsTrades**](OptionsApi.md#listMyOptionsTrades) | **GET** /options/my_trades | List personal trading history
-[**getOptionsMMP**](OptionsApi.md#getOptionsMMP) | **GET** /options/mmp | MMP查询
-[**setOptionsMMP**](OptionsApi.md#setOptionsMMP) | **POST** /options/mmp | MMP设置
-[**resetOptionsMMP**](OptionsApi.md#resetOptionsMMP) | **POST** /options/mmp/reset | MMP重置
+[**getOptionsMMP**](OptionsApi.md#getOptionsMMP) | **GET** /options/mmp | MMP Query
+[**setOptionsMMP**](OptionsApi.md#setOptionsMMP) | **POST** /options/mmp | MMP Settings
+[**resetOptionsMMP**](OptionsApi.md#resetOptionsMMP) | **POST** /options/mmp/reset | MMP Reset
 
 
 ## listOptionsUnderlyings
@@ -1105,7 +1105,7 @@ Promise<{ response: AxiosResponse; body: OptionsOrder; }> [OptionsOrder](Options
 
 Countdown cancel orders
 
-期权订单心跳检测，在到达用户设置的&#x60;timeout&#x60;时间时如果没有取消既有倒计时或设置新的倒计时将会自动取消相关的&#x60;期权挂单&#x60;。   该接口可重复调用，以便设置新的倒计时或取消倒计时。 用法示例： 以30s的间隔重复此接口，每次倒计时&#x60;timeout&#x60;设置为30(秒)。 如果在30秒内未再次调用此接口，则您指定的&#x60;underlying&#x60; &#x60;contract&#x60;上的所有挂单都会被自动撤销，若未指定&#x60;underlying&#x60; &#x60;contract&#x60;则会自动撤销用户的全部挂单 如果在30秒内以将&#x60;timeout&#x60;设置为0，则倒数计时器将终止，自动撤单功能取消。
+Option order heartbeat detection, when the &#x60;timeout&#x60; time set by the user is reached, if the existing countdown is not canceled or a new countdown is set, the related &#x60;option pending order&#x60; will be automatically canceled.  This interface can be called repeatedly to set a new countdown or cancel the countdown.  Usage example: Repeat this interface at intervals of 30 seconds, with each countdown &#x60;timeout&#x60; set to 30 (seconds).  If this interface is not called again within 30 seconds, all pending orders on the &#x60;underlying&#x60; &#x60;contract&#x60; you specified will be automatically cancelled. If &#x60;underlying&#x60; &#x60;contract&#x60; is not specified, all pending orders of the user will be automatically cancelled  If &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will expire and the automatic order cancellation function will be cancelled.
 
 ### Example
 
@@ -1203,7 +1203,7 @@ Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade>; }> [OptionsMyTra
 
 > Promise<{ response: http.IncomingMessage; body: Array<OptionsMMP>; }> getOptionsMMP(opts)
 
-MMP查询
+MMP Query
 
 ### Example
 
@@ -1248,7 +1248,7 @@ Promise<{ response: AxiosResponse; body: Array<OptionsMMP>; }> [OptionsMMP](Opti
 
 > Promise<{ response: http.IncomingMessage; body: OptionsMMP; }> setOptionsMMP(optionsMMP)
 
-MMP设置
+MMP Settings
 
 ### Example
 
@@ -1291,7 +1291,7 @@ Promise<{ response: AxiosResponse; body: OptionsMMP; }> [OptionsMMP](OptionsMMP.
 
 > Promise<{ response: http.IncomingMessage; body: OptionsMMP; }> resetOptionsMMP(optionsMMPReset)
 
-MMP重置
+MMP Reset
 
 ### Example
 

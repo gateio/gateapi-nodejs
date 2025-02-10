@@ -9,35 +9,36 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Countdown cancel task detail
- */
+* Countdown cancel task detail
+*/
 export class CountdownCancelAllSpotTask {
     /**
-     * Countdown time, in seconds  At least 5 seconds, 0 means cancel the countdown
-     */
+    * Countdown time, in seconds  At least 5 seconds, 0 means cancel the countdown
+    */
     'timeout': number;
     /**
-     * Currency pair
-     */
+    * Currency pair
+    */
     'currencyPair'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'timeout',
-            baseName: 'timeout',
-            type: 'number',
+            "name": "timeout",
+            "baseName": "timeout",
+            "type": "number"
         },
         {
-            name: 'currencyPair',
-            baseName: 'currency_pair',
-            type: 'string',
-        },
-    ];
+            "name": "currencyPair",
+            "baseName": "currency_pair",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return CountdownCancelAllSpotTask.attributeTypeMap;
     }
 }
+

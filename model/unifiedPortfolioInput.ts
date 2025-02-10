@@ -17,79 +17,79 @@ import { MockSpotBalance } from './mockSpotBalance';
 import { MockSpotOrder } from './mockSpotOrder';
 
 /**
- * 组合保证金计算器输入
- */
+* Input for the portfolio margin calculator.
+*/
 export class UnifiedPortfolioInput {
     /**
-     * 现货
-     */
+    * Spot
+    */
     'spotBalances'?: Array<MockSpotBalance>;
     /**
-     * 现货订单
-     */
+    * Spot orders
+    */
     'spotOrders'?: Array<MockSpotOrder>;
     /**
-     * 合约仓位
-     */
+    * Futures positions
+    */
     'futuresPositions'?: Array<MockFuturesPosition>;
     /**
-     * 合约订单
-     */
+    * Futures order
+    */
     'futuresOrders'?: Array<MockFuturesOrder>;
     /**
-     * 期权仓位
-     */
+    * Options positions
+    */
     'optionsPositions'?: Array<MockOptionsPosition>;
     /**
-     * 期权订单
-     */
+    * Option orders
+    */
     'optionsOrders'?: Array<MockOptionsOrder>;
     /**
-     * 是否开启现货对冲
-     */
+    * Whether to enable spot hedging.
+    */
     'spotHedge'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'spotBalances',
-            baseName: 'spot_balances',
-            type: 'Array<MockSpotBalance>',
+            "name": "spotBalances",
+            "baseName": "spot_balances",
+            "type": "Array<MockSpotBalance>"
         },
         {
-            name: 'spotOrders',
-            baseName: 'spot_orders',
-            type: 'Array<MockSpotOrder>',
+            "name": "spotOrders",
+            "baseName": "spot_orders",
+            "type": "Array<MockSpotOrder>"
         },
         {
-            name: 'futuresPositions',
-            baseName: 'futures_positions',
-            type: 'Array<MockFuturesPosition>',
+            "name": "futuresPositions",
+            "baseName": "futures_positions",
+            "type": "Array<MockFuturesPosition>"
         },
         {
-            name: 'futuresOrders',
-            baseName: 'futures_orders',
-            type: 'Array<MockFuturesOrder>',
+            "name": "futuresOrders",
+            "baseName": "futures_orders",
+            "type": "Array<MockFuturesOrder>"
         },
         {
-            name: 'optionsPositions',
-            baseName: 'options_positions',
-            type: 'Array<MockOptionsPosition>',
+            "name": "optionsPositions",
+            "baseName": "options_positions",
+            "type": "Array<MockOptionsPosition>"
         },
         {
-            name: 'optionsOrders',
-            baseName: 'options_orders',
-            type: 'Array<MockOptionsOrder>',
+            "name": "optionsOrders",
+            "baseName": "options_orders",
+            "type": "Array<MockOptionsOrder>"
         },
         {
-            name: 'spotHedge',
-            baseName: 'spot_hedge',
-            type: 'boolean',
-        },
-    ];
+            "name": "spotHedge",
+            "baseName": "spot_hedge",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
         return UnifiedPortfolioInput.attributeTypeMap;
     }
 }
+

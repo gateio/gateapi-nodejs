@@ -9,68 +9,69 @@
  * Do not edit the class manually.
  */
 
+
 export class RepayCurrencyRes {
     /**
-     * Has the repayment been successful
-     */
+    * Has the repayment been successful
+    */
     'succeeded'?: boolean;
     /**
-     * Error identifier for unsuccessful operations; empty for successful.
-     */
+    * Error identifier for unsuccessful operations; empty for successful.
+    */
     'label'?: string;
     /**
-     * Error description in case of operation failure; empty when successful.
-     */
+    * Error description in case of operation failure; empty when successful.
+    */
     'message'?: string;
     /**
-     * Repayment currency
-     */
+    * Repayment currency
+    */
     'currency'?: string;
     /**
-     * Principal
-     */
+    * Principal
+    */
     'repaidPrincipal'?: string;
     /**
-     * Principal
-     */
+    * Principal
+    */
     'repaidInterest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'succeeded',
-            baseName: 'succeeded',
-            type: 'boolean',
+            "name": "succeeded",
+            "baseName": "succeeded",
+            "type": "boolean"
         },
         {
-            name: 'label',
-            baseName: 'label',
-            type: 'string',
+            "name": "label",
+            "baseName": "label",
+            "type": "string"
         },
         {
-            name: 'message',
-            baseName: 'message',
-            type: 'string',
+            "name": "message",
+            "baseName": "message",
+            "type": "string"
         },
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string"
         },
         {
-            name: 'repaidPrincipal',
-            baseName: 'repaid_principal',
-            type: 'string',
+            "name": "repaidPrincipal",
+            "baseName": "repaid_principal",
+            "type": "string"
         },
         {
-            name: 'repaidInterest',
-            baseName: 'repaid_interest',
-            type: 'string',
-        },
-    ];
+            "name": "repaidInterest",
+            "baseName": "repaid_interest",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return RepayCurrencyRes.attributeTypeMap;
     }
 }
+

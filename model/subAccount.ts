@@ -9,86 +9,87 @@
  * Do not edit the class manually.
  */
 
+
 export class SubAccount {
     /**
-     * custom text
-     */
+    * custom text
+    */
     'remark'?: string;
     /**
-     * Sub-account login name: Only letters, numbers and underscores are supported, and cannot contain other illegal characters
-     */
+    * Sub-account login name: Only letters, numbers and underscores are supported, and cannot contain other illegal characters
+    */
     'loginName': string;
     /**
-     * The sub-account\'s password. (Default: the same as main account\'s password)
-     */
+    * The sub-account\'s password. (Default: the same as main account\'s password)
+    */
     'password'?: string;
     /**
-     * The sub-account\'s email address. (Default: the same as main account\'s email address)
-     */
+    * The sub-account\'s email address. (Default: the same as main account\'s email address)
+    */
     'email'?: string;
     /**
-     * State: 1-normal, 2-locked\"
-     */
+    * State: 1-normal, 2-locked\"
+    */
     'state'?: number;
     /**
-     * \"Sub-account type: 1 - sub-account, 3 - cross margin account
-     */
+    * \"Sub-account type: 1 - sub-account, 3 - cross margin account
+    */
     'type'?: number;
     /**
-     * The user id of the sub-account
-     */
+    * The user id of the sub-account
+    */
     'userId'?: number;
     /**
-     * Created time
-     */
+    * Created time
+    */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'remark',
-            baseName: 'remark',
-            type: 'string',
+            "name": "remark",
+            "baseName": "remark",
+            "type": "string"
         },
         {
-            name: 'loginName',
-            baseName: 'login_name',
-            type: 'string',
+            "name": "loginName",
+            "baseName": "login_name",
+            "type": "string"
         },
         {
-            name: 'password',
-            baseName: 'password',
-            type: 'string',
+            "name": "password",
+            "baseName": "password",
+            "type": "string"
         },
         {
-            name: 'email',
-            baseName: 'email',
-            type: 'string',
+            "name": "email",
+            "baseName": "email",
+            "type": "string"
         },
         {
-            name: 'state',
-            baseName: 'state',
-            type: 'number',
+            "name": "state",
+            "baseName": "state",
+            "type": "number"
         },
         {
-            name: 'type',
-            baseName: 'type',
-            type: 'number',
+            "name": "type",
+            "baseName": "type",
+            "type": "number"
         },
         {
-            name: 'userId',
-            baseName: 'user_id',
-            type: 'number',
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number"
         },
         {
-            name: 'createTime',
-            baseName: 'create_time',
-            type: 'number',
-        },
-    ];
+            "name": "createTime",
+            "baseName": "create_time",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return SubAccount.attributeTypeMap;
     }
 }
+

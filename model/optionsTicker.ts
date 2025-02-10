@@ -9,179 +9,180 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * Options contract detail
- */
+* Options contract detail
+*/
 export class OptionsTicker {
     /**
-     * Options contract name
-     */
+    * Options contract name
+    */
     'name'?: string;
     /**
-     * Last trading price (quote currency)
-     */
+    * Last trading price (quote currency)
+    */
     'lastPrice'?: string;
     /**
-     * Current mark price (quote currency)
-     */
+    * Current mark price (quote currency)
+    */
     'markPrice'?: string;
     /**
-     * Current index price (quote currency)
-     */
+    * Current index price (quote currency)
+    */
     'indexPrice'?: string;
     /**
-     * Best ask size
-     */
+    * Best ask size
+    */
     'ask1Size'?: number;
     /**
-     * Best ask price
-     */
+    * Best ask price
+    */
     'ask1Price'?: string;
     /**
-     * Best bid size
-     */
+    * Best bid size
+    */
     'bid1Size'?: number;
     /**
-     * Best bid price
-     */
+    * Best bid price
+    */
     'bid1Price'?: string;
     /**
-     * Current total long position size
-     */
+    * Current total long position size
+    */
     'positionSize'?: number;
     /**
-     * Implied volatility
-     */
+    * Implied volatility
+    */
     'markIv'?: string;
     /**
-     * Bid side implied volatility
-     */
+    * Bid side implied volatility
+    */
     'bidIv'?: string;
     /**
-     * Ask side implied volatility
-     */
+    * Ask side implied volatility
+    */
     'askIv'?: string;
     /**
-     * Current leverage. Formula: underlying_price / mark_price * delta
-     */
+    * Current leverage. Formula: underlying_price / mark_price * delta
+    */
     'leverage'?: string;
     /**
-     * Delta
-     */
+    * Delta
+    */
     'delta'?: string;
     /**
-     * Gamma
-     */
+    * Gamma
+    */
     'gamma'?: string;
     /**
-     * Vega
-     */
+    * Vega
+    */
     'vega'?: string;
     /**
-     * Theta
-     */
+    * Theta
+    */
     'theta'?: string;
     /**
-     * Rho
-     */
+    * Rho
+    */
     'rho'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'name',
-            baseName: 'name',
-            type: 'string',
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         },
         {
-            name: 'lastPrice',
-            baseName: 'last_price',
-            type: 'string',
+            "name": "lastPrice",
+            "baseName": "last_price",
+            "type": "string"
         },
         {
-            name: 'markPrice',
-            baseName: 'mark_price',
-            type: 'string',
+            "name": "markPrice",
+            "baseName": "mark_price",
+            "type": "string"
         },
         {
-            name: 'indexPrice',
-            baseName: 'index_price',
-            type: 'string',
+            "name": "indexPrice",
+            "baseName": "index_price",
+            "type": "string"
         },
         {
-            name: 'ask1Size',
-            baseName: 'ask1_size',
-            type: 'number',
+            "name": "ask1Size",
+            "baseName": "ask1_size",
+            "type": "number"
         },
         {
-            name: 'ask1Price',
-            baseName: 'ask1_price',
-            type: 'string',
+            "name": "ask1Price",
+            "baseName": "ask1_price",
+            "type": "string"
         },
         {
-            name: 'bid1Size',
-            baseName: 'bid1_size',
-            type: 'number',
+            "name": "bid1Size",
+            "baseName": "bid1_size",
+            "type": "number"
         },
         {
-            name: 'bid1Price',
-            baseName: 'bid1_price',
-            type: 'string',
+            "name": "bid1Price",
+            "baseName": "bid1_price",
+            "type": "string"
         },
         {
-            name: 'positionSize',
-            baseName: 'position_size',
-            type: 'number',
+            "name": "positionSize",
+            "baseName": "position_size",
+            "type": "number"
         },
         {
-            name: 'markIv',
-            baseName: 'mark_iv',
-            type: 'string',
+            "name": "markIv",
+            "baseName": "mark_iv",
+            "type": "string"
         },
         {
-            name: 'bidIv',
-            baseName: 'bid_iv',
-            type: 'string',
+            "name": "bidIv",
+            "baseName": "bid_iv",
+            "type": "string"
         },
         {
-            name: 'askIv',
-            baseName: 'ask_iv',
-            type: 'string',
+            "name": "askIv",
+            "baseName": "ask_iv",
+            "type": "string"
         },
         {
-            name: 'leverage',
-            baseName: 'leverage',
-            type: 'string',
+            "name": "leverage",
+            "baseName": "leverage",
+            "type": "string"
         },
         {
-            name: 'delta',
-            baseName: 'delta',
-            type: 'string',
+            "name": "delta",
+            "baseName": "delta",
+            "type": "string"
         },
         {
-            name: 'gamma',
-            baseName: 'gamma',
-            type: 'string',
+            "name": "gamma",
+            "baseName": "gamma",
+            "type": "string"
         },
         {
-            name: 'vega',
-            baseName: 'vega',
-            type: 'string',
+            "name": "vega",
+            "baseName": "vega",
+            "type": "string"
         },
         {
-            name: 'theta',
-            baseName: 'theta',
-            type: 'string',
+            "name": "theta",
+            "baseName": "theta",
+            "type": "string"
         },
         {
-            name: 'rho',
-            baseName: 'rho',
-            type: 'string',
-        },
-    ];
+            "name": "rho",
+            "baseName": "rho",
+            "type": "string"
+        }    ];
 
     static getAttributeTypeMap() {
         return OptionsTicker.attributeTypeMap;
     }
 }
+

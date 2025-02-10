@@ -9,26 +9,27 @@
  * Do not edit the class manually.
  */
 
+
 /**
- * API Key detail
- */
+* API Key detail
+*/
 export class AccountDetailKey {
     /**
-     * mode: 1 - classic account 2 - portfolio margin account
-     */
+    * mode: 1 - classic account 2 - portfolio margin account
+    */
     'mode'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'mode',
-            baseName: 'mode',
-            type: 'number',
-        },
-    ];
+            "name": "mode",
+            "baseName": "mode",
+            "type": "number"
+        }    ];
 
     static getAttributeTypeMap() {
         return AccountDetailKey.attributeTypeMap;
     }
 }
+

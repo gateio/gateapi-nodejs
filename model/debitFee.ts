@@ -9,32 +9,24 @@
  * Do not edit the class manually.
  */
 
-export class PortfolioTransferable {
+
+export class DebitFee {
     /**
-     * Currency detail
-     */
-    'currency'?: string;
-    /**
-     * The maximum amount that can be transferred out
-     */
-    'amount'?: string;
+    * Whether GT fee discount is used
+    */
+    'enabled': boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
-        },
-        {
-            name: 'amount',
-            baseName: 'amount',
-            type: 'string',
-        },
-    ];
+            "name": "enabled",
+            "baseName": "enabled",
+            "type": "boolean"
+        }    ];
 
     static getAttributeTypeMap() {
-        return PortfolioTransferable.attributeTypeMap;
+        return DebitFee.attributeTypeMap;
     }
 }
+

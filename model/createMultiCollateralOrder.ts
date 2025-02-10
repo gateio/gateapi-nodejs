@@ -13,93 +13,93 @@ import { CollateralCurrency } from './collateralCurrency';
 
 export class CreateMultiCollateralOrder {
     /**
-     * Order ID
-     */
+    * Order ID
+    */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed, if not specified, default to current
-     */
+    * current - current, fixed - fixed, if not specified, default to current
+    */
     'orderType'?: string;
     /**
-     * Fixed interest rate loan period: 7d - 7 days, 30d - 30 days. Must be provided for fixed
-     */
+    * Fixed interest rate loan period: 7d - 7 days, 30d - 30 days. Must be provided for fixed
+    */
     'fixedType'?: string;
     /**
-     * Fixed interest rate, must be specified for fixed
-     */
+    * Fixed interest rate, must be specified for fixed
+    */
     'fixedRate'?: string;
     /**
-     * Fixed interest rate, automatic renewal
-     */
+    * Fixed interest rate, automatic renewal
+    */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment
-     */
+    * Fixed interest rate, automatic repayment
+    */
     'autoRepay'?: boolean;
     /**
-     * Borrowed currency
-     */
+    * Borrowed currency
+    */
     'borrowCurrency': string;
     /**
-     * Borrowing amount
-     */
+    * Borrowing amount
+    */
     'borrowAmount': string;
     /**
-     * Collateral currency and amount
-     */
+    * Collateral currency and amount
+    */
     'collateralCurrencies'?: Array<CollateralCurrency>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            name: 'orderId',
-            baseName: 'order_id',
-            type: 'string',
+            "name": "orderId",
+            "baseName": "order_id",
+            "type": "string"
         },
         {
-            name: 'orderType',
-            baseName: 'order_type',
-            type: 'string',
+            "name": "orderType",
+            "baseName": "order_type",
+            "type": "string"
         },
         {
-            name: 'fixedType',
-            baseName: 'fixed_type',
-            type: 'string',
+            "name": "fixedType",
+            "baseName": "fixed_type",
+            "type": "string"
         },
         {
-            name: 'fixedRate',
-            baseName: 'fixed_rate',
-            type: 'string',
+            "name": "fixedRate",
+            "baseName": "fixed_rate",
+            "type": "string"
         },
         {
-            name: 'autoRenew',
-            baseName: 'auto_renew',
-            type: 'boolean',
+            "name": "autoRenew",
+            "baseName": "auto_renew",
+            "type": "boolean"
         },
         {
-            name: 'autoRepay',
-            baseName: 'auto_repay',
-            type: 'boolean',
+            "name": "autoRepay",
+            "baseName": "auto_repay",
+            "type": "boolean"
         },
         {
-            name: 'borrowCurrency',
-            baseName: 'borrow_currency',
-            type: 'string',
+            "name": "borrowCurrency",
+            "baseName": "borrow_currency",
+            "type": "string"
         },
         {
-            name: 'borrowAmount',
-            baseName: 'borrow_amount',
-            type: 'string',
+            "name": "borrowAmount",
+            "baseName": "borrow_amount",
+            "type": "string"
         },
         {
-            name: 'collateralCurrencies',
-            baseName: 'collateral_currencies',
-            type: 'Array<CollateralCurrency>',
-        },
-    ];
+            "name": "collateralCurrencies",
+            "baseName": "collateral_currencies",
+            "type": "Array<CollateralCurrency>"
+        }    ];
 
     static getAttributeTypeMap() {
         return CreateMultiCollateralOrder.attributeTypeMap;
     }
 }
+

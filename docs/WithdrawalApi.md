@@ -5,7 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**withdraw**](WithdrawalApi.md#withdraw) | **POST** /withdrawals | Withdraw
-[**withdrawPushOrder**](WithdrawalApi.md#withdrawPushOrder) | **POST** /withdrawals/push | UID 转帐
+[**withdrawPushOrder**](WithdrawalApi.md#withdrawPushOrder) | **POST** /withdrawals/push | UID transfer
 [**cancelWithdrawal**](WithdrawalApi.md#cancelWithdrawal) | **DELETE** /withdrawals/{withdrawal_id} | Cancel withdrawal with specified ID
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Withdraw
 
-如果对方的链上地址也是Gate的话, 则不收取手续费
+Withdrawals to Gate addresses do not incur transaction fees.
 
 ### Example
 
@@ -58,9 +58,9 @@ Promise<{ response: AxiosResponse; body: LedgerRecord; }> [LedgerRecord](LedgerR
 
 > Promise<{ response: http.IncomingMessage; body: UidPushWithdrawalResp; }> withdrawPushOrder(uidPushWithdrawal)
 
-UID 转帐
+UID transfer
 
-现货主账号之间转帐,转帐双方不可为子账号
+Transfers between main spot accounts are allowed; however, both parties cannot be sub-accounts
 
 ### Example
 
