@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Currency pair | [optional] [default to undefined]
 **base** | **string** | Base currency | [optional] [default to undefined]
+**baseName** | **string** | Transaction currency name | [optional] [default to undefined]
 **quote** | **string** | Quote currency | [optional] [default to undefined]
+**quoteName** | **string** | Name of the denominated currency | [optional] [default to undefined]
 **fee** | **string** | Trading fee | [optional] [default to undefined]
 **minBaseAmount** | **string** | Minimum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]
 **minQuoteAmount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] [default to undefined]

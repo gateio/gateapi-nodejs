@@ -23,9 +23,17 @@ export class CurrencyPair {
     */
     'base'?: string;
     /**
+    * Transaction currency name
+    */
+    'baseName'?: string;
+    /**
     * Quote currency
     */
     'quote'?: string;
+    /**
+    * Name of the denominated currency
+    */
+    'quoteName'?: string;
     /**
     * Trading fee
     */
@@ -85,8 +93,18 @@ export class CurrencyPair {
             "type": "string"
         },
         {
+            "name": "baseName",
+            "baseName": "base_name",
+            "type": "string"
+        },
+        {
             "name": "quote",
             "baseName": "quote",
+            "type": "string"
+        },
+        {
+            "name": "quoteName",
+            "baseName": "quote_name",
             "type": "string"
         },
         {

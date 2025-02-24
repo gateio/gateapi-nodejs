@@ -23,7 +23,7 @@ export class BatchAmendItem {
     */
     'currencyPair': string;
     /**
-    * Default to spot, portfolio, and margin accounts if not specified. Use \'cross_margin\' to query cross margin accounts. Only \'cross_margin\' can be specified for portfolio margin accounts.
+    * Default spot, unified account and warehouse-by-store leverage account.
     */
     'account'?: string;
     /**

@@ -28,13 +28,21 @@ export class SpotPricePutOrder {
     */
     'amount': string;
     /**
-    * Trading account type.  Portfolio margin account must set to `cross_margin`  - normal: spot trading - margin: margin trading - cross_margin: cross_margin trading 
+    * Trading account type.  Portfolio margin account must set to `unified`  - normal: spot trading - margin: margin trading - unified: unified trading 
     */
     'account': SpotPricePutOrder.Account;
     /**
     * time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only 
     */
     'timeInForce'?: SpotPricePutOrder.TimeInForce;
+    /**
+    * Whether to borrow coins automatically
+    */
+    'autoBorrow'?: boolean;
+    /**
+    * Whether to repay the loan automatically
+    */
+    'autoRepay'?: boolean;
     /**
     * The source of the order, including: - web: web - api: api - app: app
     */
@@ -74,6 +82,16 @@ export class SpotPricePutOrder {
             "type": "SpotPricePutOrder.TimeInForce"
         },
         {
+            "name": "autoBorrow",
+            "baseName": "auto_borrow",
+            "type": "boolean"
+        },
+        {
+            "name": "autoRepay",
+            "baseName": "auto_repay",
+            "type": "boolean"
+        },
+        {
             "name": "text",
             "baseName": "text",
             "type": "string"
@@ -96,7 +114,7 @@ export namespace SpotPricePutOrder {
     export enum Account {
         Normal = <any> 'normal',
         Margin = <any> 'margin',
-        CrossMargin = <any> 'cross_margin'
+        Unified = <any> 'unified'
     }
     export enum TimeInForce {
         Gtc = <any> 'gtc',

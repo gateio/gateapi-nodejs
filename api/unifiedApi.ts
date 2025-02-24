@@ -51,8 +51,9 @@ export class UnifiedApi {
      * @summary Get unified account information
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
+     * @param opts.subUid Sub account user ID
      */
-    public async listUnifiedAccounts(opts: { currency?: string,  } ) : Promise<{ response: AxiosResponse; body: UnifiedAccount; }> {
+    public async listUnifiedAccounts(opts: { currency?: string, subUid?: string,  } ) : Promise<{ response: AxiosResponse; body: UnifiedAccount; }> {
         const localVarPath = this.client.basePath + '/unified/accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -67,6 +68,10 @@ export class UnifiedApi {
         opts = opts || {};
         if (opts.currency !== undefined) {
             localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+        }
+
+        if (opts.subUid !== undefined) {
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
         }
 
 

@@ -71,7 +71,7 @@ export class BatchOrder {
     */
     'type'?: BatchOrder.Type;
     /**
-    * Account type. spot - use spot account; margin - use margin account; cross_margin - use cross margin account, unified - unified account
+    * Account type, spot - spot account, margin - leveraged account, unified - unified account
     */
     'account'?: BatchOrder.Account;
     /**

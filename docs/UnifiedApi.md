@@ -44,7 +44,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.UnifiedApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieve data of the specified currency
+  'currency': "BTC", // string | Retrieve data of the specified currency
+  'subUid': "10001" // string | Sub account user ID
 };
 api.listUnifiedAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -57,6 +58,7 @@ api.listUnifiedAccounts(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Retrieve data of the specified currency | [optional] [default to undefined]
+ **subUid** | **string**| Sub account user ID | [optional] [default to undefined]
 
 ### Return type
 

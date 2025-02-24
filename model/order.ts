@@ -55,7 +55,7 @@ export class Order {
     */
     'type'?: Order.Type;
     /**
-    * Account types， spot - spot account, margin - margin account, unified - unified account, cross_margin - cross margin account.  Portfolio margin accounts can only be set to `cross_margin`
+    * Account type, spot - spot account, margin - leveraged account, unified - unified account
     */
     'account'?: string;
     /**

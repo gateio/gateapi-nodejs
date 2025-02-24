@@ -39,7 +39,7 @@ export class CancelOrderResult {
     */
     'message'?: string;
     /**
-    * Empty by default. If cancelled order is cross margin order, this field is set to `cross_margin`
+    * Default is empty (deprecated)
     */
     'account'?: string;
 

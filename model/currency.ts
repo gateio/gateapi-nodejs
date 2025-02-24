@@ -12,9 +12,13 @@
 
 export class Currency {
     /**
-    * Currency name
+    * Currency symbol
     */
     'currency'?: string;
+    /**
+    * Currency name
+    */
+    'name'?: string;
     /**
     * Whether currency is de-listed
     */
@@ -50,6 +54,11 @@ export class Currency {
         {
             "name": "currency",
             "baseName": "currency",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string"
         },
         {
