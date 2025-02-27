@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { SpotCurrencyChain } from './spotCurrencyChain';
 
 export class Currency {
     /**
@@ -24,15 +25,15 @@ export class Currency {
     */
     'delisted'?: boolean;
     /**
-    * Whether currency\'s withdrawal is disabled
+    * Whether currency\'s withdrawal is disabled (deprecated)
     */
     'withdrawDisabled'?: boolean;
     /**
-    * Whether currency\'s withdrawal is delayed
+    * Whether currency\'s withdrawal is delayed (deprecated)
     */
     'withdrawDelayed'?: boolean;
     /**
-    * Whether currency\'s deposit is disabled
+    * Whether currency\'s deposit is disabled (deprecated)
     */
     'depositDisabled'?: boolean;
     /**
@@ -44,9 +45,13 @@ export class Currency {
     */
     'fixedRate'?: string;
     /**
-    * Chain of currency
+    * The main chain corresponding to the coin
     */
     'chain'?: string;
+    /**
+    * All links corresponding to coins
+    */
+    'chains'?: Array<SpotCurrencyChain>;
 
     static discriminator: string | undefined = undefined;
 
@@ -95,6 +100,11 @@ export class Currency {
             "name": "chain",
             "baseName": "chain",
             "type": "string"
+        },
+        {
+            "name": "chains",
+            "baseName": "chains",
+            "type": "Array<SpotCurrencyChain>"
         }    ];
 
     static getAttributeTypeMap() {

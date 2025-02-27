@@ -168,6 +168,7 @@ export * from './smallBalance';
 export * from './smallBalanceHistory';
 export * from './spotAccount';
 export * from './spotAccountBook';
+export * from './spotCurrencyChain';
 export * from './spotFee';
 export * from './spotInsuranceHistory';
 export * from './spotPricePutOrder';
@@ -413,6 +414,7 @@ import { SmallBalance } from './smallBalance';
 import { SmallBalanceHistory } from './smallBalanceHistory';
 import { SpotAccount } from './spotAccount';
 import { SpotAccountBook } from './spotAccountBook';
+import { SpotCurrencyChain } from './spotCurrencyChain';
 import { SpotFee } from './spotFee';
 import { SpotInsuranceHistory } from './spotInsuranceHistory';
 import { SpotPricePutOrder } from './spotPricePutOrder';
@@ -739,6 +741,7 @@ let typeMap: {[index: string]: any} = {
     "SmallBalanceHistory": SmallBalanceHistory,
     "SpotAccount": SpotAccount,
     "SpotAccountBook": SpotAccountBook,
+    "SpotCurrencyChain": SpotCurrencyChain,
     "SpotFee": SpotFee,
     "SpotInsuranceHistory": SpotInsuranceHistory,
     "SpotPricePutOrder": SpotPricePutOrder,
