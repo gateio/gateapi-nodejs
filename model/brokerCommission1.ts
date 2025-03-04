@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class BrokerCommission1 {
     /**
-    * Commission Time. (unix timestamp)
-    */
+     * Commission Time. (unix timestamp)
+     */
     'commissionTime'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * Group name
-    */
+     * Group name
+     */
     'groupName'?: string;
     /**
-    * The amount of commission rebates
-    */
+     * The amount of commission rebates
+     */
     'amount'?: string;
     /**
-    * Fee
-    */
+     * Fee
+     */
     'fee'?: string;
     /**
-    * Fee currency
-    */
+     * Fee currency
+     */
     'feeAsset'?: string;
     /**
-    * The income from rebates, converted to USDT
-    */
+     * The income from rebates, converted to USDT
+     */
     'rebateFee'?: string;
     /**
-    * Rebate Type: Spot、Futures、Options
-    */
+     * Rebate Type: Spot、Futures、Options
+     */
     'source'?: string;
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "commissionTime",
-            "baseName": "commission_time",
-            "type": "number"
+            name: 'commissionTime',
+            baseName: 'commission_time',
+            type: 'number',
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "groupName",
-            "baseName": "group_name",
-            "type": "string"
+            name: 'groupName',
+            baseName: 'group_name',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "feeAsset",
-            "baseName": "fee_asset",
-            "type": "string"
+            name: 'feeAsset',
+            baseName: 'fee_asset',
+            type: 'string',
         },
         {
-            "name": "rebateFee",
-            "baseName": "rebate_fee",
-            "type": "string"
+            name: 'rebateFee',
+            baseName: 'rebate_fee',
+            type: 'string',
         },
         {
-            "name": "source",
-            "baseName": "source",
-            "type": "string"
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
-        }    ];
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return BrokerCommission1.attributeTypeMap;
     }
 }
-

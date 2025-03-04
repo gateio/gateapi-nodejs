@@ -9,90 +9,89 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Loan records
-*/
+ * Loan records
+ */
 export class UnifiedLoanRecord {
     /**
-    * id
-    */
+     * id
+     */
     'id'?: number;
     /**
-    * type: borrow - borrow, repay - repay
-    */
+     * type: borrow - borrow, repay - repay
+     */
     'type'?: string;
     /**
-    * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
-    */
+     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
+     */
     'repaymentType'?: string;
     /**
-    * Loan type, returned when querying loan records. manual_borrow - Manual repayment , auto_borrow - Automatic repayment
-    */
+     * Loan type, returned when querying loan records. manual_borrow - Manual repayment , auto_borrow - Automatic repayment
+     */
     'borrowType'?: string;
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * The amount of lending or repaying
-    */
+     * The amount of lending or repaying
+     */
     'amount'?: string;
     /**
-    * Created time
-    */
+     * Created time
+     */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "repaymentType",
-            "baseName": "repayment_type",
-            "type": "string"
+            name: 'repaymentType',
+            baseName: 'repayment_type',
+            type: 'string',
         },
         {
-            "name": "borrowType",
-            "baseName": "borrow_type",
-            "type": "string"
+            name: 'borrowType',
+            baseName: 'borrow_type',
+            type: 'string',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
-        }    ];
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedLoanRecord.attributeTypeMap;
     }
 }
-

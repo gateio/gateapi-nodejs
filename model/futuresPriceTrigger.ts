@@ -9,57 +9,57 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesPriceTrigger {
     /**
-    * How the order will be triggered   - `0`: by price, which means the order will be triggered if price condition is satisfied  - `1`: by price gap, which means the order will be triggered if gap of recent two prices of specified `price_type` are satisfied.  Only `0` is supported currently
-    */
+     * How the order will be triggered   - `0`: by price, which means the order will be triggered if price condition is satisfied  - `1`: by price gap, which means the order will be triggered if gap of recent two prices of specified `price_type` are satisfied.  Only `0` is supported currently
+     */
     'strategyType'?: FuturesPriceTrigger.StrategyType;
     /**
-    * Price type. 0 - latest deal price, 1 - mark price, 2 - index price
-    */
+     * Price type. 0 - latest deal price, 1 - mark price, 2 - index price
+     */
     'priceType'?: FuturesPriceTrigger.PriceType;
     /**
-    * Value of price on price triggered, or price gap on price gap triggered
-    */
+     * Value of price on price triggered, or price gap on price gap triggered
+     */
     'price'?: string;
     /**
-    * Trigger condition type  - `1`: calculated price based on `strategy_type` and `price_type` >= `price` - `2`: calculated price based on `strategy_type` and `price_type` <= `price`
-    */
+     * Trigger condition type  - `1`: calculated price based on `strategy_type` and `price_type` >= `price` - `2`: calculated price based on `strategy_type` and `price_type` <= `price`
+     */
     'rule'?: FuturesPriceTrigger.Rule;
     /**
-    * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
-    */
+     * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
+     */
     'expiration'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "strategyType",
-            "baseName": "strategy_type",
-            "type": "FuturesPriceTrigger.StrategyType"
+            name: 'strategyType',
+            baseName: 'strategy_type',
+            type: 'FuturesPriceTrigger.StrategyType',
         },
         {
-            "name": "priceType",
-            "baseName": "price_type",
-            "type": "FuturesPriceTrigger.PriceType"
+            name: 'priceType',
+            baseName: 'price_type',
+            type: 'FuturesPriceTrigger.PriceType',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "rule",
-            "baseName": "rule",
-            "type": "FuturesPriceTrigger.Rule"
+            name: 'rule',
+            baseName: 'rule',
+            type: 'FuturesPriceTrigger.Rule',
         },
         {
-            "name": "expiration",
-            "baseName": "expiration",
-            "type": "number"
-        }    ];
+            name: 'expiration',
+            baseName: 'expiration',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesPriceTrigger.attributeTypeMap;
@@ -68,16 +68,16 @@ export class FuturesPriceTrigger {
 
 export namespace FuturesPriceTrigger {
     export enum StrategyType {
-        NUMBER_0 = <any> 0,
-        NUMBER_1 = <any> 1
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
     }
     export enum PriceType {
-        NUMBER_0 = <any> 0,
-        NUMBER_1 = <any> 1,
-        NUMBER_2 = <any> 2
+        NUMBER_0 = <any>0,
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
     export enum Rule {
-        NUMBER_1 = <any> 1,
-        NUMBER_2 = <any> 2
+        NUMBER_1 = <any>1,
+        NUMBER_2 = <any>2,
     }
 }

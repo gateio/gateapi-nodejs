@@ -9,99 +9,98 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Flash swap order
-*/
+ * Flash swap order
+ */
 export class FlashSwapOrder {
     /**
-    * Flash swap order ID
-    */
+     * Flash swap order ID
+     */
     'id'?: number;
     /**
-    * Creation time of order (in milliseconds)
-    */
+     * Creation time of order (in milliseconds)
+     */
     'createTime'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * Currency to sell
-    */
+     * Currency to sell
+     */
     'sellCurrency'?: string;
     /**
-    * Amount to sell
-    */
+     * Amount to sell
+     */
     'sellAmount'?: string;
     /**
-    * Currency to buy
-    */
+     * Currency to buy
+     */
     'buyCurrency'?: string;
     /**
-    * Amount to buy
-    */
+     * Amount to buy
+     */
     'buyAmount'?: string;
     /**
-    * Price
-    */
+     * Price
+     */
     'price'?: string;
     /**
-    * Flash swap order status  `1` - success `2` - failure
-    */
+     * Flash swap order status  `1` - success `2` - failure
+     */
     'status'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "sellCurrency",
-            "baseName": "sell_currency",
-            "type": "string"
+            name: 'sellCurrency',
+            baseName: 'sell_currency',
+            type: 'string',
         },
         {
-            "name": "sellAmount",
-            "baseName": "sell_amount",
-            "type": "string"
+            name: 'sellAmount',
+            baseName: 'sell_amount',
+            type: 'string',
         },
         {
-            "name": "buyCurrency",
-            "baseName": "buy_currency",
-            "type": "string"
+            name: 'buyCurrency',
+            baseName: 'buy_currency',
+            type: 'string',
         },
         {
-            "name": "buyAmount",
-            "baseName": "buy_amount",
-            "type": "string"
+            name: 'buyAmount',
+            baseName: 'buy_amount',
+            type: 'string',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "number"
-        }    ];
+            name: 'status',
+            baseName: 'status',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FlashSwapOrder.attributeTypeMap;
     }
 }
-

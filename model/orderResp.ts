@@ -9,24 +9,23 @@
  * Do not edit the class manually.
  */
 
-
 export class OrderResp {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'orderId'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
-        }    ];
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OrderResp.attributeTypeMap;
     }
 }
-

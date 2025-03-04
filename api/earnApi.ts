@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
@@ -38,41 +37,40 @@ export class EarnApi {
     }
 
     /**
-     * 
+     *
      * @summary ETH2 swap
-     * @param eth2Swap 
+     * @param eth2Swap
      */
-    public async swapETH2(eth2Swap: Eth2Swap) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async swapETH2(eth2Swap: Eth2Swap): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/staking/eth2/swap';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'eth2Swap' is not null or undefined
         if (eth2Swap === null || eth2Swap === undefined) {
             throw new Error('Required parameter eth2Swap was null or undefined when calling swapETH2.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(eth2Swap, "Eth2Swap")
+            data: ObjectSerializer.serialize(eth2Swap, 'Eth2Swap'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Dual Investment product list
      */
-    public async listDualInvestmentPlans() : Promise<{ response: AxiosResponse; body: Array<DualGetPlans>; }> {
+    public async listDualInvestmentPlans(): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
         const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -80,7 +78,6 @@ export class EarnApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -90,17 +87,17 @@ export class EarnApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<DualGetPlans>>(config, "Array<DualGetPlans>", authSettings);
+        return this.client.request<Array<DualGetPlans>>(config, 'Array<DualGetPlans>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Dual Investment order list
      */
-    public async listDualOrders() : Promise<{ response: AxiosResponse; body: Array<DualGetOrders>; }> {
+    public async listDualOrders(): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -108,7 +105,6 @@ export class EarnApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -118,39 +114,42 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<DualGetOrders>>(config, "Array<DualGetOrders>", authSettings);
+        return this.client.request<Array<DualGetOrders>>(config, 'Array<DualGetOrders>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Place Dual Investment order
-     * @param placeDualInvestmentOrder 
+     * @param placeDualInvestmentOrder
      */
-    public async placeDualOrder(placeDualInvestmentOrder: PlaceDualInvestmentOrder) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async placeDualOrder(
+        placeDualInvestmentOrder: PlaceDualInvestmentOrder,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'placeDualInvestmentOrder' is not null or undefined
         if (placeDualInvestmentOrder === null || placeDualInvestmentOrder === undefined) {
-            throw new Error('Required parameter placeDualInvestmentOrder was null or undefined when calling placeDualOrder.');
+            throw new Error(
+                'Required parameter placeDualInvestmentOrder was null or undefined when calling placeDualOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(placeDualInvestmentOrder, "PlaceDualInvestmentOrder")
+            data: ObjectSerializer.serialize(placeDualInvestmentOrder, 'PlaceDualInvestmentOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Structured Product List
      * @param status Status (default: all)  &#x60;in_process&#x60;-processing  &#x60;will_begin&#x60;-unstarted  &#x60;wait_settlement&#x60;-unsettled  &#x60;done&#x60;-finish
      * @param opts Optional parameters
@@ -158,10 +157,13 @@ export class EarnApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listStructuredProducts(status: string, opts: { type?: string, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList>; }> {
+    public async listStructuredProducts(
+        status: string,
+        opts: { type?: string; page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/products';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -177,19 +179,18 @@ export class EarnApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "string");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -199,11 +200,15 @@ export class EarnApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<StructuredGetProjectList>>(config, "Array<StructuredGetProjectList>", authSettings);
+        return this.client.request<Array<StructuredGetProjectList>>(
+            config,
+            'Array<StructuredGetProjectList>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Structured Product Order List
      * @param opts Optional parameters
      * @param opts.from Start timestamp
@@ -211,10 +216,15 @@ export class EarnApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listStructuredOrders(opts: { from?: number, to?: number, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<StructuredOrderList>; }> {
+    public async listStructuredOrders(opts: {
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<StructuredOrderList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -225,21 +235,20 @@ export class EarnApi {
 
         opts = opts || {};
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -249,34 +258,35 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<StructuredOrderList>>(config, "Array<StructuredOrderList>", authSettings);
+        return this.client.request<Array<StructuredOrderList>>(config, 'Array<StructuredOrderList>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Place Structured Product Order
-     * @param structuredBuy 
+     * @param structuredBuy
      */
-    public async placeStructuredOrder(structuredBuy: StructuredBuy) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async placeStructuredOrder(structuredBuy: StructuredBuy): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/structured/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'structuredBuy' is not null or undefined
         if (structuredBuy === null || structuredBuy === undefined) {
-            throw new Error('Required parameter structuredBuy was null or undefined when calling placeStructuredOrder.');
+            throw new Error(
+                'Required parameter structuredBuy was null or undefined when calling placeStructuredOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(structuredBuy, "StructuredBuy")
+            data: ObjectSerializer.serialize(structuredBuy, 'StructuredBuy'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 }

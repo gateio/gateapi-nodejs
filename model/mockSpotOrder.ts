@@ -9,63 +9,62 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Spot orders
-*/
+ * Spot orders
+ */
 export class MockSpotOrder {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPairs': string;
     /**
-    * Price
-    */
+     * Price
+     */
     'orderPrice': string;
     /**
-    * Initial order quantity for spot trading pairs, not involved in actual calculation.  Currently only supports three currencies: BTC, ETH.
-    */
+     * Initial order quantity for spot trading pairs, not involved in actual calculation.  Currently only supports three currencies: BTC, ETH.
+     */
     'count'?: string;
     /**
-    * Unfilled quantity, involved in actual calculation.
-    */
+     * Unfilled quantity, involved in actual calculation.
+     */
     'left': string;
     /**
-    * Order type, sell - sell order, buy - buy order.
-    */
+     * Order type, sell - sell order, buy - buy order.
+     */
     'type': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currencyPairs",
-            "baseName": "currency_pairs",
-            "type": "string"
+            name: 'currencyPairs',
+            baseName: 'currency_pairs',
+            type: 'string',
         },
         {
-            "name": "orderPrice",
-            "baseName": "order_price",
-            "type": "string"
+            name: 'orderPrice',
+            baseName: 'order_price',
+            type: 'string',
         },
         {
-            "name": "count",
-            "baseName": "count",
-            "type": "string"
+            name: 'count',
+            baseName: 'count',
+            type: 'string',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "string"
+            name: 'left',
+            baseName: 'left',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
-        }    ];
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockSpotOrder.attributeTypeMap;
     }
 }
-

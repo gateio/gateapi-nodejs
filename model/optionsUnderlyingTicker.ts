@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Options underlying detail
-*/
+ * Options underlying detail
+ */
 export class OptionsUnderlyingTicker {
     /**
-    * Total put options trades amount in last 24h
-    */
+     * Total put options trades amount in last 24h
+     */
     'tradePut'?: number;
     /**
-    * Total call options trades amount in last 24h
-    */
+     * Total call options trades amount in last 24h
+     */
     'tradeCall'?: number;
     /**
-    * Index price (quote currency)
-    */
+     * Index price (quote currency)
+     */
     'indexPrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "tradePut",
-            "baseName": "trade_put",
-            "type": "number"
+            name: 'tradePut',
+            baseName: 'trade_put',
+            type: 'number',
         },
         {
-            "name": "tradeCall",
-            "baseName": "trade_call",
-            "type": "number"
+            name: 'tradeCall',
+            baseName: 'trade_call',
+            type: 'number',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
-        }    ];
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsUnderlyingTicker.attributeTypeMap;
     }
 }
-

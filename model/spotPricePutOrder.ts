@@ -9,93 +9,93 @@
  * Do not edit the class manually.
  */
 
-
 export class SpotPricePutOrder {
     /**
-    * Order type，default to `limit`  - limit : Limit Order - market : Market Order
-    */
+     * Order type，default to `limit`  - limit : Limit Order - market : Market Order
+     */
     'type'?: SpotPricePutOrder.Type;
     /**
-    * Order side  - buy: buy side - sell: sell side
-    */
+     * Order side  - buy: buy side - sell: sell side
+     */
     'side': SpotPricePutOrder.Side;
     /**
-    * Order price
-    */
+     * Order price
+     */
     'price': string;
     /**
-    * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC` 
-    */
+     * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
+     */
     'amount': string;
     /**
-    * Trading account type.  Portfolio margin account must set to `unified`  - normal: spot trading - margin: margin trading - unified: unified trading 
-    */
+     * Trading account type.  Portfolio margin account must set to `unified`  - normal: spot trading - margin: margin trading - unified: unified trading
+     */
     'account': SpotPricePutOrder.Account;
     /**
-    * time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only 
-    */
+     * time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
+     */
     'timeInForce'?: SpotPricePutOrder.TimeInForce;
     /**
-    * Whether to borrow coins automatically
-    */
+     * Whether to borrow coins automatically
+     */
     'autoBorrow'?: boolean;
     /**
-    * Whether to repay the loan automatically
-    */
+     * Whether to repay the loan automatically
+     */
     'autoRepay'?: boolean;
     /**
-    * The source of the order, including: - web: web - api: api - app: app
-    */
+     * The source of the order, including: - web: web - api: api - app: app
+     */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "SpotPricePutOrder.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'SpotPricePutOrder.Type',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "SpotPricePutOrder.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'SpotPricePutOrder.Side',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "account",
-            "baseName": "account",
-            "type": "SpotPricePutOrder.Account"
+            name: 'account',
+            baseName: 'account',
+            type: 'SpotPricePutOrder.Account',
         },
         {
-            "name": "timeInForce",
-            "baseName": "time_in_force",
-            "type": "SpotPricePutOrder.TimeInForce"
+            name: 'timeInForce',
+            baseName: 'time_in_force',
+            type: 'SpotPricePutOrder.TimeInForce',
         },
         {
-            "name": "autoBorrow",
-            "baseName": "auto_borrow",
-            "type": "boolean"
+            name: 'autoBorrow',
+            baseName: 'auto_borrow',
+            type: 'boolean',
         },
         {
-            "name": "autoRepay",
-            "baseName": "auto_repay",
-            "type": "boolean"
+            name: 'autoRepay',
+            baseName: 'auto_repay',
+            type: 'boolean',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
-        }    ];
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SpotPricePutOrder.attributeTypeMap;
@@ -104,20 +104,20 @@ export class SpotPricePutOrder {
 
 export namespace SpotPricePutOrder {
     export enum Type {
-        Limit = <any> 'limit',
-        Market = <any> 'market'
+        Limit = <any>'limit',
+        Market = <any>'market',
     }
     export enum Side {
-        Buy = <any> 'buy',
-        Sell = <any> 'sell'
+        Buy = <any>'buy',
+        Sell = <any>'sell',
     }
     export enum Account {
-        Normal = <any> 'normal',
-        Margin = <any> 'margin',
-        Unified = <any> 'unified'
+        Normal = <any>'normal',
+        Margin = <any>'margin',
+        Unified = <any>'unified',
     }
     export enum TimeInForce {
-        Gtc = <any> 'gtc',
-        Ioc = <any> 'ioc'
+        Gtc = <any>'gtc',
+        Ioc = <any>'ioc',
     }
 }

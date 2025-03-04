@@ -9,243 +9,242 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Options contract detail
-*/
+ * Options contract detail
+ */
 export class OptionsContract {
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'name'?: string;
     /**
-    * tag
-    */
+     * tag
+     */
     'tag'?: string;
     /**
-    * Creation time
-    */
+     * Creation time
+     */
     'createTime'?: number;
     /**
-    * Expiration time
-    */
+     * Expiration time
+     */
     'expirationTime'?: number;
     /**
-    * `true` means call options, while `false` is put options
-    */
+     * `true` means call options, while `false` is put options
+     */
     'isCall'?: boolean;
     /**
-    * Multiplier used in converting from invoicing to settlement currency
-    */
+     * Multiplier used in converting from invoicing to settlement currency
+     */
     'multiplier'?: string;
     /**
-    * Underlying
-    */
+     * Underlying
+     */
     'underlying'?: string;
     /**
-    * Underlying price (quote currency)
-    */
+     * Underlying price (quote currency)
+     */
     'underlyingPrice'?: string;
     /**
-    * Last trading price
-    */
+     * Last trading price
+     */
     'lastPrice'?: string;
     /**
-    * Current mark price (quote currency)
-    */
+     * Current mark price (quote currency)
+     */
     'markPrice'?: string;
     /**
-    * Current index price (quote currency)
-    */
+     * Current index price (quote currency)
+     */
     'indexPrice'?: string;
     /**
-    * Maker fee rate, where negative means rebate
-    */
+     * Maker fee rate, where negative means rebate
+     */
     'makerFeeRate'?: string;
     /**
-    * Taker fee rate
-    */
+     * Taker fee rate
+     */
     'takerFeeRate'?: string;
     /**
-    * Minimum order price increment
-    */
+     * Minimum order price increment
+     */
     'orderPriceRound'?: string;
     /**
-    * Minimum mark price increment
-    */
+     * Minimum mark price increment
+     */
     'markPriceRound'?: string;
     /**
-    * Minimum order size the contract allowed
-    */
+     * Minimum order size the contract allowed
+     */
     'orderSizeMin'?: number;
     /**
-    * Maximum order size the contract allowed
-    */
+     * Maximum order size the contract allowed
+     */
     'orderSizeMax'?: number;
     /**
-    * The positive and negative offset allowed between the order price and the current mark price, that is, the order price `order_price` must meet the following conditions:   order_price is within the range of mark_price +/- order_price_deviate * underlying_price  and does not distinguish between buy and sell orders
-    */
+     * The positive and negative offset allowed between the order price and the current mark price, that is, the order price `order_price` must meet the following conditions:   order_price is within the range of mark_price +/- order_price_deviate * underlying_price  and does not distinguish between buy and sell orders
+     */
     'orderPriceDeviate'?: string;
     /**
-    * Referral fee rate discount
-    */
+     * Referral fee rate discount
+     */
     'refDiscountRate'?: string;
     /**
-    * Referrer commission rate
-    */
+     * Referrer commission rate
+     */
     'refRebateRate'?: string;
     /**
-    * Current orderbook ID
-    */
+     * Current orderbook ID
+     */
     'orderbookId'?: number;
     /**
-    * Current trade ID
-    */
+     * Current trade ID
+     */
     'tradeId'?: number;
     /**
-    * Historical accumulated trade size
-    */
+     * Historical accumulated trade size
+     */
     'tradeSize'?: number;
     /**
-    * Current total long position size
-    */
+     * Current total long position size
+     */
     'positionSize'?: number;
     /**
-    * Maximum number of open orders
-    */
+     * Maximum number of open orders
+     */
     'ordersLimit'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "tag",
-            "baseName": "tag",
-            "type": "string"
+            name: 'tag',
+            baseName: 'tag',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "expirationTime",
-            "baseName": "expiration_time",
-            "type": "number"
+            name: 'expirationTime',
+            baseName: 'expiration_time',
+            type: 'number',
         },
         {
-            "name": "isCall",
-            "baseName": "is_call",
-            "type": "boolean"
+            name: 'isCall',
+            baseName: 'is_call',
+            type: 'boolean',
         },
         {
-            "name": "multiplier",
-            "baseName": "multiplier",
-            "type": "string"
+            name: 'multiplier',
+            baseName: 'multiplier',
+            type: 'string',
         },
         {
-            "name": "underlying",
-            "baseName": "underlying",
-            "type": "string"
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
         },
         {
-            "name": "underlyingPrice",
-            "baseName": "underlying_price",
-            "type": "string"
+            name: 'underlyingPrice',
+            baseName: 'underlying_price',
+            type: 'string',
         },
         {
-            "name": "lastPrice",
-            "baseName": "last_price",
-            "type": "string"
+            name: 'lastPrice',
+            baseName: 'last_price',
+            type: 'string',
         },
         {
-            "name": "markPrice",
-            "baseName": "mark_price",
-            "type": "string"
+            name: 'markPrice',
+            baseName: 'mark_price',
+            type: 'string',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
         },
         {
-            "name": "makerFeeRate",
-            "baseName": "maker_fee_rate",
-            "type": "string"
+            name: 'makerFeeRate',
+            baseName: 'maker_fee_rate',
+            type: 'string',
         },
         {
-            "name": "takerFeeRate",
-            "baseName": "taker_fee_rate",
-            "type": "string"
+            name: 'takerFeeRate',
+            baseName: 'taker_fee_rate',
+            type: 'string',
         },
         {
-            "name": "orderPriceRound",
-            "baseName": "order_price_round",
-            "type": "string"
+            name: 'orderPriceRound',
+            baseName: 'order_price_round',
+            type: 'string',
         },
         {
-            "name": "markPriceRound",
-            "baseName": "mark_price_round",
-            "type": "string"
+            name: 'markPriceRound',
+            baseName: 'mark_price_round',
+            type: 'string',
         },
         {
-            "name": "orderSizeMin",
-            "baseName": "order_size_min",
-            "type": "number"
+            name: 'orderSizeMin',
+            baseName: 'order_size_min',
+            type: 'number',
         },
         {
-            "name": "orderSizeMax",
-            "baseName": "order_size_max",
-            "type": "number"
+            name: 'orderSizeMax',
+            baseName: 'order_size_max',
+            type: 'number',
         },
         {
-            "name": "orderPriceDeviate",
-            "baseName": "order_price_deviate",
-            "type": "string"
+            name: 'orderPriceDeviate',
+            baseName: 'order_price_deviate',
+            type: 'string',
         },
         {
-            "name": "refDiscountRate",
-            "baseName": "ref_discount_rate",
-            "type": "string"
+            name: 'refDiscountRate',
+            baseName: 'ref_discount_rate',
+            type: 'string',
         },
         {
-            "name": "refRebateRate",
-            "baseName": "ref_rebate_rate",
-            "type": "string"
+            name: 'refRebateRate',
+            baseName: 'ref_rebate_rate',
+            type: 'string',
         },
         {
-            "name": "orderbookId",
-            "baseName": "orderbook_id",
-            "type": "number"
+            name: 'orderbookId',
+            baseName: 'orderbook_id',
+            type: 'number',
         },
         {
-            "name": "tradeId",
-            "baseName": "trade_id",
-            "type": "number"
+            name: 'tradeId',
+            baseName: 'trade_id',
+            type: 'number',
         },
         {
-            "name": "tradeSize",
-            "baseName": "trade_size",
-            "type": "number"
+            name: 'tradeSize',
+            baseName: 'trade_size',
+            type: 'number',
         },
         {
-            "name": "positionSize",
-            "baseName": "position_size",
-            "type": "number"
+            name: 'positionSize',
+            baseName: 'position_size',
+            type: 'number',
         },
         {
-            "name": "ordersLimit",
-            "baseName": "orders_limit",
-            "type": "number"
-        }    ];
+            name: 'ordersLimit',
+            baseName: 'orders_limit',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsContract.attributeTypeMap;
     }
 }
-

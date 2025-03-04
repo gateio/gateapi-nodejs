@@ -13,102 +13,102 @@ import { SpotCurrencyChain } from './spotCurrencyChain';
 
 export class Currency {
     /**
-    * Currency symbol
-    */
+     * Currency symbol
+     */
     'currency'?: string;
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'name'?: string;
     /**
-    * Whether currency is de-listed
-    */
+     * Whether currency is de-listed
+     */
     'delisted'?: boolean;
     /**
-    * Whether currency\'s withdrawal is disabled (deprecated)
-    */
+     * Whether currency\'s withdrawal is disabled (deprecated)
+     */
     'withdrawDisabled'?: boolean;
     /**
-    * Whether currency\'s withdrawal is delayed (deprecated)
-    */
+     * Whether currency\'s withdrawal is delayed (deprecated)
+     */
     'withdrawDelayed'?: boolean;
     /**
-    * Whether currency\'s deposit is disabled (deprecated)
-    */
+     * Whether currency\'s deposit is disabled (deprecated)
+     */
     'depositDisabled'?: boolean;
     /**
-    * Whether currency\'s trading is disabled
-    */
+     * Whether currency\'s trading is disabled
+     */
     'tradeDisabled'?: boolean;
     /**
-    * Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies
-    */
+     * Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies
+     */
     'fixedRate'?: string;
     /**
-    * The main chain corresponding to the coin
-    */
+     * The main chain corresponding to the coin
+     */
     'chain'?: string;
     /**
-    * All links corresponding to coins
-    */
+     * All links corresponding to coins
+     */
     'chains'?: Array<SpotCurrencyChain>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "delisted",
-            "baseName": "delisted",
-            "type": "boolean"
+            name: 'delisted',
+            baseName: 'delisted',
+            type: 'boolean',
         },
         {
-            "name": "withdrawDisabled",
-            "baseName": "withdraw_disabled",
-            "type": "boolean"
+            name: 'withdrawDisabled',
+            baseName: 'withdraw_disabled',
+            type: 'boolean',
         },
         {
-            "name": "withdrawDelayed",
-            "baseName": "withdraw_delayed",
-            "type": "boolean"
+            name: 'withdrawDelayed',
+            baseName: 'withdraw_delayed',
+            type: 'boolean',
         },
         {
-            "name": "depositDisabled",
-            "baseName": "deposit_disabled",
-            "type": "boolean"
+            name: 'depositDisabled',
+            baseName: 'deposit_disabled',
+            type: 'boolean',
         },
         {
-            "name": "tradeDisabled",
-            "baseName": "trade_disabled",
-            "type": "boolean"
+            name: 'tradeDisabled',
+            baseName: 'trade_disabled',
+            type: 'boolean',
         },
         {
-            "name": "fixedRate",
-            "baseName": "fixed_rate",
-            "type": "string"
+            name: 'fixedRate',
+            baseName: 'fixed_rate',
+            type: 'string',
         },
         {
-            "name": "chain",
-            "baseName": "chain",
-            "type": "string"
+            name: 'chain',
+            baseName: 'chain',
+            type: 'string',
         },
         {
-            "name": "chains",
-            "baseName": "chains",
-            "type": "Array<SpotCurrencyChain>"
-        }    ];
+            name: 'chains',
+            baseName: 'chains',
+            type: 'Array<SpotCurrencyChain>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return Currency.attributeTypeMap;
     }
 }
-

@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class CreateCollateralOrder {
     /**
-    * Collateral amount
-    */
+     * Collateral amount
+     */
     'collateralAmount': string;
     /**
-    * Collateral
-    */
+     * Collateral
+     */
     'collateralCurrency': string;
     /**
-    * Borrowing amount
-    */
+     * Borrowing amount
+     */
     'borrowAmount': string;
     /**
-    * Borrowed currency
-    */
+     * Borrowed currency
+     */
     'borrowCurrency': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "collateralAmount",
-            "baseName": "collateral_amount",
-            "type": "string"
+            name: 'collateralAmount',
+            baseName: 'collateral_amount',
+            type: 'string',
         },
         {
-            "name": "collateralCurrency",
-            "baseName": "collateral_currency",
-            "type": "string"
+            name: 'collateralCurrency',
+            baseName: 'collateral_currency',
+            type: 'string',
         },
         {
-            "name": "borrowAmount",
-            "baseName": "borrow_amount",
-            "type": "string"
+            name: 'borrowAmount',
+            baseName: 'borrow_amount',
+            type: 'string',
         },
         {
-            "name": "borrowCurrency",
-            "baseName": "borrow_currency",
-            "type": "string"
-        }    ];
+            name: 'borrowCurrency',
+            baseName: 'borrow_currency',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CreateCollateralOrder.attributeTypeMap;
     }
 }
-

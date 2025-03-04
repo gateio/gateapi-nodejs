@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class SpotAccount {
     /**
-    * Currency detail
-    */
+     * Currency detail
+     */
     'currency'?: string;
     /**
-    * Available amount
-    */
+     * Available amount
+     */
     'available'?: string;
     /**
-    * Locked amount, used in trading
-    */
+     * Locked amount, used in trading
+     */
     'locked'?: string;
     /**
-    * Version number
-    */
+     * Version number
+     */
     'updateId'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "locked",
-            "baseName": "locked",
-            "type": "string"
+            name: 'locked',
+            baseName: 'locked',
+            type: 'string',
         },
         {
-            "name": "updateId",
-            "baseName": "update_id",
-            "type": "number"
-        }    ];
+            name: 'updateId',
+            baseName: 'update_id',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SpotAccount.attributeTypeMap;
     }
 }
-

@@ -9,54 +9,53 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Dual Investment order
-*/
+ * Dual Investment order
+ */
 export class PlaceDualInvestmentOrder {
     /**
-    * Plan ID
-    */
+     * Plan ID
+     */
     'planId': string;
     /**
-    * The number of copies is mutually exclusive with the amount field and will be deprecated soon. It is recommended to use the amount parameter.
-    */
+     * The number of copies is mutually exclusive with the amount field and will be deprecated soon. It is recommended to use the amount parameter.
+     */
     'copies'?: string;
     /**
-    * Whether to purchase at the maximum. Mutually exclusive with the amount field. Will be deprecated soon. It is recommended to use the amount parameter.
-    */
+     * Whether to purchase at the maximum. Mutually exclusive with the amount field. Will be deprecated soon. It is recommended to use the amount parameter.
+     */
     'isMax'?: number;
     /**
-    * Subscription amount, mutually exclusive with the copies field
-    */
+     * Subscription amount, mutually exclusive with the copies field
+     */
     'amount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "planId",
-            "baseName": "plan_id",
-            "type": "string"
+            name: 'planId',
+            baseName: 'plan_id',
+            type: 'string',
         },
         {
-            "name": "copies",
-            "baseName": "copies",
-            "type": "string"
+            name: 'copies',
+            baseName: 'copies',
+            type: 'string',
         },
         {
-            "name": "isMax",
-            "baseName": "is_max",
-            "type": "number"
+            name: 'isMax',
+            baseName: 'is_max',
+            type: 'number',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
-        }    ];
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return PlaceDualInvestmentOrder.attributeTypeMap;
     }
 }
-

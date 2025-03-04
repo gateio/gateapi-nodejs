@@ -9,24 +9,23 @@
  * Do not edit the class manually.
  */
 
-
 export class TransactionID {
     /**
-    * Order id
-    */
+     * Order id
+     */
     'txId'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "txId",
-            "baseName": "tx_id",
-            "type": "number"
-        }    ];
+            name: 'txId',
+            baseName: 'tx_id',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return TransactionID.attributeTypeMap;
     }
 }
-

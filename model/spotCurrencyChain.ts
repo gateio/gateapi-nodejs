@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class SpotCurrencyChain {
     /**
-    * Chain name
-    */
+     * Chain name
+     */
     'name'?: string;
     /**
-    * token address
-    */
+     * token address
+     */
     'addr'?: string;
     /**
-    * Whether currency\'s withdrawal is disabled
-    */
+     * Whether currency\'s withdrawal is disabled
+     */
     'withdrawDisabled'?: boolean;
     /**
-    * Whether currency\'s withdrawal is delayed
-    */
+     * Whether currency\'s withdrawal is delayed
+     */
     'withdrawDelayed'?: boolean;
     /**
-    * Whether currency\'s deposit is disabled
-    */
+     * Whether currency\'s deposit is disabled
+     */
     'depositDisabled'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "addr",
-            "baseName": "addr",
-            "type": "string"
+            name: 'addr',
+            baseName: 'addr',
+            type: 'string',
         },
         {
-            "name": "withdrawDisabled",
-            "baseName": "withdraw_disabled",
-            "type": "boolean"
+            name: 'withdrawDisabled',
+            baseName: 'withdraw_disabled',
+            type: 'boolean',
         },
         {
-            "name": "withdrawDelayed",
-            "baseName": "withdraw_delayed",
-            "type": "boolean"
+            name: 'withdrawDelayed',
+            baseName: 'withdraw_delayed',
+            type: 'boolean',
         },
         {
-            "name": "depositDisabled",
-            "baseName": "deposit_disabled",
-            "type": "boolean"
-        }    ];
+            name: 'depositDisabled',
+            baseName: 'deposit_disabled',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SpotCurrencyChain.attributeTypeMap;
     }
 }
-

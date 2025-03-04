@@ -9,240 +9,240 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Options order detail
-*/
+ * Options order detail
+ */
 export class OptionsOrder {
     /**
-    * Options order ID
-    */
+     * Options order ID
+     */
     'id'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'user'?: number;
     /**
-    * Creation time of order
-    */
+     * Creation time of order
+     */
     'createTime'?: number;
     /**
-    * Order finished time. Not returned if order is open
-    */
+     * Order finished time. Not returned if order is open
+     */
     'finishTime'?: number;
     /**
-    * Ending method, including:  - filled: fully completed - canceled: user canceled - liquidated: forced liquidation cancellation - ioc: Not fully filled immediately because tif is set to ioc - auto_deleveraged: automatic deleveraging cancel - reduce_only: Increased position is cancelled, because reduce_only is set or the position is closed - position_closed: Because the position was closed, the pending order was canceled - reduce_out: Only reduce the excluded pending orders that are not easy to be filled - mmp_cancelled: MMP canceled
-    */
+     * Ending method, including:  - filled: fully completed - canceled: user canceled - liquidated: forced liquidation cancellation - ioc: Not fully filled immediately because tif is set to ioc - auto_deleveraged: automatic deleveraging cancel - reduce_only: Increased position is cancelled, because reduce_only is set or the position is closed - position_closed: Because the position was closed, the pending order was canceled - reduce_out: Only reduce the excluded pending orders that are not easy to be filled - mmp_cancelled: MMP canceled
+     */
     'finishAs'?: OptionsOrder.FinishAs;
     /**
-    * Order status  - `open`: waiting to be traded - `finished`: finished
-    */
+     * Order status  - `open`: waiting to be traded - `finished`: finished
+     */
     'status'?: OptionsOrder.Status;
     /**
-    * Contract name
-    */
+     * Contract name
+     */
     'contract': string;
     /**
-    * Order size. Specify positive number to make a bid, and negative number to ask
-    */
+     * Order size. Specify positive number to make a bid, and negative number to ask
+     */
     'size': number;
     /**
-    * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
-    */
+     * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
+     */
     'iceberg'?: number;
     /**
-    * Order price. 0 for market order with `tif` set as `ioc` (USDT)
-    */
+     * Order price. 0 for market order with `tif` set as `ioc` (USDT)
+     */
     'price'?: string;
     /**
-    * Set as `true` to close the position, with `size` set to 0
-    */
+     * Set as `true` to close the position, with `size` set to 0
+     */
     'close'?: boolean;
     /**
-    * Is the order to close position
-    */
+     * Is the order to close position
+     */
     'isClose'?: boolean;
     /**
-    * Set as `true` to be reduce-only order
-    */
+     * Set as `true` to be reduce-only order
+     */
     'reduceOnly'?: boolean;
     /**
-    * Is the order reduce-only
-    */
+     * Is the order reduce-only
+     */
     'isReduceOnly'?: boolean;
     /**
-    * Is the order for liquidation
-    */
+     * Is the order for liquidation
+     */
     'isLiq'?: boolean;
     /**
-    * When set to true, delegate to MMP
-    */
+     * When set to true, delegate to MMP
+     */
     'mmp'?: boolean;
     /**
-    * Whether it is MMP delegation. Corresponds to `mmp` in the request.
-    */
+     * Whether it is MMP delegation. Corresponds to `mmp` in the request.
+     */
     'isMmp'?: boolean;
     /**
-    * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
-    */
+     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
+     */
     'tif'?: OptionsOrder.Tif;
     /**
-    * Size left to be traded
-    */
+     * Size left to be traded
+     */
     'left'?: number;
     /**
-    * Fill price of the order
-    */
+     * Fill price of the order
+     */
     'fillPrice'?: string;
     /**
-    * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance 
-    */
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance
+     */
     'text'?: string;
     /**
-    * Taker fee
-    */
+     * Taker fee
+     */
     'tkfr'?: string;
     /**
-    * Maker fee
-    */
+     * Maker fee
+     */
     'mkfr'?: string;
     /**
-    * Reference user ID
-    */
+     * Reference user ID
+     */
     'refu'?: number;
     /**
-    * Referrer rebate
-    */
+     * Referrer rebate
+     */
     'refr'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "user",
-            "baseName": "user",
-            "type": "number"
+            name: 'user',
+            baseName: 'user',
+            type: 'number',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "finishTime",
-            "baseName": "finish_time",
-            "type": "number"
+            name: 'finishTime',
+            baseName: 'finish_time',
+            type: 'number',
         },
         {
-            "name": "finishAs",
-            "baseName": "finish_as",
-            "type": "OptionsOrder.FinishAs"
+            name: 'finishAs',
+            baseName: 'finish_as',
+            type: 'OptionsOrder.FinishAs',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "OptionsOrder.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'OptionsOrder.Status',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "iceberg",
-            "baseName": "iceberg",
-            "type": "number"
+            name: 'iceberg',
+            baseName: 'iceberg',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "close",
-            "baseName": "close",
-            "type": "boolean"
+            name: 'close',
+            baseName: 'close',
+            type: 'boolean',
         },
         {
-            "name": "isClose",
-            "baseName": "is_close",
-            "type": "boolean"
+            name: 'isClose',
+            baseName: 'is_close',
+            type: 'boolean',
         },
         {
-            "name": "reduceOnly",
-            "baseName": "reduce_only",
-            "type": "boolean"
+            name: 'reduceOnly',
+            baseName: 'reduce_only',
+            type: 'boolean',
         },
         {
-            "name": "isReduceOnly",
-            "baseName": "is_reduce_only",
-            "type": "boolean"
+            name: 'isReduceOnly',
+            baseName: 'is_reduce_only',
+            type: 'boolean',
         },
         {
-            "name": "isLiq",
-            "baseName": "is_liq",
-            "type": "boolean"
+            name: 'isLiq',
+            baseName: 'is_liq',
+            type: 'boolean',
         },
         {
-            "name": "mmp",
-            "baseName": "mmp",
-            "type": "boolean"
+            name: 'mmp',
+            baseName: 'mmp',
+            type: 'boolean',
         },
         {
-            "name": "isMmp",
-            "baseName": "is_mmp",
-            "type": "boolean"
+            name: 'isMmp',
+            baseName: 'is_mmp',
+            type: 'boolean',
         },
         {
-            "name": "tif",
-            "baseName": "tif",
-            "type": "OptionsOrder.Tif"
+            name: 'tif',
+            baseName: 'tif',
+            type: 'OptionsOrder.Tif',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "number"
+            name: 'left',
+            baseName: 'left',
+            type: 'number',
         },
         {
-            "name": "fillPrice",
-            "baseName": "fill_price",
-            "type": "string"
+            name: 'fillPrice',
+            baseName: 'fill_price',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "tkfr",
-            "baseName": "tkfr",
-            "type": "string"
+            name: 'tkfr',
+            baseName: 'tkfr',
+            type: 'string',
         },
         {
-            "name": "mkfr",
-            "baseName": "mkfr",
-            "type": "string"
+            name: 'mkfr',
+            baseName: 'mkfr',
+            type: 'string',
         },
         {
-            "name": "refu",
-            "baseName": "refu",
-            "type": "number"
+            name: 'refu',
+            baseName: 'refu',
+            type: 'number',
         },
         {
-            "name": "refr",
-            "baseName": "refr",
-            "type": "string"
-        }    ];
+            name: 'refr',
+            baseName: 'refr',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsOrder.attributeTypeMap;
@@ -251,23 +251,23 @@ export class OptionsOrder {
 
 export namespace OptionsOrder {
     export enum FinishAs {
-        Filled = <any> 'filled',
-        Cancelled = <any> 'cancelled',
-        Liquidated = <any> 'liquidated',
-        Ioc = <any> 'ioc',
-        AutoDeleveraged = <any> 'auto_deleveraged',
-        ReduceOnly = <any> 'reduce_only',
-        PositionClosed = <any> 'position_closed',
-        ReduceOut = <any> 'reduce_out',
-        MmpCancelled = <any> 'mmp_cancelled'
+        Filled = <any>'filled',
+        Cancelled = <any>'cancelled',
+        Liquidated = <any>'liquidated',
+        Ioc = <any>'ioc',
+        AutoDeleveraged = <any>'auto_deleveraged',
+        ReduceOnly = <any>'reduce_only',
+        PositionClosed = <any>'position_closed',
+        ReduceOut = <any>'reduce_out',
+        MmpCancelled = <any>'mmp_cancelled',
     }
     export enum Status {
-        Open = <any> 'open',
-        Finished = <any> 'finished'
+        Open = <any>'open',
+        Finished = <any>'finished',
     }
     export enum Tif {
-        Gtc = <any> 'gtc',
-        Ioc = <any> 'ioc',
-        Poc = <any> 'poc'
+        Gtc = <any>'gtc',
+        Ioc = <any>'ioc',
+        Poc = <any>'poc',
     }
 }

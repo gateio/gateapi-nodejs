@@ -12,79 +12,79 @@
 import { ProfitLossRange } from './profitLossRange';
 
 /**
-* Margin result
-*/
+ * Margin result
+ */
 export class MockMarginResult {
     /**
-    * Position combination type `original_position` - Original position `long_delta_original_position` - Positive delta + Original position `short_delta_original_position` - Negative delta + Original position
-    */
+     * Position combination type `original_position` - Original position `long_delta_original_position` - Positive delta + Original position `short_delta_original_position` - Negative delta + Original position
+     */
     'type'?: string;
     /**
-    * The results of 33 pressure scenarios for MR1
-    */
+     * The results of 33 pressure scenarios for MR1
+     */
     'profitLossRanges'?: Array<ProfitLossRange>;
     /**
-    * 最大损失
-    */
+     * 最大损失
+     */
     'maxLoss'?: ProfitLossRange;
     /**
-    * Stress testing
-    */
+     * Stress testing
+     */
     'mr1'?: string;
     /**
-    * Basis spread risk
-    */
+     * Basis spread risk
+     */
     'mr2'?: string;
     /**
-    * Volatility spread risk
-    */
+     * Volatility spread risk
+     */
     'mr3'?: string;
     /**
-    * Option short risk
-    */
+     * Option short risk
+     */
     'mr4'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "profitLossRanges",
-            "baseName": "profit_loss_ranges",
-            "type": "Array<ProfitLossRange>"
+            name: 'profitLossRanges',
+            baseName: 'profit_loss_ranges',
+            type: 'Array<ProfitLossRange>',
         },
         {
-            "name": "maxLoss",
-            "baseName": "max_loss",
-            "type": "ProfitLossRange"
+            name: 'maxLoss',
+            baseName: 'max_loss',
+            type: 'ProfitLossRange',
         },
         {
-            "name": "mr1",
-            "baseName": "mr1",
-            "type": "string"
+            name: 'mr1',
+            baseName: 'mr1',
+            type: 'string',
         },
         {
-            "name": "mr2",
-            "baseName": "mr2",
-            "type": "string"
+            name: 'mr2',
+            baseName: 'mr2',
+            type: 'string',
         },
         {
-            "name": "mr3",
-            "baseName": "mr3",
-            "type": "string"
+            name: 'mr3',
+            baseName: 'mr3',
+            type: 'string',
         },
         {
-            "name": "mr4",
-            "baseName": "mr4",
-            "type": "string"
-        }    ];
+            name: 'mr4',
+            baseName: 'mr4',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockMarginResult.attributeTypeMap;
     }
 }
-

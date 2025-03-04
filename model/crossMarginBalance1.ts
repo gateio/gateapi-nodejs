@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class CrossMarginBalance1 {
     /**
-    * Available amount
-    */
+     * Available amount
+     */
     'available'?: string;
     /**
-    * Locked amount
-    */
+     * Locked amount
+     */
     'freeze'?: string;
     /**
-    * Borrowed amount
-    */
+     * Borrowed amount
+     */
     'borrowed'?: string;
     /**
-    * Unpaid interests
-    */
+     * Unpaid interests
+     */
     'interest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "freeze",
-            "baseName": "freeze",
-            "type": "string"
+            name: 'freeze',
+            baseName: 'freeze',
+            type: 'string',
         },
         {
-            "name": "borrowed",
-            "baseName": "borrowed",
-            "type": "string"
+            name: 'borrowed',
+            baseName: 'borrowed',
+            type: 'string',
         },
         {
-            "name": "interest",
-            "baseName": "interest",
-            "type": "string"
-        }    ];
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CrossMarginBalance1.attributeTypeMap;
     }
 }
-

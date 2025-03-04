@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Supported borrowing and collateral currencies
-*/
+ * Supported borrowing and collateral currencies
+ */
 export class CollateralLoanCurrency {
     /**
-    * Borrowed currency
-    */
+     * Borrowed currency
+     */
     'loanCurrency'?: string;
     /**
-    * List of supported collateral currencies
-    */
+     * List of supported collateral currencies
+     */
     'collateralCurrency'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "loanCurrency",
-            "baseName": "loan_currency",
-            "type": "string"
+            name: 'loanCurrency',
+            baseName: 'loan_currency',
+            type: 'string',
         },
         {
-            "name": "collateralCurrency",
-            "baseName": "collateral_currency",
-            "type": "Array<string>"
-        }    ];
+            name: 'collateralCurrency',
+            baseName: 'collateral_currency',
+            type: 'Array<string>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CollateralLoanCurrency.attributeTypeMap;
     }
 }
-

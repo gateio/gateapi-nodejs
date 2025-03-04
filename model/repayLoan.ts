@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Repay
-*/
+ * Repay
+ */
 export class RepayLoan {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'orderId': number;
     /**
-    * Repayment amount, it is mandatory when making partial repayments
-    */
+     * Repayment amount, it is mandatory when making partial repayments
+     */
     'repayAmount': string;
     /**
-    * Repayment method, set to `true` for full repayment, and `false` for partial repayment; When set to false for partial repayment, the repay_amount parameter cannot be greater than the remaining amount to be repaid by the user. 
-    */
+     * Repayment method, set to `true` for full repayment, and `false` for partial repayment; When set to false for partial repayment, the repay_amount parameter cannot be greater than the remaining amount to be repaid by the user.
+     */
     'repaidAll': boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "repayAmount",
-            "baseName": "repay_amount",
-            "type": "string"
+            name: 'repayAmount',
+            baseName: 'repay_amount',
+            type: 'string',
         },
         {
-            "name": "repaidAll",
-            "baseName": "repaid_all",
-            "type": "boolean"
-        }    ];
+            name: 'repaidAll',
+            baseName: 'repaid_all',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RepayLoan.attributeTypeMap;
     }
 }
-

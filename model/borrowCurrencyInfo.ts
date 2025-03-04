@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class BorrowCurrencyInfo {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Currency Index Price
-    */
+     * Currency Index Price
+     */
     'indexPrice'?: string;
     /**
-    * outstanding principal
-    */
+     * outstanding principal
+     */
     'leftRepayPrincipal'?: string;
     /**
-    * outstanding interest
-    */
+     * outstanding interest
+     */
     'leftRepayInterest'?: string;
     /**
-    * Value of left total repayments amount in USDT
-    */
+     * Value of left total repayments amount in USDT
+     */
     'leftRepayUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
         },
         {
-            "name": "leftRepayPrincipal",
-            "baseName": "left_repay_principal",
-            "type": "string"
+            name: 'leftRepayPrincipal',
+            baseName: 'left_repay_principal',
+            type: 'string',
         },
         {
-            "name": "leftRepayInterest",
-            "baseName": "left_repay_interest",
-            "type": "string"
+            name: 'leftRepayInterest',
+            baseName: 'left_repay_interest',
+            type: 'string',
         },
         {
-            "name": "leftRepayUsdt",
-            "baseName": "left_repay_usdt",
-            "type": "string"
-        }    ];
+            name: 'leftRepayUsdt',
+            baseName: 'left_repay_usdt',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return BorrowCurrencyInfo.attributeTypeMap;
     }
 }
-

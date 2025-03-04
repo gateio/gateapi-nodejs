@@ -9,27 +9,26 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Retrieve user rebate information
-*/
+ * Retrieve user rebate information
+ */
 export class RebateUserInfo {
     /**
-    * My inviter\'s UID
-    */
+     * My inviter\'s UID
+     */
     'inviteUid'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "inviteUid",
-            "baseName": "invite_uid",
-            "type": "number"
-        }    ];
+            name: 'inviteUid',
+            baseName: 'invite_uid',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RebateUserInfo.attributeTypeMap;
     }
 }
-

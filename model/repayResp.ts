@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Repay
-*/
+ * Repay
+ */
 export class RepayResp {
     /**
-    * Principal
-    */
+     * Principal
+     */
     'repaidPrincipal'?: string;
     /**
-    * Interest
-    */
+     * Interest
+     */
     'repaidInterest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "repaidPrincipal",
-            "baseName": "repaid_principal",
-            "type": "string"
+            name: 'repaidPrincipal',
+            baseName: 'repaid_principal',
+            type: 'string',
         },
         {
-            "name": "repaidInterest",
-            "baseName": "repaid_interest",
-            "type": "string"
-        }    ];
+            name: 'repaidInterest',
+            baseName: 'repaid_interest',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RepayResp.attributeTypeMap;
     }
 }
-

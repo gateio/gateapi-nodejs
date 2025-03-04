@@ -9,132 +9,131 @@
  * Do not edit the class manually.
  */
 
-
 export class TradeFee {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * taker fee rate
-    */
+     * taker fee rate
+     */
     'takerFee'?: string;
     /**
-    * maker fee rate
-    */
+     * maker fee rate
+     */
     'makerFee'?: string;
     /**
-    * If GT deduction is enabled
-    */
+     * If GT deduction is enabled
+     */
     'gtDiscount'?: boolean;
     /**
-    * Taker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
-    */
+     * Taker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
+     */
     'gtTakerFee'?: string;
     /**
-    * Maker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
-    */
+     * Maker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
+     */
     'gtMakerFee'?: string;
     /**
-    * Loan fee rate of margin lending
-    */
+     * Loan fee rate of margin lending
+     */
     'loanFee'?: string;
     /**
-    * Point type. 0 - Initial version. 1 - new version since 202009
-    */
+     * Point type. 0 - Initial version. 1 - new version since 202009
+     */
     'pointType'?: string;
     /**
-    * Futures trading taker fee
-    */
+     * Futures trading taker fee
+     */
     'futuresTakerFee'?: string;
     /**
-    * Future trading maker fee
-    */
+     * Future trading maker fee
+     */
     'futuresMakerFee'?: string;
     /**
-    * Delivery trading taker fee
-    */
+     * Delivery trading taker fee
+     */
     'deliveryTakerFee'?: string;
     /**
-    * Delivery trading maker fee
-    */
+     * Delivery trading maker fee
+     */
     'deliveryMakerFee'?: string;
     /**
-    * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
-    */
+     * Deduction types for rates, 1 - GT deduction, 2 - Point card deduction, 3 - VIP rates
+     */
     'debitFee'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "takerFee",
-            "baseName": "taker_fee",
-            "type": "string"
+            name: 'takerFee',
+            baseName: 'taker_fee',
+            type: 'string',
         },
         {
-            "name": "makerFee",
-            "baseName": "maker_fee",
-            "type": "string"
+            name: 'makerFee',
+            baseName: 'maker_fee',
+            type: 'string',
         },
         {
-            "name": "gtDiscount",
-            "baseName": "gt_discount",
-            "type": "boolean"
+            name: 'gtDiscount',
+            baseName: 'gt_discount',
+            type: 'boolean',
         },
         {
-            "name": "gtTakerFee",
-            "baseName": "gt_taker_fee",
-            "type": "string"
+            name: 'gtTakerFee',
+            baseName: 'gt_taker_fee',
+            type: 'string',
         },
         {
-            "name": "gtMakerFee",
-            "baseName": "gt_maker_fee",
-            "type": "string"
+            name: 'gtMakerFee',
+            baseName: 'gt_maker_fee',
+            type: 'string',
         },
         {
-            "name": "loanFee",
-            "baseName": "loan_fee",
-            "type": "string"
+            name: 'loanFee',
+            baseName: 'loan_fee',
+            type: 'string',
         },
         {
-            "name": "pointType",
-            "baseName": "point_type",
-            "type": "string"
+            name: 'pointType',
+            baseName: 'point_type',
+            type: 'string',
         },
         {
-            "name": "futuresTakerFee",
-            "baseName": "futures_taker_fee",
-            "type": "string"
+            name: 'futuresTakerFee',
+            baseName: 'futures_taker_fee',
+            type: 'string',
         },
         {
-            "name": "futuresMakerFee",
-            "baseName": "futures_maker_fee",
-            "type": "string"
+            name: 'futuresMakerFee',
+            baseName: 'futures_maker_fee',
+            type: 'string',
         },
         {
-            "name": "deliveryTakerFee",
-            "baseName": "delivery_taker_fee",
-            "type": "string"
+            name: 'deliveryTakerFee',
+            baseName: 'delivery_taker_fee',
+            type: 'string',
         },
         {
-            "name": "deliveryMakerFee",
-            "baseName": "delivery_maker_fee",
-            "type": "string"
+            name: 'deliveryMakerFee',
+            baseName: 'delivery_maker_fee',
+            type: 'string',
         },
         {
-            "name": "debitFee",
-            "baseName": "debit_fee",
-            "type": "number"
-        }    ];
+            name: 'debitFee',
+            baseName: 'debit_fee',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return TradeFee.attributeTypeMap;
     }
 }
-

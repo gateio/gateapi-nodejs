@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { DeliveryCandlestick } from '../model/deliveryCandlestick';
 import { DeliveryContract } from '../model/deliveryContract';
@@ -48,15 +47,18 @@ export class DeliveryApi {
     }
 
     /**
-     * 
+     *
      * @summary List all futures contracts
      * @param settle Settle currency
      */
-    public async listDeliveryContracts(settle: 'usdt') : Promise<{ response: AxiosResponse; body: Array<DeliveryContract>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/contracts'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryContracts(
+        settle: 'usdt',
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryContract> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/contracts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -70,7 +72,6 @@ export class DeliveryApi {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryContracts.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -79,21 +80,26 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<DeliveryContract>>(config, "Array<DeliveryContract>", authSettings);
+        return this.client.request<Array<DeliveryContract>>(config, 'Array<DeliveryContract>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get a single contract
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async getDeliveryContract(settle: 'usdt', contract: string) : Promise<{ response: AxiosResponse; body: DeliveryContract; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/contracts/{contract}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryContract(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: AxiosResponse; body: DeliveryContract }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/contracts/{contract}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -112,7 +118,6 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling getDeliveryContract.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -121,7 +126,7 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<DeliveryContract>(config, "DeliveryContract", authSettings);
+        return this.client.request<DeliveryContract>(config, 'DeliveryContract', authSettings);
     }
 
     /**
@@ -134,11 +139,16 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of order depth data in asks or bids
      * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
-    public async listDeliveryOrderBook(settle: 'usdt', contract: string, opts: { interval?: '0' | '0.1' | '0.01', limit?: number, withId?: boolean,  } ) : Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/order_book'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryOrderBook(
+        settle: 'usdt',
+        contract: string,
+        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
+    ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -158,20 +168,19 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.withId !== undefined) {
-            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, "boolean");
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -181,25 +190,30 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<FuturesOrderBook>(config, "FuturesOrderBook", authSettings);
+        return this.client.request<FuturesOrderBook>(config, 'FuturesOrderBook', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Futures trading history
      * @param settle Settle currency
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
-     * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. 
+     * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
-    public async listDeliveryTrades(settle: 'usdt', contract: string, opts: { limit?: number, lastId?: string, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesTrade>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/trades'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryTrades(
+        settle: 'usdt',
+        contract: string,
+        opts: { limit?: number; lastId?: string; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -219,24 +233,23 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, "string");
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -246,7 +259,7 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTrade>>(config, "Array<FuturesTrade>", authSettings);
+        return this.client.request<Array<FuturesTrade>>(config, 'Array<FuturesTrade>', authSettings);
     }
 
     /**
@@ -260,11 +273,37 @@ export class DeliveryApi {
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
      */
-    public async listDeliveryCandlesticks(settle: 'usdt', contract: string, opts: { from?: number, to?: number, limit?: number, interval?: '10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d',  } ) : Promise<{ response: AxiosResponse; body: Array<DeliveryCandlestick>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/candlesticks'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryCandlesticks(
+        settle: 'usdt',
+        contract: string,
+        opts: {
+            from?: number;
+            to?: number;
+            limit?: number;
+            interval?:
+                | '10s'
+                | '30s'
+                | '1m'
+                | '5m'
+                | '15m'
+                | '30m'
+                | '1h'
+                | '2h'
+                | '4h'
+                | '6h'
+                | '8h'
+                | '12h'
+                | '1d'
+                | '7d'
+                | '1w'
+                | '30d';
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryCandlestick> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/candlesticks'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -284,24 +323,26 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'10s' | '30s' | '1m' | '5m' | '15m' | '30m' | '1h' | '2h' | '4h' | '6h' | '8h' | '12h' | '1d' | '7d' | '1w' | '30d'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -311,21 +352,25 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<DeliveryCandlestick>>(config, "Array<DeliveryCandlestick>", authSettings);
+        return this.client.request<Array<DeliveryCandlestick>>(config, 'Array<DeliveryCandlestick>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List futures tickers
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract
      */
-    public async listDeliveryTickers(settle: 'usdt', opts: { contract?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesTicker>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/tickers'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryTickers(
+        settle: 'usdt',
+        opts: { contract?: string },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -341,9 +386,8 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -353,21 +397,25 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTicker>>(config, "Array<FuturesTicker>", authSettings);
+        return this.client.request<Array<FuturesTicker>>(config, 'Array<FuturesTicker>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Futures insurance balance history
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listDeliveryInsuranceLedger(settle: 'usdt', opts: { limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<InsuranceRecord>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/insurance'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryInsuranceLedger(
+        settle: 'usdt',
+        opts: { limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<InsuranceRecord> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/insurance'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -378,14 +426,15 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling listDeliveryInsuranceLedger.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling listDeliveryInsuranceLedger.',
+            );
         }
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -395,19 +444,20 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<InsuranceRecord>>(config, "Array<InsuranceRecord>", authSettings);
+        return this.client.request<Array<InsuranceRecord>>(config, 'Array<InsuranceRecord>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query futures account
      * @param settle Settle currency
      */
-    public async listDeliveryAccounts(settle: 'usdt') : Promise<{ response: AxiosResponse; body: FuturesAccount; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/accounts'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryAccounts(settle: 'usdt'): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -421,7 +471,6 @@ export class DeliveryApi {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryAccounts.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -430,11 +479,11 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesAccount>(config, "FuturesAccount", authSettings);
+        return this.client.request<FuturesAccount>(config, 'FuturesAccount', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query account book
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -443,11 +492,20 @@ export class DeliveryApi {
      * @param opts.to End timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
-    public async listDeliveryAccountBook(settle: 'usdt', opts: { limit?: number, from?: number, to?: number, type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr',  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/account_book'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryAccountBook(
+        settle: 'usdt',
+        opts: {
+            limit?: number;
+            from?: number;
+            to?: number;
+            type?: 'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr';
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesAccountBook> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -463,21 +521,23 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(
+                opts.type,
+                "'dnw' | 'pnl' | 'fee' | 'refr' | 'fund' | 'point_dnw' | 'point_fee' | 'point_refr'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -487,19 +547,20 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesAccountBook>>(config, "Array<FuturesAccountBook>", authSettings);
+        return this.client.request<Array<FuturesAccountBook>>(config, 'Array<FuturesAccountBook>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all positions of a user
      * @param settle Settle currency
      */
-    public async listDeliveryPositions(settle: 'usdt') : Promise<{ response: AxiosResponse; body: Array<Position>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryPositions(settle: 'usdt'): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -513,7 +574,6 @@ export class DeliveryApi {
             throw new Error('Required parameter settle was null or undefined when calling listDeliveryPositions.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -522,21 +582,26 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Position>>(config, "Array<Position>", authSettings);
+        return this.client.request<Array<Position>>(config, 'Array<Position>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get single position
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async getDeliveryPosition(settle: 'usdt', contract: string) : Promise<{ response: AxiosResponse; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryPosition(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -555,7 +620,6 @@ export class DeliveryApi {
             throw new Error('Required parameter contract was null or undefined when calling getDeliveryPosition.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -564,22 +628,28 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, "Position", authSettings);
+        return this.client.request<Position>(config, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update position margin
      * @param settle Settle currency
      * @param contract Futures contract
      * @param change Margin change. Use positive number to increase margin, negative number otherwise.
      */
-    public async updateDeliveryPositionMargin(settle: 'usdt', contract: string, change: string) : Promise<{ response: AxiosResponse; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/margin'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionMargin(
+        settle: 'usdt',
+        contract: string,
+        change: string,
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/margin'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -590,21 +660,26 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
         // verify required parameter 'change' is not null or undefined
         if (change === null || change === undefined) {
-            throw new Error('Required parameter change was null or undefined when calling updateDeliveryPositionMargin.');
+            throw new Error(
+                'Required parameter change was null or undefined when calling updateDeliveryPositionMargin.',
+            );
         }
 
-        localVarQueryParameters['change'] = ObjectSerializer.serialize(change, "string");
-
+        localVarQueryParameters['change'] = ObjectSerializer.serialize(change, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -614,22 +689,28 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, "Position", authSettings);
+        return this.client.request<Position>(config, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update position leverage
      * @param settle Settle currency
      * @param contract Futures contract
      * @param leverage New position leverage
      */
-    public async updateDeliveryPositionLeverage(settle: 'usdt', contract: string, leverage: string) : Promise<{ response: AxiosResponse; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/leverage'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionLeverage(
+        settle: 'usdt',
+        contract: string,
+        leverage: string,
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/leverage'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -640,21 +721,26 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
         // verify required parameter 'leverage' is not null or undefined
         if (leverage === null || leverage === undefined) {
-            throw new Error('Required parameter leverage was null or undefined when calling updateDeliveryPositionLeverage.');
+            throw new Error(
+                'Required parameter leverage was null or undefined when calling updateDeliveryPositionLeverage.',
+            );
         }
 
-        localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, "string");
-
+        localVarQueryParameters['leverage'] = ObjectSerializer.serialize(leverage, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -664,22 +750,28 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, "Position", authSettings);
+        return this.client.request<Position>(config, 'Position', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Update position risk limit
      * @param settle Settle currency
      * @param contract Futures contract
      * @param riskLimit New position risk limit
      */
-    public async updateDeliveryPositionRiskLimit(settle: 'usdt', contract: string, riskLimit: string) : Promise<{ response: AxiosResponse; body: Position; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/positions/{contract}/risk_limit'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async updateDeliveryPositionRiskLimit(
+        settle: 'usdt',
+        contract: string,
+        riskLimit: string,
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/positions/{contract}/risk_limit'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -690,21 +782,26 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
         // verify required parameter 'riskLimit' is not null or undefined
         if (riskLimit === null || riskLimit === undefined) {
-            throw new Error('Required parameter riskLimit was null or undefined when calling updateDeliveryPositionRiskLimit.');
+            throw new Error(
+                'Required parameter riskLimit was null or undefined when calling updateDeliveryPositionRiskLimit.',
+            );
         }
 
-        localVarQueryParameters['risk_limit'] = ObjectSerializer.serialize(riskLimit, "string");
-
+        localVarQueryParameters['risk_limit'] = ObjectSerializer.serialize(riskLimit, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -714,7 +811,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Position>(config, "Position", authSettings);
+        return this.client.request<Position>(config, 'Position', authSettings);
     }
 
     /**
@@ -729,11 +826,16 @@ export class DeliveryApi {
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
-    public async listDeliveryOrders(settle: 'usdt', status: 'open' | 'finished', opts: { contract?: string, limit?: number, offset?: number, lastId?: string, countTotal?: 0 | 1,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryOrders(
+        settle: 'usdt',
+        status: 'open' | 'finished',
+        opts: { contract?: string; limit?: number; offset?: number; lastId?: string; countTotal?: 0 | 1 },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -754,27 +856,26 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, "string");
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, "0 | 1");
+            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -784,20 +885,24 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(config, "Array<FuturesOrder>", authSettings);
+        return this.client.request<Array<FuturesOrder>>(config, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
      * Zero-filled order cannot be retrieved 10 minutes after order cancellation
      * @summary Create a futures order
      * @param settle Settle currency
-     * @param futuresOrder 
+     * @param futuresOrder
      */
-    public async createDeliveryOrder(settle: 'usdt', futuresOrder: FuturesOrder) : Promise<{ response: AxiosResponse; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async createDeliveryOrder(
+        settle: 'usdt',
+        futuresOrder: FuturesOrder,
+    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -816,17 +921,16 @@ export class DeliveryApi {
             throw new Error('Required parameter futuresOrder was null or undefined when calling createDeliveryOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(futuresOrder, "FuturesOrder")
+            data: ObjectSerializer.serialize(futuresOrder, 'FuturesOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, "FuturesOrder", authSettings);
+        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
     }
 
     /**
@@ -837,11 +941,16 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.side All bids or asks. Both included if not specified
      */
-    public async cancelDeliveryOrders(settle: 'usdt', contract: string, opts: { side?: 'ask' | 'bid',  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelDeliveryOrders(
+        settle: 'usdt',
+        contract: string,
+        opts: { side?: 'ask' | 'bid' },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -861,12 +970,11 @@ export class DeliveryApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.side !== undefined) {
             localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -876,7 +984,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesOrder>>(config, "Array<FuturesOrder>", authSettings);
+        return this.client.request<Array<FuturesOrder>>(config, 'Array<FuturesOrder>', authSettings);
     }
 
     /**
@@ -885,12 +993,17 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async getDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: AxiosResponse; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -909,7 +1022,6 @@ export class DeliveryApi {
             throw new Error('Required parameter orderId was null or undefined when calling getDeliveryOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -918,21 +1030,26 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, "FuturesOrder", authSettings);
+        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel a single order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async cancelDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: AxiosResponse; body: FuturesOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -951,7 +1068,6 @@ export class DeliveryApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelDeliveryOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -960,11 +1076,11 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesOrder>(config, "FuturesOrder", authSettings);
+        return this.client.request<FuturesOrder>(config, 'FuturesOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List personal trading history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -975,11 +1091,22 @@ export class DeliveryApi {
      * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
-    public async getMyDeliveryTrades(settle: 'usdt', opts: { contract?: string, order?: number, limit?: number, offset?: number, lastId?: string, countTotal?: 0 | 1,  } ) : Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/my_trades'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getMyDeliveryTrades(
+        settle: 'usdt',
+        opts: {
+            contract?: string;
+            order?: number;
+            limit?: number;
+            offset?: number;
+            lastId?: string;
+            countTotal?: 0 | 1;
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<MyFuturesTrade> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -995,29 +1122,28 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.order !== undefined) {
-            localVarQueryParameters['order'] = ObjectSerializer.serialize(opts.order, "number");
+            localVarQueryParameters['order'] = ObjectSerializer.serialize(opts.order, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, "string");
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.countTotal !== undefined) {
-            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, "0 | 1");
+            localVarQueryParameters['count_total'] = ObjectSerializer.serialize(opts.countTotal, '0 | 1');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1027,22 +1153,26 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<MyFuturesTrade>>(config, "Array<MyFuturesTrade>", authSettings);
+        return this.client.request<Array<MyFuturesTrade>>(config, 'Array<MyFuturesTrade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List position close history
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract
      * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listDeliveryPositionClose(settle: 'usdt', opts: { contract?: string, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<PositionClose>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/position_close'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryPositionClose(
+        settle: 'usdt',
+        opts: { contract?: string; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<PositionClose> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1058,13 +1188,12 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1074,11 +1203,11 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<PositionClose>>(config, "Array<PositionClose>", authSettings);
+        return this.client.request<Array<PositionClose>>(config, 'Array<PositionClose>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List liquidation history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -1086,11 +1215,15 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.at Specify a liquidation timestamp
      */
-    public async listDeliveryLiquidates(settle: 'usdt', opts: { contract?: string, limit?: number, at?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/liquidates'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryLiquidates(
+        settle: 'usdt',
+        opts: { contract?: string; limit?: number; at?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1106,17 +1239,16 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, "number");
+            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1126,11 +1258,11 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesLiquidate>>(config, "Array<FuturesLiquidate>", authSettings);
+        return this.client.request<Array<FuturesLiquidate>>(config, 'Array<FuturesLiquidate>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List settlement history
      * @param settle Settle currency
      * @param opts Optional parameters
@@ -1138,11 +1270,15 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.at Specify a settlement timestamp
      */
-    public async listDeliverySettlements(settle: 'usdt', opts: { contract?: string, limit?: number, at?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<DeliverySettlement>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/settlements'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliverySettlements(
+        settle: 'usdt',
+        opts: { contract?: string; limit?: number; at?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<DeliverySettlement> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/settlements'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1158,17 +1294,16 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.at !== undefined) {
-            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, "number");
+            localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1178,7 +1313,7 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<DeliverySettlement>>(config, "Array<DeliverySettlement>", authSettings);
+        return this.client.request<Array<DeliverySettlement>>(config, 'Array<DeliverySettlement>', authSettings);
     }
 
     /**
@@ -1190,11 +1325,15 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listDeliveryRiskLimitTiers(settle: 'usdt', opts: { contract?: string, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/risk_limit_tiers'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listDeliveryRiskLimitTiers(
+        settle: 'usdt',
+        opts: { contract?: string; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesLimitRiskTiers> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/risk_limit_tiers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1210,17 +1349,16 @@ export class DeliveryApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1230,11 +1368,11 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesLimitRiskTiers>>(config, "Array<FuturesLimitRiskTiers>", authSettings);
+        return this.client.request<Array<FuturesLimitRiskTiers>>(config, 'Array<FuturesLimitRiskTiers>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all auto orders
      * @param settle Settle currency
      * @param status Only list the orders with this status
@@ -1243,11 +1381,16 @@ export class DeliveryApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listPriceTriggeredDeliveryOrders(settle: 'usdt', status: 'open' | 'finished', opts: { contract?: string, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listPriceTriggeredDeliveryOrders(
+        settle: 'usdt',
+        status: 'open' | 'finished',
+        opts: { contract?: string; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1258,29 +1401,32 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling listPriceTriggeredDeliveryOrders.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling listPriceTriggeredDeliveryOrders.',
+            );
         }
 
         // verify required parameter 'status' is not null or undefined
         if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listPriceTriggeredDeliveryOrders.');
+            throw new Error(
+                'Required parameter status was null or undefined when calling listPriceTriggeredDeliveryOrders.',
+            );
         }
 
         opts = opts || {};
         localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1290,20 +1436,28 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesPriceTriggeredOrder>>(config, "Array<FuturesPriceTriggeredOrder>", authSettings);
+        return this.client.request<Array<FuturesPriceTriggeredOrder>>(
+            config,
+            'Array<FuturesPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Create a price-triggered order
      * @param settle Settle currency
-     * @param futuresPriceTriggeredOrder 
+     * @param futuresPriceTriggeredOrder
      */
-    public async createPriceTriggeredDeliveryOrder(settle: 'usdt', futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder) : Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async createPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        futuresPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1314,38 +1468,45 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling createPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling createPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'futuresPriceTriggeredOrder' is not null or undefined
         if (futuresPriceTriggeredOrder === null || futuresPriceTriggeredOrder === undefined) {
-            throw new Error('Required parameter futuresPriceTriggeredOrder was null or undefined when calling createPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter futuresPriceTriggeredOrder was null or undefined when calling createPriceTriggeredDeliveryOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(futuresPriceTriggeredOrder, "FuturesPriceTriggeredOrder")
+            data: ObjectSerializer.serialize(futuresPriceTriggeredOrder, 'FuturesPriceTriggeredOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerOrderResponse>(config, "TriggerOrderResponse", authSettings);
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel all open orders
      * @param settle Settle currency
      * @param contract Futures contract
      */
-    public async cancelPriceTriggeredDeliveryOrderList(settle: 'usdt', contract: string) : Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder>; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelPriceTriggeredDeliveryOrderList(
+        settle: 'usdt',
+        contract: string,
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesPriceTriggeredOrder> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1356,16 +1517,19 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.',
+            );
         }
 
         // verify required parameter 'contract' is not null or undefined
         if (contract === null || contract === undefined) {
-            throw new Error('Required parameter contract was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.');
+            throw new Error(
+                'Required parameter contract was null or undefined when calling cancelPriceTriggeredDeliveryOrderList.',
+            );
         }
 
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
-
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -1375,21 +1539,30 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<FuturesPriceTriggeredOrder>>(config, "Array<FuturesPriceTriggeredOrder>", authSettings);
+        return this.client.request<Array<FuturesPriceTriggeredOrder>>(
+            config,
+            'Array<FuturesPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Get a price-triggered order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async getPriceTriggeredDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1400,14 +1573,17 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling getPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling getPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling getPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getPriceTriggeredDeliveryOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1417,21 +1593,26 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(config, "FuturesPriceTriggeredOrder", authSettings);
+        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary cancel a price-triggered order
      * @param settle Settle currency
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async cancelPriceTriggeredDeliveryOrder(settle: 'usdt', orderId: string) : Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/delivery/{settle}/price_orders/{order_id}'
-            .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelPriceTriggeredDeliveryOrder(
+        settle: 'usdt',
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: FuturesPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/delivery/{settle}/price_orders/{order_id}'
+                .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
+                .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1442,14 +1623,17 @@ export class DeliveryApi {
 
         // verify required parameter 'settle' is not null or undefined
         if (settle === null || settle === undefined) {
-            throw new Error('Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter settle was null or undefined when calling cancelPriceTriggeredDeliveryOrder.',
+            );
         }
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelPriceTriggeredDeliveryOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling cancelPriceTriggeredDeliveryOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -1459,6 +1643,6 @@ export class DeliveryApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<FuturesPriceTriggeredOrder>(config, "FuturesPriceTriggeredOrder", authSettings);
+        return this.client.request<FuturesPriceTriggeredOrder>(config, 'FuturesPriceTriggeredOrder', authSettings);
     }
 }

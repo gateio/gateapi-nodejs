@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Spot
-*/
+ * Spot
+ */
 export class MockSpotBalance {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency': string;
     /**
-    * Currency equity, where equity = balance - borrowed, represents the net delta exposure  of your spot positions, which can be negative. Currently only supports three currencies: BTC, ETH.
-    */
+     * Currency equity, where equity = balance - borrowed, represents the net delta exposure  of your spot positions, which can be negative. Currently only supports three currencies: BTC, ETH.
+     */
     'equity': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "equity",
-            "baseName": "equity",
-            "type": "string"
-        }    ];
+            name: 'equity',
+            baseName: 'equity',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockSpotBalance.attributeTypeMap;
     }
 }
-

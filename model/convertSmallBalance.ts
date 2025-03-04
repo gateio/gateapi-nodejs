@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Convert Small Balance
-*/
+ * Convert Small Balance
+ */
 export class ConvertSmallBalance {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: Array<string>;
     /**
-    * Whether to exchange all
-    */
+     * Whether to exchange all
+     */
     'isAll'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "Array<string>"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'Array<string>',
         },
         {
-            "name": "isAll",
-            "baseName": "is_all",
-            "type": "boolean"
-        }    ];
+            name: 'isAll',
+            baseName: 'is_all',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return ConvertSmallBalance.attributeTypeMap;
     }
 }
-

@@ -9,105 +9,104 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesAutoDeleverage {
     /**
-    * Automatic deleveraging time
-    */
+     * Automatic deleveraging time
+     */
     'time'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'user'?: number;
     /**
-    * Order ID. Order IDs before 2023-02-20 are null
-    */
+     * Order ID. Order IDs before 2023-02-20 are null
+     */
     'orderId'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Position leverage
-    */
+     * Position leverage
+     */
     'leverage'?: string;
     /**
-    * Cross margin leverage(valid only when `leverage` is 0)
-    */
+     * Cross margin leverage(valid only when `leverage` is 0)
+     */
     'crossLeverageLimit'?: string;
     /**
-    * Average entry price
-    */
+     * Average entry price
+     */
     'entryPrice'?: string;
     /**
-    * Average fill price
-    */
+     * Average fill price
+     */
     'fillPrice'?: string;
     /**
-    * Trading size
-    */
+     * Trading size
+     */
     'tradeSize'?: number;
     /**
-    * Positions after auto-deleveraging
-    */
+     * Positions after auto-deleveraging
+     */
     'positionSize'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "user",
-            "baseName": "user",
-            "type": "number"
+            name: 'user',
+            baseName: 'user',
+            type: 'number',
         },
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
         },
         {
-            "name": "crossLeverageLimit",
-            "baseName": "cross_leverage_limit",
-            "type": "string"
+            name: 'crossLeverageLimit',
+            baseName: 'cross_leverage_limit',
+            type: 'string',
         },
         {
-            "name": "entryPrice",
-            "baseName": "entry_price",
-            "type": "string"
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
         },
         {
-            "name": "fillPrice",
-            "baseName": "fill_price",
-            "type": "string"
+            name: 'fillPrice',
+            baseName: 'fill_price',
+            type: 'string',
         },
         {
-            "name": "tradeSize",
-            "baseName": "trade_size",
-            "type": "number"
+            name: 'tradeSize',
+            baseName: 'trade_size',
+            type: 'number',
         },
         {
-            "name": "positionSize",
-            "baseName": "position_size",
-            "type": "number"
-        }    ];
+            name: 'positionSize',
+            baseName: 'position_size',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesAutoDeleverage.attributeTypeMap;
     }
 }
-

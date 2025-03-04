@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class InsuranceRecord {
     /**
-    * Unix timestamp in seconds
-    */
+     * Unix timestamp in seconds
+     */
     't'?: number;
     /**
-    * Insurance balance
-    */
+     * Insurance balance
+     */
     'b'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "t",
-            "baseName": "t",
-            "type": "number"
+            name: 't',
+            baseName: 't',
+            type: 'number',
         },
         {
-            "name": "b",
-            "baseName": "b",
-            "type": "string"
-        }    ];
+            name: 'b',
+            baseName: 'b',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return InsuranceRecord.attributeTypeMap;
     }
 }
-

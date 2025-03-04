@@ -9,24 +9,23 @@
  * Do not edit the class manually.
  */
 
-
 export class DebitFee {
     /**
-    * Whether GT fee discount is used
-    */
+     * Whether GT fee discount is used
+     */
     'enabled': boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean"
-        }    ];
+            name: 'enabled',
+            baseName: 'enabled',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return DebitFee.attributeTypeMap;
     }
 }
-

@@ -9,63 +9,62 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Modify contract order parameters
-*/
+ * Modify contract order parameters
+ */
 export class BatchAmendOrderReq {
     /**
-    * Order id, order_id and text must contain at least one
-    */
+     * Order id, order_id and text must contain at least one
+     */
     'orderId'?: number;
     /**
-    * User-defined order text, at least one of order_id and text must be passed
-    */
+     * User-defined order text, at least one of order_id and text must be passed
+     */
     'text'?: string;
     /**
-    * The new order size, including the executed order size. - If it is less than or equal to the executed quantity, the order will be cancelled. - The new order direction must be consistent with the original one. - The size of the closing order cannot be modified. - For orders that only reduce positions, if the size is increased, other orders that only reduce positions may be kicked out. - If the price is not modified, reducing the size will not affect the depth of the queue, and increasing the size will place it at the end of the current price.
-    */
+     * The new order size, including the executed order size. - If it is less than or equal to the executed quantity, the order will be cancelled. - The new order direction must be consistent with the original one. - The size of the closing order cannot be modified. - For orders that only reduce positions, if the size is increased, other orders that only reduce positions may be kicked out. - If the price is not modified, reducing the size will not affect the depth of the queue, and increasing the size will place it at the end of the current price.
+     */
     'size'?: number;
     /**
-    * New order price.
-    */
+     * New order price.
+     */
     'price'?: string;
     /**
-    * Custom info during amending order
-    */
+     * Custom info during amending order
+     */
     'amendText'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "amendText",
-            "baseName": "amend_text",
-            "type": "string"
-        }    ];
+            name: 'amendText',
+            baseName: 'amend_text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return BatchAmendOrderReq.attributeTypeMap;
     }
 }
-

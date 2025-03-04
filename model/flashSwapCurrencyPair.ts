@@ -9,81 +9,80 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* List all supported currencies in flash swap
-*/
+ * List all supported currencies in flash swap
+ */
 export class FlashSwapCurrencyPair {
     /**
-    * The currency pair, BTC_USDT represents selling Bitcoin (BTC) and buying Tether (USDT).
-    */
+     * The currency pair, BTC_USDT represents selling Bitcoin (BTC) and buying Tether (USDT).
+     */
     'currencyPair'?: string;
     /**
-    * The currency to be sold
-    */
+     * The currency to be sold
+     */
     'sellCurrency'?: string;
     /**
-    * The currency to be bought
-    */
+     * The currency to be bought
+     */
     'buyCurrency'?: string;
     /**
-    * The minimum quantity required for selling
-    */
+     * The minimum quantity required for selling
+     */
     'sellMinAmount'?: string;
     /**
-    * The maximum quantity allowed for selling
-    */
+     * The maximum quantity allowed for selling
+     */
     'sellMaxAmount'?: string;
     /**
-    * The minimum quantity required for buying
-    */
+     * The minimum quantity required for buying
+     */
     'buyMinAmount'?: string;
     /**
-    * The maximum quantity allowed for buying
-    */
+     * The maximum quantity allowed for buying
+     */
     'buyMaxAmount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "sellCurrency",
-            "baseName": "sell_currency",
-            "type": "string"
+            name: 'sellCurrency',
+            baseName: 'sell_currency',
+            type: 'string',
         },
         {
-            "name": "buyCurrency",
-            "baseName": "buy_currency",
-            "type": "string"
+            name: 'buyCurrency',
+            baseName: 'buy_currency',
+            type: 'string',
         },
         {
-            "name": "sellMinAmount",
-            "baseName": "sell_min_amount",
-            "type": "string"
+            name: 'sellMinAmount',
+            baseName: 'sell_min_amount',
+            type: 'string',
         },
         {
-            "name": "sellMaxAmount",
-            "baseName": "sell_max_amount",
-            "type": "string"
+            name: 'sellMaxAmount',
+            baseName: 'sell_max_amount',
+            type: 'string',
         },
         {
-            "name": "buyMinAmount",
-            "baseName": "buy_min_amount",
-            "type": "string"
+            name: 'buyMinAmount',
+            baseName: 'buy_min_amount',
+            type: 'string',
         },
         {
-            "name": "buyMaxAmount",
-            "baseName": "buy_max_amount",
-            "type": "string"
-        }    ];
+            name: 'buyMaxAmount',
+            baseName: 'buy_max_amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FlashSwapCurrencyPair.attributeTypeMap;
     }
 }
-

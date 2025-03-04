@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class UidPushOrder {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'id'?: number;
     /**
-    * Initiator User ID
-    */
+     * Initiator User ID
+     */
     'pushUid'?: number;
     /**
-    * Recipient User ID
-    */
+     * Recipient User ID
+     */
     'receiveUid'?: number;
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * Transfer amount
-    */
+     * Transfer amount
+     */
     'amount'?: string;
     /**
-    * Creation time
-    */
+     * Creation time
+     */
     'createTime'?: number;
     /**
-    * Withdrawal Status  - CREATING: Creating - PENDING: Waiting for receiving(Please contact the other party to accept the transfer on the Gate official website) - CANCELLING: Cancelling - CANCELLED: Revoked - REFUSING: Rejection - REFUSED: Rejected - RECEIVING: Receiving - RECEIVED: Success
-    */
+     * Withdrawal Status  - CREATING: Creating - PENDING: Waiting for receiving(Please contact the other party to accept the transfer on the Gate official website) - CANCELLING: Cancelling - CANCELLED: Revoked - REFUSING: Rejection - REFUSED: Rejected - RECEIVING: Receiving - RECEIVED: Success
+     */
     'status'?: string;
     /**
-    * PENDING Reason Tips
-    */
+     * PENDING Reason Tips
+     */
     'message'?: string;
     /**
-    * Order Type
-    */
+     * Order Type
+     */
     'transactionType'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number"
+            name: 'id',
+            baseName: 'id',
+            type: 'number',
         },
         {
-            "name": "pushUid",
-            "baseName": "push_uid",
-            "type": "number"
+            name: 'pushUid',
+            baseName: 'push_uid',
+            type: 'number',
         },
         {
-            "name": "receiveUid",
-            "baseName": "receive_uid",
-            "type": "number"
+            name: 'receiveUid',
+            baseName: 'receive_uid',
+            type: 'number',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "string"
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
         },
         {
-            "name": "message",
-            "baseName": "message",
-            "type": "string"
+            name: 'message',
+            baseName: 'message',
+            type: 'string',
         },
         {
-            "name": "transactionType",
-            "baseName": "transaction_type",
-            "type": "string"
-        }    ];
+            name: 'transactionType',
+            baseName: 'transaction_type',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UidPushOrder.attributeTypeMap;
     }
 }
-

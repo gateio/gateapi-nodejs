@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class UnifiedHistoryLoanRateRates {
     /**
-    * The hourly timestamp corresponding to the interest rate, in milliseconds
-    */
+     * The hourly timestamp corresponding to the interest rate, in milliseconds
+     */
     'time'?: number;
     /**
-    * Historical interest rates for this hour
-    */
+     * Historical interest rates for this hour
+     */
     'rate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "rate",
-            "baseName": "rate",
-            "type": "string"
-        }    ];
+            name: 'rate',
+            baseName: 'rate',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedHistoryLoanRateRates.attributeTypeMap;
     }
 }
-

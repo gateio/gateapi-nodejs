@@ -13,207 +13,207 @@ import { FuturesAccountHistory } from './futuresAccountHistory';
 
 export class FuturesAccount {
     /**
-    * total is the balance after the user\'s accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
-    */
+     * total is the balance after the user\'s accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
+     */
     'total'?: string;
     /**
-    * Unrealized PNL
-    */
+     * Unrealized PNL
+     */
     'unrealisedPnl'?: string;
     /**
-    * Position margin
-    */
+     * Position margin
+     */
     'positionMargin'?: string;
     /**
-    * Order margin of unfinished orders
-    */
+     * Order margin of unfinished orders
+     */
     'orderMargin'?: string;
     /**
-    * The available balance for transferring or trading(including bonus.  Bonus can\'t be be withdrawn. The transfer amount needs to deduct the bonus)
-    */
+     * The available balance for transferring or trading(including bonus.  Bonus can\'t be be withdrawn. The transfer amount needs to deduct the bonus)
+     */
     'available'?: string;
     /**
-    * POINT amount
-    */
+     * POINT amount
+     */
     'point'?: string;
     /**
-    * Settle currency
-    */
+     * Settle currency
+     */
     'currency'?: string;
     /**
-    * Whether dual mode is enabled
-    */
+     * Whether dual mode is enabled
+     */
     'inDualMode'?: boolean;
     /**
-    * Whether portfolio margin account mode is enabled
-    */
+     * Whether portfolio margin account mode is enabled
+     */
     'enableCredit'?: boolean;
     /**
-    * Initial margin position, applicable to the portfolio margin account model
-    */
+     * Initial margin position, applicable to the portfolio margin account model
+     */
     'positionInitialMargin'?: string;
     /**
-    * The maintenance deposit occupied by the position is suitable for the new classic account margin model and unified account model
-    */
+     * The maintenance deposit occupied by the position is suitable for the new classic account margin model and unified account model
+     */
     'maintenanceMargin'?: string;
     /**
-    * Perpetual Contract Bonus
-    */
+     * Perpetual Contract Bonus
+     */
     'bonus'?: string;
     /**
-    * Classic account margin mode, true-new mode, false-old mode
-    */
+     * Classic account margin mode, true-new mode, false-old mode
+     */
     'enableEvolvedClassic'?: boolean;
     /**
-    * Full -warehouse hanging order deposit, suitable for the new classic account margin model
-    */
+     * Full -warehouse hanging order deposit, suitable for the new classic account margin model
+     */
     'crossOrderMargin'?: string;
     /**
-    * The initial security deposit of the full warehouse is suitable for the new classic account margin model
-    */
+     * The initial security deposit of the full warehouse is suitable for the new classic account margin model
+     */
     'crossInitialMargin'?: string;
     /**
-    * Maintain deposit in full warehouse, suitable for new classic account margin models
-    */
+     * Maintain deposit in full warehouse, suitable for new classic account margin models
+     */
     'crossMaintenanceMargin'?: string;
     /**
-    * The full warehouse does not achieve profit and loss, suitable for the new classic account margin model
-    */
+     * The full warehouse does not achieve profit and loss, suitable for the new classic account margin model
+     */
     'crossUnrealisedPnl'?: string;
     /**
-    * Full warehouse available amount, suitable for the new classic account margin model
-    */
+     * Full warehouse available amount, suitable for the new classic account margin model
+     */
     'crossAvailable'?: string;
     /**
-    * Ware -position margin, suitable for the new classic account margin model
-    */
+     * Ware -position margin, suitable for the new classic account margin model
+     */
     'isolatedPositionMargin'?: string;
     /**
-    * Whether to open a new two-way position mode
-    */
+     * Whether to open a new two-way position mode
+     */
     'enableNewDualMode'?: boolean;
     /**
-    * Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
-    */
+     * Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
+     */
     'marginMode'?: number;
     'history'?: FuturesAccountHistory;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "string"
+            name: 'total',
+            baseName: 'total',
+            type: 'string',
         },
         {
-            "name": "unrealisedPnl",
-            "baseName": "unrealised_pnl",
-            "type": "string"
+            name: 'unrealisedPnl',
+            baseName: 'unrealised_pnl',
+            type: 'string',
         },
         {
-            "name": "positionMargin",
-            "baseName": "position_margin",
-            "type": "string"
+            name: 'positionMargin',
+            baseName: 'position_margin',
+            type: 'string',
         },
         {
-            "name": "orderMargin",
-            "baseName": "order_margin",
-            "type": "string"
+            name: 'orderMargin',
+            baseName: 'order_margin',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "point",
-            "baseName": "point",
-            "type": "string"
+            name: 'point',
+            baseName: 'point',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "inDualMode",
-            "baseName": "in_dual_mode",
-            "type": "boolean"
+            name: 'inDualMode',
+            baseName: 'in_dual_mode',
+            type: 'boolean',
         },
         {
-            "name": "enableCredit",
-            "baseName": "enable_credit",
-            "type": "boolean"
+            name: 'enableCredit',
+            baseName: 'enable_credit',
+            type: 'boolean',
         },
         {
-            "name": "positionInitialMargin",
-            "baseName": "position_initial_margin",
-            "type": "string"
+            name: 'positionInitialMargin',
+            baseName: 'position_initial_margin',
+            type: 'string',
         },
         {
-            "name": "maintenanceMargin",
-            "baseName": "maintenance_margin",
-            "type": "string"
+            name: 'maintenanceMargin',
+            baseName: 'maintenance_margin',
+            type: 'string',
         },
         {
-            "name": "bonus",
-            "baseName": "bonus",
-            "type": "string"
+            name: 'bonus',
+            baseName: 'bonus',
+            type: 'string',
         },
         {
-            "name": "enableEvolvedClassic",
-            "baseName": "enable_evolved_classic",
-            "type": "boolean"
+            name: 'enableEvolvedClassic',
+            baseName: 'enable_evolved_classic',
+            type: 'boolean',
         },
         {
-            "name": "crossOrderMargin",
-            "baseName": "cross_order_margin",
-            "type": "string"
+            name: 'crossOrderMargin',
+            baseName: 'cross_order_margin',
+            type: 'string',
         },
         {
-            "name": "crossInitialMargin",
-            "baseName": "cross_initial_margin",
-            "type": "string"
+            name: 'crossInitialMargin',
+            baseName: 'cross_initial_margin',
+            type: 'string',
         },
         {
-            "name": "crossMaintenanceMargin",
-            "baseName": "cross_maintenance_margin",
-            "type": "string"
+            name: 'crossMaintenanceMargin',
+            baseName: 'cross_maintenance_margin',
+            type: 'string',
         },
         {
-            "name": "crossUnrealisedPnl",
-            "baseName": "cross_unrealised_pnl",
-            "type": "string"
+            name: 'crossUnrealisedPnl',
+            baseName: 'cross_unrealised_pnl',
+            type: 'string',
         },
         {
-            "name": "crossAvailable",
-            "baseName": "cross_available",
-            "type": "string"
+            name: 'crossAvailable',
+            baseName: 'cross_available',
+            type: 'string',
         },
         {
-            "name": "isolatedPositionMargin",
-            "baseName": "isolated_position_margin",
-            "type": "string"
+            name: 'isolatedPositionMargin',
+            baseName: 'isolated_position_margin',
+            type: 'string',
         },
         {
-            "name": "enableNewDualMode",
-            "baseName": "enable_new_dual_mode",
-            "type": "boolean"
+            name: 'enableNewDualMode',
+            baseName: 'enable_new_dual_mode',
+            type: 'boolean',
         },
         {
-            "name": "marginMode",
-            "baseName": "margin_mode",
-            "type": "number"
+            name: 'marginMode',
+            baseName: 'margin_mode',
+            type: 'number',
         },
         {
-            "name": "history",
-            "baseName": "history",
-            "type": "FuturesAccountHistory"
-        }    ];
+            name: 'history',
+            baseName: 'history',
+            type: 'FuturesAccountHistory',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesAccount.attributeTypeMap;
     }
 }
-

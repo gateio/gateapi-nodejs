@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class DeliverySettlement {
     /**
-    * Liquidation time
-    */
+     * Liquidation time
+     */
     'time'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Position leverage
-    */
+     * Position leverage
+     */
     'leverage'?: string;
     /**
-    * Position size
-    */
+     * Position size
+     */
     'size'?: number;
     /**
-    * Position margin
-    */
+     * Position margin
+     */
     'margin'?: string;
     /**
-    * Average entry price
-    */
+     * Average entry price
+     */
     'entryPrice'?: string;
     /**
-    * Settled price
-    */
+     * Settled price
+     */
     'settlePrice'?: string;
     /**
-    * Profit
-    */
+     * Profit
+     */
     'profit'?: string;
     /**
-    * Fee deducted
-    */
+     * Fee deducted
+     */
     'fee'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "margin",
-            "baseName": "margin",
-            "type": "string"
+            name: 'margin',
+            baseName: 'margin',
+            type: 'string',
         },
         {
-            "name": "entryPrice",
-            "baseName": "entry_price",
-            "type": "string"
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
         },
         {
-            "name": "settlePrice",
-            "baseName": "settle_price",
-            "type": "string"
+            name: 'settlePrice',
+            baseName: 'settle_price',
+            type: 'string',
         },
         {
-            "name": "profit",
-            "baseName": "profit",
-            "type": "string"
+            name: 'profit',
+            baseName: 'profit',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
-        }    ];
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return DeliverySettlement.attributeTypeMap;
     }
 }
-

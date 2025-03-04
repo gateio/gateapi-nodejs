@@ -12,34 +12,34 @@
 import { RepayCurrencyRes } from './repayCurrencyRes';
 
 /**
-* Repay Multi-Collateral Loan
-*/
+ * Repay Multi-Collateral Loan
+ */
 export class MultiRepayResp {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'orderId'?: number;
     /**
-    * Repay Currency List
-    */
+     * Repay Currency List
+     */
     'repaidCurrencies'?: Array<RepayCurrencyRes>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "repaidCurrencies",
-            "baseName": "repaid_currencies",
-            "type": "Array<RepayCurrencyRes>"
-        }    ];
+            name: 'repaidCurrencies',
+            baseName: 'repaid_currencies',
+            type: 'Array<RepayCurrencyRes>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MultiRepayResp.attributeTypeMap;
     }
 }
-

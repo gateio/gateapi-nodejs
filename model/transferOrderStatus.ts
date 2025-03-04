@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class TransferOrderStatus {
     /**
-    * Order id
-    */
+     * Order id
+     */
     'txId'?: string;
     /**
-    * Transfer status, PENDING - in process, SUCCESS - successful transfer, FAIL - failed transfer, PARTIAL_SUCCESS - Partially successful (this status will appear when transferring between sub-subs)
-    */
+     * Transfer status, PENDING - in process, SUCCESS - successful transfer, FAIL - failed transfer, PARTIAL_SUCCESS - Partially successful (this status will appear when transferring between sub-subs)
+     */
     'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "txId",
-            "baseName": "tx_id",
-            "type": "string"
+            name: 'txId',
+            baseName: 'tx_id',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "string"
-        }    ];
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return TransferOrderStatus.attributeTypeMap;
     }
 }
-

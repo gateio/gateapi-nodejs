@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Futures positions
-*/
+ * Futures positions
+ */
 export class MockFuturesPosition {
     /**
-    * Futures name, currently only supports perpetual futures for BTC and ETH with USDT.
-    */
+     * Futures name, currently only supports perpetual futures for BTC and ETH with USDT.
+     */
     'contract': string;
     /**
-    * Position size, measured in contract units.
-    */
+     * Position size, measured in contract units.
+     */
     'size': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "string"
-        }    ];
+            name: 'size',
+            baseName: 'size',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockFuturesPosition.attributeTypeMap;
     }
 }
-

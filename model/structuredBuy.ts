@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Dual Investment Purchase
-*/
+ * Dual Investment Purchase
+ */
 export class StructuredBuy {
     /**
-    * Plan ID
-    */
+     * Plan ID
+     */
     'pid'?: string;
     /**
-    * Purchase Amount
-    */
+     * Purchase Amount
+     */
     'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "pid",
-            "baseName": "pid",
-            "type": "string"
+            name: 'pid',
+            baseName: 'pid',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
-        }    ];
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return StructuredBuy.attributeTypeMap;
     }
 }
-

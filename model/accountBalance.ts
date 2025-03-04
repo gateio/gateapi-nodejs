@@ -9,51 +9,51 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Total balances calculated with specified currency unit
-*/
+ * Total balances calculated with specified currency unit
+ */
 export class AccountBalance {
     /**
-    * Account total balance amount
-    */
+     * Account total balance amount
+     */
     'amount'?: string;
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: AccountBalance.Currency;
     /**
-    * Unrealised_pnl, this field will only appear in futures, options, delivery, and total accounts
-    */
+     * Unrealised_pnl, this field will only appear in futures, options, delivery, and total accounts
+     */
     'unrealisedPnl'?: string;
     /**
-    * Borrowed，this field will only appear in margin and cross_margin accounts
-    */
+     * Borrowed，this field will only appear in margin and cross_margin accounts
+     */
     'borrowed'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "AccountBalance.Currency"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'AccountBalance.Currency',
         },
         {
-            "name": "unrealisedPnl",
-            "baseName": "unrealised_pnl",
-            "type": "string"
+            name: 'unrealisedPnl',
+            baseName: 'unrealised_pnl',
+            type: 'string',
         },
         {
-            "name": "borrowed",
-            "baseName": "borrowed",
-            "type": "string"
-        }    ];
+            name: 'borrowed',
+            baseName: 'borrowed',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return AccountBalance.attributeTypeMap;
@@ -62,9 +62,9 @@ export class AccountBalance {
 
 export namespace AccountBalance {
     export enum Currency {
-        BTC = <any> 'BTC',
-        CNY = <any> 'CNY',
-        USD = <any> 'USD',
-        USDT = <any> 'USDT'
+        BTC = <any>'BTC',
+        CNY = <any>'CNY',
+        USD = <any>'USD',
+        USDT = <any>'USDT',
     }
 }

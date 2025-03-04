@@ -240,9 +240,9 @@ export * from './withdrawStatus';
 export * from './withdrawalRecord';
 
 import { AxiosRequestConfig } from 'axios';
-import querystring = require("querystring");
-import crypto = require("crypto");
-import { URL } from "url";
+import querystring = require('querystring');
+import crypto = require('crypto');
+import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
 import { AccountDetail } from './accountDetail';
@@ -486,332 +486,322 @@ import { WithdrawStatus } from './withdrawStatus';
 import { WithdrawalRecord } from './withdrawalRecord';
 
 /* tslint:disable:no-unused-variable */
-let primitives = [
-                    "string",
-                    "boolean",
-                    "double",
-                    "integer",
-                    "long",
-                    "float",
-                    "number",
-                    "any",
-                    "bigint"
-                 ];
+const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
 
-let enumsMap: {[index: string]: any} = {
-        "AccountBalance.Currency": AccountBalance.Currency,
-        "AutoRepaySetting.Status": AutoRepaySetting.Status,
-        "BatchFuturesOrder.FinishAs": BatchFuturesOrder.FinishAs,
-        "BatchFuturesOrder.Status": BatchFuturesOrder.Status,
-        "BatchFuturesOrder.Tif": BatchFuturesOrder.Tif,
-        "BatchFuturesOrder.AutoSize": BatchFuturesOrder.AutoSize,
-        "BatchFuturesOrder.StpAct": BatchFuturesOrder.StpAct,
-        "BatchOrder.Status": BatchOrder.Status,
-        "BatchOrder.Type": BatchOrder.Type,
-        "BatchOrder.Account": BatchOrder.Account,
-        "BatchOrder.Side": BatchOrder.Side,
-        "BatchOrder.TimeInForce": BatchOrder.TimeInForce,
-        "BatchOrder.StpAct": BatchOrder.StpAct,
-        "BatchOrder.FinishAs": BatchOrder.FinishAs,
-        "Contract.Type": Contract.Type,
-        "Contract.MarkType": Contract.MarkType,
-        "CreateUniLend.Type": CreateUniLend.Type,
-        "CreateUniLoan.Type": CreateUniLoan.Type,
-        "CrossMarginLoan.Status": CrossMarginLoan.Status,
-        "CurrencyPair.TradeStatus": CurrencyPair.TradeStatus,
-        "DeliveryContract.Cycle": DeliveryContract.Cycle,
-        "DeliveryContract.Type": DeliveryContract.Type,
-        "DeliveryContract.MarkType": DeliveryContract.MarkType,
-        "FuturesAccountBook.Type": FuturesAccountBook.Type,
-        "FuturesInitialOrder.Tif": FuturesInitialOrder.Tif,
-        "FuturesOrder.FinishAs": FuturesOrder.FinishAs,
-        "FuturesOrder.Status": FuturesOrder.Status,
-        "FuturesOrder.Tif": FuturesOrder.Tif,
-        "FuturesOrder.AutoSize": FuturesOrder.AutoSize,
-        "FuturesOrder.StpAct": FuturesOrder.StpAct,
-        "FuturesPriceTrigger.StrategyType": FuturesPriceTrigger.StrategyType,
-        "FuturesPriceTrigger.PriceType": FuturesPriceTrigger.PriceType,
-        "FuturesPriceTrigger.Rule": FuturesPriceTrigger.Rule,
-        "FuturesPriceTriggeredOrder.Status": FuturesPriceTriggeredOrder.Status,
-        "FuturesPriceTriggeredOrder.FinishAs": FuturesPriceTriggeredOrder.FinishAs,
-        "LedgerRecord.Status": LedgerRecord.Status,
-        "MyFuturesTrade.Role": MyFuturesTrade.Role,
-        "MyFuturesTradeTimeRange.Role": MyFuturesTradeTimeRange.Role,
-        "OptionsAccount.MarginMode": OptionsAccount.MarginMode,
-        "OptionsMyTrade.Role": OptionsMyTrade.Role,
-        "OptionsOrder.FinishAs": OptionsOrder.FinishAs,
-        "OptionsOrder.Status": OptionsOrder.Status,
-        "OptionsOrder.Tif": OptionsOrder.Tif,
-        "OptionsPositionClose.Side": OptionsPositionClose.Side,
-        "Order.Status": Order.Status,
-        "Order.Type": Order.Type,
-        "Order.Side": Order.Side,
-        "Order.TimeInForce": Order.TimeInForce,
-        "Order.StpAct": Order.StpAct,
-        "Order.FinishAs": Order.FinishAs,
-        "OrderCancel.Status": OrderCancel.Status,
-        "OrderCancel.Type": OrderCancel.Type,
-        "OrderCancel.Side": OrderCancel.Side,
-        "OrderCancel.TimeInForce": OrderCancel.TimeInForce,
-        "OrderCancel.StpAct": OrderCancel.StpAct,
-        "OrderCancel.FinishAs": OrderCancel.FinishAs,
-        "Position.Mode": Position.Mode,
-        "PositionClose.Side": PositionClose.Side,
-        "SpotPricePutOrder.Type": SpotPricePutOrder.Type,
-        "SpotPricePutOrder.Side": SpotPricePutOrder.Side,
-        "SpotPricePutOrder.Account": SpotPricePutOrder.Account,
-        "SpotPricePutOrder.TimeInForce": SpotPricePutOrder.TimeInForce,
-        "SpotPriceTrigger.Rule": SpotPriceTrigger.Rule,
-        "Trade.Side": Trade.Side,
-        "Trade.Role": Trade.Role,
-        "Transfer.From": Transfer.From,
-        "Transfer.To": Transfer.To,
-        "UnifiedLoan.Type": UnifiedLoan.Type,
-        "WithdrawalRecord.Status": WithdrawalRecord.Status,
-}
+const enumsMap: { [index: string]: any } = {
+    'AccountBalance.Currency': AccountBalance.Currency,
+    'AutoRepaySetting.Status': AutoRepaySetting.Status,
+    'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
+    'BatchFuturesOrder.Status': BatchFuturesOrder.Status,
+    'BatchFuturesOrder.Tif': BatchFuturesOrder.Tif,
+    'BatchFuturesOrder.AutoSize': BatchFuturesOrder.AutoSize,
+    'BatchFuturesOrder.StpAct': BatchFuturesOrder.StpAct,
+    'BatchOrder.Status': BatchOrder.Status,
+    'BatchOrder.Type': BatchOrder.Type,
+    'BatchOrder.Account': BatchOrder.Account,
+    'BatchOrder.Side': BatchOrder.Side,
+    'BatchOrder.TimeInForce': BatchOrder.TimeInForce,
+    'BatchOrder.StpAct': BatchOrder.StpAct,
+    'BatchOrder.FinishAs': BatchOrder.FinishAs,
+    'Contract.Type': Contract.Type,
+    'Contract.MarkType': Contract.MarkType,
+    'CreateUniLend.Type': CreateUniLend.Type,
+    'CreateUniLoan.Type': CreateUniLoan.Type,
+    'CrossMarginLoan.Status': CrossMarginLoan.Status,
+    'CurrencyPair.TradeStatus': CurrencyPair.TradeStatus,
+    'DeliveryContract.Cycle': DeliveryContract.Cycle,
+    'DeliveryContract.Type': DeliveryContract.Type,
+    'DeliveryContract.MarkType': DeliveryContract.MarkType,
+    'FuturesAccountBook.Type': FuturesAccountBook.Type,
+    'FuturesInitialOrder.Tif': FuturesInitialOrder.Tif,
+    'FuturesOrder.FinishAs': FuturesOrder.FinishAs,
+    'FuturesOrder.Status': FuturesOrder.Status,
+    'FuturesOrder.Tif': FuturesOrder.Tif,
+    'FuturesOrder.AutoSize': FuturesOrder.AutoSize,
+    'FuturesOrder.StpAct': FuturesOrder.StpAct,
+    'FuturesPriceTrigger.StrategyType': FuturesPriceTrigger.StrategyType,
+    'FuturesPriceTrigger.PriceType': FuturesPriceTrigger.PriceType,
+    'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
+    'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
+    'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
+    'LedgerRecord.Status': LedgerRecord.Status,
+    'MyFuturesTrade.Role': MyFuturesTrade.Role,
+    'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
+    'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
+    'OptionsMyTrade.Role': OptionsMyTrade.Role,
+    'OptionsOrder.FinishAs': OptionsOrder.FinishAs,
+    'OptionsOrder.Status': OptionsOrder.Status,
+    'OptionsOrder.Tif': OptionsOrder.Tif,
+    'OptionsPositionClose.Side': OptionsPositionClose.Side,
+    'Order.Status': Order.Status,
+    'Order.Type': Order.Type,
+    'Order.Side': Order.Side,
+    'Order.TimeInForce': Order.TimeInForce,
+    'Order.StpAct': Order.StpAct,
+    'Order.FinishAs': Order.FinishAs,
+    'OrderCancel.Status': OrderCancel.Status,
+    'OrderCancel.Type': OrderCancel.Type,
+    'OrderCancel.Side': OrderCancel.Side,
+    'OrderCancel.TimeInForce': OrderCancel.TimeInForce,
+    'OrderCancel.StpAct': OrderCancel.StpAct,
+    'OrderCancel.FinishAs': OrderCancel.FinishAs,
+    'Position.Mode': Position.Mode,
+    'PositionClose.Side': PositionClose.Side,
+    'SpotPricePutOrder.Type': SpotPricePutOrder.Type,
+    'SpotPricePutOrder.Side': SpotPricePutOrder.Side,
+    'SpotPricePutOrder.Account': SpotPricePutOrder.Account,
+    'SpotPricePutOrder.TimeInForce': SpotPricePutOrder.TimeInForce,
+    'SpotPriceTrigger.Rule': SpotPriceTrigger.Rule,
+    'Trade.Side': Trade.Side,
+    'Trade.Role': Trade.Role,
+    'Transfer.From': Transfer.From,
+    'Transfer.To': Transfer.To,
+    'UnifiedLoan.Type': UnifiedLoan.Type,
+    'WithdrawalRecord.Status': WithdrawalRecord.Status,
+};
 
-let typeMap: {[index: string]: any} = {
-    "AccountBalance": AccountBalance,
-    "AccountDetail": AccountDetail,
-    "AccountDetailKey": AccountDetailKey,
-    "AccountRateLimit": AccountRateLimit,
-    "AgencyCommission": AgencyCommission,
-    "AgencyCommissionHistory": AgencyCommissionHistory,
-    "AgencyTransaction": AgencyTransaction,
-    "AgencyTransactionHistory": AgencyTransactionHistory,
-    "AutoRepaySetting": AutoRepaySetting,
-    "BatchAmendItem": BatchAmendItem,
-    "BatchAmendOrderReq": BatchAmendOrderReq,
-    "BatchFuturesOrder": BatchFuturesOrder,
-    "BatchOrder": BatchOrder,
-    "BorrowCurrencyInfo": BorrowCurrencyInfo,
-    "BrokerCommission": BrokerCommission,
-    "BrokerCommission1": BrokerCommission1,
-    "BrokerTransaction": BrokerTransaction,
-    "BrokerTransaction1": BrokerTransaction1,
-    "CancelBatchOrder": CancelBatchOrder,
-    "CancelOrderResult": CancelOrderResult,
-    "CollateralAdjust": CollateralAdjust,
-    "CollateralAdjustRes": CollateralAdjustRes,
-    "CollateralAlign": CollateralAlign,
-    "CollateralCurrency": CollateralCurrency,
-    "CollateralCurrencyInfo": CollateralCurrencyInfo,
-    "CollateralCurrencyRes": CollateralCurrencyRes,
-    "CollateralCurrentRate": CollateralCurrentRate,
-    "CollateralFixRate": CollateralFixRate,
-    "CollateralLoanCurrency": CollateralLoanCurrency,
-    "CollateralLtv": CollateralLtv,
-    "CollateralOrder": CollateralOrder,
-    "CollateralRecord": CollateralRecord,
-    "Contract": Contract,
-    "ContractStat": ContractStat,
-    "ConvertSmallBalance": ConvertSmallBalance,
-    "CountdownCancelAllFuturesTask": CountdownCancelAllFuturesTask,
-    "CountdownCancelAllOptionsTask": CountdownCancelAllOptionsTask,
-    "CountdownCancelAllSpotTask": CountdownCancelAllSpotTask,
-    "CreateCollateralOrder": CreateCollateralOrder,
-    "CreateMultiCollateralOrder": CreateMultiCollateralOrder,
-    "CreateUniLend": CreateUniLend,
-    "CreateUniLoan": CreateUniLoan,
-    "CrossMarginAccount": CrossMarginAccount,
-    "CrossMarginAccountBook": CrossMarginAccountBook,
-    "CrossMarginBalance": CrossMarginBalance,
-    "CrossMarginBalance1": CrossMarginBalance1,
-    "CrossMarginCurrency": CrossMarginCurrency,
-    "CrossMarginLoan": CrossMarginLoan,
-    "CrossMarginRepayRequest": CrossMarginRepayRequest,
-    "CrossMarginRepayment": CrossMarginRepayment,
-    "CrossMarginTransferable": CrossMarginTransferable,
-    "Currency": Currency,
-    "CurrencyChain": CurrencyChain,
-    "CurrencyPair": CurrencyPair,
-    "CurrencyQuota": CurrencyQuota,
-    "DebitFee": DebitFee,
-    "DeliveryCandlestick": DeliveryCandlestick,
-    "DeliveryContract": DeliveryContract,
-    "DeliverySettlement": DeliverySettlement,
-    "DepositAddress": DepositAddress,
-    "DualGetOrders": DualGetOrders,
-    "DualGetPlans": DualGetPlans,
-    "Eth2Swap": Eth2Swap,
-    "FlashSwapCurrencyPair": FlashSwapCurrencyPair,
-    "FlashSwapOrder": FlashSwapOrder,
-    "FlashSwapOrderPreview": FlashSwapOrderPreview,
-    "FlashSwapOrderRequest": FlashSwapOrderRequest,
-    "FlashSwapPreviewRequest": FlashSwapPreviewRequest,
-    "FundingAccount": FundingAccount,
-    "FundingRateRecord": FundingRateRecord,
-    "FutureCancelOrderResult": FutureCancelOrderResult,
-    "FuturesAccount": FuturesAccount,
-    "FuturesAccountBook": FuturesAccountBook,
-    "FuturesAccountHistory": FuturesAccountHistory,
-    "FuturesAutoDeleverage": FuturesAutoDeleverage,
-    "FuturesBatchAmendOrderRequest": FuturesBatchAmendOrderRequest,
-    "FuturesCandlestick": FuturesCandlestick,
-    "FuturesFee": FuturesFee,
-    "FuturesIndexConstituents": FuturesIndexConstituents,
-    "FuturesInitialOrder": FuturesInitialOrder,
-    "FuturesLimitRiskTiers": FuturesLimitRiskTiers,
-    "FuturesLiqOrder": FuturesLiqOrder,
-    "FuturesLiquidate": FuturesLiquidate,
-    "FuturesOrder": FuturesOrder,
-    "FuturesOrderAmendment": FuturesOrderAmendment,
-    "FuturesOrderBook": FuturesOrderBook,
-    "FuturesOrderBookItem": FuturesOrderBookItem,
-    "FuturesPremiumIndex": FuturesPremiumIndex,
-    "FuturesPriceTrigger": FuturesPriceTrigger,
-    "FuturesPriceTriggeredOrder": FuturesPriceTriggeredOrder,
-    "FuturesTicker": FuturesTicker,
-    "FuturesTrade": FuturesTrade,
-    "IndexConstituent": IndexConstituent,
-    "InsuranceRecord": InsuranceRecord,
-    "LedgerRecord": LedgerRecord,
-    "LiquidateOrder": LiquidateOrder,
-    "MarginAccount": MarginAccount,
-    "MarginAccountBook": MarginAccountBook,
-    "MarginAccountCurrency": MarginAccountCurrency,
-    "MarginTiers": MarginTiers,
-    "MarginTransferable": MarginTransferable,
-    "MaxUniBorrowable": MaxUniBorrowable,
-    "MockFuturesOrder": MockFuturesOrder,
-    "MockFuturesPosition": MockFuturesPosition,
-    "MockMarginResult": MockMarginResult,
-    "MockOptionsOrder": MockOptionsOrder,
-    "MockOptionsPosition": MockOptionsPosition,
-    "MockRiskUnit": MockRiskUnit,
-    "MockSpotBalance": MockSpotBalance,
-    "MockSpotOrder": MockSpotOrder,
-    "MultiChainAddressItem": MultiChainAddressItem,
-    "MultiCollateralCurrency": MultiCollateralCurrency,
-    "MultiCollateralItem": MultiCollateralItem,
-    "MultiCollateralOrder": MultiCollateralOrder,
-    "MultiCollateralRecord": MultiCollateralRecord,
-    "MultiCollateralRecordCurrency": MultiCollateralRecordCurrency,
-    "MultiLoanItem": MultiLoanItem,
-    "MultiLoanRepayItem": MultiLoanRepayItem,
-    "MultiRepayRecord": MultiRepayRecord,
-    "MultiRepayResp": MultiRepayResp,
-    "MyFuturesTrade": MyFuturesTrade,
-    "MyFuturesTradeTimeRange": MyFuturesTradeTimeRange,
-    "OpenOrders": OpenOrders,
-    "OptionsAccount": OptionsAccount,
-    "OptionsAccountBook": OptionsAccountBook,
-    "OptionsCandlestick": OptionsCandlestick,
-    "OptionsContract": OptionsContract,
-    "OptionsMMP": OptionsMMP,
-    "OptionsMMPReset": OptionsMMPReset,
-    "OptionsMySettlements": OptionsMySettlements,
-    "OptionsMyTrade": OptionsMyTrade,
-    "OptionsOrder": OptionsOrder,
-    "OptionsPosition": OptionsPosition,
-    "OptionsPositionClose": OptionsPositionClose,
-    "OptionsPositionCloseOrder": OptionsPositionCloseOrder,
-    "OptionsSettlement": OptionsSettlement,
-    "OptionsTicker": OptionsTicker,
-    "OptionsUnderlying": OptionsUnderlying,
-    "OptionsUnderlyingTicker": OptionsUnderlyingTicker,
-    "Order": Order,
-    "OrderBook": OrderBook,
-    "OrderCancel": OrderCancel,
-    "OrderPatch": OrderPatch,
-    "OrderResp": OrderResp,
-    "PartnerCommissionHistory": PartnerCommissionHistory,
-    "PartnerSub": PartnerSub,
-    "PartnerSubList": PartnerSubList,
-    "PartnerTransactionHistory": PartnerTransactionHistory,
-    "PatchUniLend": PatchUniLend,
-    "PlaceDualInvestmentOrder": PlaceDualInvestmentOrder,
-    "Position": Position,
-    "PositionClose": PositionClose,
-    "PositionCloseOrder": PositionCloseOrder,
-    "ProfitLossRange": ProfitLossRange,
-    "RebateUserInfo": RebateUserInfo,
-    "RepayCurrencyRes": RepayCurrencyRes,
-    "RepayLoan": RepayLoan,
-    "RepayMultiLoan": RepayMultiLoan,
-    "RepayRecord": RepayRecord,
-    "RepayRecordCurrency": RepayRecordCurrency,
-    "RepayRecordLeftInterest": RepayRecordLeftInterest,
-    "RepayRecordRepaidCurrency": RepayRecordRepaidCurrency,
-    "RepayRecordTotalInterest": RepayRecordTotalInterest,
-    "RepayResp": RepayResp,
-    "RiskUnits": RiskUnits,
-    "SavedAddress": SavedAddress,
-    "SmallBalance": SmallBalance,
-    "SmallBalanceHistory": SmallBalanceHistory,
-    "SpotAccount": SpotAccount,
-    "SpotAccountBook": SpotAccountBook,
-    "SpotCurrencyChain": SpotCurrencyChain,
-    "SpotFee": SpotFee,
-    "SpotInsuranceHistory": SpotInsuranceHistory,
-    "SpotPricePutOrder": SpotPricePutOrder,
-    "SpotPriceTrigger": SpotPriceTrigger,
-    "SpotPriceTriggeredOrder": SpotPriceTriggeredOrder,
-    "StpGroup": StpGroup,
-    "StpGroupUser": StpGroupUser,
-    "StructuredBuy": StructuredBuy,
-    "StructuredGetProjectList": StructuredGetProjectList,
-    "StructuredOrderList": StructuredOrderList,
-    "SubAccount": SubAccount,
-    "SubAccountBalance": SubAccountBalance,
-    "SubAccountCrossMarginBalance": SubAccountCrossMarginBalance,
-    "SubAccountFuturesBalance": SubAccountFuturesBalance,
-    "SubAccountKey": SubAccountKey,
-    "SubAccountKeyPerms": SubAccountKeyPerms,
-    "SubAccountMarginBalance": SubAccountMarginBalance,
-    "SubAccountToSubAccount": SubAccountToSubAccount,
-    "SubAccountTransfer": SubAccountTransfer,
-    "SubCrossMarginAccount": SubCrossMarginAccount,
-    "SubUserMode": SubUserMode,
-    "SystemTime": SystemTime,
-    "Ticker": Ticker,
-    "TotalBalance": TotalBalance,
-    "Trade": Trade,
-    "TradeFee": TradeFee,
-    "TransactionID": TransactionID,
-    "Transfer": Transfer,
-    "TransferOrderStatus": TransferOrderStatus,
-    "TriggerOrderResponse": TriggerOrderResponse,
-    "TriggerTime": TriggerTime,
-    "UidPushOrder": UidPushOrder,
-    "UidPushWithdrawal": UidPushWithdrawal,
-    "UidPushWithdrawalResp": UidPushWithdrawalResp,
-    "UniCurrency": UniCurrency,
-    "UniCurrencyInterest": UniCurrencyInterest,
-    "UniCurrencyPair": UniCurrencyPair,
-    "UniInterestMode": UniInterestMode,
-    "UniInterestRecord": UniInterestRecord,
-    "UniLend": UniLend,
-    "UniLendInterest": UniLendInterest,
-    "UniLendRecord": UniLendRecord,
-    "UniLoan": UniLoan,
-    "UniLoanInterestRecord": UniLoanInterestRecord,
-    "UniLoanRecord": UniLoanRecord,
-    "UnifiedAccount": UnifiedAccount,
-    "UnifiedBalance": UnifiedBalance,
-    "UnifiedBorrowable": UnifiedBorrowable,
-    "UnifiedDiscount": UnifiedDiscount,
-    "UnifiedDiscountTiers": UnifiedDiscountTiers,
-    "UnifiedHistoryLoanRate": UnifiedHistoryLoanRate,
-    "UnifiedHistoryLoanRateRates": UnifiedHistoryLoanRateRates,
-    "UnifiedLeverageConfig": UnifiedLeverageConfig,
-    "UnifiedLeverageSetting": UnifiedLeverageSetting,
-    "UnifiedLoan": UnifiedLoan,
-    "UnifiedLoanRecord": UnifiedLoanRecord,
-    "UnifiedMarginTiers": UnifiedMarginTiers,
-    "UnifiedModeSet": UnifiedModeSet,
-    "UnifiedPortfolioInput": UnifiedPortfolioInput,
-    "UnifiedPortfolioOutput": UnifiedPortfolioOutput,
-    "UnifiedRiskUnits": UnifiedRiskUnits,
-    "UnifiedSettings": UnifiedSettings,
-    "UnifiedTransferable": UnifiedTransferable,
-    "UserLtvInfo": UserLtvInfo,
-    "UserSub": UserSub,
-    "UserSubRelation": UserSubRelation,
-    "UserTotalAmount": UserTotalAmount,
-    "WithdrawStatus": WithdrawStatus,
-    "WithdrawalRecord": WithdrawalRecord,
-}
+const typeMap: { [index: string]: any } = {
+    AccountBalance: AccountBalance,
+    AccountDetail: AccountDetail,
+    AccountDetailKey: AccountDetailKey,
+    AccountRateLimit: AccountRateLimit,
+    AgencyCommission: AgencyCommission,
+    AgencyCommissionHistory: AgencyCommissionHistory,
+    AgencyTransaction: AgencyTransaction,
+    AgencyTransactionHistory: AgencyTransactionHistory,
+    AutoRepaySetting: AutoRepaySetting,
+    BatchAmendItem: BatchAmendItem,
+    BatchAmendOrderReq: BatchAmendOrderReq,
+    BatchFuturesOrder: BatchFuturesOrder,
+    BatchOrder: BatchOrder,
+    BorrowCurrencyInfo: BorrowCurrencyInfo,
+    BrokerCommission: BrokerCommission,
+    BrokerCommission1: BrokerCommission1,
+    BrokerTransaction: BrokerTransaction,
+    BrokerTransaction1: BrokerTransaction1,
+    CancelBatchOrder: CancelBatchOrder,
+    CancelOrderResult: CancelOrderResult,
+    CollateralAdjust: CollateralAdjust,
+    CollateralAdjustRes: CollateralAdjustRes,
+    CollateralAlign: CollateralAlign,
+    CollateralCurrency: CollateralCurrency,
+    CollateralCurrencyInfo: CollateralCurrencyInfo,
+    CollateralCurrencyRes: CollateralCurrencyRes,
+    CollateralCurrentRate: CollateralCurrentRate,
+    CollateralFixRate: CollateralFixRate,
+    CollateralLoanCurrency: CollateralLoanCurrency,
+    CollateralLtv: CollateralLtv,
+    CollateralOrder: CollateralOrder,
+    CollateralRecord: CollateralRecord,
+    Contract: Contract,
+    ContractStat: ContractStat,
+    ConvertSmallBalance: ConvertSmallBalance,
+    CountdownCancelAllFuturesTask: CountdownCancelAllFuturesTask,
+    CountdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
+    CountdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    CreateCollateralOrder: CreateCollateralOrder,
+    CreateMultiCollateralOrder: CreateMultiCollateralOrder,
+    CreateUniLend: CreateUniLend,
+    CreateUniLoan: CreateUniLoan,
+    CrossMarginAccount: CrossMarginAccount,
+    CrossMarginAccountBook: CrossMarginAccountBook,
+    CrossMarginBalance: CrossMarginBalance,
+    CrossMarginBalance1: CrossMarginBalance1,
+    CrossMarginCurrency: CrossMarginCurrency,
+    CrossMarginLoan: CrossMarginLoan,
+    CrossMarginRepayRequest: CrossMarginRepayRequest,
+    CrossMarginRepayment: CrossMarginRepayment,
+    CrossMarginTransferable: CrossMarginTransferable,
+    Currency: Currency,
+    CurrencyChain: CurrencyChain,
+    CurrencyPair: CurrencyPair,
+    CurrencyQuota: CurrencyQuota,
+    DebitFee: DebitFee,
+    DeliveryCandlestick: DeliveryCandlestick,
+    DeliveryContract: DeliveryContract,
+    DeliverySettlement: DeliverySettlement,
+    DepositAddress: DepositAddress,
+    DualGetOrders: DualGetOrders,
+    DualGetPlans: DualGetPlans,
+    Eth2Swap: Eth2Swap,
+    FlashSwapCurrencyPair: FlashSwapCurrencyPair,
+    FlashSwapOrder: FlashSwapOrder,
+    FlashSwapOrderPreview: FlashSwapOrderPreview,
+    FlashSwapOrderRequest: FlashSwapOrderRequest,
+    FlashSwapPreviewRequest: FlashSwapPreviewRequest,
+    FundingAccount: FundingAccount,
+    FundingRateRecord: FundingRateRecord,
+    FutureCancelOrderResult: FutureCancelOrderResult,
+    FuturesAccount: FuturesAccount,
+    FuturesAccountBook: FuturesAccountBook,
+    FuturesAccountHistory: FuturesAccountHistory,
+    FuturesAutoDeleverage: FuturesAutoDeleverage,
+    FuturesBatchAmendOrderRequest: FuturesBatchAmendOrderRequest,
+    FuturesCandlestick: FuturesCandlestick,
+    FuturesFee: FuturesFee,
+    FuturesIndexConstituents: FuturesIndexConstituents,
+    FuturesInitialOrder: FuturesInitialOrder,
+    FuturesLimitRiskTiers: FuturesLimitRiskTiers,
+    FuturesLiqOrder: FuturesLiqOrder,
+    FuturesLiquidate: FuturesLiquidate,
+    FuturesOrder: FuturesOrder,
+    FuturesOrderAmendment: FuturesOrderAmendment,
+    FuturesOrderBook: FuturesOrderBook,
+    FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesPremiumIndex: FuturesPremiumIndex,
+    FuturesPriceTrigger: FuturesPriceTrigger,
+    FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    FuturesTicker: FuturesTicker,
+    FuturesTrade: FuturesTrade,
+    IndexConstituent: IndexConstituent,
+    InsuranceRecord: InsuranceRecord,
+    LedgerRecord: LedgerRecord,
+    LiquidateOrder: LiquidateOrder,
+    MarginAccount: MarginAccount,
+    MarginAccountBook: MarginAccountBook,
+    MarginAccountCurrency: MarginAccountCurrency,
+    MarginTiers: MarginTiers,
+    MarginTransferable: MarginTransferable,
+    MaxUniBorrowable: MaxUniBorrowable,
+    MockFuturesOrder: MockFuturesOrder,
+    MockFuturesPosition: MockFuturesPosition,
+    MockMarginResult: MockMarginResult,
+    MockOptionsOrder: MockOptionsOrder,
+    MockOptionsPosition: MockOptionsPosition,
+    MockRiskUnit: MockRiskUnit,
+    MockSpotBalance: MockSpotBalance,
+    MockSpotOrder: MockSpotOrder,
+    MultiChainAddressItem: MultiChainAddressItem,
+    MultiCollateralCurrency: MultiCollateralCurrency,
+    MultiCollateralItem: MultiCollateralItem,
+    MultiCollateralOrder: MultiCollateralOrder,
+    MultiCollateralRecord: MultiCollateralRecord,
+    MultiCollateralRecordCurrency: MultiCollateralRecordCurrency,
+    MultiLoanItem: MultiLoanItem,
+    MultiLoanRepayItem: MultiLoanRepayItem,
+    MultiRepayRecord: MultiRepayRecord,
+    MultiRepayResp: MultiRepayResp,
+    MyFuturesTrade: MyFuturesTrade,
+    MyFuturesTradeTimeRange: MyFuturesTradeTimeRange,
+    OpenOrders: OpenOrders,
+    OptionsAccount: OptionsAccount,
+    OptionsAccountBook: OptionsAccountBook,
+    OptionsCandlestick: OptionsCandlestick,
+    OptionsContract: OptionsContract,
+    OptionsMMP: OptionsMMP,
+    OptionsMMPReset: OptionsMMPReset,
+    OptionsMySettlements: OptionsMySettlements,
+    OptionsMyTrade: OptionsMyTrade,
+    OptionsOrder: OptionsOrder,
+    OptionsPosition: OptionsPosition,
+    OptionsPositionClose: OptionsPositionClose,
+    OptionsPositionCloseOrder: OptionsPositionCloseOrder,
+    OptionsSettlement: OptionsSettlement,
+    OptionsTicker: OptionsTicker,
+    OptionsUnderlying: OptionsUnderlying,
+    OptionsUnderlyingTicker: OptionsUnderlyingTicker,
+    Order: Order,
+    OrderBook: OrderBook,
+    OrderCancel: OrderCancel,
+    OrderPatch: OrderPatch,
+    OrderResp: OrderResp,
+    PartnerCommissionHistory: PartnerCommissionHistory,
+    PartnerSub: PartnerSub,
+    PartnerSubList: PartnerSubList,
+    PartnerTransactionHistory: PartnerTransactionHistory,
+    PatchUniLend: PatchUniLend,
+    PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
+    Position: Position,
+    PositionClose: PositionClose,
+    PositionCloseOrder: PositionCloseOrder,
+    ProfitLossRange: ProfitLossRange,
+    RebateUserInfo: RebateUserInfo,
+    RepayCurrencyRes: RepayCurrencyRes,
+    RepayLoan: RepayLoan,
+    RepayMultiLoan: RepayMultiLoan,
+    RepayRecord: RepayRecord,
+    RepayRecordCurrency: RepayRecordCurrency,
+    RepayRecordLeftInterest: RepayRecordLeftInterest,
+    RepayRecordRepaidCurrency: RepayRecordRepaidCurrency,
+    RepayRecordTotalInterest: RepayRecordTotalInterest,
+    RepayResp: RepayResp,
+    RiskUnits: RiskUnits,
+    SavedAddress: SavedAddress,
+    SmallBalance: SmallBalance,
+    SmallBalanceHistory: SmallBalanceHistory,
+    SpotAccount: SpotAccount,
+    SpotAccountBook: SpotAccountBook,
+    SpotCurrencyChain: SpotCurrencyChain,
+    SpotFee: SpotFee,
+    SpotInsuranceHistory: SpotInsuranceHistory,
+    SpotPricePutOrder: SpotPricePutOrder,
+    SpotPriceTrigger: SpotPriceTrigger,
+    SpotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    StpGroup: StpGroup,
+    StpGroupUser: StpGroupUser,
+    StructuredBuy: StructuredBuy,
+    StructuredGetProjectList: StructuredGetProjectList,
+    StructuredOrderList: StructuredOrderList,
+    SubAccount: SubAccount,
+    SubAccountBalance: SubAccountBalance,
+    SubAccountCrossMarginBalance: SubAccountCrossMarginBalance,
+    SubAccountFuturesBalance: SubAccountFuturesBalance,
+    SubAccountKey: SubAccountKey,
+    SubAccountKeyPerms: SubAccountKeyPerms,
+    SubAccountMarginBalance: SubAccountMarginBalance,
+    SubAccountToSubAccount: SubAccountToSubAccount,
+    SubAccountTransfer: SubAccountTransfer,
+    SubCrossMarginAccount: SubCrossMarginAccount,
+    SubUserMode: SubUserMode,
+    SystemTime: SystemTime,
+    Ticker: Ticker,
+    TotalBalance: TotalBalance,
+    Trade: Trade,
+    TradeFee: TradeFee,
+    TransactionID: TransactionID,
+    Transfer: Transfer,
+    TransferOrderStatus: TransferOrderStatus,
+    TriggerOrderResponse: TriggerOrderResponse,
+    TriggerTime: TriggerTime,
+    UidPushOrder: UidPushOrder,
+    UidPushWithdrawal: UidPushWithdrawal,
+    UidPushWithdrawalResp: UidPushWithdrawalResp,
+    UniCurrency: UniCurrency,
+    UniCurrencyInterest: UniCurrencyInterest,
+    UniCurrencyPair: UniCurrencyPair,
+    UniInterestMode: UniInterestMode,
+    UniInterestRecord: UniInterestRecord,
+    UniLend: UniLend,
+    UniLendInterest: UniLendInterest,
+    UniLendRecord: UniLendRecord,
+    UniLoan: UniLoan,
+    UniLoanInterestRecord: UniLoanInterestRecord,
+    UniLoanRecord: UniLoanRecord,
+    UnifiedAccount: UnifiedAccount,
+    UnifiedBalance: UnifiedBalance,
+    UnifiedBorrowable: UnifiedBorrowable,
+    UnifiedDiscount: UnifiedDiscount,
+    UnifiedDiscountTiers: UnifiedDiscountTiers,
+    UnifiedHistoryLoanRate: UnifiedHistoryLoanRate,
+    UnifiedHistoryLoanRateRates: UnifiedHistoryLoanRateRates,
+    UnifiedLeverageConfig: UnifiedLeverageConfig,
+    UnifiedLeverageSetting: UnifiedLeverageSetting,
+    UnifiedLoan: UnifiedLoan,
+    UnifiedLoanRecord: UnifiedLoanRecord,
+    UnifiedMarginTiers: UnifiedMarginTiers,
+    UnifiedModeSet: UnifiedModeSet,
+    UnifiedPortfolioInput: UnifiedPortfolioInput,
+    UnifiedPortfolioOutput: UnifiedPortfolioOutput,
+    UnifiedRiskUnits: UnifiedRiskUnits,
+    UnifiedSettings: UnifiedSettings,
+    UnifiedTransferable: UnifiedTransferable,
+    UserLtvInfo: UserLtvInfo,
+    UserSub: UserSub,
+    UserSubRelation: UserSubRelation,
+    UserTotalAmount: UserTotalAmount,
+    WithdrawStatus: WithdrawStatus,
+    WithdrawalRecord: WithdrawalRecord,
+};
 
 export class ObjectSerializer {
     public static findCorrectType(data: any, expectedType: string) {
@@ -819,7 +809,7 @@ export class ObjectSerializer {
             return expectedType;
         } else if (primitives.indexOf(expectedType.toLowerCase()) !== -1) {
             return expectedType;
-        } else if (expectedType === "Date") {
+        } else if (expectedType === 'Date') {
             return expectedType;
         } else {
             if (enumsMap[expectedType]) {
@@ -831,13 +821,13 @@ export class ObjectSerializer {
             }
 
             // Check the discriminator
-            let discriminatorProperty = typeMap[expectedType].discriminator;
+            const discriminatorProperty = typeMap[expectedType].discriminator;
             if (discriminatorProperty == null) {
                 return expectedType; // the type does not have a discriminator. use it.
             } else {
                 if (data[discriminatorProperty]) {
-                    var discriminatorType = data[discriminatorProperty];
-                    if(typeMap[discriminatorType]){
+                    const discriminatorType = data[discriminatorProperty];
+                    if (typeMap[discriminatorType]) {
                         return discriminatorType; // use the type given in the discriminator
                     } else {
                         return expectedType; // discriminator did not map to a type
@@ -854,25 +844,27 @@ export class ObjectSerializer {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             if (type.toLowerCase() === 'bigint') {
-                return data.toString(); 
+                return data.toString();
             }
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
+        } else if (type.lastIndexOf('Array<', 0) === 0) {
+            // string.startsWith pre es6
+            let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            const transformedData: any[] = [];
+            for (const index in data) {
+                const date = data[index];
                 transformedData.push(ObjectSerializer.serialize(date, subType));
             }
             return transformedData;
-        } else if (type === "Date") {
+        } else if (type === 'Date') {
             return data.toISOString();
         } else {
             if (enumsMap[type]) {
                 return data;
             }
-            if (!typeMap[type]) { // in case we dont know the type
+            if (!typeMap[type]) {
+                // in case we dont know the type
                 return data;
             }
 
@@ -880,11 +872,14 @@ export class ObjectSerializer {
             type = this.findCorrectType(data, type);
 
             // get the map for the correct type.
-            let attributeTypes = typeMap[type].getAttributeTypeMap();
-            let instance: {[index: string]: any} = {};
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
-                instance[attributeType.baseName] = ObjectSerializer.serialize(data[attributeType.name], attributeType.type);
+            const attributeTypes = typeMap[type].getAttributeTypeMap();
+            const instance: { [index: string]: any } = {};
+            for (const index in attributeTypes) {
+                const attributeType = attributeTypes[index];
+                instance[attributeType.baseName] = ObjectSerializer.serialize(
+                    data[attributeType.name],
+                    attributeType.type,
+                );
             }
             return instance;
         }
@@ -897,33 +892,39 @@ export class ObjectSerializer {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             if (type.toLowerCase() === 'bigint') {
-                return BigInt(data); 
+                return BigInt(data);
             }
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
+        } else if (type.lastIndexOf('Array<', 0) === 0) {
+            // string.startsWith pre es6
+            let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
+            const transformedData: any[] = [];
+            for (const index in data) {
+                const date = data[index];
                 transformedData.push(ObjectSerializer.deserialize(date, subType));
             }
             return transformedData;
-        } else if (type === "Date") {
+        } else if (type === 'Date') {
             return new Date(data);
         } else {
-            if (enumsMap[type]) {// is Enum
+            if (enumsMap[type]) {
+                // is Enum
                 return data;
             }
 
-            if (!typeMap[type]) { // dont know the type
+            if (!typeMap[type]) {
+                // dont know the type
                 return data;
             }
-            let instance = new typeMap[type]();
-            let attributeTypes = typeMap[type].getAttributeTypeMap();
-            for (let index in attributeTypes) {
-                let attributeType = attributeTypes[index];
-                instance[attributeType.name] = ObjectSerializer.deserialize(data[attributeType.baseName], attributeType.type);
+            const instance = new typeMap[type]();
+            const attributeTypes = typeMap[type].getAttributeTypeMap();
+            for (const index in attributeTypes) {
+                const attributeType = attributeTypes[index];
+                instance[attributeType.name] = ObjectSerializer.deserialize(
+                    data[attributeType.baseName],
+                    attributeType.type,
+                );
             }
             return instance;
         }
@@ -932,14 +933,14 @@ export class ObjectSerializer {
 
 export interface Authentication {
     /**
-    * Apply authentication settings to header and query params.
-    */
+     * Apply authentication settings to header and query params.
+     */
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig;
 }
 
 export class HttpBasicAuth implements Authentication {
-    public username: string = '';
-    public password: string = '';
+    public username = '';
+    public password = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         config.auth = {
@@ -963,10 +964,9 @@ export class HttpBearerAuth implements Authentication {
 }
 
 export class ApiKeyAuth implements Authentication {
-    public apiKey: string = '';
+    public apiKey = '';
 
-    constructor(private location: string, private paramName: string) {
-    }
+    constructor(private location: string, private paramName: string) {}
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         if (this.location == 'query') {
@@ -985,7 +985,7 @@ export class ApiKeyAuth implements Authentication {
 }
 
 export class OAuth implements Authentication {
-    public accessToken: string = '';
+    public accessToken = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         if (config && config.headers) {
@@ -996,13 +996,13 @@ export class OAuth implements Authentication {
 }
 
 export class GateApiV4Auth implements Authentication {
-    public key: string = "";
-    public secret: string = "";
+    public key = '';
+    public secret = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
-        config.paramsSerializer = function(params) {
+        config.paramsSerializer = function (params) {
             return querystring.stringify(params);
-        }
+        };
         const timestamp: string = (new Date().getTime() / 1000).toString();
         const resourcePath: string = new URL(config.url as string).pathname;
         const queryString: string = unescape(querystring.stringify(config.params));

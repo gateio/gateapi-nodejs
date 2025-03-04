@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class OptionsMySettlements {
     /**
-    * Settlement time
-    */
+     * Settlement time
+     */
     'time'?: number;
     /**
-    * Underlying
-    */
+     * Underlying
+     */
     'underlying'?: string;
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'contract'?: string;
     /**
-    * Strike price (quote currency)
-    */
+     * Strike price (quote currency)
+     */
     'strikePrice'?: string;
     /**
-    * Settlement price (quote currency)
-    */
+     * Settlement price (quote currency)
+     */
     'settlePrice'?: string;
     /**
-    * Size
-    */
+     * Size
+     */
     'size'?: number;
     /**
-    * Settlement profit (quote currency)
-    */
+     * Settlement profit (quote currency)
+     */
     'settleProfit'?: string;
     /**
-    * Fee (quote currency)
-    */
+     * Fee (quote currency)
+     */
     'fee'?: string;
     /**
-    * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc. (quote currency)
-    */
+     * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc. (quote currency)
+     */
     'realisedPnl'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "underlying",
-            "baseName": "underlying",
-            "type": "string"
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "strikePrice",
-            "baseName": "strike_price",
-            "type": "string"
+            name: 'strikePrice',
+            baseName: 'strike_price',
+            type: 'string',
         },
         {
-            "name": "settlePrice",
-            "baseName": "settle_price",
-            "type": "string"
+            name: 'settlePrice',
+            baseName: 'settle_price',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "settleProfit",
-            "baseName": "settle_profit",
-            "type": "string"
+            name: 'settleProfit',
+            baseName: 'settle_profit',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "realisedPnl",
-            "baseName": "realised_pnl",
-            "type": "string"
-        }    ];
+            name: 'realisedPnl',
+            baseName: 'realised_pnl',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsMySettlements.attributeTypeMap;
     }
 }
-

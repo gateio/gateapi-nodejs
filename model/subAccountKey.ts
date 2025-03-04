@@ -13,99 +13,99 @@ import { SubAccountKeyPerms } from './subAccountKeyPerms';
 
 export class SubAccountKey {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: string;
     /**
-    * Mode: 1 - classic 2 - portfolio account
-    */
+     * Mode: 1 - classic 2 - portfolio account
+     */
     'mode'?: number;
     /**
-    * API key name
-    */
+     * API key name
+     */
     'name'?: string;
     'perms'?: Array<SubAccountKeyPerms>;
     /**
-    * ip white list (list will be removed if no value is passed)
-    */
+     * ip white list (list will be removed if no value is passed)
+     */
     'ipWhitelist'?: Array<string>;
     /**
-    * API Key
-    */
+     * API Key
+     */
     'key'?: string;
     /**
-    * State 1 - normal 2 - locked 3 - frozen
-    */
+     * State 1 - normal 2 - locked 3 - frozen
+     */
     'state'?: number;
     /**
-    * Creation time
-    */
+     * Creation time
+     */
     'createdAt'?: number;
     /**
-    * Last update time
-    */
+     * Last update time
+     */
     'updatedAt'?: number;
     /**
-    * Last access time
-    */
+     * Last access time
+     */
     'lastAccess'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "string"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'string',
         },
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "number"
+            name: 'mode',
+            baseName: 'mode',
+            type: 'number',
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "perms",
-            "baseName": "perms",
-            "type": "Array<SubAccountKeyPerms>"
+            name: 'perms',
+            baseName: 'perms',
+            type: 'Array<SubAccountKeyPerms>',
         },
         {
-            "name": "ipWhitelist",
-            "baseName": "ip_whitelist",
-            "type": "Array<string>"
+            name: 'ipWhitelist',
+            baseName: 'ip_whitelist',
+            type: 'Array<string>',
         },
         {
-            "name": "key",
-            "baseName": "key",
-            "type": "string"
+            name: 'key',
+            baseName: 'key',
+            type: 'string',
         },
         {
-            "name": "state",
-            "baseName": "state",
-            "type": "number"
+            name: 'state',
+            baseName: 'state',
+            type: 'number',
         },
         {
-            "name": "createdAt",
-            "baseName": "created_at",
-            "type": "number"
+            name: 'createdAt',
+            baseName: 'created_at',
+            type: 'number',
         },
         {
-            "name": "updatedAt",
-            "baseName": "updated_at",
-            "type": "number"
+            name: 'updatedAt',
+            baseName: 'updated_at',
+            type: 'number',
         },
         {
-            "name": "lastAccess",
-            "baseName": "last_access",
-            "type": "number"
-        }    ];
+            name: 'lastAccess',
+            baseName: 'last_access',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubAccountKey.attributeTypeMap;
     }
 }
-

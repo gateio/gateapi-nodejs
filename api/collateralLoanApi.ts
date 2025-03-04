@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { CollateralAlign } from '../model/collateralAlign';
 import { CollateralLoanCurrency } from '../model/collateralLoanCurrency';
@@ -42,7 +41,7 @@ export class CollateralLoanApi {
     }
 
     /**
-     * 
+     *
      * @summary List Orders
      * @param opts Optional parameters
      * @param opts.page Page number
@@ -50,10 +49,15 @@ export class CollateralLoanApi {
      * @param opts.collateralCurrency Collateral
      * @param opts.borrowCurrency Borrowed currency
      */
-    public async listCollateralLoanOrders(opts: { page?: number, limit?: number, collateralCurrency?: string, borrowCurrency?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<CollateralOrder>; }> {
+    public async listCollateralLoanOrders(opts: {
+        page?: number;
+        limit?: number;
+        collateralCurrency?: string;
+        borrowCurrency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<CollateralOrder> }> {
         const localVarPath = this.client.basePath + '/loan/collateral/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -64,21 +68,23 @@ export class CollateralLoanApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.collateralCurrency !== undefined) {
-            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(opts.collateralCurrency, "string");
+            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(
+                opts.collateralCurrency,
+                'string',
+            );
         }
 
         if (opts.borrowCurrency !== undefined) {
-            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, "string");
+            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -88,18 +94,20 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<CollateralOrder>>(config, "Array<CollateralOrder>", authSettings);
+        return this.client.request<Array<CollateralOrder>>(config, 'Array<CollateralOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Place order
-     * @param createCollateralOrder 
+     * @param createCollateralOrder
      */
-    public async createCollateralLoan(createCollateralOrder: CreateCollateralOrder) : Promise<{ response: AxiosResponse; body: OrderResp; }> {
+    public async createCollateralLoan(
+        createCollateralOrder: CreateCollateralOrder,
+    ): Promise<{ response: AxiosResponse; body: OrderResp }> {
         const localVarPath = this.client.basePath + '/loan/collateral/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -110,32 +118,36 @@ export class CollateralLoanApi {
 
         // verify required parameter 'createCollateralOrder' is not null or undefined
         if (createCollateralOrder === null || createCollateralOrder === undefined) {
-            throw new Error('Required parameter createCollateralOrder was null or undefined when calling createCollateralLoan.');
+            throw new Error(
+                'Required parameter createCollateralOrder was null or undefined when calling createCollateralLoan.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(createCollateralOrder, "CreateCollateralOrder")
+            data: ObjectSerializer.serialize(createCollateralOrder, 'CreateCollateralOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OrderResp>(config, "OrderResp", authSettings);
+        return this.client.request<OrderResp>(config, 'OrderResp', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get a single order
      * @param orderId Order ID returned on successful order creation
      */
-    public async getCollateralLoanOrderDetail(orderId: number) : Promise<{ response: AxiosResponse; body: CollateralOrder; }> {
-        const localVarPath = this.client.basePath + '/loan/collateral/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getCollateralLoanOrderDetail(
+        orderId: number,
+    ): Promise<{ response: AxiosResponse; body: CollateralOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/loan/collateral/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -146,9 +158,10 @@ export class CollateralLoanApi {
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling getCollateralLoanOrderDetail.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getCollateralLoanOrderDetail.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -158,18 +171,18 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<CollateralOrder>(config, "CollateralOrder", authSettings);
+        return this.client.request<CollateralOrder>(config, 'CollateralOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Repayment
-     * @param repayLoan 
+     * @param repayLoan
      */
-    public async repayCollateralLoan(repayLoan: RepayLoan) : Promise<{ response: AxiosResponse; body: RepayResp; }> {
+    public async repayCollateralLoan(repayLoan: RepayLoan): Promise<{ response: AxiosResponse; body: RepayResp }> {
         const localVarPath = this.client.basePath + '/loan/collateral/repay';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -183,21 +196,20 @@ export class CollateralLoanApi {
             throw new Error('Required parameter repayLoan was null or undefined when calling repayCollateralLoan.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(repayLoan, "RepayLoan")
+            data: ObjectSerializer.serialize(repayLoan, 'RepayLoan'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<RepayResp>(config, "RepayResp", authSettings);
+        return this.client.request<RepayResp>(config, 'RepayResp', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Repayment history
      * @param source Operation type: repay - Regular repayment, liquidate - Liquidation
      * @param opts Optional parameters
@@ -208,10 +220,20 @@ export class CollateralLoanApi {
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      */
-    public async listRepayRecords(source: string, opts: { borrowCurrency?: string, collateralCurrency?: string, page?: number, limit?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<RepayRecord>; }> {
+    public async listRepayRecords(
+        source: string,
+        opts: {
+            borrowCurrency?: string;
+            collateralCurrency?: string;
+            page?: number;
+            limit?: number;
+            from?: number;
+            to?: number;
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<RepayRecord> }> {
         const localVarPath = this.client.basePath + '/loan/collateral/repay_records';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -226,32 +248,34 @@ export class CollateralLoanApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['source'] = ObjectSerializer.serialize(source, "string");
+        localVarQueryParameters['source'] = ObjectSerializer.serialize(source, 'string');
 
         if (opts.borrowCurrency !== undefined) {
-            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, "string");
+            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, 'string');
         }
 
         if (opts.collateralCurrency !== undefined) {
-            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(opts.collateralCurrency, "string");
+            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(
+                opts.collateralCurrency,
+                'string',
+            );
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -261,11 +285,11 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<RepayRecord>>(config, "Array<RepayRecord>", authSettings);
+        return this.client.request<Array<RepayRecord>>(config, 'Array<RepayRecord>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query collateral adjustment records
      * @param opts Optional parameters
      * @param opts.page Page number
@@ -275,10 +299,17 @@ export class CollateralLoanApi {
      * @param opts.borrowCurrency Borrowed currency
      * @param opts.collateralCurrency Collateral
      */
-    public async listCollateralRecords(opts: { page?: number, limit?: number, from?: number, to?: number, borrowCurrency?: string, collateralCurrency?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<CollateralRecord>; }> {
+    public async listCollateralRecords(opts: {
+        page?: number;
+        limit?: number;
+        from?: number;
+        to?: number;
+        borrowCurrency?: string;
+        collateralCurrency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<CollateralRecord> }> {
         const localVarPath = this.client.basePath + '/loan/collateral/collaterals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -289,29 +320,31 @@ export class CollateralLoanApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.borrowCurrency !== undefined) {
-            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, "string");
+            localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(opts.borrowCurrency, 'string');
         }
 
         if (opts.collateralCurrency !== undefined) {
-            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(opts.collateralCurrency, "string");
+            localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(
+                opts.collateralCurrency,
+                'string',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -321,45 +354,44 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<CollateralRecord>>(config, "Array<CollateralRecord>", authSettings);
+        return this.client.request<Array<CollateralRecord>>(config, 'Array<CollateralRecord>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Increase or redeem collateral
-     * @param collateralAlign 
+     * @param collateralAlign
      */
-    public async operateCollateral(collateralAlign: CollateralAlign) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async operateCollateral(collateralAlign: CollateralAlign): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/loan/collateral/collaterals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'collateralAlign' is not null or undefined
         if (collateralAlign === null || collateralAlign === undefined) {
             throw new Error('Required parameter collateralAlign was null or undefined when calling operateCollateral.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(collateralAlign, "CollateralAlign")
+            data: ObjectSerializer.serialize(collateralAlign, 'CollateralAlign'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query the total borrowing and collateral amount for the user
      */
-    public async getUserTotalAmount() : Promise<{ response: AxiosResponse; body: UserTotalAmount; }> {
+    public async getUserTotalAmount(): Promise<{ response: AxiosResponse; body: UserTotalAmount }> {
         const localVarPath = this.client.basePath + '/loan/collateral/total_amount';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -368,7 +400,6 @@ export class CollateralLoanApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -377,19 +408,22 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UserTotalAmount>(config, "UserTotalAmount", authSettings);
+        return this.client.request<UserTotalAmount>(config, 'UserTotalAmount', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query user\'s collateralization ratio
      * @param collateralCurrency Collateral
      * @param borrowCurrency Borrowed currency
      */
-    public async getUserLtvInfo(collateralCurrency: string, borrowCurrency: string) : Promise<{ response: AxiosResponse; body: UserLtvInfo; }> {
+    public async getUserLtvInfo(
+        collateralCurrency: string,
+        borrowCurrency: string,
+    ): Promise<{ response: AxiosResponse; body: UserLtvInfo }> {
         const localVarPath = this.client.basePath + '/loan/collateral/ltv';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -408,10 +442,9 @@ export class CollateralLoanApi {
             throw new Error('Required parameter borrowCurrency was null or undefined when calling getUserLtvInfo.');
         }
 
-        localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(collateralCurrency, "string");
+        localVarQueryParameters['collateral_currency'] = ObjectSerializer.serialize(collateralCurrency, 'string');
 
-        localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(borrowCurrency, "string");
-
+        localVarQueryParameters['borrow_currency'] = ObjectSerializer.serialize(borrowCurrency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -421,19 +454,21 @@ export class CollateralLoanApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UserLtvInfo>(config, "UserLtvInfo", authSettings);
+        return this.client.request<UserLtvInfo>(config, 'UserLtvInfo', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query supported borrowing and collateral currencies
      * @param opts Optional parameters
      * @param opts.loanCurrency The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency.
      */
-    public async listCollateralCurrencies(opts: { loanCurrency?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<CollateralLoanCurrency>; }> {
+    public async listCollateralCurrencies(opts: {
+        loanCurrency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<CollateralLoanCurrency> }> {
         const localVarPath = this.client.basePath + '/loan/collateral/currencies';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -444,9 +479,8 @@ export class CollateralLoanApi {
 
         opts = opts || {};
         if (opts.loanCurrency !== undefined) {
-            localVarQueryParameters['loan_currency'] = ObjectSerializer.serialize(opts.loanCurrency, "string");
+            localVarQueryParameters['loan_currency'] = ObjectSerializer.serialize(opts.loanCurrency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -456,6 +490,10 @@ export class CollateralLoanApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<CollateralLoanCurrency>>(config, "Array<CollateralLoanCurrency>", authSettings);
+        return this.client.request<Array<CollateralLoanCurrency>>(
+            config,
+            'Array<CollateralLoanCurrency>',
+            authSettings,
+        );
     }
 }

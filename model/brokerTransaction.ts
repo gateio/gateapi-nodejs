@@ -13,30 +13,30 @@ import { BrokerTransaction1 } from './brokerTransaction1';
 
 export class BrokerTransaction {
     /**
-    * Total
-    */
+     * Total
+     */
     'total'?: number;
     /**
-    * List of transaction history
-    */
+     * List of transaction history
+     */
     'list'?: Array<BrokerTransaction1>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
         },
         {
-            "name": "list",
-            "baseName": "list",
-            "type": "Array<BrokerTransaction1>"
-        }    ];
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<BrokerTransaction1>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return BrokerTransaction.attributeTypeMap;
     }
 }
-

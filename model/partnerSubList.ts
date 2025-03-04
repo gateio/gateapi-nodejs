@@ -13,30 +13,30 @@ import { PartnerSub } from './partnerSub';
 
 export class PartnerSubList {
     /**
-    * Total
-    */
+     * Total
+     */
     'total'?: number;
     /**
-    * Subordinate list
-    */
+     * Subordinate list
+     */
     'list'?: Array<PartnerSub>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
         },
         {
-            "name": "list",
-            "baseName": "list",
-            "type": "Array<PartnerSub>"
-        }    ];
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<PartnerSub>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return PartnerSubList.attributeTypeMap;
     }
 }
-

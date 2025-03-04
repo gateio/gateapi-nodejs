@@ -9,54 +9,53 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Currency pair of the loan
-*/
+ * Currency pair of the loan
+ */
 export class UniCurrencyPair {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     /**
-    * Minimum borrow amount of base currency
-    */
+     * Minimum borrow amount of base currency
+     */
     'baseMinBorrowAmount'?: string;
     /**
-    * Minimum borrow amount of quote currency
-    */
+     * Minimum borrow amount of quote currency
+     */
     'quoteMinBorrowAmount'?: string;
     /**
-    * Position leverage
-    */
+     * Position leverage
+     */
     'leverage'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "baseMinBorrowAmount",
-            "baseName": "base_min_borrow_amount",
-            "type": "string"
+            name: 'baseMinBorrowAmount',
+            baseName: 'base_min_borrow_amount',
+            type: 'string',
         },
         {
-            "name": "quoteMinBorrowAmount",
-            "baseName": "quote_min_borrow_amount",
-            "type": "string"
+            name: 'quoteMinBorrowAmount',
+            baseName: 'quote_min_borrow_amount',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
-        }    ];
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UniCurrencyPair.attributeTypeMap;
     }
 }
-

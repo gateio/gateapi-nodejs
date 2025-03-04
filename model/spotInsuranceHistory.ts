@@ -9,42 +9,41 @@
  * Do not edit the class manually.
  */
 
-
 export class SpotInsuranceHistory {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * balance
-    */
+     * balance
+     */
     'balance'?: string;
     /**
-    * Creation time, timestamp, milliseconds
-    */
+     * Creation time, timestamp, milliseconds
+     */
     'time'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "balance",
-            "baseName": "balance",
-            "type": "string"
+            name: 'balance',
+            baseName: 'balance',
+            type: 'string',
         },
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
-        }    ];
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SpotInsuranceHistory.attributeTypeMap;
     }
 }
-

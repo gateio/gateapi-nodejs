@@ -12,67 +12,67 @@
 import { AccountDetailKey } from './accountDetailKey';
 
 /**
-* Account detail
-*/
+ * Account detail
+ */
 export class AccountDetail {
     /**
-    * IP whitelist
-    */
+     * IP whitelist
+     */
     'ipWhitelist'?: Array<string>;
     /**
-    * CurrencyPair whitelisting
-    */
+     * CurrencyPair whitelisting
+     */
     'currencyPairs'?: Array<string>;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * User VIP level
-    */
+     * User VIP level
+     */
     'tier'?: number;
     'key'?: AccountDetailKey;
     /**
-    * User role: 0 - Ordinary user 1 - Order leader 2 - Follower 3 - Order leader and follower
-    */
+     * User role: 0 - Ordinary user 1 - Order leader 2 - Follower 3 - Order leader and follower
+     */
     'copyTradingRole'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "ipWhitelist",
-            "baseName": "ip_whitelist",
-            "type": "Array<string>"
+            name: 'ipWhitelist',
+            baseName: 'ip_whitelist',
+            type: 'Array<string>',
         },
         {
-            "name": "currencyPairs",
-            "baseName": "currency_pairs",
-            "type": "Array<string>"
+            name: 'currencyPairs',
+            baseName: 'currency_pairs',
+            type: 'Array<string>',
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "tier",
-            "baseName": "tier",
-            "type": "number"
+            name: 'tier',
+            baseName: 'tier',
+            type: 'number',
         },
         {
-            "name": "key",
-            "baseName": "key",
-            "type": "AccountDetailKey"
+            name: 'key',
+            baseName: 'key',
+            type: 'AccountDetailKey',
         },
         {
-            "name": "copyTradingRole",
-            "baseName": "copy_trading_role",
-            "type": "number"
-        }    ];
+            name: 'copyTradingRole',
+            baseName: 'copy_trading_role',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return AccountDetail.attributeTypeMap;
     }
 }
-

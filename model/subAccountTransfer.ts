@@ -9,96 +9,95 @@
  * Do not edit the class manually.
  */
 
-
 export class SubAccountTransfer {
     /**
-    * Transfer currency name
-    */
+     * Transfer currency name
+     */
     'currency': string;
     /**
-    * Sub account user ID
-    */
+     * Sub account user ID
+     */
     'subAccount': string;
     /**
-    * Transfer direction. to - transfer into sub account; from - transfer out from sub account
-    */
+     * Transfer direction. to - transfer into sub account; from - transfer out from sub account
+     */
     'direction': string;
     /**
-    * Transfer amount
-    */
+     * Transfer amount
+     */
     'amount': string;
     /**
-    * Main account user ID
-    */
+     * Main account user ID
+     */
     'uid'?: string;
     /**
-    * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
-    */
+     * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
+     */
     'clientOrderId'?: string;
     /**
-    * Transfer timestamp
-    */
+     * Transfer timestamp
+     */
     'timest'?: string;
     /**
-    * Where the operation is initiated from
-    */
+     * Where the operation is initiated from
+     */
     'source'?: string;
     /**
-    * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `delivery` - delivery account
-    */
+     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `delivery` - delivery account
+     */
     'subAccountType'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "subAccount",
-            "baseName": "sub_account",
-            "type": "string"
+            name: 'subAccount',
+            baseName: 'sub_account',
+            type: 'string',
         },
         {
-            "name": "direction",
-            "baseName": "direction",
-            "type": "string"
+            name: 'direction',
+            baseName: 'direction',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "uid",
-            "baseName": "uid",
-            "type": "string"
+            name: 'uid',
+            baseName: 'uid',
+            type: 'string',
         },
         {
-            "name": "clientOrderId",
-            "baseName": "client_order_id",
-            "type": "string"
+            name: 'clientOrderId',
+            baseName: 'client_order_id',
+            type: 'string',
         },
         {
-            "name": "timest",
-            "baseName": "timest",
-            "type": "string"
+            name: 'timest',
+            baseName: 'timest',
+            type: 'string',
         },
         {
-            "name": "source",
-            "baseName": "source",
-            "type": "string"
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
         },
         {
-            "name": "subAccountType",
-            "baseName": "sub_account_type",
-            "type": "string"
-        }    ];
+            name: 'subAccountType',
+            baseName: 'sub_account_type',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubAccountTransfer.attributeTypeMap;
     }
 }
-

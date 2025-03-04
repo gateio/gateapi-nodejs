@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class UnifiedSettings {
     /**
-    * USDT contract switch. In cross-currency margin mode, it can only be turned on and not off
-    */
+     * USDT contract switch. In cross-currency margin mode, it can only be turned on and not off
+     */
     'usdtFutures'?: boolean;
     /**
-    * Spot hedging switch. 
-    */
+     * Spot hedging switch.
+     */
     'spotHedge'?: boolean;
     /**
-    * switch, when the mode is cross-currency margin mode, whether to use Uniloan financial funds as margin
-    */
+     * switch, when the mode is cross-currency margin mode, whether to use Uniloan financial funds as margin
+     */
     'useFunding'?: boolean;
     /**
-    * Option switch. In cross-currency margin mode, it can only be turned on and not off
-    */
+     * Option switch. In cross-currency margin mode, it can only be turned on and not off
+     */
     'options'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "usdtFutures",
-            "baseName": "usdt_futures",
-            "type": "boolean"
+            name: 'usdtFutures',
+            baseName: 'usdt_futures',
+            type: 'boolean',
         },
         {
-            "name": "spotHedge",
-            "baseName": "spot_hedge",
-            "type": "boolean"
+            name: 'spotHedge',
+            baseName: 'spot_hedge',
+            type: 'boolean',
         },
         {
-            "name": "useFunding",
-            "baseName": "use_funding",
-            "type": "boolean"
+            name: 'useFunding',
+            baseName: 'use_funding',
+            type: 'boolean',
         },
         {
-            "name": "options",
-            "baseName": "options",
-            "type": "boolean"
-        }    ];
+            name: 'options',
+            baseName: 'options',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedSettings.attributeTypeMap;
     }
 }
-

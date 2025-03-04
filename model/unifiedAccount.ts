@@ -13,180 +13,180 @@ import { UnifiedBalance } from './unifiedBalance';
 
 export class UnifiedAccount {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * Time of the most recent refresh
-    */
+     * Time of the most recent refresh
+     */
     'refreshTime'?: number;
     /**
-    * Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
-    */
+     * Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
+     */
     'locked'?: boolean;
-    'balances'?: { [key: string]: UnifiedBalance; };
+    'balances'?: { [key: string]: UnifiedBalance };
     /**
-    * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price`  in all currencies (deprecated, to be deprecated, replaced by unified_account_total)
-    */
+     * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price`  in all currencies (deprecated, to be deprecated, replaced by unified_account_total)
+     */
     'total'?: string;
     /**
-    * The total borrowed amount of the account converted into USD, i.e. the sum of `borrowed * price` of all currencies (excluding Point Cards). It is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode.
-    */
+     * The total borrowed amount of the account converted into USD, i.e. the sum of `borrowed * price` of all currencies (excluding Point Cards). It is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode.
+     */
     'borrowed'?: string;
     /**
-    * Total initial margin, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Total initial margin, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'totalInitialMargin'?: string;
     /**
-    * Total margin balance, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Total margin balance, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'totalMarginBalance'?: string;
     /**
-    * Total maintenance margin is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
-    */
+     * Total maintenance margin is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
+     */
     'totalMaintenanceMargin'?: string;
     /**
-    * Total initial margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Total initial margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'totalInitialMarginRate'?: string;
     /**
-    * Total maintenance margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Total maintenance margin rate, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'totalMaintenanceMarginRate'?: string;
     /**
-    * Available margin amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Available margin amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'totalAvailableMargin'?: string;
     /**
-    * Unify the total account assets, valid in single currency margin/cross-currency margin/combined margin mode
-    */
+     * Unify the total account assets, valid in single currency margin/cross-currency margin/combined margin mode
+     */
     'unifiedAccountTotal'?: string;
     /**
-    * Unify the total loan of the account, valid in the cross-currency margin/combined margin mode, and 0 in other modes such as single-currency margin mode
-    */
+     * Unify the total loan of the account, valid in the cross-currency margin/combined margin mode, and 0 in other modes such as single-currency margin mode
+     */
     'unifiedAccountTotalLiab'?: string;
     /**
-    * Unify the total account equity, valid in single currency margin/cross-currency margin/combined margin mode
-    */
+     * Unify the total account equity, valid in single currency margin/cross-currency margin/combined margin mode
+     */
     'unifiedAccountTotalEquity'?: string;
     /**
-    * Actual leverage, valid in cross-currency margin/combined margin mode
-    */
+     * Actual leverage, valid in cross-currency margin/combined margin mode
+     */
     'leverage'?: string;
     /**
-    * Total pending order loss, in USDT, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
-    */
+     * Total pending order loss, in USDT, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     */
     'spotOrderLoss'?: string;
     /**
-    * Spot hedging status, true - enabled, false - not enabled.
-    */
+     * Spot hedging status, true - enabled, false - not enabled.
+     */
     'spotHedge'?: boolean;
     /**
-    * Whether to use funds as margin
-    */
+     * Whether to use funds as margin
+     */
     'useFunding'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "refreshTime",
-            "baseName": "refresh_time",
-            "type": "number"
+            name: 'refreshTime',
+            baseName: 'refresh_time',
+            type: 'number',
         },
         {
-            "name": "locked",
-            "baseName": "locked",
-            "type": "boolean"
+            name: 'locked',
+            baseName: 'locked',
+            type: 'boolean',
         },
         {
-            "name": "balances",
-            "baseName": "balances",
-            "type": "{ [key: string]: UnifiedBalance; }"
+            name: 'balances',
+            baseName: 'balances',
+            type: '{ [key: string]: UnifiedBalance; }',
         },
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "string"
+            name: 'total',
+            baseName: 'total',
+            type: 'string',
         },
         {
-            "name": "borrowed",
-            "baseName": "borrowed",
-            "type": "string"
+            name: 'borrowed',
+            baseName: 'borrowed',
+            type: 'string',
         },
         {
-            "name": "totalInitialMargin",
-            "baseName": "total_initial_margin",
-            "type": "string"
+            name: 'totalInitialMargin',
+            baseName: 'total_initial_margin',
+            type: 'string',
         },
         {
-            "name": "totalMarginBalance",
-            "baseName": "total_margin_balance",
-            "type": "string"
+            name: 'totalMarginBalance',
+            baseName: 'total_margin_balance',
+            type: 'string',
         },
         {
-            "name": "totalMaintenanceMargin",
-            "baseName": "total_maintenance_margin",
-            "type": "string"
+            name: 'totalMaintenanceMargin',
+            baseName: 'total_maintenance_margin',
+            type: 'string',
         },
         {
-            "name": "totalInitialMarginRate",
-            "baseName": "total_initial_margin_rate",
-            "type": "string"
+            name: 'totalInitialMarginRate',
+            baseName: 'total_initial_margin_rate',
+            type: 'string',
         },
         {
-            "name": "totalMaintenanceMarginRate",
-            "baseName": "total_maintenance_margin_rate",
-            "type": "string"
+            name: 'totalMaintenanceMarginRate',
+            baseName: 'total_maintenance_margin_rate',
+            type: 'string',
         },
         {
-            "name": "totalAvailableMargin",
-            "baseName": "total_available_margin",
-            "type": "string"
+            name: 'totalAvailableMargin',
+            baseName: 'total_available_margin',
+            type: 'string',
         },
         {
-            "name": "unifiedAccountTotal",
-            "baseName": "unified_account_total",
-            "type": "string"
+            name: 'unifiedAccountTotal',
+            baseName: 'unified_account_total',
+            type: 'string',
         },
         {
-            "name": "unifiedAccountTotalLiab",
-            "baseName": "unified_account_total_liab",
-            "type": "string"
+            name: 'unifiedAccountTotalLiab',
+            baseName: 'unified_account_total_liab',
+            type: 'string',
         },
         {
-            "name": "unifiedAccountTotalEquity",
-            "baseName": "unified_account_total_equity",
-            "type": "string"
+            name: 'unifiedAccountTotalEquity',
+            baseName: 'unified_account_total_equity',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
         },
         {
-            "name": "spotOrderLoss",
-            "baseName": "spot_order_loss",
-            "type": "string"
+            name: 'spotOrderLoss',
+            baseName: 'spot_order_loss',
+            type: 'string',
         },
         {
-            "name": "spotHedge",
-            "baseName": "spot_hedge",
-            "type": "boolean"
+            name: 'spotHedge',
+            baseName: 'spot_hedge',
+            type: 'boolean',
         },
         {
-            "name": "useFunding",
-            "baseName": "use_funding",
-            "type": "boolean"
-        }    ];
+            name: 'useFunding',
+            baseName: 'use_funding',
+            type: 'boolean',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedAccount.attributeTypeMap;
     }
 }
-

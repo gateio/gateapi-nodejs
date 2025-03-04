@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Info of order to be cancelled
-*/
+ * Info of order to be cancelled
+ */
 export class CancelBatchOrder {
     /**
-    * Order currency pair
-    */
+     * Order currency pair
+     */
     'currencyPair': string;
     /**
-    * Order ID or user custom ID. Custom ID are accepted only within 30 minutes after order creation
-    */
+     * Order ID or user custom ID. Custom ID are accepted only within 30 minutes after order creation
+     */
     'id': string;
     /**
-    * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
-    */
+     * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+     */
     'actionMode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "actionMode",
-            "baseName": "action_mode",
-            "type": "string"
-        }    ];
+            name: 'actionMode',
+            baseName: 'action_mode',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CancelBatchOrder.attributeTypeMap;
     }
 }
-

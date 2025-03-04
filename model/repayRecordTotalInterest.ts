@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class RepayRecordTotalInterest {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Currency Index Price
-    */
+     * Currency Index Price
+     */
     'indexPrice'?: string;
     /**
-    * Interest Amount
-    */
+     * Interest Amount
+     */
     'amount'?: string;
     /**
-    * Interest amount converted to USDT
-    */
+     * Interest amount converted to USDT
+     */
     'amountUsdt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "amountUsdt",
-            "baseName": "amount_usdt",
-            "type": "string"
-        }    ];
+            name: 'amountUsdt',
+            baseName: 'amount_usdt',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RepayRecordTotalInterest.attributeTypeMap;
     }
 }
-

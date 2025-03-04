@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Collateral Ratio
-*/
+ * Collateral Ratio
+ */
 export class CollateralLtv {
     /**
-    * The initial collateralization rate
-    */
+     * The initial collateralization rate
+     */
     'initLtv'?: string;
     /**
-    * Warning collateralization ratio
-    */
+     * Warning collateralization ratio
+     */
     'alertLtv'?: string;
     /**
-    * The liquidation collateralization rate
-    */
+     * The liquidation collateralization rate
+     */
     'liquidateLtv'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "initLtv",
-            "baseName": "init_ltv",
-            "type": "string"
+            name: 'initLtv',
+            baseName: 'init_ltv',
+            type: 'string',
         },
         {
-            "name": "alertLtv",
-            "baseName": "alert_ltv",
-            "type": "string"
+            name: 'alertLtv',
+            baseName: 'alert_ltv',
+            type: 'string',
         },
         {
-            "name": "liquidateLtv",
-            "baseName": "liquidate_ltv",
-            "type": "string"
-        }    ];
+            name: 'liquidateLtv',
+            baseName: 'liquidate_ltv',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CollateralLtv.attributeTypeMap;
     }
 }
-

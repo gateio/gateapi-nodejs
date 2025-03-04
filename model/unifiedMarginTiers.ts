@@ -12,34 +12,34 @@
 import { MarginTiers } from './marginTiers';
 
 /**
-* Unified margin tiers
-*/
+ * Unified margin tiers
+ */
 export class UnifiedMarginTiers {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * Margin tiers
-    */
+     * Margin tiers
+     */
     'marginTiers'?: Array<MarginTiers>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "marginTiers",
-            "baseName": "margin_tiers",
-            "type": "Array<MarginTiers>"
-        }    ];
+            name: 'marginTiers',
+            baseName: 'margin_tiers',
+            type: 'Array<MarginTiers>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedMarginTiers.attributeTypeMap;
     }
 }
-

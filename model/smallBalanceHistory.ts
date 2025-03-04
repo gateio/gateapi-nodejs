@@ -9,63 +9,62 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Convert Small Balance
-*/
+ * Convert Small Balance
+ */
 export class SmallBalanceHistory {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'id'?: string;
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * amount
-    */
+     * amount
+     */
     'amount'?: string;
     /**
-    * GT amount
-    */
+     * GT amount
+     */
     'gtAmount'?: string;
     /**
-    * Exchange time (in seconds)
-    */
+     * Exchange time (in seconds)
+     */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "gtAmount",
-            "baseName": "gt_amount",
-            "type": "string"
+            name: 'gtAmount',
+            baseName: 'gt_amount',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
-        }    ];
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SmallBalanceHistory.attributeTypeMap;
     }
 }
-

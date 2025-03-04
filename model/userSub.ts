@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class UserSub {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'uid'?: number;
     /**
-    * The system to which the user belongs (partner referral). If empty, it means not belonging to any system.
-    */
+     * The system to which the user belongs (partner referral). If empty, it means not belonging to any system.
+     */
     'belong'?: string;
     /**
-    * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct direct customer 4-indirect direct customer 5-ordinary user)
-    */
+     * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct direct customer 4-indirect direct customer 5-ordinary user)
+     */
     'type'?: number;
     /**
-    * Inviter user ID
-    */
+     * Inviter user ID
+     */
     'refUid'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "uid",
-            "baseName": "uid",
-            "type": "number"
+            name: 'uid',
+            baseName: 'uid',
+            type: 'number',
         },
         {
-            "name": "belong",
-            "baseName": "belong",
-            "type": "string"
+            name: 'belong',
+            baseName: 'belong',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "number"
+            name: 'type',
+            baseName: 'type',
+            type: 'number',
         },
         {
-            "name": "refUid",
-            "baseName": "ref_uid",
-            "type": "number"
-        }    ];
+            name: 'refUid',
+            baseName: 'ref_uid',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UserSub.attributeTypeMap;
     }
 }
-

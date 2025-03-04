@@ -9,81 +9,80 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Interest Record
-*/
+ * Interest Record
+ */
 export class UniLendRecord {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * current amount
-    */
+     * current amount
+     */
     'amount'?: string;
     /**
-    * Last wallet amount
-    */
+     * Last wallet amount
+     */
     'lastWalletAmount'?: string;
     /**
-    * Last lent amount
-    */
+     * Last lent amount
+     */
     'lastLentAmount'?: string;
     /**
-    * Last frozen amount
-    */
+     * Last frozen amount
+     */
     'lastFrozenAmount'?: string;
     /**
-    * Record type: lend - lend, redeem - redeem
-    */
+     * Record type: lend - lend, redeem - redeem
+     */
     'type'?: string;
     /**
-    * Created time
-    */
+     * Created time
+     */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "lastWalletAmount",
-            "baseName": "last_wallet_amount",
-            "type": "string"
+            name: 'lastWalletAmount',
+            baseName: 'last_wallet_amount',
+            type: 'string',
         },
         {
-            "name": "lastLentAmount",
-            "baseName": "last_lent_amount",
-            "type": "string"
+            name: 'lastLentAmount',
+            baseName: 'last_lent_amount',
+            type: 'string',
         },
         {
-            "name": "lastFrozenAmount",
-            "baseName": "last_frozen_amount",
-            "type": "string"
+            name: 'lastFrozenAmount',
+            baseName: 'last_frozen_amount',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
-        }    ];
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UniLendRecord.attributeTypeMap;
     }
 }
-

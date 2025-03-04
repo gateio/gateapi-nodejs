@@ -9,129 +9,129 @@
  * Do not edit the class manually.
  */
 
-
 export class PositionClose {
     /**
-    * Position close time
-    */
+     * Position close time
+     */
     'time'?: number;
     /**
-    * Futures contract
-    */
+     * Futures contract
+     */
     'contract'?: string;
     /**
-    * Position side, long or short
-    */
+     * Position side, long or short
+     */
     'side'?: PositionClose.Side;
     /**
-    * PNL
-    */
+     * PNL
+     */
     'pnl'?: string;
     /**
-    * PNL - Position P/L
-    */
+     * PNL - Position P/L
+     */
     'pnlPnl'?: string;
     /**
-    * PNL - Funding Fees
-    */
+     * PNL - Funding Fees
+     */
     'pnlFund'?: string;
     /**
-    * PNL - Transaction Fees
-    */
+     * PNL - Transaction Fees
+     */
     'pnlFee'?: string;
     /**
-    * Text of close order
-    */
+     * Text of close order
+     */
     'text'?: string;
     /**
-    * Max Trade Size
-    */
+     * Max Trade Size
+     */
     'maxSize'?: string;
     /**
-    * Cumulative closed position volume
-    */
+     * Cumulative closed position volume
+     */
     'accumSize'?: string;
     /**
-    * First Open Time
-    */
+     * First Open Time
+     */
     'firstOpenTime'?: number;
     /**
-    * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price.
-    */
+     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price.
+     */
     'longPrice'?: string;
     /**
-    * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price
-    */
+     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price
+     */
     'shortPrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "PositionClose.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'PositionClose.Side',
         },
         {
-            "name": "pnl",
-            "baseName": "pnl",
-            "type": "string"
+            name: 'pnl',
+            baseName: 'pnl',
+            type: 'string',
         },
         {
-            "name": "pnlPnl",
-            "baseName": "pnl_pnl",
-            "type": "string"
+            name: 'pnlPnl',
+            baseName: 'pnl_pnl',
+            type: 'string',
         },
         {
-            "name": "pnlFund",
-            "baseName": "pnl_fund",
-            "type": "string"
+            name: 'pnlFund',
+            baseName: 'pnl_fund',
+            type: 'string',
         },
         {
-            "name": "pnlFee",
-            "baseName": "pnl_fee",
-            "type": "string"
+            name: 'pnlFee',
+            baseName: 'pnl_fee',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "maxSize",
-            "baseName": "max_size",
-            "type": "string"
+            name: 'maxSize',
+            baseName: 'max_size',
+            type: 'string',
         },
         {
-            "name": "accumSize",
-            "baseName": "accum_size",
-            "type": "string"
+            name: 'accumSize',
+            baseName: 'accum_size',
+            type: 'string',
         },
         {
-            "name": "firstOpenTime",
-            "baseName": "first_open_time",
-            "type": "number"
+            name: 'firstOpenTime',
+            baseName: 'first_open_time',
+            type: 'number',
         },
         {
-            "name": "longPrice",
-            "baseName": "long_price",
-            "type": "string"
+            name: 'longPrice',
+            baseName: 'long_price',
+            type: 'string',
         },
         {
-            "name": "shortPrice",
-            "baseName": "short_price",
-            "type": "string"
-        }    ];
+            name: 'shortPrice',
+            baseName: 'short_price',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return PositionClose.attributeTypeMap;
@@ -140,7 +140,7 @@ export class PositionClose {
 
 export namespace PositionClose {
     export enum Side {
-        Long = <any> 'long',
-        Short = <any> 'short'
+        Long = <any>'long',
+        Short = <any>'short',
     }
 }

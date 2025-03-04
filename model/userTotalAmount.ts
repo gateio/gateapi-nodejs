@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Total borrowed amount and pledged collateral amount by the user
-*/
+ * Total borrowed amount and pledged collateral amount by the user
+ */
 export class UserTotalAmount {
     /**
-    * Total borrowing amount, calculated in USDT
-    */
+     * Total borrowing amount, calculated in USDT
+     */
     'borrowAmount'?: string;
     /**
-    * Total collateral amount, calculated in USDT
-    */
+     * Total collateral amount, calculated in USDT
+     */
     'collateralAmount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "borrowAmount",
-            "baseName": "borrow_amount",
-            "type": "string"
+            name: 'borrowAmount',
+            baseName: 'borrow_amount',
+            type: 'string',
         },
         {
-            "name": "collateralAmount",
-            "baseName": "collateral_amount",
-            "type": "string"
-        }    ];
+            name: 'collateralAmount',
+            baseName: 'collateral_amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UserTotalAmount.attributeTypeMap;
     }
 }
-

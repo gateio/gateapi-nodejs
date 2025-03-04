@@ -12,157 +12,157 @@
 import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 
 /**
-* Options position information
-*/
+ * Options position information
+ */
 export class OptionsPosition {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'user'?: number;
     /**
-    * Underlying
-    */
+     * Underlying
+     */
     'underlying'?: string;
     /**
-    * Underlying price (quote currency)
-    */
+     * Underlying price (quote currency)
+     */
     'underlyingPrice'?: string;
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'contract'?: string;
     /**
-    * Position size (contract size)
-    */
+     * Position size (contract size)
+     */
     'size'?: number;
     /**
-    * Entry size (quote currency)
-    */
+     * Entry size (quote currency)
+     */
     'entryPrice'?: string;
     /**
-    * Current mark price (quote currency)
-    */
+     * Current mark price (quote currency)
+     */
     'markPrice'?: string;
     /**
-    * Implied volatility
-    */
+     * Implied volatility
+     */
     'markIv'?: string;
     /**
-    * Realized PNL
-    */
+     * Realized PNL
+     */
     'realisedPnl'?: string;
     /**
-    * Unrealized PNL
-    */
+     * Unrealized PNL
+     */
     'unrealisedPnl'?: string;
     /**
-    * Current open orders
-    */
+     * Current open orders
+     */
     'pendingOrders'?: number;
     'closeOrder'?: OptionsPositionCloseOrder | null;
     /**
-    * Delta
-    */
+     * Delta
+     */
     'delta'?: string;
     /**
-    * Gamma
-    */
+     * Gamma
+     */
     'gamma'?: string;
     /**
-    * Vega
-    */
+     * Vega
+     */
     'vega'?: string;
     /**
-    * Theta
-    */
+     * Theta
+     */
     'theta'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "user",
-            "baseName": "user",
-            "type": "number"
+            name: 'user',
+            baseName: 'user',
+            type: 'number',
         },
         {
-            "name": "underlying",
-            "baseName": "underlying",
-            "type": "string"
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
         },
         {
-            "name": "underlyingPrice",
-            "baseName": "underlying_price",
-            "type": "string"
+            name: 'underlyingPrice',
+            baseName: 'underlying_price',
+            type: 'string',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "entryPrice",
-            "baseName": "entry_price",
-            "type": "string"
+            name: 'entryPrice',
+            baseName: 'entry_price',
+            type: 'string',
         },
         {
-            "name": "markPrice",
-            "baseName": "mark_price",
-            "type": "string"
+            name: 'markPrice',
+            baseName: 'mark_price',
+            type: 'string',
         },
         {
-            "name": "markIv",
-            "baseName": "mark_iv",
-            "type": "string"
+            name: 'markIv',
+            baseName: 'mark_iv',
+            type: 'string',
         },
         {
-            "name": "realisedPnl",
-            "baseName": "realised_pnl",
-            "type": "string"
+            name: 'realisedPnl',
+            baseName: 'realised_pnl',
+            type: 'string',
         },
         {
-            "name": "unrealisedPnl",
-            "baseName": "unrealised_pnl",
-            "type": "string"
+            name: 'unrealisedPnl',
+            baseName: 'unrealised_pnl',
+            type: 'string',
         },
         {
-            "name": "pendingOrders",
-            "baseName": "pending_orders",
-            "type": "number"
+            name: 'pendingOrders',
+            baseName: 'pending_orders',
+            type: 'number',
         },
         {
-            "name": "closeOrder",
-            "baseName": "close_order",
-            "type": "OptionsPositionCloseOrder"
+            name: 'closeOrder',
+            baseName: 'close_order',
+            type: 'OptionsPositionCloseOrder',
         },
         {
-            "name": "delta",
-            "baseName": "delta",
-            "type": "string"
+            name: 'delta',
+            baseName: 'delta',
+            type: 'string',
         },
         {
-            "name": "gamma",
-            "baseName": "gamma",
-            "type": "string"
+            name: 'gamma',
+            baseName: 'gamma',
+            type: 'string',
         },
         {
-            "name": "vega",
-            "baseName": "vega",
-            "type": "string"
+            name: 'vega',
+            baseName: 'vega',
+            type: 'string',
         },
         {
-            "name": "theta",
-            "baseName": "theta",
-            "type": "string"
-        }    ];
+            name: 'theta',
+            baseName: 'theta',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsPosition.attributeTypeMap;
     }
 }
-

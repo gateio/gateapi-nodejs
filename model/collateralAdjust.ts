@@ -13,39 +13,39 @@ import { CollateralCurrency } from './collateralCurrency';
 
 export class CollateralAdjust {
     /**
-    * Order ID
-    */
+     * Order ID
+     */
     'orderId': number;
     /**
-    * Operation types: append - for adding collateral, redeem - for withdrawing collateral
-    */
+     * Operation types: append - for adding collateral, redeem - for withdrawing collateral
+     */
     'type': string;
     /**
-    * Collateral Currency List
-    */
+     * Collateral Currency List
+     */
     'collaterals'?: Array<CollateralCurrency>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "orderId",
-            "baseName": "order_id",
-            "type": "number"
+            name: 'orderId',
+            baseName: 'order_id',
+            type: 'number',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "collaterals",
-            "baseName": "collaterals",
-            "type": "Array<CollateralCurrency>"
-        }    ];
+            name: 'collaterals',
+            baseName: 'collaterals',
+            type: 'Array<CollateralCurrency>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CollateralAdjust.attributeTypeMap;
     }
 }
-

@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class FundingAccount {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * Available assets to lend, which is identical to spot account `available`
-    */
+     * Available assets to lend, which is identical to spot account `available`
+     */
     'available'?: string;
     /**
-    * Locked amount. i.e. amount in `open` loans
-    */
+     * Locked amount. i.e. amount in `open` loans
+     */
     'locked'?: string;
     /**
-    * Outstanding loan amount yet to be repaid
-    */
+     * Outstanding loan amount yet to be repaid
+     */
     'lent'?: string;
     /**
-    * Amount used for lending. total_lent = lent + locked
-    */
+     * Amount used for lending. total_lent = lent + locked
+     */
     'totalLent'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "locked",
-            "baseName": "locked",
-            "type": "string"
+            name: 'locked',
+            baseName: 'locked',
+            type: 'string',
         },
         {
-            "name": "lent",
-            "baseName": "lent",
-            "type": "string"
+            name: 'lent',
+            baseName: 'lent',
+            type: 'string',
         },
         {
-            "name": "totalLent",
-            "baseName": "total_lent",
-            "type": "string"
-        }    ];
+            name: 'totalLent',
+            baseName: 'total_lent',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FundingAccount.attributeTypeMap;
     }
 }
-

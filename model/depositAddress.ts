@@ -13,36 +13,36 @@ import { MultiChainAddressItem } from './multiChainAddressItem';
 
 export class DepositAddress {
     /**
-    * Currency detail
-    */
+     * Currency detail
+     */
     'currency': string;
     /**
-    * Deposit address
-    */
+     * Deposit address
+     */
     'address': string;
     'multichainAddresses'?: Array<MultiChainAddressItem>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "string"
+            name: 'address',
+            baseName: 'address',
+            type: 'string',
         },
         {
-            "name": "multichainAddresses",
-            "baseName": "multichain_addresses",
-            "type": "Array<MultiChainAddressItem>"
-        }    ];
+            name: 'multichainAddresses',
+            baseName: 'multichain_addresses',
+            type: 'Array<MultiChainAddressItem>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return DepositAddress.attributeTypeMap;
     }
 }
-

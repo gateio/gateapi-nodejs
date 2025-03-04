@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { LedgerRecord } from '../model/ledgerRecord';
 import { UidPushWithdrawal } from '../model/uidPushWithdrawal';
@@ -36,12 +35,12 @@ export class WithdrawalApi {
     /**
      * Withdrawals to Gate addresses do not incur transaction fees.
      * @summary Withdraw
-     * @param ledgerRecord 
+     * @param ledgerRecord
      */
-    public async withdraw(ledgerRecord: LedgerRecord) : Promise<{ response: AxiosResponse; body: LedgerRecord; }> {
+    public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
         const localVarPath = this.client.basePath + '/withdrawals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -55,28 +54,29 @@ export class WithdrawalApi {
             throw new Error('Required parameter ledgerRecord was null or undefined when calling withdraw.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(ledgerRecord, "LedgerRecord")
+            data: ObjectSerializer.serialize(ledgerRecord, 'LedgerRecord'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord>(config, "LedgerRecord", authSettings);
+        return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
     }
 
     /**
      * Transfers between main spot accounts are allowed; however, both parties cannot be sub-accounts
      * @summary UID transfer
-     * @param uidPushWithdrawal 
+     * @param uidPushWithdrawal
      */
-    public async withdrawPushOrder(uidPushWithdrawal: UidPushWithdrawal) : Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp; }> {
+    public async withdrawPushOrder(
+        uidPushWithdrawal: UidPushWithdrawal,
+    ): Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp }> {
         const localVarPath = this.client.basePath + '/withdrawals/push';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -87,32 +87,37 @@ export class WithdrawalApi {
 
         // verify required parameter 'uidPushWithdrawal' is not null or undefined
         if (uidPushWithdrawal === null || uidPushWithdrawal === undefined) {
-            throw new Error('Required parameter uidPushWithdrawal was null or undefined when calling withdrawPushOrder.');
+            throw new Error(
+                'Required parameter uidPushWithdrawal was null or undefined when calling withdrawPushOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(uidPushWithdrawal, "UidPushWithdrawal")
+            data: ObjectSerializer.serialize(uidPushWithdrawal, 'UidPushWithdrawal'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UidPushWithdrawalResp>(config, "UidPushWithdrawalResp", authSettings);
+        return this.client.request<UidPushWithdrawalResp>(config, 'UidPushWithdrawalResp', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel withdrawal with specified ID
-     * @param withdrawalId 
+     * @param withdrawalId
      */
-    public async cancelWithdrawal(withdrawalId: string) : Promise<{ response: AxiosResponse; body: LedgerRecord; }> {
-        const localVarPath = this.client.basePath + '/withdrawals/{withdrawal_id}'
-            .replace('{' + 'withdrawal_id' + '}', encodeURIComponent(String(withdrawalId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
+        const localVarPath =
+            this.client.basePath +
+            '/withdrawals/{withdrawal_id}'.replace(
+                '{' + 'withdrawal_id' + '}',
+                encodeURIComponent(String(withdrawalId)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -126,7 +131,6 @@ export class WithdrawalApi {
             throw new Error('Required parameter withdrawalId was null or undefined when calling cancelWithdrawal.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -135,6 +139,6 @@ export class WithdrawalApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<LedgerRecord>(config, "LedgerRecord", authSettings);
+        return this.client.request<LedgerRecord>(config, 'LedgerRecord', authSettings);
     }
 }

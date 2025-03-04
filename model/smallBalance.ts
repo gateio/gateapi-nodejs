@@ -9,54 +9,53 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Convert Small Balance
-*/
+ * Convert Small Balance
+ */
 export class SmallBalance {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Available balance
-    */
+     * Available balance
+     */
     'availableBalance'?: string;
     /**
-    * Estimated as BTC
-    */
+     * Estimated as BTC
+     */
     'estimatedAsBtc'?: string;
     /**
-    * Estimated conversion to GT
-    */
+     * Estimated conversion to GT
+     */
     'convertibleToGt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "availableBalance",
-            "baseName": "available_balance",
-            "type": "string"
+            name: 'availableBalance',
+            baseName: 'available_balance',
+            type: 'string',
         },
         {
-            "name": "estimatedAsBtc",
-            "baseName": "estimated_as_btc",
-            "type": "string"
+            name: 'estimatedAsBtc',
+            baseName: 'estimated_as_btc',
+            type: 'string',
         },
         {
-            "name": "convertibleToGt",
-            "baseName": "convertible_to_gt",
-            "type": "string"
-        }    ];
+            name: 'convertibleToGt',
+            baseName: 'convertible_to_gt',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SmallBalance.attributeTypeMap;
     }
 }
-

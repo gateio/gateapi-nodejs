@@ -13,34 +13,34 @@ import { MultiCollateralItem } from './multiCollateralItem';
 import { MultiLoanItem } from './multiLoanItem';
 
 /**
-* Borrowing and collateral currencies supported for Multi-Collateral.
-*/
+ * Borrowing and collateral currencies supported for Multi-Collateral.
+ */
 export class MultiCollateralCurrency {
     /**
-    * List of supported borrowing currencies
-    */
+     * List of supported borrowing currencies
+     */
     'loanCurrencies'?: Array<MultiLoanItem>;
     /**
-    * List of supported collateral currencies
-    */
+     * List of supported collateral currencies
+     */
     'collateralCurrencies'?: Array<MultiCollateralItem>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "loanCurrencies",
-            "baseName": "loan_currencies",
-            "type": "Array<MultiLoanItem>"
+            name: 'loanCurrencies',
+            baseName: 'loan_currencies',
+            type: 'Array<MultiLoanItem>',
         },
         {
-            "name": "collateralCurrencies",
-            "baseName": "collateral_currencies",
-            "type": "Array<MultiCollateralItem>"
-        }    ];
+            name: 'collateralCurrencies',
+            baseName: 'collateral_currencies',
+            type: 'Array<MultiCollateralItem>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MultiCollateralCurrency.attributeTypeMap;
     }
 }
-

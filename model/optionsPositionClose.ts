@@ -9,66 +9,66 @@
  * Do not edit the class manually.
  */
 
-
 export class OptionsPositionClose {
     /**
-    * Position close time
-    */
+     * Position close time
+     */
     'time'?: number;
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'contract'?: string;
     /**
-    * Position side, long or short
-    */
+     * Position side, long or short
+     */
     'side'?: OptionsPositionClose.Side;
     /**
-    * PNL
-    */
+     * PNL
+     */
     'pnl'?: string;
     /**
-    * Text of close order
-    */
+     * Text of close order
+     */
     'text'?: string;
     /**
-    * settlement size
-    */
+     * settlement size
+     */
     'settleSize'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "side",
-            "baseName": "side",
-            "type": "OptionsPositionClose.Side"
+            name: 'side',
+            baseName: 'side',
+            type: 'OptionsPositionClose.Side',
         },
         {
-            "name": "pnl",
-            "baseName": "pnl",
-            "type": "string"
+            name: 'pnl',
+            baseName: 'pnl',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
         {
-            "name": "settleSize",
-            "baseName": "settle_size",
-            "type": "string"
-        }    ];
+            name: 'settleSize',
+            baseName: 'settle_size',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsPositionClose.attributeTypeMap;
@@ -77,7 +77,7 @@ export class OptionsPositionClose {
 
 export namespace OptionsPositionClose {
     export enum Side {
-        Long = <any> 'long',
-        Short = <any> 'short'
+        Long = <any>'long',
+        Short = <any>'short',
     }
 }

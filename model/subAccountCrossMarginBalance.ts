@@ -13,30 +13,30 @@ import { SubCrossMarginAccount } from './subCrossMarginAccount';
 
 export class SubAccountCrossMarginBalance {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'uid'?: string;
     /**
-    * 账户余额信息
-    */
+     * 账户余额信息
+     */
     'available'?: SubCrossMarginAccount;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "uid",
-            "baseName": "uid",
-            "type": "string"
+            name: 'uid',
+            baseName: 'uid',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "SubCrossMarginAccount"
-        }    ];
+            name: 'available',
+            baseName: 'available',
+            type: 'SubCrossMarginAccount',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubAccountCrossMarginBalance.attributeTypeMap;
     }
 }
-

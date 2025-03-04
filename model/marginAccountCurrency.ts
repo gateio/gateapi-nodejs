@@ -9,63 +9,62 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Account currency details
-*/
+ * Account currency details
+ */
 export class MarginAccountCurrency {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * Amount suitable for margin trading.
-    */
+     * Amount suitable for margin trading.
+     */
     'available'?: string;
     /**
-    * Locked amount, used in margin trading
-    */
+     * Locked amount, used in margin trading
+     */
     'locked'?: string;
     /**
-    * Borrowed amount
-    */
+     * Borrowed amount
+     */
     'borrowed'?: string;
     /**
-    * Unpaid interests
-    */
+     * Unpaid interests
+     */
     'interest'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "available",
-            "baseName": "available",
-            "type": "string"
+            name: 'available',
+            baseName: 'available',
+            type: 'string',
         },
         {
-            "name": "locked",
-            "baseName": "locked",
-            "type": "string"
+            name: 'locked',
+            baseName: 'locked',
+            type: 'string',
         },
         {
-            "name": "borrowed",
-            "baseName": "borrowed",
-            "type": "string"
+            name: 'borrowed',
+            baseName: 'borrowed',
+            type: 'string',
         },
         {
-            "name": "interest",
-            "baseName": "interest",
-            "type": "string"
-        }    ];
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MarginAccountCurrency.attributeTypeMap;
     }
 }
-

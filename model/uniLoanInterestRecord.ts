@@ -9,81 +9,80 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Interest record
-*/
+ * Interest record
+ */
 export class UniLoanInterestRecord {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     /**
-    * Actual rate
-    */
+     * Actual rate
+     */
     'actualRate'?: string;
     /**
-    * Interest
-    */
+     * Interest
+     */
     'interest'?: string;
     /**
-    * Status: 0 - fail, 1 - success
-    */
+     * Status: 0 - fail, 1 - success
+     */
     'status'?: number;
     /**
-    * Type, platform - platform，margin - margin
-    */
+     * Type, platform - platform，margin - margin
+     */
     'type'?: string;
     /**
-    * Created time
-    */
+     * Created time
+     */
     'createTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "actualRate",
-            "baseName": "actual_rate",
-            "type": "string"
+            name: 'actualRate',
+            baseName: 'actual_rate',
+            type: 'string',
         },
         {
-            "name": "interest",
-            "baseName": "interest",
-            "type": "string"
+            name: 'interest',
+            baseName: 'interest',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "number"
+            name: 'status',
+            baseName: 'status',
+            type: 'number',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
-        }    ];
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UniLoanInterestRecord.attributeTypeMap;
     }
 }
-

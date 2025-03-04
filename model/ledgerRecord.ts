@@ -9,102 +9,102 @@
  * Do not edit the class manually.
  */
 
-
 export class LedgerRecord {
     /**
-    * Record ID
-    */
+     * Record ID
+     */
     'id'?: string;
     /**
-    * Hash record of the withdrawal
-    */
+     * Hash record of the withdrawal
+     */
     'txid'?: string;
     /**
-    * Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) 
-    */
+     * Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     */
     'withdrawOrderId'?: string;
     /**
-    * Operation time
-    */
+     * Operation time
+     */
     'timestamp'?: string;
     /**
-    * Currency amount
-    */
+     * Currency amount
+     */
     'amount': string;
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency': string;
     /**
-    * Withdrawal address. Required for withdrawals
-    */
+     * Withdrawal address. Required for withdrawals
+     */
     'address'?: string;
     /**
-    * Additional remarks with regards to the withdrawal
-    */
+     * Additional remarks with regards to the withdrawal
+     */
     'memo'?: string;
     /**
-    * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - SPLITPEND: the order is automatically split due to large amount
-    */
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - SPLITPEND: the order is automatically split due to large amount
+     */
     'status'?: LedgerRecord.Status;
     /**
-    * Name of the chain used in withdrawals
-    */
+     * Name of the chain used in withdrawals
+     */
     'chain': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "txid",
-            "baseName": "txid",
-            "type": "string"
+            name: 'txid',
+            baseName: 'txid',
+            type: 'string',
         },
         {
-            "name": "withdrawOrderId",
-            "baseName": "withdraw_order_id",
-            "type": "string"
+            name: 'withdrawOrderId',
+            baseName: 'withdraw_order_id',
+            type: 'string',
         },
         {
-            "name": "timestamp",
-            "baseName": "timestamp",
-            "type": "string"
+            name: 'timestamp',
+            baseName: 'timestamp',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "string"
+            name: 'address',
+            baseName: 'address',
+            type: 'string',
         },
         {
-            "name": "memo",
-            "baseName": "memo",
-            "type": "string"
+            name: 'memo',
+            baseName: 'memo',
+            type: 'string',
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "LedgerRecord.Status"
+            name: 'status',
+            baseName: 'status',
+            type: 'LedgerRecord.Status',
         },
         {
-            "name": "chain",
-            "baseName": "chain",
-            "type": "string"
-        }    ];
+            name: 'chain',
+            baseName: 'chain',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return LedgerRecord.attributeTypeMap;
@@ -113,18 +113,18 @@ export class LedgerRecord {
 
 export namespace LedgerRecord {
     export enum Status {
-        DONE = <any> 'DONE',
-        CANCEL = <any> 'CANCEL',
-        REQUEST = <any> 'REQUEST',
-        MANUAL = <any> 'MANUAL',
-        BCODE = <any> 'BCODE',
-        EXTPEND = <any> 'EXTPEND',
-        FAIL = <any> 'FAIL',
-        INVALID = <any> 'INVALID',
-        VERIFY = <any> 'VERIFY',
-        PROCES = <any> 'PROCES',
-        PEND = <any> 'PEND',
-        DMOVE = <any> 'DMOVE',
-        SPLITPEND = <any> 'SPLITPEND'
+        DONE = <any>'DONE',
+        CANCEL = <any>'CANCEL',
+        REQUEST = <any>'REQUEST',
+        MANUAL = <any>'MANUAL',
+        BCODE = <any>'BCODE',
+        EXTPEND = <any>'EXTPEND',
+        FAIL = <any>'FAIL',
+        INVALID = <any>'INVALID',
+        VERIFY = <any>'VERIFY',
+        PROCES = <any>'PROCES',
+        PEND = <any>'PEND',
+        DMOVE = <any>'DMOVE',
+        SPLITPEND = <any>'SPLITPEND',
     }
 }

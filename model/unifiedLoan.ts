@@ -9,60 +9,60 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Borrow or repay
-*/
+ * Borrow or repay
+ */
 export class UnifiedLoan {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency': string;
     /**
-    * type: borrow - borrow, repay - repay
-    */
+     * type: borrow - borrow, repay - repay
+     */
     'type': UnifiedLoan.Type;
     /**
-    * The amount of lending or repaying
-    */
+     * The amount of lending or repaying
+     */
     'amount': string;
     /**
-    * Full repayment is solely for repayment operations. When set to \'true,\' it overrides the \'amount,\' allowing for direct full repayment.
-    */
+     * Full repayment is solely for repayment operations. When set to \'true,\' it overrides the \'amount,\' allowing for direct full repayment.
+     */
     'repaidAll'?: boolean;
     /**
-    * User defined custom ID
-    */
+     * User defined custom ID
+     */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "UnifiedLoan.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'UnifiedLoan.Type',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "repaidAll",
-            "baseName": "repaid_all",
-            "type": "boolean"
+            name: 'repaidAll',
+            baseName: 'repaid_all',
+            type: 'boolean',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
-        }    ];
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedLoan.attributeTypeMap;
@@ -71,7 +71,7 @@ export class UnifiedLoan {
 
 export namespace UnifiedLoan {
     export enum Type {
-        Borrow = <any> 'borrow',
-        Repay = <any> 'repay'
+        Borrow = <any>'borrow',
+        Repay = <any>'repay',
     }
 }

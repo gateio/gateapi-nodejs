@@ -9,81 +9,80 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* User\'s currency statistics data
-*/
+ * User\'s currency statistics data
+ */
 export class UserLtvInfo {
     /**
-    * Collateral
-    */
+     * Collateral
+     */
     'collateralCurrency'?: string;
     /**
-    * Borrowed currency
-    */
+     * Borrowed currency
+     */
     'borrowCurrency'?: string;
     /**
-    * The initial collateralization rate
-    */
+     * The initial collateralization rate
+     */
     'initLtv'?: string;
     /**
-    * Warning collateralization ratio
-    */
+     * Warning collateralization ratio
+     */
     'alertLtv'?: string;
     /**
-    * The liquidation collateralization rate
-    */
+     * The liquidation collateralization rate
+     */
     'liquidateLtv'?: string;
     /**
-    * Minimum borrowable amount for the loan currency
-    */
+     * Minimum borrowable amount for the loan currency
+     */
     'minBorrowAmount'?: string;
     /**
-    * Remaining borrowable amount for the loan currency
-    */
+     * Remaining borrowable amount for the loan currency
+     */
     'leftBorrowableAmount'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "collateralCurrency",
-            "baseName": "collateral_currency",
-            "type": "string"
+            name: 'collateralCurrency',
+            baseName: 'collateral_currency',
+            type: 'string',
         },
         {
-            "name": "borrowCurrency",
-            "baseName": "borrow_currency",
-            "type": "string"
+            name: 'borrowCurrency',
+            baseName: 'borrow_currency',
+            type: 'string',
         },
         {
-            "name": "initLtv",
-            "baseName": "init_ltv",
-            "type": "string"
+            name: 'initLtv',
+            baseName: 'init_ltv',
+            type: 'string',
         },
         {
-            "name": "alertLtv",
-            "baseName": "alert_ltv",
-            "type": "string"
+            name: 'alertLtv',
+            baseName: 'alert_ltv',
+            type: 'string',
         },
         {
-            "name": "liquidateLtv",
-            "baseName": "liquidate_ltv",
-            "type": "string"
+            name: 'liquidateLtv',
+            baseName: 'liquidate_ltv',
+            type: 'string',
         },
         {
-            "name": "minBorrowAmount",
-            "baseName": "min_borrow_amount",
-            "type": "string"
+            name: 'minBorrowAmount',
+            baseName: 'min_borrow_amount',
+            type: 'string',
         },
         {
-            "name": "leftBorrowableAmount",
-            "baseName": "left_borrowable_amount",
-            "type": "string"
-        }    ];
+            name: 'leftBorrowableAmount',
+            baseName: 'left_borrowable_amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UserLtvInfo.attributeTypeMap;
     }
 }
-

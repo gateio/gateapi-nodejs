@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Loan currency leverage
-*/
+ * Loan currency leverage
+ */
 export class UnifiedLeverageSetting {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency': string;
     /**
-    * multiple
-    */
+     * multiple
+     */
     'leverage': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "leverage",
-            "baseName": "leverage",
-            "type": "string"
-        }    ];
+            name: 'leverage',
+            baseName: 'leverage',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedLeverageSetting.attributeTypeMap;
     }
 }
-

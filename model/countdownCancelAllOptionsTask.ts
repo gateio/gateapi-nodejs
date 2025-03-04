@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Countdown cancel task detail
-*/
+ * Countdown cancel task detail
+ */
 export class CountdownCancelAllOptionsTask {
     /**
-    * Countdown time, in seconds  At least 5 seconds, 0 means cancel the countdown
-    */
+     * Countdown time, in seconds  At least 5 seconds, 0 means cancel the countdown
+     */
     'timeout': number;
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'contract'?: string;
     /**
-    * Underlying
-    */
+     * Underlying
+     */
     'underlying'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "number"
+            name: 'timeout',
+            baseName: 'timeout',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "underlying",
-            "baseName": "underlying",
-            "type": "string"
-        }    ];
+            name: 'underlying',
+            baseName: 'underlying',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CountdownCancelAllOptionsTask.attributeTypeMap;
     }
 }
-

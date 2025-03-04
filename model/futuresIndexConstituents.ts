@@ -13,30 +13,30 @@ import { IndexConstituent } from './indexConstituent';
 
 export class FuturesIndexConstituents {
     /**
-    * Index name
-    */
+     * Index name
+     */
     'index'?: string;
     /**
-    * Constituents
-    */
+     * Constituents
+     */
     'constituents'?: Array<IndexConstituent>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "index",
-            "baseName": "index",
-            "type": "string"
+            name: 'index',
+            baseName: 'index',
+            type: 'string',
         },
         {
-            "name": "constituents",
-            "baseName": "constituents",
-            "type": "Array<IndexConstituent>"
-        }    ];
+            name: 'constituents',
+            baseName: 'constituents',
+            type: 'Array<IndexConstituent>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesIndexConstituents.attributeTypeMap;
     }
 }
-

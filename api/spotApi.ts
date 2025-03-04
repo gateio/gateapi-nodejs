@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { BatchAmendItem } from '../model/batchAmendItem';
 import { BatchOrder } from '../model/batchOrder';
@@ -57,10 +56,10 @@ export class SpotApi {
      * Currency has two forms:  1. Only currency name, e.g., BTC, USDT 2. `<currency>_<chain>`, e.g., `HT_ETH`  The latter one occurs when one currency has multiple chains. Currency detail contains a `chain` field whatever the form is. To retrieve all chains of one currency, you can use use all the details which has the name of the currency or name starting with `<currency>_`.
      * @summary List all currencies\' details
      */
-    public async listCurrencies() : Promise<{ response: AxiosResponse; body: Array<Currency>; }> {
+    public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
         const localVarPath = this.client.basePath + '/spot/currencies';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -68,7 +67,6 @@ export class SpotApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -78,19 +76,20 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Currency>>(config, "Array<Currency>", authSettings);
+        return this.client.request<Array<Currency>>(config, 'Array<Currency>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get details of a specific currency
      * @param currency Currency name
      */
-    public async getCurrency(currency: string) : Promise<{ response: AxiosResponse; body: Currency; }> {
-        const localVarPath = this.client.basePath + '/spot/currencies/{currency}'
-            .replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getCurrency(currency: string): Promise<{ response: AxiosResponse; body: Currency }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -104,7 +103,6 @@ export class SpotApi {
             throw new Error('Required parameter currency was null or undefined when calling getCurrency.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -113,17 +111,17 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Currency>(config, "Currency", authSettings);
+        return this.client.request<Currency>(config, 'Currency', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all currency pairs supported
      */
-    public async listCurrencyPairs() : Promise<{ response: AxiosResponse; body: Array<CurrencyPair>; }> {
+    public async listCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<CurrencyPair> }> {
         const localVarPath = this.client.basePath + '/spot/currency_pairs';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -132,7 +130,6 @@ export class SpotApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -141,19 +138,23 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<CurrencyPair>>(config, "Array<CurrencyPair>", authSettings);
+        return this.client.request<Array<CurrencyPair>>(config, 'Array<CurrencyPair>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get details of a specifc currency pair
      * @param currencyPair Currency pair
      */
-    public async getCurrencyPair(currencyPair: string) : Promise<{ response: AxiosResponse; body: CurrencyPair; }> {
-        const localVarPath = this.client.basePath + '/spot/currency_pairs/{currency_pair}'
-            .replace('{' + 'currency_pair' + '}', encodeURIComponent(String(currencyPair)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: CurrencyPair }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/currency_pairs/{currency_pair}'.replace(
+                '{' + 'currency_pair' + '}',
+                encodeURIComponent(String(currencyPair)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -167,7 +168,6 @@ export class SpotApi {
             throw new Error('Required parameter currencyPair was null or undefined when calling getCurrencyPair.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -176,7 +176,7 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<CurrencyPair>(config, "CurrencyPair", authSettings);
+        return this.client.request<CurrencyPair>(config, 'CurrencyPair', authSettings);
     }
 
     /**
@@ -186,10 +186,13 @@ export class SpotApi {
      * @param opts.currencyPair Currency pair
      * @param opts.timezone Timezone
      */
-    public async listTickers(opts: { currencyPair?: string, timezone?: 'utc0' | 'utc8' | 'all',  } ) : Promise<{ response: AxiosResponse; body: Array<Ticker>; }> {
+    public async listTickers(opts: {
+        currencyPair?: string;
+        timezone?: 'utc0' | 'utc8' | 'all';
+    }): Promise<{ response: AxiosResponse; body: Array<Ticker> }> {
         const localVarPath = this.client.basePath + '/spot/tickers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -200,13 +203,12 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.timezone !== undefined) {
             localVarQueryParameters['timezone'] = ObjectSerializer.serialize(opts.timezone, "'utc0' | 'utc8' | 'all'");
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -216,7 +218,7 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Ticker>>(config, "Array<Ticker>", authSettings);
+        return this.client.request<Array<Ticker>>(config, 'Array<Ticker>', authSettings);
     }
 
     /**
@@ -228,10 +230,13 @@ export class SpotApi {
      * @param opts.limit Maximum number of order depth data in asks or bids
      * @param opts.withId Return order book ID
      */
-    public async listOrderBook(currencyPair: string, opts: { interval?: string, limit?: number, withId?: boolean,  } ) : Promise<{ response: AxiosResponse; body: OrderBook; }> {
+    public async listOrderBook(
+        currencyPair: string,
+        opts: { interval?: string; limit?: number; withId?: boolean },
+    ): Promise<{ response: AxiosResponse; body: OrderBook }> {
         const localVarPath = this.client.basePath + '/spot/order_book';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -246,20 +251,19 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "string");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.withId !== undefined) {
-            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, "boolean");
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -269,7 +273,7 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<OrderBook>(config, "OrderBook", authSettings);
+        return this.client.request<OrderBook>(config, 'OrderBook', authSettings);
     }
 
     /**
@@ -284,10 +288,13 @@ export class SpotApi {
      * @param opts.to Time range ending, default to current time
      * @param opts.page Page number
      */
-    public async listTrades(currencyPair: string, opts: { limit?: number, lastId?: string, reverse?: boolean, from?: number, to?: number, page?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<Trade>; }> {
+    public async listTrades(
+        currencyPair: string,
+        opts: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/trades';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -302,32 +309,31 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.lastId !== undefined) {
-            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, "string");
+            localVarQueryParameters['last_id'] = ObjectSerializer.serialize(opts.lastId, 'string');
         }
 
         if (opts.reverse !== undefined) {
-            localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, "boolean");
+            localVarQueryParameters['reverse'] = ObjectSerializer.serialize(opts.reverse, 'boolean');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -337,7 +343,7 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Trade>>(config, "Array<Trade>", authSettings);
+        return this.client.request<Array<Trade>>(config, 'Array<Trade>', authSettings);
     }
 
     /**
@@ -350,10 +356,18 @@ export class SpotApi {
      * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param opts.interval Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days
      */
-    public async listCandlesticks(currencyPair: string, opts: { limit?: number, from?: number, to?: number, interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d',  } ) : Promise<{ response: AxiosResponse; body: Array<Array<string>>; }> {
+    public async listCandlesticks(
+        currencyPair: string,
+        opts: {
+            limit?: number;
+            from?: number;
+            to?: number;
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d';
+        },
+    ): Promise<{ response: AxiosResponse; body: Array<Array<string>> }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -368,24 +382,26 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -395,7 +411,7 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<Array<string>>>(config, "Array<Array<string>>", authSettings);
+        return this.client.request<Array<Array<string>>>(config, 'Array<Array<string>>', authSettings);
     }
 
     /**
@@ -404,10 +420,10 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
      */
-    public async getFee(opts: { currencyPair?: string,  } ) : Promise<{ response: AxiosResponse; body: SpotFee; }> {
+    public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
         const localVarPath = this.client.basePath + '/spot/fee';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -418,9 +434,8 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -430,18 +445,20 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SpotFee>(config, "SpotFee", authSettings);
+        return this.client.request<SpotFee>(config, 'SpotFee', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query a batch of user trading fee rates
      * @param currencyPairs A request can only query up to 50 currency pairs
      */
-    public async getBatchSpotFee(currencyPairs: string) : Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee; }; }> {
+    public async getBatchSpotFee(
+        currencyPairs: string,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee } }> {
         const localVarPath = this.client.basePath + '/spot/batch_fee';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -455,8 +472,7 @@ export class SpotApi {
             throw new Error('Required parameter currencyPairs was null or undefined when calling getBatchSpotFee.');
         }
 
-        localVarQueryParameters['currency_pairs'] = ObjectSerializer.serialize(currencyPairs, "string");
-
+        localVarQueryParameters['currency_pairs'] = ObjectSerializer.serialize(currencyPairs, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -466,19 +482,21 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<{ [key: string]: SpotFee; }>(config, "{ [key: string]: SpotFee; }", authSettings);
+        return this.client.request<{ [key: string]: SpotFee }>(config, '{ [key: string]: SpotFee; }', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List spot accounts
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
      */
-    public async listSpotAccounts(opts: { currency?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SpotAccount>; }> {
+    public async listSpotAccounts(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
         const localVarPath = this.client.basePath + '/spot/accounts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -489,9 +507,8 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -501,7 +518,7 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotAccount>>(config, "Array<SpotAccount>", authSettings);
+        return this.client.request<Array<SpotAccount>>(config, 'Array<SpotAccount>', authSettings);
     }
 
     /**
@@ -515,10 +532,17 @@ export class SpotApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
      */
-    public async listSpotAccountBook(opts: { currency?: string, from?: number, to?: number, page?: number, limit?: number, type?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SpotAccountBook>; }> {
+    public async listSpotAccountBook(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+        type?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SpotAccountBook> }> {
         const localVarPath = this.client.basePath + '/spot/account_book';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -529,29 +553,28 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -561,20 +584,23 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotAccountBook>>(config, "Array<SpotAccountBook>", authSettings);
+        return this.client.request<Array<SpotAccountBook>>(config, 'Array<SpotAccountBook>', authSettings);
     }
 
     /**
-     * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 10 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders 
+     * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 10 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders
      * @summary Create a batch of orders
-     * @param order 
+     * @param order
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async createBatchOrders(order: Array<Order>, opts: { xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<BatchOrder>; }> {
+    public async createBatchOrders(
+        order: Array<Order>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -590,7 +616,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -598,11 +624,11 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(order, "Array<Order>")
+            data: ObjectSerializer.serialize(order, 'Array<Order>'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BatchOrder>>(config, "Array<BatchOrder>", authSettings);
+        return this.client.request<Array<BatchOrder>>(config, 'Array<BatchOrder>', authSettings);
     }
 
     /**
@@ -613,10 +639,14 @@ export class SpotApi {
      * @param opts.limit Maximum number of records returned in one page in each currency pair
      * @param opts.account Specify query account.
      */
-    public async listAllOpenOrders(opts: { page?: number, limit?: number, account?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<OpenOrders>; }> {
+    public async listAllOpenOrders(opts: {
+        page?: number;
+        limit?: number;
+        account?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<OpenOrders> }> {
         const localVarPath = this.client.basePath + '/spot/open_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -627,17 +657,16 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -647,18 +676,20 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OpenOrders>>(config, "Array<OpenOrders>", authSettings);
+        return this.client.request<Array<OpenOrders>>(config, 'Array<OpenOrders>', authSettings);
     }
 
     /**
      * Currently, only cross-margin accounts are supported to close position when cross currencies are disabled.  Maximum buy quantity = (unpaid principal and interest - currency balance - the amount of the currency in the order book) / 0.998
      * @summary close position when cross-currency is disabled
-     * @param liquidateOrder 
+     * @param liquidateOrder
      */
-    public async createCrossLiquidateOrder(liquidateOrder: LiquidateOrder) : Promise<{ response: AxiosResponse; body: Order; }> {
+    public async createCrossLiquidateOrder(
+        liquidateOrder: LiquidateOrder,
+    ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/cross_liquidate_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -669,27 +700,28 @@ export class SpotApi {
 
         // verify required parameter 'liquidateOrder' is not null or undefined
         if (liquidateOrder === null || liquidateOrder === undefined) {
-            throw new Error('Required parameter liquidateOrder was null or undefined when calling createCrossLiquidateOrder.');
+            throw new Error(
+                'Required parameter liquidateOrder was null or undefined when calling createCrossLiquidateOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(liquidateOrder, "LiquidateOrder")
+            data: ObjectSerializer.serialize(liquidateOrder, 'LiquidateOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order>(config, "Order", authSettings);
+        return this.client.request<Order>(config, 'Order', authSettings);
     }
 
     /**
      * Note that the query results are spot order lists for spot, unified account and warehouse-by-site leverage accounts by default.  `status` is set to `open`, that is, when querying the pending order list, only pagination control of `page` and `limit` is supported. `limit` Maximum setting is only allowed to 100 . The `side` and `from`, `to` parameters for time range query are not supported.  `status` is set to `finished`, that is, when querying historical delegations, in addition to pagination queries, `from` and `to` are also supported by time range queries. In addition, it supports setting the `side` parameter to filter one-side history.  The parameters of the time range filtering are processed according to the order end time.
      * @summary List orders
      * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
-     * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled 
+     * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
@@ -698,10 +730,14 @@ export class SpotApi {
      * @param opts.to Time range ending, default to current time
      * @param opts.side All bids or asks. Both included if not specified
      */
-    public async listOrders(currencyPair: string, status: string, opts: { page?: number, limit?: number, account?: string, from?: number, to?: number, side?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<Order>; }> {
+    public async listOrders(
+        currencyPair: string,
+        status: string,
+        opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
+    ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -721,34 +757,33 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
-        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "string");
+        localVarQueryParameters['status'] = ObjectSerializer.serialize(status, 'string');
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "string");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -758,20 +793,23 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Order>>(config, "Array<Order>", authSettings);
+        return this.client.request<Array<Order>>(config, 'Array<Order>', authSettings);
     }
 
     /**
      * Support spot, margin, leverage, and full-position leverage orders. Use different accounts through the `account` field, default is `spot`, that is, use the spot account to place an order if the user is `unified` account, default is to place an order with a unified account  When using leveraged account trading, that is, when `account` is set to `margin`, you can set `auto_borrow` to `true`, In the case of insufficient account balance, the system will automatically execute the `POST /margin/uni/loans` to borrow the insufficient part. Whether the assets obtained after the leveraged order is automatically used to return the borrowing orders of the leveraged account in a position-by-store leverage account depends on the automatic repayment settings of the user\'s position-by-store leverage account**, The account automatic repayment settings can be queried and set through `/margin/auto_repay`.  Use unified account transactions, that is, when `account` is set to `unified`, `auto_borrow` \" can also be enableTo realize the insufficient part of automatic borrowing, but unlike the leverage account, whether the entrustment of a unified account is automatically repayable depends on the   when placing an order`auto_repay` setting, this setting is only effective for the current entrustment, that is, only the assets obtained after the entrustment transaction will be used to repay the borrowing orders of the full-position leverage account. Unified account ordering currently supports `auto_borrow` and `auto_repay` at the same time.  Auto repayment will be triggered at the end of the order, i.e. `status` is `cancelled` or `closed` .  **Delegation Status**  The entrustment status in the pending order is `open`, which remains at `open` until all the quantity is traded. If it is eaten, the order ends and the status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of whether there are partial transactions, the status will become `cancelled`  **Iceberg Entrustment**  `iceberg` is used to set the number of iceberg delegations displayed, and does not support complete hiding. Note that when hidden part of the transaction is charged according to the taker\'s handling rate.  **Restrict user transactions**  Set `stp_act` to decide to use strategies that limit user transactions
      * @summary Create an order
-     * @param order 
+     * @param order
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async createOrder(order: Order, opts: { xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Order; }> {
+    public async createOrder(
+        order: Order,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -787,7 +825,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -795,11 +833,11 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(order, "Order")
+            data: ObjectSerializer.serialize(order, 'Order'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order>(config, "Order", authSettings);
+        return this.client.request<Order>(config, 'Order', authSettings);
     }
 
     /**
@@ -812,10 +850,16 @@ export class SpotApi {
      * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async cancelOrders(opts: { currencyPair?: string, side?: string, account?: string, actionMode?: string, xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OrderCancel>; }> {
+    public async cancelOrders(opts: {
+        currencyPair?: string;
+        side?: string;
+        account?: string;
+        actionMode?: string;
+        xGateExptime?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -826,23 +870,23 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.side !== undefined) {
-            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "string");
+            localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         if (opts.actionMode !== undefined) {
-            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, "string");
+            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, 'string');
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -853,20 +897,23 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OrderCancel>>(config, "Array<OrderCancel>", authSettings);
+        return this.client.request<Array<OrderCancel>>(config, 'Array<OrderCancel>', authSettings);
     }
 
     /**
      * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
      * @summary Cancel a batch of orders with an ID list
-     * @param cancelBatchOrder 
+     * @param cancelBatchOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async cancelBatchOrders(cancelBatchOrder: Array<CancelBatchOrder>, opts: { xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<CancelOrderResult>; }> {
+    public async cancelBatchOrders(
+        cancelBatchOrder: Array<CancelBatchOrder>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -877,12 +924,14 @@ export class SpotApi {
 
         // verify required parameter 'cancelBatchOrder' is not null or undefined
         if (cancelBatchOrder === null || cancelBatchOrder === undefined) {
-            throw new Error('Required parameter cancelBatchOrder was null or undefined when calling cancelBatchOrders.');
+            throw new Error(
+                'Required parameter cancelBatchOrder was null or undefined when calling cancelBatchOrders.',
+            );
         }
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -890,11 +939,11 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(cancelBatchOrder, "Array<CancelBatchOrder>")
+            data: ObjectSerializer.serialize(cancelBatchOrder, 'Array<CancelBatchOrder>'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<CancelOrderResult>>(config, "Array<CancelOrderResult>", authSettings);
+        return this.client.request<Array<CancelOrderResult>>(config, 'Array<CancelOrderResult>', authSettings);
     }
 
     /**
@@ -905,11 +954,16 @@ export class SpotApi {
      * @param opts Optional parameters
      * @param opts.account Specify query account.
      */
-    public async getOrder(orderId: string, currencyPair: string, opts: { account?: string,  } ) : Promise<{ response: AxiosResponse; body: Order; }> {
-        const localVarPath = this.client.basePath + '/spot/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getOrder(
+        orderId: string,
+        currencyPair: string,
+        opts: { account?: string },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -929,12 +983,11 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -944,7 +997,7 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order>(config, "Order", authSettings);
+        return this.client.request<Order>(config, 'Order', authSettings);
     }
 
     /**
@@ -957,11 +1010,16 @@ export class SpotApi {
      * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async cancelOrder(orderId: string, currencyPair: string, opts: { account?: string, actionMode?: string, xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Order; }> {
-        const localVarPath = this.client.basePath + '/spot/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelOrder(
+        orderId: string,
+        currencyPair: string,
+        opts: { account?: string; actionMode?: string; xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -981,18 +1039,18 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, "string");
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         if (opts.actionMode !== undefined) {
-            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, "string");
+            localVarQueryParameters['action_mode'] = ObjectSerializer.serialize(opts.actionMode, 'string');
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1003,24 +1061,29 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order>(config, "Order", authSettings);
+        return this.client.request<Order>(config, 'Order', authSettings);
     }
 
     /**
      * By default modify orders for spot, unified account and leverage account.  At present, both the request body and query support currency_pair and account parameters, but the request body has higher priority  currency_pair must be filled in the request body or query   Currently, only the price or quantity modification (choose one of two)  About speed limit: Modify orders and create orders to share speed limit rules  About matching priority: Only modifying the quantity will become smaller and will not affect the priority of matching. If the price is modified or the quantity is modified, the priority will be adjusted to the end of the new price   Precautions: Modification quantity is less than the transaction quantity will trigger the order cancellation operation
      * @summary Amend an order
      * @param orderId The order ID returned when the order was successfully created or the custom ID specified by the user\&#39;s creation (i.e. the &#x60;text&#x60; field). Operations based on custom IDs can only be checked in pending orders. Only order ID can be used after the order is finished (transaction/cancel)
-     * @param orderPatch 
+     * @param orderPatch
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
      * @param opts.account Specify query account.
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async amendOrder(orderId: string, orderPatch: OrderPatch, opts: { currencyPair?: string, account?: string, xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Order; }> {
-        const localVarPath = this.client.basePath + '/spot/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async amendOrder(
+        orderId: string,
+        orderPatch: OrderPatch,
+        opts: { currencyPair?: string; account?: string; xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Order }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1041,15 +1104,15 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1057,11 +1120,11 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(orderPatch, "OrderPatch")
+            data: ObjectSerializer.serialize(orderPatch, 'OrderPatch'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Order>(config, "Order", authSettings);
+        return this.client.request<Order>(config, 'Order', authSettings);
     }
 
     /**
@@ -1076,10 +1139,18 @@ export class SpotApi {
      * @param opts.from Start timestamp of the query
      * @param opts.to Time range ending, default to current time
      */
-    public async listMyTrades(opts: { currencyPair?: string, limit?: number, page?: number, orderId?: string, account?: string, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<Trade>; }> {
+    public async listMyTrades(opts: {
+        currencyPair?: string;
+        limit?: number;
+        page?: number;
+        orderId?: string;
+        account?: string;
+        from?: number;
+        to?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1090,33 +1161,32 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.orderId !== undefined) {
-            localVarQueryParameters['order_id'] = ObjectSerializer.serialize(opts.orderId, "string");
+            localVarQueryParameters['order_id'] = ObjectSerializer.serialize(opts.orderId, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "string");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1126,17 +1196,17 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<Trade>>(config, "Array<Trade>", authSettings);
+        return this.client.request<Array<Trade>>(config, 'Array<Trade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get server current time
      */
-    public async getSystemTime() : Promise<{ response: AxiosResponse; body: SystemTime; }> {
+    public async getSystemTime(): Promise<{ response: AxiosResponse; body: SystemTime }> {
         const localVarPath = this.client.basePath + '/spot/time';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1144,7 +1214,6 @@ export class SpotApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1154,18 +1223,20 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<SystemTime>(config, "SystemTime", authSettings);
+        return this.client.request<SystemTime>(config, 'SystemTime', authSettings);
     }
 
     /**
      * When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown`timeout` is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified `market` will be automatically cancelled, if no `market` is specified, all market pending orders will be cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
      * @summary Countdown cancel orders
-     * @param countdownCancelAllSpotTask 
+     * @param countdownCancelAllSpotTask
      */
-    public async countdownCancelAllSpot(countdownCancelAllSpotTask: CountdownCancelAllSpotTask) : Promise<{ response: AxiosResponse; body: TriggerTime; }> {
+    public async countdownCancelAllSpot(
+        countdownCancelAllSpotTask: CountdownCancelAllSpotTask,
+    ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath = this.client.basePath + '/spot/countdown_cancel_all';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1176,33 +1247,37 @@ export class SpotApi {
 
         // verify required parameter 'countdownCancelAllSpotTask' is not null or undefined
         if (countdownCancelAllSpotTask === null || countdownCancelAllSpotTask === undefined) {
-            throw new Error('Required parameter countdownCancelAllSpotTask was null or undefined when calling countdownCancelAllSpot.');
+            throw new Error(
+                'Required parameter countdownCancelAllSpotTask was null or undefined when calling countdownCancelAllSpot.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(countdownCancelAllSpotTask, "CountdownCancelAllSpotTask")
+            data: ObjectSerializer.serialize(countdownCancelAllSpotTask, 'CountdownCancelAllSpotTask'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerTime>(config, "TriggerTime", authSettings);
+        return this.client.request<TriggerTime>(config, 'TriggerTime', authSettings);
     }
 
     /**
      * By default modify orders for spot, unified account and leverage account. Currently, only the price or quantity modification (choose one of two) Modify unfinished orders, up to 5 orders can be modified in batches at a time. The request parameters should be passed in array format. When the order modification fails during batch modification, the modification of the order will continue to be executed. After execution, the failure information of the corresponding order will be carried The order of calling the batch modification order is consistent with the order list The order of return content of batch modification orders is consistent with the order list
      * @summary Batch modification of orders
-     * @param batchAmendItem 
+     * @param batchAmendItem
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
-    public async amendBatchOrders(batchAmendItem: Array<BatchAmendItem>, opts: { xGateExptime?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<BatchOrder>; }> {
+    public async amendBatchOrders(
+        batchAmendItem: Array<BatchAmendItem>,
+        opts: { xGateExptime?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1218,7 +1293,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, "number");
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
         }
 
         const config: AxiosRequestConfig = {
@@ -1226,15 +1301,15 @@ export class SpotApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(batchAmendItem, "Array<BatchAmendItem>")
+            data: ObjectSerializer.serialize(batchAmendItem, 'Array<BatchAmendItem>'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<BatchOrder>>(config, "Array<BatchOrder>", authSettings);
+        return this.client.request<Array<BatchOrder>>(config, 'Array<BatchOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query spot insurance fund historical data
      * @param business Leverage business, margin - position by position; unified - unified account
      * @param currency Currency
@@ -1244,10 +1319,16 @@ export class SpotApi {
      * @param opts.page Page number
      * @param opts.limit The maximum number of items returned in the list, the default value is 30
      */
-    public async getSpotInsuranceHistory(business: string, currency: string, from: number, to: number, opts: { page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory>; }> {
+    public async getSpotInsuranceHistory(
+        business: string,
+        currency: string,
+        from: number,
+        to: number,
+        opts: { page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory> }> {
         const localVarPath = this.client.basePath + '/spot/insurance_history';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1277,22 +1358,21 @@ export class SpotApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['business'] = ObjectSerializer.serialize(business, "string");
+        localVarQueryParameters['business'] = ObjectSerializer.serialize(business, 'string');
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
-        localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "number");
+        localVarQueryParameters['from'] = ObjectSerializer.serialize(from, 'number');
 
-        localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "number");
-
+        localVarQueryParameters['to'] = ObjectSerializer.serialize(to, 'number');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1302,11 +1382,11 @@ export class SpotApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<SpotInsuranceHistory>>(config, "Array<SpotInsuranceHistory>", authSettings);
+        return this.client.request<Array<SpotInsuranceHistory>>(config, 'Array<SpotInsuranceHistory>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Retrieve running auto order list
      * @param status Only list the orders with this status
      * @param opts Optional parameters
@@ -1315,10 +1395,13 @@ export class SpotApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listSpotPriceTriggeredOrders(status: 'open' | 'finished', opts: { market?: string, account?: 'normal' | 'margin' | 'unified', limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder>; }> {
+    public async listSpotPriceTriggeredOrders(
+        status: 'open' | 'finished',
+        opts: { market?: string; account?: 'normal' | 'margin' | 'unified'; limit?: number; offset?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1329,28 +1412,32 @@ export class SpotApi {
 
         // verify required parameter 'status' is not null or undefined
         if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling listSpotPriceTriggeredOrders.');
+            throw new Error(
+                'Required parameter status was null or undefined when calling listSpotPriceTriggeredOrders.',
+            );
         }
 
         opts = opts || {};
         localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.market !== undefined) {
-            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, "string");
+            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin' | 'unified'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(
+                opts.account,
+                "'normal' | 'margin' | 'unified'",
+            );
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1360,18 +1447,24 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotPriceTriggeredOrder>>(config, "Array<SpotPriceTriggeredOrder>", authSettings);
+        return this.client.request<Array<SpotPriceTriggeredOrder>>(
+            config,
+            'Array<SpotPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Create a price-triggered order
-     * @param spotPriceTriggeredOrder 
+     * @param spotPriceTriggeredOrder
      */
-    public async createSpotPriceTriggeredOrder(spotPriceTriggeredOrder: SpotPriceTriggeredOrder) : Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> {
+    public async createSpotPriceTriggeredOrder(
+        spotPriceTriggeredOrder: SpotPriceTriggeredOrder,
+    ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1382,33 +1475,37 @@ export class SpotApi {
 
         // verify required parameter 'spotPriceTriggeredOrder' is not null or undefined
         if (spotPriceTriggeredOrder === null || spotPriceTriggeredOrder === undefined) {
-            throw new Error('Required parameter spotPriceTriggeredOrder was null or undefined when calling createSpotPriceTriggeredOrder.');
+            throw new Error(
+                'Required parameter spotPriceTriggeredOrder was null or undefined when calling createSpotPriceTriggeredOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(spotPriceTriggeredOrder, "SpotPriceTriggeredOrder")
+            data: ObjectSerializer.serialize(spotPriceTriggeredOrder, 'SpotPriceTriggeredOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerOrderResponse>(config, "TriggerOrderResponse", authSettings);
+        return this.client.request<TriggerOrderResponse>(config, 'TriggerOrderResponse', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel all open orders
      * @param opts Optional parameters
      * @param opts.market Currency pair
      * @param opts.account Trading account type.  Portfolio margin account must set to &#x60;unified&#x60;
      */
-    public async cancelSpotPriceTriggeredOrderList(opts: { market?: string, account?: 'normal' | 'margin' | 'unified',  } ) : Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder>; }> {
+    public async cancelSpotPriceTriggeredOrderList(opts: {
+        market?: string;
+        account?: 'normal' | 'margin' | 'unified';
+    }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1419,13 +1516,15 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.market !== undefined) {
-            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, "string");
+            localVarQueryParameters['market'] = ObjectSerializer.serialize(opts.market, 'string');
         }
 
         if (opts.account !== undefined) {
-            localVarQueryParameters['account'] = ObjectSerializer.serialize(opts.account, "'normal' | 'margin' | 'unified'");
+            localVarQueryParameters['account'] = ObjectSerializer.serialize(
+                opts.account,
+                "'normal' | 'margin' | 'unified'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -1435,19 +1534,26 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SpotPriceTriggeredOrder>>(config, "Array<SpotPriceTriggeredOrder>", authSettings);
+        return this.client.request<Array<SpotPriceTriggeredOrder>>(
+            config,
+            'Array<SpotPriceTriggeredOrder>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Get a price-triggered order
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async getSpotPriceTriggeredOrder(orderId: string) : Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/spot/price_orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getSpotPriceTriggeredOrder(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1458,9 +1564,10 @@ export class SpotApi {
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling getSpotPriceTriggeredOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling getSpotPriceTriggeredOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1470,19 +1577,22 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SpotPriceTriggeredOrder>(config, "SpotPriceTriggeredOrder", authSettings);
+        return this.client.request<SpotPriceTriggeredOrder>(config, 'SpotPriceTriggeredOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary cancel a price-triggered order
      * @param orderId Retrieve the data of the order with the specified ID
      */
-    public async cancelSpotPriceTriggeredOrder(orderId: string) : Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder; }> {
-        const localVarPath = this.client.basePath + '/spot/price_orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelSpotPriceTriggeredOrder(
+        orderId: string,
+    ): Promise<{ response: AxiosResponse; body: SpotPriceTriggeredOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1493,9 +1603,10 @@ export class SpotApi {
 
         // verify required parameter 'orderId' is not null or undefined
         if (orderId === null || orderId === undefined) {
-            throw new Error('Required parameter orderId was null or undefined when calling cancelSpotPriceTriggeredOrder.');
+            throw new Error(
+                'Required parameter orderId was null or undefined when calling cancelSpotPriceTriggeredOrder.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -1505,6 +1616,6 @@ export class SpotApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<SpotPriceTriggeredOrder>(config, "SpotPriceTriggeredOrder", authSettings);
+        return this.client.request<SpotPriceTriggeredOrder>(config, 'SpotPriceTriggeredOrder', authSettings);
     }
 }

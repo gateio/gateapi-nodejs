@@ -9,72 +9,71 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Loan
-*/
+ * Loan
+ */
 export class UniLoan {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'currencyPair'?: string;
     /**
-    * amount
-    */
+     * amount
+     */
     'amount'?: string;
     /**
-    * Loan type, platform - platform, margin - margin
-    */
+     * Loan type, platform - platform, margin - margin
+     */
     'type'?: string;
     /**
-    * Created time
-    */
+     * Created time
+     */
     'createTime'?: number;
     /**
-    * Updated time
-    */
+     * Updated time
+     */
     'updateTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "currencyPair",
-            "baseName": "currency_pair",
-            "type": "string"
+            name: 'currencyPair',
+            baseName: 'currency_pair',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "createTime",
-            "baseName": "create_time",
-            "type": "number"
+            name: 'createTime',
+            baseName: 'create_time',
+            type: 'number',
         },
         {
-            "name": "updateTime",
-            "baseName": "update_time",
-            "type": "number"
-        }    ];
+            name: 'updateTime',
+            baseName: 'update_time',
+            type: 'number',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UniLoan.attributeTypeMap;
     }
 }
-

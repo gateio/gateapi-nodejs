@@ -9,42 +9,41 @@
  * Do not edit the class manually.
  */
 
-
 export class SubUserMode {
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * Is it a unified account?
-    */
+     * Is it a unified account?
+     */
     'isUnified'?: boolean;
     /**
-    * Unified account mode： - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
-    */
+     * Unified account mode： - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
+     */
     'mode'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "isUnified",
-            "baseName": "is_unified",
-            "type": "boolean"
+            name: 'isUnified',
+            baseName: 'is_unified',
+            type: 'boolean',
         },
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "string"
-        }    ];
+            name: 'mode',
+            baseName: 'mode',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubUserMode.attributeTypeMap;
     }
 }
-

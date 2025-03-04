@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class OptionsAccountBook {
     /**
-    * Change time
-    */
+     * Change time
+     */
     'time'?: number;
     /**
-    * Amount changed (USDT)
-    */
+     * Amount changed (USDT)
+     */
     'change'?: string;
     /**
-    * Account total balance after change (USDT)
-    */
+     * Account total balance after change (USDT)
+     */
     'balance'?: string;
     /**
-    * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
-    */
+     * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     */
     'type'?: string;
     /**
-    * custom text
-    */
+     * custom text
+     */
     'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "change",
-            "baseName": "change",
-            "type": "string"
+            name: 'change',
+            baseName: 'change',
+            type: 'string',
         },
         {
-            "name": "balance",
-            "baseName": "balance",
-            "type": "string"
+            name: 'balance',
+            baseName: 'balance',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
         },
         {
-            "name": "text",
-            "baseName": "text",
-            "type": "string"
-        }    ];
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsAccountBook.attributeTypeMap;
     }
 }
-

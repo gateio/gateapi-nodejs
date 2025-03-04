@@ -13,21 +13,21 @@ import { UserSub } from './userSub';
 
 export class UserSubRelation {
     /**
-    * Subordinate relationship list
-    */
+     * Subordinate relationship list
+     */
     'list'?: Array<UserSub>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "list",
-            "baseName": "list",
-            "type": "Array<UserSub>"
-        }    ];
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<UserSub>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UserSubRelation.attributeTypeMap;
     }
 }
-

@@ -9,87 +9,86 @@
  * Do not edit the class manually.
  */
 
-
 export class RiskUnits {
     /**
-    * Risk unit flag
-    */
+     * Risk unit flag
+     */
     'symbol'?: string;
     /**
-    * Spot hedging utilization
-    */
+     * Spot hedging utilization
+     */
     'spotInUse'?: string;
     /**
-    * Maintenance margin for risk unit
-    */
+     * Maintenance margin for risk unit
+     */
     'maintainMargin'?: string;
     /**
-    * Initial margin for risk unit
-    */
+     * Initial margin for risk unit
+     */
     'initialMargin'?: string;
     /**
-    * Total Delta of risk unit
-    */
+     * Total Delta of risk unit
+     */
     'delta'?: string;
     /**
-    * Total Gamma of risk unit
-    */
+     * Total Gamma of risk unit
+     */
     'gamma'?: string;
     /**
-    * Total Theta of risk unit
-    */
+     * Total Theta of risk unit
+     */
     'theta'?: string;
     /**
-    * Total Vega of risk unit
-    */
+     * Total Vega of risk unit
+     */
     'vega'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "symbol",
-            "baseName": "symbol",
-            "type": "string"
+            name: 'symbol',
+            baseName: 'symbol',
+            type: 'string',
         },
         {
-            "name": "spotInUse",
-            "baseName": "spot_in_use",
-            "type": "string"
+            name: 'spotInUse',
+            baseName: 'spot_in_use',
+            type: 'string',
         },
         {
-            "name": "maintainMargin",
-            "baseName": "maintain_margin",
-            "type": "string"
+            name: 'maintainMargin',
+            baseName: 'maintain_margin',
+            type: 'string',
         },
         {
-            "name": "initialMargin",
-            "baseName": "initial_margin",
-            "type": "string"
+            name: 'initialMargin',
+            baseName: 'initial_margin',
+            type: 'string',
         },
         {
-            "name": "delta",
-            "baseName": "delta",
-            "type": "string"
+            name: 'delta',
+            baseName: 'delta',
+            type: 'string',
         },
         {
-            "name": "gamma",
-            "baseName": "gamma",
-            "type": "string"
+            name: 'gamma',
+            baseName: 'gamma',
+            type: 'string',
         },
         {
-            "name": "theta",
-            "baseName": "theta",
-            "type": "string"
+            name: 'theta',
+            baseName: 'theta',
+            type: 'string',
         },
         {
-            "name": "vega",
-            "baseName": "vega",
-            "type": "string"
-        }    ];
+            name: 'vega',
+            baseName: 'vega',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return RiskUnits.attributeTypeMap;
     }
 }
-

@@ -13,48 +13,48 @@ import { UnifiedHistoryLoanRateRates } from './unifiedHistoryLoanRateRates';
 
 export class UnifiedHistoryLoanRate {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency'?: string;
     /**
-    * The VIP level of the floating rate required
-    */
+     * The VIP level of the floating rate required
+     */
     'tier'?: string;
     /**
-    * VIP level corresponding floating rate
-    */
+     * VIP level corresponding floating rate
+     */
     'tierUpRate'?: string;
     /**
-    * Historical interest rate information, one data per hour, the array size is determined by the page and limit parameters provided by the interface request parameters, sorted from recent to far in time
-    */
+     * Historical interest rate information, one data per hour, the array size is determined by the page and limit parameters provided by the interface request parameters, sorted from recent to far in time
+     */
     'rates'?: Array<UnifiedHistoryLoanRateRates>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "tier",
-            "baseName": "tier",
-            "type": "string"
+            name: 'tier',
+            baseName: 'tier',
+            type: 'string',
         },
         {
-            "name": "tierUpRate",
-            "baseName": "tier_up_rate",
-            "type": "string"
+            name: 'tierUpRate',
+            baseName: 'tier_up_rate',
+            type: 'string',
         },
         {
-            "name": "rates",
-            "baseName": "rates",
-            "type": "Array<UnifiedHistoryLoanRateRates>"
-        }    ];
+            name: 'rates',
+            baseName: 'rates',
+            type: 'Array<UnifiedHistoryLoanRateRates>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UnifiedHistoryLoanRate.attributeTypeMap;
     }
 }
-

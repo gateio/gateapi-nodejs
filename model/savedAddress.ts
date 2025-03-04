@@ -9,69 +9,68 @@
  * Do not edit the class manually.
  */
 
-
 export class SavedAddress {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Chain name
-    */
+     * Chain name
+     */
     'chain'?: string;
     /**
-    * Address
-    */
+     * Address
+     */
     'address'?: string;
     /**
-    * Name
-    */
+     * Name
+     */
     'name'?: string;
     /**
-    * Tag
-    */
+     * Tag
+     */
     'tag'?: string;
     /**
-    * Whether to pass the verification 0-unverified, 1-verified
-    */
+     * Whether to pass the verification 0-unverified, 1-verified
+     */
     'verified'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "chain",
-            "baseName": "chain",
-            "type": "string"
+            name: 'chain',
+            baseName: 'chain',
+            type: 'string',
         },
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "string"
+            name: 'address',
+            baseName: 'address',
+            type: 'string',
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "tag",
-            "baseName": "tag",
-            "type": "string"
+            name: 'tag',
+            baseName: 'tag',
+            type: 'string',
         },
         {
-            "name": "verified",
-            "baseName": "verified",
-            "type": "string"
-        }    ];
+            name: 'verified',
+            baseName: 'verified',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SavedAddress.attributeTypeMap;
     }
 }
-

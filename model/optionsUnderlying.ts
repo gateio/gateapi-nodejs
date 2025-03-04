@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class OptionsUnderlying {
     /**
-    * Underlying name
-    */
+     * Underlying name
+     */
     'name'?: string;
     /**
-    * Spot index price (quote currency)
-    */
+     * Spot index price (quote currency)
+     */
     'indexPrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string"
+            name: 'name',
+            baseName: 'name',
+            type: 'string',
         },
         {
-            "name": "indexPrice",
-            "baseName": "index_price",
-            "type": "string"
-        }    ];
+            name: 'indexPrice',
+            baseName: 'index_price',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsUnderlying.attributeTypeMap;
     }
 }
-

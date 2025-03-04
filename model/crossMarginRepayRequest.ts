@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class CrossMarginRepayRequest {
     /**
-    * Repayment currency
-    */
+     * Repayment currency
+     */
     'currency': string;
     /**
-    * Repayment amount
-    */
+     * Repayment amount
+     */
     'amount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
-        }    ];
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CrossMarginRepayRequest.attributeTypeMap;
     }
 }
-

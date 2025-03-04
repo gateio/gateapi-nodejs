@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { CountdownCancelAllOptionsTask } from '../model/countdownCancelAllOptionsTask';
 import { FuturesCandlestick } from '../model/futuresCandlestick';
@@ -51,13 +50,13 @@ export class OptionsApi {
     }
 
     /**
-     * 
+     *
      * @summary List all underlyings
      */
-    public async listOptionsUnderlyings() : Promise<{ response: AxiosResponse; body: Array<OptionsUnderlying>; }> {
+    public async listOptionsUnderlyings(): Promise<{ response: AxiosResponse; body: Array<OptionsUnderlying> }> {
         const localVarPath = this.client.basePath + '/options/underlyings';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -65,7 +64,6 @@ export class OptionsApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -75,18 +73,18 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<OptionsUnderlying>>(config, "Array<OptionsUnderlying>", authSettings);
+        return this.client.request<Array<OptionsUnderlying>>(config, 'Array<OptionsUnderlying>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all expiration times
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      */
-    public async listOptionsExpirations(underlying: string) : Promise<{ response: AxiosResponse; body: Array<number>; }> {
+    public async listOptionsExpirations(underlying: string): Promise<{ response: AxiosResponse; body: Array<number> }> {
         const localVarPath = this.client.basePath + '/options/expirations';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -100,8 +98,7 @@ export class OptionsApi {
             throw new Error('Required parameter underlying was null or undefined when calling listOptionsExpirations.');
         }
 
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
-
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -111,20 +108,23 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<number>>(config, "Array<number>", authSettings);
+        return this.client.request<Array<number>>(config, 'Array<number>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List all the contracts with specified underlying and expiration time
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.expiration Unix timestamp of the expiration time
      */
-    public async listOptionsContracts(underlying: string, opts: { expiration?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsContract>; }> {
+    public async listOptionsContracts(
+        underlying: string,
+        opts: { expiration?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsContract> }> {
         const localVarPath = this.client.basePath + '/options/contracts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -139,12 +139,11 @@ export class OptionsApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.expiration !== undefined) {
-            localVarQueryParameters['expiration'] = ObjectSerializer.serialize(opts.expiration, "number");
+            localVarQueryParameters['expiration'] = ObjectSerializer.serialize(opts.expiration, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -154,19 +153,20 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<OptionsContract>>(config, "Array<OptionsContract>", authSettings);
+        return this.client.request<Array<OptionsContract>>(config, 'Array<OptionsContract>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query specified contract detail
-     * @param contract 
+     * @param contract
      */
-    public async getOptionsContract(contract: string) : Promise<{ response: AxiosResponse; body: OptionsContract; }> {
-        const localVarPath = this.client.basePath + '/options/contracts/{contract}'
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getOptionsContract(contract: string): Promise<{ response: AxiosResponse; body: OptionsContract }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/contracts/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -180,7 +180,6 @@ export class OptionsApi {
             throw new Error('Required parameter contract was null or undefined when calling getOptionsContract.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -189,11 +188,11 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<OptionsContract>(config, "OptionsContract", authSettings);
+        return this.client.request<OptionsContract>(config, 'OptionsContract', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List settlement history
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
@@ -202,10 +201,13 @@ export class OptionsApi {
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      */
-    public async listOptionsSettlements(underlying: string, opts: { limit?: number, offset?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsSettlement>; }> {
+    public async listOptionsSettlements(
+        underlying: string,
+        opts: { limit?: number; offset?: number; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsSettlement> }> {
         const localVarPath = this.client.basePath + '/options/settlements';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -220,24 +222,23 @@ export class OptionsApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -247,21 +248,26 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<OptionsSettlement>>(config, "Array<OptionsSettlement>", authSettings);
+        return this.client.request<Array<OptionsSettlement>>(config, 'Array<OptionsSettlement>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get specified contract\'s settlement
-     * @param contract 
+     * @param contract
      * @param underlying Underlying (Obtained by listing underlying endpoint)
-     * @param at 
+     * @param at
      */
-    public async getOptionsSettlement(contract: string, underlying: string, at: number) : Promise<{ response: AxiosResponse; body: OptionsSettlement; }> {
-        const localVarPath = this.client.basePath + '/options/settlements/{contract}'
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getOptionsSettlement(
+        contract: string,
+        underlying: string,
+        at: number,
+    ): Promise<{ response: AxiosResponse; body: OptionsSettlement }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/settlements/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -285,10 +291,9 @@ export class OptionsApi {
             throw new Error('Required parameter at was null or undefined when calling getOptionsSettlement.');
         }
 
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
-        localVarQueryParameters['at'] = ObjectSerializer.serialize(at, "number");
-
+        localVarQueryParameters['at'] = ObjectSerializer.serialize(at, 'number');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -298,11 +303,11 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<OptionsSettlement>(config, "OptionsSettlement", authSettings);
+        return this.client.request<OptionsSettlement>(config, 'OptionsSettlement', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List my options settlements
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
@@ -312,10 +317,13 @@ export class OptionsApi {
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      */
-    public async listMyOptionsSettlements(underlying: string, opts: { contract?: string, limit?: number, offset?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements>; }> {
+    public async listMyOptionsSettlements(
+        underlying: string,
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements> }> {
         const localVarPath = this.client.basePath + '/options/my_settlements';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -326,32 +334,33 @@ export class OptionsApi {
 
         // verify required parameter 'underlying' is not null or undefined
         if (underlying === null || underlying === undefined) {
-            throw new Error('Required parameter underlying was null or undefined when calling listMyOptionsSettlements.');
+            throw new Error(
+                'Required parameter underlying was null or undefined when calling listMyOptionsSettlements.',
+            );
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -361,7 +370,7 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsMySettlements>>(config, "Array<OptionsMySettlements>", authSettings);
+        return this.client.request<Array<OptionsMySettlements>>(config, 'Array<OptionsMySettlements>', authSettings);
     }
 
     /**
@@ -373,10 +382,13 @@ export class OptionsApi {
      * @param opts.limit Maximum number of order depth data in asks or bids
      * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
      */
-    public async listOptionsOrderBook(contract: string, opts: { interval?: '0' | '0.1' | '0.01', limit?: number, withId?: boolean,  } ) : Promise<{ response: AxiosResponse; body: FuturesOrderBook; }> {
+    public async listOptionsOrderBook(
+        contract: string,
+        opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
+    ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath = this.client.basePath + '/options/order_book';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -391,20 +403,19 @@ export class OptionsApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'0' | '0.1' | '0.01'");
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.withId !== undefined) {
-            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, "boolean");
+            localVarQueryParameters['with_id'] = ObjectSerializer.serialize(opts.withId, 'boolean');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -414,18 +425,20 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<FuturesOrderBook>(config, "FuturesOrderBook", authSettings);
+        return this.client.request<FuturesOrderBook>(config, 'FuturesOrderBook', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List tickers of options contracts
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      */
-    public async listOptionsTickers(underlying: string) : Promise<{ response: AxiosResponse; body: Array<OptionsTicker>; }> {
+    public async listOptionsTickers(
+        underlying: string,
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsTicker> }> {
         const localVarPath = this.client.basePath + '/options/tickers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -439,8 +452,7 @@ export class OptionsApi {
             throw new Error('Required parameter underlying was null or undefined when calling listOptionsTickers.');
         }
 
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
-
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -450,19 +462,25 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<OptionsTicker>>(config, "Array<OptionsTicker>", authSettings);
+        return this.client.request<Array<OptionsTicker>>(config, 'Array<OptionsTicker>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get underlying ticker
      * @param underlying Underlying
      */
-    public async listOptionsUnderlyingTickers(underlying: string) : Promise<{ response: AxiosResponse; body: OptionsUnderlyingTicker; }> {
-        const localVarPath = this.client.basePath + '/options/underlying/tickers/{underlying}'
-            .replace('{' + 'underlying' + '}', encodeURIComponent(String(underlying)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async listOptionsUnderlyingTickers(
+        underlying: string,
+    ): Promise<{ response: AxiosResponse; body: OptionsUnderlyingTicker }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/underlying/tickers/{underlying}'.replace(
+                '{' + 'underlying' + '}',
+                encodeURIComponent(String(underlying)),
+            );
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -473,9 +491,10 @@ export class OptionsApi {
 
         // verify required parameter 'underlying' is not null or undefined
         if (underlying === null || underlying === undefined) {
-            throw new Error('Required parameter underlying was null or undefined when calling listOptionsUnderlyingTickers.');
+            throw new Error(
+                'Required parameter underlying was null or undefined when calling listOptionsUnderlyingTickers.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -485,11 +504,11 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<OptionsUnderlyingTicker>(config, "OptionsUnderlyingTicker", authSettings);
+        return this.client.request<OptionsUnderlyingTicker>(config, 'OptionsUnderlyingTicker', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get options candlesticks
      * @param contract Options contract name
      * @param opts Optional parameters
@@ -498,10 +517,13 @@ export class OptionsApi {
      * @param opts.to End timestamp
      * @param opts.interval Interval time between data points
      */
-    public async listOptionsCandlesticks(contract: string, opts: { limit?: number, from?: number, to?: number, interval?: '1m' | '5m' | '15m' | '30m' | '1h',  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick>; }> {
+    public async listOptionsCandlesticks(
+        contract: string,
+        opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/candlesticks';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -516,24 +538,26 @@ export class OptionsApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, "string");
+        localVarQueryParameters['contract'] = ObjectSerializer.serialize(contract, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'1m' | '5m' | '15m' | '30m' | '1h'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'1m' | '5m' | '15m' | '30m' | '1h'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -543,11 +567,11 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<OptionsCandlestick>>(config, "Array<OptionsCandlestick>", authSettings);
+        return this.client.request<Array<OptionsCandlestick>>(config, 'Array<OptionsCandlestick>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Mark price candlesticks of an underlying
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
@@ -556,10 +580,13 @@ export class OptionsApi {
      * @param opts.to End timestamp
      * @param opts.interval Interval time between data points
      */
-    public async listOptionsUnderlyingCandlesticks(underlying: string, opts: { limit?: number, from?: number, to?: number, interval?: '1m' | '5m' | '15m' | '30m' | '1h',  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick>; }> {
+    public async listOptionsUnderlyingCandlesticks(
+        underlying: string,
+        opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/underlying/candlesticks';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -570,28 +597,32 @@ export class OptionsApi {
 
         // verify required parameter 'underlying' is not null or undefined
         if (underlying === null || underlying === undefined) {
-            throw new Error('Required parameter underlying was null or undefined when calling listOptionsUnderlyingCandlesticks.');
+            throw new Error(
+                'Required parameter underlying was null or undefined when calling listOptionsUnderlyingCandlesticks.',
+            );
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, "'1m' | '5m' | '15m' | '30m' | '1h'");
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'1m' | '5m' | '15m' | '30m' | '1h'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -601,11 +632,11 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesCandlestick>>(config, "Array<FuturesCandlestick>", authSettings);
+        return this.client.request<Array<FuturesCandlestick>>(config, 'Array<FuturesCandlestick>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Options trade history
      * @param opts Optional parameters
      * @param opts.contract Options contract name
@@ -615,10 +646,17 @@ export class OptionsApi {
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      */
-    public async listOptionsTrades(opts: { contract?: string, type?: string, limit?: number, offset?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<FuturesTrade>; }> {
+    public async listOptionsTrades(opts: {
+        contract?: string;
+        type?: string;
+        limit?: number;
+        offset?: number;
+        from?: number;
+        to?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
         const localVarPath = this.client.basePath + '/options/trades';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -629,29 +667,28 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -661,17 +698,17 @@ export class OptionsApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTrade>>(config, "Array<FuturesTrade>", authSettings);
+        return this.client.request<Array<FuturesTrade>>(config, 'Array<FuturesTrade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List options account
      */
-    public async listOptionsAccount() : Promise<{ response: AxiosResponse; body: OptionsAccount; }> {
+    public async listOptionsAccount(): Promise<{ response: AxiosResponse; body: OptionsAccount }> {
         const localVarPath = this.client.basePath + '/options/accounts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -679,7 +716,6 @@ export class OptionsApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -689,23 +725,29 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsAccount>(config, "OptionsAccount", authSettings);
+        return this.client.request<OptionsAccount>(config, 'OptionsAccount', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List account changing history
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
-     * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL 
+     * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL
      */
-    public async listOptionsAccountBook(opts: { limit?: number, offset?: number, from?: number, to?: number, type?: 'dnw' | 'prem' | 'fee' | 'refr' | 'set',  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsAccountBook>; }> {
+    public async listOptionsAccountBook(opts: {
+        limit?: number;
+        offset?: number;
+        from?: number;
+        to?: number;
+        type?: 'dnw' | 'prem' | 'fee' | 'refr' | 'set';
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsAccountBook> }> {
         const localVarPath = this.client.basePath + '/options/account_book';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -716,25 +758,27 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "'dnw' | 'prem' | 'fee' | 'refr' | 'set'");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(
+                opts.type,
+                "'dnw' | 'prem' | 'fee' | 'refr' | 'set'",
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -744,19 +788,21 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsAccountBook>>(config, "Array<OptionsAccountBook>", authSettings);
+        return this.client.request<Array<OptionsAccountBook>>(config, 'Array<OptionsAccountBook>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List user\'s positions of specified underlying
      * @param opts Optional parameters
      * @param opts.underlying Underlying
      */
-    public async listOptionsPositions(opts: { underlying?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsPosition>; }> {
+    public async listOptionsPositions(opts: {
+        underlying?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsPosition> }> {
         const localVarPath = this.client.basePath + '/options/positions';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -767,9 +813,8 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.underlying !== undefined) {
-            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, "string");
+            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -779,19 +824,20 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsPosition>>(config, "Array<OptionsPosition>", authSettings);
+        return this.client.request<Array<OptionsPosition>>(config, 'Array<OptionsPosition>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get specified contract position
-     * @param contract 
+     * @param contract
      */
-    public async getOptionsPosition(contract: string) : Promise<{ response: AxiosResponse; body: OptionsPosition; }> {
-        const localVarPath = this.client.basePath + '/options/positions/{contract}'
-            .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getOptionsPosition(contract: string): Promise<{ response: AxiosResponse; body: OptionsPosition }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/positions/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -805,7 +851,6 @@ export class OptionsApi {
             throw new Error('Required parameter contract was null or undefined when calling getOptionsPosition.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -814,20 +859,23 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsPosition>(config, "OptionsPosition", authSettings);
+        return this.client.request<OptionsPosition>(config, 'OptionsPosition', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List user\'s liquidation history of specified underlying
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.contract Options contract name
      */
-    public async listOptionsPositionClose(underlying: string, opts: { contract?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsPositionClose>; }> {
+    public async listOptionsPositionClose(
+        underlying: string,
+        opts: { contract?: string },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsPositionClose> }> {
         const localVarPath = this.client.basePath + '/options/position_close';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -838,16 +886,17 @@ export class OptionsApi {
 
         // verify required parameter 'underlying' is not null or undefined
         if (underlying === null || underlying === undefined) {
-            throw new Error('Required parameter underlying was null or undefined when calling listOptionsPositionClose.');
+            throw new Error(
+                'Required parameter underlying was null or undefined when calling listOptionsPositionClose.',
+            );
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -857,11 +906,11 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsPositionClose>>(config, "Array<OptionsPositionClose>", authSettings);
+        return this.client.request<Array<OptionsPositionClose>>(config, 'Array<OptionsPositionClose>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List options orders
      * @param status Only list the orders with this status
      * @param opts Optional parameters
@@ -872,10 +921,13 @@ export class OptionsApi {
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      */
-    public async listOptionsOrders(status: 'open' | 'finished', opts: { contract?: string, underlying?: string, limit?: number, offset?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsOrder>; }> {
+    public async listOptionsOrders(
+        status: 'open' | 'finished',
+        opts: { contract?: string; underlying?: string; limit?: number; offset?: number; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsOrder> }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -891,31 +943,30 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.underlying !== undefined) {
-            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, "string");
+            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, 'string');
         }
 
         localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'open' | 'finished'");
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -925,18 +976,20 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsOrder>>(config, "Array<OptionsOrder>", authSettings);
+        return this.client.request<Array<OptionsOrder>>(config, 'Array<OptionsOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Create an options order
-     * @param optionsOrder 
+     * @param optionsOrder
      */
-    public async createOptionsOrder(optionsOrder: OptionsOrder) : Promise<{ response: AxiosResponse; body: OptionsOrder; }> {
+    public async createOptionsOrder(
+        optionsOrder: OptionsOrder,
+    ): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -950,31 +1003,34 @@ export class OptionsApi {
             throw new Error('Required parameter optionsOrder was null or undefined when calling createOptionsOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(optionsOrder, "OptionsOrder")
+            data: ObjectSerializer.serialize(optionsOrder, 'OptionsOrder'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsOrder>(config, "OptionsOrder", authSettings);
+        return this.client.request<OptionsOrder>(config, 'OptionsOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel all `open` orders matched
      * @param opts Optional parameters
      * @param opts.contract Options contract name
      * @param opts.underlying Underlying
      * @param opts.side All bids or asks. Both included if not specified
      */
-    public async cancelOptionsOrders(opts: { contract?: string, underlying?: string, side?: 'ask' | 'bid',  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsOrder>; }> {
+    public async cancelOptionsOrders(opts: {
+        contract?: string;
+        underlying?: string;
+        side?: 'ask' | 'bid';
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsOrder> }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -985,17 +1041,16 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.underlying !== undefined) {
-            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, "string");
+            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, 'string');
         }
 
         if (opts.side !== undefined) {
             localVarQueryParameters['side'] = ObjectSerializer.serialize(opts.side, "'ask' | 'bid'");
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'DELETE',
@@ -1005,19 +1060,20 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsOrder>>(config, "Array<OptionsOrder>", authSettings);
+        return this.client.request<Array<OptionsOrder>>(config, 'Array<OptionsOrder>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get a single order
      * @param orderId Order ID returned on successful order creation
      */
-    public async getOptionsOrder(orderId: number) : Promise<{ response: AxiosResponse; body: OptionsOrder; }> {
-        const localVarPath = this.client.basePath + '/options/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async getOptionsOrder(orderId: number): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1031,7 +1087,6 @@ export class OptionsApi {
             throw new Error('Required parameter orderId was null or undefined when calling getOptionsOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -1040,19 +1095,20 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsOrder>(config, "OptionsOrder", authSettings);
+        return this.client.request<OptionsOrder>(config, 'OptionsOrder', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Cancel a single order
      * @param orderId Order ID returned on successful order creation
      */
-    public async cancelOptionsOrder(orderId: number) : Promise<{ response: AxiosResponse; body: OptionsOrder; }> {
-        const localVarPath = this.client.basePath + '/options/orders/{order_id}'
-            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+    public async cancelOptionsOrder(orderId: number): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
+        const localVarPath =
+            this.client.basePath +
+            '/options/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1066,7 +1122,6 @@ export class OptionsApi {
             throw new Error('Required parameter orderId was null or undefined when calling cancelOptionsOrder.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             params: localVarQueryParameters,
@@ -1075,18 +1130,20 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsOrder>(config, "OptionsOrder", authSettings);
+        return this.client.request<OptionsOrder>(config, 'OptionsOrder', authSettings);
     }
 
     /**
      * Option order heartbeat detection, when the `timeout` time set by the user is reached, if the existing countdown is not canceled or a new countdown is set, the related `option pending order` will be automatically canceled.  This interface can be called repeatedly to set a new countdown or cancel the countdown.  Usage example: Repeat this interface at intervals of 30 seconds, with each countdown `timeout` set to 30 (seconds).  If this interface is not called again within 30 seconds, all pending orders on the `underlying` `contract` you specified will be automatically cancelled. If `underlying` `contract` is not specified, all pending orders of the user will be automatically cancelled  If `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the automatic order cancellation function will be cancelled.
      * @summary Countdown cancel orders
-     * @param countdownCancelAllOptionsTask 
+     * @param countdownCancelAllOptionsTask
      */
-    public async countdownCancelAllOptions(countdownCancelAllOptionsTask: CountdownCancelAllOptionsTask) : Promise<{ response: AxiosResponse; body: TriggerTime; }> {
+    public async countdownCancelAllOptions(
+        countdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
+    ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath = this.client.basePath + '/options/countdown_cancel_all';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1097,24 +1154,25 @@ export class OptionsApi {
 
         // verify required parameter 'countdownCancelAllOptionsTask' is not null or undefined
         if (countdownCancelAllOptionsTask === null || countdownCancelAllOptionsTask === undefined) {
-            throw new Error('Required parameter countdownCancelAllOptionsTask was null or undefined when calling countdownCancelAllOptions.');
+            throw new Error(
+                'Required parameter countdownCancelAllOptionsTask was null or undefined when calling countdownCancelAllOptions.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(countdownCancelAllOptionsTask, "CountdownCancelAllOptionsTask")
+            data: ObjectSerializer.serialize(countdownCancelAllOptionsTask, 'CountdownCancelAllOptionsTask'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TriggerTime>(config, "TriggerTime", authSettings);
+        return this.client.request<TriggerTime>(config, 'TriggerTime', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List personal trading history
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
@@ -1124,10 +1182,13 @@ export class OptionsApi {
      * @param opts.from Start timestamp
      * @param opts.to End timestamp
      */
-    public async listMyOptionsTrades(underlying: string, opts: { contract?: string, limit?: number, offset?: number, from?: number, to?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade>; }> {
+    public async listMyOptionsTrades(
+        underlying: string,
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade> }> {
         const localVarPath = this.client.basePath + '/options/my_trades';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1142,28 +1203,27 @@ export class OptionsApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, "string");
+        localVarQueryParameters['underlying'] = ObjectSerializer.serialize(underlying, 'string');
 
         if (opts.contract !== undefined) {
-            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, "string");
+            localVarQueryParameters['contract'] = ObjectSerializer.serialize(opts.contract, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1173,19 +1233,21 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsMyTrade>>(config, "Array<OptionsMyTrade>", authSettings);
+        return this.client.request<Array<OptionsMyTrade>>(config, 'Array<OptionsMyTrade>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary MMP Query
      * @param opts Optional parameters
      * @param opts.underlying Underlying
      */
-    public async getOptionsMMP(opts: { underlying?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<OptionsMMP>; }> {
+    public async getOptionsMMP(opts: {
+        underlying?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<OptionsMMP> }> {
         const localVarPath = this.client.basePath + '/options/mmp';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1196,9 +1258,8 @@ export class OptionsApi {
 
         opts = opts || {};
         if (opts.underlying !== undefined) {
-            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, "string");
+            localVarQueryParameters['underlying'] = ObjectSerializer.serialize(opts.underlying, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -1208,18 +1269,18 @@ export class OptionsApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<OptionsMMP>>(config, "Array<OptionsMMP>", authSettings);
+        return this.client.request<Array<OptionsMMP>>(config, 'Array<OptionsMMP>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary MMP Settings
-     * @param optionsMMP 
+     * @param optionsMMP
      */
-    public async setOptionsMMP(optionsMMP: OptionsMMP) : Promise<{ response: AxiosResponse; body: OptionsMMP; }> {
+    public async setOptionsMMP(optionsMMP: OptionsMMP): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
         const localVarPath = this.client.basePath + '/options/mmp';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1233,28 +1294,29 @@ export class OptionsApi {
             throw new Error('Required parameter optionsMMP was null or undefined when calling setOptionsMMP.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(optionsMMP, "OptionsMMP")
+            data: ObjectSerializer.serialize(optionsMMP, 'OptionsMMP'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsMMP>(config, "OptionsMMP", authSettings);
+        return this.client.request<OptionsMMP>(config, 'OptionsMMP', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary MMP Reset
-     * @param optionsMMPReset 
+     * @param optionsMMPReset
      */
-    public async resetOptionsMMP(optionsMMPReset: OptionsMMPReset) : Promise<{ response: AxiosResponse; body: OptionsMMP; }> {
+    public async resetOptionsMMP(
+        optionsMMPReset: OptionsMMPReset,
+    ): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
         const localVarPath = this.client.basePath + '/options/mmp/reset';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1268,16 +1330,15 @@ export class OptionsApi {
             throw new Error('Required parameter optionsMMPReset was null or undefined when calling resetOptionsMMP.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(optionsMMPReset, "OptionsMMPReset")
+            data: ObjectSerializer.serialize(optionsMMPReset, 'OptionsMMPReset'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<OptionsMMP>(config, "OptionsMMP", authSettings);
+        return this.client.request<OptionsMMP>(config, 'OptionsMMP', authSettings);
     }
 }

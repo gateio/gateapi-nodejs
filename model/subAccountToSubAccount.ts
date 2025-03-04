@@ -9,78 +9,77 @@
  * Do not edit the class manually.
  */
 
-
 export class SubAccountToSubAccount {
     /**
-    * Transfer currency name
-    */
+     * Transfer currency name
+     */
     'currency': string;
     /**
-    * Transfer from the account. (deprecate, use `sub_account_from_type` and `sub_account_to_type` instead)
-    */
+     * Transfer from the account. (deprecate, use `sub_account_from_type` and `sub_account_to_type` instead)
+     */
     'subAccountType'?: string;
     /**
-    * Transfer from the user id of the sub-account
-    */
+     * Transfer from the user id of the sub-account
+     */
     'subAccountFrom': string;
     /**
-    * The sub-account\'s outgoing trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account.
-    */
+     * The sub-account\'s outgoing trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account.
+     */
     'subAccountFromType': string;
     /**
-    * Transfer to the user id of the sub-account
-    */
+     * Transfer to the user id of the sub-account
+     */
     'subAccountTo': string;
     /**
-    * The sub-account\'s incoming trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account
-    */
+     * The sub-account\'s incoming trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account
+     */
     'subAccountToType': string;
     /**
-    * Transfer amount
-    */
+     * Transfer amount
+     */
     'amount': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "subAccountType",
-            "baseName": "sub_account_type",
-            "type": "string"
+            name: 'subAccountType',
+            baseName: 'sub_account_type',
+            type: 'string',
         },
         {
-            "name": "subAccountFrom",
-            "baseName": "sub_account_from",
-            "type": "string"
+            name: 'subAccountFrom',
+            baseName: 'sub_account_from',
+            type: 'string',
         },
         {
-            "name": "subAccountFromType",
-            "baseName": "sub_account_from_type",
-            "type": "string"
+            name: 'subAccountFromType',
+            baseName: 'sub_account_from_type',
+            type: 'string',
         },
         {
-            "name": "subAccountTo",
-            "baseName": "sub_account_to",
-            "type": "string"
+            name: 'subAccountTo',
+            baseName: 'sub_account_to',
+            type: 'string',
         },
         {
-            "name": "subAccountToType",
-            "baseName": "sub_account_to_type",
-            "type": "string"
+            name: 'subAccountToType',
+            baseName: 'sub_account_to_type',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
-        }    ];
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return SubAccountToSubAccount.attributeTypeMap;
     }
 }
-

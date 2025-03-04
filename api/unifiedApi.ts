@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
@@ -53,10 +52,13 @@ export class UnifiedApi {
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.subUid Sub account user ID
      */
-    public async listUnifiedAccounts(opts: { currency?: string, subUid?: string,  } ) : Promise<{ response: AxiosResponse; body: UnifiedAccount; }> {
+    public async listUnifiedAccounts(opts: {
+        currency?: string;
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: UnifiedAccount }> {
         const localVarPath = this.client.basePath + '/unified/accounts';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -67,13 +69,12 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -83,18 +84,18 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedAccount>(config, "UnifiedAccount", authSettings);
+        return this.client.request<UnifiedAccount>(config, 'UnifiedAccount', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query about the maximum borrowing for the unified account
      * @param currency Retrieve data of the specified currency
      */
-    public async getUnifiedBorrowable(currency: string) : Promise<{ response: AxiosResponse; body: UnifiedBorrowable; }> {
+    public async getUnifiedBorrowable(currency: string): Promise<{ response: AxiosResponse; body: UnifiedBorrowable }> {
         const localVarPath = this.client.basePath + '/unified/borrowable';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -108,8 +109,7 @@ export class UnifiedApi {
             throw new Error('Required parameter currency was null or undefined when calling getUnifiedBorrowable.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
-
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -119,18 +119,20 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedBorrowable>(config, "UnifiedBorrowable", authSettings);
+        return this.client.request<UnifiedBorrowable>(config, 'UnifiedBorrowable', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query about the maximum transferable for the unified account
      * @param currency Retrieve data of the specified currency
      */
-    public async getUnifiedTransferable(currency: string) : Promise<{ response: AxiosResponse; body: UnifiedTransferable; }> {
+    public async getUnifiedTransferable(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: UnifiedTransferable }> {
         const localVarPath = this.client.basePath + '/unified/transferable';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -144,8 +146,7 @@ export class UnifiedApi {
             throw new Error('Required parameter currency was null or undefined when calling getUnifiedTransferable.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
-
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -155,11 +156,11 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedTransferable>(config, "UnifiedTransferable", authSettings);
+        return this.client.request<UnifiedTransferable>(config, 'UnifiedTransferable', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List loans
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
@@ -167,10 +168,15 @@ export class UnifiedApi {
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
      * @param opts.type Loan type, platform - platform, margin - margin
      */
-    public async listUnifiedLoans(opts: { currency?: string, page?: number, limit?: number, type?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<UniLoan>; }> {
+    public async listUnifiedLoans(opts: {
+        currency?: string;
+        page?: number;
+        limit?: number;
+        type?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<UniLoan> }> {
         const localVarPath = this.client.basePath + '/unified/loans';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -181,21 +187,20 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -205,39 +210,38 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<UniLoan>>(config, "Array<UniLoan>", authSettings);
+        return this.client.request<Array<UniLoan>>(config, 'Array<UniLoan>', authSettings);
     }
 
     /**
      * When borrowing, it is essential to ensure that the borrowed amount is not below the minimum borrowing threshold for the specific cryptocurrency and does not exceed the maximum borrowing limit set by the platform and the user.  The interest on the loan will be automatically deducted from the account at regular intervals. It is the user\'s responsibility to manage the repayment of the borrowed amount.  For repayment, the option to repay the entire borrowed amount is available by setting the parameter `repaid_all=true`
      * @summary Borrow or repay
-     * @param unifiedLoan 
+     * @param unifiedLoan
      */
-    public async createUnifiedLoan(unifiedLoan: UnifiedLoan) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async createUnifiedLoan(unifiedLoan: UnifiedLoan): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/loans';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedLoan' is not null or undefined
         if (unifiedLoan === null || unifiedLoan === undefined) {
             throw new Error('Required parameter unifiedLoan was null or undefined when calling createUnifiedLoan.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(unifiedLoan, "UnifiedLoan")
+            data: ObjectSerializer.serialize(unifiedLoan, 'UnifiedLoan'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Get load records
      * @param opts Optional parameters
      * @param opts.type The types of lending records, borrow - indicates the action of borrowing funds, repay - indicates the action of repaying the borrowed funds
@@ -245,10 +249,15 @@ export class UnifiedApi {
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
      */
-    public async listUnifiedLoanRecords(opts: { type?: string, currency?: string, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<UnifiedLoanRecord>; }> {
+    public async listUnifiedLoanRecords(opts: {
+        type?: string;
+        currency?: string;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<UnifiedLoanRecord> }> {
         const localVarPath = this.client.basePath + '/unified/loan_records';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -259,21 +268,20 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -283,11 +291,11 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<UnifiedLoanRecord>>(config, "Array<UnifiedLoanRecord>", authSettings);
+        return this.client.request<Array<UnifiedLoanRecord>>(config, 'Array<UnifiedLoanRecord>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List interest records
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
@@ -297,10 +305,17 @@ export class UnifiedApi {
      * @param opts.to Time range ending, default to current time
      * @param opts.type Loan type, platform loan - platform, leverage loan - margin, if not passed, defaults to margin
      */
-    public async listUnifiedLoanInterestRecords(opts: { currency?: string, page?: number, limit?: number, from?: number, to?: number, type?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord>; }> {
+    public async listUnifiedLoanInterestRecords(opts: {
+        currency?: string;
+        page?: number;
+        limit?: number;
+        from?: number;
+        to?: number;
+        type?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/unified/interest_records';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -311,29 +326,28 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.type !== undefined) {
-            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, "string");
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -343,17 +357,17 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<UniLoanInterestRecord>>(config, "Array<UniLoanInterestRecord>", authSettings);
+        return this.client.request<Array<UniLoanInterestRecord>>(config, 'Array<UniLoanInterestRecord>', authSettings);
     }
 
     /**
      * Retrieve user risk unit details, only valid in portfolio margin mode
      * @summary Get user risk unit details
      */
-    public async getUnifiedRiskUnits() : Promise<{ response: AxiosResponse; body: UnifiedRiskUnits; }> {
+    public async getUnifiedRiskUnits(): Promise<{ response: AxiosResponse; body: UnifiedRiskUnits }> {
         const localVarPath = this.client.basePath + '/unified/risk_units';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -361,7 +375,6 @@ export class UnifiedApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -371,17 +384,17 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedRiskUnits>(config, "UnifiedRiskUnits", authSettings);
+        return this.client.request<UnifiedRiskUnits>(config, 'UnifiedRiskUnits', authSettings);
     }
 
     /**
      * Unified account mode: - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
      * @summary Query mode of the unified account
      */
-    public async getUnifiedMode() : Promise<{ response: AxiosResponse; body: UnifiedModeSet; }> {
+    public async getUnifiedMode(): Promise<{ response: AxiosResponse; body: UnifiedModeSet }> {
         const localVarPath = this.client.basePath + '/unified/unified_mode';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -389,7 +402,6 @@ export class UnifiedApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -399,35 +411,34 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedModeSet>(config, "UnifiedModeSet", authSettings);
+        return this.client.request<UnifiedModeSet>(config, 'UnifiedModeSet', authSettings);
     }
 
     /**
      * Switching each account mode only requires passing the parameters of the corresponding account mode, and supports turning on or off the configuration switch in the corresponding account mode when switching the account mode  - When opening the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - Open the cross-currency margin mode, mode=multi_currency ```  PUT /unified/unified_mode  {  \"mode\": \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When the portfolio margin mode is enabled, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When opening a single currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
      * @summary Set mode of the unified account
-     * @param unifiedModeSet 
+     * @param unifiedModeSet
      */
-    public async setUnifiedMode(unifiedModeSet: UnifiedModeSet) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async setUnifiedMode(unifiedModeSet: UnifiedModeSet): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/unified_mode';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedModeSet' is not null or undefined
         if (unifiedModeSet === null || unifiedModeSet === undefined) {
             throw new Error('Required parameter unifiedModeSet was null or undefined when calling setUnifiedMode.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'PUT',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(unifiedModeSet, "UnifiedModeSet")
+            data: ObjectSerializer.serialize(unifiedModeSet, 'UnifiedModeSet'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
@@ -435,10 +446,12 @@ export class UnifiedApi {
      * @summary Get unified estimate rate
      * @param currencies Specify the currency names for querying in an array, separated by commas, with a maximum of 10 currencies.
      */
-    public async getUnifiedEstimateRate(currencies: Array<string>) : Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> {
+    public async getUnifiedEstimateRate(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
         const localVarPath = this.client.basePath + '/unified/estimate_rate';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -452,8 +465,7 @@ export class UnifiedApi {
             throw new Error('Required parameter currencies was null or undefined when calling getUnifiedEstimateRate.');
         }
 
-        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, "Array<string>");
-
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -463,17 +475,17 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<{ [key: string]: string; }>(config, "{ [key: string]: string; }", authSettings);
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List currency discount tiers
      */
-    public async listCurrencyDiscountTiers() : Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount>; }> {
+    public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
         const localVarPath = this.client.basePath + '/unified/currency_discount_tiers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -481,7 +493,6 @@ export class UnifiedApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -491,17 +502,17 @@ export class UnifiedApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<UnifiedDiscount>>(config, "Array<UnifiedDiscount>", authSettings);
+        return this.client.request<Array<UnifiedDiscount>>(config, 'Array<UnifiedDiscount>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List loan margin tiers
      */
-    public async listLoanMarginTiers() : Promise<{ response: AxiosResponse; body: Array<UnifiedMarginTiers>; }> {
+    public async listLoanMarginTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedMarginTiers> }> {
         const localVarPath = this.client.basePath + '/unified/loan_margin_tiers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -509,7 +520,6 @@ export class UnifiedApi {
         } else {
             localVarHeaderParams.Accept = produces.join(',');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -519,18 +529,20 @@ export class UnifiedApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<UnifiedMarginTiers>>(config, "Array<UnifiedMarginTiers>", authSettings);
+        return this.client.request<Array<UnifiedMarginTiers>>(config, 'Array<UnifiedMarginTiers>', authSettings);
     }
 
     /**
      * Portfolio Margin Calculator When inputting a simulated position portfolio, each position includes the position name and quantity held, supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. When inputting simulated orders, each order includes the market identifier, order price, and order quantity,  supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. Market orders are not included.
      * @summary Portfolio margin calculator
-     * @param unifiedPortfolioInput 
+     * @param unifiedPortfolioInput
      */
-    public async calculatePortfolioMargin(unifiedPortfolioInput: UnifiedPortfolioInput) : Promise<{ response: AxiosResponse; body: UnifiedPortfolioOutput; }> {
+    public async calculatePortfolioMargin(
+        unifiedPortfolioInput: UnifiedPortfolioInput,
+    ): Promise<{ response: AxiosResponse; body: UnifiedPortfolioOutput }> {
         const localVarPath = this.client.basePath + '/unified/portfolio_calculator';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -541,31 +553,34 @@ export class UnifiedApi {
 
         // verify required parameter 'unifiedPortfolioInput' is not null or undefined
         if (unifiedPortfolioInput === null || unifiedPortfolioInput === undefined) {
-            throw new Error('Required parameter unifiedPortfolioInput was null or undefined when calling calculatePortfolioMargin.');
+            throw new Error(
+                'Required parameter unifiedPortfolioInput was null or undefined when calling calculatePortfolioMargin.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(unifiedPortfolioInput, "UnifiedPortfolioInput")
+            data: ObjectSerializer.serialize(unifiedPortfolioInput, 'UnifiedPortfolioInput'),
         };
 
         const authSettings = [];
-        return this.client.request<UnifiedPortfolioOutput>(config, "UnifiedPortfolioOutput", authSettings);
+        return this.client.request<UnifiedPortfolioOutput>(config, 'UnifiedPortfolioOutput', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Minimum currency leverage that can be set
      * @param currency Currency
      */
-    public async getUserLeverageCurrencyConfig(currency: string) : Promise<{ response: AxiosResponse; body: UnifiedLeverageConfig; }> {
+    public async getUserLeverageCurrencyConfig(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: UnifiedLeverageConfig }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_config';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -576,11 +591,12 @@ export class UnifiedApi {
 
         // verify required parameter 'currency' is not null or undefined
         if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling getUserLeverageCurrencyConfig.');
+            throw new Error(
+                'Required parameter currency was null or undefined when calling getUserLeverageCurrencyConfig.',
+            );
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
-
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -590,7 +606,7 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedLeverageConfig>(config, "UnifiedLeverageConfig", authSettings);
+        return this.client.request<UnifiedLeverageConfig>(config, 'UnifiedLeverageConfig', authSettings);
     }
 
     /**
@@ -599,10 +615,12 @@ export class UnifiedApi {
      * @param opts Optional parameters
      * @param opts.currency Currency
      */
-    public async getUserLeverageCurrencySetting(opts: { currency?: string,  } ) : Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting; }> {
+    public async getUserLeverageCurrencySetting(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -613,9 +631,8 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -625,39 +642,42 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedLeverageSetting>(config, "UnifiedLeverageSetting", authSettings);
+        return this.client.request<UnifiedLeverageSetting>(config, 'UnifiedLeverageSetting', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Set the loan currency leverage
-     * @param unifiedLeverageSetting 
+     * @param unifiedLeverageSetting
      */
-    public async setUserLeverageCurrencySetting(unifiedLeverageSetting: UnifiedLeverageSetting) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async setUserLeverageCurrencySetting(
+        unifiedLeverageSetting: UnifiedLeverageSetting,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedLeverageSetting' is not null or undefined
         if (unifiedLeverageSetting === null || unifiedLeverageSetting === undefined) {
-            throw new Error('Required parameter unifiedLeverageSetting was null or undefined when calling setUserLeverageCurrencySetting.');
+            throw new Error(
+                'Required parameter unifiedLeverageSetting was null or undefined when calling setUserLeverageCurrencySetting.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(unifiedLeverageSetting, "UnifiedLeverageSetting")
+            data: ObjectSerializer.serialize(unifiedLeverageSetting, 'UnifiedLeverageSetting'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary get historical lending rates
      * @param currency Currency
      * @param opts Optional parameters
@@ -665,10 +685,13 @@ export class UnifiedApi {
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
      */
-    public async getHistoryLoanRate(currency: string, opts: { tier?: string, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate; }> {
+    public async getHistoryLoanRate(
+        currency: string,
+        opts: { tier?: string; page?: number; limit?: number },
+    ): Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate }> {
         const localVarPath = this.client.basePath + '/unified/history_loan_rate';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -684,19 +707,18 @@ export class UnifiedApi {
 
         opts = opts || {};
         if (opts.tier !== undefined) {
-            localVarQueryParameters['tier'] = ObjectSerializer.serialize(opts.tier, "string");
+            localVarQueryParameters['tier'] = ObjectSerializer.serialize(opts.tier, 'string');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -706,6 +728,6 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedHistoryLoanRate>(config, "UnifiedHistoryLoanRate", authSettings);
+        return this.client.request<UnifiedHistoryLoanRate>(config, 'UnifiedHistoryLoanRate', authSettings);
     }
 }

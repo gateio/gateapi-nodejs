@@ -9,51 +9,50 @@
  * Do not edit the class manually.
  */
 
-
 export class AccountRateLimit {
     /**
-    * Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio))
-    */
+     * Frequency limit level (For detailed frequency limit rules, see [Transaction ratio frequency limit](#rate-limit-based-on-fill-ratio))
+     */
     'tier'?: string;
     /**
-    * Transaction rate
-    */
+     * Transaction rate
+     */
     'ratio'?: string;
     /**
-    * Total transaction ratio of main account
-    */
+     * Total transaction ratio of main account
+     */
     'mainRatio'?: string;
     /**
-    * Update time
-    */
+     * Update time
+     */
     'updatedAt'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "tier",
-            "baseName": "tier",
-            "type": "string"
+            name: 'tier',
+            baseName: 'tier',
+            type: 'string',
         },
         {
-            "name": "ratio",
-            "baseName": "ratio",
-            "type": "string"
+            name: 'ratio',
+            baseName: 'ratio',
+            type: 'string',
         },
         {
-            "name": "mainRatio",
-            "baseName": "main_ratio",
-            "type": "string"
+            name: 'mainRatio',
+            baseName: 'main_ratio',
+            type: 'string',
         },
         {
-            "name": "updatedAt",
-            "baseName": "updated_at",
-            "type": "string"
-        }    ];
+            name: 'updatedAt',
+            baseName: 'updated_at',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return AccountRateLimit.attributeTypeMap;
     }
 }
-

@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class UniCurrencyInterest {
     /**
-    * Currency
-    */
+     * Currency
+     */
     'currency'?: string;
     /**
-    * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
-    */
+     * Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment
+     */
     'interestStatus'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "interestStatus",
-            "baseName": "interest_status",
-            "type": "string"
-        }    ];
+            name: 'interestStatus',
+            baseName: 'interest_status',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return UniCurrencyInterest.attributeTypeMap;
     }
 }
-

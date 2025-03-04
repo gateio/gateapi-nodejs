@@ -9,69 +9,68 @@
  * Do not edit the class manually.
  */
 
-
 export class OptionsSettlement {
     /**
-    * Last changed time of configuration
-    */
+     * Last changed time of configuration
+     */
     'time'?: number;
     /**
-    * Options contract name
-    */
+     * Options contract name
+     */
     'contract'?: string;
     /**
-    * Settlement profit per size (quote currency)
-    */
+     * Settlement profit per size (quote currency)
+     */
     'profit'?: string;
     /**
-    * Settlement fee per size (quote currency)
-    */
+     * Settlement fee per size (quote currency)
+     */
     'fee'?: string;
     /**
-    * Strike price (quote currency)
-    */
+     * Strike price (quote currency)
+     */
     'strikePrice'?: string;
     /**
-    * Settlement price (quote currency)
-    */
+     * Settlement price (quote currency)
+     */
     'settlePrice'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "time",
-            "baseName": "time",
-            "type": "number"
+            name: 'time',
+            baseName: 'time',
+            type: 'number',
         },
         {
-            "name": "contract",
-            "baseName": "contract",
-            "type": "string"
+            name: 'contract',
+            baseName: 'contract',
+            type: 'string',
         },
         {
-            "name": "profit",
-            "baseName": "profit",
-            "type": "string"
+            name: 'profit',
+            baseName: 'profit',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "strikePrice",
-            "baseName": "strike_price",
-            "type": "string"
+            name: 'strikePrice',
+            baseName: 'strike_price',
+            type: 'string',
         },
         {
-            "name": "settlePrice",
-            "baseName": "settle_price",
-            "type": "string"
-        }    ];
+            name: 'settlePrice',
+            baseName: 'settle_price',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return OptionsSettlement.attributeTypeMap;
     }
 }
-

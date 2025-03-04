@@ -9,60 +9,59 @@
  * Do not edit the class manually.
  */
 
-
 export class FuturesOrderAmendment {
     /**
-    * New order size, including filled part.  - If new size is less than or equal to filled size, the order will be cancelled. - Order side must be identical to the original one. - Close order size cannot be changed. - For reduce only orders, increasing size may leads to other reduce only orders being cancelled. - If price is not changed, decreasing size will not change its precedence in order book, while increasing will move it to the last at current price.
-    */
+     * New order size, including filled part.  - If new size is less than or equal to filled size, the order will be cancelled. - Order side must be identical to the original one. - Close order size cannot be changed. - For reduce only orders, increasing size may leads to other reduce only orders being cancelled. - If price is not changed, decreasing size will not change its precedence in order book, while increasing will move it to the last at current price.
+     */
     'size'?: number;
     /**
-    * New order price.
-    */
+     * New order price.
+     */
     'price'?: string;
     /**
-    * Custom info during amending order
-    */
+     * Custom info during amending order
+     */
     'amendText'?: string;
     /**
-    * Users can annotate this modification with information.
-    */
+     * Users can annotate this modification with information.
+     */
     'bizInfo'?: string;
     /**
-    * Users are able to modify the offer price manually.
-    */
+     * Users are able to modify the offer price manually.
+     */
     'bbo'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number"
+            name: 'size',
+            baseName: 'size',
+            type: 'number',
         },
         {
-            "name": "price",
-            "baseName": "price",
-            "type": "string"
+            name: 'price',
+            baseName: 'price',
+            type: 'string',
         },
         {
-            "name": "amendText",
-            "baseName": "amend_text",
-            "type": "string"
+            name: 'amendText',
+            baseName: 'amend_text',
+            type: 'string',
         },
         {
-            "name": "bizInfo",
-            "baseName": "biz_info",
-            "type": "string"
+            name: 'bizInfo',
+            baseName: 'biz_info',
+            type: 'string',
         },
         {
-            "name": "bbo",
-            "baseName": "bbo",
-            "type": "string"
-        }    ];
+            name: 'bbo',
+            baseName: 'bbo',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FuturesOrderAmendment.attributeTypeMap;
     }
 }
-

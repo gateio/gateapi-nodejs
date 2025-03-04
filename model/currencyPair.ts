@@ -9,159 +9,159 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Spot currency pair
-*/
+ * Spot currency pair
+ */
 export class CurrencyPair {
     /**
-    * Currency pair
-    */
+     * Currency pair
+     */
     'id'?: string;
     /**
-    * Base currency
-    */
+     * Base currency
+     */
     'base'?: string;
     /**
-    * Transaction currency name
-    */
+     * Transaction currency name
+     */
     'baseName'?: string;
     /**
-    * Quote currency
-    */
+     * Quote currency
+     */
     'quote'?: string;
     /**
-    * Name of the denominated currency
-    */
+     * Name of the denominated currency
+     */
     'quoteName'?: string;
     /**
-    * Trading fee
-    */
+     * Trading fee
+     */
     'fee'?: string;
     /**
-    * Minimum amount of base currency to trade, `null` means no limit
-    */
+     * Minimum amount of base currency to trade, `null` means no limit
+     */
     'minBaseAmount'?: string;
     /**
-    * Minimum amount of quote currency to trade, `null` means no limit
-    */
+     * Minimum amount of quote currency to trade, `null` means no limit
+     */
     'minQuoteAmount'?: string;
     /**
-    * Maximum amount of base currency to trade, `null` means no limit
-    */
+     * Maximum amount of base currency to trade, `null` means no limit
+     */
     'maxBaseAmount'?: string;
     /**
-    * Maximum amount of quote currency to trade, `null` means no limit
-    */
+     * Maximum amount of quote currency to trade, `null` means no limit
+     */
     'maxQuoteAmount'?: string;
     /**
-    * Amount scale
-    */
+     * Amount scale
+     */
     'amountPrecision'?: number;
     /**
-    * Price scale
-    */
+     * Price scale
+     */
     'precision'?: number;
     /**
-    * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold
-    */
+     * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold
+     */
     'tradeStatus'?: CurrencyPair.TradeStatus;
     /**
-    * Sell start unix timestamp in seconds
-    */
+     * Sell start unix timestamp in seconds
+     */
     'sellStart'?: number;
     /**
-    * Buy start unix timestamp in seconds
-    */
+     * Buy start unix timestamp in seconds
+     */
     'buyStart'?: number;
     /**
-    * Trading pair type, normal: normal, premarket: pre-market
-    */
+     * Trading pair type, normal: normal, premarket: pre-market
+     */
     'type'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
+            name: 'id',
+            baseName: 'id',
+            type: 'string',
         },
         {
-            "name": "base",
-            "baseName": "base",
-            "type": "string"
+            name: 'base',
+            baseName: 'base',
+            type: 'string',
         },
         {
-            "name": "baseName",
-            "baseName": "base_name",
-            "type": "string"
+            name: 'baseName',
+            baseName: 'base_name',
+            type: 'string',
         },
         {
-            "name": "quote",
-            "baseName": "quote",
-            "type": "string"
+            name: 'quote',
+            baseName: 'quote',
+            type: 'string',
         },
         {
-            "name": "quoteName",
-            "baseName": "quote_name",
-            "type": "string"
+            name: 'quoteName',
+            baseName: 'quote_name',
+            type: 'string',
         },
         {
-            "name": "fee",
-            "baseName": "fee",
-            "type": "string"
+            name: 'fee',
+            baseName: 'fee',
+            type: 'string',
         },
         {
-            "name": "minBaseAmount",
-            "baseName": "min_base_amount",
-            "type": "string"
+            name: 'minBaseAmount',
+            baseName: 'min_base_amount',
+            type: 'string',
         },
         {
-            "name": "minQuoteAmount",
-            "baseName": "min_quote_amount",
-            "type": "string"
+            name: 'minQuoteAmount',
+            baseName: 'min_quote_amount',
+            type: 'string',
         },
         {
-            "name": "maxBaseAmount",
-            "baseName": "max_base_amount",
-            "type": "string"
+            name: 'maxBaseAmount',
+            baseName: 'max_base_amount',
+            type: 'string',
         },
         {
-            "name": "maxQuoteAmount",
-            "baseName": "max_quote_amount",
-            "type": "string"
+            name: 'maxQuoteAmount',
+            baseName: 'max_quote_amount',
+            type: 'string',
         },
         {
-            "name": "amountPrecision",
-            "baseName": "amount_precision",
-            "type": "number"
+            name: 'amountPrecision',
+            baseName: 'amount_precision',
+            type: 'number',
         },
         {
-            "name": "precision",
-            "baseName": "precision",
-            "type": "number"
+            name: 'precision',
+            baseName: 'precision',
+            type: 'number',
         },
         {
-            "name": "tradeStatus",
-            "baseName": "trade_status",
-            "type": "CurrencyPair.TradeStatus"
+            name: 'tradeStatus',
+            baseName: 'trade_status',
+            type: 'CurrencyPair.TradeStatus',
         },
         {
-            "name": "sellStart",
-            "baseName": "sell_start",
-            "type": "number"
+            name: 'sellStart',
+            baseName: 'sell_start',
+            type: 'number',
         },
         {
-            "name": "buyStart",
-            "baseName": "buy_start",
-            "type": "number"
+            name: 'buyStart',
+            baseName: 'buy_start',
+            type: 'number',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string"
-        }    ];
+            name: 'type',
+            baseName: 'type',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CurrencyPair.attributeTypeMap;
@@ -170,9 +170,9 @@ export class CurrencyPair {
 
 export namespace CurrencyPair {
     export enum TradeStatus {
-        Untradable = <any> 'untradable',
-        Buyable = <any> 'buyable',
-        Sellable = <any> 'sellable',
-        Tradable = <any> 'tradable'
+        Untradable = <any>'untradable',
+        Buyable = <any>'buyable',
+        Sellable = <any>'sellable',
+        Tradable = <any>'tradable',
     }
 }

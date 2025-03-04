@@ -9,33 +9,32 @@
  * Do not edit the class manually.
  */
 
-
 export class FundingRateRecord {
     /**
-    * Unix timestamp in seconds
-    */
+     * Unix timestamp in seconds
+     */
     't'?: number;
     /**
-    * Funding rate
-    */
+     * Funding rate
+     */
     'r'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "t",
-            "baseName": "t",
-            "type": "number"
+            name: 't',
+            baseName: 't',
+            type: 'number',
         },
         {
-            "name": "r",
-            "baseName": "r",
-            "type": "string"
-        }    ];
+            name: 'r',
+            baseName: 'r',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return FundingRateRecord.attributeTypeMap;
     }
 }
-

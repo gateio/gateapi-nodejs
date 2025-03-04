@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 /* tslint:disable:no-unused-locals */
 import { ConvertSmallBalance } from '../model/convertSmallBalance';
 import { CurrencyChain } from '../model/currencyChain';
@@ -52,14 +51,16 @@ export class WalletApi {
     }
 
     /**
-     * 
+     *
      * @summary List chains supported for specified currency
      * @param currency Currency name
      */
-    public async listCurrencyChains(currency: string) : Promise<{ response: AxiosResponse; body: Array<CurrencyChain>; }> {
+    public async listCurrencyChains(
+        currency: string,
+    ): Promise<{ response: AxiosResponse; body: Array<CurrencyChain> }> {
         const localVarPath = this.client.basePath + '/wallet/currency_chains';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -73,8 +74,7 @@ export class WalletApi {
             throw new Error('Required parameter currency was null or undefined when calling listCurrencyChains.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
-
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -84,18 +84,18 @@ export class WalletApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<CurrencyChain>>(config, "Array<CurrencyChain>", authSettings);
+        return this.client.request<Array<CurrencyChain>>(config, 'Array<CurrencyChain>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Generate currency deposit address
      * @param currency Currency name
      */
-    public async getDepositAddress(currency: string) : Promise<{ response: AxiosResponse; body: DepositAddress; }> {
+    public async getDepositAddress(currency: string): Promise<{ response: AxiosResponse; body: DepositAddress }> {
         const localVarPath = this.client.basePath + '/wallet/deposit_address';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -109,8 +109,7 @@ export class WalletApi {
             throw new Error('Required parameter currency was null or undefined when calling getDepositAddress.');
         }
 
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
-
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -120,7 +119,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<DepositAddress>(config, "DepositAddress", authSettings);
+        return this.client.request<DepositAddress>(config, 'DepositAddress', authSettings);
     }
 
     /**
@@ -133,10 +132,16 @@ export class WalletApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listWithdrawals(opts: { currency?: string, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord>; }> {
+    public async listWithdrawals(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -147,25 +152,24 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -175,7 +179,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<WithdrawalRecord>>(config, "Array<WithdrawalRecord>", authSettings);
+        return this.client.request<Array<WithdrawalRecord>>(config, 'Array<WithdrawalRecord>', authSettings);
     }
 
     /**
@@ -188,10 +192,16 @@ export class WalletApi {
      * @param opts.limit The maximum number of entries returned in the list is limited to 500 transactions.
      * @param opts.offset List offset, starting from 0
      */
-    public async listDeposits(opts: { currency?: string, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> {
+    public async listDeposits(opts: {
+        currency?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<LedgerRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -202,25 +212,24 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -230,18 +239,18 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(config, "Array<LedgerRecord>", authSettings);
+        return this.client.request<Array<LedgerRecord>>(config, 'Array<LedgerRecord>', authSettings);
     }
 
     /**
      * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. spot - delivery 4. spot - options
      * @summary Transfer between trading accounts
-     * @param transfer 
+     * @param transfer
      */
-    public async transfer(transfer: Transfer) : Promise<{ response: AxiosResponse; body: TransactionID; }> {
+    public async transfer(transfer: Transfer): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -255,17 +264,16 @@ export class WalletApi {
             throw new Error('Required parameter transfer was null or undefined when calling transfer.');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(transfer, "Transfer")
+            data: ObjectSerializer.serialize(transfer, 'Transfer'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TransactionID>(config, "TransactionID", authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
     }
 
     /**
@@ -278,10 +286,16 @@ export class WalletApi {
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
-    public async listSubAccountTransfers(opts: { subUid?: string, from?: number, to?: number, limit?: number, offset?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer>; }> {
+    public async listSubAccountTransfers(opts: {
+        subUid?: string;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -292,25 +306,24 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -320,18 +333,20 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountTransfer>>(config, "Array<SubAccountTransfer>", authSettings);
+        return this.client.request<Array<SubAccountTransfer>>(config, 'Array<SubAccountTransfer>', authSettings);
     }
 
     /**
      * Support transferring with sub user\'s spot or futures account. Note that only main user\'s spot account is used no matter which sub user\'s account is operated.
      * @summary Transfer between main and sub accounts
-     * @param subAccountTransfer 
+     * @param subAccountTransfer
      */
-    public async transferWithSubAccount(subAccountTransfer: SubAccountTransfer) : Promise<{ response: AxiosResponse; body: TransactionID; }> {
+    public async transferWithSubAccount(
+        subAccountTransfer: SubAccountTransfer,
+    ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -342,31 +357,34 @@ export class WalletApi {
 
         // verify required parameter 'subAccountTransfer' is not null or undefined
         if (subAccountTransfer === null || subAccountTransfer === undefined) {
-            throw new Error('Required parameter subAccountTransfer was null or undefined when calling transferWithSubAccount.');
+            throw new Error(
+                'Required parameter subAccountTransfer was null or undefined when calling transferWithSubAccount.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(subAccountTransfer, "SubAccountTransfer")
+            data: ObjectSerializer.serialize(subAccountTransfer, 'SubAccountTransfer'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TransactionID>(config, "TransactionID", authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
     }
 
     /**
      * It is possible to perform balance transfers between two sub-accounts under the same main account. You can use either the API Key of the main account or the API Key of the sub-account to initiate the transfer.
      * @summary Sub-account transfers to sub-account
-     * @param subAccountToSubAccount 
+     * @param subAccountToSubAccount
      */
-    public async subAccountToSubAccount(subAccountToSubAccount: SubAccountToSubAccount) : Promise<{ response: AxiosResponse; body: TransactionID; }> {
+    public async subAccountToSubAccount(
+        subAccountToSubAccount: SubAccountToSubAccount,
+    ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_to_sub_account';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -377,20 +395,21 @@ export class WalletApi {
 
         // verify required parameter 'subAccountToSubAccount' is not null or undefined
         if (subAccountToSubAccount === null || subAccountToSubAccount === undefined) {
-            throw new Error('Required parameter subAccountToSubAccount was null or undefined when calling subAccountToSubAccount.');
+            throw new Error(
+                'Required parameter subAccountToSubAccount was null or undefined when calling subAccountToSubAccount.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(subAccountToSubAccount, "SubAccountToSubAccount")
+            data: ObjectSerializer.serialize(subAccountToSubAccount, 'SubAccountToSubAccount'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TransactionID>(config, "TransactionID", authSettings);
+        return this.client.request<TransactionID>(config, 'TransactionID', authSettings);
     }
 
     /**
@@ -400,10 +419,13 @@ export class WalletApi {
      * @param opts.clientOrderId The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;, with a length ranging from 1 to 64 characters.
      * @param opts.txId The transfer operation number and client_order_id cannot be empty at the same time
      */
-    public async getTransferOrderStatus(opts: { clientOrderId?: string, txId?: string,  } ) : Promise<{ response: AxiosResponse; body: TransferOrderStatus; }> {
+    public async getTransferOrderStatus(opts: {
+        clientOrderId?: string;
+        txId?: string;
+    }): Promise<{ response: AxiosResponse; body: TransferOrderStatus }> {
         const localVarPath = this.client.basePath + '/wallet/order_status';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -414,13 +436,12 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.clientOrderId !== undefined) {
-            localVarQueryParameters['client_order_id'] = ObjectSerializer.serialize(opts.clientOrderId, "string");
+            localVarQueryParameters['client_order_id'] = ObjectSerializer.serialize(opts.clientOrderId, 'string');
         }
 
         if (opts.txId !== undefined) {
-            localVarQueryParameters['tx_id'] = ObjectSerializer.serialize(opts.txId, "string");
+            localVarQueryParameters['tx_id'] = ObjectSerializer.serialize(opts.txId, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -430,19 +451,21 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TransferOrderStatus>(config, "TransferOrderStatus", authSettings);
+        return this.client.request<TransferOrderStatus>(config, 'TransferOrderStatus', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Retrieve withdrawal status
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
      */
-    public async listWithdrawStatus(opts: { currency?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<WithdrawStatus>; }> {
+    public async listWithdrawStatus(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<WithdrawStatus> }> {
         const localVarPath = this.client.basePath + '/wallet/withdraw_status';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -453,9 +476,8 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -465,19 +487,21 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<WithdrawStatus>>(config, "Array<WithdrawStatus>", authSettings);
+        return this.client.request<Array<WithdrawStatus>>(config, 'Array<WithdrawStatus>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Retrieve sub account balances
      * @param opts Optional parameters
      * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
-    public async listSubAccountBalances(opts: { subUid?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccountBalance>; }> {
+    public async listSubAccountBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_balances';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -488,9 +512,8 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -500,19 +523,21 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountBalance>>(config, "Array<SubAccountBalance>", authSettings);
+        return this.client.request<Array<SubAccountBalance>>(config, 'Array<SubAccountBalance>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Query sub accounts\' margin balances
      * @param opts Optional parameters
      * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
-    public async listSubAccountMarginBalances(opts: { subUid?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccountMarginBalance>; }> {
+    public async listSubAccountMarginBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_margin_balances';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -523,9 +548,8 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -535,20 +559,27 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountMarginBalance>>(config, "Array<SubAccountMarginBalance>", authSettings);
+        return this.client.request<Array<SubAccountMarginBalance>>(
+            config,
+            'Array<SubAccountMarginBalance>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Query sub accounts\' futures account balances
      * @param opts Optional parameters
      * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      * @param opts.settle Query only balances of specified settle currency
      */
-    public async listSubAccountFuturesBalances(opts: { subUid?: string, settle?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance>; }> {
+    public async listSubAccountFuturesBalances(opts: {
+        subUid?: string;
+        settle?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_futures_balances';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -559,13 +590,12 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
 
         if (opts.settle !== undefined) {
-            localVarQueryParameters['settle'] = ObjectSerializer.serialize(opts.settle, "string");
+            localVarQueryParameters['settle'] = ObjectSerializer.serialize(opts.settle, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -575,19 +605,25 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountFuturesBalance>>(config, "Array<SubAccountFuturesBalance>", authSettings);
+        return this.client.request<Array<SubAccountFuturesBalance>>(
+            config,
+            'Array<SubAccountFuturesBalance>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Query subaccount\'s cross_margin account info
      * @param opts Optional parameters
      * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
      */
-    public async listSubAccountCrossMarginBalances(opts: { subUid?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance>; }> {
+    public async listSubAccountCrossMarginBalances(opts: {
+        subUid?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_cross_margin_balances';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -598,9 +634,8 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.subUid !== undefined) {
-            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, "string");
+            localVarQueryParameters['sub_uid'] = ObjectSerializer.serialize(opts.subUid, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -610,11 +645,15 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountCrossMarginBalance>>(config, "Array<SubAccountCrossMarginBalance>", authSettings);
+        return this.client.request<Array<SubAccountCrossMarginBalance>>(
+            config,
+            'Array<SubAccountCrossMarginBalance>',
+            authSettings,
+        );
     }
 
     /**
-     * 
+     *
      * @summary Query saved address
      * @param currency Currency
      * @param opts Optional parameters
@@ -622,10 +661,13 @@ export class WalletApi {
      * @param opts.limit Maximum number returned, 100 at most
      * @param opts.page Page number
      */
-    public async listSavedAddress(currency: string, opts: { chain?: string, limit?: string, page?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<SavedAddress>; }> {
+    public async listSavedAddress(
+        currency: string,
+        opts: { chain?: string; limit?: string; page?: number },
+    ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
         const localVarPath = this.client.basePath + '/wallet/saved_address';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -640,20 +682,19 @@ export class WalletApi {
         }
 
         opts = opts || {};
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, "string");
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
 
         if (opts.chain !== undefined) {
-            localVarQueryParameters['chain'] = ObjectSerializer.serialize(opts.chain, "string");
+            localVarQueryParameters['chain'] = ObjectSerializer.serialize(opts.chain, 'string');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "string");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'string');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -663,20 +704,23 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SavedAddress>>(config, "Array<SavedAddress>", authSettings);
+        return this.client.request<Array<SavedAddress>>(config, 'Array<SavedAddress>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Retrieve personal trading fee
      * @param opts Optional parameters
      * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
      * @param opts.settle Specify the settlement currency of the contract to get more accurate rate settings  This field is optional. Generally, the rate settings for all settlement currencies are the same.
      */
-    public async getTradeFee(opts: { currencyPair?: string, settle?: 'BTC' | 'USDT' | 'USD',  } ) : Promise<{ response: AxiosResponse; body: TradeFee; }> {
+    public async getTradeFee(opts: {
+        currencyPair?: string;
+        settle?: 'BTC' | 'USDT' | 'USD';
+    }): Promise<{ response: AxiosResponse; body: TradeFee }> {
         const localVarPath = this.client.basePath + '/wallet/fee';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -687,13 +731,12 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, "string");
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
         }
 
         if (opts.settle !== undefined) {
             localVarQueryParameters['settle'] = ObjectSerializer.serialize(opts.settle, "'BTC' | 'USDT' | 'USD'");
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -703,7 +746,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TradeFee>(config, "TradeFee", authSettings);
+        return this.client.request<TradeFee>(config, 'TradeFee', authSettings);
     }
 
     /**
@@ -712,10 +755,12 @@ export class WalletApi {
      * @param opts Optional parameters
      * @param opts.currency Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default.
      */
-    public async getTotalBalance(opts: { currency?: string,  } ) : Promise<{ response: AxiosResponse; body: TotalBalance; }> {
+    public async getTotalBalance(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: TotalBalance }> {
         const localVarPath = this.client.basePath + '/wallet/total_balance';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -726,9 +771,8 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -738,17 +782,17 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<TotalBalance>(config, "TotalBalance", authSettings);
+        return this.client.request<TotalBalance>(config, 'TotalBalance', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List small balance
      */
-    public async listSmallBalance() : Promise<{ response: AxiosResponse; body: Array<SmallBalance>; }> {
+    public async listSmallBalance(): Promise<{ response: AxiosResponse; body: Array<SmallBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -757,7 +801,6 @@ export class WalletApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
 
-
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -766,49 +809,56 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SmallBalance>>(config, "Array<SmallBalance>", authSettings);
+        return this.client.request<Array<SmallBalance>>(config, 'Array<SmallBalance>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Convert small balance
-     * @param convertSmallBalance 
+     * @param convertSmallBalance
      */
-    public async convertSmallBalance(convertSmallBalance: ConvertSmallBalance) : Promise<{ response: AxiosResponse; body?: any; }> {
+    public async convertSmallBalance(
+        convertSmallBalance: ConvertSmallBalance,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'convertSmallBalance' is not null or undefined
         if (convertSmallBalance === null || convertSmallBalance === undefined) {
-            throw new Error('Required parameter convertSmallBalance was null or undefined when calling convertSmallBalance.');
+            throw new Error(
+                'Required parameter convertSmallBalance was null or undefined when calling convertSmallBalance.',
+            );
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(convertSmallBalance, "ConvertSmallBalance")
+            data: ObjectSerializer.serialize(convertSmallBalance, 'ConvertSmallBalance'),
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, "", authSettings);
+        return this.client.request<any>(config, '', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary List small balance history
      * @param opts Optional parameters
      * @param opts.currency Currency
      * @param opts.page Page number
      * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
      */
-    public async listSmallBalanceHistory(opts: { currency?: string, page?: number, limit?: number,  } ) : Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory>; }> {
+    public async listSmallBalanceHistory(opts: {
+        currency?: string;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory> }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance_history';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -819,17 +869,16 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.currency !== undefined) {
-            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, "string");
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
         }
 
         if (opts.page !== undefined) {
-            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, "number");
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -839,11 +888,11 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SmallBalanceHistory>>(config, "Array<SmallBalanceHistory>", authSettings);
+        return this.client.request<Array<SmallBalanceHistory>>(config, 'Array<SmallBalanceHistory>', authSettings);
     }
 
     /**
-     * 
+     *
      * @summary Retrieve the UID transfer history
      * @param opts Optional parameters
      * @param opts.id Order ID
@@ -853,10 +902,17 @@ export class WalletApi {
      * @param opts.offset List offset, starting from 0
      * @param opts.transactionType The list returns the order type &#x60;withdraw&#x60;, &#x60;deposit&#x60;, the default is &#x60;withdraw&#x60;.
      */
-    public async listPushOrders(opts: { id?: number, from?: number, to?: number, limit?: number, offset?: number, transactionType?: string,  } ) : Promise<{ response: AxiosResponse; body: Array<UidPushOrder>; }> {
+    public async listPushOrders(opts: {
+        id?: number;
+        from?: number;
+        to?: number;
+        limit?: number;
+        offset?: number;
+        transactionType?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<UidPushOrder> }> {
         const localVarPath = this.client.basePath + '/wallet/push';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -867,29 +923,28 @@ export class WalletApi {
 
         opts = opts || {};
         if (opts.id !== undefined) {
-            localVarQueryParameters['id'] = ObjectSerializer.serialize(opts.id, "number");
+            localVarQueryParameters['id'] = ObjectSerializer.serialize(opts.id, 'number');
         }
 
         if (opts.from !== undefined) {
-            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, "number");
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
         }
 
         if (opts.to !== undefined) {
-            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, "number");
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.limit !== undefined) {
-            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, "number");
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         if (opts.offset !== undefined) {
-            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, "number");
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
         }
 
         if (opts.transactionType !== undefined) {
-            localVarQueryParameters['transaction_type'] = ObjectSerializer.serialize(opts.transactionType, "string");
+            localVarQueryParameters['transaction_type'] = ObjectSerializer.serialize(opts.transactionType, 'string');
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'GET',
@@ -899,6 +954,6 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<UidPushOrder>>(config, "Array<UidPushOrder>", authSettings);
+        return this.client.request<Array<UidPushOrder>>(config, 'Array<UidPushOrder>', authSettings);
     }
 }

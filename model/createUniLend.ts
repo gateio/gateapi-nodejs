@@ -9,51 +9,51 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Lend or redeem
-*/
+ * Lend or redeem
+ */
 export class CreateUniLend {
     /**
-    * Currency name
-    */
+     * Currency name
+     */
     'currency': string;
     /**
-    * The amount of currency could be lent
-    */
+     * The amount of currency could be lent
+     */
     'amount': string;
     /**
-    * type: lend - lend, redeem - redeem
-    */
+     * type: lend - lend, redeem - redeem
+     */
     'type': CreateUniLend.Type;
     /**
-    * The minimum interest rate. If the value is too high, it might lead to the unsuccessful lending and no profit will be gained for that hour. 
-    */
+     * The minimum interest rate. If the value is too high, it might lead to the unsuccessful lending and no profit will be gained for that hour.
+     */
     'minRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "currency",
-            "baseName": "currency",
-            "type": "string"
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            "name": "amount",
-            "baseName": "amount",
-            "type": "string"
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "CreateUniLend.Type"
+            name: 'type',
+            baseName: 'type',
+            type: 'CreateUniLend.Type',
         },
         {
-            "name": "minRate",
-            "baseName": "min_rate",
-            "type": "string"
-        }    ];
+            name: 'minRate',
+            baseName: 'min_rate',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return CreateUniLend.attributeTypeMap;
@@ -62,7 +62,7 @@ export class CreateUniLend {
 
 export namespace CreateUniLend {
     export enum Type {
-        Lend = <any> 'lend',
-        Redeem = <any> 'redeem'
+        Lend = <any>'lend',
+        Redeem = <any>'redeem',
     }
 }

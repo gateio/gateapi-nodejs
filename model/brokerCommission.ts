@@ -13,30 +13,30 @@ import { BrokerCommission1 } from './brokerCommission1';
 
 export class BrokerCommission {
     /**
-    * Total
-    */
+     * Total
+     */
     'total'?: number;
     /**
-    * List of comission history
-    */
+     * List of comission history
+     */
     'list'?: Array<BrokerCommission1>;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            name: 'total',
+            baseName: 'total',
+            type: 'number',
         },
         {
-            "name": "list",
-            "baseName": "list",
-            "type": "Array<BrokerCommission1>"
-        }    ];
+            name: 'list',
+            baseName: 'list',
+            type: 'Array<BrokerCommission1>',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return BrokerCommission.attributeTypeMap;
     }
 }
-

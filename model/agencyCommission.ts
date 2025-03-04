@@ -9,69 +9,68 @@
  * Do not edit the class manually.
  */
 
-
 export class AgencyCommission {
     /**
-    * Commission Time. (unix timestamp)
-    */
+     * Commission Time. (unix timestamp)
+     */
     'commissionTime'?: number;
     /**
-    * User ID
-    */
+     * User ID
+     */
     'userId'?: number;
     /**
-    * Group name
-    */
+     * Group name
+     */
     'groupName'?: string;
     /**
-    * Commission Amount
-    */
+     * Commission Amount
+     */
     'commissionAmount'?: string;
     /**
-    * Commission Asset
-    */
+     * Commission Asset
+     */
     'commissionAsset'?: string;
     /**
-    * Source.  SPOT - SPOT Rebate, FUTURES - Futures Rebate
-    */
+     * Source.  SPOT - SPOT Rebate, FUTURES - Futures Rebate
+     */
     'source'?: string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "commissionTime",
-            "baseName": "commission_time",
-            "type": "number"
+            name: 'commissionTime',
+            baseName: 'commission_time',
+            type: 'number',
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number"
+            name: 'userId',
+            baseName: 'user_id',
+            type: 'number',
         },
         {
-            "name": "groupName",
-            "baseName": "group_name",
-            "type": "string"
+            name: 'groupName',
+            baseName: 'group_name',
+            type: 'string',
         },
         {
-            "name": "commissionAmount",
-            "baseName": "commission_amount",
-            "type": "string"
+            name: 'commissionAmount',
+            baseName: 'commission_amount',
+            type: 'string',
         },
         {
-            "name": "commissionAsset",
-            "baseName": "commission_asset",
-            "type": "string"
+            name: 'commissionAsset',
+            baseName: 'commission_asset',
+            type: 'string',
         },
         {
-            "name": "source",
-            "baseName": "source",
-            "type": "string"
-        }    ];
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return AgencyCommission.attributeTypeMap;
     }
 }
-

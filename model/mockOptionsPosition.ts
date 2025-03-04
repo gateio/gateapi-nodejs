@@ -9,36 +9,35 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Options positions
-*/
+ * Options positions
+ */
 export class MockOptionsPosition {
     /**
-    * Option name, currently only supports options for BTC and ETH with USDT.
-    */
+     * Option name, currently only supports options for BTC and ETH with USDT.
+     */
     'optionsName': string;
     /**
-    * Position size, measured in contract units.
-    */
+     * Position size, measured in contract units.
+     */
     'size': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "optionsName",
-            "baseName": "options_name",
-            "type": "string"
+            name: 'optionsName',
+            baseName: 'options_name',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "string"
-        }    ];
+            name: 'size',
+            baseName: 'size',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockOptionsPosition.attributeTypeMap;
     }
 }
-

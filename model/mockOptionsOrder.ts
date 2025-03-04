@@ -9,45 +9,44 @@
  * Do not edit the class manually.
  */
 
-
 /**
-* Option orders
-*/
+ * Option orders
+ */
 export class MockOptionsOrder {
     /**
-    * Option name, currently only supports options for BTC and ETH with USDT.
-    */
+     * Option name, currently only supports options for BTC and ETH with USDT.
+     */
     'optionsName': string;
     /**
-    * Initial order quantity, not involved in actual calculation
-    */
+     * Initial order quantity, not involved in actual calculation
+     */
     'size': string;
     /**
-    * Unfilled contract quantity, involved in actual calculation
-    */
+     * Unfilled contract quantity, involved in actual calculation
+     */
     'left': string;
 
     static discriminator: string | undefined = undefined;
 
-    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+    static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            "name": "optionsName",
-            "baseName": "options_name",
-            "type": "string"
+            name: 'optionsName',
+            baseName: 'options_name',
+            type: 'string',
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "string"
+            name: 'size',
+            baseName: 'size',
+            type: 'string',
         },
         {
-            "name": "left",
-            "baseName": "left",
-            "type": "string"
-        }    ];
+            name: 'left',
+            baseName: 'left',
+            type: 'string',
+        },
+    ];
 
     static getAttributeTypeMap() {
         return MockOptionsOrder.attributeTypeMap;
     }
 }
-
