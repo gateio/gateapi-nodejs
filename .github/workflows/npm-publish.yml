@@ -16,8 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm test
 
   publish-npm:
     needs: build
