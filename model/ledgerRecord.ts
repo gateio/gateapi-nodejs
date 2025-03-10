@@ -43,9 +43,9 @@ export class LedgerRecord {
      */
     'memo'?: string;
     /**
-     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - SPLITPEND: the order is automatically split due to large amount
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval
      */
-    'status'?: LedgerRecord.Status;
+    'status'?: string;
     /**
      * Name of the chain used in withdrawals
      */
@@ -97,7 +97,7 @@ export class LedgerRecord {
         {
             name: 'status',
             baseName: 'status',
-            type: 'LedgerRecord.Status',
+            type: 'string',
         },
         {
             name: 'chain',
@@ -108,23 +108,5 @@ export class LedgerRecord {
 
     static getAttributeTypeMap() {
         return LedgerRecord.attributeTypeMap;
-    }
-}
-
-export namespace LedgerRecord {
-    export enum Status {
-        DONE = <any>'DONE',
-        CANCEL = <any>'CANCEL',
-        REQUEST = <any>'REQUEST',
-        MANUAL = <any>'MANUAL',
-        BCODE = <any>'BCODE',
-        EXTPEND = <any>'EXTPEND',
-        FAIL = <any>'FAIL',
-        INVALID = <any>'INVALID',
-        VERIFY = <any>'VERIFY',
-        PROCES = <any>'PROCES',
-        PEND = <any>'PEND',
-        DMOVE = <any>'DMOVE',
-        SPLITPEND = <any>'SPLITPEND',
     }
 }

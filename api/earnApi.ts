@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
+import { Eth2RateList } from '../model/eth2RateList';
 import { Eth2Swap } from '../model/eth2Swap';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { StructuredBuy } from '../model/structuredBuy';
@@ -64,11 +65,11 @@ export class EarnApi {
     }
 
     /**
-     *
-     * @summary Dual Investment product list
+     * Check the ETH earnings rate record for the last 31 days
+     * @summary ETH2 historical rate of return query
      */
-    public async listDualInvestmentPlans(): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
-        const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
+    public async rateListETH2(): Promise<{ response: AxiosResponse; body: Array<Eth2RateList> }> {
+        const localVarPath = this.client.basePath + '/earn/staking/eth2/rate_records';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
@@ -86,6 +87,42 @@ export class EarnApi {
             url: localVarPath,
         };
 
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Eth2RateList>>(config, 'Array<Eth2RateList>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Dual Investment product list
+     * @param opts Optional parameters
+     * @param opts.planId Financial project id
+     */
+    public async listDualInvestmentPlans(opts: {
+        planId?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
+        const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.planId !== undefined) {
+            localVarQueryParameters['plan_id'] = ObjectSerializer.serialize(opts.planId, 'number');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
         const authSettings = [];
         return this.client.request<Array<DualGetPlans>>(config, 'Array<DualGetPlans>', authSettings);
     }
@@ -93,8 +130,18 @@ export class EarnApi {
     /**
      *
      * @summary Dual Investment order list
+     * @param opts Optional parameters
+     * @param opts.from Start checkout time
+     * @param opts.to End settlement time
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records to be returned in a single list
      */
-    public async listDualOrders(): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
+    public async listDualOrders(opts: {
+        from?: number;
+        to?: number;
+        page?: number;
+        limit?: number;
+    }): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
         const localVarQueryParameters: any = {};
         const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -104,6 +151,23 @@ export class EarnApi {
             localVarHeaderParams.Accept = 'application/json';
         } else {
             localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
+        if (opts.page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(opts.page, 'number');
+        }
+
+        if (opts.limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
         const config: AxiosRequestConfig = {

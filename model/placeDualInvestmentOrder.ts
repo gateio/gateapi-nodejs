@@ -29,6 +29,10 @@ export class PlaceDualInvestmentOrder {
      * Subscription amount, mutually exclusive with the copies field
      */
     'amount': string;
+    /**
+     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -51,6 +55,11 @@ export class PlaceDualInvestmentOrder {
         {
             name: 'amount',
             baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
             type: 'string',
         },
     ];

@@ -20,4 +20,5 @@ Name | Type | Description | Notes
 **apyDisplay** | **string** | APY | [optional] [default to undefined]
 **apySettlement** | **string** | Settlement APY | [optional] [default to undefined]
 **deliveryTime** | **number** | Settlement time | [optional] [default to undefined]
+**text** | **string** | Custom order information | [optional] [default to undefined]
 

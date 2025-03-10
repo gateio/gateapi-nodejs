@@ -44,7 +44,7 @@ Method | HTTP request | Description
 
 List all currencies\&#39; details
 
-Currency has two forms:  1. Only currency name, e.g., BTC, USDT 2. &#x60;&lt;currency&gt;_&lt;chain&gt;&#x60;, e.g., &#x60;HT_ETH&#x60;  The latter one occurs when one currency has multiple chains. Currency detail contains a &#x60;chain&#x60; field whatever the form is. To retrieve all chains of one currency, you can use use all the details which has the name of the currency or name starting with &#x60;&lt;currency&gt;_&#x60;.
+When a currency corresponds to multiple chains, you can query the information of multiple chains through the &#x60;chains&#x60; field, such as the charging and recharge status, identification, etc. of the chain.
 
 ### Example
 

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**swapETH2**](EarnApi.md#swapETH2) | **POST** /earn/staking/eth2/swap | ETH2 swap
+[**rateListETH2**](EarnApi.md#rateListETH2) | **GET** /earn/staking/eth2/rate_records | ETH2 historical rate of return query
 [**listDualInvestmentPlans**](EarnApi.md#listDualInvestmentPlans) | **GET** /earn/dual/investment_plan | Dual Investment product list
 [**listDualOrders**](EarnApi.md#listDualOrders) | **GET** /earn/dual/orders | Dual Investment order list
 [**placeDualOrder**](EarnApi.md#placeDualOrder) | **POST** /earn/dual/orders | Place Dual Investment order
@@ -56,9 +57,50 @@ Promise<{ response: AxiosResponse; body?: any; }>
 - **Content-Type**: application/json
 - **Accept**: Not defined
 
+## rateListETH2
+
+> Promise<{ response: http.IncomingMessage; body: Array<Eth2RateList>; }> rateListETH2()
+
+ETH2 historical rate of return query
+
+Check the ETH earnings rate record for the last 31 days
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+api.rateListETH2()
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<Eth2RateList>; }> [Eth2RateList](Eth2RateList.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 ## listDualInvestmentPlans
 
-> Promise<{ response: http.IncomingMessage; body: Array<DualGetPlans>; }> listDualInvestmentPlans()
+> Promise<{ response: http.IncomingMessage; body: Array<DualGetPlans>; }> listDualInvestmentPlans(opts)
 
 Dual Investment product list
 
@@ -71,14 +113,20 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.EarnApi(client);
-api.listDualInvestmentPlans()
+const opts = {
+  'planId': 1 // number | Financial project id
+};
+api.listDualInvestmentPlans(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **planId** | **number**| Financial project id | [optional] [default to undefined]
 
 ### Return type
 
@@ -95,7 +143,7 @@ No authorization required
 
 ## listDualOrders
 
-> Promise<{ response: http.IncomingMessage; body: Array<DualGetOrders>; }> listDualOrders()
+> Promise<{ response: http.IncomingMessage; body: Array<DualGetOrders>; }> listDualOrders(opts)
 
 Dual Investment order list
 
@@ -110,14 +158,26 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
-api.listDualOrders()
+const opts = {
+  'from': 1740727000, // number | Start checkout time
+  'to': 1740729000, // number | End settlement time
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of records to be returned in a single list
+};
+api.listDualOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **number**| Start checkout time | [optional] [default to undefined]
+ **to** | **number**| End settlement time | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 

@@ -51,9 +51,9 @@ export class WithdrawalRecord {
      */
     'memo'?: string;
     /**
-     * Transaction status  - DONE: Completed (block_number > 0 is considered to be truly completed) - CANCEL: Canceled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: Recharge code operation - EXTPEND: Sent awaiting confirmation - FAIL: Failure on the chain awaiting confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: pending manual review - SPLITPEND: cny withdrawal is greater than 50,000, orders will be split automatically
+     * Transaction status  - DONE: Completed (block_number > 0 is considered to be truly completed) - CANCEL: Canceled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: Recharge code operation - EXTPEND: Sent awaiting confirmation - FAIL: Failure on the chain awaiting confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: pending manual review
      */
-    'status'?: WithdrawalRecord.Status;
+    'status'?: string;
     /**
      * Name of the chain used in withdrawals
      */
@@ -115,7 +115,7 @@ export class WithdrawalRecord {
         {
             name: 'status',
             baseName: 'status',
-            type: 'WithdrawalRecord.Status',
+            type: 'string',
         },
         {
             name: 'chain',
@@ -126,23 +126,5 @@ export class WithdrawalRecord {
 
     static getAttributeTypeMap() {
         return WithdrawalRecord.attributeTypeMap;
-    }
-}
-
-export namespace WithdrawalRecord {
-    export enum Status {
-        DONE = <any>'DONE',
-        CANCEL = <any>'CANCEL',
-        REQUEST = <any>'REQUEST',
-        MANUAL = <any>'MANUAL',
-        BCODE = <any>'BCODE',
-        EXTPEND = <any>'EXTPEND',
-        FAIL = <any>'FAIL',
-        INVALID = <any>'INVALID',
-        VERIFY = <any>'VERIFY',
-        PROCES = <any>'PROCES',
-        PEND = <any>'PEND',
-        DMOVE = <any>'DMOVE',
-        SPLITPEND = <any>'SPLITPEND',
     }
 }

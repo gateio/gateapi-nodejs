@@ -12,35 +12,6 @@ Name | Type | Description | Notes
 **currency** | **string** | Currency name | [default to undefined]
 **address** | **string** | Withdrawal address. Required for withdrawals | [optional] [default to undefined]
 **memo** | **string** | Additional remarks with regards to the withdrawal | [optional] [default to undefined]
-**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - SPLITPEND: the order is automatically split due to large amount | [optional] [readonly] [default to undefined]
+**status** | **string** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval | [optional] [readonly] [default to undefined]
 **chain** | **string** | Name of the chain used in withdrawals | [default to undefined]
-
-## Enum: LedgerRecord.Status
-
-* `DONE` (value: `'DONE'`)
-
-* `CANCEL` (value: `'CANCEL'`)
-
-* `REQUEST` (value: `'REQUEST'`)
-
-* `MANUAL` (value: `'MANUAL'`)
-
-* `BCODE` (value: `'BCODE'`)
-
-* `EXTPEND` (value: `'EXTPEND'`)
-
-* `FAIL` (value: `'FAIL'`)
-
-* `INVALID` (value: `'INVALID'`)
-
-* `VERIFY` (value: `'VERIFY'`)
-
-* `PROCES` (value: `'PROCES'`)
-
-* `PEND` (value: `'PEND'`)
-
-* `DMOVE` (value: `'DMOVE'`)
-
-* `SPLITPEND` (value: `'SPLITPEND'`)
-
 

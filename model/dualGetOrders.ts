@@ -74,6 +74,10 @@ export class DualGetOrders {
      * Settlement time
      */
     'deliveryTime'?: number;
+    /**
+     * Custom order information
+     */
+    'text'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -157,6 +161,11 @@ export class DualGetOrders {
             name: 'deliveryTime',
             baseName: 'delivery_time',
             type: 'number',
+        },
+        {
+            name: 'text',
+            baseName: 'text',
+            type: 'string',
         },
     ];
 

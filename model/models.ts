@@ -60,6 +60,7 @@ export * from './deliverySettlement';
 export * from './depositAddress';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
+export * from './eth2RateList';
 export * from './eth2Swap';
 export * from './flashSwapCurrencyPair';
 export * from './flashSwapOrder';
@@ -306,6 +307,7 @@ import { DeliverySettlement } from './deliverySettlement';
 import { DepositAddress } from './depositAddress';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
+import { Eth2RateList } from './eth2RateList';
 import { Eth2Swap } from './eth2Swap';
 import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
 import { FlashSwapOrder } from './flashSwapOrder';
@@ -524,7 +526,6 @@ const enumsMap: { [index: string]: any } = {
     'FuturesPriceTrigger.Rule': FuturesPriceTrigger.Rule,
     'FuturesPriceTriggeredOrder.Status': FuturesPriceTriggeredOrder.Status,
     'FuturesPriceTriggeredOrder.FinishAs': FuturesPriceTriggeredOrder.FinishAs,
-    'LedgerRecord.Status': LedgerRecord.Status,
     'MyFuturesTrade.Role': MyFuturesTrade.Role,
     'MyFuturesTradeTimeRange.Role': MyFuturesTradeTimeRange.Role,
     'OptionsAccount.MarginMode': OptionsAccount.MarginMode,
@@ -557,7 +558,6 @@ const enumsMap: { [index: string]: any } = {
     'Transfer.From': Transfer.From,
     'Transfer.To': Transfer.To,
     'UnifiedLoan.Type': UnifiedLoan.Type,
-    'WithdrawalRecord.Status': WithdrawalRecord.Status,
 };
 
 const typeMap: { [index: string]: any } = {
@@ -623,6 +623,7 @@ const typeMap: { [index: string]: any } = {
     DepositAddress: DepositAddress,
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
+    Eth2RateList: Eth2RateList,
     Eth2Swap: Eth2Swap,
     FlashSwapCurrencyPair: FlashSwapCurrencyPair,
     FlashSwapOrder: FlashSwapOrder,
