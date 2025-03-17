@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**getUserLeverageCurrencyConfig**](UnifiedApi.md#getUserLeverageCurrencyConfig) | **GET** /unified/leverage/user_currency_config | Minimum currency leverage that can be set
 [**getUserLeverageCurrencySetting**](UnifiedApi.md#getUserLeverageCurrencySetting) | **GET** /unified/leverage/user_currency_setting | Get the leverage multiple of the user currency
 [**setUserLeverageCurrencySetting**](UnifiedApi.md#setUserLeverageCurrencySetting) | **POST** /unified/leverage/user_currency_setting | Set the loan currency leverage
+[**listUnifiedCurrencies**](UnifiedApi.md#listUnifiedCurrencies) | **GET** /unified/currencies | List of loan currencies supported by unified account
 [**getHistoryLoanRate**](UnifiedApi.md#getHistoryLoanRate) | **GET** /unified/history_loan_rate | get historical lending rates
 
 
@@ -782,6 +783,49 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+## listUnifiedCurrencies
+
+> Promise<{ response: http.IncomingMessage; body: Array<UnifiedCurrency>; }> listUnifiedCurrencies(opts)
+
+List of loan currencies supported by unified account
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.UnifiedApi(client);
+const opts = {
+  'currency': "BTC" // string | Currency
+};
+api.listUnifiedCurrencies(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Currency | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<UnifiedCurrency>; }> [UnifiedCurrency](UnifiedCurrency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ## getHistoryLoanRate
 

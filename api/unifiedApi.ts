@@ -14,6 +14,7 @@ import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
+import { UnifiedCurrency } from '../model/unifiedCurrency';
 import { UnifiedDiscount } from '../model/unifiedDiscount';
 import { UnifiedHistoryLoanRate } from '../model/unifiedHistoryLoanRate';
 import { UnifiedLeverageConfig } from '../model/unifiedLeverageConfig';
@@ -674,6 +675,42 @@ export class UnifiedApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary List of loan currencies supported by unified account
+     * @param opts Optional parameters
+     * @param opts.currency Currency
+     */
+    public async listUnifiedCurrencies(opts: {
+        currency?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<UnifiedCurrency> }> {
+        const localVarPath = this.client.basePath + '/unified/currencies';
+        const localVarQueryParameters: any = {};
+        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currency !== undefined) {
+            localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<UnifiedCurrency>>(config, 'Array<UnifiedCurrency>', authSettings);
     }
 
     /**

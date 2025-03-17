@@ -218,6 +218,7 @@ export * from './uniLoanRecord';
 export * from './unifiedAccount';
 export * from './unifiedBalance';
 export * from './unifiedBorrowable';
+export * from './unifiedCurrency';
 export * from './unifiedDiscount';
 export * from './unifiedDiscountTiers';
 export * from './unifiedHistoryLoanRate';
@@ -465,6 +466,7 @@ import { UniLoanRecord } from './uniLoanRecord';
 import { UnifiedAccount } from './unifiedAccount';
 import { UnifiedBalance } from './unifiedBalance';
 import { UnifiedBorrowable } from './unifiedBorrowable';
+import { UnifiedCurrency } from './unifiedCurrency';
 import { UnifiedDiscount } from './unifiedDiscount';
 import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
 import { UnifiedHistoryLoanRate } from './unifiedHistoryLoanRate';
@@ -781,6 +783,7 @@ const typeMap: { [index: string]: any } = {
     UnifiedAccount: UnifiedAccount,
     UnifiedBalance: UnifiedBalance,
     UnifiedBorrowable: UnifiedBorrowable,
+    UnifiedCurrency: UnifiedCurrency,
     UnifiedDiscount: UnifiedDiscount,
     UnifiedDiscountTiers: UnifiedDiscountTiers,
     UnifiedHistoryLoanRate: UnifiedHistoryLoanRate,
