@@ -28,9 +28,9 @@ Method | HTTP request | Description
 [**listDeliveryLiquidates**](DeliveryApi.md#listDeliveryLiquidates) | **GET** /delivery/{settle}/liquidates | List liquidation history
 [**listDeliverySettlements**](DeliveryApi.md#listDeliverySettlements) | **GET** /delivery/{settle}/settlements | List settlement history
 [**listDeliveryRiskLimitTiers**](DeliveryApi.md#listDeliveryRiskLimitTiers) | **GET** /delivery/{settle}/risk_limit_tiers | List risk limit tiers
-[**listPriceTriggeredDeliveryOrders**](DeliveryApi.md#listPriceTriggeredDeliveryOrders) | **GET** /delivery/{settle}/price_orders | List all auto orders
+[**listPriceTriggeredDeliveryOrders**](DeliveryApi.md#listPriceTriggeredDeliveryOrders) | **GET** /delivery/{settle}/price_orders | List All Price-triggered Orders
 [**createPriceTriggeredDeliveryOrder**](DeliveryApi.md#createPriceTriggeredDeliveryOrder) | **POST** /delivery/{settle}/price_orders | Create a price-triggered order
-[**cancelPriceTriggeredDeliveryOrderList**](DeliveryApi.md#cancelPriceTriggeredDeliveryOrderList) | **DELETE** /delivery/{settle}/price_orders | Cancel all open orders
+[**cancelPriceTriggeredDeliveryOrderList**](DeliveryApi.md#cancelPriceTriggeredDeliveryOrderList) | **DELETE** /delivery/{settle}/price_orders | Cancel All Price-triggered Orders
 [**getPriceTriggeredDeliveryOrder**](DeliveryApi.md#getPriceTriggeredDeliveryOrder) | **GET** /delivery/{settle}/price_orders/{order_id} | Get a price-triggered order
 [**cancelPriceTriggeredDeliveryOrder**](DeliveryApi.md#cancelPriceTriggeredDeliveryOrder) | **DELETE** /delivery/{settle}/price_orders/{order_id} | cancel a price-triggered order
 
@@ -1207,7 +1207,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> listPriceTriggeredDeliveryOrders(settle, status, opts)
 
-List all auto orders
+List All Price-triggered Orders
 
 ### Example
 
@@ -1305,7 +1305,7 @@ Promise<{ response: AxiosResponse; body: TriggerOrderResponse; }> [TriggerOrderR
 
 > Promise<{ response: http.IncomingMessage; body: Array<FuturesPriceTriggeredOrder>; }> cancelPriceTriggeredDeliveryOrderList(settle, contract)
 
-Cancel all open orders
+Cancel All Price-triggered Orders
 
 ### Example
 

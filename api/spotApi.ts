@@ -1494,7 +1494,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Cancel all open orders
+     * @summary Cancel All Price-triggered Orders
      * @param opts Optional parameters
      * @param opts.market Currency pair
      * @param opts.account Trading account type.  Portfolio margin account must set to &#x60;unified&#x60;

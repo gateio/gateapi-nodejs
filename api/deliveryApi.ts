@@ -1373,7 +1373,7 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List all auto orders
+     * @summary List All Price-triggered Orders
      * @param settle Settle currency
      * @param status Only list the orders with this status
      * @param opts Optional parameters
@@ -1494,7 +1494,7 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Cancel all open orders
+     * @summary Cancel All Price-triggered Orders
      * @param settle Settle currency
      * @param contract Futures contract
      */
