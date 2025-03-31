@@ -10,6 +10,7 @@
  */
 
 /* tslint:disable:no-unused-locals */
+import { TransferablesResult } from '../model/transferablesResult';
 import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
@@ -58,8 +59,8 @@ export class UnifiedApi {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: UnifiedAccount }> {
         const localVarPath = this.client.basePath + '/unified/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -95,8 +96,8 @@ export class UnifiedApi {
      */
     public async getUnifiedBorrowable(currency: string): Promise<{ response: AxiosResponse; body: UnifiedBorrowable }> {
         const localVarPath = this.client.basePath + '/unified/borrowable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -132,8 +133,8 @@ export class UnifiedApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: UnifiedTransferable }> {
         const localVarPath = this.client.basePath + '/unified/transferable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -162,6 +163,45 @@ export class UnifiedApi {
 
     /**
      *
+     * @summary Batch query can be transferred out at most for unified accounts; each currency is the maximum value. After the user withdraws the currency, the amount of transferable currency will be changed.
+     * @param currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
+     */
+    public async getUnifiedTransferables(
+        currencies: string,
+    ): Promise<{ response: AxiosResponse; body: Array<TransferablesResult> }> {
+        const localVarPath = this.client.basePath + '/unified/transferables';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error(
+                'Required parameter currencies was null or undefined when calling getUnifiedTransferables.',
+            );
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<TransferablesResult>>(config, 'Array<TransferablesResult>', authSettings);
+    }
+
+    /**
+     *
      * @summary List loans
      * @param opts Optional parameters
      * @param opts.currency Retrieve data of the specified currency
@@ -176,8 +216,8 @@ export class UnifiedApi {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoan> }> {
         const localVarPath = this.client.basePath + '/unified/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -221,8 +261,8 @@ export class UnifiedApi {
      */
     public async createUnifiedLoan(unifiedLoan: UnifiedLoan): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedLoan' is not null or undefined
         if (unifiedLoan === null || unifiedLoan === undefined) {
@@ -257,8 +297,8 @@ export class UnifiedApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UnifiedLoanRecord> }> {
         const localVarPath = this.client.basePath + '/unified/loan_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -315,8 +355,8 @@ export class UnifiedApi {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/unified/interest_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -367,8 +407,8 @@ export class UnifiedApi {
      */
     public async getUnifiedRiskUnits(): Promise<{ response: AxiosResponse; body: UnifiedRiskUnits }> {
         const localVarPath = this.client.basePath + '/unified/risk_units';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -394,8 +434,8 @@ export class UnifiedApi {
      */
     public async getUnifiedMode(): Promise<{ response: AxiosResponse; body: UnifiedModeSet }> {
         const localVarPath = this.client.basePath + '/unified/unified_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -422,8 +462,8 @@ export class UnifiedApi {
      */
     public async setUnifiedMode(unifiedModeSet: UnifiedModeSet): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/unified_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedModeSet' is not null or undefined
         if (unifiedModeSet === null || unifiedModeSet === undefined) {
@@ -451,8 +491,8 @@ export class UnifiedApi {
         currencies: Array<string>,
     ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
         const localVarPath = this.client.basePath + '/unified/estimate_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -485,8 +525,8 @@ export class UnifiedApi {
      */
     public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
         const localVarPath = this.client.basePath + '/unified/currency_discount_tiers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -512,8 +552,8 @@ export class UnifiedApi {
      */
     public async listLoanMarginTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedMarginTiers> }> {
         const localVarPath = this.client.basePath + '/unified/loan_margin_tiers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -542,8 +582,8 @@ export class UnifiedApi {
         unifiedPortfolioInput: UnifiedPortfolioInput,
     ): Promise<{ response: AxiosResponse; body: UnifiedPortfolioOutput }> {
         const localVarPath = this.client.basePath + '/unified/portfolio_calculator';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -580,8 +620,8 @@ export class UnifiedApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: UnifiedLeverageConfig }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_config';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -620,8 +660,8 @@ export class UnifiedApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -655,8 +695,8 @@ export class UnifiedApi {
         unifiedLeverageSetting: UnifiedLeverageSetting,
     ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'unifiedLeverageSetting' is not null or undefined
         if (unifiedLeverageSetting === null || unifiedLeverageSetting === undefined) {
@@ -687,8 +727,8 @@ export class UnifiedApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UnifiedCurrency> }> {
         const localVarPath = this.client.basePath + '/unified/currencies';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -727,8 +767,8 @@ export class UnifiedApi {
         opts: { tier?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate }> {
         const localVarPath = this.client.basePath + '/unified/history_loan_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

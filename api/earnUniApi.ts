@@ -44,8 +44,8 @@ export class EarnUniApi {
      */
     public async listUniCurrencies(): Promise<{ response: AxiosResponse; body: Array<UniCurrency> }> {
         const localVarPath = this.client.basePath + '/earn/uni/currencies';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -74,8 +74,8 @@ export class EarnUniApi {
         const localVarPath =
             this.client.basePath +
             '/earn/uni/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -114,8 +114,8 @@ export class EarnUniApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLend> }> {
         const localVarPath = this.client.basePath + '/earn/uni/lends';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -155,8 +155,8 @@ export class EarnUniApi {
      */
     public async createUniLend(createUniLend: CreateUniLend): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/uni/lends';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'createUniLend' is not null or undefined
         if (createUniLend === null || createUniLend === undefined) {
@@ -182,8 +182,8 @@ export class EarnUniApi {
      */
     public async changeUniLend(patchUniLend: PatchUniLend): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/uni/lends';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'patchUniLend' is not null or undefined
         if (patchUniLend === null || patchUniLend === undefined) {
@@ -222,8 +222,8 @@ export class EarnUniApi {
         type?: 'lend' | 'redeem';
     }): Promise<{ response: AxiosResponse; body: Array<UniLendRecord> }> {
         const localVarPath = this.client.basePath + '/earn/uni/lend_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -277,8 +277,8 @@ export class EarnUniApi {
         const localVarPath =
             this.client.basePath +
             '/earn/uni/interests/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -321,8 +321,8 @@ export class EarnUniApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniInterestRecord> }> {
         const localVarPath = this.client.basePath + '/earn/uni/interest_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -372,8 +372,8 @@ export class EarnUniApi {
         uniInterestMode: UniInterestMode,
     ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/uni/interest_reinvest';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'uniInterestMode' is not null or undefined
         if (uniInterestMode === null || uniInterestMode === undefined) {
@@ -408,8 +408,8 @@ export class EarnUniApi {
                 '{' + 'currency' + '}',
                 encodeURIComponent(String(currency)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

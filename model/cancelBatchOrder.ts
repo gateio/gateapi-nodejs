@@ -22,6 +22,10 @@ export class CancelBatchOrder {
      */
     'id': string;
     /**
+     * If the canceled order is a unified account apikey, this field must be specified and set to `unified`
+     */
+    'account'?: string;
+    /**
      * Processing Mode: When placing an order, different fields are returned based on action_mode. This field is only valid during the request and is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
      */
     'actionMode'?: string;
@@ -37,6 +41,11 @@ export class CancelBatchOrder {
         {
             name: 'id',
             baseName: 'id',
+            type: 'string',
+        },
+        {
+            name: 'account',
+            baseName: 'account',
             type: 'string',
         },
         {

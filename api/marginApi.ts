@@ -21,6 +21,8 @@ import { CrossMarginTransferable } from '../model/crossMarginTransferable';
 import { FundingAccount } from '../model/fundingAccount';
 import { MarginAccount } from '../model/marginAccount';
 import { MarginAccountBook } from '../model/marginAccountBook';
+import { MarginLeverageTier } from '../model/marginLeverageTier';
+import { MarginMarketLeverage } from '../model/marginMarketLeverage';
 import { MarginTransferable } from '../model/marginTransferable';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
@@ -53,8 +55,8 @@ export class MarginApi {
         currencyPair?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
         const localVarPath = this.client.basePath + '/margin/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -101,8 +103,8 @@ export class MarginApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<MarginAccountBook> }> {
         const localVarPath = this.client.basePath + '/margin/account_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -161,8 +163,8 @@ export class MarginApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<FundingAccount> }> {
         const localVarPath = this.client.basePath + '/margin/funding_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -193,8 +195,8 @@ export class MarginApi {
      */
     public async getAutoRepayStatus(): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
         const localVarPath = this.client.basePath + '/margin/auto_repay';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -221,8 +223,8 @@ export class MarginApi {
      */
     public async setAutoRepay(status: string): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
         const localVarPath = this.client.basePath + '/margin/auto_repay';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -261,8 +263,8 @@ export class MarginApi {
         opts: { currencyPair?: string },
     ): Promise<{ response: AxiosResponse; body: MarginTransferable }> {
         const localVarPath = this.client.basePath + '/margin/transferable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -300,8 +302,8 @@ export class MarginApi {
      */
     public async listCrossMarginCurrencies(): Promise<{ response: AxiosResponse; body: Array<CrossMarginCurrency> }> {
         const localVarPath = this.client.basePath + '/margin/cross/currencies';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -332,8 +334,8 @@ export class MarginApi {
         const localVarPath =
             this.client.basePath +
             '/margin/cross/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -364,8 +366,8 @@ export class MarginApi {
      */
     public async getCrossMarginAccount(): Promise<{ response: AxiosResponse; body: CrossMarginAccount }> {
         const localVarPath = this.client.basePath + '/margin/cross/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -405,8 +407,8 @@ export class MarginApi {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<CrossMarginAccountBook> }> {
         const localVarPath = this.client.basePath + '/margin/cross/account_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -470,8 +472,8 @@ export class MarginApi {
         opts: { currency?: string; limit?: number; offset?: number; reverse?: boolean },
     ): Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan> }> {
         const localVarPath = this.client.basePath + '/margin/cross/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -524,8 +526,8 @@ export class MarginApi {
         crossMarginLoan: CrossMarginLoan,
     ): Promise<{ response: AxiosResponse; body: CrossMarginLoan }> {
         const localVarPath = this.client.basePath + '/margin/cross/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -562,8 +564,8 @@ export class MarginApi {
         const localVarPath =
             this.client.basePath +
             '/margin/cross/loans/{loan_id}'.replace('{' + 'loan_id' + '}', encodeURIComponent(String(loanId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -606,8 +608,8 @@ export class MarginApi {
         reverse?: boolean;
     }): Promise<{ response: AxiosResponse; body: Array<CrossMarginRepayment> }> {
         const localVarPath = this.client.basePath + '/margin/cross/repayments';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -657,8 +659,8 @@ export class MarginApi {
         crossMarginRepayRequest: CrossMarginRepayRequest,
     ): Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan> }> {
         const localVarPath = this.client.basePath + '/margin/cross/repayments';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -704,8 +706,8 @@ export class MarginApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/margin/cross/interest_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -755,8 +757,8 @@ export class MarginApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: CrossMarginTransferable }> {
         const localVarPath = this.client.basePath + '/margin/cross/transferable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -794,8 +796,8 @@ export class MarginApi {
         currencies: Array<string>,
     ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
         const localVarPath = this.client.basePath + '/margin/cross/estimate_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -833,8 +835,8 @@ export class MarginApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: UnifiedBorrowable }> {
         const localVarPath = this.client.basePath + '/margin/cross/borrowable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -859,5 +861,146 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<UnifiedBorrowable>(config, 'UnifiedBorrowable', authSettings);
+    }
+
+    /**
+     *
+     * @summary Check the user\'s own leverage lending gradient in the current market
+     * @param currencyPair Currency pair
+     */
+    public async getUserMarginTier(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
+        const localVarPath = this.client.basePath + '/margin/user/loan_margin_tiers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getUserMarginTier.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query the current market leverage lending gradient
+     * @param currencyPair Currency pair
+     */
+    public async getMarketMarginTier(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
+        const localVarPath = this.client.basePath + '/margin/loan_margin_tiers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getMarketMarginTier.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Set the user market leverage multiple
+     * @param marginMarketLeverage
+     */
+    public async setUserMarketLeverage(
+        marginMarketLeverage: MarginMarketLeverage,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/margin/leverage/user_market_setting';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'marginMarketLeverage' is not null or undefined
+        if (marginMarketLeverage === null || marginMarketLeverage === undefined) {
+            throw new Error(
+                'Required parameter marginMarketLeverage was null or undefined when calling setUserMarketLeverage.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(marginMarketLeverage, 'MarginMarketLeverage'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     * Support querying risk rate per position account and margin rate per position account
+     * @summary Query the user\'s leverage account list
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     */
+    public async listMarginUserAccount(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
+        const localVarPath = this.client.basePath + '/margin/user/account';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MarginAccount>>(config, 'Array<MarginAccount>', authSettings);
     }
 }

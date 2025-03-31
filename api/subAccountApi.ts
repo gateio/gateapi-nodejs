@@ -42,8 +42,8 @@ export class SubAccountApi {
         type?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccount> }> {
         const localVarPath = this.client.basePath + '/sub_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -75,8 +75,8 @@ export class SubAccountApi {
      */
     public async createSubAccounts(subAccount: SubAccount): Promise<{ response: AxiosResponse; body: SubAccount }> {
         const localVarPath = this.client.basePath + '/sub_accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -111,8 +111,8 @@ export class SubAccountApi {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -146,8 +146,8 @@ export class SubAccountApi {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -185,8 +185,8 @@ export class SubAccountApi {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -234,8 +234,8 @@ export class SubAccountApi {
             '/sub_accounts/{user_id}/keys/{key}'
                 .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
                 .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -282,8 +282,8 @@ export class SubAccountApi {
             '/sub_accounts/{user_id}/keys/{key}'
                 .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
                 .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -326,8 +326,8 @@ export class SubAccountApi {
             '/sub_accounts/{user_id}/keys/{key}'
                 .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)))
                 .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -359,8 +359,8 @@ export class SubAccountApi {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/lock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -387,8 +387,8 @@ export class SubAccountApi {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/unlock'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
@@ -412,8 +412,8 @@ export class SubAccountApi {
      */
     public async listUnifiedMode(): Promise<{ response: AxiosResponse; body: Array<SubUserMode> }> {
         const localVarPath = this.client.basePath + '/sub_accounts/unified_mode';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

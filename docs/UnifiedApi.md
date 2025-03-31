@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**listUnifiedAccounts**](UnifiedApi.md#listUnifiedAccounts) | **GET** /unified/accounts | Get unified account information
 [**getUnifiedBorrowable**](UnifiedApi.md#getUnifiedBorrowable) | **GET** /unified/borrowable | Query about the maximum borrowing for the unified account
 [**getUnifiedTransferable**](UnifiedApi.md#getUnifiedTransferable) | **GET** /unified/transferable | Query about the maximum transferable for the unified account
+[**getUnifiedTransferables**](UnifiedApi.md#getUnifiedTransferables) | **GET** /unified/transferables | Batch query can be transferred out at most for unified accounts; each currency is the maximum value. After the user withdraws the currency, the amount of transferable currency will be changed.
 [**listUnifiedLoans**](UnifiedApi.md#listUnifiedLoans) | **GET** /unified/loans | List loans
 [**createUnifiedLoan**](UnifiedApi.md#createUnifiedLoan) | **POST** /unified/loans | Borrow or repay
 [**listUnifiedLoanRecords**](UnifiedApi.md#listUnifiedLoanRecords) | **GET** /unified/loan_records | Get load records
@@ -150,6 +151,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: UnifiedTransferable; }> [UnifiedTransferable](UnifiedTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getUnifiedTransferables
+
+> Promise<{ response: http.IncomingMessage; body: Array<TransferablesResult>; }> getUnifiedTransferables(currencies)
+
+Batch query can be transferred out at most for unified accounts; each currency is the maximum value. After the user withdraws the currency, the amount of transferable currency will be changed.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.UnifiedApi(client);
+const currencies = "BTC,ETH"; // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
+api.getUnifiedTransferables(currencies)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencies** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time. | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<TransferablesResult>; }> [TransferablesResult](TransferablesResult.md)
 
 ### Authorization
 

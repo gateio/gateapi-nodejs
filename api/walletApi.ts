@@ -59,8 +59,8 @@ export class WalletApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: Array<CurrencyChain> }> {
         const localVarPath = this.client.basePath + '/wallet/currency_chains';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -94,8 +94,8 @@ export class WalletApi {
      */
     public async getDepositAddress(currency: string): Promise<{ response: AxiosResponse; body: DepositAddress }> {
         const localVarPath = this.client.basePath + '/wallet/deposit_address';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -140,8 +140,8 @@ export class WalletApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/withdrawals';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -200,8 +200,8 @@ export class WalletApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: Array<LedgerRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -249,8 +249,8 @@ export class WalletApi {
      */
     public async transfer(transfer: Transfer): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/transfers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -294,8 +294,8 @@ export class WalletApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -345,8 +345,8 @@ export class WalletApi {
         subAccountTransfer: SubAccountTransfer,
     ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -383,8 +383,8 @@ export class WalletApi {
         subAccountToSubAccount: SubAccountToSubAccount,
     ): Promise<{ response: AxiosResponse; body: TransactionID }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_to_sub_account';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -424,8 +424,8 @@ export class WalletApi {
         txId?: string;
     }): Promise<{ response: AxiosResponse; body: TransferOrderStatus }> {
         const localVarPath = this.client.basePath + '/wallet/order_status';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -464,8 +464,8 @@ export class WalletApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<WithdrawStatus> }> {
         const localVarPath = this.client.basePath + '/wallet/withdraw_status';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -500,8 +500,8 @@ export class WalletApi {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_balances';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -536,8 +536,8 @@ export class WalletApi {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_margin_balances';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -578,8 +578,8 @@ export class WalletApi {
         settle?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountFuturesBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_futures_balances';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -622,8 +622,8 @@ export class WalletApi {
         subUid?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SubAccountCrossMarginBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_cross_margin_balances';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -666,8 +666,8 @@ export class WalletApi {
         opts: { chain?: string; limit?: string; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SavedAddress> }> {
         const localVarPath = this.client.basePath + '/wallet/saved_address';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -719,8 +719,8 @@ export class WalletApi {
         settle?: 'BTC' | 'USDT' | 'USD';
     }): Promise<{ response: AxiosResponse; body: TradeFee }> {
         const localVarPath = this.client.basePath + '/wallet/fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -759,8 +759,8 @@ export class WalletApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: TotalBalance }> {
         const localVarPath = this.client.basePath + '/wallet/total_balance';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -791,8 +791,8 @@ export class WalletApi {
      */
     public async listSmallBalance(): Promise<{ response: AxiosResponse; body: Array<SmallBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -821,8 +821,8 @@ export class WalletApi {
         convertSmallBalance: ConvertSmallBalance,
     ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'convertSmallBalance' is not null or undefined
         if (convertSmallBalance === null || convertSmallBalance === undefined) {
@@ -857,8 +857,8 @@ export class WalletApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<SmallBalanceHistory> }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -911,8 +911,8 @@ export class WalletApi {
         transactionType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<UidPushOrder> }> {
         const localVarPath = this.client.basePath + '/wallet/push';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

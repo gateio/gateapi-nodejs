@@ -44,8 +44,8 @@ export class EarnApi {
      */
     public async swapETH2(eth2Swap: Eth2Swap): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/staking/eth2/swap';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'eth2Swap' is not null or undefined
         if (eth2Swap === null || eth2Swap === undefined) {
@@ -70,8 +70,8 @@ export class EarnApi {
      */
     public async rateListETH2(): Promise<{ response: AxiosResponse; body: Array<Eth2RateList> }> {
         const localVarPath = this.client.basePath + '/earn/staking/eth2/rate_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -101,8 +101,8 @@ export class EarnApi {
         planId?: number;
     }): Promise<{ response: AxiosResponse; body: Array<DualGetPlans> }> {
         const localVarPath = this.client.basePath + '/earn/dual/investment_plan';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -143,8 +143,8 @@ export class EarnApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<DualGetOrders> }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -190,8 +190,8 @@ export class EarnApi {
         placeDualInvestmentOrder: PlaceDualInvestmentOrder,
     ): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/dual/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'placeDualInvestmentOrder' is not null or undefined
         if (placeDualInvestmentOrder === null || placeDualInvestmentOrder === undefined) {
@@ -226,8 +226,8 @@ export class EarnApi {
         opts: { type?: string; page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<StructuredGetProjectList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/products';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -287,8 +287,8 @@ export class EarnApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<StructuredOrderList> }> {
         const localVarPath = this.client.basePath + '/earn/structured/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -332,8 +332,8 @@ export class EarnApi {
      */
     public async placeStructuredOrder(structuredBuy: StructuredBuy): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/earn/structured/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'structuredBuy' is not null or undefined
         if (structuredBuy === null || structuredBuy === undefined) {

@@ -39,8 +39,8 @@ export class WithdrawalApi {
      */
     public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
         const localVarPath = this.client.basePath + '/withdrawals';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -75,8 +75,8 @@ export class WithdrawalApi {
         uidPushWithdrawal: UidPushWithdrawal,
     ): Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp }> {
         const localVarPath = this.client.basePath + '/withdrawals/push';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -116,8 +116,8 @@ export class WithdrawalApi {
                 '{' + 'withdrawal_id' + '}',
                 encodeURIComponent(String(withdrawalId)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

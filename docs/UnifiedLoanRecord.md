@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **number** | id | [optional] [readonly] [default to undefined]
 **type** | **string** | type: borrow - borrow, repay - repay | [optional] [readonly] [default to undefined]
-**repaymentType** | **string** | Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation | [optional] [readonly] [default to undefined]
+**repaymentType** | **string** | Repayment type, none - No repayment type, manual_repay - Manual repayment, auto_repay - Automatic repayment, cancel_auto_repay - Automatic repayment after withdrawal, different_currencies_repayment - Different currency repayment | [optional] [readonly] [default to undefined]
 **borrowType** | **string** | Loan type, returned when querying loan records. manual_borrow - Manual repayment , auto_borrow - Automatic repayment | [optional] [default to undefined]
 **currencyPair** | **string** | Currency pair | [optional] [readonly] [default to undefined]
 **currency** | **string** | Currency | [optional] [readonly] [default to undefined]

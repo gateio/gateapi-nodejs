@@ -98,6 +98,8 @@ export * from './liquidateOrder';
 export * from './marginAccount';
 export * from './marginAccountBook';
 export * from './marginAccountCurrency';
+export * from './marginLeverageTier';
+export * from './marginMarketLeverage';
 export * from './marginTiers';
 export * from './marginTransferable';
 export * from './maxUniBorrowable';
@@ -199,6 +201,7 @@ export * from './tradeFee';
 export * from './transactionID';
 export * from './transfer';
 export * from './transferOrderStatus';
+export * from './transferablesResult';
 export * from './triggerOrderResponse';
 export * from './triggerTime';
 export * from './uidPushOrder';
@@ -346,6 +349,8 @@ import { LiquidateOrder } from './liquidateOrder';
 import { MarginAccount } from './marginAccount';
 import { MarginAccountBook } from './marginAccountBook';
 import { MarginAccountCurrency } from './marginAccountCurrency';
+import { MarginLeverageTier } from './marginLeverageTier';
+import { MarginMarketLeverage } from './marginMarketLeverage';
 import { MarginTiers } from './marginTiers';
 import { MarginTransferable } from './marginTransferable';
 import { MaxUniBorrowable } from './maxUniBorrowable';
@@ -447,6 +452,7 @@ import { TradeFee } from './tradeFee';
 import { TransactionID } from './transactionID';
 import { Transfer } from './transfer';
 import { TransferOrderStatus } from './transferOrderStatus';
+import { TransferablesResult } from './transferablesResult';
 import { TriggerOrderResponse } from './triggerOrderResponse';
 import { TriggerTime } from './triggerTime';
 import { UidPushOrder } from './uidPushOrder';
@@ -490,9 +496,9 @@ import { WithdrawStatus } from './withdrawStatus';
 import { WithdrawalRecord } from './withdrawalRecord';
 
 /* tslint:disable:no-unused-variable */
-const primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
+let primitives = ['string', 'boolean', 'double', 'integer', 'long', 'float', 'number', 'any', 'bigint'];
 
-const enumsMap: { [index: string]: any } = {
+let enumsMap: { [index: string]: any } = {
     'AccountBalance.Currency': AccountBalance.Currency,
     'AutoRepaySetting.Status': AutoRepaySetting.Status,
     'BatchFuturesOrder.FinishAs': BatchFuturesOrder.FinishAs,
@@ -562,7 +568,7 @@ const enumsMap: { [index: string]: any } = {
     'UnifiedLoan.Type': UnifiedLoan.Type,
 };
 
-const typeMap: { [index: string]: any } = {
+let typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
@@ -663,6 +669,8 @@ const typeMap: { [index: string]: any } = {
     MarginAccount: MarginAccount,
     MarginAccountBook: MarginAccountBook,
     MarginAccountCurrency: MarginAccountCurrency,
+    MarginLeverageTier: MarginLeverageTier,
+    MarginMarketLeverage: MarginMarketLeverage,
     MarginTiers: MarginTiers,
     MarginTransferable: MarginTransferable,
     MaxUniBorrowable: MaxUniBorrowable,
@@ -764,6 +772,7 @@ const typeMap: { [index: string]: any } = {
     TransactionID: TransactionID,
     Transfer: Transfer,
     TransferOrderStatus: TransferOrderStatus,
+    TransferablesResult: TransferablesResult,
     TriggerOrderResponse: TriggerOrderResponse,
     TriggerTime: TriggerTime,
     UidPushOrder: UidPushOrder,
@@ -825,12 +834,12 @@ export class ObjectSerializer {
             }
 
             // Check the discriminator
-            const discriminatorProperty = typeMap[expectedType].discriminator;
+            let discriminatorProperty = typeMap[expectedType].discriminator;
             if (discriminatorProperty == null) {
                 return expectedType; // the type does not have a discriminator. use it.
             } else {
                 if (data[discriminatorProperty]) {
-                    const discriminatorType = data[discriminatorProperty];
+                    var discriminatorType = data[discriminatorProperty];
                     if (typeMap[discriminatorType]) {
                         return discriminatorType; // use the type given in the discriminator
                     } else {
@@ -855,9 +864,9 @@ export class ObjectSerializer {
             // string.startsWith pre es6
             let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            const transformedData: any[] = [];
-            for (const index in data) {
-                const date = data[index];
+            let transformedData: any[] = [];
+            for (let index in data) {
+                let date = data[index];
                 transformedData.push(ObjectSerializer.serialize(date, subType));
             }
             return transformedData;
@@ -876,10 +885,10 @@ export class ObjectSerializer {
             type = this.findCorrectType(data, type);
 
             // get the map for the correct type.
-            const attributeTypes = typeMap[type].getAttributeTypeMap();
-            const instance: { [index: string]: any } = {};
-            for (const index in attributeTypes) {
-                const attributeType = attributeTypes[index];
+            let attributeTypes = typeMap[type].getAttributeTypeMap();
+            let instance: { [index: string]: any } = {};
+            for (let index in attributeTypes) {
+                let attributeType = attributeTypes[index];
                 instance[attributeType.baseName] = ObjectSerializer.serialize(
                     data[attributeType.name],
                     attributeType.type,
@@ -903,9 +912,9 @@ export class ObjectSerializer {
             // string.startsWith pre es6
             let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
-            const transformedData: any[] = [];
-            for (const index in data) {
-                const date = data[index];
+            let transformedData: any[] = [];
+            for (let index in data) {
+                let date = data[index];
                 transformedData.push(ObjectSerializer.deserialize(date, subType));
             }
             return transformedData;
@@ -921,10 +930,10 @@ export class ObjectSerializer {
                 // dont know the type
                 return data;
             }
-            const instance = new typeMap[type]();
-            const attributeTypes = typeMap[type].getAttributeTypeMap();
-            for (const index in attributeTypes) {
-                const attributeType = attributeTypes[index];
+            let instance = new typeMap[type]();
+            let attributeTypes = typeMap[type].getAttributeTypeMap();
+            for (let index in attributeTypes) {
+                let attributeType = attributeTypes[index];
                 instance[attributeType.name] = ObjectSerializer.deserialize(
                     data[attributeType.baseName],
                     attributeType.type,
@@ -943,8 +952,8 @@ export interface Authentication {
 }
 
 export class HttpBasicAuth implements Authentication {
-    public username = '';
-    public password = '';
+    public username: string = '';
+    public password: string = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         config.auth = {
@@ -968,9 +977,12 @@ export class HttpBearerAuth implements Authentication {
 }
 
 export class ApiKeyAuth implements Authentication {
-    public apiKey = '';
+    public apiKey: string = '';
 
-    constructor(private location: string, private paramName: string) {}
+    constructor(
+        private location: string,
+        private paramName: string,
+    ) {}
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         if (this.location == 'query') {
@@ -989,7 +1001,7 @@ export class ApiKeyAuth implements Authentication {
 }
 
 export class OAuth implements Authentication {
-    public accessToken = '';
+    public accessToken: string = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         if (config && config.headers) {
@@ -1000,8 +1012,8 @@ export class OAuth implements Authentication {
 }
 
 export class GateApiV4Auth implements Authentication {
-    public key = '';
-    public secret = '';
+    public key: string = '';
+    public secret: string = '';
 
     applyToRequest(config: AxiosRequestConfig): AxiosRequestConfig {
         config.paramsSerializer = function (params) {

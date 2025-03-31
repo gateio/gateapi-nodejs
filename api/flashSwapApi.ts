@@ -48,8 +48,8 @@ export class FlashSwapApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<FlashSwapCurrencyPair> }> {
         const localVarPath = this.client.basePath + '/flash_swap/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -102,8 +102,8 @@ export class FlashSwapApi {
         page?: number;
     }): Promise<{ response: AxiosResponse; body: Array<FlashSwapOrder> }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -157,8 +157,8 @@ export class FlashSwapApi {
         flashSwapOrderRequest: FlashSwapOrderRequest,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -195,8 +195,8 @@ export class FlashSwapApi {
         const localVarPath =
             this.client.basePath +
             '/flash_swap/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -230,8 +230,8 @@ export class FlashSwapApi {
         flashSwapPreviewRequest: FlashSwapPreviewRequest,
     ): Promise<{ response: AxiosResponse; body: FlashSwapOrderPreview }> {
         const localVarPath = this.client.basePath + '/flash_swap/orders/preview';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

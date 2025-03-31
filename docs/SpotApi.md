@@ -564,7 +564,8 @@ const opts = {
   'to': 1635329650, // number | Time range ending, default to current time
   'page': 1, // number | Page number
   'limit': 100, // number | Maximum number of records to be returned in a single list
-  'type': "lend" // string | Only retrieve changes of the specified type. All types will be returned if not specified.
+  'type': "lend", // string | Only retrieve changes of the specified type. All types will be returned if not specified.
+  'code': "code_example" // string | Specify account change code query, if not specified, all change types are included, and the priority is higher than `type`
 };
 api.listSpotAccountBook(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -582,6 +583,7 @@ Name | Type | Description  | Notes
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **type** | **string**| Only retrieve changes of the specified type. All types will be returned if not specified. | [optional] [default to undefined]
+ **code** | **string**| Specify account change code query, if not specified, all change types are included, and the priority is higher than &#x60;type&#x60; | [optional] [default to undefined]
 
 ### Return type
 

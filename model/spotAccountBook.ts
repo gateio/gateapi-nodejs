@@ -35,6 +35,10 @@ export class SpotAccountBook {
      */
     'type'?: string;
     /**
+     * Account change code, see [Asset Record Code] (Asset Record Code)
+     */
+    'code'?: string;
+    /**
      * Additional information
      */
     'text'?: string;
@@ -70,6 +74,11 @@ export class SpotAccountBook {
         {
             name: 'type',
             baseName: 'type',
+            type: 'string',
+        },
+        {
+            name: 'code',
+            baseName: 'code',
             type: 'string',
         },
         {

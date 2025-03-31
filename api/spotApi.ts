@@ -58,8 +58,8 @@ export class SpotApi {
      */
     public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
         const localVarPath = this.client.basePath + '/spot/currencies';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -88,8 +88,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/currencies/{currency}'.replace('{' + 'currency' + '}', encodeURIComponent(String(currency)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -120,8 +120,8 @@ export class SpotApi {
      */
     public async listCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<CurrencyPair> }> {
         const localVarPath = this.client.basePath + '/spot/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -153,8 +153,8 @@ export class SpotApi {
                 '{' + 'currency_pair' + '}',
                 encodeURIComponent(String(currencyPair)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -191,8 +191,8 @@ export class SpotApi {
         timezone?: 'utc0' | 'utc8' | 'all';
     }): Promise<{ response: AxiosResponse; body: Array<Ticker> }> {
         const localVarPath = this.client.basePath + '/spot/tickers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -235,8 +235,8 @@ export class SpotApi {
         opts: { interval?: string; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: OrderBook }> {
         const localVarPath = this.client.basePath + '/spot/order_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -293,8 +293,8 @@ export class SpotApi {
         opts: { limit?: number; lastId?: string; reverse?: boolean; from?: number; to?: number; page?: number },
     ): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/trades';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -366,8 +366,8 @@ export class SpotApi {
         },
     ): Promise<{ response: AxiosResponse; body: Array<Array<string>> }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -422,8 +422,8 @@ export class SpotApi {
      */
     public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
         const localVarPath = this.client.basePath + '/spot/fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -457,8 +457,8 @@ export class SpotApi {
         currencyPairs: string,
     ): Promise<{ response: AxiosResponse; body: { [key: string]: SpotFee } }> {
         const localVarPath = this.client.basePath + '/spot/batch_fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -495,8 +495,8 @@ export class SpotApi {
         currency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotAccount> }> {
         const localVarPath = this.client.basePath + '/spot/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -531,6 +531,7 @@ export class SpotApi {
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
+     * @param opts.code Specify account change code query, if not specified, all change types are included, and the priority is higher than &#x60;type&#x60;
      */
     public async listSpotAccountBook(opts: {
         currency?: string;
@@ -539,10 +540,11 @@ export class SpotApi {
         page?: number;
         limit?: number;
         type?: string;
+        code?: string;
     }): Promise<{ response: AxiosResponse; body: Array<SpotAccountBook> }> {
         const localVarPath = this.client.basePath + '/spot/account_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -576,6 +578,10 @@ export class SpotApi {
             localVarQueryParameters['type'] = ObjectSerializer.serialize(opts.type, 'string');
         }
 
+        if (opts.code !== undefined) {
+            localVarQueryParameters['code'] = ObjectSerializer.serialize(opts.code, 'string');
+        }
+
         const config: AxiosRequestConfig = {
             method: 'GET',
             params: localVarQueryParameters,
@@ -599,8 +605,8 @@ export class SpotApi {
         opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -645,8 +651,8 @@ export class SpotApi {
         account?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OpenOrders> }> {
         const localVarPath = this.client.basePath + '/spot/open_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -688,8 +694,8 @@ export class SpotApi {
         liquidateOrder: LiquidateOrder,
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/cross_liquidate_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -736,8 +742,8 @@ export class SpotApi {
         opts: { page?: number; limit?: number; account?: string; from?: number; to?: number; side?: string },
     ): Promise<{ response: AxiosResponse; body: Array<Order> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -808,8 +814,8 @@ export class SpotApi {
         opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -858,8 +864,8 @@ export class SpotApi {
         xGateExptime?: number;
     }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -912,8 +918,8 @@ export class SpotApi {
         opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -962,8 +968,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1018,8 +1024,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1082,8 +1088,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1149,8 +1155,8 @@ export class SpotApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<Trade> }> {
         const localVarPath = this.client.basePath + '/spot/my_trades';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1205,8 +1211,8 @@ export class SpotApi {
      */
     public async getSystemTime(): Promise<{ response: AxiosResponse; body: SystemTime }> {
         const localVarPath = this.client.basePath + '/spot/time';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1235,8 +1241,8 @@ export class SpotApi {
         countdownCancelAllSpotTask: CountdownCancelAllSpotTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath = this.client.basePath + '/spot/countdown_cancel_all';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1276,8 +1282,8 @@ export class SpotApi {
         opts: { xGateExptime?: number },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1327,8 +1333,8 @@ export class SpotApi {
         opts: { page?: number; limit?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotInsuranceHistory> }> {
         const localVarPath = this.client.basePath + '/spot/insurance_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1400,8 +1406,8 @@ export class SpotApi {
         opts: { market?: string; account?: 'normal' | 'margin' | 'unified'; limit?: number; offset?: number },
     ): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1463,8 +1469,8 @@ export class SpotApi {
         spotPriceTriggeredOrder: SpotPriceTriggeredOrder,
     ): Promise<{ response: AxiosResponse; body: TriggerOrderResponse }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1504,8 +1510,8 @@ export class SpotApi {
         account?: 'normal' | 'margin' | 'unified';
     }): Promise<{ response: AxiosResponse; body: Array<SpotPriceTriggeredOrder> }> {
         const localVarPath = this.client.basePath + '/spot/price_orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1552,8 +1558,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1591,8 +1597,8 @@ export class SpotApi {
         const localVarPath =
             this.client.basePath +
             '/spot/price_orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

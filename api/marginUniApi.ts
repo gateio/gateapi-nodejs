@@ -41,8 +41,8 @@ export class MarginUniApi {
      */
     public async listUniCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<UniCurrencyPair> }> {
         const localVarPath = this.client.basePath + '/margin/uni/currency_pairs';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -74,8 +74,8 @@ export class MarginUniApi {
                 '{' + 'currency_pair' + '}',
                 encodeURIComponent(String(currencyPair)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -109,8 +109,8 @@ export class MarginUniApi {
         currencies: Array<string>,
     ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
         const localVarPath = this.client.basePath + '/margin/uni/estimate_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -155,8 +155,8 @@ export class MarginUniApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoan> }> {
         const localVarPath = this.client.basePath + '/margin/uni/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -200,8 +200,8 @@ export class MarginUniApi {
      */
     public async createUniLoan(createUniLoan: CreateUniLoan): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/margin/uni/loans';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'createUniLoan' is not null or undefined
         if (createUniLoan === null || createUniLoan === undefined) {
@@ -238,8 +238,8 @@ export class MarginUniApi {
         limit?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanRecord> }> {
         const localVarPath = this.client.basePath + '/margin/uni/loan_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -300,8 +300,8 @@ export class MarginUniApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord> }> {
         const localVarPath = this.client.basePath + '/margin/uni/interest_records';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -357,8 +357,8 @@ export class MarginUniApi {
         currencyPair: string,
     ): Promise<{ response: AxiosResponse; body: MaxUniBorrowable }> {
         const localVarPath = this.client.basePath + '/margin/uni/borrowable';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

@@ -55,8 +55,8 @@ export class OptionsApi {
      */
     public async listOptionsUnderlyings(): Promise<{ response: AxiosResponse; body: Array<OptionsUnderlying> }> {
         const localVarPath = this.client.basePath + '/options/underlyings';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -83,8 +83,8 @@ export class OptionsApi {
      */
     public async listOptionsExpirations(underlying: string): Promise<{ response: AxiosResponse; body: Array<number> }> {
         const localVarPath = this.client.basePath + '/options/expirations';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -123,8 +123,8 @@ export class OptionsApi {
         opts: { expiration?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsContract> }> {
         const localVarPath = this.client.basePath + '/options/contracts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -165,8 +165,8 @@ export class OptionsApi {
         const localVarPath =
             this.client.basePath +
             '/options/contracts/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -206,8 +206,8 @@ export class OptionsApi {
         opts: { limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsSettlement> }> {
         const localVarPath = this.client.basePath + '/options/settlements';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -266,8 +266,8 @@ export class OptionsApi {
         const localVarPath =
             this.client.basePath +
             '/options/settlements/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -322,8 +322,8 @@ export class OptionsApi {
         opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsMySettlements> }> {
         const localVarPath = this.client.basePath + '/options/my_settlements';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -387,8 +387,8 @@ export class OptionsApi {
         opts: { interval?: '0' | '0.1' | '0.01'; limit?: number; withId?: boolean },
     ): Promise<{ response: AxiosResponse; body: FuturesOrderBook }> {
         const localVarPath = this.client.basePath + '/options/order_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -437,8 +437,8 @@ export class OptionsApi {
         underlying: string,
     ): Promise<{ response: AxiosResponse; body: Array<OptionsTicker> }> {
         const localVarPath = this.client.basePath + '/options/tickers';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -479,8 +479,8 @@ export class OptionsApi {
                 '{' + 'underlying' + '}',
                 encodeURIComponent(String(underlying)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -522,8 +522,8 @@ export class OptionsApi {
         opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/candlesticks';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -585,8 +585,8 @@ export class OptionsApi {
         opts: { limit?: number; from?: number; to?: number; interval?: '1m' | '5m' | '15m' | '30m' | '1h' },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath = this.client.basePath + '/options/underlying/candlesticks';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -655,8 +655,8 @@ export class OptionsApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<FuturesTrade> }> {
         const localVarPath = this.client.basePath + '/options/trades';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -707,8 +707,8 @@ export class OptionsApi {
      */
     public async listOptionsAccount(): Promise<{ response: AxiosResponse; body: OptionsAccount }> {
         const localVarPath = this.client.basePath + '/options/accounts';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -746,8 +746,8 @@ export class OptionsApi {
         type?: 'dnw' | 'prem' | 'fee' | 'refr' | 'set';
     }): Promise<{ response: AxiosResponse; body: Array<OptionsAccountBook> }> {
         const localVarPath = this.client.basePath + '/options/account_book';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -801,8 +801,8 @@ export class OptionsApi {
         underlying?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OptionsPosition> }> {
         const localVarPath = this.client.basePath + '/options/positions';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -836,8 +836,8 @@ export class OptionsApi {
         const localVarPath =
             this.client.basePath +
             '/options/positions/{contract}'.replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -874,8 +874,8 @@ export class OptionsApi {
         opts: { contract?: string },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsPositionClose> }> {
         const localVarPath = this.client.basePath + '/options/position_close';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -926,8 +926,8 @@ export class OptionsApi {
         opts: { contract?: string; underlying?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsOrder> }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -988,8 +988,8 @@ export class OptionsApi {
         optionsOrder: OptionsOrder,
     ): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1029,8 +1029,8 @@ export class OptionsApi {
         side?: 'ask' | 'bid';
     }): Promise<{ response: AxiosResponse; body: Array<OptionsOrder> }> {
         const localVarPath = this.client.basePath + '/options/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1072,8 +1072,8 @@ export class OptionsApi {
         const localVarPath =
             this.client.basePath +
             '/options/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1107,8 +1107,8 @@ export class OptionsApi {
         const localVarPath =
             this.client.basePath +
             '/options/orders/{order_id}'.replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1142,8 +1142,8 @@ export class OptionsApi {
         countdownCancelAllOptionsTask: CountdownCancelAllOptionsTask,
     ): Promise<{ response: AxiosResponse; body: TriggerTime }> {
         const localVarPath = this.client.basePath + '/options/countdown_cancel_all';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1187,8 +1187,8 @@ export class OptionsApi {
         opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<OptionsMyTrade> }> {
         const localVarPath = this.client.basePath + '/options/my_trades';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1246,8 +1246,8 @@ export class OptionsApi {
         underlying?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OptionsMMP> }> {
         const localVarPath = this.client.basePath + '/options/mmp';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1279,8 +1279,8 @@ export class OptionsApi {
      */
     public async setOptionsMMP(optionsMMP: OptionsMMP): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
         const localVarPath = this.client.basePath + '/options/mmp';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1315,8 +1315,8 @@ export class OptionsApi {
         optionsMMPReset: OptionsMMPReset,
     ): Promise<{ response: AxiosResponse; body: OptionsMMP }> {
         const localVarPath = this.client.basePath + '/options/mmp/reset';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

@@ -17,14 +17,17 @@ import JSONBig from 'json-bigint';
 import globalAxios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export class ApiClient {
-    protected _basePath = 'https://api.gateio.ws/api/v4';
+    protected _basePath: string = 'https://api.gateio.ws/api/v4';
     protected _defaultHeaders: any = {};
 
     protected authentications: { [key: string]: Authentication } = {
         apiv4: new GateApiV4Auth(),
     };
 
-    constructor(basePath?: string, protected axiosInstance: AxiosInstance = globalAxios) {
+    constructor(
+        basePath?: string,
+        protected axiosInstance: AxiosInstance = globalAxios,
+    ) {
         this._basePath = basePath || this._basePath;
 
         this.axiosInstance.defaults.transformResponse = [
@@ -56,14 +59,14 @@ export class ApiClient {
     }
 
     public setApiKeySecret(key: string, secret: string) {
-        const auth = this.authentications['apiv4'] as GateApiV4Auth;
+        let auth = this.authentications['apiv4'] as GateApiV4Auth;
         auth.key = key;
         auth.secret = secret;
     }
 
     public applyToRequest(config: AxiosRequestConfig, authSettings: Array<string>): AxiosRequestConfig {
-        for (const auth of authSettings) {
-            const authenticator = this.authentications[auth];
+        for (let auth of authSettings) {
+            let authenticator = this.authentications[auth];
             if (authenticator) {
                 config = authenticator.applyToRequest(config);
             }

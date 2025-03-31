@@ -59,8 +59,8 @@ export class MultiCollateralLoanApi {
         orderType?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MultiCollateralOrder> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -106,8 +106,8 @@ export class MultiCollateralLoanApi {
         createMultiCollateralOrder: CreateMultiCollateralOrder,
     ): Promise<{ response: AxiosResponse; body: OrderResp }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/orders';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -149,8 +149,8 @@ export class MultiCollateralLoanApi {
                 '{' + 'order_id' + '}',
                 encodeURIComponent(String(orderId)),
             );
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -193,8 +193,8 @@ export class MultiCollateralLoanApi {
         opts: { borrowCurrency?: string; page?: number; limit?: number; from?: number; to?: number },
     ): Promise<{ response: AxiosResponse; body: Array<MultiRepayRecord> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/repay';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -251,8 +251,8 @@ export class MultiCollateralLoanApi {
         repayMultiLoan: RepayMultiLoan,
     ): Promise<{ response: AxiosResponse; body: MultiRepayResp }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/repay';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -298,8 +298,8 @@ export class MultiCollateralLoanApi {
         collateralCurrency?: string;
     }): Promise<{ response: AxiosResponse; body: Array<MultiCollateralRecord> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/mortgage';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -352,8 +352,8 @@ export class MultiCollateralLoanApi {
         collateralAdjust: CollateralAdjust,
     ): Promise<{ response: AxiosResponse; body: CollateralAdjustRes }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/mortgage';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -392,8 +392,8 @@ export class MultiCollateralLoanApi {
         currency: string,
     ): Promise<{ response: AxiosResponse; body: Array<CurrencyQuota> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currency_quota';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -433,8 +433,8 @@ export class MultiCollateralLoanApi {
      */
     public async listMultiCollateralCurrencies(): Promise<{ response: AxiosResponse; body: MultiCollateralCurrency }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currencies';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -460,8 +460,8 @@ export class MultiCollateralLoanApi {
      */
     public async getMultiCollateralLtv(): Promise<{ response: AxiosResponse; body: CollateralLtv }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/ltv';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -487,8 +487,8 @@ export class MultiCollateralLoanApi {
      */
     public async getMultiCollateralFixRate(): Promise<{ response: AxiosResponse; body: Array<CollateralFixRate> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/fixed_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -520,8 +520,8 @@ export class MultiCollateralLoanApi {
         opts: { vipLevel?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CollateralCurrentRate> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/current_rate';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

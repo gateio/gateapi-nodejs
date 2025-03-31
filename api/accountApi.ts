@@ -40,8 +40,8 @@ export class AccountApi {
      */
     public async getAccountDetail(): Promise<{ response: AxiosResponse; body: AccountDetail }> {
         const localVarPath = this.client.basePath + '/account/detail';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -67,8 +67,8 @@ export class AccountApi {
      */
     public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {
         const localVarPath = this.client.basePath + '/account/rate_limit';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -96,8 +96,8 @@ export class AccountApi {
      */
     public async listSTPGroups(opts: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -129,8 +129,8 @@ export class AccountApi {
      */
     public async createSTPGroup(stpGroup: StpGroup): Promise<{ response: AxiosResponse; body: StpGroup }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -165,8 +165,8 @@ export class AccountApi {
         const localVarPath =
             this.client.basePath +
             '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -204,8 +204,8 @@ export class AccountApi {
         const localVarPath =
             this.client.basePath +
             '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -249,8 +249,8 @@ export class AccountApi {
         const localVarPath =
             this.client.basePath +
             '/account/stp_groups/{stp_id}/users'.replace('{' + 'stp_id' + '}', encodeURIComponent(String(stpId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -288,8 +288,8 @@ export class AccountApi {
      */
     public async getDebitFee(): Promise<{ response: AxiosResponse; body: DebitFee }> {
         const localVarPath = this.client.basePath + '/account/debit_fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -316,8 +316,8 @@ export class AccountApi {
      */
     public async setDebitFee(debitFee: DebitFee): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath = this.client.basePath + '/account/debit_fee';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
 
         // verify required parameter 'debitFee' is not null or undefined
         if (debitFee === null || debitFee === undefined) {

@@ -58,8 +58,8 @@ export class RebateApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: Array<AgencyTransactionHistory> }> {
         const localVarPath = this.client.basePath + '/rebate/agency/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -128,8 +128,8 @@ export class RebateApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: Array<AgencyCommissionHistory> }> {
         const localVarPath = this.client.basePath + '/rebate/agency/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -198,8 +198,8 @@ export class RebateApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerTransactionHistory }> {
         const localVarPath = this.client.basePath + '/rebate/partner/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -264,8 +264,8 @@ export class RebateApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerCommissionHistory }> {
         const localVarPath = this.client.basePath + '/rebate/partner/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -324,8 +324,8 @@ export class RebateApi {
         offset?: number;
     }): Promise<{ response: AxiosResponse; body: PartnerSubList }> {
         const localVarPath = this.client.basePath + '/rebate/partner/sub_list';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -376,8 +376,8 @@ export class RebateApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<BrokerCommission> }> {
         const localVarPath = this.client.basePath + '/rebate/broker/commission_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -436,8 +436,8 @@ export class RebateApi {
         to?: number;
     }): Promise<{ response: AxiosResponse; body: Array<BrokerTransaction> }> {
         const localVarPath = this.client.basePath + '/rebate/broker/transaction_history';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -484,8 +484,8 @@ export class RebateApi {
      */
     public async rebateUserInfo(): Promise<{ response: AxiosResponse; body: Array<RebateUserInfo> }> {
         const localVarPath = this.client.basePath + '/rebate/user/info';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -512,8 +512,8 @@ export class RebateApi {
      */
     public async userSubRelation(userIdList: string): Promise<{ response: AxiosResponse; body: UserSubRelation }> {
         const localVarPath = this.client.basePath + '/rebate/user/sub_relation';
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {

@@ -57,8 +57,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/contracts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -98,8 +98,8 @@ export class DeliveryApi {
             '/delivery/{settle}/contracts/{contract}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -147,8 +147,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/order_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -212,8 +212,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -302,8 +302,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/candlesticks'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -369,8 +369,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -414,8 +414,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/insurance'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -456,8 +456,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/accounts'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -504,8 +504,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/account_book'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -559,8 +559,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/positions'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -600,8 +600,8 @@ export class DeliveryApi {
             '/delivery/{settle}/positions/{contract}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -648,8 +648,8 @@ export class DeliveryApi {
             '/delivery/{settle}/positions/{contract}/margin'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -709,8 +709,8 @@ export class DeliveryApi {
             '/delivery/{settle}/positions/{contract}/leverage'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -770,8 +770,8 @@ export class DeliveryApi {
             '/delivery/{settle}/positions/{contract}/risk_limit'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'contract' + '}', encodeURIComponent(String(contract)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -834,8 +834,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -901,8 +901,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -949,8 +949,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1002,8 +1002,8 @@ export class DeliveryApi {
             '/delivery/{settle}/orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1048,8 +1048,8 @@ export class DeliveryApi {
             '/delivery/{settle}/orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1105,8 +1105,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/my_trades'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1171,8 +1171,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/position_close'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1222,8 +1222,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/liquidates'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1277,8 +1277,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/settlements'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1332,8 +1332,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/risk_limit_tiers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1389,8 +1389,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1456,8 +1456,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1505,8 +1505,8 @@ export class DeliveryApi {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/price_orders'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1561,8 +1561,8 @@ export class DeliveryApi {
             '/delivery/{settle}/price_orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1611,8 +1611,8 @@ export class DeliveryApi {
             '/delivery/{settle}/price_orders/{order_id}'
                 .replace('{' + 'settle' + '}', encodeURIComponent(String(settle)))
                 .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
-        const localVarQueryParameters: any = {};
-        const localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
