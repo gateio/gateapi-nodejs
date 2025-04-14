@@ -619,7 +619,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const order = [new Order()]; // Array<Order> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createBatchOrders(order, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -632,7 +632,7 @@ api.createBatchOrders(order, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Array&lt;Order&gt;**](Order.md)|  | 
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -825,7 +825,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const order = new Order(); // Order | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.createOrder(order, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -838,7 +838,7 @@ api.createOrder(order, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Order**](Order.md)|  | 
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -877,7 +877,7 @@ const opts = {
   'side': "sell", // string | All bids or asks. Both included if not specified
   'account': "spot", // string | Specify Account Type  - Classic Account: If not specified, all include  - Unified Account: Specify `unified`
   'actionMode': "ACK", // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -893,7 +893,7 @@ Name | Type | Description  | Notes
  **side** | **string**| All bids or asks. Both included if not specified | [optional] [default to undefined]
  **account** | **string**| Specify Account Type  - Classic Account: If not specified, all include  - Unified Account: Specify &#x60;unified&#x60; | [optional] [default to undefined]
  **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default) | [optional] [default to undefined]
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -929,7 +929,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const cancelBatchOrder = [new CancelBatchOrder()]; // Array<CancelBatchOrder> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelBatchOrders(cancelBatchOrder, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -942,7 +942,7 @@ api.cancelBatchOrders(cancelBatchOrder, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelBatchOrder** | [**Array&lt;CancelBatchOrder&gt;**](CancelBatchOrder.md)|  | 
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1032,7 +1032,7 @@ const currencyPair = "BTC_USDT"; // string | Currency pair
 const opts = {
   'account': "spot", // string | Specify query account.
   'actionMode': "ACK", // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.cancelOrder(orderId, currencyPair, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1048,7 +1048,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **string**| Currency pair | [default to undefined]
  **account** | **string**| Specify query account. | [optional] [default to undefined]
  **actionMode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default) | [optional] [default to undefined]
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1087,7 +1087,7 @@ const orderPatch = new OrderPatch(); // OrderPatch |
 const opts = {
   'currencyPair': "BTC_USDT", // string | Currency pair
   'account': "spot", // string | Specify query account.
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendOrder(orderId, orderPatch, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1103,7 +1103,7 @@ Name | Type | Description  | Notes
  **orderPatch** | [**OrderPatch**](OrderPatch.md)|  | 
  **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
  **account** | **string**| Specify query account. | [optional] [default to undefined]
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 
@@ -1280,7 +1280,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.SpotApi(client);
 const batchAmendItem = [new BatchAmendItem()]; // Array<BatchAmendItem> | 
 const opts = {
-  'xGateExptime': 1689560679123 // number | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+  'xGateExptime': "1689560679123" // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 };
 api.amendBatchOrders(batchAmendItem, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1293,7 +1293,7 @@ api.amendBatchOrders(batchAmendItem, opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **batchAmendItem** | [**Array&lt;BatchAmendItem&gt;**](BatchAmendItem.md)|  | 
- **xGateExptime** | **number**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
+ **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
 
 ### Return type
 

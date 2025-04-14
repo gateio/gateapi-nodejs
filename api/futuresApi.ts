@@ -1575,7 +1575,7 @@ export class FuturesApi {
     public async createFuturesOrder(
         settle: 'btc' | 'usdt',
         futuresOrder: FuturesOrder,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1602,7 +1602,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1624,12 +1624,12 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-     * @param opts.side All bids or asks. Both included if not specified
+     * @param opts.side Specify all buy orders or all sell orders, if not specify them, both are included. Revoke all buy orders and revoke all sell orders and make ask
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { xGateExptime?: number; side?: string },
+        opts: { xGateExptime?: string; side?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1662,7 +1662,7 @@ export class FuturesApi {
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1752,7 +1752,7 @@ export class FuturesApi {
     public async createBatchFuturesOrder(
         settle: 'btc' | 'usdt',
         futuresOrder: Array<FuturesOrder>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -1781,7 +1781,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1855,7 +1855,7 @@ export class FuturesApi {
         settle: 'btc' | 'usdt',
         orderId: string,
         futuresOrderAmendment: FuturesOrderAmendment,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1891,7 +1891,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1917,7 +1917,7 @@ export class FuturesApi {
     public async cancelFuturesOrder(
         settle: 'btc' | 'usdt',
         orderId: string,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: FuturesOrder }> {
         const localVarPath =
             this.client.basePath +
@@ -1946,7 +1946,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -2399,7 +2399,7 @@ export class FuturesApi {
     public async cancelBatchFutureOrders(
         settle: 'btc' | 'usdt',
         requestBody: Array<string>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult> }> {
         const localVarPath =
             this.client.basePath +
@@ -2428,7 +2428,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -2458,7 +2458,7 @@ export class FuturesApi {
     public async amendBatchFutureOrders(
         settle: 'btc' | 'usdt',
         batchAmendOrderReq: Array<BatchAmendOrderReq>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder> }> {
         const localVarPath =
             this.client.basePath +
@@ -2487,7 +2487,7 @@ export class FuturesApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {

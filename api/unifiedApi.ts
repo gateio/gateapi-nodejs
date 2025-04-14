@@ -22,6 +22,7 @@ import { UnifiedLeverageConfig } from '../model/unifiedLeverageConfig';
 import { UnifiedLeverageSetting } from '../model/unifiedLeverageSetting';
 import { UnifiedLoan } from '../model/unifiedLoan';
 import { UnifiedLoanRecord } from '../model/unifiedLoanRecord';
+import { UnifiedLoanResult } from '../model/unifiedLoanResult';
 import { UnifiedMarginTiers } from '../model/unifiedMarginTiers';
 import { UnifiedModeSet } from '../model/unifiedModeSet';
 import { UnifiedPortfolioInput } from '../model/unifiedPortfolioInput';
@@ -259,10 +260,19 @@ export class UnifiedApi {
      * @summary Borrow or repay
      * @param unifiedLoan
      */
-    public async createUnifiedLoan(unifiedLoan: UnifiedLoan): Promise<{ response: AxiosResponse; body?: any }> {
+    public async createUnifiedLoan(
+        unifiedLoan: UnifiedLoan,
+    ): Promise<{ response: AxiosResponse; body: UnifiedLoanResult }> {
         const localVarPath = this.client.basePath + '/unified/loans';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
         // verify required parameter 'unifiedLoan' is not null or undefined
         if (unifiedLoan === null || unifiedLoan === undefined) {
@@ -278,7 +288,7 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<UnifiedLoanResult>(config, 'UnifiedLoanResult', authSettings);
     }
 
     /**

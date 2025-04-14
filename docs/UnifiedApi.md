@@ -257,7 +257,7 @@ Promise<{ response: AxiosResponse; body: Array<UniLoan>; }> [UniLoan](UniLoan.md
 
 ## createUnifiedLoan
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> createUnifiedLoan(unifiedLoan)
+> Promise<{ response: http.IncomingMessage; body: UnifiedLoanResult; }> createUnifiedLoan(unifiedLoan)
 
 Borrow or repay
 
@@ -276,7 +276,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.UnifiedApi(client);
 const unifiedLoan = new UnifiedLoan(); // UnifiedLoan | 
 api.createUnifiedLoan(unifiedLoan)
-   .then(value => console.log('API called successfully.'),
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: UnifiedLoanResult; }> [UnifiedLoanResult](UnifiedLoanResult.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ## listUnifiedLoanRecords
 

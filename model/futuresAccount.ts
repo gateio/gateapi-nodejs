@@ -85,6 +85,18 @@ export class FuturesAccount {
      */
     'crossAvailable'?: string;
     /**
+     * Full margin balance, suitable for the new classic account margin model
+     */
+    'crossMarginBalance'?: string;
+    /**
+     * Maintain margin ratio for the full position, suitable for the new classic account margin model
+     */
+    'crossMmr'?: string;
+    /**
+     * The initial margin rate of the full position is suitable for the new classic account margin model
+     */
+    'crossImr'?: string;
+    /**
      * Ware -position margin, suitable for the new classic account margin model
      */
     'isolatedPositionMargin'?: string;
@@ -189,6 +201,21 @@ export class FuturesAccount {
         {
             name: 'crossAvailable',
             baseName: 'cross_available',
+            type: 'string',
+        },
+        {
+            name: 'crossMarginBalance',
+            baseName: 'cross_margin_balance',
+            type: 'string',
+        },
+        {
+            name: 'crossMmr',
+            baseName: 'cross_mmr',
+            type: 'string',
+        },
+        {
+            name: 'crossImr',
+            baseName: 'cross_imr',
             type: 'string',
         },
         {

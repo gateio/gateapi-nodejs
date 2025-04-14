@@ -230,6 +230,7 @@ export * from './unifiedLeverageConfig';
 export * from './unifiedLeverageSetting';
 export * from './unifiedLoan';
 export * from './unifiedLoanRecord';
+export * from './unifiedLoanResult';
 export * from './unifiedMarginTiers';
 export * from './unifiedModeSet';
 export * from './unifiedPortfolioInput';
@@ -481,6 +482,7 @@ import { UnifiedLeverageConfig } from './unifiedLeverageConfig';
 import { UnifiedLeverageSetting } from './unifiedLeverageSetting';
 import { UnifiedLoan } from './unifiedLoan';
 import { UnifiedLoanRecord } from './unifiedLoanRecord';
+import { UnifiedLoanResult } from './unifiedLoanResult';
 import { UnifiedMarginTiers } from './unifiedMarginTiers';
 import { UnifiedModeSet } from './unifiedModeSet';
 import { UnifiedPortfolioInput } from './unifiedPortfolioInput';
@@ -801,6 +803,7 @@ let typeMap: { [index: string]: any } = {
     UnifiedLeverageSetting: UnifiedLeverageSetting,
     UnifiedLoan: UnifiedLoan,
     UnifiedLoanRecord: UnifiedLoanRecord,
+    UnifiedLoanResult: UnifiedLoanResult,
     UnifiedMarginTiers: UnifiedMarginTiers,
     UnifiedModeSet: UnifiedModeSet,
     UnifiedPortfolioInput: UnifiedPortfolioInput,

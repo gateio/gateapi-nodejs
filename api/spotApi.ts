@@ -602,7 +602,7 @@ export class SpotApi {
      */
     public async createBatchOrders(
         order: Array<Order>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/batch_orders';
         let localVarQueryParameters: any = {};
@@ -622,7 +622,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -811,7 +811,7 @@ export class SpotApi {
      */
     public async createOrder(
         order: Order,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
@@ -831,7 +831,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -861,7 +861,7 @@ export class SpotApi {
         side?: string;
         account?: string;
         actionMode?: string;
-        xGateExptime?: number;
+        xGateExptime?: string;
     }): Promise<{ response: AxiosResponse; body: Array<OrderCancel> }> {
         const localVarPath = this.client.basePath + '/spot/orders';
         let localVarQueryParameters: any = {};
@@ -892,7 +892,7 @@ export class SpotApi {
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -915,7 +915,7 @@ export class SpotApi {
      */
     public async cancelBatchOrders(
         cancelBatchOrder: Array<CancelBatchOrder>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<CancelOrderResult> }> {
         const localVarPath = this.client.basePath + '/spot/cancel_batch_orders';
         let localVarQueryParameters: any = {};
@@ -937,7 +937,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1019,7 +1019,7 @@ export class SpotApi {
     public async cancelOrder(
         orderId: string,
         currencyPair: string,
-        opts: { account?: string; actionMode?: string; xGateExptime?: number },
+        opts: { account?: string; actionMode?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1056,7 +1056,7 @@ export class SpotApi {
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1083,7 +1083,7 @@ export class SpotApi {
     public async amendOrder(
         orderId: string,
         orderPatch: OrderPatch,
-        opts: { currencyPair?: string; account?: string; xGateExptime?: number },
+        opts: { currencyPair?: string; account?: string; xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Order }> {
         const localVarPath =
             this.client.basePath +
@@ -1118,7 +1118,7 @@ export class SpotApi {
         }
 
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
@@ -1279,7 +1279,7 @@ export class SpotApi {
      */
     public async amendBatchOrders(
         batchAmendItem: Array<BatchAmendItem>,
-        opts: { xGateExptime?: number },
+        opts: { xGateExptime?: string },
     ): Promise<{ response: AxiosResponse; body: Array<BatchOrder> }> {
         const localVarPath = this.client.basePath + '/spot/amend_batch_orders';
         let localVarQueryParameters: any = {};
@@ -1299,7 +1299,7 @@ export class SpotApi {
 
         opts = opts || {};
         if (opts.xGateExptime !== undefined) {
-            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'number');
+            localVarHeaderParams['x-gate-exptime'] = ObjectSerializer.serialize(opts.xGateExptime, 'string');
         }
 
         const config: AxiosRequestConfig = {
