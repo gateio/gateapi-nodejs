@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class WithdrawalRecord {
+export class DepositRecord {
     /**
      * Record ID
      */
@@ -18,10 +18,6 @@ export class WithdrawalRecord {
      * Hash record of the withdrawal
      */
     'txid'?: string;
-    /**
-     * 区块编号
-     */
-    'blockNumber'?: string;
     /**
      * Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
      */
@@ -35,27 +31,19 @@ export class WithdrawalRecord {
      */
     'amount': string;
     /**
-     * fee
-     */
-    'fee'?: string;
-    /**
      * Currency name
      */
     'currency': string;
     /**
-     * The reason for withdrawal failure is that there is a value when status = CANCEL, and the rest of the state is empty
+     * Withdrawal address. Required for withdrawals
      */
-    'failReason'?: string;
-    /**
-     * The withdrawal end time, i.e.: withdrawal cancel time or withdrawal success time When status = CANCEL, the corresponding cancel time When status = DONE and block_number > 0, it is the time to withdrawal success
-     */
-    'timestamp2'?: string;
+    'address'?: string;
     /**
      * Additional remarks with regards to the withdrawal
      */
     'memo'?: string;
     /**
-     * Transaction status  - DONE: Completed (block_number > 0 is considered to be truly completed) - CANCEL: Canceled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: Recharge code operation - EXTPEND: Sent awaiting confirmation - FAIL: Failure on the chain awaiting confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: pending manual review - REVIEW: Under review
+     * Trading Status  - REVIEW: Recharge review (compliance review) - PEND: Processing - DONE: Waiting for funds to be unlocked - INVALID: Invalid data - TRACK: Track the number of confirmations, waiting to add funds to the user (spot) - BLOCKED: Rejected Recharge - DEP_CREDITED: Recharge to account, withdrawal is not unlocked
      */
     'status'?: string;
     /**
@@ -77,11 +65,6 @@ export class WithdrawalRecord {
             type: 'string',
         },
         {
-            name: 'blockNumber',
-            baseName: 'block_number',
-            type: 'string',
-        },
-        {
             name: 'withdrawOrderId',
             baseName: 'withdraw_order_id',
             type: 'string',
@@ -97,23 +80,13 @@ export class WithdrawalRecord {
             type: 'string',
         },
         {
-            name: 'fee',
-            baseName: 'fee',
-            type: 'string',
-        },
-        {
             name: 'currency',
             baseName: 'currency',
             type: 'string',
         },
         {
-            name: 'failReason',
-            baseName: 'fail_reason',
-            type: 'string',
-        },
-        {
-            name: 'timestamp2',
-            baseName: 'timestamp2',
+            name: 'address',
+            baseName: 'address',
             type: 'string',
         },
         {
@@ -134,6 +107,6 @@ export class WithdrawalRecord {
     ];
 
     static getAttributeTypeMap() {
-        return WithdrawalRecord.attributeTypeMap;
+        return DepositRecord.attributeTypeMap;
     }
 }

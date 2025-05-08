@@ -19,7 +19,7 @@ export class LedgerRecord {
      */
     'txid'?: string;
     /**
-     * Client order id, up to 32 length and can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     * User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried
      */
     'withdrawOrderId'?: string;
     /**
@@ -43,7 +43,15 @@ export class LedgerRecord {
      */
     'memo'?: string;
     /**
-     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval
+     * The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time
+     */
+    'withdrawId'?: string;
+    /**
+     * The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone
+     */
+    'assetClass'?: string;
+    /**
+     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - REVIEW: Under review
      */
     'status'?: string;
     /**
@@ -92,6 +100,16 @@ export class LedgerRecord {
         {
             name: 'memo',
             baseName: 'memo',
+            type: 'string',
+        },
+        {
+            name: 'withdrawId',
+            baseName: 'withdraw_id',
+            type: 'string',
+        },
+        {
+            name: 'assetClass',
+            baseName: 'asset_class',
             type: 'string',
         },
         {

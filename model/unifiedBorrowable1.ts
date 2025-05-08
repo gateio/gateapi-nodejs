@@ -9,27 +9,18 @@
  * Do not edit the class manually.
  */
 
-export class SpotAccount {
+/**
+ * Batch query unified account can be borrowed up to a maximum of results
+ */
+export class UnifiedBorrowable1 {
     /**
      * Currency detail
      */
     'currency'?: string;
     /**
-     * Available amount
+     * The maximum amount to borrow
      */
-    'available'?: string;
-    /**
-     * Locked amount, used in trading
-     */
-    'locked'?: string;
-    /**
-     * Version number
-     */
-    'updateId'?: number;
-    /**
-     * Asset Refresh Time (ms)
-     */
-    'refreshTime'?: number;
+    'amount'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,28 +31,13 @@ export class SpotAccount {
             type: 'string',
         },
         {
-            name: 'available',
-            baseName: 'available',
+            name: 'amount',
+            baseName: 'amount',
             type: 'string',
-        },
-        {
-            name: 'locked',
-            baseName: 'locked',
-            type: 'string',
-        },
-        {
-            name: 'updateId',
-            baseName: 'update_id',
-            type: 'number',
-        },
-        {
-            name: 'refreshTime',
-            baseName: 'refresh_time',
-            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return SpotAccount.attributeTypeMap;
+        return UnifiedBorrowable1.attributeTypeMap;
     }
 }

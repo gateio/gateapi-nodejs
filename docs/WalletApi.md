@@ -132,6 +132,9 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.WalletApi(client);
 const opts = {
   'currency': "BTC", // string | Filter by currency. Return all currency records if not specified
+  'withdrawId': "withdrawId_example", // string | The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time
+  'assetClass': "assetClass_example", // string | The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone
+  'withdrawOrderId': "withdrawOrderId_example", // string | User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried
   'from': 1602120000, // number | Time range beginning, default to 7 days before current time
   'to': 1602123600, // number | Time range ending, default to current time
   'limit': 100, // number | Maximum number of records to be returned in a single list
@@ -148,6 +151,9 @@ api.listWithdrawals(opts)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Filter by currency. Return all currency records if not specified | [optional] [default to undefined]
+ **withdrawId** | **string**| The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time | [optional] [default to undefined]
+ **assetClass** | **string**| The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone | [optional] [default to undefined]
+ **withdrawOrderId** | **string**| User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried | [optional] [default to undefined]
  **from** | **number**| Time range beginning, default to 7 days before current time | [optional] [default to undefined]
  **to** | **number**| Time range ending, default to current time | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
@@ -168,7 +174,7 @@ Promise<{ response: AxiosResponse; body: Array<WithdrawalRecord>; }> [Withdrawal
 
 ## listDeposits
 
-> Promise<{ response: http.IncomingMessage; body: Array<LedgerRecord>; }> listDeposits(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DepositRecord>; }> listDeposits(opts)
 
 Retrieve deposit records
 
@@ -210,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<LedgerRecord>; }> [LedgerRecord](LedgerRecord.md)
+Promise<{ response: AxiosResponse; body: Array<DepositRecord>; }> [DepositRecord](DepositRecord.md)
 
 ### Authorization
 

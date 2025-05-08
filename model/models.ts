@@ -58,6 +58,7 @@ export * from './deliveryCandlestick';
 export * from './deliveryContract';
 export * from './deliverySettlement';
 export * from './depositAddress';
+export * from './depositRecord';
 export * from './dualGetOrders';
 export * from './dualGetPlans';
 export * from './eth2RateList';
@@ -92,6 +93,8 @@ export * from './futuresPriceTriggeredOrder';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './indexConstituent';
+export * from './inlineObject';
+export * from './inlineResponse200';
 export * from './insuranceRecord';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
@@ -221,6 +224,7 @@ export * from './uniLoanRecord';
 export * from './unifiedAccount';
 export * from './unifiedBalance';
 export * from './unifiedBorrowable';
+export * from './unifiedBorrowable1';
 export * from './unifiedCurrency';
 export * from './unifiedDiscount';
 export * from './unifiedDiscountTiers';
@@ -310,6 +314,7 @@ import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
 import { DepositAddress } from './depositAddress';
+import { DepositRecord } from './depositRecord';
 import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
 import { Eth2RateList } from './eth2RateList';
@@ -344,6 +349,8 @@ import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
+import { InlineObject } from './inlineObject';
+import { InlineResponse200 } from './inlineResponse200';
 import { InsuranceRecord } from './insuranceRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
@@ -473,6 +480,7 @@ import { UniLoanRecord } from './uniLoanRecord';
 import { UnifiedAccount } from './unifiedAccount';
 import { UnifiedBalance } from './unifiedBalance';
 import { UnifiedBorrowable } from './unifiedBorrowable';
+import { UnifiedBorrowable1 } from './unifiedBorrowable1';
 import { UnifiedCurrency } from './unifiedCurrency';
 import { UnifiedDiscount } from './unifiedDiscount';
 import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
@@ -631,6 +639,7 @@ let typeMap: { [index: string]: any } = {
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
     DepositAddress: DepositAddress,
+    DepositRecord: DepositRecord,
     DualGetOrders: DualGetOrders,
     DualGetPlans: DualGetPlans,
     Eth2RateList: Eth2RateList,
@@ -665,6 +674,8 @@ let typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     IndexConstituent: IndexConstituent,
+    InlineObject: InlineObject,
+    InlineResponse200: InlineResponse200,
     InsuranceRecord: InsuranceRecord,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
@@ -794,6 +805,7 @@ let typeMap: { [index: string]: any } = {
     UnifiedAccount: UnifiedAccount,
     UnifiedBalance: UnifiedBalance,
     UnifiedBorrowable: UnifiedBorrowable,
+    UnifiedBorrowable1: UnifiedBorrowable1,
     UnifiedCurrency: UnifiedCurrency,
     UnifiedDiscount: UnifiedDiscount,
     UnifiedDiscountTiers: UnifiedDiscountTiers,

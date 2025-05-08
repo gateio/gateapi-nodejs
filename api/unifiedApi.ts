@@ -15,6 +15,7 @@ import { UniLoan } from '../model/uniLoan';
 import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
+import { UnifiedBorrowable1 } from '../model/unifiedBorrowable1';
 import { UnifiedCurrency } from '../model/unifiedCurrency';
 import { UnifiedDiscount } from '../model/unifiedDiscount';
 import { UnifiedHistoryLoanRate } from '../model/unifiedHistoryLoanRate';
@@ -199,6 +200,45 @@ export class UnifiedApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<TransferablesResult>>(config, 'Array<TransferablesResult>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Batch query unified account can be borrowed up to a maximum
+     * @param currencies Specify the currency names for querying in an array, separated by commas, with a maximum of 10 currencies.
+     */
+    public async getUnifiedBorrowableList(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: Array<UnifiedBorrowable1> }> {
+        const localVarPath = this.client.basePath + '/unified/batch_borrowable';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error(
+                'Required parameter currencies was null or undefined when calling getUnifiedBorrowableList.',
+            );
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<UnifiedBorrowable1>>(config, 'Array<UnifiedBorrowable1>', authSettings);
     }
 
     /**

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**listUniInterestRecords**](EarnUniApi.md#listUniInterestRecords) | **GET** /earn/uni/interest_records | List interest records
 [**switchInterestReinvest**](EarnUniApi.md#switchInterestReinvest) | **PUT** /earn/uni/interest_reinvest | Set interest reinvestment toggle
 [**getUniInterestStatus**](EarnUniApi.md#getUniInterestStatus) | **GET** /earn/uni/interest_status/{currency} | query currency interest compounding status
+[**listUniChart**](EarnUniApi.md#listUniChart) | **GET** /earn/uni/chart | UniLoan currency annualized trend chart
 
 
 ## listUniCurrencies
@@ -460,6 +461,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: UniCurrencyInterest; }> [UniCurrencyInterest](UniCurrencyInterest.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listUniChart
+
+> Promise<{ response: http.IncomingMessage; body: Array<InlineResponse200>; }> listUniChart(from, to, asset)
+
+UniLoan currency annualized trend chart
+
+Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-05-08 09:24+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;LL@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D; 1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnUniApi(client);
+const from = 1719763200; // number | Start timestamp, unit s, maximum span of 30 days
+const to = 1722441600; // number | End timestamp, unit s, maximum span of 30 days
+const asset = "BTC"; // string | Currency name
+api.listUniChart(from, to, asset)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **number**| Start timestamp, unit s, maximum span of 30 days | [default to undefined]
+ **to** | **number**| End timestamp, unit s, maximum span of 30 days | [default to undefined]
+ **asset** | **string**| Currency name | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<InlineResponse200>; }> [InlineResponse200](InlineResponse200.md)
 
 ### Authorization
 

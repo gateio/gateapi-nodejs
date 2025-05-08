@@ -13,7 +13,7 @@
 import { ConvertSmallBalance } from '../model/convertSmallBalance';
 import { CurrencyChain } from '../model/currencyChain';
 import { DepositAddress } from '../model/depositAddress';
-import { LedgerRecord } from '../model/ledgerRecord';
+import { DepositRecord } from '../model/depositRecord';
 import { SavedAddress } from '../model/savedAddress';
 import { SmallBalance } from '../model/smallBalance';
 import { SmallBalanceHistory } from '../model/smallBalanceHistory';
@@ -127,6 +127,9 @@ export class WalletApi {
      * @summary Retrieve withdrawal records
      * @param opts Optional parameters
      * @param opts.currency Filter by currency. Return all currency records if not specified
+     * @param opts.withdrawId The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time
+     * @param opts.assetClass The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone
+     * @param opts.withdrawOrderId User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried
      * @param opts.from Time range beginning, default to 7 days before current time
      * @param opts.to Time range ending, default to current time
      * @param opts.limit Maximum number of records to be returned in a single list
@@ -134,6 +137,9 @@ export class WalletApi {
      */
     public async listWithdrawals(opts: {
         currency?: string;
+        withdrawId?: string;
+        assetClass?: string;
+        withdrawOrderId?: string;
         from?: number;
         to?: number;
         limit?: number;
@@ -153,6 +159,18 @@ export class WalletApi {
         opts = opts || {};
         if (opts.currency !== undefined) {
             localVarQueryParameters['currency'] = ObjectSerializer.serialize(opts.currency, 'string');
+        }
+
+        if (opts.withdrawId !== undefined) {
+            localVarQueryParameters['withdraw_id'] = ObjectSerializer.serialize(opts.withdrawId, 'string');
+        }
+
+        if (opts.assetClass !== undefined) {
+            localVarQueryParameters['asset_class'] = ObjectSerializer.serialize(opts.assetClass, 'string');
+        }
+
+        if (opts.withdrawOrderId !== undefined) {
+            localVarQueryParameters['withdraw_order_id'] = ObjectSerializer.serialize(opts.withdrawOrderId, 'string');
         }
 
         if (opts.from !== undefined) {
@@ -198,7 +216,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<LedgerRecord> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<DepositRecord> }> {
         const localVarPath = this.client.basePath + '/wallet/deposits';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -239,7 +257,7 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<LedgerRecord>>(config, 'Array<LedgerRecord>', authSettings);
+        return this.client.request<Array<DepositRecord>>(config, 'Array<DepositRecord>', authSettings);
     }
 
     /**

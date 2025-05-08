@@ -362,7 +362,7 @@ export class SpotApi {
             limit?: number;
             from?: number;
             to?: number;
-            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d';
+            interval?: '1s' | '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d';
         },
     ): Promise<{ response: AxiosResponse; body: Array<Array<string>> }> {
         const localVarPath = this.client.basePath + '/spot/candlesticks';
@@ -399,7 +399,7 @@ export class SpotApi {
         if (opts.interval !== undefined) {
             localVarQueryParameters['interval'] = ObjectSerializer.serialize(
                 opts.interval,
-                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'",
+                "'1s' | '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | '30d'",
             );
         }
 

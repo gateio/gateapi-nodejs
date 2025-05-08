@@ -33,6 +33,7 @@ import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
+import { InlineObject } from '../model/inlineObject';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
@@ -1137,6 +1138,53 @@ export class FuturesApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Position>(config, 'Position', authSettings);
+    }
+
+    /**
+     *
+     * @summary Switch to the full position-by-store mode
+     * @param settle Settle currency
+     * @param inlineObject
+     */
+    public async updatePositionCrossMode(
+        settle: 'btc' | 'usdt',
+        inlineObject: InlineObject,
+    ): Promise<{ response: AxiosResponse; body: Position }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/positions/cross_mode'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling updatePositionCrossMode.');
+        }
+
+        // verify required parameter 'inlineObject' is not null or undefined
+        if (inlineObject === null || inlineObject === undefined) {
+            throw new Error(
+                'Required parameter inlineObject was null or undefined when calling updatePositionCrossMode.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(inlineObject, 'InlineObject'),
         };
 
         const authSettings = ['apiv4'];
