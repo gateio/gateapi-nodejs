@@ -1,4 +1,4 @@
-# FuturesTicker
+# DeliveryTicker
 
 ## Properties
 
@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **fundingRateIndicative** | **string** | Indicative Funding rate in next period. (deprecated. use &#x60;funding_rate&#x60;) | [optional] [default to undefined]
 **indexPrice** | **string** | Index price | [optional] [default to undefined]
 **quantoBaseRate** | **string** | Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types | [optional] [default to undefined]
+**basisRate** | **string** | Basis rate | [optional] [default to undefined]
+**basisValue** | **string** | Basis value | [optional] [default to undefined]
 **lowestAsk** | **string** | Recent lowest ask | [optional] [default to undefined]
 **lowestSize** | **string** | The latest seller\&#39;s lowest price order quantity | [optional] [default to undefined]
 **highestBid** | **string** | Recent highest bid | [optional] [default to undefined]

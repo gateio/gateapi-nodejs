@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-export class FuturesTicker {
+export class DeliveryTicker {
     /**
      * Futures contract
      */
@@ -78,6 +78,14 @@ export class FuturesTicker {
      * Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types
      */
     'quantoBaseRate'?: string;
+    /**
+     * Basis rate
+     */
+    'basisRate'?: string;
+    /**
+     * Basis value
+     */
+    'basisValue'?: string;
     /**
      * Recent lowest ask
      */
@@ -184,6 +192,16 @@ export class FuturesTicker {
             type: 'string',
         },
         {
+            name: 'basisRate',
+            baseName: 'basis_rate',
+            type: 'string',
+        },
+        {
+            name: 'basisValue',
+            baseName: 'basis_value',
+            type: 'string',
+        },
+        {
             name: 'lowestAsk',
             baseName: 'lowest_ask',
             type: 'string',
@@ -206,6 +224,6 @@ export class FuturesTicker {
     ];
 
     static getAttributeTypeMap() {
-        return FuturesTicker.attributeTypeMap;
+        return DeliveryTicker.attributeTypeMap;
     }
 }

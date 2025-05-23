@@ -1,6 +1,6 @@
 {
     "name": "gate-api",
-    "version": "6.97.2",
+    "version": "6.97.4",
     "description": "NodeJS client for gate-api",
     "repository": "gateio/gateapi-nodejs",
     "main": "dist/api.js",
@@ -15,7 +15,7 @@
     "files": [
         "dist/**/*"
     ],
-    "author": "GateIO",
+    "author": "Gate",
     "license": "Unlicense",
     "dependencies": {
         "axios": "^1.8.4",

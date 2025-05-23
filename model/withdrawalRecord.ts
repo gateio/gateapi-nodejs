@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -42,6 +42,10 @@ export class WithdrawalRecord {
      * Currency name
      */
     'currency': string;
+    /**
+     * 提现地址
+     */
+    'address'?: string;
     /**
      * The reason for withdrawal failure is that there is a value when status = CANCEL, and the rest of the state is empty
      */
@@ -104,6 +108,11 @@ export class WithdrawalRecord {
         {
             name: 'currency',
             baseName: 'currency',
+            type: 'string',
+        },
+        {
+            name: 'address',
+            baseName: 'address',
             type: 'string',
         },
         {

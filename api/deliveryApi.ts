@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -13,6 +13,7 @@
 import { DeliveryCandlestick } from '../model/deliveryCandlestick';
 import { DeliveryContract } from '../model/deliveryContract';
 import { DeliverySettlement } from '../model/deliverySettlement';
+import { DeliveryTicker } from '../model/deliveryTicker';
 import { FuturesAccount } from '../model/futuresAccount';
 import { FuturesAccountBook } from '../model/futuresAccountBook';
 import { FuturesLimitRiskTiers } from '../model/futuresLimitRiskTiers';
@@ -20,7 +21,6 @@ import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
-import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
@@ -365,7 +365,7 @@ export class DeliveryApi {
     public async listDeliveryTickers(
         settle: 'usdt',
         opts: { contract?: string },
-    ): Promise<{ response: AxiosResponse; body: Array<FuturesTicker> }> {
+    ): Promise<{ response: AxiosResponse; body: Array<DeliveryTicker> }> {
         const localVarPath =
             this.client.basePath +
             '/delivery/{settle}/tickers'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
@@ -397,7 +397,7 @@ export class DeliveryApi {
         };
 
         const authSettings = [];
-        return this.client.request<Array<FuturesTicker>>(config, 'Array<FuturesTicker>', authSettings);
+        return this.client.request<Array<DeliveryTicker>>(config, 'Array<DeliveryTicker>', authSettings);
     }
 
     /**

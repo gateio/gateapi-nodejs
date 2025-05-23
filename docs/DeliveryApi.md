@@ -282,7 +282,7 @@ No authorization required
 
 ## listDeliveryTickers
 
-> Promise<{ response: http.IncomingMessage; body: Array<FuturesTicker>; }> listDeliveryTickers(settle, opts)
+> Promise<{ response: http.IncomingMessage; body: Array<DeliveryTicker>; }> listDeliveryTickers(settle, opts)
 
 List futures tickers
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<FuturesTicker>; }> [FuturesTicker](FuturesTicker.md)
+Promise<{ response: AxiosResponse; body: Array<DeliveryTicker>; }> [DeliveryTicker](DeliveryTicker.md)
 
 ### Authorization
 

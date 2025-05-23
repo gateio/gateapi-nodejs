@@ -1,6 +1,6 @@
 /**
  * Gate API v4
- * Welcome to Gate.io API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
  *
  * Contact: support@mail.gate.io
  *
@@ -18,14 +18,6 @@ export class PlaceDualInvestmentOrder {
      */
     'planId': string;
     /**
-     * The number of copies is mutually exclusive with the amount field and will be deprecated soon. It is recommended to use the amount parameter.
-     */
-    'copies'?: string;
-    /**
-     * Whether to purchase at the maximum. Mutually exclusive with the amount field. Will be deprecated soon. It is recommended to use the amount parameter.
-     */
-    'isMax'?: number;
-    /**
      * Subscription amount, mutually exclusive with the copies field
      */
     'amount': string;
@@ -41,16 +33,6 @@ export class PlaceDualInvestmentOrder {
             name: 'planId',
             baseName: 'plan_id',
             type: 'string',
-        },
-        {
-            name: 'copies',
-            baseName: 'copies',
-            type: 'string',
-        },
-        {
-            name: 'isMax',
-            baseName: 'is_max',
-            type: 'number',
         },
         {
             name: 'amount',

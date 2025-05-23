@@ -57,6 +57,7 @@ export * from './debitFee';
 export * from './deliveryCandlestick';
 export * from './deliveryContract';
 export * from './deliverySettlement';
+export * from './deliveryTicker';
 export * from './depositAddress';
 export * from './depositRecord';
 export * from './dualGetOrders';
@@ -313,6 +314,7 @@ import { DebitFee } from './debitFee';
 import { DeliveryCandlestick } from './deliveryCandlestick';
 import { DeliveryContract } from './deliveryContract';
 import { DeliverySettlement } from './deliverySettlement';
+import { DeliveryTicker } from './deliveryTicker';
 import { DepositAddress } from './depositAddress';
 import { DepositRecord } from './depositRecord';
 import { DualGetOrders } from './dualGetOrders';
@@ -638,6 +640,7 @@ let typeMap: { [index: string]: any } = {
     DeliveryCandlestick: DeliveryCandlestick,
     DeliveryContract: DeliveryContract,
     DeliverySettlement: DeliverySettlement,
+    DeliveryTicker: DeliveryTicker,
     DepositAddress: DepositAddress,
     DepositRecord: DepositRecord,
     DualGetOrders: DualGetOrders,
