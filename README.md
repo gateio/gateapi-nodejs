@@ -632,5 +632,5 @@ Class | Method | HTTP request | Description
 
 - **Type**: Gate APIv4
 
-https://www.gate.io/docs/apiv4/en/index.html#apiv4-signed-request-requirements
+https://www.gate.com/docs/apiv4/en/index.html#apiv4-signed-request-requirements
 
