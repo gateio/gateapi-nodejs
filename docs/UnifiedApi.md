@@ -928,8 +928,6 @@ const GateApi = require('gate-api');
 const client = new GateApi.ApiClient();
 // uncomment the next line to change base path
 // client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.UnifiedApi(client);
 const currency = "USDT"; // string | Currency
@@ -959,7 +957,7 @@ Promise<{ response: AxiosResponse; body: UnifiedHistoryLoanRate; }> [UnifiedHist
 
 ### Authorization
 
-[apiv4](../README.md#apiv4)
+No authorization required
 
 ### HTTP request headers
 

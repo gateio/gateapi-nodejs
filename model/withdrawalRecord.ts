@@ -43,7 +43,7 @@ export class WithdrawalRecord {
      */
     'currency': string;
     /**
-     * 提现地址
+     * Withdrawal address
      */
     'address'?: string;
     /**

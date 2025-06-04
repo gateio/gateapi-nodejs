@@ -12,6 +12,7 @@
 /* tslint:disable:no-unused-locals */
 import { CreateUniLend } from '../model/createUniLend';
 import { InlineResponse200 } from '../model/inlineResponse200';
+import { InlineResponse2001 } from '../model/inlineResponse2001';
 import { PatchUniLend } from '../model/patchUniLend';
 import { UniCurrency } from '../model/uniCurrency';
 import { UniCurrencyInterest } from '../model/uniCurrencyInterest';
@@ -436,7 +437,7 @@ export class EarnUniApi {
     }
 
     /**
-     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-05-23 13:34+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <LL@li.org> Plural-Forms: nplurals=2; plural=(n != 1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-06-04 01:36+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <LL@li.org> Plural-Forms: nplurals=2; plural=(n != 1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
      * @summary UniLoan currency annualized trend chart
      * @param from Start timestamp, unit s, maximum span of 30 days
      * @param to End timestamp, unit s, maximum span of 30 days
@@ -488,5 +489,32 @@ export class EarnUniApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<InlineResponse200>>(config, 'Array<InlineResponse200>', authSettings);
+    }
+
+    /**
+     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-06-04 01:36+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <LL@li.org> Plural-Forms: nplurals=2; plural=(n != 1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @summary Currency estimate annualized interest rate
+     */
+    public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2001> }> {
+        const localVarPath = this.client.basePath + '/earn/uni/rate';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<InlineResponse2001>>(config, 'Array<InlineResponse2001>', authSettings);
     }
 }

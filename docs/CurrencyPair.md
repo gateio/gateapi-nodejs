@@ -19,7 +19,9 @@ Name | Type | Description | Notes
 **tradeStatus** | **string** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] [default to undefined]
 **sellStart** | **number** | Sell start unix timestamp in seconds | [optional] [default to undefined]
 **buyStart** | **number** | Buy start unix timestamp in seconds | [optional] [default to undefined]
+**delistingTime** | **number** | Expected time to remove the shelves, Unix timestamp in seconds | [optional] [default to undefined]
 **type** | **string** | Trading pair type, normal: normal, premarket: pre-market | [optional] [default to undefined]
+**tradeUrl** | **string** | Transaction link | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

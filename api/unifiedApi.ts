@@ -854,7 +854,7 @@ export class UnifiedApi {
             url: localVarPath,
         };
 
-        const authSettings = ['apiv4'];
+        const authSettings = [];
         return this.client.request<UnifiedHistoryLoanRate>(config, 'UnifiedHistoryLoanRate', authSettings);
     }
 }

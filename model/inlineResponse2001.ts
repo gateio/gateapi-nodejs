@@ -9,26 +9,29 @@
  * Do not edit the class manually.
  */
 
-export class InlineResponse200 {
-    'time'?: number;
-    'value'?: string;
+export class InlineResponse2001 {
+    'currency'?: string;
+    /**
+     * Unconverted percentage
+     */
+    'estRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'time',
-            baseName: 'time',
-            type: 'number',
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
         },
         {
-            name: 'value',
-            baseName: 'value',
+            name: 'estRate',
+            baseName: 'est_rate',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineResponse200.attributeTypeMap;
+        return InlineResponse2001.attributeTypeMap;
     }
 }

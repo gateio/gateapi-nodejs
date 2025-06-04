@@ -11,63 +11,52 @@
 
 export class SubAccountTransfer {
     /**
-     * Transfer currency name
+     * Transfer timestamp
      */
-    'currency': string;
-    /**
-     * Sub account user ID
-     */
-    'subAccount': string;
-    /**
-     * Transfer direction. to - transfer into sub account; from - transfer out from sub account
-     */
-    'direction': string;
-    /**
-     * Transfer amount
-     */
-    'amount': string;
+    'timest'?: string;
     /**
      * Main account user ID
      */
     'uid'?: string;
     /**
-     * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
+     * Sub account user ID
      */
-    'clientOrderId'?: string;
+    'subAccount': string;
     /**
-     * Transfer timestamp
+     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `delivery` - delivery account
      */
-    'timest'?: string;
+    'subAccountType'?: string;
+    /**
+     * Transfer currency name
+     */
+    'currency': string;
+    /**
+     * Transfer amount
+     */
+    'amount': string;
+    /**
+     * Transfer direction. to - transfer into sub account; from - transfer out from sub account
+     */
+    'direction': string;
     /**
      * Where the operation is initiated from
      */
     'source'?: string;
     /**
-     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `delivery` - delivery account
+     * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
      */
-    'subAccountType'?: string;
+    'clientOrderId'?: string;
+    /**
+     * Sub-account transfer record status, currently only success
+     */
+    'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'currency',
-            baseName: 'currency',
-            type: 'string',
-        },
-        {
-            name: 'subAccount',
-            baseName: 'sub_account',
-            type: 'string',
-        },
-        {
-            name: 'direction',
-            baseName: 'direction',
-            type: 'string',
-        },
-        {
-            name: 'amount',
-            baseName: 'amount',
+            name: 'timest',
+            baseName: 'timest',
             type: 'string',
         },
         {
@@ -76,13 +65,28 @@ export class SubAccountTransfer {
             type: 'string',
         },
         {
-            name: 'clientOrderId',
-            baseName: 'client_order_id',
+            name: 'subAccount',
+            baseName: 'sub_account',
             type: 'string',
         },
         {
-            name: 'timest',
-            baseName: 'timest',
+            name: 'subAccountType',
+            baseName: 'sub_account_type',
+            type: 'string',
+        },
+        {
+            name: 'currency',
+            baseName: 'currency',
+            type: 'string',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'direction',
+            baseName: 'direction',
             type: 'string',
         },
         {
@@ -91,8 +95,13 @@ export class SubAccountTransfer {
             type: 'string',
         },
         {
-            name: 'subAccountType',
-            baseName: 'sub_account_type',
+            name: 'clientOrderId',
+            baseName: 'client_order_id',
+            type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
             type: 'string',
         },
     ];

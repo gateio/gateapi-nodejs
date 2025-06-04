@@ -74,9 +74,17 @@ export class CurrencyPair {
      */
     'buyStart'?: number;
     /**
+     * Expected time to remove the shelves, Unix timestamp in seconds
+     */
+    'delistingTime'?: number;
+    /**
      * Trading pair type, normal: normal, premarket: pre-market
      */
     'type'?: string;
+    /**
+     * Transaction link
+     */
+    'tradeUrl'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -157,8 +165,18 @@ export class CurrencyPair {
             type: 'number',
         },
         {
+            name: 'delistingTime',
+            baseName: 'delisting_time',
+            type: 'number',
+        },
+        {
             name: 'type',
             baseName: 'type',
+            type: 'string',
+        },
+        {
+            name: 'tradeUrl',
+            baseName: 'trade_url',
             type: 'string',
         },
     ];

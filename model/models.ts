@@ -96,6 +96,7 @@ export * from './futuresTrade';
 export * from './indexConstituent';
 export * from './inlineObject';
 export * from './inlineResponse200';
+export * from './inlineResponse2001';
 export * from './insuranceRecord';
 export * from './ledgerRecord';
 export * from './liquidateOrder';
@@ -353,6 +354,7 @@ import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
 import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
+import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
 import { LedgerRecord } from './ledgerRecord';
 import { LiquidateOrder } from './liquidateOrder';
@@ -679,6 +681,7 @@ let typeMap: { [index: string]: any } = {
     IndexConstituent: IndexConstituent,
     InlineObject: InlineObject,
     InlineResponse200: InlineResponse200,
+    InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,
     LedgerRecord: LedgerRecord,
     LiquidateOrder: LiquidateOrder,
