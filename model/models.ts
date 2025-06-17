@@ -40,15 +40,9 @@ export * from './createCollateralOrder';
 export * from './createMultiCollateralOrder';
 export * from './createUniLend';
 export * from './createUniLoan';
-export * from './crossMarginAccount';
-export * from './crossMarginAccountBook';
 export * from './crossMarginBalance';
-export * from './crossMarginBalance1';
-export * from './crossMarginCurrency';
 export * from './crossMarginLoan';
-export * from './crossMarginRepayRequest';
 export * from './crossMarginRepayment';
-export * from './crossMarginTransferable';
 export * from './currency';
 export * from './currencyChain';
 export * from './currencyPair';
@@ -215,7 +209,6 @@ export * from './uidPushWithdrawalResp';
 export * from './uniCurrency';
 export * from './uniCurrencyInterest';
 export * from './uniCurrencyPair';
-export * from './uniInterestMode';
 export * from './uniInterestRecord';
 export * from './uniLend';
 export * from './uniLendInterest';
@@ -298,15 +291,9 @@ import { CreateCollateralOrder } from './createCollateralOrder';
 import { CreateMultiCollateralOrder } from './createMultiCollateralOrder';
 import { CreateUniLend } from './createUniLend';
 import { CreateUniLoan } from './createUniLoan';
-import { CrossMarginAccount } from './crossMarginAccount';
-import { CrossMarginAccountBook } from './crossMarginAccountBook';
 import { CrossMarginBalance } from './crossMarginBalance';
-import { CrossMarginBalance1 } from './crossMarginBalance1';
-import { CrossMarginCurrency } from './crossMarginCurrency';
 import { CrossMarginLoan } from './crossMarginLoan';
-import { CrossMarginRepayRequest } from './crossMarginRepayRequest';
 import { CrossMarginRepayment } from './crossMarginRepayment';
-import { CrossMarginTransferable } from './crossMarginTransferable';
 import { Currency } from './currency';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
@@ -473,7 +460,6 @@ import { UidPushWithdrawalResp } from './uidPushWithdrawalResp';
 import { UniCurrency } from './uniCurrency';
 import { UniCurrencyInterest } from './uniCurrencyInterest';
 import { UniCurrencyPair } from './uniCurrencyPair';
-import { UniInterestMode } from './uniInterestMode';
 import { UniInterestRecord } from './uniInterestRecord';
 import { UniLend } from './uniLend';
 import { UniLendInterest } from './uniLendInterest';
@@ -625,15 +611,9 @@ let typeMap: { [index: string]: any } = {
     CreateMultiCollateralOrder: CreateMultiCollateralOrder,
     CreateUniLend: CreateUniLend,
     CreateUniLoan: CreateUniLoan,
-    CrossMarginAccount: CrossMarginAccount,
-    CrossMarginAccountBook: CrossMarginAccountBook,
     CrossMarginBalance: CrossMarginBalance,
-    CrossMarginBalance1: CrossMarginBalance1,
-    CrossMarginCurrency: CrossMarginCurrency,
     CrossMarginLoan: CrossMarginLoan,
-    CrossMarginRepayRequest: CrossMarginRepayRequest,
     CrossMarginRepayment: CrossMarginRepayment,
-    CrossMarginTransferable: CrossMarginTransferable,
     Currency: Currency,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
@@ -800,7 +780,6 @@ let typeMap: { [index: string]: any } = {
     UniCurrency: UniCurrency,
     UniCurrencyInterest: UniCurrencyInterest,
     UniCurrencyPair: UniCurrencyPair,
-    UniInterestMode: UniInterestMode,
     UniInterestRecord: UniInterestRecord,
     UniLend: UniLend,
     UniLendInterest: UniLendInterest,

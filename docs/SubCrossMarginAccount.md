@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **number** | User ID of the cross margin account. 0 means that the subaccount has not yet opened a cross margin account | [optional] [default to undefined]
 **locked** | **boolean** | Whether account is locked | [optional] [default to undefined]
-**balances** | [**{ [key: string]: CrossMarginBalance1; }**](CrossMarginBalance1.md) |  | [optional] [default to undefined]
+**balances** | [**{ [key: string]: CrossMarginBalance; }**](CrossMarginBalance.md) |  | [optional] [default to undefined]
 **total** | **string** | Total account value in USDT, i.e., the sum of all currencies\&#39; &#x60;(available+freeze)*price*discount&#x60; | [optional] [default to undefined]
 **borrowed** | **string** | Total borrowed value in USDT, i.e., the sum of all currencies\&#39; &#x60;borrowed*price*discount&#x60; | [optional] [default to undefined]
 **borrowedNet** | **string** | Total borrowed value in USDT * borrowed factor | [optional] [default to undefined]
