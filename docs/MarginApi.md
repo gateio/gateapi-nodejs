@@ -5,15 +5,15 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listMarginAccounts**](MarginApi.md#listMarginAccounts) | **GET** /margin/accounts | Margin account list
-[**getUserMarginTier**](MarginApi.md#getUserMarginTier) | **GET** /margin/user/loan_margin_tiers | Check the user\&#39;s own leverage lending gradient in the current market
-[**getMarketMarginTier**](MarginApi.md#getMarketMarginTier) | **GET** /margin/loan_margin_tiers | Query the current market leverage lending gradient
-[**setUserMarketLeverage**](MarginApi.md#setUserMarketLeverage) | **POST** /margin/leverage/user_market_setting | Set the user market leverage multiple
-[**listMarginUserAccount**](MarginApi.md#listMarginUserAccount) | **GET** /margin/user/account | Query the user\&#39;s leverage account list
 [**listMarginAccountBook**](MarginApi.md#listMarginAccountBook) | **GET** /margin/account_book | List margin account balance change history
 [**listFundingAccounts**](MarginApi.md#listFundingAccounts) | **GET** /margin/funding_accounts | Funding account list
 [**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting
 [**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting
 [**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Get the max transferable amount for a specific margin currency
+[**getUserMarginTier**](MarginApi.md#getUserMarginTier) | **GET** /margin/user/loan_margin_tiers | Check the user\&#39;s own leverage lending gradient in the current market
+[**getMarketMarginTier**](MarginApi.md#getMarketMarginTier) | **GET** /margin/loan_margin_tiers | Query the current market leverage lending gradient
+[**setUserMarketLeverage**](MarginApi.md#setUserMarketLeverage) | **POST** /margin/leverage/user_market_setting | Set the user market leverage multiple
+[**listMarginUserAccount**](MarginApi.md#listMarginUserAccount) | **GET** /margin/user/account | Query the user\&#39;s leverage account list
 [**listCrossMarginLoans**](MarginApi.md#listCrossMarginLoans) | **GET** /margin/cross/loans | List cross margin borrow history. (deprecated)
 [**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments. (deprecated)
 
@@ -39,180 +39,6 @@ const opts = {
   'currencyPair': "BTC_USDT" // string | Currency pair
 };
 api.listMarginAccounts(opts)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount](MarginAccount.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## getUserMarginTier
-
-> Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getUserMarginTier(currencyPair)
-
-Check the user\&#39;s own leverage lending gradient in the current market
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const currencyPair = "BTC_USDT"; // string | Currency pair
-api.getUserMarginTier(currencyPair)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier>; }> [MarginLeverageTier](MarginLeverageTier.md)
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## getMarketMarginTier
-
-> Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getMarketMarginTier(currencyPair)
-
-Query the current market leverage lending gradient
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-
-const api = new GateApi.MarginApi(client);
-const currencyPair = "BTC_USDT"; // string | Currency pair
-api.getMarketMarginTier(currencyPair)
-   .then(value => console.log('API called successfully. Returned data: ', value.body),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair | [default to undefined]
-
-### Return type
-
-Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier>; }> [MarginLeverageTier](MarginLeverageTier.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-## setUserMarketLeverage
-
-> Promise<{ response: http.IncomingMessage; body?: any; }> setUserMarketLeverage(marginMarketLeverage)
-
-Set the user market leverage multiple
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const marginMarketLeverage = new MarginMarketLeverage(); // MarginMarketLeverage | 
-api.setUserMarketLeverage(marginMarketLeverage)
-   .then(value => console.log('API called successfully.'),
-         error => console.error(error));
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **marginMarketLeverage** | [**MarginMarketLeverage**](MarginMarketLeverage.md)|  | 
-
-### Return type
-
-Promise<{ response: AxiosResponse; body?: any; }> 
-
-### Authorization
-
-[apiv4](../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-## listMarginUserAccount
-
-> Promise<{ response: http.IncomingMessage; body: Array<MarginAccount>; }> listMarginUserAccount(opts)
-
-Query the user\&#39;s leverage account list
-
-Support querying risk rate per position account and margin rate per position account
-
-### Example
-
-```typescript
-const GateApi = require('gate-api');
-const client = new GateApi.ApiClient();
-// uncomment the next line to change base path
-// client.basePath = "https://some-other-host"
-// Configure Gate APIv4 key authentication:
-client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
-
-const api = new GateApi.MarginApi(client);
-const opts = {
-  'currencyPair': "BTC_USDT" // string | Currency pair
-};
-api.listMarginUserAccount(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -460,6 +286,180 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: MarginTransferable; }> [MarginTransferable](MarginTransferable.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getUserMarginTier
+
+> Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getUserMarginTier(currencyPair)
+
+Check the user\&#39;s own leverage lending gradient in the current market
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const currencyPair = "BTC_USDT"; // string | Currency pair
+api.getUserMarginTier(currencyPair)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Currency pair | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier>; }> [MarginLeverageTier](MarginLeverageTier.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getMarketMarginTier
+
+> Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getMarketMarginTier(currencyPair)
+
+Query the current market leverage lending gradient
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.MarginApi(client);
+const currencyPair = "BTC_USDT"; // string | Currency pair
+api.getMarketMarginTier(currencyPair)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Currency pair | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier>; }> [MarginLeverageTier](MarginLeverageTier.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## setUserMarketLeverage
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> setUserMarketLeverage(marginMarketLeverage)
+
+Set the user market leverage multiple
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const marginMarketLeverage = new MarginMarketLeverage(); // MarginMarketLeverage | 
+api.setUserMarketLeverage(marginMarketLeverage)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **marginMarketLeverage** | [**MarginMarketLeverage**](MarginMarketLeverage.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## listMarginUserAccount
+
+> Promise<{ response: http.IncomingMessage; body: Array<MarginAccount>; }> listMarginUserAccount(opts)
+
+Query the user\&#39;s leverage account list
+
+Support querying risk rate per position account and margin rate per position account
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.MarginApi(client);
+const opts = {
+  'currencyPair': "BTC_USDT" // string | Currency pair
+};
+api.listMarginUserAccount(opts)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount](MarginAccount.md)
 
 ### Authorization
 

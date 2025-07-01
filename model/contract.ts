@@ -157,6 +157,14 @@ export class Contract {
      * The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
      */
     'fundingCapRatio'?: string;
+    /**
+     * Contract Status Types include:  prelaunch,  trading, delisting,  delisted
+     */
+    'status'?: string;
+    /**
+     * 合约开盘时间
+     */
+    'launchTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -340,6 +348,16 @@ export class Contract {
             name: 'fundingCapRatio',
             baseName: 'funding_cap_ratio',
             type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
+            type: 'string',
+        },
+        {
+            name: 'launchTime',
+            baseName: 'launch_time',
+            type: 'number',
         },
     ];
 

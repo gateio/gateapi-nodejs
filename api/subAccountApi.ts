@@ -181,7 +181,7 @@ export class SubAccountApi {
     public async createSubAccountKeys(
         userId: number,
         subAccountKey: SubAccountKey,
-    ): Promise<{ response: AxiosResponse; body: Array<SubAccountKey> }> {
+    ): Promise<{ response: AxiosResponse; body: SubAccountKey }> {
         const localVarPath =
             this.client.basePath +
             '/sub_accounts/{user_id}/keys'.replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
@@ -216,7 +216,7 @@ export class SubAccountApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountKey>>(config, 'Array<SubAccountKey>', authSettings);
+        return this.client.request<SubAccountKey>(config, 'SubAccountKey', authSettings);
     }
 
     /**

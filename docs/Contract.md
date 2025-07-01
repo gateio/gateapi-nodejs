@@ -40,6 +40,8 @@ Name | Type | Description | Notes
 **enableCredit** | **boolean** | Whether portfolio margin account is enabled | [optional] [default to undefined]
 **createTime** | **number** | Created time of the contract | [optional] [default to undefined]
 **fundingCapRatio** | **string** | The factor for the maximum of the funding rate. Maximum of funding rate &#x3D; (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio | [optional] [default to undefined]
+**status** | **string** | Contract Status Types include:  prelaunch,  trading, delisting,  delisted  | [optional] [default to undefined]
+**launchTime** | **number** | 合约开盘时间 | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

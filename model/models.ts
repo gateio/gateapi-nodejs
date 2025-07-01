@@ -1,7 +1,9 @@
 export * from './accountBalance';
+export * from './accountBookResponse';
 export * from './accountDetail';
 export * from './accountDetailKey';
 export * from './accountRateLimit';
+export * from './accountsResponse';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
@@ -14,6 +16,7 @@ export * from './batchOrder';
 export * from './borrowCurrencyInfo';
 export * from './brokerCommission';
 export * from './brokerCommission1';
+export * from './brokerCommissionSubBrokerInfo';
 export * from './brokerTransaction';
 export * from './brokerTransaction1';
 export * from './cancelBatchOrder';
@@ -44,6 +47,7 @@ export * from './crossMarginBalance';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
 export * from './currency';
+export * from './currency2';
 export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
@@ -58,6 +62,7 @@ export * from './dualGetOrders';
 export * from './dualGetPlans';
 export * from './eth2RateList';
 export * from './eth2Swap';
+export * from './findCoin';
 export * from './flashSwapCurrencyPair';
 export * from './flashSwapOrder';
 export * from './flashSwapOrderPreview';
@@ -82,13 +87,13 @@ export * from './futuresOrder';
 export * from './futuresOrderAmendment';
 export * from './futuresOrderBook';
 export * from './futuresOrderBookItem';
+export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
 export * from './futuresPriceTriggeredOrder';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './indexConstituent';
-export * from './inlineObject';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './insuranceRecord';
@@ -144,16 +149,21 @@ export * from './orderBook';
 export * from './orderCancel';
 export * from './orderPatch';
 export * from './orderResp';
+export * from './orderResponse';
 export * from './partnerCommissionHistory';
 export * from './partnerSub';
 export * from './partnerSubList';
 export * from './partnerTransactionHistory';
 export * from './patchUniLend';
 export * from './placeDualInvestmentOrder';
+export * from './placeOrderRequest';
+export * from './placeOrderResponse';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
 export * from './profitLossRange';
+export * from './quoteRequest';
+export * from './quoteResponse';
 export * from './rebateUserInfo';
 export * from './repayCurrencyRes';
 export * from './repayLoan';
@@ -190,10 +200,13 @@ export * from './subAccountKeyPerms';
 export * from './subAccountMarginBalance';
 export * from './subAccountToSubAccount';
 export * from './subAccountTransfer';
+export * from './subAccountTransferRecordItem';
 export * from './subCrossMarginAccount';
 export * from './subUserMode';
+export * from './swapCoin';
 export * from './systemTime';
 export * from './ticker';
+export * from './ticker2';
 export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
@@ -250,9 +263,11 @@ import crypto = require('crypto');
 import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
+import { AccountBookResponse } from './accountBookResponse';
 import { AccountDetail } from './accountDetail';
 import { AccountDetailKey } from './accountDetailKey';
 import { AccountRateLimit } from './accountRateLimit';
+import { AccountsResponse } from './accountsResponse';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
@@ -265,6 +280,7 @@ import { BatchOrder } from './batchOrder';
 import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
 import { BrokerCommission } from './brokerCommission';
 import { BrokerCommission1 } from './brokerCommission1';
+import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 import { BrokerTransaction } from './brokerTransaction';
 import { BrokerTransaction1 } from './brokerTransaction1';
 import { CancelBatchOrder } from './cancelBatchOrder';
@@ -295,6 +311,7 @@ import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
 import { Currency } from './currency';
+import { Currency2 } from './currency2';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
@@ -309,6 +326,7 @@ import { DualGetOrders } from './dualGetOrders';
 import { DualGetPlans } from './dualGetPlans';
 import { Eth2RateList } from './eth2RateList';
 import { Eth2Swap } from './eth2Swap';
+import { FindCoin } from './findCoin';
 import { FlashSwapCurrencyPair } from './flashSwapCurrencyPair';
 import { FlashSwapOrder } from './flashSwapOrder';
 import { FlashSwapOrderPreview } from './flashSwapOrderPreview';
@@ -333,13 +351,13 @@ import { FuturesOrder } from './futuresOrder';
 import { FuturesOrderAmendment } from './futuresOrderAmendment';
 import { FuturesOrderBook } from './futuresOrderBook';
 import { FuturesOrderBookItem } from './futuresOrderBookItem';
+import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
-import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
@@ -395,16 +413,21 @@ import { OrderBook } from './orderBook';
 import { OrderCancel } from './orderCancel';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
+import { OrderResponse } from './orderResponse';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
 import { PatchUniLend } from './patchUniLend';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
+import { PlaceOrderRequest } from './placeOrderRequest';
+import { PlaceOrderResponse } from './placeOrderResponse';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
 import { ProfitLossRange } from './profitLossRange';
+import { QuoteRequest } from './quoteRequest';
+import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayLoan } from './repayLoan';
@@ -441,10 +464,13 @@ import { SubAccountKeyPerms } from './subAccountKeyPerms';
 import { SubAccountMarginBalance } from './subAccountMarginBalance';
 import { SubAccountToSubAccount } from './subAccountToSubAccount';
 import { SubAccountTransfer } from './subAccountTransfer';
+import { SubAccountTransferRecordItem } from './subAccountTransferRecordItem';
 import { SubCrossMarginAccount } from './subCrossMarginAccount';
 import { SubUserMode } from './subUserMode';
+import { SwapCoin } from './swapCoin';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
+import { Ticker2 } from './ticker2';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
@@ -570,9 +596,11 @@ let enumsMap: { [index: string]: any } = {
 
 let typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
+    AccountBookResponse: AccountBookResponse,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
     AccountRateLimit: AccountRateLimit,
+    AccountsResponse: AccountsResponse,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
@@ -585,6 +613,7 @@ let typeMap: { [index: string]: any } = {
     BorrowCurrencyInfo: BorrowCurrencyInfo,
     BrokerCommission: BrokerCommission,
     BrokerCommission1: BrokerCommission1,
+    BrokerCommissionSubBrokerInfo: BrokerCommissionSubBrokerInfo,
     BrokerTransaction: BrokerTransaction,
     BrokerTransaction1: BrokerTransaction1,
     CancelBatchOrder: CancelBatchOrder,
@@ -615,6 +644,7 @@ let typeMap: { [index: string]: any } = {
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayment: CrossMarginRepayment,
     Currency: Currency,
+    Currency2: Currency2,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
@@ -629,6 +659,7 @@ let typeMap: { [index: string]: any } = {
     DualGetPlans: DualGetPlans,
     Eth2RateList: Eth2RateList,
     Eth2Swap: Eth2Swap,
+    FindCoin: FindCoin,
     FlashSwapCurrencyPair: FlashSwapCurrencyPair,
     FlashSwapOrder: FlashSwapOrder,
     FlashSwapOrderPreview: FlashSwapOrderPreview,
@@ -653,13 +684,13 @@ let typeMap: { [index: string]: any } = {
     FuturesOrderAmendment: FuturesOrderAmendment,
     FuturesOrderBook: FuturesOrderBook,
     FuturesOrderBookItem: FuturesOrderBookItem,
+    FuturesPositionCrossMode: FuturesPositionCrossMode,
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
     FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     IndexConstituent: IndexConstituent,
-    InlineObject: InlineObject,
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,
@@ -715,16 +746,21 @@ let typeMap: { [index: string]: any } = {
     OrderCancel: OrderCancel,
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
+    OrderResponse: OrderResponse,
     PartnerCommissionHistory: PartnerCommissionHistory,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
     PartnerTransactionHistory: PartnerTransactionHistory,
     PatchUniLend: PatchUniLend,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
+    PlaceOrderRequest: PlaceOrderRequest,
+    PlaceOrderResponse: PlaceOrderResponse,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
     ProfitLossRange: ProfitLossRange,
+    QuoteRequest: QuoteRequest,
+    QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayLoan: RepayLoan,
@@ -761,10 +797,13 @@ let typeMap: { [index: string]: any } = {
     SubAccountMarginBalance: SubAccountMarginBalance,
     SubAccountToSubAccount: SubAccountToSubAccount,
     SubAccountTransfer: SubAccountTransfer,
+    SubAccountTransferRecordItem: SubAccountTransferRecordItem,
     SubCrossMarginAccount: SubCrossMarginAccount,
     SubUserMode: SubUserMode,
+    SwapCoin: SwapCoin,
     SystemTime: SystemTime,
     Ticker: Ticker,
+    Ticker2: Ticker2,
     TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,

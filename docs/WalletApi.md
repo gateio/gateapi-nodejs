@@ -274,7 +274,7 @@ Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](Trans
 
 ## listSubAccountTransfers
 
-> Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransfer>; }> listSubAccountTransfers(opts)
+> Promise<{ response: http.IncomingMessage; body: Array<SubAccountTransferRecordItem>; }> listSubAccountTransfers(opts)
 
 Retrieve transfer records between main and sub accounts
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer>; }> [SubAccountTransfer](SubAccountTransfer.md)
+Promise<{ response: AxiosResponse; body: Array<SubAccountTransferRecordItem>; }> [SubAccountTransferRecordItem](SubAccountTransferRecordItem.md)
 
 ### Authorization
 

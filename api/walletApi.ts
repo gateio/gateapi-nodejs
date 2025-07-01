@@ -23,6 +23,7 @@ import { SubAccountFuturesBalance } from '../model/subAccountFuturesBalance';
 import { SubAccountMarginBalance } from '../model/subAccountMarginBalance';
 import { SubAccountToSubAccount } from '../model/subAccountToSubAccount';
 import { SubAccountTransfer } from '../model/subAccountTransfer';
+import { SubAccountTransferRecordItem } from '../model/subAccountTransferRecordItem';
 import { TotalBalance } from '../model/totalBalance';
 import { TradeFee } from '../model/tradeFee';
 import { TransactionID } from '../model/transactionID';
@@ -310,7 +311,7 @@ export class WalletApi {
         to?: number;
         limit?: number;
         offset?: number;
-    }): Promise<{ response: AxiosResponse; body: Array<SubAccountTransfer> }> {
+    }): Promise<{ response: AxiosResponse; body: Array<SubAccountTransferRecordItem> }> {
         const localVarPath = this.client.basePath + '/wallet/sub_account_transfers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -351,7 +352,11 @@ export class WalletApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<Array<SubAccountTransfer>>(config, 'Array<SubAccountTransfer>', authSettings);
+        return this.client.request<Array<SubAccountTransferRecordItem>>(
+            config,
+            'Array<SubAccountTransferRecordItem>',
+            authSettings,
+        );
     }
 
     /**

@@ -9,6 +9,8 @@
  * Do not edit the class manually.
  */
 
+import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
+
 export class BrokerCommission1 {
     /**
      * Commission Time. (unix timestamp)
@@ -46,6 +48,7 @@ export class BrokerCommission1 {
      * Currency pair
      */
     'currencyPair'?: string;
+    'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;
 
     static discriminator: string | undefined = undefined;
 
@@ -94,6 +97,11 @@ export class BrokerCommission1 {
             name: 'currencyPair',
             baseName: 'currency_pair',
             type: 'string',
+        },
+        {
+            name: 'subBrokerInfo',
+            baseName: 'sub_broker_info',
+            type: 'BrokerCommissionSubBrokerInfo',
         },
     ];
 

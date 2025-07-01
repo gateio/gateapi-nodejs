@@ -9,6 +9,8 @@
  * Do not edit the class manually.
  */
 
+import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
+
 export class BrokerTransaction1 {
     /**
      * Transaction Time. (unix timestamp)
@@ -42,6 +44,7 @@ export class BrokerTransaction1 {
      * Rebate Type: Spot、Futures、Options
      */
     'source'?: string;
+    'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +88,11 @@ export class BrokerTransaction1 {
             name: 'source',
             baseName: 'source',
             type: 'string',
+        },
+        {
+            name: 'subBrokerInfo',
+            baseName: 'sub_broker_info',
+            type: 'BrokerCommissionSubBrokerInfo',
         },
     ];
 

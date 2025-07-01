@@ -29,11 +29,11 @@ import { FuturesLiquidate } from '../model/futuresLiquidate';
 import { FuturesOrder } from '../model/futuresOrder';
 import { FuturesOrderAmendment } from '../model/futuresOrderAmendment';
 import { FuturesOrderBook } from '../model/futuresOrderBook';
+import { FuturesPositionCrossMode } from '../model/futuresPositionCrossMode';
 import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
-import { InlineObject } from '../model/inlineObject';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
@@ -1148,11 +1148,11 @@ export class FuturesApi {
      *
      * @summary Switch to the full position-by-store mode
      * @param settle Settle currency
-     * @param inlineObject
+     * @param futuresPositionCrossMode
      */
     public async updatePositionCrossMode(
         settle: 'btc' | 'usdt',
-        inlineObject: InlineObject,
+        futuresPositionCrossMode: FuturesPositionCrossMode,
     ): Promise<{ response: AxiosResponse; body: Position }> {
         const localVarPath =
             this.client.basePath +
@@ -1172,10 +1172,10 @@ export class FuturesApi {
             throw new Error('Required parameter settle was null or undefined when calling updatePositionCrossMode.');
         }
 
-        // verify required parameter 'inlineObject' is not null or undefined
-        if (inlineObject === null || inlineObject === undefined) {
+        // verify required parameter 'futuresPositionCrossMode' is not null or undefined
+        if (futuresPositionCrossMode === null || futuresPositionCrossMode === undefined) {
             throw new Error(
-                'Required parameter inlineObject was null or undefined when calling updatePositionCrossMode.',
+                'Required parameter futuresPositionCrossMode was null or undefined when calling updatePositionCrossMode.',
             );
         }
 
@@ -1184,7 +1184,7 @@ export class FuturesApi {
             params: localVarQueryParameters,
             headers: localVarHeaderParams,
             url: localVarPath,
-            data: ObjectSerializer.serialize(inlineObject, 'InlineObject'),
+            data: ObjectSerializer.serialize(futuresPositionCrossMode, 'FuturesPositionCrossMode'),
         };
 
         const authSettings = ['apiv4'];

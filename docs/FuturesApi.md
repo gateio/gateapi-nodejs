@@ -999,7 +999,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 ## updatePositionCrossMode
 
-> Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionCrossMode(settle, inlineObject)
+> Promise<{ response: http.IncomingMessage; body: Position; }> updatePositionCrossMode(settle, futuresPositionCrossMode)
 
 Switch to the full position-by-store mode
 
@@ -1015,8 +1015,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
-const inlineObject = new InlineObject(); // InlineObject | 
-api.updatePositionCrossMode(settle, inlineObject)
+const futuresPositionCrossMode = new FuturesPositionCrossMode(); // FuturesPositionCrossMode | 
+api.updatePositionCrossMode(settle, futuresPositionCrossMode)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
@@ -1027,7 +1027,7 @@ api.updatePositionCrossMode(settle, inlineObject)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
- **inlineObject** | [**InlineObject**](InlineObject.md)|  | 
+ **futuresPositionCrossMode** | [**FuturesPositionCrossMode**](FuturesPositionCrossMode.md)|  | 
 
 ### Return type
 

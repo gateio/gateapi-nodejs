@@ -12,4 +12,5 @@ Name | Type | Description | Notes
 **amount** | **string** | Commission Amount | [optional] [default to undefined]
 **feeAsset** | **string** | Fee currency | [optional] [default to undefined]
 **source** | **string** | Rebate Type: Spot、Futures、Options | [optional] [default to undefined]
+**subBrokerInfo** | [**BrokerCommissionSubBrokerInfo**](BrokerCommissionSubBrokerInfo.md) |  | [optional] [default to undefined]
 

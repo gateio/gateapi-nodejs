@@ -15,7 +15,7 @@ export class SubAccountKey {
     /**
      * User ID
      */
-    'userId'?: string;
+    'userId'?: number;
     /**
      * Mode: 1 - classic 2 - portfolio account
      */
@@ -56,7 +56,7 @@ export class SubAccountKey {
         {
             name: 'userId',
             baseName: 'user_id',
-            type: 'string',
+            type: 'number',
         },
         {
             name: 'mode',

@@ -75,147 +75,6 @@ export class MarginApi {
     }
 
     /**
-     *
-     * @summary Check the user\'s own leverage lending gradient in the current market
-     * @param currencyPair Currency pair
-     */
-    public async getUserMarginTier(
-        currencyPair: string,
-    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
-        const localVarPath = this.client.basePath + '/margin/user/loan_margin_tiers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling getUserMarginTier.');
-        }
-
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Query the current market leverage lending gradient
-     * @param currencyPair Currency pair
-     */
-    public async getMarketMarginTier(
-        currencyPair: string,
-    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
-        const localVarPath = this.client.basePath + '/margin/loan_margin_tiers';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling getMarketMarginTier.');
-        }
-
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
-    }
-
-    /**
-     *
-     * @summary Set the user market leverage multiple
-     * @param marginMarketLeverage
-     */
-    public async setUserMarketLeverage(
-        marginMarketLeverage: MarginMarketLeverage,
-    ): Promise<{ response: AxiosResponse; body?: any }> {
-        const localVarPath = this.client.basePath + '/margin/leverage/user_market_setting';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-
-        // verify required parameter 'marginMarketLeverage' is not null or undefined
-        if (marginMarketLeverage === null || marginMarketLeverage === undefined) {
-            throw new Error(
-                'Required parameter marginMarketLeverage was null or undefined when calling setUserMarketLeverage.',
-            );
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'POST',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-            data: ObjectSerializer.serialize(marginMarketLeverage, 'MarginMarketLeverage'),
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
-    }
-
-    /**
-     * Support querying risk rate per position account and margin rate per position account
-     * @summary Query the user\'s leverage account list
-     * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair
-     */
-    public async listMarginUserAccount(opts: {
-        currencyPair?: string;
-    }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
-        const localVarPath = this.client.basePath + '/margin/user/account';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        opts = opts || {};
-        if (opts.currencyPair !== undefined) {
-            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<Array<MarginAccount>>(config, 'Array<MarginAccount>', authSettings);
-    }
-
-    /**
      * Only transferals from and to margin account are provided for now. Time range allows 30 days at most
      * @summary List margin account balance change history
      * @param opts Optional parameters
@@ -428,6 +287,147 @@ export class MarginApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<MarginTransferable>(config, 'MarginTransferable', authSettings);
+    }
+
+    /**
+     *
+     * @summary Check the user\'s own leverage lending gradient in the current market
+     * @param currencyPair Currency pair
+     */
+    public async getUserMarginTier(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
+        const localVarPath = this.client.basePath + '/margin/user/loan_margin_tiers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getUserMarginTier.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Query the current market leverage lending gradient
+     * @param currencyPair Currency pair
+     */
+    public async getMarketMarginTier(
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier> }> {
+        const localVarPath = this.client.basePath + '/margin/loan_margin_tiers';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getMarketMarginTier.');
+        }
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<MarginLeverageTier>>(config, 'Array<MarginLeverageTier>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Set the user market leverage multiple
+     * @param marginMarketLeverage
+     */
+    public async setUserMarketLeverage(
+        marginMarketLeverage: MarginMarketLeverage,
+    ): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/margin/leverage/user_market_setting';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'marginMarketLeverage' is not null or undefined
+        if (marginMarketLeverage === null || marginMarketLeverage === undefined) {
+            throw new Error(
+                'Required parameter marginMarketLeverage was null or undefined when calling setUserMarketLeverage.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(marginMarketLeverage, 'MarginMarketLeverage'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     * Support querying risk rate per position account and margin rate per position account
+     * @summary Query the user\'s leverage account list
+     * @param opts Optional parameters
+     * @param opts.currencyPair Currency pair
+     */
+    public async listMarginUserAccount(opts: {
+        currencyPair?: string;
+    }): Promise<{ response: AxiosResponse; body: Array<MarginAccount> }> {
+        const localVarPath = this.client.basePath + '/margin/user/account';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        opts = opts || {};
+        if (opts.currencyPair !== undefined) {
+            localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(opts.currencyPair, 'string');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<MarginAccount>>(config, 'Array<MarginAccount>', authSettings);
     }
 
     /**

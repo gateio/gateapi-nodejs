@@ -64,6 +64,83 @@ export class MarginUniApi {
 
     /**
      *
+     * @summary Get detail of lending market
+     * @param currencyPair Currency pair
+     */
+    public async getUniCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: UniCurrencyPair }> {
+        const localVarPath =
+            this.client.basePath +
+            '/margin/uni/currency_pairs/{currency_pair}'.replace(
+                '{' + 'currency_pair' + '}',
+                encodeURIComponent(String(currencyPair)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getUniCurrencyPair.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<UniCurrencyPair>(config, 'UniCurrencyPair', authSettings);
+    }
+
+    /**
+     * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+     * @summary Estimate interest Rate
+     * @param currencies An array of up to 10 specifying the currency name
+     */
+    public async getMarginUniEstimateRate(
+        currencies: Array<string>,
+    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
+        const localVarPath = this.client.basePath + '/margin/uni/estimate_rate';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currencies' is not null or undefined
+        if (currencies === null || currencies === undefined) {
+            throw new Error(
+                'Required parameter currencies was null or undefined when calling getMarginUniEstimateRate.',
+            );
+        }
+
+        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
+    }
+
+    /**
+     *
      * @summary List loans
      * @param opts Optional parameters
      * @param opts.currencyPair Currency pair
@@ -141,129 +218,6 @@ export class MarginUniApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<any>(config, '', authSettings);
-    }
-
-    /**
-     *
-     * @summary Get maximum borrowable
-     * @param currency Retrieve data of the specified currency
-     * @param currencyPair Currency pair
-     */
-    public async getUniBorrowable(
-        currency: string,
-        currencyPair: string,
-    ): Promise<{ response: AxiosResponse; body: MaxUniBorrowable }> {
-        const localVarPath = this.client.basePath + '/margin/uni/borrowable';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currency' is not null or undefined
-        if (currency === null || currency === undefined) {
-            throw new Error('Required parameter currency was null or undefined when calling getUniBorrowable.');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling getUniBorrowable.');
-        }
-
-        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
-
-        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<MaxUniBorrowable>(config, 'MaxUniBorrowable', authSettings);
-    }
-
-    /**
-     *
-     * @summary Get detail of lending market
-     * @param currencyPair Currency pair
-     */
-    public async getUniCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: UniCurrencyPair }> {
-        const localVarPath =
-            this.client.basePath +
-            '/margin/uni/currency_pairs/{currency_pair}'.replace(
-                '{' + 'currency_pair' + '}',
-                encodeURIComponent(String(currencyPair)),
-            );
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currencyPair' is not null or undefined
-        if (currencyPair === null || currencyPair === undefined) {
-            throw new Error('Required parameter currencyPair was null or undefined when calling getUniCurrencyPair.');
-        }
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = [];
-        return this.client.request<UniCurrencyPair>(config, 'UniCurrencyPair', authSettings);
-    }
-
-    /**
-     * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
-     * @summary Estimate interest Rate
-     * @param currencies An array of up to 10 specifying the currency name
-     */
-    public async getMarginUniEstimateRate(
-        currencies: Array<string>,
-    ): Promise<{ response: AxiosResponse; body: { [key: string]: string } }> {
-        const localVarPath = this.client.basePath + '/margin/uni/estimate_rate';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-
-        // verify required parameter 'currencies' is not null or undefined
-        if (currencies === null || currencies === undefined) {
-            throw new Error(
-                'Required parameter currencies was null or undefined when calling getMarginUniEstimateRate.',
-            );
-        }
-
-        localVarQueryParameters['currencies'] = ObjectSerializer.serialize(currencies, 'Array<string>');
-
-        const config: AxiosRequestConfig = {
-            method: 'GET',
-            params: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            url: localVarPath,
-        };
-
-        const authSettings = ['apiv4'];
-        return this.client.request<{ [key: string]: string }>(config, '{ [key: string]: string; }', authSettings);
     }
 
     /**
@@ -390,5 +344,51 @@ export class MarginUniApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<UniLoanInterestRecord>>(config, 'Array<UniLoanInterestRecord>', authSettings);
+    }
+
+    /**
+     *
+     * @summary Get maximum borrowable
+     * @param currency Retrieve data of the specified currency
+     * @param currencyPair Currency pair
+     */
+    public async getUniBorrowable(
+        currency: string,
+        currencyPair: string,
+    ): Promise<{ response: AxiosResponse; body: MaxUniBorrowable }> {
+        const localVarPath = this.client.basePath + '/margin/uni/borrowable';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'currency' is not null or undefined
+        if (currency === null || currency === undefined) {
+            throw new Error('Required parameter currency was null or undefined when calling getUniBorrowable.');
+        }
+
+        // verify required parameter 'currencyPair' is not null or undefined
+        if (currencyPair === null || currencyPair === undefined) {
+            throw new Error('Required parameter currencyPair was null or undefined when calling getUniBorrowable.');
+        }
+
+        localVarQueryParameters['currency'] = ObjectSerializer.serialize(currency, 'string');
+
+        localVarQueryParameters['currency_pair'] = ObjectSerializer.serialize(currencyPair, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<MaxUniBorrowable>(config, 'MaxUniBorrowable', authSettings);
     }
 }

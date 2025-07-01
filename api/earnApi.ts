@@ -14,10 +14,12 @@ import { DualGetOrders } from '../model/dualGetOrders';
 import { DualGetPlans } from '../model/dualGetPlans';
 import { Eth2RateList } from '../model/eth2RateList';
 import { Eth2Swap } from '../model/eth2Swap';
+import { FindCoin } from '../model/findCoin';
 import { PlaceDualInvestmentOrder } from '../model/placeDualInvestmentOrder';
 import { StructuredBuy } from '../model/structuredBuy';
 import { StructuredGetProjectList } from '../model/structuredGetProjectList';
 import { StructuredOrderList } from '../model/structuredOrderList';
+import { SwapCoin } from '../model/swapCoin';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -348,6 +350,67 @@ export class EarnApi {
             headers: localVarHeaderParams,
             url: localVarPath,
             data: ObjectSerializer.serialize(structuredBuy, 'StructuredBuy'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<any>(config, '', authSettings);
+    }
+
+    /**
+     *
+     * @summary 链上赚币币种
+     * @param findCoin
+     */
+    public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<string> }> {
+        const localVarPath = this.client.basePath + '/earn/staking/coins';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'findCoin' is not null or undefined
+        if (findCoin === null || findCoin === undefined) {
+            throw new Error('Required parameter findCoin was null or undefined when calling findCoin.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(findCoin, 'FindCoin'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<string>>(config, 'Array<string>', authSettings);
+    }
+
+    /**
+     *
+     * @summary On-chain Token Swap for Earned Coins
+     * @param swapCoin
+     */
+    public async swapStakingCoin(swapCoin: SwapCoin): Promise<{ response: AxiosResponse; body?: any }> {
+        const localVarPath = this.client.basePath + '/earn/staking/swap';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+
+        // verify required parameter 'swapCoin' is not null or undefined
+        if (swapCoin === null || swapCoin === undefined) {
+            throw new Error('Required parameter swapCoin was null or undefined when calling swapStakingCoin.');
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(swapCoin, 'SwapCoin'),
         };
 
         const authSettings = ['apiv4'];

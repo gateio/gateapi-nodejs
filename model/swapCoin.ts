@@ -9,32 +9,53 @@
  * Do not edit the class manually.
  */
 
-export class InlineObject {
+/**
+ * Blockchain Mining
+ */
+export class SwapCoin {
     /**
-     * Full position-by-position model, ISOLATED-by-position, CROSS-full position
+     * Currency
      */
-    'mode': string;
+    'coin': string;
     /**
-     * Contract Market
+     * 0 - Stake  1 - Redeem
      */
-    'contract': string;
+    'side': string;
+    /**
+     * Size
+     */
+    'amount': string;
+    /**
+     * DeFi-type Mining Protocol Identifier
+     */
+    'pid'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
         {
-            name: 'mode',
-            baseName: 'mode',
+            name: 'coin',
+            baseName: 'coin',
             type: 'string',
         },
         {
-            name: 'contract',
-            baseName: 'contract',
+            name: 'side',
+            baseName: 'side',
             type: 'string',
+        },
+        {
+            name: 'amount',
+            baseName: 'amount',
+            type: 'string',
+        },
+        {
+            name: 'pid',
+            baseName: 'pid',
+            type: 'number',
         },
     ];
 
     static getAttributeTypeMap() {
-        return InlineObject.attributeTypeMap;
+        return SwapCoin.attributeTypeMap;
     }
 }

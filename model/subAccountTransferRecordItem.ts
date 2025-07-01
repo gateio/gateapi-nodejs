@@ -9,7 +9,15 @@
  * Do not edit the class manually.
  */
 
-export class SubAccountTransfer {
+export class SubAccountTransferRecordItem {
+    /**
+     * Transfer timestamp
+     */
+    'timest'?: string;
+    /**
+     * Main account user ID
+     */
+    'uid'?: string;
     /**
      * Sub account user ID
      */
@@ -31,13 +39,31 @@ export class SubAccountTransfer {
      */
     'direction': string;
     /**
+     * Where the operation is initiated from
+     */
+    'source'?: string;
+    /**
      * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
      */
     'clientOrderId'?: string;
+    /**
+     * Sub-account transfer record status, currently only success
+     */
+    'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{ name: string; baseName: string; type: string }> = [
+        {
+            name: 'timest',
+            baseName: 'timest',
+            type: 'string',
+        },
+        {
+            name: 'uid',
+            baseName: 'uid',
+            type: 'string',
+        },
         {
             name: 'subAccount',
             baseName: 'sub_account',
@@ -64,13 +90,23 @@ export class SubAccountTransfer {
             type: 'string',
         },
         {
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
+        },
+        {
             name: 'clientOrderId',
             baseName: 'client_order_id',
+            type: 'string',
+        },
+        {
+            name: 'status',
+            baseName: 'status',
             type: 'string',
         },
     ];
 
     static getAttributeTypeMap() {
-        return SubAccountTransfer.attributeTypeMap;
+        return SubAccountTransferRecordItem.attributeTypeMap;
     }
 }

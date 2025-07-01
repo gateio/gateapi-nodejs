@@ -193,7 +193,7 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountKey>; }> [SubAccountKey
 
 ## createSubAccountKeys
 
-> Promise<{ response: http.IncomingMessage; body: Array<SubAccountKey>; }> createSubAccountKeys(userId, subAccountKey)
+> Promise<{ response: http.IncomingMessage; body: SubAccountKey; }> createSubAccountKeys(userId, subAccountKey)
 
 Create API Key of the sub-account
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body: Array<SubAccountKey>; }> [SubAccountKey](SubAccountKey.md)
+Promise<{ response: AxiosResponse; body: SubAccountKey; }> [SubAccountKey](SubAccountKey.md)
 
 ### Authorization
 

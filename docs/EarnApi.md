@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**listStructuredProducts**](EarnApi.md#listStructuredProducts) | **GET** /earn/structured/products | Structured Product List
 [**listStructuredOrders**](EarnApi.md#listStructuredOrders) | **GET** /earn/structured/orders | Structured Product Order List
 [**placeStructuredOrder**](EarnApi.md#placeStructuredOrder) | **POST** /earn/structured/orders | Place Structured Product Order
+[**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | 链上赚币币种
+[**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain Token Swap for Earned Coins
 
 
 ## swapETH2
@@ -364,6 +366,92 @@ api.placeStructuredOrder(structuredBuy)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **structuredBuy** | [**StructuredBuy**](StructuredBuy.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body?: any; }> 
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+## findCoin
+
+> Promise<{ response: http.IncomingMessage; body: Array<string>; }> findCoin(findCoin)
+
+链上赚币币种
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const findCoin = new FindCoin(); // FindCoin | 
+api.findCoin(findCoin)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **findCoin** | [**FindCoin**](FindCoin.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<string>; }> [string](string.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## swapStakingCoin
+
+> Promise<{ response: http.IncomingMessage; body?: any; }> swapStakingCoin(swapCoin)
+
+On-chain Token Swap for Earned Coins
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.EarnApi(client);
+const swapCoin = new SwapCoin(); // SwapCoin | 
+api.swapStakingCoin(swapCoin)
+   .then(value => console.log('API called successfully.'),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **swapCoin** | [**SwapCoin**](SwapCoin.md)|  | 
 
 ### Return type
 
