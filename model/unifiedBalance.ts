@@ -86,6 +86,10 @@ export class UnifiedBalance {
      * Full margin available for full position is valid in single currency margin mode, and is 0 in other modes such as cross-currency margin/combined margin mode
      */
     'availableMargin'?: string;
+    /**
+     * 币种开启作为保证金，true - 启用，false - 未启用
+     */
+    'enabledCollateral'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -184,6 +188,11 @@ export class UnifiedBalance {
             name: 'availableMargin',
             baseName: 'available_margin',
             type: 'string',
+        },
+        {
+            name: 'enabledCollateral',
+            baseName: 'enabled_collateral',
+            type: 'boolean',
         },
     ];
 

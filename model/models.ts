@@ -1,9 +1,7 @@
 export * from './accountBalance';
-export * from './accountBookResponse';
 export * from './accountDetail';
 export * from './accountDetailKey';
 export * from './accountRateLimit';
-export * from './accountsResponse';
 export * from './agencyCommission';
 export * from './agencyCommissionHistory';
 export * from './agencyTransaction';
@@ -47,7 +45,6 @@ export * from './crossMarginBalance';
 export * from './crossMarginLoan';
 export * from './crossMarginRepayment';
 export * from './currency';
-export * from './currency2';
 export * from './currencyChain';
 export * from './currencyPair';
 export * from './currencyQuota';
@@ -149,21 +146,16 @@ export * from './orderBook';
 export * from './orderCancel';
 export * from './orderPatch';
 export * from './orderResp';
-export * from './orderResponse';
 export * from './partnerCommissionHistory';
 export * from './partnerSub';
 export * from './partnerSubList';
 export * from './partnerTransactionHistory';
 export * from './patchUniLend';
 export * from './placeDualInvestmentOrder';
-export * from './placeOrderRequest';
-export * from './placeOrderResponse';
 export * from './position';
 export * from './positionClose';
 export * from './positionCloseOrder';
 export * from './profitLossRange';
-export * from './quoteRequest';
-export * from './quoteResponse';
 export * from './rebateUserInfo';
 export * from './repayCurrencyRes';
 export * from './repayLoan';
@@ -206,7 +198,6 @@ export * from './subUserMode';
 export * from './swapCoin';
 export * from './systemTime';
 export * from './ticker';
-export * from './ticker2';
 export * from './totalBalance';
 export * from './trade';
 export * from './tradeFee';
@@ -233,6 +224,8 @@ export * from './unifiedAccount';
 export * from './unifiedBalance';
 export * from './unifiedBorrowable';
 export * from './unifiedBorrowable1';
+export * from './unifiedCollateralReq';
+export * from './unifiedCollateralRes';
 export * from './unifiedCurrency';
 export * from './unifiedDiscount';
 export * from './unifiedDiscountTiers';
@@ -263,11 +256,9 @@ import crypto = require('crypto');
 import { URL } from 'url';
 
 import { AccountBalance } from './accountBalance';
-import { AccountBookResponse } from './accountBookResponse';
 import { AccountDetail } from './accountDetail';
 import { AccountDetailKey } from './accountDetailKey';
 import { AccountRateLimit } from './accountRateLimit';
-import { AccountsResponse } from './accountsResponse';
 import { AgencyCommission } from './agencyCommission';
 import { AgencyCommissionHistory } from './agencyCommissionHistory';
 import { AgencyTransaction } from './agencyTransaction';
@@ -311,7 +302,6 @@ import { CrossMarginBalance } from './crossMarginBalance';
 import { CrossMarginLoan } from './crossMarginLoan';
 import { CrossMarginRepayment } from './crossMarginRepayment';
 import { Currency } from './currency';
-import { Currency2 } from './currency2';
 import { CurrencyChain } from './currencyChain';
 import { CurrencyPair } from './currencyPair';
 import { CurrencyQuota } from './currencyQuota';
@@ -413,21 +403,16 @@ import { OrderBook } from './orderBook';
 import { OrderCancel } from './orderCancel';
 import { OrderPatch } from './orderPatch';
 import { OrderResp } from './orderResp';
-import { OrderResponse } from './orderResponse';
 import { PartnerCommissionHistory } from './partnerCommissionHistory';
 import { PartnerSub } from './partnerSub';
 import { PartnerSubList } from './partnerSubList';
 import { PartnerTransactionHistory } from './partnerTransactionHistory';
 import { PatchUniLend } from './patchUniLend';
 import { PlaceDualInvestmentOrder } from './placeDualInvestmentOrder';
-import { PlaceOrderRequest } from './placeOrderRequest';
-import { PlaceOrderResponse } from './placeOrderResponse';
 import { Position } from './position';
 import { PositionClose } from './positionClose';
 import { PositionCloseOrder } from './positionCloseOrder';
 import { ProfitLossRange } from './profitLossRange';
-import { QuoteRequest } from './quoteRequest';
-import { QuoteResponse } from './quoteResponse';
 import { RebateUserInfo } from './rebateUserInfo';
 import { RepayCurrencyRes } from './repayCurrencyRes';
 import { RepayLoan } from './repayLoan';
@@ -470,7 +455,6 @@ import { SubUserMode } from './subUserMode';
 import { SwapCoin } from './swapCoin';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
-import { Ticker2 } from './ticker2';
 import { TotalBalance } from './totalBalance';
 import { Trade } from './trade';
 import { TradeFee } from './tradeFee';
@@ -497,6 +481,8 @@ import { UnifiedAccount } from './unifiedAccount';
 import { UnifiedBalance } from './unifiedBalance';
 import { UnifiedBorrowable } from './unifiedBorrowable';
 import { UnifiedBorrowable1 } from './unifiedBorrowable1';
+import { UnifiedCollateralReq } from './unifiedCollateralReq';
+import { UnifiedCollateralRes } from './unifiedCollateralRes';
 import { UnifiedCurrency } from './unifiedCurrency';
 import { UnifiedDiscount } from './unifiedDiscount';
 import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
@@ -591,16 +577,15 @@ let enumsMap: { [index: string]: any } = {
     'Trade.Role': Trade.Role,
     'Transfer.From': Transfer.From,
     'Transfer.To': Transfer.To,
+    'UnifiedCollateralReq.CollateralType': UnifiedCollateralReq.CollateralType,
     'UnifiedLoan.Type': UnifiedLoan.Type,
 };
 
 let typeMap: { [index: string]: any } = {
     AccountBalance: AccountBalance,
-    AccountBookResponse: AccountBookResponse,
     AccountDetail: AccountDetail,
     AccountDetailKey: AccountDetailKey,
     AccountRateLimit: AccountRateLimit,
-    AccountsResponse: AccountsResponse,
     AgencyCommission: AgencyCommission,
     AgencyCommissionHistory: AgencyCommissionHistory,
     AgencyTransaction: AgencyTransaction,
@@ -644,7 +629,6 @@ let typeMap: { [index: string]: any } = {
     CrossMarginLoan: CrossMarginLoan,
     CrossMarginRepayment: CrossMarginRepayment,
     Currency: Currency,
-    Currency2: Currency2,
     CurrencyChain: CurrencyChain,
     CurrencyPair: CurrencyPair,
     CurrencyQuota: CurrencyQuota,
@@ -746,21 +730,16 @@ let typeMap: { [index: string]: any } = {
     OrderCancel: OrderCancel,
     OrderPatch: OrderPatch,
     OrderResp: OrderResp,
-    OrderResponse: OrderResponse,
     PartnerCommissionHistory: PartnerCommissionHistory,
     PartnerSub: PartnerSub,
     PartnerSubList: PartnerSubList,
     PartnerTransactionHistory: PartnerTransactionHistory,
     PatchUniLend: PatchUniLend,
     PlaceDualInvestmentOrder: PlaceDualInvestmentOrder,
-    PlaceOrderRequest: PlaceOrderRequest,
-    PlaceOrderResponse: PlaceOrderResponse,
     Position: Position,
     PositionClose: PositionClose,
     PositionCloseOrder: PositionCloseOrder,
     ProfitLossRange: ProfitLossRange,
-    QuoteRequest: QuoteRequest,
-    QuoteResponse: QuoteResponse,
     RebateUserInfo: RebateUserInfo,
     RepayCurrencyRes: RepayCurrencyRes,
     RepayLoan: RepayLoan,
@@ -803,7 +782,6 @@ let typeMap: { [index: string]: any } = {
     SwapCoin: SwapCoin,
     SystemTime: SystemTime,
     Ticker: Ticker,
-    Ticker2: Ticker2,
     TotalBalance: TotalBalance,
     Trade: Trade,
     TradeFee: TradeFee,
@@ -830,6 +808,8 @@ let typeMap: { [index: string]: any } = {
     UnifiedBalance: UnifiedBalance,
     UnifiedBorrowable: UnifiedBorrowable,
     UnifiedBorrowable1: UnifiedBorrowable1,
+    UnifiedCollateralReq: UnifiedCollateralReq,
+    UnifiedCollateralRes: UnifiedCollateralRes,
     UnifiedCurrency: UnifiedCurrency,
     UnifiedDiscount: UnifiedDiscount,
     UnifiedDiscountTiers: UnifiedDiscountTiers,

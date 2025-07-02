@@ -10,7 +10,7 @@
         "sourceMap": false,
         "noLib": false,
         "declaration": true,
-        "lib": ["es2020"],
+        "lib": ["es2020", "dom"],
         "outDir": "dist",
         "typeRoots": [
             "node_modules/@types"

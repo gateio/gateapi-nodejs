@@ -16,6 +16,8 @@ import { UniLoanInterestRecord } from '../model/uniLoanInterestRecord';
 import { UnifiedAccount } from '../model/unifiedAccount';
 import { UnifiedBorrowable } from '../model/unifiedBorrowable';
 import { UnifiedBorrowable1 } from '../model/unifiedBorrowable1';
+import { UnifiedCollateralReq } from '../model/unifiedCollateralReq';
+import { UnifiedCollateralRes } from '../model/unifiedCollateralRes';
 import { UnifiedCurrency } from '../model/unifiedCurrency';
 import { UnifiedDiscount } from '../model/unifiedDiscount';
 import { UnifiedHistoryLoanRate } from '../model/unifiedHistoryLoanRate';
@@ -506,7 +508,7 @@ export class UnifiedApi {
     }
 
     /**
-     * Switching each account mode only requires passing the parameters of the corresponding account mode, and supports turning on or off the configuration switch in the corresponding account mode when switching the account mode  - When opening the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - Open the cross-currency margin mode, mode=multi_currency ```  PUT /unified/unified_mode  {  \"mode\": \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When the portfolio margin mode is enabled, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When opening a single currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
+     * 每种账户模式的切换只需要传对应账户模式的参数，同时支持在切换账户模式时打开或关闭对应账户模式下的配置开关 - 开通经典账户模式时，mode=classic ```     PUT /unified/unified_mode     {       \"mode\": \"classic\"     } ``` - 开通跨币种保证金模式，mode=multi_currency ```     PUT /unified/unified_mode     {       \"mode\": \"multi_currency\",       \"settings\": {          \"usdt_futures\": true       }     } ``` - 开通组合保证金模式时，mode=portfolio ```     PUT /unified/unified_mode     {       \"mode\": \"portfolio\",       \"settings\": {          \"spot_hedge\": true       }     } ``` - 开通单币种保证金模式时，mode=single_currency ```     PUT /unified/unified_mode     {       \"mode\": \"single_currency\"     } ```
      * @summary Set mode of the unified account
      * @param unifiedModeSet
      */
@@ -856,5 +858,43 @@ export class UnifiedApi {
 
         const authSettings = [];
         return this.client.request<UnifiedHistoryLoanRate>(config, 'UnifiedHistoryLoanRate', authSettings);
+    }
+
+    /**
+     *
+     * @summary 设置抵押币种
+     * @param unifiedCollateralReq
+     */
+    public async setUnifiedCollateral(
+        unifiedCollateralReq: UnifiedCollateralReq,
+    ): Promise<{ response: AxiosResponse; body: UnifiedCollateralRes }> {
+        const localVarPath = this.client.basePath + '/unified/collateral_currencies';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'unifiedCollateralReq' is not null or undefined
+        if (unifiedCollateralReq === null || unifiedCollateralReq === undefined) {
+            throw new Error(
+                'Required parameter unifiedCollateralReq was null or undefined when calling setUnifiedCollateral.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(unifiedCollateralReq, 'UnifiedCollateralReq'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<UnifiedCollateralRes>(config, 'UnifiedCollateralRes', authSettings);
     }
 }

@@ -85,6 +85,10 @@ export class UnifiedAccount {
      * Whether to use funds as margin
      */
     'useFunding'?: boolean;
+    /**
+     * 是否所有币种均作为保证金，true - 所有币种作为保证金，false - 否
+     */
+    'isAllCollateral'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -182,6 +186,11 @@ export class UnifiedAccount {
         {
             name: 'useFunding',
             baseName: 'use_funding',
+            type: 'boolean',
+        },
+        {
+            name: 'isAllCollateral',
+            baseName: 'is_all_collateral',
             type: 'boolean',
         },
     ];

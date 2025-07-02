@@ -26,10 +26,6 @@ export class SpotAccount {
      * Version number
      */
     'updateId'?: number;
-    /**
-     * Asset Refresh Time (ms)
-     */
-    'refreshTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -52,11 +48,6 @@ export class SpotAccount {
         {
             name: 'updateId',
             baseName: 'update_id',
-            type: 'number',
-        },
-        {
-            name: 'refreshTime',
-            baseName: 'refresh_time',
             type: 'number',
         },
     ];
