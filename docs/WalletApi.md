@@ -278,7 +278,7 @@ Promise<{ response: AxiosResponse; body: TransactionID; }> [TransactionID](Trans
 
 Retrieve transfer records between main and sub accounts
 
-Record time range cannot exceed 30 days  &gt; Note: only records after 2020-04-10 can be retrieved
+Record time range cannot exceed 30 days  &gt; Note: only records after 20-04-10can be retrieved
 
 ### Example
 

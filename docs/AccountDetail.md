@@ -9,5 +9,5 @@ Name | Type | Description | Notes
 **userId** | **number** | User ID | [optional] [default to undefined]
 **tier** | **number** | User VIP level | [optional] [default to undefined]
 **key** | [**AccountDetailKey**](AccountDetailKey.md) |  | [optional] [default to undefined]
-**copyTradingRole** | **number** | User role: 0 - Ordinary user 1 - Order leader 2 - Follower 3 - Order leader and follower | [optional] [default to undefined]
+**copyTradingRole** | **number** | User role: 0 - Normal user 1 - Copy trading leader 2 - Copy trading follower 3 - Both leader and follower  | [optional] [default to undefined]
 

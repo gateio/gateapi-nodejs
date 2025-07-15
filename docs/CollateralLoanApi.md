@@ -451,7 +451,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.CollateralLoanApi(client);
 const opts = {
-  'loanCurrency': "BTC" // string | The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency.
+  'loanCurrency': "BTC" // string | The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies.
 };
 api.listCollateralCurrencies(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -463,7 +463,7 @@ api.listCollateralCurrencies(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loanCurrency** | **string**| The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. If loan_currency is provided, the API will return an array of collateral currencies supported for the specified borrowing currency. | [optional] [default to undefined]
+ **loanCurrency** | **string**| The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. | [optional] [default to undefined]
 
 ### Return type
 

@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -20,6 +20,7 @@ import { StructuredBuy } from '../model/structuredBuy';
 import { StructuredGetProjectList } from '../model/structuredGetProjectList';
 import { StructuredOrderList } from '../model/structuredOrderList';
 import { SwapCoin } from '../model/swapCoin';
+import { SwapCoinStruct } from '../model/swapCoinStruct';
 import { ObjectSerializer } from '../model/models';
 import { ApiClient } from './apiClient';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -217,9 +218,9 @@ export class EarnApi {
     /**
      *
      * @summary Structured Product List
-     * @param status Status (default: all)  &#x60;in_process&#x60;-processing  &#x60;will_begin&#x60;-unstarted  &#x60;wait_settlement&#x60;-unsettled  &#x60;done&#x60;-finish
+     * @param status Status (Default empty to query all)  &#x60;in_process&#x60;-In progress &#x60;will_begin&#x60;-Not started &#x60;wait_settlement&#x60;-Pending settlement &#x60;done&#x60;-Completed
      * @param opts Optional parameters
-     * @param opts.type Product Type (default all)  &#x60;SharkFin2.0&#x60;-SharkFin  &#x60;BullishSharkFin&#x60;-BullishSharkFin  &#x60;BearishSharkFin&#x60;-BearishSharkFin &#x60;DoubleNoTouch&#x60;-DoubleNoTouch &#x60;RangeAccrual&#x60;-RangeAccrual &#x60;SnowBall&#x60;-SnowBall
+     * @param opts.type Product Type (Default empty to query all)  &#x60;SharkFin2.0&#x60;-Shark Fin &#x60;BullishSharkFin&#x60;-Bullish Treasure &#x60;BearishSharkFin&#x60;-Bearish Treasure &#x60;DoubleNoTouch&#x60;-Volatility Treasure &#x60;RangeAccrual&#x60;-Range Smart Yield &#x60;SnowBall&#x60;-Snowball
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      */
@@ -277,8 +278,8 @@ export class EarnApi {
      *
      * @summary Structured Product Order List
      * @param opts Optional parameters
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
      */
@@ -358,7 +359,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary 链上赚币币种
+     * @summary Staking Coins
      * @param findCoin
      */
     public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<string> }> {
@@ -395,10 +396,17 @@ export class EarnApi {
      * @summary On-chain Token Swap for Earned Coins
      * @param swapCoin
      */
-    public async swapStakingCoin(swapCoin: SwapCoin): Promise<{ response: AxiosResponse; body?: any }> {
+    public async swapStakingCoin(swapCoin: SwapCoin): Promise<{ response: AxiosResponse; body: SwapCoinStruct }> {
         const localVarPath = this.client.basePath + '/earn/staking/swap';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
 
         // verify required parameter 'swapCoin' is not null or undefined
         if (swapCoin === null || swapCoin === undefined) {
@@ -414,6 +422,6 @@ export class EarnApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<any>(config, '', authSettings);
+        return this.client.request<SwapCoinStruct>(config, 'SwapCoinStruct', authSettings);
     }
 }

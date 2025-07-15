@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -508,7 +508,7 @@ export class UnifiedApi {
     }
 
     /**
-     * 每种账户模式的切换只需要传对应账户模式的参数，同时支持在切换账户模式时打开或关闭对应账户模式下的配置开关 - 开通经典账户模式时，mode=classic ```     PUT /unified/unified_mode     {       \"mode\": \"classic\"     } ``` - 开通跨币种保证金模式，mode=multi_currency ```     PUT /unified/unified_mode     {       \"mode\": \"multi_currency\",       \"settings\": {          \"usdt_futures\": true       }     } ``` - 开通组合保证金模式时，mode=portfolio ```     PUT /unified/unified_mode     {       \"mode\": \"portfolio\",       \"settings\": {          \"spot_hedge\": true       }     } ``` - 开通单币种保证金模式时，mode=single_currency ```     PUT /unified/unified_mode     {       \"mode\": \"single_currency\"     } ```
+     * Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```     PUT /unified/unified_mode     {       \"mode\": \"classic\"     } ``` - When enabling the cross-currency margin mode, mode=multi_currency ```     PUT /unified/unified_mode     {       \"mode\": \"multi_currency\",       \"settings\": {          \"usdt_futures\": true       }     } ``` - When enabling the portfolio margin mode, mode=portfolio ```     PUT /unified/unified_mode     {       \"mode\": \"portfolio\",       \"settings\": {          \"spot_hedge\": true       }     } ``` - When enabling the single-currency margin mode, mode=single_currency ```     PUT /unified/unified_mode     {       \"mode\": \"single_currency\"     } ```
      * @summary Set mode of the unified account
      * @param unifiedModeSet
      */
@@ -862,7 +862,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary 设置抵押币种
+     * @summary Set Collateral Currency
      * @param unifiedCollateralReq
      */
     public async setUnifiedCollateral(

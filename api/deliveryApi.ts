@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -137,7 +137,7 @@ export class DeliveryApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
-     * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
      */
     public async listDeliveryOrderBook(
         settle: 'usdt',
@@ -200,7 +200,7 @@ export class DeliveryApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
+     * @param opts.lastId 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围
      * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time
      */
@@ -269,9 +269,9 @@ export class DeliveryApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0
+     * @param opts.interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek
      */
     public async listDeliveryCandlesticks(
         settle: 'usdt',
@@ -488,8 +488,8 @@ export class DeliveryApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     public async listDeliveryAccountBook(
@@ -636,7 +636,7 @@ export class DeliveryApi {
      * @summary Update position margin
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param change Margin change. Use positive number to increase margin, negative number otherwise.
+     * @param change Margin change amount, positive number increases, negative number
      */
     public async updateDeliveryPositionMargin(
         settle: 'usdt',
@@ -823,7 +823,7 @@ export class DeliveryApi {
      * @param opts.contract Futures contract
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async listDeliveryOrders(
@@ -1088,7 +1088,7 @@ export class DeliveryApi {
      * @param opts.order Futures order ID, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
      * @param opts.countTotal Whether to return total number matched. Default to 0(no return)
      */
     public async getMyDeliveryTrades(

@@ -10,4 +10,5 @@ Name | Type | Description | Notes
 **maintenanceRate** | **string** | Maintenance margin rate | [optional] [default to undefined]
 **leverageMax** | **string** | Maximum leverage | [optional] [default to undefined]
 **contract** | **string** | Markets, visible only during market pagination requests | [optional] [default to undefined]
+**deduction** | **string** | Maintenance margin quick calculation deduction | [optional] [default to undefined]
 

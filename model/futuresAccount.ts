@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -108,6 +108,10 @@ export class FuturesAccount {
      * Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
      */
     'marginMode'?: number;
+    /**
+     * Whether to enable tiered maintenance margin calculation
+     */
+    'enableTieredMm'?: boolean;
     'history'?: FuturesAccountHistory;
 
     static discriminator: string | undefined = undefined;
@@ -232,6 +236,11 @@ export class FuturesAccount {
             name: 'marginMode',
             baseName: 'margin_mode',
             type: 'number',
+        },
+        {
+            name: 'enableTieredMm',
+            baseName: 'enable_tiered_mm',
+            type: 'boolean',
         },
         {
             name: 'history',

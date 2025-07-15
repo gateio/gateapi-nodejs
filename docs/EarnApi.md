@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**listStructuredProducts**](EarnApi.md#listStructuredProducts) | **GET** /earn/structured/products | Structured Product List
 [**listStructuredOrders**](EarnApi.md#listStructuredOrders) | **GET** /earn/structured/orders | Structured Product Order List
 [**placeStructuredOrder**](EarnApi.md#placeStructuredOrder) | **POST** /earn/structured/orders | Place Structured Product Order
-[**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | 链上赚币币种
+[**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | Staking Coins
 [**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain Token Swap for Earned Coins
 
 
@@ -252,9 +252,9 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.EarnApi(client);
-const status = "in_process"; // string | Status (default: all)  `in_process`-processing  `will_begin`-unstarted  `wait_settlement`-unsettled  `done`-finish
+const status = "in_process"; // string | Status (Default empty to query all)  `in_process`-In progress `will_begin`-Not started `wait_settlement`-Pending settlement `done`-Completed 
 const opts = {
-  'type': "BullishSharkFin", // string | Product Type (default all)  `SharkFin2.0`-SharkFin  `BullishSharkFin`-BullishSharkFin  `BearishSharkFin`-BearishSharkFin `DoubleNoTouch`-DoubleNoTouch `RangeAccrual`-RangeAccrual `SnowBall`-SnowBall
+  'type': "BullishSharkFin", // string | Product Type (Default empty to query all)  `SharkFin2.0`-Shark Fin `BullishSharkFin`-Bullish Treasure `BearishSharkFin`-Bearish Treasure `DoubleNoTouch`-Volatility Treasure `RangeAccrual`-Range Smart Yield `SnowBall`-Snowball 
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of records to be returned in a single list
 };
@@ -268,8 +268,8 @@ api.listStructuredProducts(status, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string**| Status (default: all)  &#x60;in_process&#x60;-processing  &#x60;will_begin&#x60;-unstarted  &#x60;wait_settlement&#x60;-unsettled  &#x60;done&#x60;-finish | [default to undefined]
- **type** | **string**| Product Type (default all)  &#x60;SharkFin2.0&#x60;-SharkFin  &#x60;BullishSharkFin&#x60;-BullishSharkFin  &#x60;BearishSharkFin&#x60;-BearishSharkFin &#x60;DoubleNoTouch&#x60;-DoubleNoTouch &#x60;RangeAccrual&#x60;-RangeAccrual &#x60;SnowBall&#x60;-SnowBall | [optional] [default to undefined]
+ **status** | **string**| Status (Default empty to query all)  &#x60;in_process&#x60;-In progress &#x60;will_begin&#x60;-Not started &#x60;wait_settlement&#x60;-Pending settlement &#x60;done&#x60;-Completed  | [default to undefined]
+ **type** | **string**| Product Type (Default empty to query all)  &#x60;SharkFin2.0&#x60;-Shark Fin &#x60;BullishSharkFin&#x60;-Bullish Treasure &#x60;BearishSharkFin&#x60;-Bearish Treasure &#x60;DoubleNoTouch&#x60;-Volatility Treasure &#x60;RangeAccrual&#x60;-Range Smart Yield &#x60;SnowBall&#x60;-Snowball  | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
@@ -304,8 +304,8 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.EarnApi(client);
 const opts = {
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'page': 1, // number | Page number
   'limit': 100 // number | Maximum number of records to be returned in a single list
 };
@@ -319,8 +319,8 @@ api.listStructuredOrders(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
@@ -384,7 +384,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<string>; }> findCoin(findCoin)
 
-链上赚币币种
+Staking Coins
 
 ### Example
 
@@ -425,7 +425,7 @@ Promise<{ response: AxiosResponse; body: Array<string>; }> [string](string.md)
 
 ## swapStakingCoin
 
-> Promise<{ response: http.IncomingMessage; body?: any; }> swapStakingCoin(swapCoin)
+> Promise<{ response: http.IncomingMessage; body: SwapCoinStruct; }> swapStakingCoin(swapCoin)
 
 On-chain Token Swap for Earned Coins
 
@@ -442,7 +442,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.EarnApi(client);
 const swapCoin = new SwapCoin(); // SwapCoin | 
 api.swapStakingCoin(swapCoin)
-   .then(value => console.log('API called successfully.'),
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
 ```
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Promise<{ response: AxiosResponse; body?: any; }> 
+Promise<{ response: AxiosResponse; body: SwapCoinStruct; }> [SwapCoinStruct](SwapCoinStruct.md)
 
 ### Authorization
 
@@ -464,4 +464,4 @@ Promise<{ response: AxiosResponse; body?: any; }>
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json

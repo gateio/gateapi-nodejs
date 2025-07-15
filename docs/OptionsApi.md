@@ -217,8 +217,8 @@ const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing under
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listOptionsSettlements(underlying, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -233,8 +233,8 @@ Name | Type | Description  | Notes
  **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -316,8 +316,8 @@ const opts = {
   'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listMyOptionsSettlements(underlying, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -333,8 +333,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Options contract name | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -370,7 +370,7 @@ const contract = "BTC_USDT-20210916-5000-C"; // string | Options contract name
 const opts = {
   'interval': '0', // '0' | '0.1' | '0.01' | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10, // number | Maximum number of order depth data in asks or bids
-  'withId': false // boolean | Whether the order book update ID will be returned. This ID increases by 1 on every order book update
+  'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time.
 };
 api.listOptionsOrderBook(contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -385,7 +385,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Options contract name | [default to undefined]
  **interval** | **Interval**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
- **withId** | **boolean**| Whether the order book update ID will be returned. This ID increases by 1 on every order book update | [optional] [default to undefined]
+ **withId** | **boolean**| Whether to return depth update ID. This ID increments by 1 each time. | [optional] [default to undefined]
 
 ### Return type
 
@@ -500,8 +500,8 @@ const api = new GateApi.OptionsApi(client);
 const contract = "BTC_USDT-20210916-5000-C"; // string | Options contract name
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | Interval time between data points
 };
 api.listOptionsCandlesticks(contract, opts)
@@ -516,8 +516,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **string**| Options contract name | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
 ### Return type
@@ -551,8 +551,8 @@ const api = new GateApi.OptionsApi(client);
 const underlying = "BTC_USDT"; // string | Underlying (Obtained by listing underlying endpoint)
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'interval': '5m' // '1m' | '5m' | '15m' | '30m' | '1h' | Interval time between data points
 };
 api.listOptionsUnderlyingCandlesticks(underlying, opts)
@@ -567,8 +567,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **underlying** | **string**| Underlying (Obtained by listing underlying endpoint) | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **interval** | **Interval**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
 ### Return type
@@ -604,8 +604,8 @@ const opts = {
   'type': "1546935600", // string | `C` is call, while `P` is put
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listOptionsTrades(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -621,8 +621,8 @@ Name | Type | Description  | Notes
  **type** | **string**| &#x60;C&#x60; is call, while &#x60;P&#x60; is put | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -696,8 +696,8 @@ const api = new GateApi.OptionsApi(client);
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'type': "dnw" // 'dnw' | 'prem' | 'fee' | 'refr' | 'set' | Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL 
 };
 api.listOptionsAccountBook(opts)
@@ -712,8 +712,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **type** | **Type**| Changing Type: - dnw: Deposit &amp; Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL  | [optional] [default to undefined]
 
 ### Return type
@@ -887,8 +887,8 @@ const opts = {
   'underlying': "BTC_USDT", // string | Underlying
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listOptionsOrders(status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -905,8 +905,8 @@ Name | Type | Description  | Notes
  **underlying** | **string**| Underlying | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -1166,8 +1166,8 @@ const opts = {
   'contract': "BTC_USDT-20210916-5000-C", // string | Options contract name
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listMyOptionsTrades(underlying, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1183,8 +1183,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Options contract name | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 

@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **updateTime** | **number** | Last update time | [optional] [readonly] [default to undefined]
 **updateId** | **number** | Update id. Each time the position is updated, the value will be +1. | [optional] [readonly] [default to undefined]
 **openTime** | **number** | First Open Time | [optional] [default to undefined]
+**riskLimitTable** | **string** | Risk limit table ID | [optional] [readonly] [default to undefined]
+**averageMaintenanceRate** | **string** | Average maintenance margin rate | [optional] [readonly] [default to undefined]
 
 ## Enum: Position.Mode
 

@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -85,6 +85,10 @@ export class CurrencyPair {
      * Transaction link
      */
     'tradeUrl'?: string;
+    /**
+     * Whether the trading pair is in ST risk assessment, false - No, true - Yes
+     */
+    'stTag'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -178,6 +182,11 @@ export class CurrencyPair {
             name: 'tradeUrl',
             baseName: 'trade_url',
             type: 'string',
+        },
+        {
+            name: 'stTag',
+            baseName: 'st_tag',
+            type: 'boolean',
         },
     ];
 

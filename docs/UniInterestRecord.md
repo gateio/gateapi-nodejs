@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **currency** | **string** | Currency | [optional] [readonly] [default to undefined]
 **actualRate** | **string** | Actual Rate | [optional] [readonly] [default to undefined]
 **interest** | **string** | Interest | [optional] [readonly] [default to undefined]
-**interestStatus** | **string** | Interest status: interest_dividend - regular dividend, interest_reinvest - interest reinvestment | [optional] [readonly] [default to undefined]
+**interestStatus** | **string** | Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment Interest reinvestment | [optional] [readonly] [default to undefined]
 **createTime** | **number** | Created time | [optional] [readonly] [default to undefined]
 

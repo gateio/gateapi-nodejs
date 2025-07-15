@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**isSuccess** | **boolean** | 是否设置成功 | [optional] [default to undefined]
+**isSuccess** | **boolean** | Whether the setting was successful | [optional] [default to undefined]
 

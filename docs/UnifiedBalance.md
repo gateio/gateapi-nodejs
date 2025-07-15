@@ -23,5 +23,5 @@ Name | Type | Description | Notes
 **mmr** | **string** | Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] [default to undefined]
 **marginBalance** | **string** | Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode | [optional] [default to undefined]
 **availableMargin** | **string** | Full margin available for full position is valid in single currency margin mode, and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] [default to undefined]
-**enabledCollateral** | **boolean** | 币种开启作为保证金，true - 启用，false - 未启用 | [optional] [default to undefined]
+**enabledCollateral** | **boolean** | Currency enabled as margin: true - Enabled, false - Disabled | [optional] [default to undefined]
 

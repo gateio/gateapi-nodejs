@@ -191,7 +191,7 @@ Promise<{ response: AxiosResponse; body: StpGroup; }> [StpGroup](StpGroup.md)
 
 List users of the STP group
 
-Only the main account that created this STP group is allowed to list the user ID of the STP group
+Only the main account that created this STP group can query the account 
 
 ### Example
 

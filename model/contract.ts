@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -102,7 +102,7 @@ export class Contract {
      */
     'orderSizeMax'?: number;
     /**
-     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
+     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:   abs(order_price - mark_price) <= mark_price * order_price_deviate
      */
     'orderPriceDeviate'?: string;
     /**
@@ -162,7 +162,7 @@ export class Contract {
      */
     'status'?: string;
     /**
-     * 合约开盘时间
+     * Contract expiry timestamp
      */
     'launchTime'?: number;
 

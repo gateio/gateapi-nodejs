@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -33,7 +33,7 @@ export class AccountDetail {
     'tier'?: number;
     'key'?: AccountDetailKey;
     /**
-     * User role: 0 - Ordinary user 1 - Order leader 2 - Follower 3 - Order leader and follower
+     * User role: 0 - Normal user 1 - Copy trading leader 2 - Copy trading follower 3 - Both leader and follower
      */
     'copyTradingRole'?: number;
 

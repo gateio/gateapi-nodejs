@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -288,8 +288,8 @@ export class MarginUniApi {
      * @param opts.currency Retrieve data of the specified currency
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listUniLoanInterestRecords(opts: {
         currencyPair?: string;

@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -86,7 +86,7 @@ export class UnifiedAccount {
      */
     'useFunding'?: boolean;
     /**
-     * 是否所有币种均作为保证金，true - 所有币种作为保证金，false - 否
+     * Whether all currencies are used as margin, true - All currencies are used as margin, false - No
      */
     'isAllCollateral'?: boolean;
 

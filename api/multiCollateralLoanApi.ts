@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -49,8 +49,8 @@ export class MultiCollateralLoanApi {
      * @param opts Optional parameters
      * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.sort Sort types: time_desc - default sorting by creation time in descending order, ltv_asc - ascending order of ltv, ltv_desc - descending order of ltv.
-     * @param opts.orderType Order type, current - query current orders, fixed - query fixed orders. If not specified, default to querying current orders
+     * @param opts.sort Query the current interest rate of the currency in the previous hour
+     * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
      */
     public async listMultiCollateralOrders(opts: {
         page?: number;
@@ -384,8 +384,8 @@ export class MultiCollateralLoanApi {
     /**
      *
      * @summary List User Currency Quota
-     * @param type Currency types: collateral - collateral currency, borrow - borrowing currency.
-     * @param currency When specifying collateral currencies, you can use commas to separate multiple currencies; for borrowing currencies, only one currency can be provided.
+     * @param type Currency type: collateral - Collateral currency, borrow - Borrowing
+     * @param currency When it is a collateral currency, multiple currencies can be passed separated by commas;when it is a borrowing currency, only one currenc
      */
     public async listUserCurrencyQuota(
         type: string,
@@ -509,9 +509,9 @@ export class MultiCollateralLoanApi {
     }
 
     /**
-     * Query the current interest rate of the currency in the last hour. The current interest rate is updated every hour.
+     * Query the current interest rate of the currency in the previous hour.
      * @summary Query the current interest rate of the currency
-     * @param currencies Specify the currency name to query the array. The array is separated by commas and has a maximum of 100 items.
+     * @param currencies Specify currency name query array, separated by commas, maximum 100items.
      * @param opts Optional parameters
      * @param opts.vipLevel VIP level, defaults to 0 if not transferred
      */

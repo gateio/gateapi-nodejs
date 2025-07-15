@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **riskLimitMax** | **string** | Maximum risk limit the contract allowed,deprecated,It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits. | [optional] [default to undefined]
 **orderSizeMin** | **number** | Minimum order size the contract allowed | [optional] [default to undefined]
 **orderSizeMax** | **number** | Maximum order size the contract allowed | [optional] [default to undefined]
-**orderPriceDeviate** | **string** | deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) &lt;&#x3D; mark_price * order_price_deviate | [optional] [default to undefined]
+**orderPriceDeviate** | **string** | deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:   abs(order_price - mark_price) &lt;&#x3D; mark_price * order_price_deviate | [optional] [default to undefined]
 **refDiscountRate** | **string** | Referral fee rate discount | [optional] [default to undefined]
 **refRebateRate** | **string** | Referrer commission rate | [optional] [default to undefined]
 **orderbookId** | **number** | Current orderbook ID | [optional] [default to undefined]
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **createTime** | **number** | Created time of the contract | [optional] [default to undefined]
 **fundingCapRatio** | **string** | The factor for the maximum of the funding rate. Maximum of funding rate &#x3D; (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio | [optional] [default to undefined]
 **status** | **string** | Contract Status Types include:  prelaunch,  trading, delisting,  delisted  | [optional] [default to undefined]
-**launchTime** | **number** | 合约开盘时间 | [optional] [default to undefined]
+**launchTime** | **number** | Contract expiry timestamp | [optional] [default to undefined]
 
 ## Enum: Contract.Type
 

@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **subAccountFrom** | **string** | Transfer from the user id of the sub-account | [default to undefined]
 **subAccountFromType** | **string** | The sub-account\&#39;s outgoing trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account. | [default to undefined]
 **subAccountTo** | **string** | Transfer to the user id of the sub-account | [default to undefined]
-**subAccountToType** | **string** | The sub-account\&#39;s incoming trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account | [default to undefined]
+**subAccountToType** | **string** | Transferred sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account | [default to undefined]
 **amount** | **string** | Transfer amount | [default to undefined]
 

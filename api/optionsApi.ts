@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -198,8 +198,8 @@ export class OptionsApi {
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listOptionsSettlements(
         underlying: string,
@@ -314,8 +314,8 @@ export class OptionsApi {
      * @param opts.contract Options contract name
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listMyOptionsSettlements(
         underlying: string,
@@ -380,7 +380,7 @@ export class OptionsApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
-     * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
      */
     public async listOptionsOrderBook(
         contract: string,
@@ -513,8 +513,8 @@ export class OptionsApi {
      * @param contract Options contract name
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.interval Interval time between data points
      */
     public async listOptionsCandlesticks(
@@ -576,8 +576,8 @@ export class OptionsApi {
      * @param underlying Underlying (Obtained by listing underlying endpoint)
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.interval Interval time between data points
      */
     public async listOptionsUnderlyingCandlesticks(
@@ -643,8 +643,8 @@ export class OptionsApi {
      * @param opts.type &#x60;C&#x60; is call, while &#x60;P&#x60; is put
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listOptionsTrades(opts: {
         contract?: string;
@@ -734,8 +734,8 @@ export class OptionsApi {
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL
      */
     public async listOptionsAccountBook(opts: {
@@ -918,8 +918,8 @@ export class OptionsApi {
      * @param opts.underlying Underlying
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listOptionsOrders(
         status: 'open' | 'finished',
@@ -1179,8 +1179,8 @@ export class OptionsApi {
      * @param opts.contract Options contract name
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listMyOptionsTrades(
         underlying: string,

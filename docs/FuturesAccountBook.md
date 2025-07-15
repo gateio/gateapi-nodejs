@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **text** | **string** | Comment | [optional] [default to undefined]
 **contract** | **string** | Futures contract, the field is only available for data after 2023-10-30. | [optional] [default to undefined]
 **tradeId** | **string** | trade id | [optional] [default to undefined]
-**id** | **string** | 账户变更记录 id | [optional] [default to undefined]
+**id** | **string** | Account change record ID | [optional] [default to undefined]
 
 ## Enum: FuturesAccountBook.Type
 

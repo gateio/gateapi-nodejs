@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **delistingTime** | **number** | Expected time to remove the shelves, Unix timestamp in seconds | [optional] [default to undefined]
 **type** | **string** | Trading pair type, normal: normal, premarket: pre-market | [optional] [default to undefined]
 **tradeUrl** | **string** | Transaction link | [optional] [default to undefined]
+**stTag** | **boolean** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] [default to undefined]
 
 ## Enum: CurrencyPair.TradeStatus
 

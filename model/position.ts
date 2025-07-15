@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -136,6 +136,14 @@ export class Position {
      * First Open Time
      */
     'openTime'?: number;
+    /**
+     * Risk limit table ID
+     */
+    'riskLimitTable'?: string;
+    /**
+     * Average maintenance margin rate
+     */
+    'averageMaintenanceRate'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -294,6 +302,16 @@ export class Position {
             name: 'openTime',
             baseName: 'open_time',
             type: 'number',
+        },
+        {
+            name: 'riskLimitTable',
+            baseName: 'risk_limit_table',
+            type: 'string',
+        },
+        {
+            name: 'averageMaintenanceRate',
+            baseName: 'average_maintenance_rate',
+            type: 'string',
         },
     ];
 

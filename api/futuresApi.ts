@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -32,6 +32,7 @@ import { FuturesOrderBook } from '../model/futuresOrderBook';
 import { FuturesPositionCrossMode } from '../model/futuresPositionCrossMode';
 import { FuturesPremiumIndex } from '../model/futuresPremiumIndex';
 import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder';
+import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
 import { InsuranceRecord } from '../model/insuranceRecord';
@@ -164,7 +165,7 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
      * @param opts.limit Maximum number of order depth data in asks or bids
-     * @param opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
      */
     public async listFuturesOrderBook(
         settle: 'btc' | 'usdt',
@@ -301,7 +302,7 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days
      */
@@ -370,7 +371,7 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second
      * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.interval Interval time between data points
      */
@@ -484,8 +485,8 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
     public async listFuturesFundingRateHistory(
         settle: 'btc' | 'usdt',
@@ -701,13 +702,13 @@ export class FuturesApi {
     }
 
     /**
-     * Interval between `from` and `to` cannot exceeds 3600. Some private fields will not be returned in public endpoints. Refer to field description for detail.
+     * The maximum time interval between `from` and `to` is **3600 seconds**. Certain private fields will **not be returned** in public endpoints; refer to individual field descriptions for details.
      * @summary Retrieve liquidation history
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.limit Maximum number of records to be returned in a single list
      */
     public async listLiquidatedOrders(
@@ -853,15 +854,15 @@ export class FuturesApi {
     }
 
     /**
-     * If the `contract` field is provided, it can only filter records that include this field after 2023-10-30.
+     * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。 2023-10-30 can be filtered。 2023-10-30 can be filtered。
      * @summary Query account book
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
      */
     public async listFuturesAccountBook(
@@ -1028,7 +1029,7 @@ export class FuturesApi {
      * @summary Update position margin
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param change Margin change. Use positive number to increase margin, negative number otherwise.
+     * @param change Margin change amount, positive number increases, negative number
      */
     public async updatePositionMargin(
         settle: 'btc' | 'usdt',
@@ -1247,7 +1248,7 @@ export class FuturesApi {
     }
 
     /**
-     * Before setting dual mode, make sure all positions are closed and no orders are open
+     * The prerequisite for changing mode is that all positions have no holdings
      * @summary Enable or disable dual mode
      * @param settle Settle currency
      * @param dualMode Whether to enable dual mode
@@ -1343,7 +1344,7 @@ export class FuturesApi {
      * @summary Update position margin in dual mode
      * @param settle Settle currency
      * @param contract Futures contract
-     * @param change Margin change. Use positive number to increase margin, negative number otherwise.
+     * @param change Margin change amount, positive number increases, negative number
      * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
@@ -1552,7 +1553,7 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
      */
     public async listFuturesOrders(
         settle: 'btc' | 'usdt',
@@ -1672,7 +1673,7 @@ export class FuturesApi {
      * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-     * @param opts.side Specify all buy orders or all sell orders, if not specify them, both are included. Revoke all buy orders and revoke all sell orders and make ask
+     * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell ordersspecified. Set to bid to cancel all buy orders, set to ask to cancel all
      */
     public async cancelFuturesOrders(
         settle: 'btc' | 'usdt',
@@ -1730,8 +1731,8 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      */
@@ -2079,8 +2080,8 @@ export class FuturesApi {
      * @param settle Settle currency
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
      * @param opts.role Query role, maker or taker.
@@ -2155,8 +2156,8 @@ export class FuturesApi {
      * @param opts.contract Futures contract, return related data only if specified
      * @param opts.limit Maximum number of records to be returned in a single list
      * @param opts.offset List offset, starting from 0
-     * @param opts.from Start timestamp
-     * @param opts.to End timestamp
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.side Query side.  long or shot
      * @param opts.pnl Query profit or loss
      */
@@ -2341,7 +2342,7 @@ export class FuturesApi {
     }
 
     /**
-     * When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown`timeout` is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified `market` will be automatically cancelled, if no `market` is specified, all market pending orders will be cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+     * Heartbeat detection for contract orders: When the user-set `timeout` time is reached, if neither the existing countdown is canceled nor a new countdown is set, the relevant contract orders will be automatically canceled. This API can be called repeatedly to set a new countdown or cancel the countdown. Usage example: Repeatedly call this API at 30-second intervals, setting the `timeout` to 30 (seconds) each time. If this API is not called again within 30 seconds, all open orders on your specified `market` will be automatically canceled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will terminate, and the automatic order cancellation function will be disabled.
      * @summary Countdown cancel orders
      * @param settle Settle currency
      * @param countdownCancelAllFuturesTask
@@ -2437,7 +2438,7 @@ export class FuturesApi {
     }
 
     /**
-     * Multiple distinct order ID list can be specified。Each request can cancel a maximum of 20 records.
+     * Multiple different order IDs can be specified. A maximum of 20 records
      * @summary Cancel a batch of orders with an ID list
      * @param settle Settle currency
      * @param requestBody
@@ -2496,7 +2497,7 @@ export class FuturesApi {
     }
 
     /**
-     * You can specify multiple different order IDs. You can only modify up to 10 orders in one request.
+     * Multiple different order IDs can be specified. A maximum of 10 orders can
      * @summary Batch modify orders with specified IDs
      * @param settle Settle currency
      * @param batchAmendOrderReq
@@ -2548,6 +2549,52 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Array<BatchFuturesOrder>>(config, 'Array<BatchFuturesOrder>', authSettings);
+    }
+
+    /**
+     * Just pass table_id.
+     * @summary Query risk limit table by table_id
+     * @param settle Settle currency
+     * @param tableId Risk limit table ID
+     */
+    public async getFuturesRiskLimitTable(
+        settle: 'btc' | 'usdt',
+        tableId: string,
+    ): Promise<{ response: AxiosResponse; body: Array<FuturesRiskLimitTier> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/risk_limit_table'.replace('{' + 'settle' + '}', encodeURIComponent(String(settle)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error('Required parameter settle was null or undefined when calling getFuturesRiskLimitTable.');
+        }
+
+        // verify required parameter 'tableId' is not null or undefined
+        if (tableId === null || tableId === undefined) {
+            throw new Error('Required parameter tableId was null or undefined when calling getFuturesRiskLimitTable.');
+        }
+
+        localVarQueryParameters['table_id'] = ObjectSerializer.serialize(tableId, 'string');
+
+        const config: AxiosRequestConfig = {
+            method: 'GET',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+        };
+
+        const authSettings = [];
+        return this.client.request<Array<FuturesRiskLimitTier>>(config, 'Array<FuturesRiskLimitTier>', authSettings);
     }
 
     /**

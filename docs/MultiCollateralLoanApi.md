@@ -38,8 +38,8 @@ const api = new GateApi.MultiCollateralLoanApi(client);
 const opts = {
   'page': 1, // number | Page number
   'limit': 10, // number | Maximum number of records to be returned in a single list
-  'sort': "ltv_asc", // string | Sort types: time_desc - default sorting by creation time in descending order, ltv_asc - ascending order of ltv, ltv_desc - descending order of ltv.
-  'orderType': "current" // string | Order type, current - query current orders, fixed - query fixed orders. If not specified, default to querying current orders
+  'sort': "ltv_asc", // string | Query the current interest rate of the currency in the previous hour
+  'orderType': "current" // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
 };
 api.listMultiCollateralOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -53,8 +53,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **number**| Page number | [optional] [default to 1]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 10]
- **sort** | **string**| Sort types: time_desc - default sorting by creation time in descending order, ltv_asc - ascending order of ltv, ltv_desc - descending order of ltv. | [optional] [default to undefined]
- **orderType** | **string**| Order type, current - query current orders, fixed - query fixed orders. If not specified, default to querying current orders | [optional] [default to undefined]
+ **sort** | **string**| Query the current interest rate of the currency in the previous hour | [optional] [default to undefined]
+ **orderType** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -366,8 +366,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MultiCollateralLoanApi(client);
-const type = "collateral"; // string | Currency types: collateral - collateral currency, borrow - borrowing currency.
-const currency = "BTC"; // string | When specifying collateral currencies, you can use commas to separate multiple currencies; for borrowing currencies, only one currency can be provided.
+const type = "collateral"; // string | Currency type: collateral - Collateral currency, borrow - Borrowing 
+const currency = "BTC"; // string | When it is a collateral currency, multiple currencies can be passed separated by commas;when it is a borrowing currency, only one currenc
 api.listUserCurrencyQuota(type, currency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -378,8 +378,8 @@ api.listUserCurrencyQuota(type, currency)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **string**| Currency types: collateral - collateral currency, borrow - borrowing currency. | [default to undefined]
- **currency** | **string**| When specifying collateral currencies, you can use commas to separate multiple currencies; for borrowing currencies, only one currency can be provided. | [default to undefined]
+ **type** | **string**| Currency type: collateral - Collateral currency, borrow - Borrowing  | [default to undefined]
+ **currency** | **string**| When it is a collateral currency, multiple currencies can be passed separated by commas;when it is a borrowing currency, only one currenc | [default to undefined]
 
 ### Return type
 
@@ -513,7 +513,7 @@ No authorization required
 
 Query the current interest rate of the currency
 
-Query the current interest rate of the currency in the last hour. The current interest rate is updated every hour.
+Query the current interest rate of the currency in the previous hour.
 
 ### Example
 
@@ -524,7 +524,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MultiCollateralLoanApi(client);
-const currencies = [["BTC","GT"]]; // Array<string> | Specify the currency name to query the array. The array is separated by commas and has a maximum of 100 items.
+const currencies = [["BTC","GT"]]; // Array<string> | Specify currency name query array, separated by commas, maximum 100items.
 const opts = {
   'vipLevel': '0' // string | VIP level, defaults to 0 if not transferred
 };
@@ -538,7 +538,7 @@ api.getMultiCollateralCurrentRate(currencies, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| Specify the currency name to query the array. The array is separated by commas and has a maximum of 100 items. | [default to undefined]
+ **currencies** | [**Array&lt;string&gt;**](string.md)| Specify currency name query array, separated by commas, maximum 100items. | [default to undefined]
  **vipLevel** | **string**| VIP level, defaults to 0 if not transferred | [optional] [default to &#39;0&#39;]
 
 ### Return type

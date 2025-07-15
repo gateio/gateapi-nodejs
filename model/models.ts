@@ -88,6 +88,7 @@ export * from './futuresPositionCrossMode';
 export * from './futuresPremiumIndex';
 export * from './futuresPriceTrigger';
 export * from './futuresPriceTriggeredOrder';
+export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './indexConstituent';
@@ -196,6 +197,7 @@ export * from './subAccountTransferRecordItem';
 export * from './subCrossMarginAccount';
 export * from './subUserMode';
 export * from './swapCoin';
+export * from './swapCoinStruct';
 export * from './systemTime';
 export * from './ticker';
 export * from './totalBalance';
@@ -345,6 +347,7 @@ import { FuturesPositionCrossMode } from './futuresPositionCrossMode';
 import { FuturesPremiumIndex } from './futuresPremiumIndex';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 import { FuturesPriceTriggeredOrder } from './futuresPriceTriggeredOrder';
+import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
@@ -453,6 +456,7 @@ import { SubAccountTransferRecordItem } from './subAccountTransferRecordItem';
 import { SubCrossMarginAccount } from './subCrossMarginAccount';
 import { SubUserMode } from './subUserMode';
 import { SwapCoin } from './swapCoin';
+import { SwapCoinStruct } from './swapCoinStruct';
 import { SystemTime } from './systemTime';
 import { Ticker } from './ticker';
 import { TotalBalance } from './totalBalance';
@@ -672,6 +676,7 @@ let typeMap: { [index: string]: any } = {
     FuturesPremiumIndex: FuturesPremiumIndex,
     FuturesPriceTrigger: FuturesPriceTrigger,
     FuturesPriceTriggeredOrder: FuturesPriceTriggeredOrder,
+    FuturesRiskLimitTier: FuturesRiskLimitTier,
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     IndexConstituent: IndexConstituent,
@@ -780,6 +785,7 @@ let typeMap: { [index: string]: any } = {
     SubCrossMarginAccount: SubCrossMarginAccount,
     SubUserMode: SubUserMode,
     SwapCoin: SwapCoin,
+    SwapCoinStruct: SwapCoinStruct,
     SystemTime: SystemTime,
     Ticker: Ticker,
     TotalBalance: TotalBalance,

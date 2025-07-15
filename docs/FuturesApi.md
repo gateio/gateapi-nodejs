@@ -47,6 +47,7 @@ Method | HTTP request | Description
 [**getFuturesFee**](FuturesApi.md#getFuturesFee) | **GET** /futures/{settle}/fee | Query user trading fee rates
 [**cancelBatchFutureOrders**](FuturesApi.md#cancelBatchFutureOrders) | **POST** /futures/{settle}/batch_cancel_orders | Cancel a batch of orders with an ID list
 [**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders with specified IDs
+[**getFuturesRiskLimitTable**](FuturesApi.md#getFuturesRiskLimitTable) | **GET** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | List All Price-triggered Orders
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create a price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel All Price-triggered Orders
@@ -166,7 +167,7 @@ const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'interval': '0', // string | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10, // number | Maximum number of order depth data in asks or bids
-  'withId': false // boolean | Whether the order book update ID will be returned. This ID increases by 1 on every order book update
+  'withId': false // boolean | Whether to return depth update ID. This ID increments by 1 each time.
 };
 api.listFuturesOrderBook(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -182,7 +183,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract | [default to undefined]
  **interval** | **string**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
- **withId** | **boolean**| Whether the order book update ID will be returned. This ID increases by 1 on every order book update | [optional] [default to undefined]
+ **withId** | **boolean**| Whether to return depth update ID. This ID increments by 1 each time. | [optional] [default to undefined]
 
 ### Return type
 
@@ -273,7 +274,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
-  'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+  'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second 
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // string | Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days
 };
@@ -290,7 +291,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
- **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
+ **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second  | [optional] [default to undefined]
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **string**| Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0.  Note that 30d means 1 natual month, not 30 days | [optional] [default to &#39;5m&#39;]
 
@@ -328,7 +329,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
-  'to': 1546935600, // number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
+  'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second 
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // string | Interval time between data points
 };
@@ -345,7 +346,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
- **to** | **number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] [default to undefined]
+ **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second  | [optional] [default to undefined]
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **string**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
@@ -426,8 +427,8 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'limit': 100, // number | Maximum number of records to be returned in a single list
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332 // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
 api.listFuturesFundingRateHistory(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -442,8 +443,8 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
 ### Return type
 
@@ -603,7 +604,7 @@ No authorization required
 
 Retrieve liquidation history
 
-Interval between &#x60;from&#x60; and &#x60;to&#x60; cannot exceeds 3600. Some private fields will not be returned in public endpoints. Refer to field description for detail.
+The maximum time interval between &#x60;from&#x60; and &#x60;to&#x60; is **3600 seconds**. Certain private fields will **not be returned** in public endpoints; refer to individual field descriptions for details.
 
 ### Example
 
@@ -617,8 +618,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100 // number | Maximum number of records to be returned in a single list
 };
 api.listLiquidatedOrders(settle, opts)
@@ -633,8 +634,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
@@ -750,7 +751,7 @@ Promise<{ response: AxiosResponse; body: FuturesAccount; }> [FuturesAccount](Fut
 
 Query account book
 
-If the &#x60;contract&#x60; field is provided, it can only filter records that include this field after 2023-10-30.
+If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。 2023-10-30 can be filtered。 2023-10-30 can be filtered。 
 
 ### Example
 
@@ -768,8 +769,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'type': "dnw" // string | Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
 };
 api.listFuturesAccountBook(settle, opts)
@@ -786,8 +787,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **type** | **string**| Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction | [optional] [default to undefined]
 
 ### Return type
@@ -918,7 +919,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const change = "0.01"; // string | Margin change. Use positive number to increase margin, negative number otherwise.
+const change = "0.01"; // string | Margin change amount, positive number increases, negative number 
 api.updatePositionMargin(settle, contract, change)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -931,7 +932,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **change** | **string**| Margin change. Use positive number to increase margin, negative number otherwise. | [default to undefined]
+ **change** | **string**| Margin change amount, positive number increases, negative number  | [default to undefined]
 
 ### Return type
 
@@ -1095,7 +1096,7 @@ Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
 
 Enable or disable dual mode
 
-Before setting dual mode, make sure all positions are closed and no orders are open
+The prerequisite for changing mode is that all positions have no holdings
 
 ### Example
 
@@ -1200,7 +1201,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
-const change = "0.01"; // string | Margin change. Use positive number to increase margin, negative number otherwise.
+const change = "0.01"; // string | Margin change amount, positive number increases, negative number 
 const dualSide = "dual_long"; // string | Long or short position
 api.updateDualModePositionMargin(settle, contract, change, dualSide)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1214,7 +1215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
- **change** | **string**| Margin change. Use positive number to increase margin, negative number otherwise. | [default to undefined]
+ **change** | **string**| Margin change amount, positive number increases, negative number  | [default to undefined]
  **dualSide** | **string**| Long or short position | [default to undefined]
 
 ### Return type
@@ -1353,7 +1354,7 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'lastId': "12345" // string | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': "12345" // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
 };
 api.listFuturesOrders(settle, status, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1370,7 +1371,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **lastId** | **string**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] [default to undefined]
+ **lastId** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time. | [optional] [default to undefined]
 
 ### Return type
 
@@ -1459,7 +1460,7 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const contract = "BTC_USDT"; // string | Futures contract
 const opts = {
   'xGateExptime': "1689560679123", // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-  'side': "ask" // string | Specify all buy orders or all sell orders, if not specify them, both are included. Revoke all buy orders and revoke all sell orders and make ask
+  'side': "ask" // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell ordersspecified. Set to bid to cancel all buy orders, set to ask to cancel all 
 };
 api.cancelFuturesOrders(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -1474,7 +1475,7 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract | [default to undefined]
  **xGateExptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional] [default to undefined]
- **side** | **string**| Specify all buy orders or all sell orders, if not specify them, both are included. Revoke all buy orders and revoke all sell orders and make ask | [optional] [default to undefined]
+ **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell ordersspecified. Set to bid to cancel all buy orders, set to ask to cancel all  | [optional] [default to undefined]
 
 ### Return type
 
@@ -1509,8 +1510,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0 // number | List offset, starting from 0
 };
@@ -1526,8 +1527,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -1819,8 +1820,8 @@ const api = new GateApi.FuturesApi(client);
 const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
   'role': "maker" // string | Query role, maker or taker.
@@ -1837,8 +1838,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **Settle**| Settle currency | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **role** | **string**| Query role, maker or taker. | [optional] [default to undefined]
@@ -1878,8 +1879,8 @@ const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified
   'limit': 100, // number | Maximum number of records to be returned in a single list
   'offset': 0, // number | List offset, starting from 0
-  'from': 1547706332, // number | Start timestamp
-  'to': 1547706332, // number | End timestamp
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'side': "short", // string | Query side.  long or shot
   'pnl': "profit" // string | Query profit or loss
 };
@@ -1897,8 +1898,8 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
- **from** | **number**| Start timestamp | [optional] [default to undefined]
- **to** | **number**| End timestamp | [optional] [default to undefined]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **side** | **string**| Query side.  long or shot | [optional] [default to undefined]
  **pnl** | **string**| Query profit or loss | [optional] [default to undefined]
 
@@ -2023,7 +2024,7 @@ Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage>; }> [Futur
 
 Countdown cancel orders
 
-When the timeout set by the user is reached, if there is no cancel or set a new countdown, the related pending orders will be automatically cancelled.  This endpoint can be called repeatedly to set a new countdown or cancel the countdown. For example, call this endpoint at 30s intervals, each countdown&#x60;timeout&#x60; is set to 30s. If this endpoint is not called again within 30 seconds, all pending orders on the specified &#x60;market&#x60; will be automatically cancelled, if no &#x60;market&#x60; is specified, all market pending orders will be cancelled. If the &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will expire and the cacnel function will be cancelled.
+Heartbeat detection for contract orders: When the user-set &#x60;timeout&#x60; time is reached, if neither the existing countdown is canceled nor a new countdown is set, the relevant contract orders will be automatically canceled. This API can be called repeatedly to set a new countdown or cancel the countdown. Usage example: Repeatedly call this API at 30-second intervals, setting the &#x60;timeout&#x60; to 30 (seconds) each time. If this API is not called again within 30 seconds, all open orders on your specified &#x60;market&#x60; will be automatically canceled. If the &#x60;timeout&#x60; is set to 0 within 30 seconds, the countdown timer will terminate, and the automatic order cancellation function will be disabled.
 
 ### Example
 
@@ -2117,7 +2118,7 @@ Promise<{ response: AxiosResponse; body: { [key: string]: FuturesFee; }; }> [Fut
 
 Cancel a batch of orders with an ID list
 
-Multiple distinct order ID list can be specified。Each request can cancel a maximum of 20 records.
+Multiple different order IDs can be specified. A maximum of 20 records 
 
 ### Example
 
@@ -2168,7 +2169,7 @@ Promise<{ response: AxiosResponse; body: Array<FutureCancelOrderResult>; }> [Fut
 
 Batch modify orders with specified IDs
 
-You can specify multiple different order IDs. You can only modify up to 10 orders in one request.
+Multiple different order IDs can be specified. A maximum of 10 orders can
 
 ### Example
 
@@ -2211,6 +2212,51 @@ Promise<{ response: AxiosResponse; body: Array<BatchFuturesOrder>; }> [BatchFutu
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+## getFuturesRiskLimitTable
+
+> Promise<{ response: http.IncomingMessage; body: Array<FuturesRiskLimitTier>; }> getFuturesRiskLimitTable(settle, tableId)
+
+Query risk limit table by table_id
+
+Just pass table_id.
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency
+const tableId = "CYBER_USDT_20241122"; // string | Risk limit table ID
+api.getFuturesRiskLimitTable(settle, tableId)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency | [default to undefined]
+ **tableId** | **string**| Risk limit table ID | [default to undefined]
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<FuturesRiskLimitTier>; }> [FuturesRiskLimitTier](FuturesRiskLimitTier.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ## listPriceTriggeredOrders

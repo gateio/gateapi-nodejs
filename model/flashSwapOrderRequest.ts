@@ -1,6 +1,6 @@
 /**
- * Gate API v4
- * Welcome to Gate API  APIv4 provides spot, margin and futures trading operations. There are public APIs to retrieve the real-time market statistics, and private APIs which needs authentication to trade on user\'s behalf.
+ * Gate API
+ * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -18,7 +18,7 @@ export class FlashSwapOrderRequest {
      */
     'previewId': string;
     /**
-     * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs.
+     * Name of the asset to be sold, obtained from the interface GET /flash_swap/currency_pairs: Query the list of all trading pairs supporting flash swap
      */
     'sellCurrency': string;
     /**
@@ -26,7 +26,7 @@ export class FlashSwapOrderRequest {
      */
     'sellAmount': string;
     /**
-     * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs.
+     * Name of the asset to be bought, obtained from the interface GET /flash_swap/currency_pairs: Query the list of all trading pairs supporting flash swap
      */
     'buyCurrency': string;
     /**
