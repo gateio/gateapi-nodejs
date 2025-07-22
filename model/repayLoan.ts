@@ -10,19 +10,19 @@
  */
 
 /**
- * Repay
+ * Repay.
  */
 export class RepayLoan {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId': number;
     /**
-     * Repayment amount, it is mandatory when making partial repayments
+     * Repayment amount, it is mandatory when making partial repayments.
      */
     'repayAmount': string;
     /**
-     * Repayment method, set to `true` for full repayment, and `false` for partial repayment; When set to false for partial repayment, the repay_amount parameter cannot be greater than the remaining amount to be repaid by the user.
+     * Repayment method, set to `true` for full repayment, and `false` for partial repayment; When partial repayment, the repay_amount parameter cannot be greater than the remaining amount to be repaid by the user.
      */
     'repaidAll': boolean;
 

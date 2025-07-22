@@ -45,11 +45,11 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary List Multi-Collateral Orders
+     * @summary List Multi-Collateral Orders.
      * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.sort Query the current interest rate of the currency in the previous hour
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.sort Query the current interest rate of the currency in the previous hour.
      * @param opts.orderType Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
      */
     public async listMultiCollateralOrders(opts: {
@@ -99,7 +99,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Create Multi-Collateral Order
+     * @summary Create Multi-Collateral Order.
      * @param createMultiCollateralOrder
      */
     public async createMultiCollateral(
@@ -137,8 +137,8 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Get Multi-Collateral Order Detail
-     * @param orderId Order ID returned on successful order creation
+     * @summary Get Multi-Collateral Order Detail.
+     * @param orderId Order ID returned on successful order creation.
      */
     public async getMultiCollateralOrderDetail(
         orderId: string,
@@ -179,14 +179,14 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary List Multi-Collateral Repay Records
-     * @param type Operation type: repay - Regular repayment, liquidate - Liquidation
+     * @summary List Multi-Collateral Repay Records.
+     * @param type Operation type: repay - Regular repayment, liquidate - Liquidation.
      * @param opts Optional parameters
-     * @param opts.borrowCurrency Borrowed currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp of the query
-     * @param opts.to Time range ending, default to current time
+     * @param opts.borrowCurrency Borrowed currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.from Start timestamp of the query.
+     * @param opts.to Time range ending, default to current time.
      */
     public async listMultiRepayRecords(
         type: string,
@@ -244,7 +244,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Repay Multi-Collateral Loan
+     * @summary Repay Multi-Collateral Loan.
      * @param repayMultiLoan
      */
     public async repayMultiCollateralLoan(
@@ -282,13 +282,13 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Query collateral adjustment records
+     * @summary Query collateral adjustment records.
      * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp of the query
-     * @param opts.to Time range ending, default to current time
-     * @param opts.collateralCurrency Collateral
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.from Start timestamp of the query.
+     * @param opts.to Time range ending, default to current time.
+     * @param opts.collateralCurrency Collateral.
      */
     public async listMultiCollateralRecords(opts: {
         page?: number;
@@ -345,7 +345,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Operate Multi-Collateral
+     * @summary Operate Multi-Collateral.
      * @param collateralAdjust
      */
     public async operateMultiCollateral(
@@ -383,9 +383,9 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary List User Currency Quota
-     * @param type Currency type: collateral - Collateral currency, borrow - Borrowing
-     * @param currency When it is a collateral currency, multiple currencies can be passed separated by commas;when it is a borrowing currency, only one currenc
+     * @summary List User Currency Quota.
+     * @param type Currency type: collateral - Collateral currency, borrow - Borrowing.
+     * @param currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passedseparated by commas; when it is a borrowing currency, only one currency can be passedseparated by commas; when it is a borrowing currency, only one commas; when it is a borrowing currency, only one currency can be passed
      */
     public async listUserCurrencyQuota(
         type: string,
@@ -429,7 +429,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Query supported borrowing and collateral currencies in Multi-Collateral
+     * @summary Query supported borrowing and collateral currencies in Multi-Collateral.
      */
     public async listMultiCollateralCurrencies(): Promise<{ response: AxiosResponse; body: MultiCollateralCurrency }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/currencies';
@@ -456,7 +456,7 @@ export class MultiCollateralLoanApi {
 
     /**
      * The Multi-Collateral ratio is fixed, irrespective of the currency.
-     * @summary Get Multi-Collateral ratio
+     * @summary Get Multi-Collateral ratio.
      */
     public async getMultiCollateralLtv(): Promise<{ response: AxiosResponse; body: CollateralLtv }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/ltv';
@@ -483,7 +483,7 @@ export class MultiCollateralLoanApi {
 
     /**
      *
-     * @summary Query fixed interest rates for the currency for 7 days and 30 days
+     * @summary Query fixed interest rates for the currency for 7 days and 30 days.
      */
     public async getMultiCollateralFixRate(): Promise<{ response: AxiosResponse; body: Array<CollateralFixRate> }> {
         const localVarPath = this.client.basePath + '/loan/multi_collateral/fixed_rate';
@@ -510,10 +510,10 @@ export class MultiCollateralLoanApi {
 
     /**
      * Query the current interest rate of the currency in the previous hour.
-     * @summary Query the current interest rate of the currency
+     * @summary Query the current interest rate of the currency.
      * @param currencies Specify currency name query array, separated by commas, maximum 100items.
      * @param opts Optional parameters
-     * @param opts.vipLevel VIP level, defaults to 0 if not transferred
+     * @param opts.vipLevel VIP level, defaults to 0 if not transferred.
      */
     public async getMultiCollateralCurrentRate(
         currencies: Array<string>,

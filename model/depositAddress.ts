@@ -13,11 +13,11 @@ import { MultiChainAddressItem } from './multiChainAddressItem';
 
 export class DepositAddress {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency': string;
     /**
-     * Deposit address
+     * Deposit address.
      */
     'address': string;
     'multichainAddresses'?: Array<MultiChainAddressItem>;

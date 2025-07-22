@@ -11,11 +11,11 @@
 
 export class IndexConstituent {
     /**
-     * Exchange
+     * Exchange.
      */
     'exchange'?: string;
     /**
-     * Symbol list
+     * Symbol list.
      */
     'symbols'?: Array<string>;
 

@@ -11,27 +11,27 @@
 
 export class CrossMarginLoan {
     /**
-     * Loan record ID
+     * Loan record ID.
      */
     'id'?: string;
     /**
-     * Creation timestamp, in milliseconds
+     * Creation timestamp, in milliseconds.
      */
     'createTime'?: number;
     /**
-     * Update timestamp, in milliseconds
+     * Update timestamp, in milliseconds.
      */
     'updateTime'?: number;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * Borrowed amount
+     * Borrowed amount.
      */
     'amount': string;
     /**
-     * User defined custom ID
+     * User defined custom ID.
      */
     'text'?: string;
     /**
@@ -39,15 +39,15 @@ export class CrossMarginLoan {
      */
     'status'?: CrossMarginLoan.Status;
     /**
-     * Repaid amount
+     * Repaid amount.
      */
     'repaid'?: string;
     /**
-     * Repaid interest
+     * Repaid interest.
      */
     'repaidInterest'?: string;
     /**
-     * Outstanding interest yet to be paid
+     * Outstanding interest yet to be paid.
      */
     'unpaidInterest'?: string;
 

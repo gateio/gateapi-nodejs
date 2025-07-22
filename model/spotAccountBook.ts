@@ -11,35 +11,35 @@
 
 export class SpotAccountBook {
     /**
-     * Balance change record ID
+     * Balance change record ID.
      */
     'id'?: string;
     /**
-     * The timestamp of the change (in milliseconds)
+     * The timestamp of the change (in milliseconds).
      */
     'time'?: number;
     /**
-     * Currency changed
+     * Currency changed.
      */
     'currency'?: string;
     /**
-     * Amount changed. Positive value means transferring in, while negative out
+     * Amount changed. Positive value means transferring in, while negative out.
      */
     'change'?: string;
     /**
-     * Balance after change
+     * Balance after change.
      */
     'balance'?: string;
     /**
-     * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
+     * Account book type. Please refer to [account book type](#accountbook-type) for more detail
      */
     'type'?: string;
     /**
-     * Account change code, see [Asset Record Code] (Asset Record Code)
+     * Account change code, see [Asset Record Code] (Asset Record Code).
      */
     'code'?: string;
     /**
-     * Additional information
+     * Additional information.
      */
     'text'?: string;
 

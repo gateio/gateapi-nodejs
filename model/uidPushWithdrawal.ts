@@ -11,15 +11,15 @@
 
 export class UidPushWithdrawal {
     /**
-     * Recipient UID
+     * Recipient UID.
      */
     'receiveUid': number;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * Transfer amount
+     * Transfer amount.
      */
     'amount': string;
 

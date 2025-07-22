@@ -10,15 +10,15 @@
  */
 
 /**
- * Market leverage settings
+ * Market leverage settings.
  */
 export class MarginMarketLeverage {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage': string;
 

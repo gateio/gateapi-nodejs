@@ -36,7 +36,7 @@ export class AccountApi {
 
     /**
      *
-     * @summary Get account detail
+     * @summary Get account detail.
      */
     public async getAccountDetail(): Promise<{ response: AxiosResponse; body: AccountDetail }> {
         const localVarPath = this.client.basePath + '/account/detail';
@@ -63,7 +63,7 @@ export class AccountApi {
 
     /**
      *
-     * @summary Get user transaction rate limit information
+     * @summary Get user transaction rate limit information.
      */
     public async getAccountRateLimit(): Promise<{ response: AxiosResponse; body: Array<AccountRateLimit> }> {
         const localVarPath = this.client.basePath + '/account/rate_limit';
@@ -89,10 +89,10 @@ export class AccountApi {
     }
 
     /**
-     * Retrieve the list of STP groups created by the main account user only
-     * @summary List STP Groups
+     * Retrieve the list of STP groups created by the main account user only.
+     * @summary List STP Groups.
      * @param opts Optional parameters
-     * @param opts.name Perform a fuzzy search based on the name
+     * @param opts.name Perform a fuzzy search based on the name.
      */
     public async listSTPGroups(opts: { name?: string }): Promise<{ response: AxiosResponse; body: Array<StpGroup> }> {
         const localVarPath = this.client.basePath + '/account/stp_groups';
@@ -123,8 +123,8 @@ export class AccountApi {
     }
 
     /**
-     * Only the main account is allowed to create a new STP user group
-     * @summary Create STP Group
+     * Only the main account is allowed to create a new STP user group.
+     * @summary Create STP Group.
      * @param stpGroup
      */
     public async createSTPGroup(stpGroup: StpGroup): Promise<{ response: AxiosResponse; body: StpGroup }> {
@@ -157,9 +157,9 @@ export class AccountApi {
     }
 
     /**
-     * Only the main account that created this STP group can query the account
-     * @summary List users of the STP group
-     * @param stpId STP Group ID
+     * Only the main account that created this STP group can query the account.
+     * @summary List users of the STP group.
+     * @param stpId STP Group ID.
      */
     public async listSTPGroupsUsers(stpId: number): Promise<{ response: AxiosResponse; body: Array<StpGroupUser> }> {
         const localVarPath =
@@ -192,10 +192,10 @@ export class AccountApi {
     }
 
     /**
-     * - Only the master account that created the STP user group is allowed to add users to the STP user group.- Only accounts under the main account are allowed to be added. Cross-account is not permitted
-     * @summary Add users to the STP group
-     * @param stpId STP Group ID
-     * @param requestBody User ID
+     * - Only the master account that created the STP user group is allowed to add users group.- Only accounts under the main account are allowed to be added. Cross-account is not permitted
+     * @summary Add users to the STP group.
+     * @param stpId STP Group ID.
+     * @param requestBody User ID.
      */
     public async addSTPGroupUsers(
         stpId: number,
@@ -238,9 +238,9 @@ export class AccountApi {
 
     /**
      * - Only the main account that created this STP group is allowed to delete users from the STP user group - Deletion is limited to accounts under the current main account; cross-account deletion is not permitted
-     * @summary Delete the user in the STP group
-     * @param stpId STP Group ID
-     * @param userId STP user ID, multiple can be separated by commas
+     * @summary Delete the user in the STP group.
+     * @param stpId STP Group ID.
+     * @param userId STP user ID, multiple can be separated by commas.
      */
     public async deleteSTPGroupUsers(
         stpId: number,

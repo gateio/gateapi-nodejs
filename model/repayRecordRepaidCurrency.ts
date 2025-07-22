@@ -11,27 +11,27 @@
 
 export class RepayRecordRepaidCurrency {
     /**
-     * Repayment currency
+     * Repayment currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Repayment amount
+     * Repayment amount.
      */
     'repaidAmount'?: string;
     /**
-     * Principal
+     * Principal.
      */
     'repaidPrincipal'?: string;
     /**
-     * Interest
+     * Interest.
      */
     'repaidInterest'?: string;
     /**
-     * Value of the repayment amount in USDT
+     * Value of the repayment amount in USDT.
      */
     'repaidAmountUsdt'?: string;
 

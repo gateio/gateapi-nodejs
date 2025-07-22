@@ -13,7 +13,7 @@ import { UserSub } from './userSub';
 
 export class UserSubRelation {
     /**
-     * Subordinate relationship list
+     * Subordinate relationship list.
      */
     'list'?: Array<UserSub>;
 

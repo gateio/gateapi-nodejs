@@ -10,51 +10,51 @@
  */
 
 /**
- * Collateral Order
+ * Collateral Order.
  */
 export class CollateralOrder {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
     /**
-     * Collateral
+     * Collateral.
      */
     'collateralCurrency'?: string;
     /**
-     * Collateral amount
+     * Collateral amount.
      */
     'collateralAmount'?: string;
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'borrowCurrency'?: string;
     /**
-     * Borrowing amount
+     * Borrowing amount.
      */
     'borrowAmount'?: string;
     /**
-     * Repaid amount
+     * Repaid amount.
      */
     'repaidAmount'?: string;
     /**
-     * Repaid principal
+     * Repaid principal.
      */
     'repaidPrincipal'?: string;
     /**
-     * Repaid interest
+     * Repaid interest.
      */
     'repaidInterest'?: string;
     /**
-     * The initial collateralization rate
+     * The initial collateralization rate.
      */
     'initLtv'?: string;
     /**
-     * The current collateralization rate
+     * The current collateralization rate.
      */
     'currentLtv'?: string;
     /**
-     * The liquidation collateralization rate
+     * The liquidation collateralization rate.
      */
     'liquidateLtv'?: string;
     /**
@@ -62,7 +62,7 @@ export class CollateralOrder {
      */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds
+     * Borrowing time, timestamp in seconds.
      */
     'borrowTime'?: number;
     /**
@@ -70,11 +70,11 @@ export class CollateralOrder {
      */
     'leftRepayTotal'?: string;
     /**
-     * outstanding principal
+     * outstanding principal.
      */
     'leftRepayPrincipal'?: string;
     /**
-     * outstanding interest
+     * outstanding interest.
      */
     'leftRepayInterest'?: string;
 

@@ -11,27 +11,27 @@
 
 export class AgencyCommission {
     /**
-     * Commission Time. (unix timestamp)
+     * Commission Time. (unix timestamp).
      */
     'commissionTime'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Group name
+     * Group name.
      */
     'groupName'?: string;
     /**
-     * Commission Amount
+     * Commission Amount.
      */
     'commissionAmount'?: string;
     /**
-     * Commission Asset
+     * Commission Asset.
      */
     'commissionAsset'?: string;
     /**
-     * Source.  SPOT - SPOT Rebate, FUTURES - Futures Rebate
+     * Source. SPOT - SPOT Rebate, FUTURES - Futures Rebate.
      */
     'source'?: string;
 

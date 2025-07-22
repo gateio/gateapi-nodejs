@@ -10,19 +10,19 @@
  */
 
 /**
- * Borrow or repay
+ * Borrow or repay.
  */
 export class UnifiedLoan {
     /**
-     * Currency
+     * Currency.
      */
     'currency': string;
     /**
-     * type: borrow - borrow, repay - repay
+     * type: borrow - borrow, repay - repay.
      */
     'type': UnifiedLoan.Type;
     /**
-     * The amount of lending or repaying
+     * The amount of lending or repaying.
      */
     'amount': string;
     /**
@@ -30,7 +30,7 @@ export class UnifiedLoan {
      */
     'repaidAll'?: boolean;
     /**
-     * User defined custom ID
+     * User defined custom ID.
      */
     'text'?: string;
 

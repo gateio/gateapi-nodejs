@@ -11,19 +11,19 @@
 
 export class CrossMarginBalance {
     /**
-     * Available amount
+     * Available amount.
      */
     'available'?: string;
     /**
-     * Locked amount
+     * Locked amount.
      */
     'freeze'?: string;
     /**
-     * Borrowed amount
+     * Borrowed amount.
      */
     'borrowed'?: string;
     /**
-     * Unpaid interests
+     * Unpaid interests.
      */
     'interest'?: string;
 

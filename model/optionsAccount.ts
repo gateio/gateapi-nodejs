@@ -11,11 +11,11 @@
 
 export class OptionsAccount {
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Account balance
+     * Account balance.
      */
     'total'?: string;
     /**
@@ -23,19 +23,19 @@ export class OptionsAccount {
      */
     'positionValue'?: string;
     /**
-     * Account equity, the sum of account balance and position value
+     * Account equity, the sum of account balance and position value.
      */
     'equity'?: string;
     /**
-     * If the account is allowed to short
+     * If the account is allowed to short.
      */
     'shortEnabled'?: boolean;
     /**
-     * Whether to enable MMP
+     * Whether to enable MMP.
      */
     'mmpEnabled'?: boolean;
     /**
-     * Whether to trigger position liquidation
+     * Whether to trigger position liquidation.
      */
     'liqTriggered'?: boolean;
     /**
@@ -43,43 +43,43 @@ export class OptionsAccount {
      */
     'marginMode'?: OptionsAccount.MarginMode;
     /**
-     * Unrealized PNL
+     * Unrealized PNL.
      */
     'unrealisedPnl'?: string;
     /**
-     * Initial position margin
+     * Initial position margin.
      */
     'initMargin'?: string;
     /**
-     * Position maintenance margin
+     * Position maintenance margin.
      */
     'maintMargin'?: string;
     /**
-     * Order margin of unfinished orders
+     * Order margin of unfinished orders.
      */
     'orderMargin'?: string;
     /**
-     * Margin for outstanding sell orders
+     * Margin for outstanding sell orders.
      */
     'askOrderMargin'?: string;
     /**
-     * Margin for outstanding buy orders
+     * Margin for outstanding buy orders.
      */
     'bidOrderMargin'?: string;
     /**
-     * Available balance to transfer out or trade
+     * Available balance to transfer out or trade.
      */
     'available'?: string;
     /**
-     * POINT amount
+     * POINT amount.
      */
     'point'?: string;
     /**
-     * Settle currency
+     * Settle currency.
      */
     'currency'?: string;
     /**
-     * Maximum number of outstanding orders
+     * Maximum number of outstanding orders.
      */
     'ordersLimit'?: number;
     /**

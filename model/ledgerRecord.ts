@@ -11,11 +11,11 @@
 
 export class LedgerRecord {
     /**
-     * Record ID
+     * Record ID.
      */
     'id'?: string;
     /**
-     * Hash record of the withdrawal
+     * Hash record of the withdrawal.
      */
     'txid'?: string;
     /**
@@ -23,23 +23,23 @@ export class LedgerRecord {
      */
     'withdrawOrderId'?: string;
     /**
-     * Operation time
+     * Operation time.
      */
     'timestamp'?: string;
     /**
-     * Currency amount
+     * Currency amount.
      */
     'amount': string;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * Withdrawal address. Required for withdrawals
+     * Withdrawal address. Required for withdrawals.
      */
     'address'?: string;
     /**
-     * Additional remarks with regards to the withdrawal
+     * Additional remarks with regards to the withdrawal.
      */
     'memo'?: string;
     /**
@@ -55,7 +55,7 @@ export class LedgerRecord {
      */
     'status'?: string;
     /**
-     * Name of the chain used in withdrawals
+     * Name of the chain used in withdrawals.
      */
     'chain': string;
 

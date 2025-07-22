@@ -11,15 +11,15 @@
 
 export class StpGroupUser {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * STP Group ID
+     * STP Group ID.
      */
     'stpId'?: number;
     /**
-     * Creation time
+     * Creation time.
      */
     'createTime'?: number;
 

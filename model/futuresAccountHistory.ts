@@ -10,47 +10,47 @@
  */
 
 /**
- * Statistical data
+ * Statistical data.
  */
 export class FuturesAccountHistory {
     /**
-     * total amount of deposit and withdraw
+     * total amount of deposit and withdraw.
      */
     'dnw'?: string;
     /**
-     * total amount of trading profit and loss
+     * total amount of trading profit and loss.
      */
     'pnl'?: string;
     /**
-     * total amount of fee
+     * total amount of fee.
      */
     'fee'?: string;
     /**
-     * total amount of referrer rebates
+     * total amount of referrer rebates.
      */
     'refr'?: string;
     /**
-     * total amount of funding costs
+     * total amount of funding costs.
      */
     'fund'?: string;
     /**
-     * total amount of point deposit and withdraw
+     * total amount of point deposit and withdraw.
      */
     'pointDnw'?: string;
     /**
-     * total amount of point fee
+     * total amount of point fee.
      */
     'pointFee'?: string;
     /**
-     * total amount of referrer rebates of point fee
+     * total amount of referrer rebates of point fee.
      */
     'pointRefr'?: string;
     /**
-     * total amount of perpetual contract bonus transfer
+     * total amount of perpetual contract bonus transfer.
      */
     'bonusDnw'?: string;
     /**
-     * total amount of perpetual contract bonus deduction
+     * total amount of perpetual contract bonus deduction.
      */
     'bonusOffset'?: string;
 

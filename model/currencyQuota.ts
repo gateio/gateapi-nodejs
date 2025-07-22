@@ -10,27 +10,27 @@
  */
 
 /**
- * Currency Quota
+ * Currency Quota.
  */
 export class CurrencyQuota {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Minimum borrowing/collateral quota for the currency
+     * Minimum borrowing/collateral quota for the currency.
      */
     'minQuota'?: string;
     /**
-     * Remaining borrowing/collateral limit for the currency
+     * Remaining borrowing/collateral limit for the currency.
      */
     'leftQuota'?: string;
     /**
-     * Remaining currency limit converted to USDT
+     * Remaining currency limit converted to USDT.
      */
     'leftQuoteUsdt'?: string;
 

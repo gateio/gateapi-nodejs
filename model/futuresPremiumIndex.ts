@@ -10,27 +10,27 @@
  */
 
 /**
- * data point in every timestamp
+ * data point in every timestamp.
  */
 export class FuturesPremiumIndex {
     /**
-     * Unix timestamp in seconds
+     * Unix timestamp in seconds.
      */
     't'?: number;
     /**
-     * Close price
+     * Close price.
      */
     'c'?: string;
     /**
-     * Highest price
+     * Highest price.
      */
     'h'?: string;
     /**
-     * Lowest price`
+     * Lowest price`.
      */
     'l'?: string;
     /**
-     * Open price
+     * Open price.
      */
     'o'?: string;
 

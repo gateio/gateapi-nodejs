@@ -10,15 +10,15 @@
  */
 
 /**
- * Batch query unified account can be borrowed up to a maximum of results
+ * Batch query unified account can be borrowed up to a maximum of results.
  */
 export class UnifiedBorrowable1 {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency'?: string;
     /**
-     * The maximum amount to borrow
+     * The maximum amount to borrow.
      */
     'amount'?: string;
 

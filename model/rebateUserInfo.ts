@@ -10,11 +10,11 @@
  */
 
 /**
- * Retrieve user rebate information
+ * Retrieve user rebate information.
  */
 export class RebateUserInfo {
     /**
-     * My inviter\'s UID
+     * My inviter\'s UID.
      */
     'inviteUid'?: number;
 

@@ -15,27 +15,27 @@ import { RepayRecordRepaidCurrency } from './repayRecordRepaidCurrency';
 import { RepayRecordTotalInterest } from './repayRecordTotalInterest';
 
 /**
- * Mult Repay Record
+ * Mult Repay Record.
  */
 export class MultiRepayRecord {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
     /**
-     * Repayment record ID
+     * Repayment record ID.
      */
     'recordId'?: number;
     /**
-     * The initial collateralization rate
+     * The initial collateralization rate.
      */
     'initLtv'?: string;
     /**
-     * Ltv before the operation
+     * Ltv before the operation.
      */
     'beforeLtv'?: string;
     /**
-     * Ltv after the operation
+     * Ltv after the operation.
      */
     'afterLtv'?: string;
     /**
@@ -47,23 +47,23 @@ export class MultiRepayRecord {
      */
     'repayTime'?: number;
     /**
-     * List of borrowing information
+     * List of borrowing information.
      */
     'borrowCurrencies'?: Array<RepayRecordCurrency>;
     /**
-     * List of collateral information
+     * List of collateral information.
      */
     'collateralCurrencies'?: Array<RepayRecordCurrency>;
     /**
-     * Repay Currency List
+     * Repay Currency List.
      */
     'repaidCurrencies'?: Array<RepayRecordRepaidCurrency>;
     /**
-     * Total Interest List
+     * Total Interest List.
      */
     'totalInterestList'?: Array<RepayRecordTotalInterest>;
     /**
-     * List of left repay interest
+     * List of left repay interest.
      */
     'leftRepayInterestList'?: Array<RepayRecordLeftInterest>;
 

@@ -11,7 +11,7 @@
 
 export class UidPushWithdrawalResp {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: number;
 

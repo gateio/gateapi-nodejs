@@ -11,11 +11,11 @@
 
 export class UnifiedTransferable {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency'?: string;
     /**
-     * The maximum amount that can be transferred out
+     * The maximum amount that can be transferred out.
      */
     'amount'?: string;
 

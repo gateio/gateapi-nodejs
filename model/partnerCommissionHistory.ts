@@ -13,11 +13,11 @@ import { AgencyCommission } from './agencyCommission';
 
 export class PartnerCommissionHistory {
     /**
-     * Total
+     * Total.
      */
     'total'?: number;
     /**
-     * List of comission history
+     * List of comission history.
      */
     'list'?: Array<AgencyCommission>;
 

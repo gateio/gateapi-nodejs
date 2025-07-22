@@ -15,15 +15,15 @@ export class FuturesPriceTrigger {
      */
     'strategyType'?: FuturesPriceTrigger.StrategyType;
     /**
-     * Price type. 0 - latest deal price, 1 - mark price, 2 - index price
+     * Price type. 0 - latest deal price, 1 - mark price, 2 - index price.
      */
     'priceType'?: FuturesPriceTrigger.PriceType;
     /**
-     * Value of price on price triggered, or price gap on price gap triggered
+     * Value of price on price triggered, or price gap on price gap triggered.
      */
     'price'?: string;
     /**
-     * Price Condition Type  - 1: Indicates that the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price` Trigger, while Trigger.Price must > last_price - 2: Indicates that the price calculated based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price` Trigger, and Trigger.Price must < last_price
+     * Price Condition Type  - 1: Indicates that the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price` Trigger, while Trigger.Price must > last_price - based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price` Trigger, and Trigger.Price must < last_price
      */
     'rule'?: FuturesPriceTrigger.Rule;
     /**

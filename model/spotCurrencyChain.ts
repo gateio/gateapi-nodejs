@@ -11,23 +11,23 @@
 
 export class SpotCurrencyChain {
     /**
-     * Chain name
+     * Chain name.
      */
     'name'?: string;
     /**
-     * token address
+     * token address.
      */
     'addr'?: string;
     /**
-     * Whether currency\'s withdrawal is disabled
+     * Whether currency\'s withdrawal is disabled.
      */
     'withdrawDisabled'?: boolean;
     /**
-     * Whether currency\'s withdrawal is delayed
+     * Whether currency\'s withdrawal is delayed.
      */
     'withdrawDelayed'?: boolean;
     /**
-     * Whether currency\'s deposit is disabled
+     * Whether currency\'s deposit is disabled.
      */
     'depositDisabled'?: boolean;
 

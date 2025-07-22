@@ -10,15 +10,15 @@
  */
 
 /**
- * Spot orders
+ * Spot orders.
  */
 export class MockSpotOrder {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPairs': string;
     /**
-     * Price
+     * Price.
      */
     'orderPrice': string;
     /**

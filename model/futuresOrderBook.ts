@@ -17,19 +17,19 @@ export class FuturesOrderBook {
      */
     'id'?: number;
     /**
-     * Response data generation timestamp
+     * Response data generation timestamp.
      */
     'current'?: number;
     /**
-     * Order book changed timestamp
+     * Order book changed timestamp.
      */
     'update'?: number;
     /**
-     * Asks order depth
+     * Asks order depth.
      */
     'asks': Array<FuturesOrderBookItem>;
     /**
-     * Bids order depth
+     * Bids order depth.
      */
     'bids': Array<FuturesOrderBookItem>;
 

@@ -10,19 +10,19 @@
  */
 
 /**
- * Options underlying detail
+ * Options underlying detail.
  */
 export class OptionsUnderlyingTicker {
     /**
-     * Total put options trades amount in last 24h
+     * Total put options trades amount in last 24h.
      */
     'tradePut'?: number;
     /**
-     * Total call options trades amount in last 24h
+     * Total call options trades amount in last 24h.
      */
     'tradeCall'?: number;
     /**
-     * Index price (quote currency)
+     * Index price (quote currency).
      */
     'indexPrice'?: string;
 

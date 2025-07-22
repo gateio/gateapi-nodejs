@@ -10,11 +10,11 @@
  */
 
 /**
- * Info of order to be cancelled
+ * Info of order to be cancelled.
  */
 export class CancelBatchOrder {
     /**
-     * Order currency pair
+     * Order currency pair.
      */
     'currencyPair': string;
     /**

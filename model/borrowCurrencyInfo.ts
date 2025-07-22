@@ -11,23 +11,23 @@
 
 export class BorrowCurrencyInfo {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * outstanding principal
+     * outstanding principal.
      */
     'leftRepayPrincipal'?: string;
     /**
-     * outstanding interest
+     * outstanding interest.
      */
     'leftRepayInterest'?: string;
     /**
-     * Value of left total repayments amount in USDT
+     * Value of left total repayments amount in USDT.
      */
     'leftRepayUsdt'?: string;
 

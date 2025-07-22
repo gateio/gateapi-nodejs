@@ -11,7 +11,7 @@
 
 export class SystemTime {
     /**
-     * Server current time(ms)
+     * Server current time(ms).
      */
     'serverTime'?: number;
 

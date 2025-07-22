@@ -20,15 +20,15 @@ export class UnifiedPortfolioOutput {
      */
     'maintainMarginTotal'?: string;
     /**
-     * Total initial margin, calculated as the maximum of the following three combinations: position,  position + positive delta orders, position + negative delta orders.
+     * Total initial margin, calculated as the maximum of the following three combinations: position,  position + positive delta orders, orders.
      */
     'initialMarginTotal'?: string;
     /**
-     * Calculate time
+     * Calculate time.
      */
     'calculateTime'?: number;
     /**
-     * Risk unit
+     * Risk unit.
      */
     'riskUnit'?: Array<MockRiskUnit>;
 

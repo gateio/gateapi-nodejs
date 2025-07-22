@@ -10,11 +10,11 @@
  */
 
 /**
- * Spot order details
+ * Spot order details.
  */
 export class Order {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: string;
     /**
@@ -22,23 +22,23 @@ export class Order {
      */
     'text'?: string;
     /**
-     * The custom data that the user remarked when amending the order
+     * The custom data that the user remarked when amending the order.
      */
     'amendText'?: string;
     /**
-     * Creation time of order
+     * Creation time of order.
      */
     'createTime'?: string;
     /**
-     * Last modification time of order
+     * Last modification time of order.
      */
     'updateTime'?: string;
     /**
-     * Creation time of order (in milliseconds)
+     * Creation time of order (in milliseconds).
      */
     'createTimeMs'?: number;
     /**
-     * Last modification time of order (in milliseconds)
+     * Last modification time of order (in milliseconds).
      */
     'updateTimeMs'?: number;
     /**
@@ -46,7 +46,7 @@ export class Order {
      */
     'status'?: Order.Status;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair': string;
     /**
@@ -58,15 +58,15 @@ export class Order {
      */
     'account'?: string;
     /**
-     * Buy or sell order
+     * Buy or sell order.
      */
     'side': Order.Side;
     /**
-     * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
+     * When `type` is limit, it refers to base currency. For instance, `BTC_USDT` means `BTC`  When different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
      */
     'amount': string;
     /**
-     * Price can\'t be empty when `type`= `limit`
+     * Price can\'t be empty when `type`= `limit`.
      */
     'price'?: string;
     /**
@@ -74,7 +74,7 @@ export class Order {
      */
     'timeInForce'?: Order.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders.  Hiding all amount is not supported.
+     * Amount to display for the iceberg order. Null or 0 for normal orders. Hiding all amount is not supported.
      */
     'iceberg'?: string;
     /**
@@ -86,59 +86,59 @@ export class Order {
      */
     'autoRepay'?: boolean;
     /**
-     * Amount left to fill
+     * Amount left to fill.
      */
     'left'?: string;
     /**
-     * Amount traded to fill
+     * Amount traded to fill.
      */
     'filledAmount'?: string;
     /**
-     * Total filled in quote currency. Deprecated in favor of `filled_total`
+     * Total filled in quote currency. Deprecated in favor of `filled_total`.
      */
     'fillPrice'?: string;
     /**
-     * Total filled in quote currency
+     * Total filled in quote currency.
      */
     'filledTotal'?: string;
     /**
-     * Average fill price
+     * Average fill price.
      */
     'avgDealPrice'?: string;
     /**
-     * Fee deducted
+     * Fee deducted.
      */
     'fee'?: string;
     /**
-     * Fee currency unit
+     * Fee currency unit.
      */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee
+     * Points used to deduct fee.
      */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee
+     * GT used to deduct fee.
      */
     'gtFee'?: string;
     /**
-     * GT used to deduct maker fee
+     * GT used to deduct maker fee.
      */
     'gtMakerFee'?: string;
     /**
-     * GT used to deduct taker fee
+     * GT used to deduct taker fee.
      */
     'gtTakerFee'?: string;
     /**
-     * Whether GT fee discount is used
+     * Whether GT fee discount is used.
      */
     'gtDiscount'?: boolean;
     /**
-     * Rebated fee
+     * Rebated fee.
      */
     'rebatedFee'?: string;
     /**
-     * Rebated fee currency unit
+     * Rebated fee currency unit.
      */
     'rebatedFeeCurrency'?: string;
     /**
@@ -146,11 +146,11 @@ export class Order {
      */
     'stpId'?: number;
     /**
-     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
+     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, new ones - cb: Cancel both, Both old and new orders will be cancelled
      */
     'stpAct'?: Order.StpAct;
     /**
-     * Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order strategy because tif is set to poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - unknown: Unknown
+     * Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - unknown: Unknown
      */
     'finishAs'?: Order.FinishAs;
     /**

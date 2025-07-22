@@ -13,11 +13,11 @@ import { IndexConstituent } from './indexConstituent';
 
 export class FuturesIndexConstituents {
     /**
-     * Index name
+     * Index name.
      */
     'index'?: string;
     /**
-     * Constituents
+     * Constituents.
      */
     'constituents'?: Array<IndexConstituent>;
 

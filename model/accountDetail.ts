@@ -12,28 +12,28 @@
 import { AccountDetailKey } from './accountDetailKey';
 
 /**
- * Account detail
+ * Account detail.
  */
 export class AccountDetail {
     /**
-     * IP whitelist
+     * IP whitelist.
      */
     'ipWhitelist'?: Array<string>;
     /**
-     * CurrencyPair whitelisting
+     * CurrencyPair whitelisting.
      */
     'currencyPairs'?: Array<string>;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * User VIP level
+     * User VIP level.
      */
     'tier'?: number;
     'key'?: AccountDetailKey;
     /**
-     * User role: 0 - Normal user 1 - Copy trading leader 2 - Copy trading follower 3 - Both leader and follower
+     * User role: 0 - Normal user, 1 - Copy trading leader, follower, 3 - Both leader and follower
      */
     'copyTradingRole'?: number;
 

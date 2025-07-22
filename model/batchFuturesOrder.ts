@@ -10,15 +10,15 @@
  */
 
 /**
- * Futures order details
+ * Futures order details.
  */
 export class BatchFuturesOrder {
     /**
-     * Whether the batch of orders succeeded
+     * Whether the batch of orders succeeded.
      */
     'succeeded'?: boolean;
     /**
-     * Error label, only exists if execution fails
+     * Error label, only exists if execution fails.
      */
     'label'?: string;
     /**
@@ -26,23 +26,23 @@ export class BatchFuturesOrder {
      */
     'detail'?: string;
     /**
-     * Futures order ID
+     * Futures order ID.
      */
     'id'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Creation time of order
+     * Creation time of order.
      */
     'createTime'?: number;
     /**
-     * Order finished time. Not returned if order is open
+     * Order finished time. Not returned if order is open.
      */
     'finishTime'?: number;
     /**
-     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set- position_closed: cancelled because of position close - position_closed: canceled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
+     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - increasing position while `reduce-only` set- position_closed: cancelled because of position close - position_closed: canceled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
      */
     'finishAs'?: BatchFuturesOrder.FinishAs;
     /**
@@ -50,7 +50,7 @@ export class BatchFuturesOrder {
      */
     'status'?: BatchFuturesOrder.Status;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
@@ -62,27 +62,27 @@ export class BatchFuturesOrder {
      */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc`
+     * Order price. 0 for market order with `tif` set as `ioc`.
      */
     'price'?: string;
     /**
-     * Set as `true` to close the position, with `size` set to 0
+     * Set as `true` to close the position, with `size` set to 0.
      */
     'close'?: boolean;
     /**
-     * Is the order to close position
+     * Is the order to close position.
      */
     'isClose'?: boolean;
     /**
-     * Set as `true` to be reduce-only order
+     * Set as `true` to be reduce-only order.
      */
     'reduceOnly'?: boolean;
     /**
-     * Is the order reduce-only
+     * Is the order reduce-only.
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order for liquidation
+     * Is the order for liquidation.
      */
     'isLiq'?: boolean;
     /**
@@ -90,11 +90,11 @@ export class BatchFuturesOrder {
      */
     'tif'?: BatchFuturesOrder.Tif;
     /**
-     * Size left to be traded
+     * Size left to be traded.
      */
     'left'?: number;
     /**
-     * Fill price of the order
+     * Fill price of the order.
      */
     'fillPrice'?: string;
     /**
@@ -102,15 +102,15 @@ export class BatchFuturesOrder {
      */
     'text'?: string;
     /**
-     * Taker fee
+     * Taker fee.
      */
     'tkfr'?: string;
     /**
-     * Maker fee
+     * Maker fee.
      */
     'mkfr'?: string;
     /**
-     * Reference user ID
+     * Reference user ID.
      */
     'refu'?: number;
     /**
@@ -118,7 +118,7 @@ export class BatchFuturesOrder {
      */
     'autoSize'?: BatchFuturesOrder.AutoSize;
     /**
-     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
+     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, new ones - cb: Cancel both, Both old and new orders will be cancelled
      */
     'stpAct'?: BatchFuturesOrder.StpAct;
     /**

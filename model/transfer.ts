@@ -18,19 +18,19 @@ export class Transfer {
      */
     'currency': string;
     /**
-     * Account to transfer from
+     * Account to transfer from.
      */
     'from': Transfer.From;
     /**
-     * Account to transfer to
+     * Account to transfer to.
      */
     'to': Transfer.To;
     /**
-     * Transfer amount
+     * Transfer amount.
      */
     'amount': string;
     /**
-     * Margin currency pair. Required if transfer from or to margin account
+     * Margin currency pair. Required if transfer from or to margin account.
      */
     'currencyPair'?: string;
     /**

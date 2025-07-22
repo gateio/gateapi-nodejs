@@ -13,15 +13,15 @@ import { UnifiedHistoryLoanRateRates } from './unifiedHistoryLoanRateRates';
 
 export class UnifiedHistoryLoanRate {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * The VIP level of the floating rate required
+     * The VIP level of the floating rate required.
      */
     'tier'?: string;
     /**
-     * VIP level corresponding floating rate
+     * VIP level corresponding floating rate.
      */
     'tierUpRate'?: string;
     /**

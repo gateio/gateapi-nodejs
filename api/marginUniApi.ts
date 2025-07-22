@@ -37,7 +37,7 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List lending markets
+     * @summary List lending markets.
      */
     public async listUniCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<UniCurrencyPair> }> {
         const localVarPath = this.client.basePath + '/margin/uni/currency_pairs';
@@ -64,8 +64,8 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get detail of lending market
-     * @param currencyPair Currency pair
+     * @summary Get detail of lending market.
+     * @param currencyPair Currency pair.
      */
     public async getUniCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: UniCurrencyPair }> {
         const localVarPath =
@@ -102,8 +102,8 @@ export class MarginUniApi {
 
     /**
      * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
-     * @summary Estimate interest Rate
-     * @param currencies An array of up to 10 specifying the currency name
+     * @summary Estimate interest Rate.
+     * @param currencies An array of up to 10 specifying the currency name.
      */
     public async getMarginUniEstimateRate(
         currencies: Array<string>,
@@ -141,12 +141,12 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List loans
+     * @summary List loans.
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.currencyPair Currency pair.
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
      */
     public async listUniLoans(opts: {
         currencyPair?: string;
@@ -195,7 +195,7 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Borrow or repay
+     * @summary Borrow or repay.
      * @param createUniLoan
      */
     public async createUniLoan(createUniLoan: CreateUniLoan): Promise<{ response: AxiosResponse; body?: any }> {
@@ -222,13 +222,13 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get load records
+     * @summary Get load records.
      * @param opts Optional parameters
-     * @param opts.type type: borrow - borrow, repay - repay
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.currencyPair Currency pair
-     * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.type type: borrow - borrow, repay - repay.
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.currencyPair Currency pair.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
      */
     public async listUniLoanRecords(opts: {
         type?: 'borrow' | 'repay';
@@ -282,12 +282,12 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List interest records
+     * @summary List interest records.
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.currencyPair Currency pair.
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -348,9 +348,9 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get maximum borrowable
-     * @param currency Retrieve data of the specified currency
-     * @param currencyPair Currency pair
+     * @summary Get maximum borrowable.
+     * @param currency Retrieve data of the specified currency.
+     * @param currencyPair Currency pair.
      */
     public async getUniBorrowable(
         currency: string,

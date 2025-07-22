@@ -11,27 +11,27 @@
 
 export class SavedAddress {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Chain name
+     * Chain name.
      */
     'chain'?: string;
     /**
-     * Address
+     * Address.
      */
     'address'?: string;
     /**
-     * Name
+     * Name.
      */
     'name'?: string;
     /**
-     * Tag
+     * Tag.
      */
     'tag'?: string;
     /**
-     * Whether to pass the verification 0-unverified, 1-verified
+     * Whether to pass the verification 0-unverified, 1-verified.
      */
     'verified'?: string;
 

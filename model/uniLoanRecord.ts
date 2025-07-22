@@ -10,27 +10,27 @@
  */
 
 /**
- * Loan records
+ * Loan records.
  */
 export class UniLoanRecord {
     /**
-     * type: borrow - borrow, repay - repay
+     * type: borrow - borrow, repay - repay.
      */
     'type'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * The amount of lending or repaying
+     * The amount of lending or repaying.
      */
     'amount'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

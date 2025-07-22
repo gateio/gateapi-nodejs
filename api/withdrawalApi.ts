@@ -34,7 +34,7 @@ export class WithdrawalApi {
 
     /**
      * Withdrawals to Gate addresses do not incur transaction fees.
-     * @summary Withdraw
+     * @summary Withdraw.
      * @param ledgerRecord
      */
     public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
@@ -68,7 +68,7 @@ export class WithdrawalApi {
 
     /**
      * Transfers between main spot accounts are allowed; however, both parties cannot be sub-accounts
-     * @summary UID transfer
+     * @summary UID transfer.
      * @param uidPushWithdrawal
      */
     public async withdrawPushOrder(
@@ -106,7 +106,7 @@ export class WithdrawalApi {
 
     /**
      *
-     * @summary Cancel withdrawal with specified ID
+     * @summary Cancel withdrawal with specified ID.
      * @param withdrawalId
      */
     public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: LedgerRecord }> {

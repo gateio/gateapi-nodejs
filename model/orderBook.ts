@@ -15,19 +15,19 @@ export class OrderBook {
      */
     'id'?: number;
     /**
-     * The timestamp of the response data being generated (in milliseconds)
+     * The timestamp of the response data being generated (in milliseconds).
      */
     'current'?: number;
     /**
-     * The timestamp of when the orderbook last changed (in milliseconds)
+     * The timestamp of when the orderbook last changed (in milliseconds).
      */
     'update'?: number;
     /**
-     * Asks order depth
+     * Asks order depth.
      */
     'asks': Array<Array<string>>;
     /**
-     * Bids order depth
+     * Bids order depth.
      */
     'bids': Array<Array<string>>;
 

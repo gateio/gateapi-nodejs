@@ -10,15 +10,15 @@
  */
 
 /**
- * Supported borrowing and collateral currencies
+ * Supported borrowing and collateral currencies.
  */
 export class CollateralLoanCurrency {
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'loanCurrency'?: string;
     /**
-     * List of supported collateral currencies
+     * List of supported collateral currencies.
      */
     'collateralCurrency'?: Array<string>;
 

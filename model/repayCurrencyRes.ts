@@ -11,7 +11,7 @@
 
 export class RepayCurrencyRes {
     /**
-     * Has the repayment been successful
+     * Has the repayment been successful.
      */
     'succeeded'?: boolean;
     /**
@@ -23,15 +23,15 @@ export class RepayCurrencyRes {
      */
     'message'?: string;
     /**
-     * Repayment currency
+     * Repayment currency.
      */
     'currency'?: string;
     /**
-     * Principal
+     * Principal.
      */
     'repaidPrincipal'?: string;
     /**
-     * Principal
+     * Principal.
      */
     'repaidInterest'?: string;
 

@@ -17,7 +17,7 @@ export class SubCrossMarginAccount {
      */
     'userId'?: number;
     /**
-     * Whether account is locked
+     * Whether account is locked.
      */
     'locked'?: boolean;
     'balances'?: { [key: string]: CrossMarginBalance };
@@ -30,15 +30,15 @@ export class SubCrossMarginAccount {
      */
     'borrowed'?: string;
     /**
-     * Total borrowed value in USDT * borrowed factor
+     * Total borrowed value in USDT * borrowed factor.
      */
     'borrowedNet'?: string;
     /**
-     * Total net assets in USDT
+     * Total net assets in USDT.
      */
     'net'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
     /**
@@ -50,27 +50,27 @@ export class SubCrossMarginAccount {
      */
     'risk'?: string;
     /**
-     * Total initial margin
+     * Total initial margin.
      */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance
+     * Total margin balance.
      */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin
+     * Total maintenance margin.
      */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate
+     * Total initial margin rate.
      */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate
+     * Total maintenance margin rate.
      */
     'totalMaintenanceMarginRate'?: string;
     /**
-     * Total available margin
+     * Total available margin.
      */
     'totalAvailableMargin'?: string;
 

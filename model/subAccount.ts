@@ -11,7 +11,7 @@
 
 export class SubAccount {
     /**
-     * custom text
+     * custom text.
      */
     'remark'?: string;
     /**
@@ -19,7 +19,7 @@ export class SubAccount {
      */
     'loginName': string;
     /**
-     * The sub-account\'s password. (Default: the same as main account\'s password)
+     * The sub-account\'s password. (Default: the same as main account\'s password).
      */
     'password'?: string;
     /**
@@ -27,19 +27,19 @@ export class SubAccount {
      */
     'email'?: string;
     /**
-     * State: 1-normal, 2-locked\"
+     * State: 1-normal, 2-locked\".
      */
     'state'?: number;
     /**
-     * \"Sub-account type: 1 - sub-account, 3 - cross margin account
+     * \"Sub-account type: 1 - sub-account, 3 - cross margin account.
      */
     'type'?: number;
     /**
-     * The user id of the sub-account
+     * The user id of the sub-account.
      */
     'userId'?: number;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

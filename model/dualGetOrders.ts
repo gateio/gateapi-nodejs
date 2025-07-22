@@ -11,31 +11,31 @@
 
 export class DualGetOrders {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: number;
     /**
-     * Plan ID
+     * Plan ID.
      */
     'planId'?: number;
     /**
-     * Copies
+     * Copies.
      */
     'copies'?: string;
     /**
-     * Investment Amount
+     * Investment Amount.
      */
     'investAmount'?: string;
     /**
-     * Settlement Amount
+     * Settlement Amount.
      */
     'settlementAmount'?: string;
     /**
-     * Creation time
+     * Creation time.
      */
     'createTime'?: number;
     /**
-     * Completion Time
+     * Completion Time.
      */
     'completeTime'?: number;
     /**
@@ -43,39 +43,39 @@ export class DualGetOrders {
      */
     'status'?: string;
     /**
-     * Investment Currency
+     * Investment Currency.
      */
     'investCurrency'?: string;
     /**
-     * Strike Currency
+     * Strike Currency.
      */
     'exerciseCurrency'?: string;
     /**
-     * Strike price
+     * Strike price.
      */
     'exercisePrice'?: string;
     /**
-     * settlement price
+     * settlement price.
      */
     'settlementPrice'?: string;
     /**
-     * Settle currency
+     * Settle currency.
      */
     'settlementCurrency'?: string;
     /**
-     * APY
+     * APY.
      */
     'apyDisplay'?: string;
     /**
-     * Settlement APY
+     * Settlement APY.
      */
     'apySettlement'?: string;
     /**
-     * Settlement time
+     * Settlement time.
      */
     'deliveryTime'?: number;
     /**
-     * Custom order information
+     * Custom order information.
      */
     'text'?: string;
 

@@ -12,15 +12,15 @@
 import { MultiLoanRepayItem } from './multiLoanRepayItem';
 
 /**
- * Repay Multi-Collateral Loan
+ * Repay Multi-Collateral Loan.
  */
 export class RepayMultiLoan {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId': number;
     /**
-     * Repay Currency Item
+     * Repay Currency Item.
      */
     'repayItems': Array<MultiLoanRepayItem>;
 

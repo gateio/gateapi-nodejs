@@ -11,11 +11,11 @@
 
 export class FuturesLiquidate {
     /**
-     * Liquidation time
+     * Liquidation time.
      */
     'time'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
@@ -23,7 +23,7 @@ export class FuturesLiquidate {
      */
     'leverage'?: string;
     /**
-     * Position size
+     * Position size.
      */
     'size'?: number;
     /**
@@ -47,15 +47,15 @@ export class FuturesLiquidate {
      */
     'orderId'?: number;
     /**
-     * Liquidation order price
+     * Liquidation order price.
      */
     'orderPrice'?: string;
     /**
-     * Liquidation order average taker price
+     * Liquidation order average taker price.
      */
     'fillPrice'?: string;
     /**
-     * Liquidation order maker size
+     * Liquidation order maker size.
      */
     'left'?: number;
 

@@ -11,31 +11,31 @@
 
 export class UnifiedLeverageConfig {
     /**
-     * Current leverage ratio
+     * Current leverage ratio.
      */
     'currentLeverage'?: string;
     /**
-     * Minimum adjustable leverage ratio
+     * Minimum adjustable leverage ratio.
      */
     'minLeverage'?: string;
     /**
-     * Maximum adjustable leverage ratio
+     * Maximum adjustable leverage ratio.
      */
     'maxLeverage'?: string;
     /**
-     * Current liabilities
+     * Current liabilities.
      */
     'debit'?: string;
     /**
-     * Available Margin
+     * Available Margin.
      */
     'availableMargin'?: string;
     /**
-     * The current leverage you can choose is
+     * The current leverage you can choose is.
      */
     'borrowable'?: string;
     /**
-     * The maximum amount of margin that can be borrowed and the maximum amount of Uniloan that can be borrowed, whichever is smaller
+     * The maximum amount of margin that can be borrowed and the be borrowed, whichever is smaller
      */
     'exceptLeverageBorrowable'?: string;
 

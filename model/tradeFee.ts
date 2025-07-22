@@ -11,19 +11,19 @@
 
 export class TradeFee {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * taker fee rate
+     * taker fee rate.
      */
     'takerFee'?: string;
     /**
-     * maker fee rate
+     * maker fee rate.
      */
     'makerFee'?: string;
     /**
-     * If GT deduction is enabled
+     * If GT deduction is enabled.
      */
     'gtDiscount'?: boolean;
     /**
@@ -35,27 +35,27 @@ export class TradeFee {
      */
     'gtMakerFee'?: string;
     /**
-     * Loan fee rate of margin lending
+     * Loan fee rate of margin lending.
      */
     'loanFee'?: string;
     /**
-     * Point type. 0 - Initial version. 1 - new version since 202009
+     * Point type. 0 - Initial version. 1 - new version since 202009.
      */
     'pointType'?: string;
     /**
-     * Futures trading taker fee
+     * Futures trading taker fee.
      */
     'futuresTakerFee'?: string;
     /**
-     * Future trading maker fee
+     * Future trading maker fee.
      */
     'futuresMakerFee'?: string;
     /**
-     * Delivery trading taker fee
+     * Delivery trading taker fee.
      */
     'deliveryTakerFee'?: string;
     /**
-     * Delivery trading maker fee
+     * Delivery trading maker fee.
      */
     'deliveryMakerFee'?: string;
     /**

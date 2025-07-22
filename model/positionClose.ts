@@ -11,55 +11,55 @@
 
 export class PositionClose {
     /**
-     * Position close time
+     * Position close time.
      */
     'time'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Position side, long or short
+     * Position side, long or short.
      */
     'side'?: PositionClose.Side;
     /**
-     * PNL
+     * PNL.
      */
     'pnl'?: string;
     /**
-     * PNL - Position P/L
+     * PNL - Position P/L.
      */
     'pnlPnl'?: string;
     /**
-     * PNL - Funding Fees
+     * PNL - Funding Fees.
      */
     'pnlFund'?: string;
     /**
-     * PNL - Transaction Fees
+     * PNL - Transaction Fees.
      */
     'pnlFee'?: string;
     /**
-     * Text of close order
+     * Text of close order.
      */
     'text'?: string;
     /**
-     * Max Trade Size
+     * Max Trade Size.
      */
     'maxSize'?: string;
     /**
-     * Cumulative closed position volume
+     * Cumulative closed position volume.
      */
     'accumSize'?: string;
     /**
-     * First Open Time
+     * First Open Time.
      */
     'firstOpenTime'?: number;
     /**
-     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price.
+     * When \'side\' is \'long,\' it indicates the opening average price; when closing average price.
      */
     'longPrice'?: string;
     /**
-     * When \'side\' is \'long,\' it indicates the opening average price; when \'side\' is \'short,\' it indicates the closing average price
+     * When \'side\' is \'long,\' it indicates the opening average price; when closing average price
      */
     'shortPrice'?: string;
 

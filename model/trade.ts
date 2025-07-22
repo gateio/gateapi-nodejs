@@ -11,59 +11,59 @@
 
 export class Trade {
     /**
-     * Trade ID
+     * Trade ID.
      */
     'id'?: string;
     /**
-     * Trading time
+     * Trading time.
      */
     'createTime'?: string;
     /**
-     * Trading time, with millisecond precision
+     * Trading time, with millisecond precision.
      */
     'createTimeMs'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Buy or sell order
+     * Buy or sell order.
      */
     'side'?: Trade.Side;
     /**
-     * Trade role. No value in public endpoints
+     * Trade role. No value in public endpoints.
      */
     'role'?: Trade.Role;
     /**
-     * Trade amount
+     * Trade amount.
      */
     'amount'?: string;
     /**
-     * Order price
+     * Order price.
      */
     'price'?: string;
     /**
-     * Related order ID. No value in public endpoints
+     * Related order ID. No value in public endpoints.
      */
     'orderId'?: string;
     /**
-     * Fee deducted. No value in public endpoints
+     * Fee deducted. No value in public endpoints.
      */
     'fee'?: string;
     /**
-     * Fee currency unit. No value in public endpoints
+     * Fee currency unit. No value in public endpoints.
      */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee. No value in public endpoints
+     * Points used to deduct fee. No value in public endpoints.
      */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee. No value in public endpoints
+     * GT used to deduct fee. No value in public endpoints.
      */
     'gtFee'?: string;
     /**
-     * The custom data that the user remarked when amending the order
+     * The custom data that the user remarked when amending the order.
      */
     'amendText'?: string;
     /**
@@ -71,7 +71,7 @@ export class Trade {
      */
     'sequenceId'?: string;
     /**
-     * User defined information. No value in public endpoints
+     * User defined information. No value in public endpoints.
      */
     'text'?: string;
 

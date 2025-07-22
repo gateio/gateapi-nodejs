@@ -11,11 +11,11 @@
 
 export class DeliveryTicker {
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Last trading price
+     * Last trading price.
      */
     'last'?: string;
     /**
@@ -23,19 +23,19 @@ export class DeliveryTicker {
      */
     'changePercentage'?: string;
     /**
-     * Contract total size
+     * Contract total size.
      */
     'totalSize'?: string;
     /**
-     * Lowest trading price in recent 24h
+     * Lowest trading price in recent 24h.
      */
     'low24h'?: string;
     /**
-     * Highest trading price in recent 24h
+     * Highest trading price in recent 24h.
      */
     'high24h'?: string;
     /**
-     * Trade size in recent 24h
+     * Trade size in recent 24h.
      */
     'volume24h'?: string;
     /**
@@ -47,31 +47,31 @@ export class DeliveryTicker {
      */
     'volume24hUsd'?: string;
     /**
-     * Trade volume in recent 24h, in base currency
+     * Trade volume in recent 24h, in base currency.
      */
     'volume24hBase'?: string;
     /**
-     * Trade volume in recent 24h, in quote currency
+     * Trade volume in recent 24h, in quote currency.
      */
     'volume24hQuote'?: string;
     /**
-     * Trade volume in recent 24h, in settle currency
+     * Trade volume in recent 24h, in settle currency.
      */
     'volume24hSettle'?: string;
     /**
-     * Recent mark price
+     * Recent mark price.
      */
     'markPrice'?: string;
     /**
-     * Funding rate
+     * Funding rate.
      */
     'fundingRate'?: string;
     /**
-     * Indicative Funding rate in next period. (deprecated. use `funding_rate`)
+     * Indicative Funding rate in next period. (deprecated. use `funding_rate`).
      */
     'fundingRateIndicative'?: string;
     /**
-     * Index price
+     * Index price.
      */
     'indexPrice'?: string;
     /**
@@ -79,27 +79,27 @@ export class DeliveryTicker {
      */
     'quantoBaseRate'?: string;
     /**
-     * Basis rate
+     * Basis rate.
      */
     'basisRate'?: string;
     /**
-     * Basis value
+     * Basis value.
      */
     'basisValue'?: string;
     /**
-     * Recent lowest ask
+     * Recent lowest ask.
      */
     'lowestAsk'?: string;
     /**
-     * The latest seller\'s lowest price order quantity
+     * The latest seller\'s lowest price order quantity.
      */
     'lowestSize'?: string;
     /**
-     * Recent highest bid
+     * Recent highest bid.
      */
     'highestBid'?: string;
     /**
-     * The latest buyer\'s highest price order volume
+     * The latest buyer\'s highest price order volume.
      */
     'highestSize'?: string;
 

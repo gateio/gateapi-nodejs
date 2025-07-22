@@ -17,11 +17,11 @@ import { MultiLoanItem } from './multiLoanItem';
  */
 export class MultiCollateralCurrency {
     /**
-     * List of supported borrowing currencies
+     * List of supported borrowing currencies.
      */
     'loanCurrencies'?: Array<MultiLoanItem>;
     /**
-     * List of supported collateral currencies
+     * List of supported collateral currencies.
      */
     'collateralCurrencies'?: Array<MultiCollateralItem>;
 

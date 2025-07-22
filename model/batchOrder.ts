@@ -10,15 +10,15 @@
  */
 
 /**
- * Batch order details
+ * Batch order details.
  */
 export class BatchOrder {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: string;
     /**
-     * The custom data that the user remarked when amending the order
+     * The custom data that the user remarked when amending the order.
      */
     'amendText'?: string;
     /**
@@ -26,35 +26,35 @@ export class BatchOrder {
      */
     'text'?: string;
     /**
-     * Whether the batch of orders succeeded
+     * Whether the batch of orders succeeded.
      */
     'succeeded'?: boolean;
     /**
-     * Error label, if any, otherwise an empty string
+     * Error label, if any, otherwise an empty string.
      */
     'label'?: string;
     /**
-     * Detailed error message, if any, otherwise an empty string
+     * Detailed error message, if any, otherwise an empty string.
      */
     'message'?: string;
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: string;
     /**
-     * Creation time of order
+     * Creation time of order.
      */
     'createTime'?: string;
     /**
-     * Last modification time of order
+     * Last modification time of order.
      */
     'updateTime'?: string;
     /**
-     * Creation time of order (in milliseconds)
+     * Creation time of order (in milliseconds).
      */
     'createTimeMs'?: number;
     /**
-     * Last modification time of order (in milliseconds)
+     * Last modification time of order (in milliseconds).
      */
     'updateTimeMs'?: number;
     /**
@@ -62,7 +62,7 @@ export class BatchOrder {
      */
     'status'?: BatchOrder.Status;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
@@ -74,15 +74,15 @@ export class BatchOrder {
      */
     'account'?: BatchOrder.Account;
     /**
-     * Buy or sell order
+     * Buy or sell order.
      */
     'side'?: BatchOrder.Side;
     /**
-     * Trade amount
+     * Trade amount.
      */
     'amount'?: string;
     /**
-     * Order price
+     * Order price.
      */
     'price'?: string;
     /**
@@ -90,7 +90,7 @@ export class BatchOrder {
      */
     'timeInForce'?: BatchOrder.TimeInForce;
     /**
-     * Amount to display for the iceberg order. Null or 0 for normal orders.  Hiding all amount is not supported.
+     * Amount to display for the iceberg order. Null or 0 for normal orders. Hiding all amount is not supported.
      */
     'iceberg'?: string;
     /**
@@ -102,51 +102,51 @@ export class BatchOrder {
      */
     'autoRepay'?: boolean;
     /**
-     * Amount left to fill
+     * Amount left to fill.
      */
     'left'?: string;
     /**
-     * Amount traded to fill
+     * Amount traded to fill.
      */
     'filledAmount'?: string;
     /**
-     * Total filled in quote currency. Deprecated in favor of `filled_total`
+     * Total filled in quote currency. Deprecated in favor of `filled_total`.
      */
     'fillPrice'?: string;
     /**
-     * Total filled in quote currency
+     * Total filled in quote currency.
      */
     'filledTotal'?: string;
     /**
-     * Average fill price
+     * Average fill price.
      */
     'avgDealPrice'?: string;
     /**
-     * Fee deducted
+     * Fee deducted.
      */
     'fee'?: string;
     /**
-     * Fee currency unit
+     * Fee currency unit.
      */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee
+     * Points used to deduct fee.
      */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee
+     * GT used to deduct fee.
      */
     'gtFee'?: string;
     /**
-     * Whether GT fee discount is used
+     * Whether GT fee discount is used.
      */
     'gtDiscount'?: boolean;
     /**
-     * Rebated fee
+     * Rebated fee.
      */
     'rebatedFee'?: string;
     /**
-     * Rebated fee currency unit
+     * Rebated fee currency unit.
      */
     'rebatedFeeCurrency'?: string;
     /**
@@ -154,7 +154,7 @@ export class BatchOrder {
      */
     'stpId'?: number;
     /**
-     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, Cancel old orders and keep new ones - cb: Cancel both, Both old and new orders will be cancelled
+     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, new ones - cb: Cancel both, Both old and new orders will be cancelled
      */
     'stpAct'?: BatchOrder.StpAct;
     /**

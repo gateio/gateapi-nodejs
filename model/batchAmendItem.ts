@@ -10,7 +10,7 @@
  */
 
 /**
- * Order information that needs to be modified
+ * Order information that needs to be modified.
  */
 export class BatchAmendItem {
     /**
@@ -18,7 +18,7 @@ export class BatchAmendItem {
      */
     'orderId': string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair': string;
     /**
@@ -34,7 +34,7 @@ export class BatchAmendItem {
      */
     'price'?: string;
     /**
-     * Custom info during amending order
+     * Custom info during amending order.
      */
     'amendText'?: string;
     /**

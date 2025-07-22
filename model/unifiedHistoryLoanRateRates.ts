@@ -11,11 +11,11 @@
 
 export class UnifiedHistoryLoanRateRates {
     /**
-     * The hourly timestamp corresponding to the interest rate, in milliseconds
+     * The hourly timestamp corresponding to the interest rate, in milliseconds.
      */
     'time'?: number;
     /**
-     * Historical interest rates for this hour
+     * Historical interest rates for this hour.
      */
     'rate'?: string;
 

@@ -11,7 +11,7 @@
 
 export class FuturesInitialOrder {
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract': string;
     /**
@@ -19,7 +19,7 @@ export class FuturesInitialOrder {
      */
     'size'?: number;
     /**
-     * Order price. Set to 0 to use market price
+     * Order price. Set to 0 to use market price.
      */
     'price': string;
     /**
@@ -27,7 +27,7 @@ export class FuturesInitialOrder {
      */
     'close'?: boolean;
     /**
-     * Time in force strategy, default is gtc, market order currently only supports ioc mode Market order currently only supports ioc mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
+     * Time in force strategy, default is gtc, market order currently only supports ioc mode mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
      */
     'tif'?: FuturesInitialOrder.Tif;
     /**
@@ -43,11 +43,11 @@ export class FuturesInitialOrder {
      */
     'autoSize'?: string;
     /**
-     * Is the order reduce-only
+     * Is the order reduce-only.
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order to close position
+     * Is the order to close position.
      */
     'isClose'?: boolean;
 

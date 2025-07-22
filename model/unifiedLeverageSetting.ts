@@ -10,15 +10,15 @@
  */
 
 /**
- * Loan currency leverage
+ * Loan currency leverage.
  */
 export class UnifiedLeverageSetting {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * multiple
+     * multiple.
      */
     'leverage': string;
 

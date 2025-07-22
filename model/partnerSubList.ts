@@ -13,11 +13,11 @@ import { PartnerSub } from './partnerSub';
 
 export class PartnerSubList {
     /**
-     * Total
+     * Total.
      */
     'total'?: number;
     /**
-     * Subordinate list
+     * Subordinate list.
      */
     'list'?: Array<PartnerSub>;
 

@@ -16,19 +16,19 @@ import { MarginAccountCurrency } from './marginAccountCurrency';
  */
 export class MarginAccount {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Account type, risk - risk rate account, mmr - maintenance margin rate account, inactive - market not activated
+     * Account type, risk - risk rate account, mmr - maintenance margin market not activated
      */
     'accountType'?: string;
     /**
-     * User current market leverage multiple
+     * User current market leverage multiple.
      */
     'leverage'?: string;
     /**
-     * Whether account is locked
+     * Whether account is locked.
      */
     'locked'?: boolean;
     /**
@@ -36,7 +36,7 @@ export class MarginAccount {
      */
     'risk'?: string;
     /**
-     * Leveraged Account Current Maintenance Margin Rate (returned when the Account is a Maintenance Margin Rate Account)
+     * Leveraged Account Current Maintenance Margin Rate (returned when the Account is Account)
      */
     'mmr'?: string;
     'base'?: MarginAccountCurrency;

@@ -11,11 +11,11 @@
 
 export class FuturesTrade {
     /**
-     * Trade ID
+     * Trade ID.
      */
     'id'?: number;
     /**
-     * Trading time
+     * Trading time.
      */
     'createTime'?: number;
     /**
@@ -23,19 +23,19 @@ export class FuturesTrade {
      */
     'createTimeMs'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Trading size
+     * Trading size.
      */
     'size'?: number;
     /**
-     * Trading price (quote currency)
+     * Trading price (quote currency).
      */
     'price'?: string;
     /**
-     * Whether internal trade. Internal trade refers to the takeover of liquidation orders by the insurance fund and ADL users. Since it is not a normal matching on the market depth, the transaction price may deviate, and it will not be recorded in the K-line. If it is not an internal trade, this field will not be returned.
+     * Whether internal trade. Internal trade refers to the takeover of liquidation orders by the insurance fund and ADL users. Since it is not a normal matching on the market depth, the transaction price may deviate, and it will not be recorded in the K-line. an internal trade, this field will not be returned.
      */
     'isInternal'?: boolean;
 

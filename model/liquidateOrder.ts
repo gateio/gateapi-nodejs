@@ -10,7 +10,7 @@
  */
 
 /**
- * Liquidate Order detail
+ * Liquidate Order detail.
  */
 export class LiquidateOrder {
     /**
@@ -18,15 +18,15 @@ export class LiquidateOrder {
      */
     'text'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair': string;
     /**
-     * Trade amount
+     * Trade amount.
      */
     'amount': string;
     /**
-     * Order price
+     * Order price.
      */
     'price': string;
     /**

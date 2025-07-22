@@ -12,15 +12,15 @@
 import { CollateralCurrencyRes } from './collateralCurrencyRes';
 
 /**
- * Result of multi-collateral adjustment
+ * Result of multi-collateral adjustment.
  */
 export class CollateralAdjustRes {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
     /**
-     * Collateral Currency Information
+     * Collateral Currency Information.
      */
     'collateralCurrencies'?: Array<CollateralCurrencyRes>;
 

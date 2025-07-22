@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **string** | Repayment currency | [optional] [default to undefined]
-**indexPrice** | **string** | Currency Index Price | [optional] [default to undefined]
-**repaidAmount** | **string** | Repayment amount | [optional] [default to undefined]
-**repaidPrincipal** | **string** | Principal | [optional] [default to undefined]
-**repaidInterest** | **string** | Interest | [optional] [default to undefined]
-**repaidAmountUsdt** | **string** | Value of the repayment amount in USDT | [optional] [default to undefined]
+**currency** | **string** | Repayment currency. | [optional] [default to undefined]
+**indexPrice** | **string** | Currency Index Price. | [optional] [default to undefined]
+**repaidAmount** | **string** | Repayment amount. | [optional] [default to undefined]
+**repaidPrincipal** | **string** | Principal. | [optional] [default to undefined]
+**repaidInterest** | **string** | Interest. | [optional] [default to undefined]
+**repaidAmountUsdt** | **string** | Value of the repayment amount in USDT. | [optional] [default to undefined]
 

@@ -13,11 +13,11 @@ import { CollateralCurrency } from './collateralCurrency';
 
 export class CreateMultiCollateralOrder {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed, if not specified, default to current
+     * current - current, fixed - fixed, if not specified, default to current.
      */
     'orderType'?: string;
     /**
@@ -25,27 +25,27 @@ export class CreateMultiCollateralOrder {
      */
     'fixedType'?: string;
     /**
-     * Fixed interest rate, must be specified for fixed
+     * Fixed interest rate, must be specified for fixed.
      */
     'fixedRate'?: string;
     /**
-     * Fixed interest rate, automatic renewal
+     * Fixed interest rate, automatic renewal.
      */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment
+     * Fixed interest rate, automatic repayment.
      */
     'autoRepay'?: boolean;
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'borrowCurrency': string;
     /**
-     * Borrowing amount
+     * Borrowing amount.
      */
     'borrowAmount': string;
     /**
-     * Collateral currency and amount
+     * Collateral currency and amount.
      */
     'collateralCurrencies'?: Array<CollateralCurrency>;
 

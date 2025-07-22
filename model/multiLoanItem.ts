@@ -11,11 +11,11 @@
 
 export class MultiLoanItem {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Latest price of the currency
+     * Latest price of the currency.
      */
     'price'?: string;
 

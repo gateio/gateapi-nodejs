@@ -11,19 +11,19 @@
 
 export class SpotAccount {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency'?: string;
     /**
-     * Available amount
+     * Available amount.
      */
     'available'?: string;
     /**
-     * Locked amount, used in trading
+     * Locked amount, used in trading.
      */
     'locked'?: string;
     /**
-     * Version number
+     * Version number.
      */
     'updateId'?: number;
 

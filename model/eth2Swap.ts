@@ -10,15 +10,15 @@
  */
 
 /**
- * ETH2 Staking
+ * ETH2 Staking.
  */
 export class Eth2Swap {
     /**
-     * 1-Forward Swap（ETH -> ETH2）, 2-Reverse Swap（ETH2 -> ETH）
+     * 1-Forward Swap（ETH -> ETH2）, 2-Reverse Swap（ETH2 -> ETH）.
      */
     'side': string;
     /**
-     * amount
+     * amount.
      */
     'amount': string;
 

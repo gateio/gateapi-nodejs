@@ -11,11 +11,11 @@
 
 export class UniCurrencyInterest {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment Interest reinvestment
+     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment
      */
     'interestStatus'?: string;
 

@@ -11,15 +11,15 @@
 
 export class SubAccountTransferRecordItem {
     /**
-     * Transfer timestamp
+     * Transfer timestamp.
      */
     'timest'?: string;
     /**
-     * Main account user ID
+     * Main account user ID.
      */
     'uid'?: string;
     /**
-     * Sub account user ID
+     * Sub account user ID.
      */
     'subAccount': string;
     /**
@@ -27,11 +27,11 @@ export class SubAccountTransferRecordItem {
      */
     'subAccountType'?: string;
     /**
-     * Transfer currency name
+     * Transfer currency name.
      */
     'currency': string;
     /**
-     * Transfer amount
+     * Transfer amount.
      */
     'amount': string;
     /**
@@ -39,7 +39,7 @@ export class SubAccountTransferRecordItem {
      */
     'direction': string;
     /**
-     * Where the operation is initiated from
+     * Where the operation is initiated from.
      */
     'source'?: string;
     /**
@@ -47,7 +47,7 @@ export class SubAccountTransferRecordItem {
      */
     'clientOrderId'?: string;
     /**
-     * Sub-account transfer record status, currently only success
+     * Sub-account transfer record status, currently only success.
      */
     'status'?: string;
 

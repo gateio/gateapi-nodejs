@@ -10,7 +10,7 @@
  */
 
 /**
- * Futures positions
+ * Futures positions.
  */
 export class MockFuturesPosition {
     /**

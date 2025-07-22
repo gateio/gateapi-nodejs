@@ -10,15 +10,15 @@
  */
 
 /**
- * Dual Investment Purchase
+ * Dual Investment Purchase.
  */
 export class StructuredBuy {
     /**
-     * Plan ID
+     * Plan ID.
      */
     'pid'?: string;
     /**
-     * Purchase Amount
+     * Purchase Amount.
      */
     'amount'?: string;
 

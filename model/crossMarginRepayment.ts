@@ -11,31 +11,31 @@
 
 export class CrossMarginRepayment {
     /**
-     * Loan record ID
+     * Loan record ID.
      */
     'id'?: string;
     /**
-     * Repayment time
+     * Repayment time.
      */
     'createTime'?: number;
     /**
-     * Loan record ID
+     * Loan record ID.
      */
     'loanId'?: string;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Repaid principal
+     * Repaid principal.
      */
     'principal'?: string;
     /**
-     * Repaid interest
+     * Repaid interest.
      */
     'interest'?: string;
     /**
-     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment, cancel_auto_repay - automatic repayment after cancellation
+     * Repayment type: none - no repayment type, manual_repay - manual repayment, auto_repay - automatic repayment after cancellation
      */
     'repaymentType'?: string;
 

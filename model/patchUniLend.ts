@@ -11,11 +11,11 @@
 
 export class PatchUniLend {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Minimum interest rate
+     * Minimum interest rate.
      */
     'minRate'?: string;
 

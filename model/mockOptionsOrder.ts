@@ -10,7 +10,7 @@
  */
 
 /**
- * Option orders
+ * Option orders.
  */
 export class MockOptionsOrder {
     /**
@@ -18,11 +18,11 @@ export class MockOptionsOrder {
      */
     'optionsName': string;
     /**
-     * Initial order quantity, not involved in actual calculation
+     * Initial order quantity, not involved in actual calculation.
      */
     'size': string;
     /**
-     * Unfilled contract quantity, involved in actual calculation
+     * Unfilled contract quantity, involved in actual calculation.
      */
     'left': string;
 

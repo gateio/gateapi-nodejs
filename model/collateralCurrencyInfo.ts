@@ -11,19 +11,19 @@
 
 export class CollateralCurrencyInfo {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Left Collateral Amount
+     * Left Collateral Amount.
      */
     'leftCollateral'?: string;
     /**
-     * Value of left collateral amount in USDT
+     * Value of left collateral amount in USDT.
      */
     'leftCollateralUsdt'?: string;
 

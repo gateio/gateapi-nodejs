@@ -10,35 +10,35 @@
  */
 
 /**
- * Order cancellation result
+ * Order cancellation result.
  */
 export class CancelOrderResult {
     /**
-     * Order currency pair
+     * Order currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: string;
     /**
-     * Custom order information
+     * Custom order information.
      */
     'text'?: string;
     /**
-     * Whether cancellation succeeded
+     * Whether cancellation succeeded.
      */
     'succeeded'?: boolean;
     /**
-     * Error label when failed to cancel the order; emtpy if succeeded
+     * Error label when failed to cancel the order; emtpy if succeeded.
      */
     'label'?: string;
     /**
-     * Error message when failed to cancel the order; empty if succeeded
+     * Error message when failed to cancel the order; empty if succeeded.
      */
     'message'?: string;
     /**
-     * Default is empty (deprecated)
+     * Default is empty (deprecated).
      */
     'account'?: string;
 

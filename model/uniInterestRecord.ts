@@ -10,31 +10,31 @@
  */
 
 /**
- * Interest Record
+ * Interest Record.
  */
 export class UniInterestRecord {
     /**
-     * Status: 0 - fail, 1 - success
+     * Status: 0 - fail, 1 - success.
      */
     'status'?: number;
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Actual Rate
+     * Actual Rate.
      */
     'actualRate'?: string;
     /**
-     * Interest
+     * Interest.
      */
     'interest'?: string;
     /**
-     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment Interest reinvestment
+     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment
      */
     'interestStatus'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

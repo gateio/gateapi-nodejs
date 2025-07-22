@@ -12,7 +12,7 @@
 export class InlineResponse2001 {
     'currency'?: string;
     /**
-     * Unconverted percentage
+     * Unconverted percentage.
      */
     'estRate'?: string;
 

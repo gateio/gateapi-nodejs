@@ -10,7 +10,7 @@
  */
 
 /**
- * List all supported currencies in flash swap
+ * List all supported currencies in flash swap.
  */
 export class FlashSwapCurrencyPair {
     /**
@@ -18,27 +18,27 @@ export class FlashSwapCurrencyPair {
      */
     'currencyPair'?: string;
     /**
-     * The currency to be sold
+     * The currency to be sold.
      */
     'sellCurrency'?: string;
     /**
-     * The currency to be bought
+     * The currency to be bought.
      */
     'buyCurrency'?: string;
     /**
-     * The minimum quantity required for selling
+     * The minimum quantity required for selling.
      */
     'sellMinAmount'?: string;
     /**
-     * The maximum quantity allowed for selling
+     * The maximum quantity allowed for selling.
      */
     'sellMaxAmount'?: string;
     /**
-     * The minimum quantity required for buying
+     * The minimum quantity required for buying.
      */
     'buyMinAmount'?: string;
     /**
-     * The maximum quantity allowed for buying
+     * The maximum quantity allowed for buying.
      */
     'buyMaxAmount'?: string;
 

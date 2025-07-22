@@ -11,27 +11,27 @@
 
 export class UidPushOrder {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: number;
     /**
-     * Initiator User ID
+     * Initiator User ID.
      */
     'pushUid'?: number;
     /**
-     * Recipient User ID
+     * Recipient User ID.
      */
     'receiveUid'?: number;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Transfer amount
+     * Transfer amount.
      */
     'amount'?: string;
     /**
-     * Creation time
+     * Creation time.
      */
     'createTime'?: number;
     /**
@@ -39,11 +39,11 @@ export class UidPushOrder {
      */
     'status'?: string;
     /**
-     * PENDING Reason Tips
+     * PENDING Reason Tips.
      */
     'message'?: string;
     /**
-     * Order Type
+     * Order Type.
      */
     'transactionType'?: string;
 

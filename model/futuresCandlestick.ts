@@ -10,35 +10,35 @@
  */
 
 /**
- * data point in every timestamp
+ * data point in every timestamp.
  */
 export class FuturesCandlestick {
     /**
-     * Unix timestamp in seconds
+     * Unix timestamp in seconds.
      */
     't'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed
+     * size volume (contract size). Only returned if `contract` is not prefixed.
      */
     'v'?: number;
     /**
-     * Close price (quote currency)
+     * Close price (quote currency).
      */
     'c'?: string;
     /**
-     * Highest price (quote currency)
+     * Highest price (quote currency).
      */
     'h'?: string;
     /**
-     * Lowest price (quote currency)
+     * Lowest price (quote currency).
      */
     'l'?: string;
     /**
-     * Open price (quote currency)
+     * Open price (quote currency).
      */
     'o'?: string;
     /**
-     * Trading volume (unit: Quote currency)
+     * Trading volume (unit: Quote currency).
      */
     'sum'?: string;
 

@@ -15,15 +15,15 @@ export class AccountRateLimit {
      */
     'tier'?: string;
     /**
-     * Transaction rate
+     * Transaction rate.
      */
     'ratio'?: string;
     /**
-     * Total transaction ratio of main account
+     * Total transaction ratio of main account.
      */
     'mainRatio'?: string;
     /**
-     * Update time
+     * Update time.
      */
     'updatedAt'?: string;
 

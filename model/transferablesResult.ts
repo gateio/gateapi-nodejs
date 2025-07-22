@@ -10,15 +10,15 @@
  */
 
 /**
- * Batch query unified account can be transferred up to a maximum of results
+ * Batch query unified account can be transferred up to a maximum of results.
  */
 export class TransferablesResult {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency'?: string;
     /**
-     * The maximum amount that can be transferred out
+     * The maximum amount that can be transferred out.
      */
     'amount'?: string;
 

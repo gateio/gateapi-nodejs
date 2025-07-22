@@ -11,11 +11,11 @@
 
 export class MultiLoanRepayItem {
     /**
-     * Repayment currency
+     * Repayment currency.
      */
     'currency'?: string;
     /**
-     * Size
+     * Size.
      */
     'amount'?: string;
     /**

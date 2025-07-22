@@ -14,31 +14,31 @@
  */
 export class FuturesLimitRiskTiers {
     /**
-     * Tier
+     * Tier.
      */
     'tier'?: number;
     /**
-     * Position risk limit
+     * Position risk limit.
      */
     'riskLimit'?: string;
     /**
-     * Initial margin rate
+     * Initial margin rate.
      */
     'initialRate'?: string;
     /**
-     * Maintenance margin rate
+     * Maintenance margin rate.
      */
     'maintenanceRate'?: string;
     /**
-     * Maximum leverage
+     * Maximum leverage.
      */
     'leverageMax'?: string;
     /**
-     * Markets, visible only during market pagination requests
+     * Markets, visible only during market pagination requests.
      */
     'contract'?: string;
     /**
-     * Maintenance margin quick calculation deduction
+     * Maintenance margin quick calculation deduction.
      */
     'deduction'?: string;
 

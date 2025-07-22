@@ -11,23 +11,23 @@
 
 export class FuturesAccountBook {
     /**
-     * Change time
+     * Change time.
      */
     'time'?: number;
     /**
-     * Change amount
+     * Change amount.
      */
     'change'?: string;
     /**
-     * Balance after change
+     * Balance after change.
      */
     'balance'?: string;
     /**
-     * Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
+     * Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
      */
     'type'?: FuturesAccountBook.Type;
     /**
-     * Comment
+     * Comment.
      */
     'text'?: string;
     /**
@@ -35,11 +35,11 @@ export class FuturesAccountBook {
      */
     'contract'?: string;
     /**
-     * trade id
+     * trade id.
      */
     'tradeId'?: string;
     /**
-     * Account change record ID
+     * Account change record ID.
      */
     'id'?: string;
 

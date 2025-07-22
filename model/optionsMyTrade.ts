@@ -11,35 +11,35 @@
 
 export class OptionsMyTrade {
     /**
-     * Trade ID
+     * Trade ID.
      */
     'id'?: number;
     /**
-     * Trading time
+     * Trading time.
      */
     'createTime'?: number;
     /**
-     * Options contract name
+     * Options contract name.
      */
     'contract'?: string;
     /**
-     * Order ID related
+     * Order ID related.
      */
     'orderId'?: number;
     /**
-     * Trading size
+     * Trading size.
      */
     'size'?: number;
     /**
-     * Trading price (quote currency)
+     * Trading price (quote currency).
      */
     'price'?: string;
     /**
-     * Underlying price (quote currency)
+     * Underlying price (quote currency).
      */
     'underlyingPrice'?: string;
     /**
-     * Trade role. Available values are `taker` and `maker`
+     * Trade role. Available values are `taker` and `maker`.
      */
     'role'?: OptionsMyTrade.Role;
 

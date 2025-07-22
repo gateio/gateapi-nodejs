@@ -10,15 +10,15 @@
  */
 
 /**
- * Repay
+ * Repay.
  */
 export class RepayResp {
     /**
-     * Principal
+     * Principal.
      */
     'repaidPrincipal'?: string;
     /**
-     * Interest
+     * Interest.
      */
     'repaidInterest'?: string;
 

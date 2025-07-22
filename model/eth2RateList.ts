@@ -11,15 +11,15 @@
 
 export class Eth2RateList {
     /**
-     * Date and Time Stamp
+     * Date and Time Stamp.
      */
     'dateTime'?: number;
     /**
-     * Date
+     * Date.
      */
     'date'?: string;
     /**
-     * percentage
+     * percentage.
      */
     'rate'?: string;
 

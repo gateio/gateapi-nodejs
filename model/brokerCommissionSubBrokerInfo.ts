@@ -10,23 +10,23 @@
  */
 
 /**
- * The sub broker info
+ * The sub broker info.
  */
 export class BrokerCommissionSubBrokerInfo {
     /**
-     * The sub broker user ID
+     * The sub broker user ID.
      */
     'userId'?: number;
     /**
-     * The sub broker original commission rate
+     * The sub broker original commission rate.
      */
     'originalCommissionRate'?: string;
     /**
-     * The sub broker relative commission rate
+     * The sub broker relative commission rate.
      */
     'relativeCommissionRate'?: string;
     /**
-     * The sub broker actual commission rate
+     * The sub broker actual commission rate.
      */
     'commissionRate'?: string;
 

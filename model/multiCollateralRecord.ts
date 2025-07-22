@@ -16,19 +16,19 @@ import { MultiCollateralRecordCurrency } from './multiCollateralRecordCurrency';
  */
 export class MultiCollateralRecord {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
     /**
-     * Collateral record ID
+     * Collateral record ID.
      */
     'recordId'?: number;
     /**
-     * The collateral ratio before adjustment
+     * The collateral ratio before adjustment.
      */
     'beforeLtv'?: string;
     /**
-     * The collateral ratio before adjustment
+     * The collateral ratio before adjustment.
      */
     'afterLtv'?: string;
     /**
@@ -36,11 +36,11 @@ export class MultiCollateralRecord {
      */
     'operateTime'?: number;
     /**
-     * Borrowing Currency List
+     * Borrowing Currency List.
      */
     'borrowCurrencies'?: Array<MultiCollateralRecordCurrency>;
     /**
-     * Collateral Currency List
+     * Collateral Currency List.
      */
     'collateralCurrencies'?: Array<MultiCollateralRecordCurrency>;
 

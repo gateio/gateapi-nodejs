@@ -10,23 +10,23 @@
  */
 
 /**
- * Multi-collateral fixed interest rate
+ * Multi-collateral fixed interest rate.
  */
 export class CollateralFixRate {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Fixed interest rate for a lending period of 7 days
+     * Fixed interest rate for a lending period of 7 days.
      */
     'rate7d'?: string;
     /**
-     * Fixed interest rate for a lending period of 30 days
+     * Fixed interest rate for a lending period of 30 days.
      */
     'rate30d'?: string;
     /**
-     * Update time, timestamp, unit in seconds
+     * Update time, timestamp, unit in seconds.
      */
     'updateTime'?: number;
 

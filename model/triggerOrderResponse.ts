@@ -11,7 +11,7 @@
 
 export class TriggerOrderResponse {
     /**
-     * Auto order ID
+     * Auto order ID.
      */
     'id'?: number;
 

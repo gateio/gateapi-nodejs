@@ -11,47 +11,47 @@
 
 export class MyFuturesTradeTimeRange {
     /**
-     * Trade ID
+     * Trade ID.
      */
     'tradeId'?: string;
     /**
-     * Trading time
+     * Trading time.
      */
     'createTime'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Order ID related
+     * Order ID related.
      */
     'orderId'?: string;
     /**
-     * Trading size
+     * Trading size.
      */
     'size'?: number;
     /**
-     * Number of closed positions:  close_size=0 && size＞0       Open long position close_size=0 && size＜0       Open short position close_size>0 && size>0 && size <= close_size Close short postion close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long postion close_size<0 && size<0 && size < close_size Close long position and open short position
+     * Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long postion close_size<0 && size<0 && size < close_size Close long position and open short position
      */
     'closeSize'?: number;
     /**
-     * Trading price
+     * Trading price.
      */
     'price'?: string;
     /**
-     * Trade role. Available values are `taker` and `maker`
+     * Trade role. Available values are `taker` and `maker`.
      */
     'role'?: MyFuturesTradeTimeRange.Role;
     /**
-     * User defined information
+     * User defined information.
      */
     'text'?: string;
     /**
-     * Fee deducted
+     * Fee deducted.
      */
     'fee'?: string;
     /**
-     * Points used to deduct fee
+     * Points used to deduct fee.
      */
     'pointFee'?: string;
 

@@ -11,11 +11,11 @@
 
 export class OptionsUnderlying {
     /**
-     * Underlying name
+     * Underlying name.
      */
     'name'?: string;
     /**
-     * Spot index price (quote currency)
+     * Spot index price (quote currency).
      */
     'indexPrice'?: string;
 

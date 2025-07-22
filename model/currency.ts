@@ -13,31 +13,31 @@ import { SpotCurrencyChain } from './spotCurrencyChain';
 
 export class Currency {
     /**
-     * Currency symbol
+     * Currency symbol.
      */
     'currency'?: string;
     /**
-     * Currency name
+     * Currency name.
      */
     'name'?: string;
     /**
-     * Whether currency is de-listed
+     * Whether currency is de-listed.
      */
     'delisted'?: boolean;
     /**
-     * Whether currency\'s withdrawal is disabled (deprecated)
+     * Whether currency\'s withdrawal is disabled (deprecated).
      */
     'withdrawDisabled'?: boolean;
     /**
-     * Whether currency\'s withdrawal is delayed (deprecated)
+     * Whether currency\'s withdrawal is delayed (deprecated).
      */
     'withdrawDelayed'?: boolean;
     /**
-     * Whether currency\'s deposit is disabled (deprecated)
+     * Whether currency\'s deposit is disabled (deprecated).
      */
     'depositDisabled'?: boolean;
     /**
-     * Whether currency\'s trading is disabled
+     * Whether currency\'s trading is disabled.
      */
     'tradeDisabled'?: boolean;
     /**
@@ -45,11 +45,11 @@ export class Currency {
      */
     'fixedRate'?: string;
     /**
-     * The main chain corresponding to the coin
+     * The main chain corresponding to the coin.
      */
     'chain'?: string;
     /**
-     * All links corresponding to coins
+     * All links corresponding to coins.
      */
     'chains'?: Array<SpotCurrencyChain>;
 

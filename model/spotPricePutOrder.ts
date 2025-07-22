@@ -19,11 +19,11 @@ export class SpotPricePutOrder {
      */
     'side': SpotPricePutOrder.Side;
     /**
-     * Order price
+     * Order price.
      */
     'price': string;
     /**
-     * When `type` is limit, it refers to base currency.  For instance, `BTC_USDT` means `BTC`  When `type` is `market`, it refers to different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
+     * When `type` is limit, it refers to base currency. For instance, `BTC_USDT` means `BTC`  When different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
      */
     'amount': string;
     /**
@@ -35,11 +35,11 @@ export class SpotPricePutOrder {
      */
     'timeInForce'?: SpotPricePutOrder.TimeInForce;
     /**
-     * Whether to borrow coins automatically
+     * Whether to borrow coins automatically.
      */
     'autoBorrow'?: boolean;
     /**
-     * Whether to repay the loan automatically
+     * Whether to repay the loan automatically.
      */
     'autoRepay'?: boolean;
     /**

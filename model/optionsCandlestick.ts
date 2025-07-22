@@ -10,19 +10,19 @@
  */
 
 /**
- * data point in every timestamp
+ * data point in every timestamp.
  */
 export class OptionsCandlestick {
     /**
-     * Unix timestamp in seconds
+     * Unix timestamp in seconds.
      */
     't'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed
+     * size volume (contract size). Only returned if `contract` is not prefixed.
      */
     'v'?: number;
     /**
-     * Close price (quote currency, unit: underlying corresponding option price)
+     * Close price (quote currency, unit: underlying corresponding option price).
      */
     'c'?: string;
     /**
@@ -30,11 +30,11 @@ export class OptionsCandlestick {
      */
     'h'?: string;
     /**
-     * Lowest price (quote currency, unit: underlying corresponding option price)
+     * Lowest price (quote currency, unit: underlying corresponding option price).
      */
     'l'?: string;
     /**
-     * Open price (quote currency, unit: underlying corresponding option price)
+     * Open price (quote currency, unit: underlying corresponding option price).
      */
     'o'?: string;
 

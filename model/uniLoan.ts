@@ -10,31 +10,31 @@
  */
 
 /**
- * Loan
+ * Loan.
  */
 export class UniLoan {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * amount
+     * amount.
      */
     'amount'?: string;
     /**
-     * Loan type, platform - platform, margin - margin
+     * Loan type, platform - platform, margin - margin.
      */
     'type'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
     /**
-     * Updated time
+     * Updated time.
      */
     'updateTime'?: number;
 

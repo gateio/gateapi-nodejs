@@ -10,47 +10,47 @@
  */
 
 /**
- * Collateral record
+ * Collateral record.
  */
 export class CollateralRecord {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
     /**
-     * Collateral record ID
+     * Collateral record ID.
      */
     'recordId'?: number;
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'borrowCurrency'?: string;
     /**
-     * Borrowing amount
+     * Borrowing amount.
      */
     'borrowAmount'?: string;
     /**
-     * Collateral
+     * Collateral.
      */
     'collateralCurrency'?: string;
     /**
-     * The collateral amount before adjustment
+     * The collateral amount before adjustment.
      */
     'beforeCollateral'?: string;
     /**
-     * The collateral amount after adjustment
+     * The collateral amount after adjustment.
      */
     'afterCollateral'?: string;
     /**
-     * The collateral ratio before adjustment
+     * The collateral ratio before adjustment.
      */
     'beforeLtv'?: string;
     /**
-     * The collateral ratio after adjustment
+     * The collateral ratio after adjustment.
      */
     'afterLtv'?: string;
     /**
-     * Timestamp of the operation, in seconds
+     * Timestamp of the operation, in seconds.
      */
     'operateTime'?: number;
 

@@ -11,7 +11,7 @@
 
 export class CollateralCurrencyRes {
     /**
-     * Update success status
+     * Update success status.
      */
     'succeeded'?: boolean;
     /**
@@ -23,7 +23,7 @@ export class CollateralCurrencyRes {
      */
     'message'?: string;
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**

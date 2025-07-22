@@ -11,11 +11,11 @@
 
 export class SpotPriceTrigger {
     /**
-     * Trigger price
+     * Trigger price.
      */
     'price': string;
     /**
-     * Price trigger condition  - `>=`: triggered when market price larger than or equal to `price` field - `<=`: triggered when market price less than or equal to `price` field
+     * Price trigger condition  - `>=`: triggered when market price larger than or equal to `price` field - `<=`: or equal to `price` field
      */
     'rule': SpotPriceTrigger.Rule;
     /**

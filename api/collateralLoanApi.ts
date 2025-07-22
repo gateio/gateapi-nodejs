@@ -42,12 +42,12 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary List Orders
+     * @summary List Orders.
      * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.collateralCurrency Collateral
-     * @param opts.borrowCurrency Borrowed currency
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.collateralCurrency Collateral.
+     * @param opts.borrowCurrency Borrowed currency.
      */
     public async listCollateralLoanOrders(opts: {
         page?: number;
@@ -99,7 +99,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Place order
+     * @summary Place order.
      * @param createCollateralOrder
      */
     public async createCollateralLoan(
@@ -137,8 +137,8 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Get a single order
-     * @param orderId Order ID returned on successful order creation
+     * @summary Get a single order.
+     * @param orderId Order ID returned on successful order creation.
      */
     public async getCollateralLoanOrderDetail(
         orderId: number,
@@ -176,7 +176,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Repayment
+     * @summary Repayment.
      * @param repayLoan
      */
     public async repayCollateralLoan(repayLoan: RepayLoan): Promise<{ response: AxiosResponse; body: RepayResp }> {
@@ -210,15 +210,15 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Repayment history
-     * @param source Operation type: repay - Regular repayment, liquidate - Liquidation
+     * @summary Repayment history.
+     * @param source Operation type: repay - Regular repayment, liquidate - Liquidation.
      * @param opts Optional parameters
-     * @param opts.borrowCurrency Borrowed currency
-     * @param opts.collateralCurrency Collateral
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp of the query
-     * @param opts.to Time range ending, default to current time
+     * @param opts.borrowCurrency Borrowed currency.
+     * @param opts.collateralCurrency Collateral.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.from Start timestamp of the query.
+     * @param opts.to Time range ending, default to current time.
      */
     public async listRepayRecords(
         source: string,
@@ -290,14 +290,14 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query collateral adjustment records
+     * @summary Query collateral adjustment records.
      * @param opts Optional parameters
-     * @param opts.page Page number
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.from Start timestamp of the query
-     * @param opts.to Time range ending, default to current time
-     * @param opts.borrowCurrency Borrowed currency
-     * @param opts.collateralCurrency Collateral
+     * @param opts.page Page number.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.from Start timestamp of the query.
+     * @param opts.to Time range ending, default to current time.
+     * @param opts.borrowCurrency Borrowed currency.
+     * @param opts.collateralCurrency Collateral.
      */
     public async listCollateralRecords(opts: {
         page?: number;
@@ -359,7 +359,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Increase or redeem collateral
+     * @summary Increase or redeem collateral.
      * @param collateralAlign
      */
     public async operateCollateral(collateralAlign: CollateralAlign): Promise<{ response: AxiosResponse; body?: any }> {
@@ -386,7 +386,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query the total borrowing and collateral amount for the user
+     * @summary Query the total borrowing and collateral amount for the user.
      */
     public async getUserTotalAmount(): Promise<{ response: AxiosResponse; body: UserTotalAmount }> {
         const localVarPath = this.client.basePath + '/loan/collateral/total_amount';
@@ -413,9 +413,9 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query user\'s collateralization ratio
-     * @param collateralCurrency Collateral
-     * @param borrowCurrency Borrowed currency
+     * @summary Query user\'s collateralization ratio.
+     * @param collateralCurrency Collateral.
+     * @param borrowCurrency Borrowed currency.
      */
     public async getUserLtvInfo(
         collateralCurrency: string,
@@ -459,7 +459,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query supported borrowing and collateral currencies
+     * @summary Query supported borrowing and collateral currencies.
      * @param opts Optional parameters
      * @param opts.loanCurrency The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies.
      */

@@ -10,7 +10,7 @@
  */
 
 /**
- * Parameters of flash swap order creation
+ * Parameters of flash swap order creation.
  */
 export class FlashSwapPreviewRequest {
     /**

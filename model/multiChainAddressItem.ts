@@ -11,19 +11,19 @@
 
 export class MultiChainAddressItem {
     /**
-     * Name of the chain
+     * Name of the chain.
      */
     'chain'?: string;
     /**
-     * Deposit address
+     * Deposit address.
      */
     'address'?: string;
     /**
-     * Notes that some currencies required(e.g., Tag, Memo) when depositing
+     * Notes that some currencies required(e.g., Tag, Memo) when depositing.
      */
     'paymentId'?: string;
     /**
-     * Note type, `Tag` or `Memo`
+     * Note type, `Tag` or `Memo`.
      */
     'paymentName'?: string;
     /**

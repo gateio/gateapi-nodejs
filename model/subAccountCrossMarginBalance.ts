@@ -13,7 +13,7 @@ import { SubCrossMarginAccount } from './subCrossMarginAccount';
 
 export class SubAccountCrossMarginBalance {
     /**
-     * User ID
+     * User ID.
      */
     'uid'?: string;
     /**

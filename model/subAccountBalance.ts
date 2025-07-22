@@ -11,11 +11,11 @@
 
 export class SubAccountBalance {
     /**
-     * User ID
+     * User ID.
      */
     'uid'?: string;
     /**
-     * Available balances of currencies
+     * Available balances of currencies.
      */
     'available'?: { [key: string]: string };
 

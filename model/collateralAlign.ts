@@ -11,15 +11,15 @@
 
 export class CollateralAlign {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId': number;
     /**
-     * Collateral
+     * Collateral.
      */
     'collateralCurrency': string;
     /**
-     * Collateral amount
+     * Collateral amount.
      */
     'collateralAmount': string;
     /**

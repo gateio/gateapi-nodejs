@@ -11,11 +11,11 @@
 
 export class FuturesOrderBookItem {
     /**
-     * Price (quote currency)
+     * Price (quote currency).
      */
     'p'?: string;
     /**
-     * Size
+     * Size.
      */
     's'?: number;
 

@@ -13,7 +13,7 @@ import { RiskUnits } from './riskUnits';
 
 export class UnifiedRiskUnits {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
@@ -21,7 +21,7 @@ export class UnifiedRiskUnits {
      */
     'spotHedge'?: boolean;
     /**
-     * Risk unit
+     * Risk unit.
      */
     'riskUnits'?: Array<RiskUnits>;
 

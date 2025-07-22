@@ -11,23 +11,23 @@
 
 export class OptionsAccountBook {
     /**
-     * Change time
+     * Change time.
      */
     'time'?: number;
     /**
-     * Amount changed (USDT)
+     * Amount changed (USDT).
      */
     'change'?: string;
     /**
-     * Account total balance after change (USDT)
+     * Account total balance after change (USDT).
      */
     'balance'?: string;
     /**
-     * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+     * Changing Type: - dnw: Deposit & Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
      */
     'type'?: string;
     /**
-     * custom text
+     * custom text.
      */
     'text'?: string;
 

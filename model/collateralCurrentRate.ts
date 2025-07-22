@@ -10,15 +10,15 @@
  */
 
 /**
- * Multi-currency pledge current interest rate
+ * Multi-currency pledge current interest rate.
  */
 export class CollateralCurrentRate {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency current interest rate
+     * Currency current interest rate.
      */
     'currentRate'?: string;
 

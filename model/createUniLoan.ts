@@ -10,27 +10,27 @@
  */
 
 /**
- * Borrow or repay
+ * Borrow or repay.
  */
 export class CreateUniLoan {
     /**
-     * Currency
+     * Currency.
      */
     'currency': string;
     /**
-     * type: borrow - borrow, repay - repay
+     * type: borrow - borrow, repay - repay.
      */
     'type': CreateUniLoan.Type;
     /**
-     * The amount of lending or repaying
+     * The amount of lending or repaying.
      */
     'amount': string;
     /**
-     * Full repayment.  Repay operation only.  If the value is `true`, the amount will be ignored and the loan will be repaid in full.
+     * Full repayment. Repay operation only. If the value is `true`, the amount will be ignored and repaid in full.
      */
     'repaidAll'?: boolean;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair': string;
 

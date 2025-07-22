@@ -11,23 +11,23 @@
 
 export class MarginTiers {
     /**
-     * Tier
+     * Tier.
      */
     'tier'?: string;
     /**
-     * Discount
+     * Discount.
      */
     'marginRate'?: string;
     /**
-     * Lower limit
+     * Lower limit.
      */
     'lowerLimit'?: string;
     /**
-     * Upper limit, \"\" indicates greater than (the last tier)
+     * Upper limit, \"\" indicates greater than (the last tier).
      */
     'upperLimit'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
 

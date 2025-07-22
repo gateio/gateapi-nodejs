@@ -10,23 +10,23 @@
  */
 
 /**
- * Currency pair of the loan
+ * Currency pair of the loan.
  */
 export class UniCurrencyPair {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Minimum borrow amount of base currency
+     * Minimum borrow amount of base currency.
      */
     'baseMinBorrowAmount'?: string;
     /**
-     * Minimum borrow amount of quote currency
+     * Minimum borrow amount of quote currency.
      */
     'quoteMinBorrowAmount'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
 

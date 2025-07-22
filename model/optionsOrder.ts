@@ -10,27 +10,27 @@
  */
 
 /**
- * Options order detail
+ * Options order detail.
  */
 export class OptionsOrder {
     /**
-     * Options order ID
+     * Options order ID.
      */
     'id'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Creation time of order
+     * Creation time of order.
      */
     'createTime'?: number;
     /**
-     * Order finished time. Not returned if order is open
+     * Order finished time. Not returned if order is open.
      */
     'finishTime'?: number;
     /**
-     * Ending method, including:  - filled: fully completed - canceled: user canceled - liquidated: forced liquidation cancellation - ioc: Not fully filled immediately because tif is set to ioc - auto_deleveraged: automatic deleveraging cancel - reduce_only: Increased position is cancelled, because reduce_only is set or the position is closed - position_closed: Because the position was closed, the pending order was canceled - reduce_out: Only reduce the excluded pending orders that are not easy to be filled - mmp_cancelled: MMP canceled
+     * Ending method, including:  - filled: fully completed - canceled: user canceled - liquidated: forced liquidation cancellation - ioc: Not fully filled immediately because tif is set to ioc - auto_deleveraged: automatic deleveraging cancel - reduce_only: Increased position is cancelled, or the position is closed - position_closed: Because the position was closed, the pending order was canceled - reduce_out: Only reduce the excluded pending orders that are not easy to be filled - mmp_cancelled: MMP canceled
      */
     'finishAs'?: OptionsOrder.FinishAs;
     /**
@@ -38,7 +38,7 @@ export class OptionsOrder {
      */
     'status'?: OptionsOrder.Status;
     /**
-     * Contract name
+     * Contract name.
      */
     'contract': string;
     /**
@@ -50,31 +50,31 @@ export class OptionsOrder {
      */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc` (USDT)
+     * Order price. 0 for market order with `tif` set as `ioc` (USDT).
      */
     'price'?: string;
     /**
-     * Set as `true` to close the position, with `size` set to 0
+     * Set as `true` to close the position, with `size` set to 0.
      */
     'close'?: boolean;
     /**
-     * Is the order to close position
+     * Is the order to close position.
      */
     'isClose'?: boolean;
     /**
-     * Set as `true` to be reduce-only order
+     * Set as `true` to be reduce-only order.
      */
     'reduceOnly'?: boolean;
     /**
-     * Is the order reduce-only
+     * Is the order reduce-only.
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order for liquidation
+     * Is the order for liquidation.
      */
     'isLiq'?: boolean;
     /**
-     * When set to true, delegate to MMP
+     * When set to true, delegate to MMP.
      */
     'mmp'?: boolean;
     /**
@@ -86,11 +86,11 @@ export class OptionsOrder {
      */
     'tif'?: OptionsOrder.Tif;
     /**
-     * Size left to be traded
+     * Size left to be traded.
      */
     'left'?: number;
     /**
-     * Fill price of the order
+     * Fill price of the order.
      */
     'fillPrice'?: string;
     /**
@@ -98,19 +98,19 @@ export class OptionsOrder {
      */
     'text'?: string;
     /**
-     * Taker fee
+     * Taker fee.
      */
     'tkfr'?: string;
     /**
-     * Maker fee
+     * Maker fee.
      */
     'mkfr'?: string;
     /**
-     * Reference user ID
+     * Reference user ID.
      */
     'refu'?: number;
     /**
-     * Referrer rebate
+     * Referrer rebate.
      */
     'refr'?: string;
 

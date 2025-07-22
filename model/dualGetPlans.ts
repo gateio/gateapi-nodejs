@@ -11,51 +11,51 @@
 
 export class DualGetPlans {
     /**
-     * Plan ID
+     * Plan ID.
      */
     'id'?: number;
     /**
-     * Instrument Name
+     * Instrument Name.
      */
     'instrumentName'?: string;
     /**
-     * Investment Currency
+     * Investment Currency.
      */
     'investCurrency'?: string;
     /**
-     * Strike Currency
+     * Strike Currency.
      */
     'exerciseCurrency'?: string;
     /**
-     * Strike price
+     * Strike price.
      */
     'exercisePrice'?: number;
     /**
-     * Settlement time
+     * Settlement time.
      */
     'deliveryTime'?: number;
     /**
-     * Minimum Copies
+     * Minimum Copies.
      */
     'minCopies'?: number;
     /**
-     * Maximum Copies
+     * Maximum Copies.
      */
     'maxCopies'?: number;
     /**
-     * Per Unit Value
+     * Per Unit Value.
      */
     'perValue'?: string;
     /**
-     * APY
+     * APY.
      */
     'apyDisplay'?: string;
     /**
-     * start time
+     * start time.
      */
     'startTime'?: number;
     /**
-     * Finished time
+     * Finished time.
      */
     'endTime'?: number;
     /**

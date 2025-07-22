@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **string** | Currency | [optional] [default to undefined]
-**amount** | **string** | Size | [optional] [default to undefined]
+**currency** | **string** | Currency. | [optional] [default to undefined]
+**amount** | **string** | Size. | [optional] [default to undefined]
 

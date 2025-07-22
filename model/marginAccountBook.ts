@@ -11,35 +11,35 @@
 
 export class MarginAccountBook {
     /**
-     * Balance change record ID
+     * Balance change record ID.
      */
     'id'?: string;
     /**
-     * Balance changed timestamp
+     * Balance changed timestamp.
      */
     'time'?: string;
     /**
-     * The timestamp of the change (in milliseconds)
+     * The timestamp of the change (in milliseconds).
      */
     'timeMs'?: number;
     /**
-     * Currency changed
+     * Currency changed.
      */
     'currency'?: string;
     /**
-     * Account currency pair
+     * Account currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Amount changed. Positive value means transferring in, while negative out
+     * Amount changed. Positive value means transferring in, while negative out.
      */
     'change'?: string;
     /**
-     * Balance after change
+     * Balance after change.
      */
     'balance'?: string;
     /**
-     * Account book type.  Please refer to [account book type](#accountbook-type) for more detail
+     * Account book type. Please refer to [account book type](#accountbook-type) for more detail
      */
     'type'?: string;
 

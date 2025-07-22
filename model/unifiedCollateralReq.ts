@@ -11,7 +11,7 @@
 
 export class UnifiedCollateralReq {
     /**
-     * User-set collateral mode0(all)-All currencies used as collateral, 1(custom)-Custom currencies used as collateral; when collateral_type is 0(all), the enable_list and disable_list parameters are invalid
+     * User-set collateral mode0(all)-All currencies used as collateral, collateral; when collateral_type is 0(all), the enable_list and disable_list parameters are invalid
      */
     'collateralType'?: UnifiedCollateralReq.CollateralType;
     /**
@@ -19,7 +19,7 @@ export class UnifiedCollateralReq {
      */
     'enableList'?: Array<string>;
     /**
-     * Cancellation list, indicating the logic of cancellation
+     * Cancellation list, indicating the logic of cancellation.
      */
     'disableList'?: Array<string>;
 

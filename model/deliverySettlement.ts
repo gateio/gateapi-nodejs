@@ -11,39 +11,39 @@
 
 export class DeliverySettlement {
     /**
-     * Liquidation time
+     * Liquidation time.
      */
     'time'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
     /**
-     * Position size
+     * Position size.
      */
     'size'?: number;
     /**
-     * Position margin
+     * Position margin.
      */
     'margin'?: string;
     /**
-     * Average entry price
+     * Average entry price.
      */
     'entryPrice'?: string;
     /**
-     * Settled price
+     * Settled price.
      */
     'settlePrice'?: string;
     /**
-     * Profit
+     * Profit.
      */
     'profit'?: string;
     /**
-     * Fee deducted
+     * Fee deducted.
      */
     'fee'?: string;
 

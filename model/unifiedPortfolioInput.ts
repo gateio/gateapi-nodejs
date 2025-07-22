@@ -21,27 +21,27 @@ import { MockSpotOrder } from './mockSpotOrder';
  */
 export class UnifiedPortfolioInput {
     /**
-     * Spot
+     * Spot.
      */
     'spotBalances'?: Array<MockSpotBalance>;
     /**
-     * Spot orders
+     * Spot orders.
      */
     'spotOrders'?: Array<MockSpotOrder>;
     /**
-     * Futures positions
+     * Futures positions.
      */
     'futuresPositions'?: Array<MockFuturesPosition>;
     /**
-     * Futures order
+     * Futures order.
      */
     'futuresOrders'?: Array<MockFuturesOrder>;
     /**
-     * Options positions
+     * Options positions.
      */
     'optionsPositions'?: Array<MockOptionsPosition>;
     /**
-     * Option orders
+     * Option orders.
      */
     'optionsOrders'?: Array<MockOptionsOrder>;
     /**

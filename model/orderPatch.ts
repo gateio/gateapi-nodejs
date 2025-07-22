@@ -10,11 +10,11 @@
  */
 
 /**
- * Spot order details
+ * Spot order details.
  */
 export class OrderPatch {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
@@ -22,15 +22,15 @@ export class OrderPatch {
      */
     'account'?: string;
     /**
-     * Trading Quantity. Either amountor pricemust be specified
+     * Trading Quantity. Either amountor pricemust be specified.
      */
     'amount'?: string;
     /**
-     * Trading Price. Either amountor pricemust be specified
+     * Trading Price. Either amountor pricemust be specified.
      */
     'price'?: string;
     /**
-     * Custom info during amending order
+     * Custom info during amending order.
      */
     'amendText'?: string;
     /**

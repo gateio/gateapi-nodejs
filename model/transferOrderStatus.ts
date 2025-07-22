@@ -11,7 +11,7 @@
 
 export class TransferOrderStatus {
     /**
-     * Order id
+     * Order id.
      */
     'txId'?: string;
     /**

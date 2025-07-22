@@ -13,11 +13,11 @@ import { UnifiedBalance } from './unifiedBalance';
 
 export class UnifiedAccount {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Time of the most recent refresh
+     * Time of the most recent refresh.
      */
     'refreshTime'?: number;
     /**
@@ -26,7 +26,7 @@ export class UnifiedAccount {
     'locked'?: boolean;
     'balances'?: { [key: string]: UnifiedBalance };
     /**
-     * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price`  in all currencies (deprecated, to be deprecated, replaced by unified_account_total)
+     * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price` in all currencies (deprecated, to be deprecated, replaced by unified_account_total)
      */
     'total'?: string;
     /**
@@ -70,7 +70,7 @@ export class UnifiedAccount {
      */
     'unifiedAccountTotalEquity'?: string;
     /**
-     * Actual leverage, valid in cross-currency margin/combined margin mode
+     * Actual leverage, valid in cross-currency margin/combined margin mode.
      */
     'leverage'?: string;
     /**
@@ -82,11 +82,11 @@ export class UnifiedAccount {
      */
     'spotHedge'?: boolean;
     /**
-     * Whether to use funds as margin
+     * Whether to use funds as margin.
      */
     'useFunding'?: boolean;
     /**
-     * Whether all currencies are used as margin, true - All currencies are used as margin, false - No
+     * Whether all currencies are used as margin, true - false - No
      */
     'isAllCollateral'?: boolean;
 

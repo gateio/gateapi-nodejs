@@ -10,19 +10,19 @@
  */
 
 /**
- * Lend or redeem
+ * Lend or redeem.
  */
 export class CreateUniLend {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * The amount of currency could be lent
+     * The amount of currency could be lent.
      */
     'amount': string;
     /**
-     * type: lend - lend, redeem - redeem
+     * type: lend - lend, redeem - redeem.
      */
     'type': CreateUniLend.Type;
     /**

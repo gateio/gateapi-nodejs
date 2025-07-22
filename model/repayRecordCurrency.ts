@@ -11,15 +11,15 @@
 
 export class RepayRecordCurrency {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Amount before the operation
+     * Amount before the operation.
      */
     'beforeAmount'?: string;
     /**

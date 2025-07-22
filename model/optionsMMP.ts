@@ -14,11 +14,11 @@
  */
 export class OptionsMMP {
     /**
-     * Underlying
+     * Underlying.
      */
     'underlying': string;
     /**
-     * Time window (milliseconds), between 1-5000, 0 means disabling MMP
+     * Time window (milliseconds), between 1-5000, 0 means disabling MMP.
      */
     'window': number;
     /**
@@ -26,15 +26,15 @@ export class OptionsMMP {
      */
     'frozenPeriod': number;
     /**
-     * Trading volume upper limit (positive number, up to 2 decimal places)
+     * Trading volume upper limit (positive number, up to 2 decimal places).
      */
     'qtyLimit': string;
     /**
-     * Upper limit of net delta value (positive number, up to 2 decimal places)
+     * Upper limit of net delta value (positive number, up to 2 decimal places).
      */
     'deltaLimit': string;
     /**
-     * Trigger freeze time (milliseconds), 0 means no freeze is triggered
+     * Trigger freeze time (milliseconds), 0 means no freeze is triggered.
      */
     'triggerTimeMs'?: number;
     /**

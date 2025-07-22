@@ -11,19 +11,19 @@
 
 export class CreateCollateralOrder {
     /**
-     * Collateral amount
+     * Collateral amount.
      */
     'collateralAmount': string;
     /**
-     * Collateral
+     * Collateral.
      */
     'collateralCurrency': string;
     /**
-     * Borrowing amount
+     * Borrowing amount.
      */
     'borrowAmount': string;
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'borrowCurrency': string;
 

@@ -51,7 +51,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List all underlyings
+     * @summary List all underlyings.
      */
     public async listOptionsUnderlyings(): Promise<{ response: AxiosResponse; body: Array<OptionsUnderlying> }> {
         const localVarPath = this.client.basePath + '/options/underlyings';
@@ -78,8 +78,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List all expiration times
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List all expiration times.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      */
     public async listOptionsExpirations(underlying: string): Promise<{ response: AxiosResponse; body: Array<number> }> {
         const localVarPath = this.client.basePath + '/options/expirations';
@@ -113,10 +113,10 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List all the contracts with specified underlying and expiration time
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List all the contracts with specified underlying and expiration time.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.expiration Unix timestamp of the expiration time
+     * @param opts.expiration Unix timestamp of the expiration time.
      */
     public async listOptionsContracts(
         underlying: string,
@@ -158,7 +158,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Query specified contract detail
+     * @summary Query specified contract detail.
      * @param contract
      */
     public async getOptionsContract(contract: string): Promise<{ response: AxiosResponse; body: OptionsContract }> {
@@ -193,11 +193,11 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List settlement history
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List settlement history.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -253,9 +253,9 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get specified contract\'s settlement
+     * @summary Get specified contract\'s settlement.
      * @param contract
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param at
      */
     public async getOptionsSettlement(
@@ -308,12 +308,12 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List my options settlements
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List my options settlements.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.contract Options contract name.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -374,12 +374,12 @@ export class OptionsApi {
     }
 
     /**
-     * Bids will be sorted by price from high to low, while asks sorted reversely
-     * @summary Options order book
-     * @param contract Options contract name
+     * Bids will be sorted by price from high to low, while asks sorted reversely.
+     * @summary Options order book.
+     * @param contract Options contract name.
      * @param opts Optional parameters
-     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0
-     * @param opts.limit Maximum number of order depth data in asks or bids
+     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0.
+     * @param opts.limit Maximum number of order depth data in asks or bids.
      * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
      */
     public async listOptionsOrderBook(
@@ -430,8 +430,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List tickers of options contracts
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List tickers of options contracts.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      */
     public async listOptionsTickers(
         underlying: string,
@@ -467,8 +467,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get underlying ticker
-     * @param underlying Underlying
+     * @summary Get underlying ticker.
+     * @param underlying Underlying.
      */
     public async listOptionsUnderlyingTickers(
         underlying: string,
@@ -509,13 +509,13 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get options candlesticks
-     * @param contract Options contract name
+     * @summary Get options candlesticks.
+     * @param contract Options contract name.
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.limit Maximum number of records to be returned in a single list.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.interval Interval time between data points
+     * @param opts.interval Interval time between data points.
      */
     public async listOptionsCandlesticks(
         contract: string,
@@ -572,13 +572,13 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Mark price candlesticks of an underlying
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary Mark price candlesticks of an underlying.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list
+     * @param opts.limit Maximum number of records to be returned in a single list.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.interval Interval time between data points
+     * @param opts.interval Interval time between data points.
      */
     public async listOptionsUnderlyingCandlesticks(
         underlying: string,
@@ -637,12 +637,12 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Options trade history
+     * @summary Options trade history.
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
-     * @param opts.type &#x60;C&#x60; is call, while &#x60;P&#x60; is put
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.contract Options contract name.
+     * @param opts.type &#x60;C&#x60; is call, while &#x60;P&#x60; is put.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -703,7 +703,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List options account
+     * @summary List options account.
      */
     public async listOptionsAccount(): Promise<{ response: AxiosResponse; body: OptionsAccount }> {
         const localVarPath = this.client.basePath + '/options/accounts';
@@ -730,10 +730,10 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List account changing history
+     * @summary List account changing history.
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - prem: Trading premium - fee: Trading fee - refr: Referrer rebate - set: settlement PNL
@@ -793,9 +793,9 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List user\'s positions of specified underlying
+     * @summary List user\'s positions of specified underlying.
      * @param opts Optional parameters
-     * @param opts.underlying Underlying
+     * @param opts.underlying Underlying.
      */
     public async listOptionsPositions(opts: {
         underlying?: string;
@@ -829,7 +829,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get specified contract position
+     * @summary Get specified contract position.
      * @param contract
      */
     public async getOptionsPosition(contract: string): Promise<{ response: AxiosResponse; body: OptionsPosition }> {
@@ -864,10 +864,10 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List user\'s liquidation history of specified underlying
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List user\'s liquidation history of specified underlying.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
+     * @param opts.contract Options contract name.
      */
     public async listOptionsPositionClose(
         underlying: string,
@@ -911,13 +911,13 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List options orders
-     * @param status Only list the orders with this status
+     * @summary List options orders.
+     * @param status Only list the orders with this status.
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
-     * @param opts.underlying Underlying
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.contract Options contract name.
+     * @param opts.underlying Underlying.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -981,7 +981,7 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Create an options order
+     * @summary Create an options order.
      * @param optionsOrder
      */
     public async createOptionsOrder(
@@ -1017,11 +1017,11 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Cancel all `open` orders matched
+     * @summary Cancel all `open` orders matched.
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
-     * @param opts.underlying Underlying
-     * @param opts.side All bids or asks. Both included if not specified
+     * @param opts.contract Options contract name.
+     * @param opts.underlying Underlying.
+     * @param opts.side All bids or asks. Both included if not specified.
      */
     public async cancelOptionsOrders(opts: {
         contract?: string;
@@ -1065,8 +1065,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Get a single order
-     * @param orderId Order ID returned on successful order creation
+     * @summary Get a single order.
+     * @param orderId Order ID returned on successful order creation.
      */
     public async getOptionsOrder(orderId: number): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath =
@@ -1100,8 +1100,8 @@ export class OptionsApi {
 
     /**
      *
-     * @summary Cancel a single order
-     * @param orderId Order ID returned on successful order creation
+     * @summary Cancel a single order.
+     * @param orderId Order ID returned on successful order creation.
      */
     public async cancelOptionsOrder(orderId: number): Promise<{ response: AxiosResponse; body: OptionsOrder }> {
         const localVarPath =
@@ -1134,8 +1134,8 @@ export class OptionsApi {
     }
 
     /**
-     * Option order heartbeat detection, when the `timeout` time set by the user is reached, if the existing countdown is not canceled or a new countdown is set, the related `option pending order` will be automatically canceled.  This interface can be called repeatedly to set a new countdown or cancel the countdown.  Usage example: Repeat this interface at intervals of 30 seconds, with each countdown `timeout` set to 30 (seconds).  If this interface is not called again within 30 seconds, all pending orders on the `underlying` `contract` you specified will be automatically cancelled. If `underlying` `contract` is not specified, all pending orders of the user will be automatically cancelled  If `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the automatic order cancellation function will be cancelled.
-     * @summary Countdown cancel orders
+     * Option order heartbeat detection, when the `timeout` time set by the user is reached, if the existing countdown is not canceled or a new countdown is set, the related `option pending order` will be automatically canceled.  This interface can be called repeatedly to set a new countdown or cancel the countdown.  Usage example: Repeat this interface at intervals of 30 seconds, with each countdown `timeout` set to 30 (seconds).  If this interface is not called again within 30 seconds, all pending orders on the `underlying` `contract` you specified will be automatically cancelled. If `underlying` `contract` is not specified, user will be automatically cancelled  If `timeout` is set to 0 within 30 seconds, the countdown timer will expire and the automatic order cancellation function will be cancelled.
+     * @summary Countdown cancel orders.
      * @param countdownCancelAllOptionsTask
      */
     public async countdownCancelAllOptions(
@@ -1173,12 +1173,12 @@ export class OptionsApi {
 
     /**
      *
-     * @summary List personal trading history
-     * @param underlying Underlying (Obtained by listing underlying endpoint)
+     * @summary List personal trading history.
+     * @param underlying Underlying (Obtained by listing underlying endpoint).
      * @param opts Optional parameters
-     * @param opts.contract Options contract name
-     * @param opts.limit Maximum number of records to be returned in a single list
-     * @param opts.offset List offset, starting from 0
+     * @param opts.contract Options contract name.
+     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -1238,9 +1238,9 @@ export class OptionsApi {
 
     /**
      *
-     * @summary MMP Query
+     * @summary MMP Query.
      * @param opts Optional parameters
-     * @param opts.underlying Underlying
+     * @param opts.underlying Underlying.
      */
     public async getOptionsMMP(opts: {
         underlying?: string;

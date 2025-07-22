@@ -10,7 +10,7 @@
  */
 
 /**
- * Countdown cancel task detail
+ * Countdown cancel task detail.
  */
 export class CountdownCancelAllSpotTask {
     /**
@@ -18,7 +18,7 @@ export class CountdownCancelAllSpotTask {
      */
     'timeout': number;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
 

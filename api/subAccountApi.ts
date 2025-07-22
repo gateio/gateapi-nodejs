@@ -34,7 +34,7 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary List sub-accounts
+     * @summary List sub-accounts.
      * @param opts Optional parameters
      * @param opts.type &#x60;0&#x60; to list all types of sub-accounts (currently supporting cross margin accounts and sub-accounts).  &#x60;1&#x60; to list sub-accounts only. If no parameter is passed, only sub-accounts will be listed by default.
      */
@@ -70,7 +70,7 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Create a new sub-account
+     * @summary Create a new sub-account.
      * @param subAccount
      */
     public async createSubAccounts(subAccount: SubAccount): Promise<{ response: AxiosResponse; body: SubAccount }> {
@@ -104,8 +104,8 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Get the sub-account
-     * @param userId Sub-account user id
+     * @summary Get the sub-account.
+     * @param userId Sub-account user id.
      */
     public async getSubAccount(userId: number): Promise<{ response: AxiosResponse; body: SubAccount }> {
         const localVarPath =
@@ -139,8 +139,8 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary List all API Key of the sub-account
-     * @param userId Sub-account user id
+     * @summary List all API Key of the sub-account.
+     * @param userId Sub-account user id.
      */
     public async listSubAccountKeys(userId: number): Promise<{ response: AxiosResponse; body: Array<SubAccountKey> }> {
         const localVarPath =
@@ -174,8 +174,8 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Create API Key of the sub-account
-     * @param userId Sub-account user id
+     * @summary Create API Key of the sub-account.
+     * @param userId Sub-account user id.
      * @param subAccountKey
      */
     public async createSubAccountKeys(
@@ -221,9 +221,9 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Get the API Key of the sub-account
-     * @param userId Sub-account user id
-     * @param key The API Key of the sub-account
+     * @summary Get the API Key of the sub-account.
+     * @param userId Sub-account user id.
+     * @param key The API Key of the sub-account.
      */
     public async getSubAccountKey(
         userId: number,
@@ -267,9 +267,9 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Update API key of the sub-account
-     * @param userId Sub-account user id
-     * @param key The API Key of the sub-account
+     * @summary Update API key of the sub-account.
+     * @param userId Sub-account user id.
+     * @param key The API Key of the sub-account.
      * @param subAccountKey
      */
     public async updateSubAccountKeys(
@@ -316,9 +316,9 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Delete API key of the sub-account
-     * @param userId Sub-account user id
-     * @param key The API Key of the sub-account
+     * @summary Delete API key of the sub-account.
+     * @param userId Sub-account user id.
+     * @param key The API Key of the sub-account.
      */
     public async deleteSubAccountKeys(userId: number, key: string): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath =
@@ -352,8 +352,8 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Lock the sub-account
-     * @param userId The user id of the sub-account
+     * @summary Lock the sub-account.
+     * @param userId The user id of the sub-account.
      */
     public async lockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath =
@@ -380,8 +380,8 @@ export class SubAccountApi {
 
     /**
      *
-     * @summary Unlock the sub-account
-     * @param userId The user id of the sub-account
+     * @summary Unlock the sub-account.
+     * @param userId The user id of the sub-account.
      */
     public async unlockSubAccount(userId: number): Promise<{ response: AxiosResponse; body?: any }> {
         const localVarPath =
@@ -408,7 +408,7 @@ export class SubAccountApi {
 
     /**
      * Unified account mode： - `classic`: Classic account mode - `multi_currency`: Multi-currency margin mode - `portfolio`: Portfolio margin mode
-     * @summary Get sub-account mode
+     * @summary Get sub-account mode.
      */
     public async listUnifiedMode(): Promise<{ response: AxiosResponse; body: Array<SubUserMode> }> {
         const localVarPath = this.client.basePath + '/sub_accounts/unified_mode';

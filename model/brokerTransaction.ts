@@ -13,11 +13,11 @@ import { BrokerTransaction1 } from './brokerTransaction1';
 
 export class BrokerTransaction {
     /**
-     * Total
+     * Total.
      */
     'total'?: number;
     /**
-     * List of transaction history
+     * List of transaction history.
      */
     'list'?: Array<BrokerTransaction1>;
 

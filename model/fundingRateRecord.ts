@@ -11,11 +11,11 @@
 
 export class FundingRateRecord {
     /**
-     * Unix timestamp in seconds
+     * Unix timestamp in seconds.
      */
     't'?: number;
     /**
-     * Funding rate
+     * Funding rate.
      */
     'r'?: string;
 

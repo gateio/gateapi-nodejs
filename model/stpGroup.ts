@@ -11,19 +11,19 @@
 
 export class StpGroup {
     /**
-     * STP Group ID
+     * STP Group ID.
      */
     'id'?: number;
     /**
-     * STP Group name
+     * STP Group name.
      */
     'name': string;
     /**
-     * Creator ID
+     * Creator ID.
      */
     'creatorId'?: number;
     /**
-     * Creation time
+     * Creation time.
      */
     'createTime'?: number;
 

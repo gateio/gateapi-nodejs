@@ -11,7 +11,7 @@
 
 export class OrderResp {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: number;
 

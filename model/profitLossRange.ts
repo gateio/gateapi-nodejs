@@ -10,19 +10,19 @@
  */
 
 /**
- * Profit and loss range
+ * Profit and loss range.
  */
 export class ProfitLossRange {
     /**
-     * Percentage change in price
+     * Percentage change in price.
      */
     'pricePercentage'?: string;
     /**
-     * Percentage change in implied volatility
+     * Percentage change in implied volatility.
      */
     'impliedVolatilityPercentage'?: string;
     /**
-     * PNL
+     * PNL.
      */
     'profitLoss'?: string;
 

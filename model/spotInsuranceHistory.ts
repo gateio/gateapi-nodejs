@@ -11,15 +11,15 @@
 
 export class SpotInsuranceHistory {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * balance
+     * balance.
      */
     'balance'?: string;
     /**
-     * Creation time, timestamp, milliseconds
+     * Creation time, timestamp, milliseconds.
      */
     'time'?: number;
 

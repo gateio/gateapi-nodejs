@@ -10,31 +10,31 @@
  */
 
 /**
- * Information for each tier of the risk limit ladder
+ * Information for each tier of the risk limit ladder.
  */
 export class FuturesRiskLimitTier {
     /**
-     * Tier
+     * Tier.
      */
     'tier'?: number;
     /**
-     * Position risk limit
+     * Position risk limit.
      */
     'riskLimit'?: string;
     /**
-     * Initial margin rate
+     * Initial margin rate.
      */
     'initialRate'?: string;
     /**
-     * Maintenance margin rate
+     * Maintenance margin rate.
      */
     'maintenanceRate'?: string;
     /**
-     * Maximum leverage
+     * Maximum leverage.
      */
     'leverageMax'?: string;
     /**
-     * Maintenance margin quick calculation deduction
+     * Maintenance margin quick calculation deduction.
      */
     'deduction'?: string;
 

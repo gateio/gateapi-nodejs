@@ -10,35 +10,35 @@
  */
 
 /**
- * Interest Record
+ * Interest Record.
  */
 export class UniLendRecord {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * current amount
+     * current amount.
      */
     'amount'?: string;
     /**
-     * Last wallet amount
+     * Last wallet amount.
      */
     'lastWalletAmount'?: string;
     /**
-     * Last lent amount
+     * Last lent amount.
      */
     'lastLentAmount'?: string;
     /**
-     * Last frozen amount
+     * Last frozen amount.
      */
     'lastFrozenAmount'?: string;
     /**
-     * Record type: lend - lend, redeem - redeem
+     * Record type: lend - lend, redeem - redeem.
      */
     'type'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

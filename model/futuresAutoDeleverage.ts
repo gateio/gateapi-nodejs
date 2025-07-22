@@ -11,43 +11,43 @@
 
 export class FuturesAutoDeleverage {
     /**
-     * Automatic deleveraging time
+     * Automatic deleveraging time.
      */
     'time'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Order ID. Order IDs before 2023-02-20 are null
+     * Order ID. Order IDs before 2023-02-20 are null.
      */
     'orderId'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
     /**
-     * Cross margin leverage(valid only when `leverage` is 0)
+     * Cross margin leverage(valid only when `leverage` is 0).
      */
     'crossLeverageLimit'?: string;
     /**
-     * Average entry price
+     * Average entry price.
      */
     'entryPrice'?: string;
     /**
-     * Average fill price
+     * Average fill price.
      */
     'fillPrice'?: string;
     /**
-     * Trading size
+     * Trading size.
      */
     'tradeSize'?: number;
     /**
-     * Positions after auto-deleveraging
+     * Positions after auto-deleveraging.
      */
     'positionSize'?: number;
 

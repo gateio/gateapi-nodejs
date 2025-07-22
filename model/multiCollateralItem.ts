@@ -11,15 +11,15 @@
 
 export class MultiCollateralItem {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Discount
+     * Discount.
      */
     'discount'?: string;
 

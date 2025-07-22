@@ -11,11 +11,11 @@
 
 export class FindCoin {
     /**
-     * Currency
+     * Currency.
      */
     'coin'?: string;
     /**
-     * Coin Type  swap-Voucher  lock-Locked
+     * Coin Type swap-Voucher lock-Locked.
      */
     'cointype'?: string;
 

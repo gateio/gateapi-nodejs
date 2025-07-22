@@ -10,27 +10,27 @@
  */
 
 /**
- * Convert Small Balance
+ * Convert Small Balance.
  */
 export class SmallBalanceHistory {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: string;
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * amount
+     * amount.
      */
     'amount'?: string;
     /**
-     * GT amount
+     * GT amount.
      */
     'gtAmount'?: string;
     /**
-     * Exchange time (in seconds)
+     * Exchange time (in seconds).
      */
     'createTime'?: number;
 

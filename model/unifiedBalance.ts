@@ -35,7 +35,7 @@ export class UnifiedBalance {
      */
     'equity'?: string;
     /**
-     * Total occupancy (discarded, to be offline field)
+     * Total occupancy (discarded, to be offline field).
      */
     'totalFreeze'?: string;
     /**
@@ -47,11 +47,11 @@ export class UnifiedBalance {
      */
     'spotInUse'?: string;
     /**
-     * Uniloan financial management amount, effective when Uniloan financial management is turned on as a unified account margin switch
+     * Uniloan financial management amount, effective when turned on as a unified account margin switch
      */
     'funding'?: string;
     /**
-     * Funding version
+     * Funding version.
      */
     'fundingVersion'?: string;
     /**
@@ -87,7 +87,7 @@ export class UnifiedBalance {
      */
     'availableMargin'?: string;
     /**
-     * Currency enabled as margin: true - Enabled, false - Disabled
+     * Currency enabled as margin: true - Enabled, false - Disabled.
      */
     'enabledCollateral'?: boolean;
 

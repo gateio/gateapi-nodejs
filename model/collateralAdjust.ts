@@ -13,7 +13,7 @@ import { CollateralCurrency } from './collateralCurrency';
 
 export class CollateralAdjust {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId': number;
     /**
@@ -21,7 +21,7 @@ export class CollateralAdjust {
      */
     'type': string;
     /**
-     * Collateral Currency List
+     * Collateral Currency List.
      */
     'collaterals'?: Array<CollateralCurrency>;
 

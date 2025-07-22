@@ -13,42 +13,46 @@ import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 
 export class BrokerCommission1 {
     /**
-     * Commission Time. (unix timestamp)
+     * Commission Time. (unix timestamp).
      */
     'commissionTime'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Group name
+     * Group name.
      */
     'groupName'?: string;
     /**
-     * The amount of commission rebates
+     * The amount of commission rebates.
      */
     'amount'?: string;
     /**
-     * Fee
+     * Fee.
      */
     'fee'?: string;
     /**
-     * Fee currency
+     * Fee currency.
      */
     'feeAsset'?: string;
     /**
-     * The income from rebates, converted to USDT
+     * The income from rebates, converted to USDT.
      */
     'rebateFee'?: string;
     /**
-     * Rebate Type: Spot、Futures、Options
+     * Rebate Type: Spot、Futures、Options.、Alpha
      */
     'source'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;
+    /**
+     * Alpha token address
+     */
+    'alphaContractAddr'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -102,6 +106,11 @@ export class BrokerCommission1 {
             name: 'subBrokerInfo',
             baseName: 'sub_broker_info',
             type: 'BrokerCommissionSubBrokerInfo',
+        },
+        {
+            name: 'alphaContractAddr',
+            baseName: 'alpha_contract_addr',
+            type: 'string',
         },
     ];
 

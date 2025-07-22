@@ -13,11 +13,11 @@ import { FuturesAccount } from './futuresAccount';
 
 export class SubAccountFuturesBalance {
     /**
-     * User ID
+     * User ID.
      */
     'uid'?: string;
     /**
-     * Futures account balances
+     * Futures account balances.
      */
     'available'?: { [key: string]: FuturesAccount };
 

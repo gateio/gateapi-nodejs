@@ -11,39 +11,39 @@
 
 export class AgencyTransaction {
     /**
-     * Transaction Time. (unix timestamp)
+     * Transaction Time. (unix timestamp).
      */
     'transactionTime'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Group name
+     * Group name.
      */
     'groupName'?: string;
     /**
-     * Fee
+     * Fee.
      */
     'fee'?: string;
     /**
-     * Fee currency
+     * Fee currency.
      */
     'feeAsset'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Commission Amount
+     * Commission Amount.
      */
     'amount'?: string;
     /**
-     * Commission Asset
+     * Commission Asset.
      */
     'amountAsset'?: string;
     /**
-     * Source.  SPOT - SPOT Rebate, FUTURES - Futures Rebate
+     * Source. SPOT - SPOT Rebate, FUTURES - Futures Rebate.
      */
     'source'?: string;
 

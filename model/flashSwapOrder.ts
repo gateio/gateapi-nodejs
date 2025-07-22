@@ -10,39 +10,39 @@
  */
 
 /**
- * Flash swap order
+ * Flash swap order.
  */
 export class FlashSwapOrder {
     /**
-     * Flash swap order ID
+     * Flash swap order ID.
      */
     'id'?: number;
     /**
-     * Creation time of order (in milliseconds)
+     * Creation time of order (in milliseconds).
      */
     'createTime'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Currency to sell
+     * Currency to sell.
      */
     'sellCurrency'?: string;
     /**
-     * Amount to sell
+     * Amount to sell.
      */
     'sellAmount'?: string;
     /**
-     * Currency to buy
+     * Currency to buy.
      */
     'buyCurrency'?: string;
     /**
-     * Amount to buy
+     * Amount to buy.
      */
     'buyAmount'?: string;
     /**
-     * Price
+     * Price.
      */
     'price'?: string;
     /**

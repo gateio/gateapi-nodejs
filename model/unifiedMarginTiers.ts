@@ -12,15 +12,15 @@
 import { MarginTiers } from './marginTiers';
 
 /**
- * Unified margin tiers
+ * Unified margin tiers.
  */
 export class UnifiedMarginTiers {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Margin tiers
+     * Margin tiers.
      */
     'marginTiers'?: Array<MarginTiers>;
 

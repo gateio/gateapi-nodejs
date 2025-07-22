@@ -10,23 +10,23 @@
  */
 
 /**
- * Structured order
+ * Structured order.
  */
 export class StructuredOrderList {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: number;
     /**
-     * Plan ID
+     * Plan ID.
      */
     'pid'?: string;
     /**
-     * Locked coin
+     * Locked coin.
      */
     'lockCoin'?: string;
     /**
-     * Locked amount
+     * Locked amount.
      */
     'amount'?: string;
     /**
@@ -34,11 +34,11 @@ export class StructuredOrderList {
      */
     'status'?: string;
     /**
-     * Income
+     * Income.
      */
     'income'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

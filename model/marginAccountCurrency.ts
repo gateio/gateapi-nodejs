@@ -10,11 +10,11 @@
  */
 
 /**
- * Account currency details
+ * Account currency details.
  */
 export class MarginAccountCurrency {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
@@ -22,15 +22,15 @@ export class MarginAccountCurrency {
      */
     'available'?: string;
     /**
-     * Locked amount, used in margin trading
+     * Locked amount, used in margin trading.
      */
     'locked'?: string;
     /**
-     * Borrowed amount
+     * Borrowed amount.
      */
     'borrowed'?: string;
     /**
-     * Unpaid interests
+     * Unpaid interests.
      */
     'interest'?: string;
 

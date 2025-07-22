@@ -10,11 +10,11 @@
  */
 
 /**
- * Structured Products
+ * Structured Products.
  */
 export class StructuredGetProjectList {
     /**
-     * Plan ID
+     * Plan ID.
      */
     'id'?: number;
     /**
@@ -22,39 +22,39 @@ export class StructuredGetProjectList {
      */
     'type'?: string;
     /**
-     * name
+     * name.
      */
     'nameEn'?: string;
     /**
-     * Investment Currency
+     * Investment Currency.
      */
     'investmentCoin'?: string;
     /**
-     * Investment term
+     * Investment term.
      */
     'investmentPeriod'?: string;
     /**
-     * Minimum annual rate
+     * Minimum annual rate.
      */
     'minAnnualRate'?: string;
     /**
-     * Intermediate annual rate
+     * Intermediate annual rate.
      */
     'midAnnualRate'?: string;
     /**
-     * Maximum annual rate
+     * Maximum annual rate.
      */
     'maxAnnualRate'?: string;
     /**
-     * Watch market
+     * Watch market.
      */
     'watchMarket'?: string;
     /**
-     * start time
+     * start time.
      */
     'startTime'?: number;
     /**
-     * Finished time
+     * Finished time.
      */
     'endTime'?: number;
     /**

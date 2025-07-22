@@ -10,35 +10,35 @@
  */
 
 /**
- * Interest record
+ * Interest record.
  */
 export class UniLoanInterestRecord {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Actual rate
+     * Actual rate.
      */
     'actualRate'?: string;
     /**
-     * Interest
+     * Interest.
      */
     'interest'?: string;
     /**
-     * Status: 0 - fail, 1 - success
+     * Status: 0 - fail, 1 - success.
      */
     'status'?: number;
     /**
-     * Type, platform - platform，margin - margin
+     * Type, platform - platform，margin - margin.
      */
     'type'?: string;
     /**
-     * Created time
+     * Created time.
      */
     'createTime'?: number;
 

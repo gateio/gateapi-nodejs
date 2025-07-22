@@ -10,7 +10,7 @@
  */
 
 /**
- * Countdown cancel task detail
+ * Countdown cancel task detail.
  */
 export class CountdownCancelAllFuturesTask {
     /**
@@ -18,7 +18,7 @@ export class CountdownCancelAllFuturesTask {
      */
     'timeout': number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
 

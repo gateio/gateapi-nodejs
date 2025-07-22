@@ -10,19 +10,19 @@
  */
 
 /**
- * Current close order if any, or `null`
+ * Current close order if any, or `null`.
  */
 export class OptionsPositionCloseOrder {
     /**
-     * Close order ID
+     * Close order ID.
      */
     'id'?: number;
     /**
-     * Close order price （quote currency)
+     * Close order price （quote currency).
      */
     'price'?: string;
     /**
-     * Is the close order from liquidation
+     * Is the close order from liquidation.
      */
     'isLiq'?: boolean;
 

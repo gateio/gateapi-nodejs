@@ -10,15 +10,15 @@
  */
 
 /**
- * The returned result is a map type, where the key represents the market and the value represents the taker and maker fee rates.
+ * The returned result is a map type, where the key represents the market and taker and maker fee rates.
  */
 export class FuturesFee {
     /**
-     * Taker fee
+     * Taker fee.
      */
     'takerFee'?: string;
     /**
-     * maker fee
+     * maker fee.
      */
     'makerFee'?: string;
 

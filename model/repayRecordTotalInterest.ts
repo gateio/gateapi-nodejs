@@ -11,19 +11,19 @@
 
 export class RepayRecordTotalInterest {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Currency Index Price
+     * Currency Index Price.
      */
     'indexPrice'?: string;
     /**
-     * Interest Amount
+     * Interest Amount.
      */
     'amount'?: string;
     /**
-     * Interest amount converted to USDT
+     * Interest amount converted to USDT.
      */
     'amountUsdt'?: string;
 

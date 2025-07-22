@@ -11,11 +11,11 @@
 
 export class UnifiedBorrowable {
     /**
-     * Currency detail
+     * Currency detail.
      */
     'currency'?: string;
     /**
-     * Max borrowable amount
+     * Max borrowable amount.
      */
     'amount'?: string;
 

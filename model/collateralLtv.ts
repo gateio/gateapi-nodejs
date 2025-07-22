@@ -10,19 +10,19 @@
  */
 
 /**
- * Collateral Ratio
+ * Collateral Ratio.
  */
 export class CollateralLtv {
     /**
-     * The initial collateralization rate
+     * The initial collateralization rate.
      */
     'initLtv'?: string;
     /**
-     * Warning collateralization ratio
+     * Warning collateralization ratio.
      */
     'alertLtv'?: string;
     /**
-     * The liquidation collateralization rate
+     * The liquidation collateralization rate.
      */
     'liquidateLtv'?: string;
 

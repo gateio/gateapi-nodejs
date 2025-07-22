@@ -10,23 +10,23 @@
  */
 
 /**
- * Order cancellation result
+ * Order cancellation result.
  */
 export class FutureCancelOrderResult {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: string;
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Whether cancellation succeeded
+     * Whether cancellation succeeded.
      */
     'succeeded'?: boolean;
     /**
-     * Error message when failed to cancel the order; empty if succeeded
+     * Error message when failed to cancel the order; empty if succeeded.
      */
     'message'?: string;
 

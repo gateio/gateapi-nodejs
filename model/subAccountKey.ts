@@ -13,40 +13,40 @@ import { SubAccountKeyPerms } from './subAccountKeyPerms';
 
 export class SubAccountKey {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Mode: 1 - classic 2 - portfolio account
+     * Mode: 1 - classic 2 - portfolio account.
      */
     'mode'?: number;
     /**
-     * API key name
+     * API key name.
      */
     'name'?: string;
     'perms'?: Array<SubAccountKeyPerms>;
     /**
-     * ip white list (list will be removed if no value is passed)
+     * ip white list (list will be removed if no value is passed).
      */
     'ipWhitelist'?: Array<string>;
     /**
-     * API Key
+     * API Key.
      */
     'key'?: string;
     /**
-     * State 1 - normal 2 - locked 3 - frozen
+     * State 1 - normal 2 - locked 3 - frozen.
      */
     'state'?: number;
     /**
-     * Creation time
+     * Creation time.
      */
     'createdAt'?: number;
     /**
-     * Last update time
+     * Last update time.
      */
     'updatedAt'?: number;
     /**
-     * Last access time
+     * Last access time.
      */
     'lastAccess'?: number;
 

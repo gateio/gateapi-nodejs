@@ -10,7 +10,7 @@
  */
 
 /**
- * Countdown cancel task detail
+ * Countdown cancel task detail.
  */
 export class CountdownCancelAllOptionsTask {
     /**
@@ -18,11 +18,11 @@ export class CountdownCancelAllOptionsTask {
      */
     'timeout': number;
     /**
-     * Options contract name
+     * Options contract name.
      */
     'contract'?: string;
     /**
-     * Underlying
+     * Underlying.
      */
     'underlying'?: string;
 

@@ -12,15 +12,15 @@
 import { UnifiedDiscountTiers } from './unifiedDiscountTiers';
 
 /**
- * Currency discount tiers
+ * Currency discount tiers.
  */
 export class UnifiedDiscount {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency'?: string;
     /**
-     * Tiered discount
+     * Tiered discount.
      */
     'discountTiers'?: Array<UnifiedDiscountTiers>;
 

@@ -10,15 +10,15 @@
  */
 
 /**
- * Convert Small Balance
+ * Convert Small Balance.
  */
 export class ConvertSmallBalance {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: Array<string>;
     /**
-     * Whether to exchange all
+     * Whether to exchange all.
      */
     'isAll'?: boolean;
 

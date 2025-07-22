@@ -10,7 +10,7 @@
  */
 
 /**
- * Options positions
+ * Options positions.
  */
 export class MockOptionsPosition {
     /**

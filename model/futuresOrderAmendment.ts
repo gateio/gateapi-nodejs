@@ -19,17 +19,9 @@ export class FuturesOrderAmendment {
      */
     'price'?: string;
     /**
-     * Custom info during amending order
+     * Custom info during amending order.
      */
     'amendText'?: string;
-    /**
-     * Users can annotate this modification with information.
-     */
-    'bizInfo'?: string;
-    /**
-     * Users are able to modify the offer price manually.
-     */
-    'bbo'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -47,16 +39,6 @@ export class FuturesOrderAmendment {
         {
             name: 'amendText',
             baseName: 'amend_text',
-            type: 'string',
-        },
-        {
-            name: 'bizInfo',
-            baseName: 'biz_info',
-            type: 'string',
-        },
-        {
-            name: 'bbo',
-            baseName: 'bbo',
             type: 'string',
         },
     ];

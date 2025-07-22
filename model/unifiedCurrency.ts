@@ -11,23 +11,23 @@
 
 export class UnifiedCurrency {
     /**
-     * Currency name
+     * Currency name.
      */
     'name'?: string;
     /**
-     * Currency precision
+     * Currency precision.
      */
     'prec'?: string;
     /**
-     * The minimum debit limit is the unit of currency
+     * The minimum debit limit is the unit of currency.
      */
     'minBorrowAmount'?: string;
     /**
-     * The minimum debit limit is the unit of currency
+     * The minimum debit limit is the unit of currency.
      */
     'userMaxBorrowAmount'?: string;
     /**
-     * The maximum debit limit for the platform is USDT
+     * The maximum debit limit for the platform is USDT.
      */
     'totalMaxBorrowAmount'?: string;
     /**

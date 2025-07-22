@@ -10,35 +10,35 @@
  */
 
 /**
- * User\'s currency statistics data
+ * User\'s currency statistics data.
  */
 export class UserLtvInfo {
     /**
-     * Collateral
+     * Collateral.
      */
     'collateralCurrency'?: string;
     /**
-     * Borrowed currency
+     * Borrowed currency.
      */
     'borrowCurrency'?: string;
     /**
-     * The initial collateralization rate
+     * The initial collateralization rate.
      */
     'initLtv'?: string;
     /**
-     * Warning collateralization ratio
+     * Warning collateralization ratio.
      */
     'alertLtv'?: string;
     /**
-     * The liquidation collateralization rate
+     * The liquidation collateralization rate.
      */
     'liquidateLtv'?: string;
     /**
-     * Minimum borrowable amount for the loan currency
+     * Minimum borrowable amount for the loan currency.
      */
     'minBorrowAmount'?: string;
     /**
-     * Remaining borrowable amount for the loan currency
+     * Remaining borrowable amount for the loan currency.
      */
     'leftBorrowableAmount'?: string;
 

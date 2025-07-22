@@ -10,11 +10,11 @@
  */
 
 /**
- * Spot
+ * Spot.
  */
 export class MockSpotBalance {
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**

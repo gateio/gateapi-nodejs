@@ -13,15 +13,15 @@ import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
 import { CollateralCurrencyInfo } from './collateralCurrencyInfo';
 
 /**
- * Multi-Collateral Order
+ * Multi-Collateral Order.
  */
 export class MultiCollateralOrder {
     /**
-     * Order ID
+     * Order ID.
      */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed
+     * current - current, fixed - fixed.
      */
     'orderType'?: string;
     /**
@@ -29,7 +29,7 @@ export class MultiCollateralOrder {
      */
     'fixedType'?: string;
     /**
-     * Fixed interest rate
+     * Fixed interest rate.
      */
     'fixedRate'?: string;
     /**
@@ -37,15 +37,15 @@ export class MultiCollateralOrder {
      */
     'expireTime'?: number;
     /**
-     * Fixed interest rate, automatic renewal
+     * Fixed interest rate, automatic renewal.
      */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment
+     * Fixed interest rate, automatic repayment.
      */
     'autoRepay'?: boolean;
     /**
-     * The current collateralization rate
+     * The current collateralization rate.
      */
     'currentLtv'?: string;
     /**
@@ -53,23 +53,23 @@ export class MultiCollateralOrder {
      */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds
+     * Borrowing time, timestamp in seconds.
      */
     'borrowTime'?: number;
     /**
-     * Value of Left repay amount converted in USDT
+     * Value of Left repay amount converted in USDT.
      */
     'totalLeftRepayUsdt'?: string;
     /**
-     * Value of Collateral amount in USDT
+     * Value of Collateral amount in USDT.
      */
     'totalLeftCollateralUsdt'?: string;
     /**
-     * Borrowing Currency List
+     * Borrowing Currency List.
      */
     'borrowCurrencies'?: Array<BorrowCurrencyInfo>;
     /**
-     * Collateral Currency List
+     * Collateral Currency List.
      */
     'collateralCurrencies'?: Array<CollateralCurrencyInfo>;
 

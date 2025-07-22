@@ -10,15 +10,15 @@
  */
 
 /**
- * Dual Investment order
+ * Dual Investment order.
  */
 export class PlaceDualInvestmentOrder {
     /**
-     * Plan ID
+     * Plan ID.
      */
     'planId': string;
     /**
-     * Subscription amount, mutually exclusive with the copies field
+     * Subscription amount, mutually exclusive with the copies field.
      */
     'amount': string;
     /**

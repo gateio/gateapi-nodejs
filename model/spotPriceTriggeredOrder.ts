@@ -13,33 +13,33 @@ import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 
 /**
- * Spot order detail
+ * Spot order detail.
  */
 export class SpotPriceTriggeredOrder {
     'trigger': SpotPriceTrigger;
     'put': SpotPricePutOrder;
     /**
-     * Auto order ID
+     * Auto order ID.
      */
     'id'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'market': string;
     /**
-     * Creation time
+     * Creation time.
      */
     'ctime'?: number;
     /**
-     * Finished time
+     * Finished time.
      */
     'ftime'?: number;
     /**
-     * ID of the newly created order on condition triggered
+     * ID of the newly created order on condition triggered.
      */
     'firedOrderId'?: number;
     /**
@@ -47,7 +47,7 @@ export class SpotPriceTriggeredOrder {
      */
     'status'?: string;
     /**
-     * Additional remarks on how the order was finished
+     * Additional remarks on how the order was finished.
      */
     'reason'?: string;
 

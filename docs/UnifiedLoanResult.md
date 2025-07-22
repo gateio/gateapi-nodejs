@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tranId** | **number** | Transaction id | [optional] [default to undefined]
+**tranId** | **number** | Transaction id. | [optional] [default to undefined]
 

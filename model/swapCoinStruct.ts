@@ -11,41 +11,65 @@
 
 export class SwapCoinStruct {
     /**
-     * Order ID
+     * Order ID.
      */
     'id'?: number;
     /**
-     * User ID
-     */
-    'uid'?: number;
-    /**
-     * Currency
-     */
-    'coin'?: string;
-    /**
-     * Type: 0-Lock, 1-Certificate
-     */
-    'type'?: number;
-    /**
-     * Amount
-     */
-    'amount'?: string;
-    /**
-     * Exchange Ratio
-     */
-    'exchangeRate'?: string;
-    /**
-     * Plan ID
+     * Plan ID.
      */
     'pid'?: number;
     /**
-     * status 1-success
+     * User ID.
+     */
+    'uid'?: number;
+    /**
+     * Currency.
+     */
+    'coin'?: string;
+    /**
+     * 类型 0-质押 1-赎回
+     */
+    'type'?: number;
+    /**
+     * 子类型
+     */
+    'subtype'?: string;
+    /**
+     * Amount.
+     */
+    'amount'?: string;
+    /**
+     * Exchange Ratio.
+     */
+    'exchangeRate'?: string;
+    /**
+     * 兑换金额
+     */
+    'exchangeAmount'?: string;
+    /**
+     * 更新时间戳
+     */
+    'updateStamp'?: number;
+    /**
+     * Transaction timestamp.
+     */
+    'createStamp'?: number;
+    /**
+     * status 1-success.
      */
     'status'?: number;
     /**
-     * Transaction timestamp
+     * DEFI协议类型
      */
-    'createStamp'?: number;
+    'protocolType'?: number;
+    /**
+     * 参考ID
+     */
+    'clientOrderId'?: string;
+    /**
+     * Order source.
+     */
+    'source'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -53,6 +77,11 @@ export class SwapCoinStruct {
         {
             name: 'id',
             baseName: 'id',
+            type: 'number',
+        },
+        {
+            name: 'pid',
+            baseName: 'pid',
             type: 'number',
         },
         {
@@ -71,6 +100,11 @@ export class SwapCoinStruct {
             type: 'number',
         },
         {
+            name: 'subtype',
+            baseName: 'subtype',
+            type: 'string',
+        },
+        {
             name: 'amount',
             baseName: 'amount',
             type: 'string',
@@ -81,8 +115,18 @@ export class SwapCoinStruct {
             type: 'string',
         },
         {
-            name: 'pid',
-            baseName: 'pid',
+            name: 'exchangeAmount',
+            baseName: 'exchange_amount',
+            type: 'string',
+        },
+        {
+            name: 'updateStamp',
+            baseName: 'updateStamp',
+            type: 'number',
+        },
+        {
+            name: 'createStamp',
+            baseName: 'createStamp',
             type: 'number',
         },
         {
@@ -91,9 +135,19 @@ export class SwapCoinStruct {
             type: 'number',
         },
         {
-            name: 'createStamp',
-            baseName: 'createStamp',
+            name: 'protocolType',
+            baseName: 'protocol_type',
             type: 'number',
+        },
+        {
+            name: 'clientOrderId',
+            baseName: 'client_order_id',
+            type: 'string',
+        },
+        {
+            name: 'source',
+            baseName: 'source',
+            type: 'string',
         },
     ];
 

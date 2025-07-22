@@ -11,11 +11,11 @@
 
 export class SubUserMode {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * Is it a unified account?
+     * Is it a unified account?.
      */
     'isUnified'?: boolean;
     /**

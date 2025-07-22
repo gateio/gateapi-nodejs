@@ -11,11 +11,11 @@
 
 export class FuturesPositionCrossMode {
     /**
-     * Full position-by-position model, ISOLATED-by-position, CROSS-full position
+     * Full position-by-position model, ISOLATED-by-position, CROSS-full position.
      */
     'mode': string;
     /**
-     * Contract Market
+     * Contract Market.
      */
     'contract': string;
 

@@ -10,15 +10,15 @@
  */
 
 /**
- * Total balances calculated with specified currency unit
+ * Total balances calculated with specified currency unit.
  */
 export class AccountBalance {
     /**
-     * Account total balance amount
+     * Account total balance amount.
      */
     'amount'?: string;
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: AccountBalance.Currency;
     /**
@@ -26,7 +26,7 @@ export class AccountBalance {
      */
     'unrealisedPnl'?: string;
     /**
-     * Borrowed，this field will only appear in margin and cross_margin accounts
+     * Borrowed，this field will only appear in margin and cross_margin accounts.
      */
     'borrowed'?: string;
 

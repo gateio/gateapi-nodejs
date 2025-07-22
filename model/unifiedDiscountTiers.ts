@@ -11,23 +11,23 @@
 
 export class UnifiedDiscountTiers {
     /**
-     * Tier
+     * Tier.
      */
     'tier'?: string;
     /**
-     * Discount
+     * Discount.
      */
     'discount'?: string;
     /**
-     * Lower limit
+     * Lower limit.
      */
     'lowerLimit'?: string;
     /**
-     * Upper limit,＋ indicates positive infinity
+     * Upper limit,＋ indicates positive infinity.
      */
     'upperLimit'?: string;
     /**
-     * Position leverage
+     * Position leverage.
      */
     'leverage'?: string;
 

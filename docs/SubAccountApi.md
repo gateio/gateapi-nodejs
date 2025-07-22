@@ -4,24 +4,24 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listSubAccounts**](SubAccountApi.md#listSubAccounts) | **GET** /sub_accounts | List sub-accounts
-[**createSubAccounts**](SubAccountApi.md#createSubAccounts) | **POST** /sub_accounts | Create a new sub-account
-[**getSubAccount**](SubAccountApi.md#getSubAccount) | **GET** /sub_accounts/{user_id} | Get the sub-account
-[**listSubAccountKeys**](SubAccountApi.md#listSubAccountKeys) | **GET** /sub_accounts/{user_id}/keys | List all API Key of the sub-account
-[**createSubAccountKeys**](SubAccountApi.md#createSubAccountKeys) | **POST** /sub_accounts/{user_id}/keys | Create API Key of the sub-account
-[**getSubAccountKey**](SubAccountApi.md#getSubAccountKey) | **GET** /sub_accounts/{user_id}/keys/{key} | Get the API Key of the sub-account
-[**updateSubAccountKeys**](SubAccountApi.md#updateSubAccountKeys) | **PUT** /sub_accounts/{user_id}/keys/{key} | Update API key of the sub-account
-[**deleteSubAccountKeys**](SubAccountApi.md#deleteSubAccountKeys) | **DELETE** /sub_accounts/{user_id}/keys/{key} | Delete API key of the sub-account
-[**lockSubAccount**](SubAccountApi.md#lockSubAccount) | **POST** /sub_accounts/{user_id}/lock | Lock the sub-account
-[**unlockSubAccount**](SubAccountApi.md#unlockSubAccount) | **POST** /sub_accounts/{user_id}/unlock | Unlock the sub-account
-[**listUnifiedMode**](SubAccountApi.md#listUnifiedMode) | **GET** /sub_accounts/unified_mode | Get sub-account mode
+[**listSubAccounts**](SubAccountApi.md#listSubAccounts) | **GET** /sub_accounts | List sub-accounts.
+[**createSubAccounts**](SubAccountApi.md#createSubAccounts) | **POST** /sub_accounts | Create a new sub-account.
+[**getSubAccount**](SubAccountApi.md#getSubAccount) | **GET** /sub_accounts/{user_id} | Get the sub-account.
+[**listSubAccountKeys**](SubAccountApi.md#listSubAccountKeys) | **GET** /sub_accounts/{user_id}/keys | List all API Key of the sub-account.
+[**createSubAccountKeys**](SubAccountApi.md#createSubAccountKeys) | **POST** /sub_accounts/{user_id}/keys | Create API Key of the sub-account.
+[**getSubAccountKey**](SubAccountApi.md#getSubAccountKey) | **GET** /sub_accounts/{user_id}/keys/{key} | Get the API Key of the sub-account.
+[**updateSubAccountKeys**](SubAccountApi.md#updateSubAccountKeys) | **PUT** /sub_accounts/{user_id}/keys/{key} | Update API key of the sub-account.
+[**deleteSubAccountKeys**](SubAccountApi.md#deleteSubAccountKeys) | **DELETE** /sub_accounts/{user_id}/keys/{key} | Delete API key of the sub-account.
+[**lockSubAccount**](SubAccountApi.md#lockSubAccount) | **POST** /sub_accounts/{user_id}/lock | Lock the sub-account.
+[**unlockSubAccount**](SubAccountApi.md#unlockSubAccount) | **POST** /sub_accounts/{user_id}/unlock | Unlock the sub-account.
+[**listUnifiedMode**](SubAccountApi.md#listUnifiedMode) | **GET** /sub_accounts/unified_mode | Get sub-account mode.
 
 
 ## listSubAccounts
 
 > Promise<{ response: http.IncomingMessage; body: Array<SubAccount>; }> listSubAccounts(opts)
 
-List sub-accounts
+List sub-accounts.
 
 ### Example
 
@@ -66,7 +66,7 @@ Promise<{ response: AxiosResponse; body: Array<SubAccount>; }> [SubAccount](SubA
 
 > Promise<{ response: http.IncomingMessage; body: SubAccount; }> createSubAccounts(subAccount)
 
-Create a new sub-account
+Create a new sub-account.
 
 ### Example
 
@@ -109,7 +109,7 @@ Promise<{ response: AxiosResponse; body: SubAccount; }> [SubAccount](SubAccount.
 
 > Promise<{ response: http.IncomingMessage; body: SubAccount; }> getSubAccount(userId)
 
-Get the sub-account
+Get the sub-account.
 
 ### Example
 
@@ -122,7 +122,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
+const userId = 56; // number | Sub-account user id.
 api.getSubAccount(userId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -133,7 +133,7 @@ api.getSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
 
 ### Return type
 
@@ -152,7 +152,7 @@ Promise<{ response: AxiosResponse; body: SubAccount; }> [SubAccount](SubAccount.
 
 > Promise<{ response: http.IncomingMessage; body: Array<SubAccountKey>; }> listSubAccountKeys(userId)
 
-List all API Key of the sub-account
+List all API Key of the sub-account.
 
 ### Example
 
@@ -165,7 +165,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
+const userId = 56; // number | Sub-account user id.
 api.listSubAccountKeys(userId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -176,7 +176,7 @@ api.listSubAccountKeys(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
 
 ### Return type
 
@@ -195,7 +195,7 @@ Promise<{ response: AxiosResponse; body: Array<SubAccountKey>; }> [SubAccountKey
 
 > Promise<{ response: http.IncomingMessage; body: SubAccountKey; }> createSubAccountKeys(userId, subAccountKey)
 
-Create API Key of the sub-account
+Create API Key of the sub-account.
 
 ### Example
 
@@ -208,7 +208,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
+const userId = 56; // number | Sub-account user id.
 const subAccountKey = new SubAccountKey(); // SubAccountKey | 
 api.createSubAccountKeys(userId, subAccountKey)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -220,7 +220,7 @@ api.createSubAccountKeys(userId, subAccountKey)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
  **subAccountKey** | [**SubAccountKey**](SubAccountKey.md)|  | 
 
 ### Return type
@@ -240,7 +240,7 @@ Promise<{ response: AxiosResponse; body: SubAccountKey; }> [SubAccountKey](SubAc
 
 > Promise<{ response: http.IncomingMessage; body: SubAccountKey; }> getSubAccountKey(userId, key)
 
-Get the API Key of the sub-account
+Get the API Key of the sub-account.
 
 ### Example
 
@@ -253,8 +253,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
-const key = "key_example"; // string | The API Key of the sub-account
+const userId = 56; // number | Sub-account user id.
+const key = "key_example"; // string | The API Key of the sub-account.
 api.getSubAccountKey(userId, key)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -265,8 +265,8 @@ api.getSubAccountKey(userId, key)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
- **key** | **string**| The API Key of the sub-account | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
+ **key** | **string**| The API Key of the sub-account. | [default to undefined]
 
 ### Return type
 
@@ -285,7 +285,7 @@ Promise<{ response: AxiosResponse; body: SubAccountKey; }> [SubAccountKey](SubAc
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> updateSubAccountKeys(userId, key, subAccountKey)
 
-Update API key of the sub-account
+Update API key of the sub-account.
 
 ### Example
 
@@ -298,8 +298,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
-const key = "key_example"; // string | The API Key of the sub-account
+const userId = 56; // number | Sub-account user id.
+const key = "key_example"; // string | The API Key of the sub-account.
 const subAccountKey = new SubAccountKey(); // SubAccountKey | 
 api.updateSubAccountKeys(userId, key, subAccountKey)
    .then(value => console.log('API called successfully.'),
@@ -311,8 +311,8 @@ api.updateSubAccountKeys(userId, key, subAccountKey)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
- **key** | **string**| The API Key of the sub-account | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
+ **key** | **string**| The API Key of the sub-account. | [default to undefined]
  **subAccountKey** | [**SubAccountKey**](SubAccountKey.md)|  | 
 
 ### Return type
@@ -332,7 +332,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> deleteSubAccountKeys(userId, key)
 
-Delete API key of the sub-account
+Delete API key of the sub-account.
 
 ### Example
 
@@ -345,8 +345,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | Sub-account user id
-const key = "key_example"; // string | The API Key of the sub-account
+const userId = 56; // number | Sub-account user id.
+const key = "key_example"; // string | The API Key of the sub-account.
 api.deleteSubAccountKeys(userId, key)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
@@ -357,8 +357,8 @@ api.deleteSubAccountKeys(userId, key)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| Sub-account user id | [default to undefined]
- **key** | **string**| The API Key of the sub-account | [default to undefined]
+ **userId** | **number**| Sub-account user id. | [default to undefined]
+ **key** | **string**| The API Key of the sub-account. | [default to undefined]
 
 ### Return type
 
@@ -377,7 +377,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> lockSubAccount(userId)
 
-Lock the sub-account
+Lock the sub-account.
 
 ### Example
 
@@ -390,7 +390,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | The user id of the sub-account
+const userId = 56; // number | The user id of the sub-account.
 api.lockSubAccount(userId)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
@@ -401,7 +401,7 @@ api.lockSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| The user id of the sub-account | [default to undefined]
+ **userId** | **number**| The user id of the sub-account. | [default to undefined]
 
 ### Return type
 
@@ -420,7 +420,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> unlockSubAccount(userId)
 
-Unlock the sub-account
+Unlock the sub-account.
 
 ### Example
 
@@ -433,7 +433,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.SubAccountApi(client);
-const userId = 56; // number | The user id of the sub-account
+const userId = 56; // number | The user id of the sub-account.
 api.unlockSubAccount(userId)
    .then(value => console.log('API called successfully.'),
          error => console.error(error));
@@ -444,7 +444,7 @@ api.unlockSubAccount(userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **number**| The user id of the sub-account | [default to undefined]
+ **userId** | **number**| The user id of the sub-account. | [default to undefined]
 
 ### Return type
 
@@ -463,7 +463,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<SubUserMode>; }> listUnifiedMode()
 
-Get sub-account mode
+Get sub-account mode.
 
 Unified account mode： - &#x60;classic&#x60;: Classic account mode - &#x60;multi_currency&#x60;: Multi-currency margin mode - &#x60;portfolio&#x60;: Portfolio margin mode
 

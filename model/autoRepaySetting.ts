@@ -11,7 +11,7 @@
 
 export class AutoRepaySetting {
     /**
-     * Auto repayment status. `on` - enabled, `off` - disabled
+     * Auto repayment status. `on` - enabled, `off` - disabled.
      */
     'status'?: AutoRepaySetting.Status;
 

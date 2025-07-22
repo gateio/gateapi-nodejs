@@ -10,23 +10,23 @@
  */
 
 /**
- * Blockchain Mining
+ * Blockchain Mining.
  */
 export class SwapCoin {
     /**
-     * Currency
+     * Currency.
      */
     'coin': string;
     /**
-     * 0 - Stake  1 - Redeem
+     * 0 - Stake 1 - Redeem.
      */
     'side': string;
     /**
-     * Size
+     * Size.
      */
     'amount': string;
     /**
-     * DeFi-type Mining Protocol Identifier
+     * DeFi-type Mining Protocol Identifier.
      */
     'pid'?: number;
 

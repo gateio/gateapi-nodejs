@@ -41,7 +41,7 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary List currencies for lending
+     * @summary List currencies for lending.
      */
     public async listUniCurrencies(): Promise<{ response: AxiosResponse; body: Array<UniCurrency> }> {
         const localVarPath = this.client.basePath + '/earn/uni/currencies';
@@ -68,8 +68,8 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary Get currency detail for lending
-     * @param currency Currency
+     * @summary Get currency detail for lending.
+     * @param currency Currency.
      */
     public async getUniCurrency(currency: string): Promise<{ response: AxiosResponse; body: UniCurrency }> {
         const localVarPath =
@@ -103,11 +103,11 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary List user\'s lending orders
+     * @summary List user\'s lending orders.
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
      */
     public async listUserUniLends(opts: {
         currency?: string;
@@ -150,8 +150,8 @@ export class EarnUniApi {
     }
 
     /**
-     * Lending: When lending, a minimum lending rate must be set. After successful lending is determined on an hourly basis, earnings will be calculated based on the determined rate.  Earnings for each hour will be settled at the top of the hour. If lending fails due to an excessively high interest rate, no interest will be earned for that hour.   If funds are redeemed before the hourly determination, no interest will be earned for that hour.   Priority: Under the same interest rate, wealth management products created or modified earlier will be prioritized for lending.  Redemption: For funds that failed to be lent, redemption will be credited immediately. For funds successfully lent, they are entitled to the earnings for that hour, and redemption will be credited in the next hourly interval.  Note: The two minutes before and after the hourly mark are the settlement period, during which lending and redemption are prohibited.
-     * @summary Lend or redeem
+     * Lending: When lending, a minimum lending rate must be set. After successful lending is determined on an hourly basis, earnings will be calculated based on the determined rate.  Earnings for each hour will be settled at the top of the hour. If lending fails due to an excessively high interest rate, no interest will be earned for that hour.  If funds are redeemed before the hourly for that hour.  Priority: Under the same interest rate, wealth management products created or modified earlier will be prioritized for lending.  Redemption: For funds that failed to be lent, redemption will be credited immediately. For funds successfully lent, they are entitled to the earnings for that hour, and redemption will be credited in the next hourly interval.  Note: The two minutes before and after the hourly mark are the settlement period, during which lending and redemption are prohibited.
+     * @summary Lend or redeem.
      * @param createUniLend
      */
     public async createUniLend(createUniLend: CreateUniLend): Promise<{ response: AxiosResponse; body?: any }> {
@@ -177,8 +177,8 @@ export class EarnUniApi {
     }
 
     /**
-     * Currently only supports amending the minimum interest rate (hour)
-     * @summary Amend lending order
+     * Currently only supports amending the minimum interest rate (hour).
+     * @summary Amend lending order.
      * @param patchUniLend
      */
     public async changeUniLend(patchUniLend: PatchUniLend): Promise<{ response: AxiosResponse; body?: any }> {
@@ -205,14 +205,14 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary List records of lending
+     * @summary List records of lending.
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.type type: lend - lend, redeem - redeem
+     * @param opts.type type: lend - lend, redeem - redeem.
      */
     public async listUniLendRecords(opts: {
         currency?: string;
@@ -271,8 +271,8 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary Get the user\'s total interest income of specified currency
-     * @param currency Currency
+     * @summary Get the user\'s total interest income of specified currency.
+     * @param currency Currency.
      */
     public async getUniInterest(currency: string): Promise<{ response: AxiosResponse; body: UniLendInterest }> {
         const localVarPath =
@@ -306,11 +306,11 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary List interest records
+     * @summary List interest records.
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency
-     * @param opts.page Page number
-     * @param opts.limit Maximum response items.  Default: 100, minimum: 1, Maximum: 100
+     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.page Page number.
+     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -366,8 +366,8 @@ export class EarnUniApi {
 
     /**
      *
-     * @summary query currency interest compounding status
-     * @param currency Currency
+     * @summary query currency interest compounding status.
+     * @param currency Currency.
      */
     public async getUniInterestStatus(
         currency: string,
@@ -405,11 +405,11 @@ export class EarnUniApi {
     }
 
     /**
-     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-07-15 06:50+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @summary UniLoan currency annualized trend chart
-     * @param from Start timestamp, unit s, maximum span of 30 days
-     * @param to End timestamp, unit s, maximum span of 30 days
-     * @param asset Currency name
+     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-07-17 21:35+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @summary UniLoan currency annualized trend chart.
+     * @param from Start timestamp, unit s, maximum span of 30 days.
+     * @param to End timestamp, unit s, maximum span of 30 days.
+     * @param asset Currency name.
      */
     public async listUniChart(
         from: number,
@@ -460,8 +460,8 @@ export class EarnUniApi {
     }
 
     /**
-     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-07-15 06:50+0000 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-     * @summary Currency estimate annualized interest rate
+     * Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-07-17 21:35+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+     * @summary Currency estimate annualized interest rate.
      */
     public async listUniRate(): Promise<{ response: AxiosResponse; body: Array<InlineResponse2001> }> {
         const localVarPath = this.client.basePath + '/earn/uni/rate';

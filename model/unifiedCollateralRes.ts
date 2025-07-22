@@ -10,11 +10,11 @@
  */
 
 /**
- * Return of unified account collateral mode settings
+ * Return of unified account collateral mode settings.
  */
 export class UnifiedCollateralRes {
     /**
-     * Whether the setting was successful
+     * Whether the setting was successful.
      */
     'isSuccess'?: boolean;
 

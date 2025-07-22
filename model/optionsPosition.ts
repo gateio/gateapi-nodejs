@@ -12,68 +12,68 @@
 import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 
 /**
- * Options position information
+ * Options position information.
  */
 export class OptionsPosition {
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Underlying
+     * Underlying.
      */
     'underlying'?: string;
     /**
-     * Underlying price (quote currency)
+     * Underlying price (quote currency).
      */
     'underlyingPrice'?: string;
     /**
-     * Options contract name
+     * Options contract name.
      */
     'contract'?: string;
     /**
-     * Position size (contract size)
+     * Position size (contract size).
      */
     'size'?: number;
     /**
-     * Entry size (quote currency)
+     * Entry size (quote currency).
      */
     'entryPrice'?: string;
     /**
-     * Current mark price (quote currency)
+     * Current mark price (quote currency).
      */
     'markPrice'?: string;
     /**
-     * Implied volatility
+     * Implied volatility.
      */
     'markIv'?: string;
     /**
-     * Realized PNL
+     * Realized PNL.
      */
     'realisedPnl'?: string;
     /**
-     * Unrealized PNL
+     * Unrealized PNL.
      */
     'unrealisedPnl'?: string;
     /**
-     * Current open orders
+     * Current open orders.
      */
     'pendingOrders'?: number;
     'closeOrder'?: OptionsPositionCloseOrder | null;
     /**
-     * Delta
+     * Delta.
      */
     'delta'?: string;
     /**
-     * Gamma
+     * Gamma.
      */
     'gamma'?: string;
     /**
-     * Vega
+     * Vega.
      */
     'vega'?: string;
     /**
-     * Theta
+     * Theta.
      */
     'theta'?: string;
 

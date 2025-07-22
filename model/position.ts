@@ -12,19 +12,19 @@
 import { PositionCloseOrder } from './positionCloseOrder';
 
 /**
- * Futures position details
+ * Futures position details.
  */
 export class Position {
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Futures contract
+     * Futures contract.
      */
     'contract'?: string;
     /**
-     * Position size
+     * Position size.
      */
     'size'?: number;
     /**
@@ -32,35 +32,35 @@ export class Position {
      */
     'leverage'?: string;
     /**
-     * Position risk limit
+     * Position risk limit.
      */
     'riskLimit'?: string;
     /**
-     * Maximum leverage under current risk limit
+     * Maximum leverage under current risk limit.
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate under current risk limit
+     * Maintenance rate under current risk limit.
      */
     'maintenanceRate'?: string;
     /**
-     * Position value calculated in settlement currency
+     * Position value calculated in settlement currency.
      */
     'value'?: string;
     /**
-     * Position margin
+     * Position margin.
      */
     'margin'?: string;
     /**
-     * Entry price
+     * Entry price.
      */
     'entryPrice'?: string;
     /**
-     * Liquidation price
+     * Liquidation price.
      */
     'liqPrice'?: string;
     /**
-     * Current mark price
+     * Current mark price.
      */
     'markPrice'?: string;
     /**
@@ -72,39 +72,39 @@ export class Position {
      */
     'maintenanceMargin'?: string;
     /**
-     * Unrealized PNL
+     * Unrealized PNL.
      */
     'unrealisedPnl'?: string;
     /**
-     * Realized PNL
+     * Realized PNL.
      */
     'realisedPnl'?: string;
     /**
-     * Realized PNL - Position P/L
+     * Realized PNL - Position P/L.
      */
     'pnlPnl'?: string;
     /**
-     * Realized PNL -  Funding Fees
+     * Realized PNL - Funding Fees.
      */
     'pnlFund'?: string;
     /**
-     * Realized PNL - Transaction Fees
+     * Realized PNL - Transaction Fees.
      */
     'pnlFee'?: string;
     /**
-     * History realized PNL
+     * History realized PNL.
      */
     'historyPnl'?: string;
     /**
-     * PNL of last position close
+     * PNL of last position close.
      */
     'lastClosePnl'?: string;
     /**
-     * Realized POINT PNL
+     * Realized POINT PNL.
      */
     'realisedPoint'?: string;
     /**
-     * History realized POINT PNL
+     * History realized POINT PNL.
      */
     'historyPoint'?: string;
     /**
@@ -112,20 +112,20 @@ export class Position {
      */
     'adlRanking'?: number;
     /**
-     * Current open orders
+     * Current open orders.
      */
     'pendingOrders'?: number;
     'closeOrder'?: PositionCloseOrder | null;
     /**
-     * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: short position in dual mode
+     * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: mode
      */
     'mode'?: Position.Mode;
     /**
-     * Cross margin leverage(valid only when `leverage` is 0)
+     * Cross margin leverage(valid only when `leverage` is 0).
      */
     'crossLeverageLimit'?: string;
     /**
-     * Last update time
+     * Last update time.
      */
     'updateTime'?: number;
     /**
@@ -133,15 +133,15 @@ export class Position {
      */
     'updateId'?: number;
     /**
-     * First Open Time
+     * First Open Time.
      */
     'openTime'?: number;
     /**
-     * Risk limit table ID
+     * Risk limit table ID.
      */
     'riskLimitTable'?: string;
     /**
-     * Average maintenance margin rate
+     * Average maintenance margin rate.
      */
     'averageMaintenanceRate'?: string;
 

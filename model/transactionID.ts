@@ -11,7 +11,7 @@
 
 export class TransactionID {
     /**
-     * Order id
+     * Order id.
      */
     'txId'?: number;
 

@@ -10,11 +10,11 @@
  */
 
 /**
- * Unified account loan and repayment response results
+ * Unified account loan and repayment response results.
  */
 export class UnifiedLoanResult {
     /**
-     * Transaction id
+     * Transaction id.
      */
     'tranId'?: number;
 

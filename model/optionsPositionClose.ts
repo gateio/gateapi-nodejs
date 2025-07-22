@@ -11,27 +11,27 @@
 
 export class OptionsPositionClose {
     /**
-     * Position close time
+     * Position close time.
      */
     'time'?: number;
     /**
-     * Options contract name
+     * Options contract name.
      */
     'contract'?: string;
     /**
-     * Position side, long or short
+     * Position side, long or short.
      */
     'side'?: OptionsPositionClose.Side;
     /**
-     * PNL
+     * PNL.
      */
     'pnl'?: string;
     /**
-     * Text of close order
+     * Text of close order.
      */
     'text'?: string;
     /**
-     * settlement size
+     * settlement size.
      */
     'settleSize'?: string;
 

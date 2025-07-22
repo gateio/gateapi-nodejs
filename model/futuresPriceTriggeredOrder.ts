@@ -13,45 +13,45 @@ import { FuturesInitialOrder } from './futuresInitialOrder';
 import { FuturesPriceTrigger } from './futuresPriceTrigger';
 
 /**
- * Futures order details
+ * Futures order details.
  */
 export class FuturesPriceTriggeredOrder {
     'initial': FuturesInitialOrder;
     'trigger': FuturesPriceTrigger;
     /**
-     * Auto order ID
+     * Auto order ID.
      */
     'id'?: number;
     /**
-     * User ID
+     * User ID.
      */
     'user'?: number;
     /**
-     * Creation time
+     * Creation time.
      */
     'createTime'?: number;
     /**
-     * Finished time
+     * Finished time.
      */
     'finishTime'?: number;
     /**
-     * ID of the newly created order on condition triggered
+     * ID of the newly created order on condition triggered.
      */
     'tradeId'?: number;
     /**
-     * Auto order status  - `open`: order is active - `finished`: order is finished - `inactive`: order is not active, only for close-long-order or close-short-order - `invalid`: order is invalid, only for close-long-order or close-short-order
+     * Auto order status  - `open`: order is active - `finished`: order is finished - `inactive`: order is not active, only for close-long-order or close-short-order - `invalid`: order is close-short-order
      */
     'status'?: FuturesPriceTriggeredOrder.Status;
     /**
-     * How order is finished
+     * How order is finished.
      */
     'finishAs'?: FuturesPriceTriggeredOrder.FinishAs;
     /**
-     * Additional remarks on how the order was finished
+     * Additional remarks on how the order was finished.
      */
     'reason'?: string;
     /**
-     * Types of stop-profit and stop-loss, including:  - `close-long-order`: Entrusting order stop profit and stop loss, flat long position - `close-short-order`: Entrusted order stop profit and stop loss, short position  - `close-long-position`: Position stop-profit stop loss, used to close long positions - `close-short-position`: Position stop-profit stop loss, used to close all short positions - `plan-close-long-position`: Position plan take profit and stop loss, used to close long positions in all or part of long positions - `plan-close-short-position`: Position plan stop-profit and stop loss, used to close all short positions or partially close short positions  The two types of entrusted order stop-profit and stop-loss are read-only and cannot be passed in through requests
+     * Types of stop-profit and stop-loss, including:  - `close-long-order`: Entrusting order stop profit and stop loss, flat long position - `close-short-order`: loss, short position  - `close-long-position`: Position stop-profit stop loss, used to close long positions - `close-short-position`: Position stop-profit stop loss, used to close all short positions - `plan-close-long-position`: Position plan take profit and stop loss, used to close long positions in all or part of long positions - `plan-close-short-position`: Position plan stop-profit and stop loss, used to close all short positions or partially close short positions  The two types of entrusted order stop-profit and stop-loss are read-only and cannot be passed in through requests
      */
     'orderType'?: string;
     /**

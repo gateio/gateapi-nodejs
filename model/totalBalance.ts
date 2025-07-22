@@ -12,7 +12,7 @@
 import { AccountBalance } from './accountBalance';
 
 /**
- * User\'s balance in all accounts
+ * User\'s balance in all accounts.
  */
 export class TotalBalance {
     'total'?: AccountBalance;

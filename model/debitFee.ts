@@ -11,7 +11,7 @@
 
 export class DebitFee {
     /**
-     * Whether GT fee discount is used
+     * Whether GT fee discount is used.
      */
     'enabled': boolean;
 

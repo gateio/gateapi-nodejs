@@ -10,47 +10,47 @@
  */
 
 /**
- * Loan record
+ * Loan record.
  */
 export class UniLend {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Current amount
+     * Current amount.
      */
     'currentAmount'?: string;
     /**
-     * Total amount
+     * Total amount.
      */
     'amount'?: string;
     /**
-     * Lent amount
+     * Lent amount.
      */
     'lentAmount'?: string;
     /**
-     * Frozen amount
+     * Frozen amount.
      */
     'frozenAmount'?: string;
     /**
-     * Minimum interest rate
+     * Minimum interest rate.
      */
     'minRate'?: string;
     /**
-     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment Interest reinvestment
+     * Interest status: interest_dividend - Normal dividend, interest_reinvest - Interest reinvestment
      */
     'interestStatus'?: string;
     /**
-     * Amount not reinvested
+     * Amount not reinvested.
      */
     'reinvestLeftAmount'?: string;
     /**
-     * Created time of the lending order
+     * Created time of the lending order.
      */
     'createTime'?: number;
     /**
-     * Upated time of the lending order
+     * Upated time of the lending order.
      */
     'updateTime'?: number;
 

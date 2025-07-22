@@ -13,11 +13,11 @@ import { MarginAccount } from './marginAccount';
 
 export class SubAccountMarginBalance {
     /**
-     * User ID
+     * User ID.
      */
     'uid'?: string;
     /**
-     * Margin account balances
+     * Margin account balances.
      */
     'available'?: Array<MarginAccount>;
 

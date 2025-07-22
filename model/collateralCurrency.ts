@@ -11,11 +11,11 @@
 
 export class CollateralCurrency {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Size
+     * Size.
      */
     'amount'?: string;
 

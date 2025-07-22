@@ -11,11 +11,11 @@
 
 export class UniLendInterest {
     /**
-     * Currency
+     * Currency.
      */
     'currency'?: string;
     /**
-     * Interest
+     * Interest.
      */
     'interest'?: string;
 

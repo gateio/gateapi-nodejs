@@ -11,15 +11,15 @@
 
 export class WithdrawalRecord {
     /**
-     * Record ID
+     * Record ID.
      */
     'id'?: string;
     /**
-     * Hash record of the withdrawal
+     * Hash record of the withdrawal.
      */
     'txid'?: string;
     /**
-     * Block Number
+     * Block Number.
      */
     'blockNumber'?: string;
     /**
@@ -27,23 +27,23 @@ export class WithdrawalRecord {
      */
     'withdrawOrderId'?: string;
     /**
-     * Operation time
+     * Operation time.
      */
     'timestamp'?: string;
     /**
-     * Currency amount
+     * Currency amount.
      */
     'amount': string;
     /**
-     * fee
+     * fee.
      */
     'fee'?: string;
     /**
-     * Currency name
+     * Currency name.
      */
     'currency': string;
     /**
-     * Withdrawal address
+     * Withdrawal address.
      */
     'address'?: string;
     /**
@@ -51,11 +51,11 @@ export class WithdrawalRecord {
      */
     'failReason'?: string;
     /**
-     * The withdrawal end time, i.e.: withdrawal cancel time or withdrawal success time When status = CANCEL, the corresponding cancel time When status = DONE and block_number > 0, it is the time to withdrawal success
+     * The withdrawal end time, i.e.: withdrawal cancel time or withdrawal success time When status = CANCEL, the corresponding cancel time When status = DONE and block_number > 0, it is the
      */
     'timestamp2'?: string;
     /**
-     * Additional remarks with regards to the withdrawal
+     * Additional remarks with regards to the withdrawal.
      */
     'memo'?: string;
     /**
@@ -63,7 +63,7 @@ export class WithdrawalRecord {
      */
     'status'?: string;
     /**
-     * Name of the chain used in withdrawals
+     * Name of the chain used in withdrawals.
      */
     'chain': string;
 

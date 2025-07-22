@@ -17,39 +17,39 @@ export class FuturesAccount {
      */
     'total'?: string;
     /**
-     * Unrealized PNL
+     * Unrealized PNL.
      */
     'unrealisedPnl'?: string;
     /**
-     * Position margin
+     * Position margin.
      */
     'positionMargin'?: string;
     /**
-     * Order margin of unfinished orders
+     * Order margin of unfinished orders.
      */
     'orderMargin'?: string;
     /**
-     * The available balance for transferring or trading(including bonus.  Bonus can\'t be be withdrawn. The transfer amount needs to deduct the bonus)
+     * The available balance for transferring or trading(including bonus. Bonus can\'t be withdrawn. The transfer amount needs to deduct the bonus)
      */
     'available'?: string;
     /**
-     * POINT amount
+     * POINT amount.
      */
     'point'?: string;
     /**
-     * Settle currency
+     * Settle currency.
      */
     'currency'?: string;
     /**
-     * Whether dual mode is enabled
+     * Whether dual mode is enabled.
      */
     'inDualMode'?: boolean;
     /**
-     * Whether portfolio margin account mode is enabled
+     * Whether portfolio margin account mode is enabled.
      */
     'enableCredit'?: boolean;
     /**
-     * Initial margin position, applicable to the portfolio margin account model
+     * Initial margin position, applicable to the portfolio margin account model.
      */
     'positionInitialMargin'?: string;
     /**
@@ -57,11 +57,11 @@ export class FuturesAccount {
      */
     'maintenanceMargin'?: string;
     /**
-     * Perpetual Contract Bonus
+     * Perpetual Contract Bonus.
      */
     'bonus'?: string;
     /**
-     * Classic account margin mode, true-new mode, false-old mode
+     * Classic account margin mode, true-new mode, false-old mode.
      */
     'enableEvolvedClassic'?: boolean;
     /**
@@ -85,7 +85,7 @@ export class FuturesAccount {
      */
     'crossAvailable'?: string;
     /**
-     * Full margin balance, suitable for the new classic account margin model
+     * Full margin balance, suitable for the new classic account margin model.
      */
     'crossMarginBalance'?: string;
     /**
@@ -97,11 +97,11 @@ export class FuturesAccount {
      */
     'crossImr'?: string;
     /**
-     * Ware -position margin, suitable for the new classic account margin model
+     * Ware -position margin, suitable for the new classic account margin model.
      */
     'isolatedPositionMargin'?: string;
     /**
-     * Whether to open a new two-way position mode
+     * Whether to open a new two-way position mode.
      */
     'enableNewDualMode'?: boolean;
     /**
@@ -109,7 +109,7 @@ export class FuturesAccount {
      */
     'marginMode'?: number;
     /**
-     * Whether to enable tiered maintenance margin calculation
+     * Whether to enable tiered maintenance margin calculation.
      */
     'enableTieredMm'?: boolean;
     'history'?: FuturesAccountHistory;

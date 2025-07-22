@@ -11,15 +11,15 @@
 
 export class MaxUniBorrowable {
     /**
-     * Currency
+     * Currency.
      */
     'currency': string;
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Maximum borrowable
+     * Maximum borrowable.
      */
     'borrowable': string;
 

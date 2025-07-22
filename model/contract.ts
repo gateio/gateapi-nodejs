@@ -10,83 +10,83 @@
  */
 
 /**
- * Futures contract details
+ * Futures contract details.
  */
 export class Contract {
     /**
-     * Futures contract
+     * Futures contract.
      */
     'name'?: string;
     /**
-     * Futures contract type
+     * Futures contract type.
      */
     'type'?: Contract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency
+     * Multiplier used in converting from invoicing to settlement currency.
      */
     'quantoMultiplier'?: string;
     /**
-     * Minimum leverage
+     * Minimum leverage.
      */
     'leverageMin'?: string;
     /**
-     * Maximum leverage
+     * Maximum leverage.
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin
+     * Maintenance rate of margin.
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type, internal - based on internal trading, index - based on external index price
+     * Mark price type, internal - based on internal trading, external index price
      */
     'markType'?: Contract.MarkType;
     /**
-     * Current mark price
+     * Current mark price.
      */
     'markPrice'?: string;
     /**
-     * Current index price
+     * Current index price.
      */
     'indexPrice'?: string;
     /**
-     * Last trading price
+     * Last trading price.
      */
     'lastPrice'?: string;
     /**
-     * Maker fee rate, where negative means rebate
+     * Maker fee rate, where negative means rebate.
      */
     'makerFeeRate'?: string;
     /**
-     * Taker fee rate
+     * Taker fee rate.
      */
     'takerFeeRate'?: string;
     /**
-     * Minimum order price increment
+     * Minimum order price increment.
      */
     'orderPriceRound'?: string;
     /**
-     * Minimum mark price increment
+     * Minimum mark price increment.
      */
     'markPriceRound'?: string;
     /**
-     * Current funding rate
+     * Current funding rate.
      */
     'fundingRate'?: string;
     /**
-     * Funding application interval, unit in seconds
+     * Funding application interval, unit in seconds.
      */
     'fundingInterval'?: number;
     /**
-     * Next funding time
+     * Next funding time.
      */
     'fundingNextApply'?: number;
     /**
-     * Risk limit base,deprecated
+     * Risk limit base,deprecated.
      */
     'riskLimitBase'?: string;
     /**
-     * Step of adjusting risk limit,deprecated
+     * Step of adjusting risk limit,deprecated.
      */
     'riskLimitStep'?: string;
     /**
@@ -94,11 +94,11 @@ export class Contract {
      */
     'riskLimitMax'?: string;
     /**
-     * Minimum order size the contract allowed
+     * Minimum order size the contract allowed.
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size the contract allowed
+     * Maximum order size the contract allowed.
      */
     'orderSizeMax'?: number;
     /**
@@ -106,51 +106,51 @@ export class Contract {
      */
     'orderPriceDeviate'?: string;
     /**
-     * Referral fee rate discount
+     * Referral fee rate discount.
      */
     'refDiscountRate'?: string;
     /**
-     * Referrer commission rate
+     * Referrer commission rate.
      */
     'refRebateRate'?: string;
     /**
-     * Current orderbook ID
+     * Current orderbook ID.
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID
+     * Current trade ID.
      */
     'tradeId'?: number;
     /**
-     * Historical accumulated trade size
+     * Historical accumulated trade size.
      */
     'tradeSize'?: number;
     /**
-     * Current total long position size
+     * Current total long position size.
      */
     'positionSize'?: number;
     /**
-     * Last changed time of configuration
+     * Last changed time of configuration.
      */
     'configChangeTime'?: number;
     /**
-     * `in_delisting=true` And when position_size>0, it means the contract is in the offline transition period `in_delisting=true` And when position_size=0, it means the contract is offline
+     * `in_delisting=true` And when position_size>0, it means the contract is in the offline transition period `in_delisting=true` contract is offline
      */
     'inDelisting'?: boolean;
     /**
-     * Maximum number of open orders
+     * Maximum number of open orders.
      */
     'ordersLimit'?: number;
     /**
-     * Whether bouns is enabled
+     * Whether bouns is enabled.
      */
     'enableBonus'?: boolean;
     /**
-     * Whether portfolio margin account is enabled
+     * Whether portfolio margin account is enabled.
      */
     'enableCredit'?: boolean;
     /**
-     * Created time of the contract
+     * Created time of the contract.
      */
     'createTime'?: number;
     /**
@@ -158,11 +158,11 @@ export class Contract {
      */
     'fundingCapRatio'?: string;
     /**
-     * Contract Status Types include:  prelaunch,  trading, delisting,  delisted
+     * Contract Status Types include: prelaunch, trading, delisting, delisted.
      */
     'status'?: string;
     /**
-     * Contract expiry timestamp
+     * Contract expiry timestamp.
      */
     'launchTime'?: number;
 

@@ -11,7 +11,7 @@
 
 export class TriggerTime {
     /**
-     * Timestamp of the end of the countdown, in milliseconds
+     * Timestamp of the end of the countdown, in milliseconds.
      */
     'triggerTime'?: number;
 

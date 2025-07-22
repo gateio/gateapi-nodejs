@@ -15,7 +15,7 @@ export class SubAccountKeyPerms {
      */
     'name'?: string;
     /**
-     * read only
+     * read only.
      */
     'readOnly'?: boolean;
 

@@ -11,15 +11,15 @@
 
 export class Ticker {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**
-     * Last trading price
+     * Last trading price.
      */
     'last'?: string;
     /**
-     * Recent lowest ask
+     * Recent lowest ask.
      */
     'lowestAsk'?: string;
     /**
@@ -27,7 +27,7 @@ export class Ticker {
      */
     'lowestSize'?: string;
     /**
-     * Recent highest bid
+     * Recent highest bid.
      */
     'highestBid'?: string;
     /**
@@ -35,47 +35,47 @@ export class Ticker {
      */
     'highestSize'?: string;
     /**
-     * Change percentage in the last 24h
+     * Change percentage in the last 24h.
      */
     'changePercentage'?: string;
     /**
-     * utc0 timezone, the percentage change in the last 24 hours
+     * utc0 timezone, the percentage change in the last 24 hours.
      */
     'changeUtc0'?: string;
     /**
-     * utc8 timezone, the percentage change in the last 24 hours
+     * utc8 timezone, the percentage change in the last 24 hours.
      */
     'changeUtc8'?: string;
     /**
-     * Base currency trade volume in the last 24h
+     * Base currency trade volume in the last 24h.
      */
     'baseVolume'?: string;
     /**
-     * Quote currency trade volume in the last 24h
+     * Quote currency trade volume in the last 24h.
      */
     'quoteVolume'?: string;
     /**
-     * Highest price in 24h
+     * Highest price in 24h.
      */
     'high24h'?: string;
     /**
-     * Lowest price in 24h
+     * Lowest price in 24h.
      */
     'low24h'?: string;
     /**
-     * ETF net value
+     * ETF net value.
      */
     'etfNetValue'?: string;
     /**
-     * ETF previous net value at re-balancing time
+     * ETF previous net value at re-balancing time.
      */
     'etfPreNetValue'?: string | null;
     /**
-     * ETF previous re-balancing time
+     * ETF previous re-balancing time.
      */
     'etfPreTimestamp'?: number | null;
     /**
-     * ETF current leverage
+     * ETF current leverage.
      */
     'etfLeverage'?: string | null;
 

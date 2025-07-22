@@ -12,15 +12,15 @@
 import { ProfitLossRange } from './profitLossRange';
 
 /**
- * Margin result
+ * Margin result.
  */
 export class MockMarginResult {
     /**
-     * Position combination type `original_position` - Original position `long_delta_original_position` - Positive delta + Original position `short_delta_original_position` - Negative delta + Original position
+     * Position combination type `original_position` - Original position `long_delta_original_position` - Positive delta + Original position `short_delta_original_position` position
      */
     'type'?: string;
     /**
-     * The results of 33 pressure scenarios for MR1
+     * The results of 3 pressure scenarios for MR1.
      */
     'profitLossRanges'?: Array<ProfitLossRange>;
     /**
@@ -28,19 +28,19 @@ export class MockMarginResult {
      */
     'maxLoss'?: ProfitLossRange;
     /**
-     * Stress testing
+     * Stress testing.
      */
     'mr1'?: string;
     /**
-     * Basis spread risk
+     * Basis spread risk.
      */
     'mr2'?: string;
     /**
-     * Volatility spread risk
+     * Volatility spread risk.
      */
     'mr3'?: string;
     /**
-     * Option short risk
+     * Option short risk.
      */
     'mr4'?: string;
 

@@ -11,7 +11,7 @@
 
 export class UserSub {
     /**
-     * User ID
+     * User ID.
      */
     'uid'?: number;
     /**
@@ -19,11 +19,11 @@ export class UserSub {
      */
     'belong'?: string;
     /**
-     * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct direct customer 4-indirect direct customer 5-ordinary user)
+     * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct customer 4-indirect direct customer 5-ordinary user)
      */
     'type'?: number;
     /**
-     * Inviter user ID
+     * Inviter user ID.
      */
     'refUid'?: number;
 

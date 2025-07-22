@@ -11,7 +11,7 @@
 
 export class SubAccountToSubAccount {
     /**
-     * Transfer currency name
+     * Transfer currency name.
      */
     'currency': string;
     /**
@@ -19,7 +19,7 @@ export class SubAccountToSubAccount {
      */
     'subAccountType'?: string;
     /**
-     * Transfer from the user id of the sub-account
+     * Transfer from the user id of the sub-account.
      */
     'subAccountFrom': string;
     /**
@@ -27,7 +27,7 @@ export class SubAccountToSubAccount {
      */
     'subAccountFromType': string;
     /**
-     * Transfer to the user id of the sub-account
+     * Transfer to the user id of the sub-account.
      */
     'subAccountTo': string;
     /**
@@ -35,7 +35,7 @@ export class SubAccountToSubAccount {
      */
     'subAccountToType': string;
     /**
-     * Transfer amount
+     * Transfer amount.
      */
     'amount': string;
 

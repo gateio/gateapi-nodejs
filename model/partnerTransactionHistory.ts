@@ -13,11 +13,11 @@ import { AgencyTransaction } from './agencyTransaction';
 
 export class PartnerTransactionHistory {
     /**
-     * Total
+     * Total.
      */
     'total'?: number;
     /**
-     * List of transaction history
+     * List of transaction history.
      */
     'list'?: Array<AgencyTransaction>;
 

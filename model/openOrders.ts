@@ -13,7 +13,7 @@ import { Order } from './order';
 
 export class OpenOrders {
     /**
-     * Currency pair
+     * Currency pair.
      */
     'currencyPair'?: string;
     /**

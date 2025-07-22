@@ -10,7 +10,7 @@
  */
 
 /**
- * Futures order
+ * Futures order.
  */
 export class MockFuturesOrder {
     /**
@@ -22,7 +22,7 @@ export class MockFuturesOrder {
      */
     'size': string;
     /**
-     * Unfilled contract quantity, involved in actual calculation
+     * Unfilled contract quantity, involved in actual calculation.
      */
     'left': string;
 

@@ -11,11 +11,11 @@
 
 export class InsuranceRecord {
     /**
-     * Unix timestamp in seconds
+     * Unix timestamp in seconds.
      */
     't'?: number;
     /**
-     * Insurance balance
+     * Insurance balance.
      */
     'b'?: string;
 

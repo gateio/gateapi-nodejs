@@ -10,11 +10,11 @@
  */
 
 /**
- * Parameters of flash swap order creation
+ * Parameters of flash swap order creation.
  */
 export class FlashSwapOrderRequest {
     /**
-     * Preview result ID
+     * Preview result ID.
      */
     'previewId': string;
     /**
@@ -22,7 +22,7 @@ export class FlashSwapOrderRequest {
      */
     'sellCurrency': string;
     /**
-     * Amount to sell (based on the preview result)
+     * Amount to sell (based on the preview result).
      */
     'sellAmount': string;
     /**
@@ -30,7 +30,7 @@ export class FlashSwapOrderRequest {
      */
     'buyCurrency': string;
     /**
-     * Amount to buy (based on the preview result)
+     * Amount to buy (based on the preview result).
      */
     'buyAmount': string;
 

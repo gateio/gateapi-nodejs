@@ -11,15 +11,15 @@
 
 export class PartnerSub {
     /**
-     * User ID
+     * User ID.
      */
     'userId'?: number;
     /**
-     * The time when the user joined the system, in seconds Unix timestamp
+     * The time when the user joined the system, in seconds Unix timestamp.
      */
     'userJoinTime'?: number;
     /**
-     * Type (1-Sub-agent 2-Indirect Customer 3-Direct Customer)
+     * Type (1-Sub-agent 2-Indirect Customer 3-Direct Customer).
      */
     'type'?: number;
 

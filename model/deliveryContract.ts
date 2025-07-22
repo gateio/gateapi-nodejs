@@ -10,119 +10,119 @@
  */
 
 /**
- * Futures contract details
+ * Futures contract details.
  */
 export class DeliveryContract {
     /**
-     * Futures contract
+     * Futures contract.
      */
     'name'?: string;
     /**
-     * Underlying
+     * Underlying.
      */
     'underlying'?: string;
     /**
-     * Cycle type, e.g. WEEKLY, QUARTERLY
+     * Cycle type, e.g. WEEKLY, QUARTERLY.
      */
     'cycle'?: DeliveryContract.Cycle;
     /**
-     * Futures contract type
+     * Futures contract type.
      */
     'type'?: DeliveryContract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency
+     * Multiplier used in converting from invoicing to settlement currency.
      */
     'quantoMultiplier'?: string;
     /**
-     * Minimum leverage
+     * Minimum leverage.
      */
     'leverageMin'?: string;
     /**
-     * Maximum leverage
+     * Maximum leverage.
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin
+     * Maintenance rate of margin.
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type, internal - based on internal trading, index - based on external index price
+     * Mark price type, internal - based on internal trading, external index price
      */
     'markType'?: DeliveryContract.MarkType;
     /**
-     * Current mark price
+     * Current mark price.
      */
     'markPrice'?: string;
     /**
-     * Current index price
+     * Current index price.
      */
     'indexPrice'?: string;
     /**
-     * Last trading price
+     * Last trading price.
      */
     'lastPrice'?: string;
     /**
-     * Maker fee rate, where negative means rebate
+     * Maker fee rate, where negative means rebate.
      */
     'makerFeeRate'?: string;
     /**
-     * Taker fee rate
+     * Taker fee rate.
      */
     'takerFeeRate'?: string;
     /**
-     * Minimum order price increment
+     * Minimum order price increment.
      */
     'orderPriceRound'?: string;
     /**
-     * Minimum mark price increment
+     * Minimum mark price increment.
      */
     'markPriceRound'?: string;
     /**
-     * Fair basis rate
+     * Fair basis rate.
      */
     'basisRate'?: string;
     /**
-     * Fair basis value
+     * Fair basis value.
      */
     'basisValue'?: string;
     /**
-     * Funding used for calculating impact bid, ask price
+     * Funding used for calculating impact bid, ask price.
      */
     'basisImpactValue'?: string;
     /**
-     * Settle price
+     * Settle price.
      */
     'settlePrice'?: string;
     /**
-     * Settle price update interval
+     * Settle price update interval.
      */
     'settlePriceInterval'?: number;
     /**
-     * Settle price update duration in seconds
+     * Settle price update duration in seconds.
      */
     'settlePriceDuration'?: number;
     /**
-     * Contract expiry timestamp
+     * Contract expiry timestamp.
      */
     'expireTime'?: number;
     /**
-     * Risk limit base
+     * Risk limit base.
      */
     'riskLimitBase'?: string;
     /**
-     * Step of adjusting risk limit
+     * Step of adjusting risk limit.
      */
     'riskLimitStep'?: string;
     /**
-     * Maximum risk limit the contract allowed
+     * Maximum risk limit the contract allowed.
      */
     'riskLimitMax'?: string;
     /**
-     * Minimum order size the contract allowed
+     * Minimum order size the contract allowed.
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size the contract allowed
+     * Maximum order size the contract allowed.
      */
     'orderSizeMax'?: number;
     /**
@@ -130,39 +130,39 @@ export class DeliveryContract {
      */
     'orderPriceDeviate'?: string;
     /**
-     * Referral fee rate discount
+     * Referral fee rate discount.
      */
     'refDiscountRate'?: string;
     /**
-     * Referrer commission rate
+     * Referrer commission rate.
      */
     'refRebateRate'?: string;
     /**
-     * Current orderbook ID
+     * Current orderbook ID.
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID
+     * Current trade ID.
      */
     'tradeId'?: number;
     /**
-     * Historical accumulated trade size
+     * Historical accumulated trade size.
      */
     'tradeSize'?: number;
     /**
-     * Current total long position size
+     * Current total long position size.
      */
     'positionSize'?: number;
     /**
-     * Last changed time of configuration
+     * Last changed time of configuration.
      */
     'configChangeTime'?: number;
     /**
-     * Contract is delisting
+     * Contract is delisting.
      */
     'inDelisting'?: boolean;
     /**
-     * Maximum number of open orders
+     * Maximum number of open orders.
      */
     'ordersLimit'?: number;
 
