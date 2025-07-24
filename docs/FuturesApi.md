@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/{settle}/positions/{contract}/margin | Update position margin.
 [**updatePositionLeverage**](FuturesApi.md#updatePositionLeverage) | **POST** /futures/{settle}/positions/{contract}/leverage | Update position leverage.
 [**updatePositionCrossMode**](FuturesApi.md#updatePositionCrossMode) | **POST** /futures/{settle}/positions/cross_mode | Switch to the full position-by-store mode.
+[**updateDualCompPositionCrossMode**](FuturesApi.md#updateDualCompPositionCrossMode) | **POST** /futures/{settle}/dual_comp/positions/cross_mode | 双仓模式下切换全逐仓模式
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit.
 [**setDualMode**](FuturesApi.md#setDualMode) | **POST** /futures/{settle}/dual_mode | Enable or disable dual mode.
 [**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Retrieve position detail in dual mode.
@@ -276,7 +277,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // string | Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0. 1 natual month, not 30 days
+  'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0. 1 natual month, not 30 days
 };
 api.listFuturesCandlesticks(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -293,7 +294,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified | [optional] [default to undefined]
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **interval** | **string**| Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 1 natual month, not 30 days | [optional] [default to &#39;5m&#39;]
+ **interval** | **Interval**| Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 1 natual month, not 30 days | [optional] [default to &#39;5m&#39;]
 
 ### Return type
 
@@ -331,7 +332,7 @@ const opts = {
   'from': 1546905600, // number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // number | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
   'limit': 100, // number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': '5m' // string | Interval time between data points.
+  'interval': '5m' // '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d' | Interval time between data points.
 };
 api.listFuturesPremiumIndex(settle, contract, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -348,7 +349,7 @@ Name | Type | Description  | Notes
  **from** | **number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] [default to undefined]
  **to** | **number**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified | [optional] [default to undefined]
  **limit** | **number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
- **interval** | **string**| Interval time between data points. | [optional] [default to &#39;5m&#39;]
+ **interval** | **Interval**| Interval time between data points. | [optional] [default to &#39;5m&#39;]
 
 ### Return type
 
@@ -1033,6 +1034,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 Promise<{ response: AxiosResponse; body: Position; }> [Position](Position.md)
+
+### Authorization
+
+[apiv4](../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+## updateDualCompPositionCrossMode
+
+> Promise<{ response: http.IncomingMessage; body: Array<Position>; }> updateDualCompPositionCrossMode(settle, inlineObject)
+
+双仓模式下切换全逐仓模式
+
+### Example
+
+```typescript
+const GateApi = require('gate-api');
+const client = new GateApi.ApiClient();
+// uncomment the next line to change base path
+// client.basePath = "https://some-other-host"
+// Configure Gate APIv4 key authentication:
+client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
+
+const api = new GateApi.FuturesApi(client);
+const settle = "usdt"; // 'btc' | 'usdt' | Settle currency.
+const inlineObject = new InlineObject(); // InlineObject | 
+api.updateDualCompPositionCrossMode(settle, inlineObject)
+   .then(value => console.log('API called successfully. Returned data: ', value.body),
+         error => console.error(error));
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **Settle**| Settle currency. | [default to undefined]
+ **inlineObject** | [**InlineObject**](InlineObject.md)|  | 
+
+### Return type
+
+Promise<{ response: AxiosResponse; body: Array<Position>; }> [Position](Position.md)
 
 ### Authorization
 
@@ -1937,6 +1983,9 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency.
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified.
   'limit': 100, // number | Maximum number of records to be returned in a single list.
+  'offset': 0, // number | List offset, starting from 0.
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'at': 0 // number | Specify a liquidation timestamp.
 };
 api.listLiquidates(settle, opts)
@@ -1952,6 +2001,9 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency. | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified. | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0. | [optional] [default to 0]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **at** | **number**| Specify a liquidation timestamp. | [optional] [default to 0]
 
 ### Return type
@@ -1988,6 +2040,9 @@ const settle = "usdt"; // 'btc' | 'usdt' | Settle currency.
 const opts = {
   'contract': "BTC_USDT", // string | Futures contract, return related data only if specified.
   'limit': 100, // number | Maximum number of records to be returned in a single list.
+  'offset': 0, // number | List offset, starting from 0.
+  'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+  'to': 1547706332, // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
   'at': 0 // number | Specify an auto-deleveraging timestamp.
 };
 api.listAutoDeleverages(settle, opts)
@@ -2003,6 +2058,9 @@ Name | Type | Description  | Notes
  **settle** | **Settle**| Settle currency. | [default to undefined]
  **contract** | **string**| Futures contract, return related data only if specified. | [optional] [default to undefined]
  **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0. | [optional] [default to 0]
+ **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
+ **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
  **at** | **number**| Specify an auto-deleveraging timestamp. | [optional] [default to 0]
 
 ### Return type

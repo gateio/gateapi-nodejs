@@ -92,6 +92,7 @@ export * from './futuresRiskLimitTier';
 export * from './futuresTicker';
 export * from './futuresTrade';
 export * from './indexConstituent';
+export * from './inlineObject';
 export * from './inlineResponse200';
 export * from './inlineResponse2001';
 export * from './insuranceRecord';
@@ -351,6 +352,7 @@ import { FuturesRiskLimitTier } from './futuresRiskLimitTier';
 import { FuturesTicker } from './futuresTicker';
 import { FuturesTrade } from './futuresTrade';
 import { IndexConstituent } from './indexConstituent';
+import { InlineObject } from './inlineObject';
 import { InlineResponse200 } from './inlineResponse200';
 import { InlineResponse2001 } from './inlineResponse2001';
 import { InsuranceRecord } from './insuranceRecord';
@@ -680,6 +682,7 @@ let typeMap: { [index: string]: any } = {
     FuturesTicker: FuturesTicker,
     FuturesTrade: FuturesTrade,
     IndexConstituent: IndexConstituent,
+    InlineObject: InlineObject,
     InlineResponse200: InlineResponse200,
     InlineResponse2001: InlineResponse2001,
     InsuranceRecord: InsuranceRecord,

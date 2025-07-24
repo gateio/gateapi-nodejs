@@ -35,6 +35,7 @@ import { FuturesPriceTriggeredOrder } from '../model/futuresPriceTriggeredOrder'
 import { FuturesRiskLimitTier } from '../model/futuresRiskLimitTier';
 import { FuturesTicker } from '../model/futuresTicker';
 import { FuturesTrade } from '../model/futuresTrade';
+import { InlineObject } from '../model/inlineObject';
 import { InsuranceRecord } from '../model/insuranceRecord';
 import { MyFuturesTrade } from '../model/myFuturesTrade';
 import { MyFuturesTradeTimeRange } from '../model/myFuturesTradeTimeRange';
@@ -309,7 +310,12 @@ export class FuturesApi {
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { from?: number; to?: number; limit?: number; interval?: string },
+        opts: {
+            from?: number;
+            to?: number;
+            limit?: number;
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesCandlestick> }> {
         const localVarPath =
             this.client.basePath +
@@ -350,7 +356,10 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -378,7 +387,12 @@ export class FuturesApi {
     public async listFuturesPremiumIndex(
         settle: 'btc' | 'usdt',
         contract: string,
-        opts: { from?: number; to?: number; limit?: number; interval?: string },
+        opts: {
+            from?: number;
+            to?: number;
+            limit?: number;
+            interval?: '10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d';
+        },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesPremiumIndex> }> {
         const localVarPath =
             this.client.basePath +
@@ -419,7 +433,10 @@ export class FuturesApi {
         }
 
         if (opts.interval !== undefined) {
-            localVarQueryParameters['interval'] = ObjectSerializer.serialize(opts.interval, 'string');
+            localVarQueryParameters['interval'] = ObjectSerializer.serialize(
+                opts.interval,
+                "'10s' | '1m' | '5m' | '15m' | '30m' | '1h' | '4h' | '8h' | '1d' | '7d'",
+            );
         }
 
         const config: AxiosRequestConfig = {
@@ -1190,6 +1207,58 @@ export class FuturesApi {
 
         const authSettings = ['apiv4'];
         return this.client.request<Position>(config, 'Position', authSettings);
+    }
+
+    /**
+     *
+     * @summary 双仓模式下切换全逐仓模式
+     * @param settle Settle currency.
+     * @param inlineObject
+     */
+    public async updateDualCompPositionCrossMode(
+        settle: 'btc' | 'usdt',
+        inlineObject: InlineObject,
+    ): Promise<{ response: AxiosResponse; body: Array<Position> }> {
+        const localVarPath =
+            this.client.basePath +
+            '/futures/{settle}/dual_comp/positions/cross_mode'.replace(
+                '{' + 'settle' + '}',
+                encodeURIComponent(String(settle)),
+            );
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+
+        // verify required parameter 'settle' is not null or undefined
+        if (settle === null || settle === undefined) {
+            throw new Error(
+                'Required parameter settle was null or undefined when calling updateDualCompPositionCrossMode.',
+            );
+        }
+
+        // verify required parameter 'inlineObject' is not null or undefined
+        if (inlineObject === null || inlineObject === undefined) {
+            throw new Error(
+                'Required parameter inlineObject was null or undefined when calling updateDualCompPositionCrossMode.',
+            );
+        }
+
+        const config: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(inlineObject, 'InlineObject'),
+        };
+
+        const authSettings = ['apiv4'];
+        return this.client.request<Array<Position>>(config, 'Array<Position>', authSettings);
     }
 
     /**
@@ -2238,11 +2307,14 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified.
      * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.at Specify a liquidation timestamp.
      */
     public async listLiquidates(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; at?: number },
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesLiquidate> }> {
         const localVarPath =
             this.client.basePath +
@@ -2271,6 +2343,18 @@ export class FuturesApi {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
         }
 
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
+        }
+
         if (opts.at !== undefined) {
             localVarQueryParameters['at'] = ObjectSerializer.serialize(opts.at, 'number');
         }
@@ -2293,11 +2377,14 @@ export class FuturesApi {
      * @param opts Optional parameters
      * @param opts.contract Futures contract, return related data only if specified.
      * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.offset List offset, starting from 0.
+     * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+     * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.at Specify an auto-deleveraging timestamp.
      */
     public async listAutoDeleverages(
         settle: 'btc' | 'usdt',
-        opts: { contract?: string; limit?: number; at?: number },
+        opts: { contract?: string; limit?: number; offset?: number; from?: number; to?: number; at?: number },
     ): Promise<{ response: AxiosResponse; body: Array<FuturesAutoDeleverage> }> {
         const localVarPath =
             this.client.basePath +
@@ -2324,6 +2411,18 @@ export class FuturesApi {
 
         if (opts.limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(opts.limit, 'number');
+        }
+
+        if (opts.offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(opts.offset, 'number');
+        }
+
+        if (opts.from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(opts.from, 'number');
+        }
+
+        if (opts.to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(opts.to, 'number');
         }
 
         if (opts.at !== undefined) {
