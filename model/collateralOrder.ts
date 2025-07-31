@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,51 +10,51 @@
  */
 
 /**
- * Collateral Order.
+ * Collateral order
  */
 export class CollateralOrder {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * Collateral.
+     * Collateral currency
      */
     'collateralCurrency'?: string;
     /**
-     * Collateral amount.
+     * Collateral amount
      */
     'collateralAmount'?: string;
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * Borrowing amount.
+     * Borrowed amount
      */
     'borrowAmount'?: string;
     /**
-     * Repaid amount.
+     * Repaid amount
      */
     'repaidAmount'?: string;
     /**
-     * Repaid principal.
+     * Repaid principal
      */
     'repaidPrincipal'?: string;
     /**
-     * Repaid interest.
+     * Repaid interest
      */
     'repaidInterest'?: string;
     /**
-     * The initial collateralization rate.
+     * Initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * The current collateralization rate.
+     * Current collateralization rate
      */
     'currentLtv'?: string;
     /**
-     * The liquidation collateralization rate.
+     * Liquidation collateralization rate
      */
     'liquidateLtv'?: string;
     /**
@@ -62,7 +62,7 @@ export class CollateralOrder {
      */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds.
+     * Borrowing time, timestamp in seconds
      */
     'borrowTime'?: number;
     /**
@@ -70,11 +70,11 @@ export class CollateralOrder {
      */
     'leftRepayTotal'?: string;
     /**
-     * outstanding principal.
+     * Outstanding principal
      */
     'leftRepayPrincipal'?: string;
     /**
-     * outstanding interest.
+     * Outstanding interest
      */
     'leftRepayInterest'?: string;
 

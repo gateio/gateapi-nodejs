@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class FuturesAccountBook {
     /**
-     * Change time.
+     * Change time
      */
     'time'?: number;
     /**
-     * Change amount.
+     * Change amount
      */
     'change'?: string;
     /**
-     * Balance after change.
+     * Balance after change
      */
     'balance'?: string;
     /**
@@ -27,19 +27,19 @@ export class FuturesAccountBook {
      */
     'type'?: FuturesAccountBook.Type;
     /**
-     * Comment.
+     * Comment
      */
     'text'?: string;
     /**
-     * Futures contract, the field is only available for data after 2023-10-30.
+     * Futures contract, the field is only available for data after 2023-10-30
      */
     'contract'?: string;
     /**
-     * trade id.
+     * trade id
      */
     'tradeId'?: string;
     /**
-     * Account change record ID.
+     * Account change record ID
      */
     'id'?: string;
 

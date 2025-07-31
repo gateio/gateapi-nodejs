@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,51 +11,51 @@
 
 export class LedgerRecord {
     /**
-     * Record ID.
+     * Record ID
      */
     'id'?: string;
     /**
-     * Hash record of the withdrawal.
+     * Hash record of the withdrawal
      */
     'txid'?: string;
     /**
-     * User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried
+     * User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried
      */
     'withdrawOrderId'?: string;
     /**
-     * Operation time.
+     * Operation time
      */
     'timestamp'?: string;
     /**
-     * Currency amount.
+     * Token amount
      */
     'amount': string;
     /**
-     * Currency name.
+     * Currency name
      */
     'currency': string;
     /**
-     * Withdrawal address. Required for withdrawals.
+     * Withdrawal address. Required for withdrawals
      */
     'address'?: string;
     /**
-     * Additional remarks with regards to the withdrawal.
+     * Additional remarks with regards to the withdrawal
      */
     'memo'?: string;
     /**
-     * The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time
+     * Withdrawal record ID starts with \'w\', such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled
      */
     'withdrawId'?: string;
     /**
-     * The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone
+     * Withdrawal record currency type, empty by default. Supports users to query withdrawal records in main area and innovation area on demand. Valid values: SPOT, PILOT  SPOT: Main area PILOT: Innovation area
      */
     'assetClass'?: string;
     /**
-     * Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: pending manual approval - BCODE: GateCode operation - EXTPEND: pending confirm after sending - FAIL: pending confirm when fail - INVALID: invalid order - VERIFY: verifying - PROCES: processing - PEND: pending - DMOVE: required manual approval - REVIEW: Under review
+     * Transaction status  - DONE: Completed - CANCEL: Cancelled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: GateCode operation - EXTPEND: Sent, waiting for confirmation - FAIL: Failed on chain, waiting for confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: Pending manual review - REVIEW: Under review
      */
     'status'?: string;
     /**
-     * Name of the chain used in withdrawals.
+     * Name of the chain used in withdrawals
      */
     'chain': string;
 

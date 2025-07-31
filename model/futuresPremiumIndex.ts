@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * data point in every timestamp.
+ * data point in every timestamp
  */
 export class FuturesPremiumIndex {
     /**
-     * Unix timestamp in seconds.
+     * Unix timestamp in seconds
      */
     't'?: number;
     /**
-     * Close price.
+     * Close price
      */
     'c'?: string;
     /**
-     * Highest price.
+     * Highest price
      */
     'h'?: string;
     /**
-     * Lowest price`.
+     * Lowest price
      */
     'l'?: string;
     /**
-     * Open price.
+     * Open price
      */
     'o'?: string;
 

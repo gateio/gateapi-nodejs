@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class UnifiedBalance {
     /**
-     * Available amount is valid in single currency margin/cross-currency margin/combined margin mode, and the calculation is different in different modes
+     * Available balance, valid in single currency margin/cross-currency margin/combined margin mode, calculation varies by mode
      */
     'available'?: string;
     /**
-     * The locked amount is valid in single currency margin/cross-currency margin/combined margin mode
+     * Locked balance, valid in single currency margin/cross-currency margin/combined margin mode
      */
     'freeze'?: string;
     /**
-     * Borrow limit, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
      */
     'borrowed'?: string;
     /**
-     * Negative balance loan is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode
+     * Negative balance borrowing, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
      */
     'negativeLiab'?: string;
     /**
@@ -35,11 +35,11 @@ export class UnifiedBalance {
      */
     'equity'?: string;
     /**
-     * Total occupancy (discarded, to be offline field).
+     * Total frozen (deprecated, to be removed)
      */
     'totalFreeze'?: string;
     /**
-     * Total borrowing, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * Total borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
      */
     'totalLiab'?: string;
     /**
@@ -51,7 +51,7 @@ export class UnifiedBalance {
      */
     'funding'?: string;
     /**
-     * Funding version.
+     * Funding version
      */
     'fundingVersion'?: string;
     /**
@@ -67,7 +67,7 @@ export class UnifiedBalance {
      */
     'im'?: string;
     /**
-     * The full position maintains margin, which is valid in the single currency margin mode, and other cross-currency margin combination margin mode is 0.
+     * Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
      */
     'mm'?: string;
     /**
@@ -83,11 +83,11 @@ export class UnifiedBalance {
      */
     'marginBalance'?: string;
     /**
-     * Full margin available for full position is valid in single currency margin mode, and is 0 in other modes such as cross-currency margin/combined margin mode
+     * Cross margin available balance, valid in single currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
      */
     'availableMargin'?: string;
     /**
-     * Currency enabled as margin: true - Enabled, false - Disabled.
+     * Currency enabled as margin: true - Enabled, false - Disabled
      */
     'enabledCollateral'?: boolean;
 

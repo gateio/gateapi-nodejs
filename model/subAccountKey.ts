@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,40 +13,40 @@ import { SubAccountKeyPerms } from './subAccountKeyPerms';
 
 export class SubAccountKey {
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * Mode: 1 - classic 2 - portfolio account.
+     * Mode: 1 - classic 2 - portfolio account
      */
     'mode'?: number;
     /**
-     * API key name.
+     * API Key Name
      */
     'name'?: string;
     'perms'?: Array<SubAccountKeyPerms>;
     /**
-     * ip white list (list will be removed if no value is passed).
+     * IP whitelist (list will be cleared if no value is passed)
      */
     'ipWhitelist'?: Array<string>;
     /**
-     * API Key.
+     * API Key
      */
     'key'?: string;
     /**
-     * State 1 - normal 2 - locked 3 - frozen.
+     * Status: 1-Normal 2-Frozen 3-Locked
      */
     'state'?: number;
     /**
-     * Creation time.
+     * Created time
      */
     'createdAt'?: number;
     /**
-     * Last update time.
+     * Last Update Time
      */
     'updatedAt'?: number;
     /**
-     * Last access time.
+     * Last Access Time
      */
     'lastAccess'?: number;
 

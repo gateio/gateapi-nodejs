@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,11 +11,11 @@
 
 export class DepositRecord {
     /**
-     * Record ID.
+     * Record ID
      */
     'id'?: string;
     /**
-     * Hash record of the withdrawal.
+     * Hash record of the withdrawal
      */
     'txid'?: string;
     /**
@@ -23,23 +23,23 @@ export class DepositRecord {
      */
     'withdrawOrderId'?: string;
     /**
-     * Operation time.
+     * Operation time
      */
     'timestamp'?: string;
     /**
-     * Currency amount.
+     * Token amount
      */
     'amount': string;
     /**
-     * Currency name.
+     * Currency name
      */
     'currency': string;
     /**
-     * Withdrawal address. Required for withdrawals.
+     * Withdrawal address. Required for withdrawals
      */
     'address'?: string;
     /**
-     * Additional remarks with regards to the withdrawal.
+     * Additional remarks with regards to the withdrawal
      */
     'memo'?: string;
     /**
@@ -47,7 +47,7 @@ export class DepositRecord {
      */
     'status'?: string;
     /**
-     * Name of the chain used in withdrawals.
+     * Name of the chain used in withdrawals
      */
     'chain': string;
 

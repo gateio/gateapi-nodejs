@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Option orders.
+ * Option orders
  */
 export class MockOptionsOrder {
     /**
-     * Option name, currently only supports options for BTC and ETH with USDT.
+     * Option name, currently only supports USDT options for BTC and ETH
      */
     'optionsName': string;
     /**
-     * Initial order quantity, not involved in actual calculation.
+     * Initial order quantity, not involved in actual calculation
      */
     'size': string;
     /**
-     * Unfilled contract quantity, involved in actual calculation.
+     * Unfilled contract quantity, involved in actual calculation
      */
     'left': string;
 

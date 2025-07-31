@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,31 +11,31 @@
 
 export class SubAccountToSubAccount {
     /**
-     * Transfer currency name.
+     * Transfer currency name
      */
     'currency': string;
     /**
-     * Transfer from the account. (deprecate, use `sub_account_from_type` and `sub_account_to_type` instead)
+     * Transfer from account (deprecated, use `sub_account_from_type` and `sub_account_to_type` instead)
      */
     'subAccountType'?: string;
     /**
-     * Transfer from the user id of the sub-account.
+     * Transfer from the user id of the sub-account
      */
     'subAccountFrom': string;
     /**
-     * The sub-account\'s outgoing trading account, spot - spot account, futures - perpetual contract account, delivery - delivery contract account.
+     * Source sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
      */
     'subAccountFromType': string;
     /**
-     * Transfer to the user id of the sub-account.
+     * Transfer to the user id of the sub-account
      */
     'subAccountTo': string;
     /**
-     * Transferred sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
+     * Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account
      */
     'subAccountToType': string;
     /**
-     * Transfer amount.
+     * Transfer amount
      */
     'amount': string;
 

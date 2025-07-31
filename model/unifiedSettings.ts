@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class UnifiedSettings {
     /**
-     * USDT contract switch. In cross-currency margin mode, it can only be turned on and not off
+     * USDT futures switch. In cross-currency margin mode, can only be enabled and cannot be disabled
      */
     'usdtFutures'?: boolean;
     /**
-     * Spot hedging switch.
+     * Spot hedging switch
      */
     'spotHedge'?: boolean;
     /**
-     * switch, when the mode is cross-currency margin mode, whether to use Uniloan financial funds as margin
+     * Earn switch, when mode is cross-currency margin mode, whether to use Earn funds as margin
      */
     'useFunding'?: boolean;
     /**
-     * Option switch. In cross-currency margin mode, it can only be turned on and not off
+     * Options switch. In cross-currency margin mode, can only be enabled and cannot be disabled
      */
     'options'?: boolean;
 

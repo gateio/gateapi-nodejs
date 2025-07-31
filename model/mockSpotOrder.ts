@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Spot orders.
+ * Spot orders
  */
 export class MockSpotOrder {
     /**
-     * Currency pair.
+     * Market
      */
     'currencyPairs': string;
     /**
-     * Price.
+     * Price
      */
     'orderPrice': string;
     /**
-     * Initial order quantity for spot trading pairs, not involved in actual calculation.  Currently only supports three currencies: BTC, ETH.
+     * Initial order quantity for spot trading pairs, not involved in actual calculation. Currently only supports BTC and ETH Currently only supports three currencies: BTC, ETH
      */
     'count'?: string;
     /**
-     * Unfilled quantity, involved in actual calculation.
+     * Unfilled quantity, involved in actual calculation
      */
     'left': string;
     /**
-     * Order type, sell - sell order, buy - buy order.
+     * Order type, sell - sell order, buy - buy order
      */
     'type': string;
 

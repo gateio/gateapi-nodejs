@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,27 +12,27 @@
 import { MarginAccountCurrency } from './marginAccountCurrency';
 
 /**
- * Margin account detail. `base` refers to base currency, while `quotes to quote currency
+ * Margin account information for a trading pair. `base` corresponds to base currency account information, `quote` corresponds to quote currency account information
  */
 export class MarginAccount {
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Account type, risk - risk rate account, mmr - maintenance margin market not activated
+     * Account type: risk - risk rate account, mmr - maintenance margin rate account, inactive - market not activated
      */
     'accountType'?: string;
     /**
-     * User current market leverage multiple.
+     * User\'s current market leverage multiplier
      */
     'leverage'?: string;
     /**
-     * Whether account is locked.
+     * Whether the account is locked
      */
     'locked'?: boolean;
     /**
-     * Leveraged Account Current Risk Rate (Returned when the Account is a Risk Rate Account)
+     * Current risk rate of the margin account (returned when the account is a risk rate account)
      */
     'risk'?: string;
     /**

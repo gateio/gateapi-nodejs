@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,23 +11,23 @@
 
 export class CollateralCurrencyRes {
     /**
-     * Update success status.
+     * Update success status
      */
     'succeeded'?: boolean;
     /**
-     * Error identifier for unsuccessful operations; empty for successful.
+     * Error identifier for failed operations; empty when successful
      */
     'label'?: string;
     /**
-     * Error description in case of operation failure; empty when successful.
+     * Error description for failed operations; empty when successful
      */
     'message'?: string;
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Quantity of successful collateral operation; 0 if the operation fails.
+     * Successfully operated collateral quantity; 0 if operation fails
      */
     'amount'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Lend or redeem.
+ * Create lending or redemption
  */
 export class CreateUniLend {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency': string;
     /**
-     * The amount of currency could be lent.
+     * Amount to deposit into lending pool
      */
     'amount': string;
     /**
-     * type: lend - lend, redeem - redeem.
+     * Operation type: lend - Lend, redeem - Redeem
      */
     'type': CreateUniLend.Type;
     /**
-     * The minimum interest rate. If the value is too high, it might lead to the unsuccessful lending and no profit will be gained for that hour.
+     * Minimum interest rate. If set too high, lending may fail and no interest will be earned. Required for lending operations.
      */
     'minRate'?: string;
 

@@ -4,25 +4,25 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listMarginAccounts**](MarginApi.md#listMarginAccounts) | **GET** /margin/accounts | Margin account list.
-[**listMarginAccountBook**](MarginApi.md#listMarginAccountBook) | **GET** /margin/account_book | List margin account balance change history.
-[**listFundingAccounts**](MarginApi.md#listFundingAccounts) | **GET** /margin/funding_accounts | Funding account list.
-[**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Retrieve user auto repayment setting.
-[**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user\&#39;s auto repayment setting.
-[**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Get the max transferable amount for a specific margin currency.
-[**getUserMarginTier**](MarginApi.md#getUserMarginTier) | **GET** /margin/user/loan_margin_tiers | Check the user\&#39;s own leverage lending gradient in the current market.
-[**getMarketMarginTier**](MarginApi.md#getMarketMarginTier) | **GET** /margin/loan_margin_tiers | Query the current market leverage lending gradient.
-[**setUserMarketLeverage**](MarginApi.md#setUserMarketLeverage) | **POST** /margin/leverage/user_market_setting | Set the user market leverage multiple.
-[**listMarginUserAccount**](MarginApi.md#listMarginUserAccount) | **GET** /margin/user/account | Query the user\&#39;s leverage account list.
-[**listCrossMarginLoans**](MarginApi.md#listCrossMarginLoans) | **GET** /margin/cross/loans | List cross margin borrow history. (deprecated).
-[**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments. (deprecated).
+[**listMarginAccounts**](MarginApi.md#listMarginAccounts) | **GET** /margin/accounts | Margin account list
+[**listMarginAccountBook**](MarginApi.md#listMarginAccountBook) | **GET** /margin/account_book | Query margin account balance change history
+[**listFundingAccounts**](MarginApi.md#listFundingAccounts) | **GET** /margin/funding_accounts | Funding account list
+[**getAutoRepayStatus**](MarginApi.md#getAutoRepayStatus) | **GET** /margin/auto_repay | Query user auto repayment settings
+[**setAutoRepay**](MarginApi.md#setAutoRepay) | **POST** /margin/auto_repay | Update user auto repayment settings
+[**getMarginTransferable**](MarginApi.md#getMarginTransferable) | **GET** /margin/transferable | Get maximum transferable amount for isolated margin
+[**getUserMarginTier**](MarginApi.md#getUserMarginTier) | **GET** /margin/user/loan_margin_tiers | Query user\&#39;s own leverage lending tiers in current market
+[**getMarketMarginTier**](MarginApi.md#getMarketMarginTier) | **GET** /margin/loan_margin_tiers | Query current market leverage lending tiers
+[**setUserMarketLeverage**](MarginApi.md#setUserMarketLeverage) | **POST** /margin/leverage/user_market_setting | Set user market leverage multiplier
+[**listMarginUserAccount**](MarginApi.md#listMarginUserAccount) | **GET** /margin/user/account | Query user\&#39;s isolated margin account list
+[**listCrossMarginLoans**](MarginApi.md#listCrossMarginLoans) | **GET** /margin/cross/loans | Query cross margin borrow history (deprecated)
+[**listCrossMarginRepayments**](MarginApi.md#listCrossMarginRepayments) | **GET** /margin/cross/repayments | Retrieve cross margin repayments. (deprecated)
 
 
 ## listMarginAccounts
 
 > Promise<{ response: http.IncomingMessage; body: Array<MarginAccount>; }> listMarginAccounts(opts)
 
-Margin account list.
+Margin account list
 
 ### Example
 
@@ -36,7 +36,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT" // string | Currency pair.
+  'currencyPair': "BTC_USDT" // string | Currency pair
 };
 api.listMarginAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -48,7 +48,7 @@ api.listMarginAccounts(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
 
 ### Return type
 
@@ -67,9 +67,9 @@ Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount
 
 > Promise<{ response: http.IncomingMessage; body: Array<MarginAccountBook>; }> listMarginAccountBook(opts)
 
-List margin account balance change history.
+Query margin account balance change history
 
-Only transferals from and to margin account are provided for now. Time range allows 30 days at most
+Currently only provides transfer history to and from margin accounts. Query time range cannot exceed 30 days
 
 ### Example
 
@@ -83,13 +83,13 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const opts = {
-  'currency': "currency_example", // string | List records related to specified currency only. If specified, `currency_pair` is also required.
-  'currencyPair': "currencyPair_example", // string | List records related to specified currency pair. Used in combination with `currency`. Ignored if `currency` is not provided
-  'type': "lend", // string | Only retrieve changes of the specified type. All types will be returned if not specified.
-  'from': 1627706330, // number | Start timestamp of the query.
-  'to': 1635329650, // number | Time range ending, default to current time.
-  'page': 1, // number | Page number.
-  'limit': 100 // number | Maximum number of records to be returned in a single list.
+  'currency': "currency_example", // string | Query history for specified currency. If `currency` is specified, `currency_pair` must also be specified.
+  'currencyPair': "currencyPair_example", // string | Specify margin account currency pair. Used in combination with `currency`. Ignored if `currency` is not specified
+  'type': "lend", // string | Query by specified account change type. If not specified, all change types will be included.
+  'from': 1627706330, // number | Start timestamp for the query
+  'to': 1635329650, // number | End timestamp for the query, defaults to current time if not specified
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of records returned in a single list
 };
 api.listMarginAccountBook(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -101,13 +101,13 @@ api.listMarginAccountBook(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required. | [optional] [default to undefined]
- **currencyPair** | **string**| List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided | [optional] [default to undefined]
- **type** | **string**| Only retrieve changes of the specified type. All types will be returned if not specified. | [optional] [default to undefined]
- **from** | **number**| Start timestamp of the query. | [optional] [default to undefined]
- **to** | **number**| Time range ending, default to current time. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
+ **currency** | **string**| Query history for specified currency. If &#x60;currency&#x60; is specified, &#x60;currency_pair&#x60; must also be specified. | [optional] [default to undefined]
+ **currencyPair** | **string**| Specify margin account currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not specified | [optional] [default to undefined]
+ **type** | **string**| Query by specified account change type. If not specified, all change types will be included. | [optional] [default to undefined]
+ **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -126,7 +126,7 @@ Promise<{ response: AxiosResponse; body: Array<MarginAccountBook>; }> [MarginAcc
 
 > Promise<{ response: http.IncomingMessage; body: Array<FundingAccount>; }> listFundingAccounts(opts)
 
-Funding account list.
+Funding account list
 
 ### Example
 
@@ -140,7 +140,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const opts = {
-  'currency': "BTC" // string | Retrieve data of the specified currency.
+  'currency': "BTC" // string | Query by specified currency name
 };
 api.listFundingAccounts(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -152,7 +152,7 @@ api.listFundingAccounts(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency. | [optional] [default to undefined]
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
 
 ### Return type
 
@@ -171,7 +171,7 @@ Promise<{ response: AxiosResponse; body: Array<FundingAccount>; }> [FundingAccou
 
 > Promise<{ response: http.IncomingMessage; body: AutoRepaySetting; }> getAutoRepayStatus()
 
-Retrieve user auto repayment setting.
+Query user auto repayment settings
 
 ### Example
 
@@ -210,7 +210,7 @@ Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting]
 
 > Promise<{ response: http.IncomingMessage; body: AutoRepaySetting; }> setAutoRepay(status)
 
-Update user\&#39;s auto repayment setting.
+Update user auto repayment settings
 
 ### Example
 
@@ -223,7 +223,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const status = "on"; // string | New auto repayment status. `on` - enabled, `off` - disabled.
+const status = "on"; // string | Whether to enable auto repayment: `on` - enabled, `off` - disabled
 api.setAutoRepay(status)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -234,7 +234,7 @@ api.setAutoRepay(status)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string**| New auto repayment status. &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled. | [default to undefined]
+ **status** | **string**| Whether to enable auto repayment: &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled | [default to undefined]
 
 ### Return type
 
@@ -253,7 +253,7 @@ Promise<{ response: AxiosResponse; body: AutoRepaySetting; }> [AutoRepaySetting]
 
 > Promise<{ response: http.IncomingMessage; body: MarginTransferable; }> getMarginTransferable(currency, opts)
 
-Get the max transferable amount for a specific margin currency.
+Get maximum transferable amount for isolated margin
 
 ### Example
 
@@ -266,9 +266,9 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const currency = "BTC"; // string | Retrieve data of the specified currency.
+const currency = "BTC"; // string | Query by specified currency name
 const opts = {
-  'currencyPair': "BTC_USDT" // string | Currency pair.
+  'currencyPair': "BTC_USDT" // string | Currency pair
 };
 api.getMarginTransferable(currency, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -280,8 +280,8 @@ api.getMarginTransferable(currency, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency. | [default to undefined]
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
+ **currency** | **string**| Query by specified currency name | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
 
 ### Return type
 
@@ -300,7 +300,7 @@ Promise<{ response: AxiosResponse; body: MarginTransferable; }> [MarginTransfera
 
 > Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getUserMarginTier(currencyPair)
 
-Check the user\&#39;s own leverage lending gradient in the current market.
+Query user\&#39;s own leverage lending tiers in current market
 
 ### Example
 
@@ -313,7 +313,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const currencyPair = "BTC_USDT"; // string | Currency pair.
+const currencyPair = "BTC_USDT"; // string | Currency pair
 api.getUserMarginTier(currencyPair)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -324,7 +324,7 @@ api.getUserMarginTier(currencyPair)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [default to undefined]
 
 ### Return type
 
@@ -343,7 +343,7 @@ Promise<{ response: AxiosResponse; body: Array<MarginLeverageTier>; }> [MarginLe
 
 > Promise<{ response: http.IncomingMessage; body: Array<MarginLeverageTier>; }> getMarketMarginTier(currencyPair)
 
-Query the current market leverage lending gradient.
+Query current market leverage lending tiers
 
 ### Example
 
@@ -354,7 +354,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MarginApi(client);
-const currencyPair = "BTC_USDT"; // string | Currency pair.
+const currencyPair = "BTC_USDT"; // string | Currency pair
 api.getMarketMarginTier(currencyPair)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -365,7 +365,7 @@ api.getMarketMarginTier(currencyPair)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [default to undefined]
 
 ### Return type
 
@@ -384,7 +384,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> setUserMarketLeverage(marginMarketLeverage)
 
-Set the user market leverage multiple.
+Set user market leverage multiplier
 
 ### Example
 
@@ -427,9 +427,9 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<MarginAccount>; }> listMarginUserAccount(opts)
 
-Query the user\&#39;s leverage account list.
+Query user\&#39;s isolated margin account list
 
-Support querying risk rate per position account and margin rate per position account
+Supports querying risk ratio isolated accounts and margin ratio isolated accounts
 
 ### Example
 
@@ -443,7 +443,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT" // string | Currency pair.
+  'currencyPair': "BTC_USDT" // string | Currency pair
 };
 api.listMarginUserAccount(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -455,7 +455,7 @@ api.listMarginUserAccount(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
 
 ### Return type
 
@@ -474,9 +474,9 @@ Promise<{ response: AxiosResponse; body: Array<MarginAccount>; }> [MarginAccount
 
 > Promise<{ response: http.IncomingMessage; body: Array<CrossMarginLoan>; }> listCrossMarginLoans(status, opts)
 
-List cross margin borrow history. (deprecated).
+Query cross margin borrow history (deprecated)
 
-Sort by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results.
+Sorted by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; for ascending order
 
 ### Example
 
@@ -489,11 +489,11 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginApi(client);
-const status = 56; // number | Filter by status. Supported values are 2 and 3. (deprecated.).
+const status = 56; // number | Filter by status. Supported values are 2 and 3. (deprecated.)
 const opts = {
-  'currency': "currency_example", // string | Filter by currency.
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'offset': 0, // number | List offset, starting from 0.
+  'currency': "currency_example", // string | Query by specified currency, includes all currencies if not specified
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'offset': 0, // number | List offset, starting from 0
   'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
 };
 api.listCrossMarginLoans(status, opts)
@@ -506,10 +506,10 @@ api.listCrossMarginLoans(status, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **number**| Filter by status. Supported values are 2 and 3. (deprecated.). | [default to undefined]
- **currency** | **string**| Filter by currency. | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **offset** | **number**| List offset, starting from 0. | [optional] [default to 0]
+ **status** | **number**| Filter by status. Supported values are 2 and 3. (deprecated.) | [default to undefined]
+ **currency** | **string**| Query by specified currency, includes all currencies if not specified | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
 
 ### Return type
@@ -529,9 +529,9 @@ Promise<{ response: AxiosResponse; body: Array<CrossMarginLoan>; }> [CrossMargin
 
 > Promise<{ response: http.IncomingMessage; body: Array<CrossMarginRepayment>; }> listCrossMarginRepayments(opts)
 
-Retrieve cross margin repayments. (deprecated).
+Retrieve cross margin repayments. (deprecated)
 
-Sort by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results.
+Sorted by creation time in descending order by default. Set &#x60;reverse&#x3D;false&#x60; for ascending order
 
 ### Example
 
@@ -547,8 +547,8 @@ const api = new GateApi.MarginApi(client);
 const opts = {
   'currency': "BTC", // string | 
   'loanId': "12345", // string | 
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'offset': 0, // number | List offset, starting from 0.
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'offset': 0, // number | List offset, starting from 0
   'reverse': True // boolean | Whether to sort in descending order, which is the default. Set `reverse=false` to return ascending results
 };
 api.listCrossMarginRepayments(opts)
@@ -563,8 +563,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**|  | [optional] [default to undefined]
  **loanId** | **string**|  | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **offset** | **number**| List offset, starting from 0. | [optional] [default to 0]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **offset** | **number**| List offset, starting from 0 | [optional] [default to 0]
  **reverse** | **boolean**| Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results | [optional] [default to undefined]
 
 ### Return type

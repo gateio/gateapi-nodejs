@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,31 +11,31 @@
 
 export class MarginAccountBook {
     /**
-     * Balance change record ID.
+     * Balance change record ID
      */
     'id'?: string;
     /**
-     * Balance changed timestamp.
+     * Account change timestamp
      */
     'time'?: string;
     /**
-     * The timestamp of the change (in milliseconds).
+     * The timestamp of the change (in milliseconds)
      */
     'timeMs'?: number;
     /**
-     * Currency changed.
+     * Currency changed
      */
     'currency'?: string;
     /**
-     * Account currency pair.
+     * Account trading pair
      */
     'currencyPair'?: string;
     /**
-     * Amount changed. Positive value means transferring in, while negative out.
+     * Amount changed. Positive value means transferring in, while negative out
      */
     'change'?: string;
     /**
-     * Balance after change.
+     * Balance after change
      */
     'balance'?: string;
     /**

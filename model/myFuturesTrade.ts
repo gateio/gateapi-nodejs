@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,47 +11,47 @@
 
 export class MyFuturesTrade {
     /**
-     * Trade ID.
+     * Fill ID
      */
     'id'?: number;
     /**
-     * Trading time.
+     * Fill Time
      */
     'createTime'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Order ID related.
+     * Related order ID
      */
     'orderId'?: string;
     /**
-     * Trading size.
+     * Trading size
      */
     'size'?: number;
     /**
-     * Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long postion close_size<0 && size<0 && size < close_size Close long position and open short position
+     * Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
      */
     'closeSize'?: number;
     /**
-     * Trading price.
+     * Fill Price
      */
     'price'?: string;
     /**
-     * Trade role. Available values are `taker` and `maker`.
+     * Trade role. taker - taker, maker - maker
      */
     'role'?: MyFuturesTrade.Role;
     /**
-     * User defined information.
+     * Order custom information
      */
     'text'?: string;
     /**
-     * Fee deducted.
+     * Trade fee
      */
     'fee'?: string;
     /**
-     * Points used to deduct fee.
+     * Points used to deduct trade fee
      */
     'pointFee'?: string;
 

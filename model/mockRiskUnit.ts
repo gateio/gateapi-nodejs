@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,43 +12,43 @@
 import { MockMarginResult } from './mockMarginResult';
 
 /**
- * Risk unit.
+ * Risk unit
  */
 export class MockRiskUnit {
     /**
-     * Risk unit name.
+     * Risk unit name
      */
     'symbol'?: string;
     /**
-     * Spot usage.
+     * Spot hedge usage
      */
     'spotInUse'?: string;
     /**
-     * Maintenance margin.
+     * Maintenance margin
      */
     'maintainMargin'?: string;
     /**
-     * Initial margin.
+     * Initial margin
      */
     'initialMargin'?: string;
     /**
-     * Margin result.
+     * Margin result
      */
     'marginResult'?: Array<MockMarginResult>;
     /**
-     * Total Delta of risk unit.
+     * Total Delta of risk unit
      */
     'delta'?: string;
     /**
-     * Total Gamma of risk unit.
+     * Total Gamma of risk unit
      */
     'gamma'?: string;
     /**
-     * Total Theta of risk unit.
+     * Total Theta of risk unit
      */
     'theta'?: string;
     /**
-     * Total Vega of risk unit.
+     * Total Vega of risk unit
      */
     'vega'?: string;
 

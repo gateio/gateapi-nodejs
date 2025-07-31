@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,35 +10,35 @@
  */
 
 /**
- * List all supported currencies in flash swap.
+ * List all supported currencies in flash swap
  */
 export class FlashSwapCurrencyPair {
     /**
-     * The currency pair, BTC_USDT represents selling Bitcoin (BTC) and buying Tether (USDT).
+     * Currency pair, `BTC_USDT` represents selling `BTC` and buying `USDT`
      */
     'currencyPair'?: string;
     /**
-     * The currency to be sold.
+     * Currency to sell
      */
     'sellCurrency'?: string;
     /**
-     * The currency to be bought.
+     * Currency to buy
      */
     'buyCurrency'?: string;
     /**
-     * The minimum quantity required for selling.
+     * Minimum sell quantity
      */
     'sellMinAmount'?: string;
     /**
-     * The maximum quantity allowed for selling.
+     * Maximum sell quantity
      */
     'sellMaxAmount'?: string;
     /**
-     * The minimum quantity required for buying.
+     * Minimum buy quantity
      */
     'buyMinAmount'?: string;
     /**
-     * The maximum quantity allowed for buying.
+     * Maximum buy quantity
      */
     'buyMaxAmount'?: string;
 

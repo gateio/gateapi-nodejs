@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,11 +13,11 @@ import { UnifiedBalance } from './unifiedBalance';
 
 export class UnifiedAccount {
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * Time of the most recent refresh.
+     * Last refresh time
      */
     'refreshTime'?: number;
     /**
@@ -26,11 +26,11 @@ export class UnifiedAccount {
     'locked'?: boolean;
     'balances'?: { [key: string]: UnifiedBalance };
     /**
-     * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price` in all currencies (deprecated, to be deprecated, replaced by unified_account_total)
+     * Total account assets converted to USD, i.e. the sum of `(available + freeze) * price` in all currencies (deprecated, to be removed, replaced by unified_account_total)
      */
     'total'?: string;
     /**
-     * The total borrowed amount of the account converted into USD, i.e. the sum of `borrowed * price` of all currencies (excluding Point Cards). It is valid in cross-currency margin/combined margin mode, and is 0 in other modes such as single-currency margin mode.
+     * Total borrowed amount converted to USD, i.e. the sum of `borrowed * price` of all currencies (excluding point cards), valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
      */
     'borrowed'?: string;
     /**
@@ -58,19 +58,19 @@ export class UnifiedAccount {
      */
     'totalAvailableMargin'?: string;
     /**
-     * Unify the total account assets, valid in single currency margin/cross-currency margin/combined margin mode
+     * Total unified account assets, valid in single currency margin/cross-currency margin/combined margin mode
      */
     'unifiedAccountTotal'?: string;
     /**
-     * Unify the total loan of the account, valid in the cross-currency margin/combined margin mode, and 0 in other modes such as single-currency margin mode
+     * Total unified account borrowed amount, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
      */
     'unifiedAccountTotalLiab'?: string;
     /**
-     * Unify the total account equity, valid in single currency margin/cross-currency margin/combined margin mode
+     * Total unified account equity, valid in single currency margin/cross-currency margin/combined margin mode
      */
     'unifiedAccountTotalEquity'?: string;
     /**
-     * Actual leverage, valid in cross-currency margin/combined margin mode.
+     * Actual leverage ratio, valid in cross-currency margin/combined margin mode
      */
     'leverage'?: string;
     /**
@@ -78,15 +78,15 @@ export class UnifiedAccount {
      */
     'spotOrderLoss'?: string;
     /**
-     * Spot hedging status, true - enabled, false - not enabled.
+     * Spot hedging status: true - enabled, false - disabled
      */
     'spotHedge'?: boolean;
     /**
-     * Whether to use funds as margin.
+     * Whether to use Earn funds as margin
      */
     'useFunding'?: boolean;
     /**
-     * Whether all currencies are used as margin, true - false - No
+     * Whether all currencies are used as margin: true - all currencies as margin, false - no
      */
     'isAllCollateral'?: boolean;
 

@@ -4,21 +4,21 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listUniCurrencyPairs**](MarginUniApi.md#listUniCurrencyPairs) | **GET** /margin/uni/currency_pairs | List lending markets.
-[**getUniCurrencyPair**](MarginUniApi.md#getUniCurrencyPair) | **GET** /margin/uni/currency_pairs/{currency_pair} | Get detail of lending market.
-[**getMarginUniEstimateRate**](MarginUniApi.md#getMarginUniEstimateRate) | **GET** /margin/uni/estimate_rate | Estimate interest Rate.
-[**listUniLoans**](MarginUniApi.md#listUniLoans) | **GET** /margin/uni/loans | List loans.
-[**createUniLoan**](MarginUniApi.md#createUniLoan) | **POST** /margin/uni/loans | Borrow or repay.
-[**listUniLoanRecords**](MarginUniApi.md#listUniLoanRecords) | **GET** /margin/uni/loan_records | Get load records.
-[**listUniLoanInterestRecords**](MarginUniApi.md#listUniLoanInterestRecords) | **GET** /margin/uni/interest_records | List interest records.
-[**getUniBorrowable**](MarginUniApi.md#getUniBorrowable) | **GET** /margin/uni/borrowable | Get maximum borrowable.
+[**listUniCurrencyPairs**](MarginUniApi.md#listUniCurrencyPairs) | **GET** /margin/uni/currency_pairs | List lending markets
+[**getUniCurrencyPair**](MarginUniApi.md#getUniCurrencyPair) | **GET** /margin/uni/currency_pairs/{currency_pair} | Get lending market details
+[**getMarginUniEstimateRate**](MarginUniApi.md#getMarginUniEstimateRate) | **GET** /margin/uni/estimate_rate | Estimate interest rate for isolated margin currencies
+[**listUniLoans**](MarginUniApi.md#listUniLoans) | **GET** /margin/uni/loans | Query loans
+[**createUniLoan**](MarginUniApi.md#createUniLoan) | **POST** /margin/uni/loans | Borrow or repay
+[**listUniLoanRecords**](MarginUniApi.md#listUniLoanRecords) | **GET** /margin/uni/loan_records | Query loan records
+[**listUniLoanInterestRecords**](MarginUniApi.md#listUniLoanInterestRecords) | **GET** /margin/uni/interest_records | Query interest deduction records
+[**getUniBorrowable**](MarginUniApi.md#getUniBorrowable) | **GET** /margin/uni/borrowable | Query maximum borrowable amount by currency
 
 
 ## listUniCurrencyPairs
 
 > Promise<{ response: http.IncomingMessage; body: Array<UniCurrencyPair>; }> listUniCurrencyPairs()
 
-List lending markets.
+List lending markets
 
 ### Example
 
@@ -55,7 +55,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: UniCurrencyPair; }> getUniCurrencyPair(currencyPair)
 
-Get detail of lending market.
+Get lending market details
 
 ### Example
 
@@ -66,7 +66,7 @@ const client = new GateApi.ApiClient();
 // client.basePath = "https://some-other-host"
 
 const api = new GateApi.MarginUniApi(client);
-const currencyPair = "AE_USDT"; // string | Currency pair.
+const currencyPair = "AE_USDT"; // string | Currency pair
 api.getUniCurrencyPair(currencyPair)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -77,7 +77,7 @@ api.getUniCurrencyPair(currencyPair)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [default to undefined]
 
 ### Return type
 
@@ -96,9 +96,9 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: { [key: string]: string; }; }> getMarginUniEstimateRate(currencies)
 
-Estimate interest Rate.
+Estimate interest rate for isolated margin currencies
 
-Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
+Interest rates change hourly based on lending depth, so completely accurate rates cannot be provided.
 
 ### Example
 
@@ -111,7 +111,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginUniApi(client);
-const currencies = [["BTC","GT"]]; // Array<string> | An array of up to 10 specifying the currency name.
+const currencies = [["BTC","GT"]]; // Array<string> | Array of currency names to query, maximum 10
 api.getMarginUniEstimateRate(currencies)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -122,7 +122,7 @@ api.getMarginUniEstimateRate(currencies)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**Array&lt;string&gt;**](string.md)| An array of up to 10 specifying the currency name. | [default to undefined]
+ **currencies** | [**Array&lt;string&gt;**](string.md)| Array of currency names to query, maximum 10 | [default to undefined]
 
 ### Return type
 
@@ -141,7 +141,7 @@ Promise<{ response: AxiosResponse; body: { [key: string]: string; }; }> [string]
 
 > Promise<{ response: http.IncomingMessage; body: Array<UniLoan>; }> listUniLoans(opts)
 
-List loans.
+Query loans
 
 ### Example
 
@@ -155,10 +155,10 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginUniApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT", // string | Currency pair.
-  'currency': "BTC", // string | Retrieve data of the specified currency.
-  'page': 1, // number | Page number.
-  'limit': 100 // number | Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+  'currencyPair': "BTC_USDT", // string | Currency pair
+  'currency': "BTC", // string | Query by specified currency name
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
 };
 api.listUniLoans(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -170,10 +170,10 @@ api.listUniLoans(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
- **currency** | **string**| Retrieve data of the specified currency. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum response items. Default: 100, minimum: 1, Maximum: 100. | [optional] [default to 100]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
 
 ### Return type
 
@@ -192,7 +192,7 @@ Promise<{ response: AxiosResponse; body: Array<UniLoan>; }> [UniLoan](UniLoan.md
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> createUniLoan(createUniLoan)
 
-Borrow or repay.
+Borrow or repay
 
 ### Example
 
@@ -235,7 +235,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: Array<UniLoanRecord>; }> listUniLoanRecords(opts)
 
-Get load records.
+Query loan records
 
 ### Example
 
@@ -249,11 +249,11 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginUniApi(client);
 const opts = {
-  'type': "type_example", // 'borrow' | 'repay' | type: borrow - borrow, repay - repay.
-  'currency': "BTC", // string | Retrieve data of the specified currency.
-  'currencyPair': "BTC_USDT", // string | Currency pair.
-  'page': 1, // number | Page number.
-  'limit': 100 // number | Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+  'type': "type_example", // 'borrow' | 'repay' | Type: `borrow` - borrow, `repay` - repay
+  'currency': "BTC", // string | Query by specified currency name
+  'currencyPair': "BTC_USDT", // string | Currency pair
+  'page': 1, // number | Page number
+  'limit': 100 // number | Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
 };
 api.listUniLoanRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -265,11 +265,11 @@ api.listUniLoanRecords(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **Type**| type: borrow - borrow, repay - repay. | [optional] [default to undefined]
- **currency** | **string**| Retrieve data of the specified currency. | [optional] [default to undefined]
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum response items. Default: 100, minimum: 1, Maximum: 100. | [optional] [default to 100]
+ **type** | **Type**| Type: &#x60;borrow&#x60; - borrow, &#x60;repay&#x60; - repay | [optional] [default to undefined]
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 | [optional] [default to 100]
 
 ### Return type
 
@@ -288,7 +288,7 @@ Promise<{ response: AxiosResponse; body: Array<UniLoanRecord>; }> [UniLoanRecord
 
 > Promise<{ response: http.IncomingMessage; body: Array<UniLoanInterestRecord>; }> listUniLoanInterestRecords(opts)
 
-List interest records.
+Query interest deduction records
 
 ### Example
 
@@ -302,10 +302,10 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginUniApi(client);
 const opts = {
-  'currencyPair': "BTC_USDT", // string | Currency pair.
-  'currency': "BTC", // string | Retrieve data of the specified currency.
-  'page': 1, // number | Page number.
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
+  'currencyPair': "BTC_USDT", // string | Currency pair
+  'currency': "BTC", // string | Query by specified currency name
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records returned in a single list
   'from': 1547706332, // number | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
   'to': 1547706332 // number | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
 };
@@ -319,10 +319,10 @@ api.listUniLoanInterestRecords(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **string**| Currency pair. | [optional] [default to undefined]
- **currency** | **string**| Retrieve data of the specified currency. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
+ **currencyPair** | **string**| Currency pair | [optional] [default to undefined]
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
  **from** | **number**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional] [default to undefined]
  **to** | **number**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional] [default to undefined]
 
@@ -343,7 +343,7 @@ Promise<{ response: AxiosResponse; body: Array<UniLoanInterestRecord>; }> [UniLo
 
 > Promise<{ response: http.IncomingMessage; body: MaxUniBorrowable; }> getUniBorrowable(currency, currencyPair)
 
-Get maximum borrowable.
+Query maximum borrowable amount by currency
 
 ### Example
 
@@ -356,8 +356,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.MarginUniApi(client);
-const currency = "BTC"; // string | Retrieve data of the specified currency.
-const currencyPair = "BTC_USDT"; // string | Currency pair.
+const currency = "BTC"; // string | Query by specified currency name
+const currencyPair = "BTC_USDT"; // string | Currency pair
 api.getUniBorrowable(currency, currencyPair)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -368,8 +368,8 @@ api.getUniBorrowable(currency, currencyPair)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency. | [default to undefined]
- **currencyPair** | **string**| Currency pair. | [default to undefined]
+ **currency** | **string**| Query by specified currency name | [default to undefined]
+ **currencyPair** | **string**| Currency pair | [default to undefined]
 
 ### Return type
 

@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inviteUid** | **number** | My inviter\&#39;s UID. | [optional] [default to undefined]
+**inviteUid** | **number** | My inviter\&#39;s UID | [optional] [default to undefined]
 

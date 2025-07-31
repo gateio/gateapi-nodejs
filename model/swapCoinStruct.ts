@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,23 +11,23 @@
 
 export class SwapCoinStruct {
     /**
-     * Order ID.
+     * Order ID
      */
     'id'?: number;
     /**
-     * Plan ID.
+     * Product ID
      */
     'pid'?: number;
     /**
-     * User ID.
+     * User ID
      */
     'uid'?: number;
     /**
-     * Currency.
+     * Currency
      */
     'coin'?: string;
     /**
-     * 类型 0-质押 1-赎回
+     * Type 0-Staking 1-Redemption
      */
     'type'?: number;
     /**
@@ -35,15 +35,15 @@ export class SwapCoinStruct {
      */
     'subtype'?: string;
     /**
-     * Amount.
+     * Amount
      */
     'amount'?: string;
     /**
-     * Exchange Ratio.
+     * Exchange ratio
      */
     'exchangeRate'?: string;
     /**
-     * 兑换金额
+     * Redemption Amount
      */
     'exchangeAmount'?: string;
     /**
@@ -51,23 +51,23 @@ export class SwapCoinStruct {
      */
     'updateStamp'?: number;
     /**
-     * Transaction timestamp.
+     * Transaction timestamp
      */
     'createStamp'?: number;
     /**
-     * status 1-success.
+     * status 1-success
      */
     'status'?: number;
     /**
-     * DEFI协议类型
+     * DEFI Protocol Type
      */
     'protocolType'?: number;
     /**
-     * 参考ID
+     * Reference ID
      */
     'clientOrderId'?: string;
     /**
-     * Order source.
+     * Order Origin
      */
     'source'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,31 +11,31 @@
 
 export class FuturesLiqOrder {
     /**
-     * Liquidation time.
+     * Liquidation time
      */
     'time'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * User position size.
+     * User position size
      */
     'size'?: number;
     /**
-     * Number of forced liquidation orders.
+     * Number of forced liquidation orders
      */
     'orderSize'?: number;
     /**
-     * Liquidation order price.
+     * Liquidation order price
      */
     'orderPrice'?: string;
     /**
-     * Liquidation order average taker price.
+     * Liquidation order average taker price
      */
     'fillPrice'?: string;
     /**
-     * System liquidation order maker size.
+     * System liquidation order maker size
      */
     'left'?: number;
 

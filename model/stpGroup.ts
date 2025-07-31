@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class StpGroup {
     /**
-     * STP Group ID.
+     * STP Group ID
      */
     'id'?: number;
     /**
-     * STP Group name.
+     * STP Group name
      */
     'name': string;
     /**
-     * Creator ID.
+     * Creator ID
      */
     'creatorId'?: number;
     /**
-     * Creation time.
+     * Created time
      */
     'createTime'?: number;
 

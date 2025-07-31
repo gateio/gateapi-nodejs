@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contract** | **string** | Futures name, currently only supports perpetual futures for BTC and ETH with USDT. | [default to undefined]
-**size** | **string** | Position size, measured in contract units. | [default to undefined]
+**contract** | **string** | Futures name, currently only supports USDT perpetual contracts for BTC and ETH | [default to undefined]
+**size** | **string** | Position size, measured in contract quantity | [default to undefined]
 

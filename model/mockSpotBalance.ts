@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * Spot.
+ * Spot
  */
 export class MockSpotBalance {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency': string;
     /**
-     * Currency equity, where equity = balance - borrowed, represents the net delta exposure  of your spot positions, which can be negative. Currently only supports three currencies: BTC, ETH.
+     * Currency equity, where equity = balance - borrowed, represents the net delta exposure of your spot positions, which can be negative. Currently only supports BTC and ETH
      */
     'equity': string;
 

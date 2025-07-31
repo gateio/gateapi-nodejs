@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -53,8 +53,8 @@ export class WalletApi {
 
     /**
      *
-     * @summary List chains supported for specified currency.
-     * @param currency Currency name.
+     * @summary Query chains supported for specified currency
+     * @param currency Currency name
      */
     public async listCurrencyChains(
         currency: string,
@@ -90,8 +90,8 @@ export class WalletApi {
 
     /**
      *
-     * @summary Generate currency deposit address.
-     * @param currency Currency name.
+     * @summary Generate currency deposit address
+     * @param currency Currency name
      */
     public async getDepositAddress(currency: string): Promise<{ response: AxiosResponse; body: DepositAddress }> {
         const localVarPath = this.client.basePath + '/wallet/deposit_address';
@@ -124,17 +124,17 @@ export class WalletApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary Retrieve withdrawal records.
+     * Record query time range cannot exceed 30 days
+     * @summary Get withdrawal records
      * @param opts Optional parameters
-     * @param opts.currency Filter by currency. Return all currency records if not specified.
-     * @param opts.withdrawId The withdrawal record id starts with w, such as: w1879219868. When withdraw_id is not empty, the value querys this withdrawal record and no longer querys according to time
-     * @param opts.assetClass The currency type of withdrawal record is empty by default. It supports users to query the withdrawal records in the main and innovation areas on demand. Value range: SPOT, PILOT  SPOT: Main Zone  PILOT: Innovation Zone
-     * @param opts.withdrawOrderId User-defined order number when withdrawing. Default is empty. When not empty, the specified user-defined order number record will be queried
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currency Specify the currency. If not specified, returns all currencies
+     * @param opts.withdrawId Withdrawal record ID starts with \&#39;w\&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled
+     * @param opts.assetClass Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone
+     * @param opts.withdrawOrderId User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listWithdrawals(opts: {
         currency?: string;
@@ -202,14 +202,14 @@ export class WalletApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary Retrieve deposit records.
+     * Record query time range cannot exceed 30 days
+     * @summary Get deposit records
      * @param opts Optional parameters
-     * @param opts.currency Filter by currency. Return all currency records if not specified.
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit The maximum number of entries returned in the list is limited to 500 transactions.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currency Specify the currency. If not specified, returns all currencies
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of entries returned in the list, limited to 500 transactions
+     * @param opts.offset List offset, starting from 0
      */
     public async listDeposits(opts: {
         currency?: string;
@@ -262,8 +262,8 @@ export class WalletApi {
     }
 
     /**
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 3. options
-     * @summary Transfer between trading accounts.
+     * Balance transfers between personal trading accounts. Currently supports the following transfer operations:  1. Spot account - Margin account 2. Spot account - Perpetual futures account 3. Spot account - Delivery futures account 4. Spot account - Options account
+     * @summary Transfer between trading accounts
      * @param transfer
      */
     public async transfer(transfer: Transfer): Promise<{ response: AxiosResponse; body: TransactionID }> {
@@ -296,14 +296,14 @@ export class WalletApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days  > Note: only records after 20-04-10can be retrieved
-     * @summary Retrieve transfer records between main and sub accounts.
+     * Record query time range cannot exceed 30 days  > Note: Only records after 2020-04-10 can be retrieved
+     * @summary Get transfer records between main and sub accounts
      * @param opts Optional parameters
-     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listSubAccountTransfers(opts: {
         subUid?: string;
@@ -360,8 +360,8 @@ export class WalletApi {
     }
 
     /**
-     * Support transferring with sub user\'s spot or futures account. Note that only main user\'s spot account is used no matter which sub user\'s account is operated.
-     * @summary Transfer between main and sub accounts.
+     * Supports transfers to/from sub-account\'s spot or futures accounts. Note that regardless of which sub-account is operated, only the main account\'s spot account is used
+     * @summary Transfer between main and sub accounts
      * @param subAccountTransfer
      */
     public async transferWithSubAccount(
@@ -398,8 +398,8 @@ export class WalletApi {
     }
 
     /**
-     * It is possible to perform balance transfers between two sub-accounts under the same main account. You can use either the API Key of the main account sub-account to initiate the transfer.
-     * @summary Sub-account transfers to sub-account.
+     * Supports balance transfers between two sub-accounts under the same main account. You can use either the main account\'s API Key or the source sub-account\'s API Key to perform the operation
+     * @summary Transfer between sub-accounts
      * @param subAccountToSubAccount
      */
     public async subAccountToSubAccount(
@@ -436,11 +436,11 @@ export class WalletApi {
     }
 
     /**
-     * Support querying transfer status based on user-defined client_order_id or tx_id returned by the transfer interface
-     * @summary Transfer status query.
+     * Supports querying transfer status based on user-defined client_order_id or tx_id returned by the transfer interface
+     * @summary Transfer status query
      * @param opts Optional parameters
-     * @param opts.clientOrderId The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;, with a length ranging from 1 to 64 characters.
-     * @param opts.txId The transfer operation number and client_order_id cannot be empty at the same time
+     * @param opts.clientOrderId Customer-defined ID to prevent duplicate transfers. Can be a combination of letters (case-sensitive), numbers, hyphens \&#39;-\&#39;, and underscores \&#39;_\&#39;. Can be pure letters or pure numbers with length between 1-64 characters
+     * @param opts.txId Transfer operation number, cannot be empty at the same time as client_order_id
      */
     public async getTransferOrderStatus(opts: {
         clientOrderId?: string;
@@ -479,9 +479,9 @@ export class WalletApi {
 
     /**
      *
-     * @summary Retrieve withdrawal status.
+     * @summary Query withdrawal status
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.currency Query by specified currency name
      */
     public async listWithdrawStatus(opts: {
         currency?: string;
@@ -515,9 +515,9 @@ export class WalletApi {
 
     /**
      *
-     * @summary Retrieve sub account balances.
+     * @summary Query sub-account balance information
      * @param opts Optional parameters
-     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
+     * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
     public async listSubAccountBalances(opts: {
         subUid?: string;
@@ -551,9 +551,9 @@ export class WalletApi {
 
     /**
      *
-     * @summary Query sub accounts\' margin balances.
+     * @summary Query sub-account isolated margin account balance information
      * @param opts Optional parameters
-     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
+     * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
     public async listSubAccountMarginBalances(opts: {
         subUid?: string;
@@ -591,10 +591,10 @@ export class WalletApi {
 
     /**
      *
-     * @summary Query sub accounts\' futures account balances.
+     * @summary Query sub-account perpetual futures account balance information
      * @param opts Optional parameters
-     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
-     * @param opts.settle Query only balances of specified settle currency.
+     * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
+     * @param opts.settle Query balance of specified settlement currency
      */
     public async listSubAccountFuturesBalances(opts: {
         subUid?: string;
@@ -637,9 +637,9 @@ export class WalletApi {
 
     /**
      *
-     * @summary Query subaccount\'s cross_margin account info.
+     * @summary Query sub-account cross margin account balance information
      * @param opts Optional parameters
-     * @param opts.subUid User ID of sub-account, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return the records of all sub accounts
+     * @param opts.subUid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts
      */
     public async listSubAccountCrossMarginBalances(opts: {
         subUid?: string;
@@ -677,12 +677,12 @@ export class WalletApi {
 
     /**
      *
-     * @summary Query saved address.
-     * @param currency Currency.
+     * @summary Query withdrawal address whitelist
+     * @param currency Currency
      * @param opts Optional parameters
-     * @param opts.chain Chain name.
-     * @param opts.limit Maximum number returned, 100 at most.
-     * @param opts.page Page number.
+     * @param opts.chain Chain name
+     * @param opts.limit Maximum number returned, up to 100
+     * @param opts.page Page number
      */
     public async listSavedAddress(
         currency: string,
@@ -732,10 +732,10 @@ export class WalletApi {
 
     /**
      *
-     * @summary Retrieve personal trading fee.
+     * @summary Query personal trading fees
      * @param opts Optional parameters
-     * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
-     * @param opts.settle Specify the settlement currency of the contract to get more accurate rate settings  This field is optional. Generally, the rate settings for all settlement currencies are the same.
+     * @param opts.currencyPair Specify currency pair to get more accurate fee settings.  This field is optional. Usually fee settings are the same for all currency pairs.
+     * @param opts.settle Specify the settlement currency of the contract to get more accurate fee settings.  This field is optional. Generally, the fee settings for all settlement currencies are the same.
      */
     public async getTradeFee(opts: {
         currencyPair?: string;
@@ -773,10 +773,10 @@ export class WalletApi {
     }
 
     /**
-     * This endpoint returns an approximate sum of exchanged amount from all currencies to input currency for each account.The exchange rate and account balance could have been cached for at most 1 minute. It is not recommended to use its result for any trading calculation.  For trading calculation, use the corresponding account query endpoint for each account type. For example:   - `GET /spot/accounts` to query spot account balance - `GET /margin/accounts` /futures/{settle}/accounts` to query futures account balance
-     * @summary Retrieve user\'s total balances.
+     * This query endpoint returns the total *estimated value* of all currencies in each account converted to the input currency. Exchange rates and related account balance information may be cached for up to 1 minute. It is not recommended to use this interface data for real-time calculations.  For real-time calculations, query the corresponding balance interface based on account type, such as:  - `GET /spot/accounts` to query spot account - `GET /margin/accounts` to query margin account - `GET /futures/{settle}/accounts` to query futures account
+     * @summary Query personal account totals
      * @param opts Optional parameters
-     * @param opts.currency Currency unit used to calculate the balance amount. BTC, CNY, USD and USDT are allowed. USDT is the default.
+     * @param opts.currency Target currency type for statistical conversion. Accepts BTC, CNY, USD, and USDT. USDT is the default value
      */
     public async getTotalBalance(opts: {
         currency?: string;
@@ -810,7 +810,7 @@ export class WalletApi {
 
     /**
      *
-     * @summary List small balance.
+     * @summary Get list of convertible small balance currencies
      */
     public async listSmallBalance(): Promise<{ response: AxiosResponse; body: Array<SmallBalance> }> {
         const localVarPath = this.client.basePath + '/wallet/small_balance';
@@ -837,7 +837,7 @@ export class WalletApi {
 
     /**
      *
-     * @summary Convert small balance.
+     * @summary Convert small balance currency
      * @param convertSmallBalance
      */
     public async convertSmallBalance(
@@ -868,11 +868,11 @@ export class WalletApi {
 
     /**
      *
-     * @summary List small balance history.
+     * @summary Get convertible small balance currency history
      * @param opts Optional parameters
-     * @param opts.currency Currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+     * @param opts.currency Currency to convert
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
     public async listSmallBalanceHistory(opts: {
         currency?: string;
@@ -916,14 +916,14 @@ export class WalletApi {
 
     /**
      *
-     * @summary Retrieve the UID transfer history.
+     * @summary Get UID transfer history
      * @param opts Optional parameters
-     * @param opts.id Order ID.
-     * @param opts.from The start time of the query record. If not specified, it defaults to 7 days forward from the current time, in seconds Unix timestamp
-     * @param opts.to The end time of the query record. If not specified, the default is the current time, which is a Unix timestamp in seconds.
-     * @param opts.limit The maximum number of items returned in the list, the default value is 100.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.transactionType The list returns the order type &#x60;withdraw&#x60;, &#x60;deposit&#x60;, the default is &#x60;withdraw&#x60;.
+     * @param opts.id Order ID
+     * @param opts.from Start time for querying records. If not specified, defaults to 7 days before the current time. Unix timestamp in seconds
+     * @param opts.to End time for querying records. If not specified, defaults to the current time. Unix timestamp in seconds
+     * @param opts.limit Maximum number of items returned in the list, default value is 100
+     * @param opts.offset List offset, starting from 0
+     * @param opts.transactionType Order type returned in the list: &#x60;withdraw&#x60;, &#x60;deposit&#x60;. Default is &#x60;withdraw&#x60;.
      */
     public async listPushOrders(opts: {
         id?: number;

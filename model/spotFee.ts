@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class SpotFee {
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * taker fee rate.
+     * taker fee rate
      */
     'takerFee'?: string;
     /**
-     * maker fee rate.
+     * maker fee rate
      */
     'makerFee'?: string;
     /**
-     * If GT deduction is enabled.
+     * Whether GT deduction discount is enabled
      */
     'gtDiscount'?: boolean;
     /**
@@ -31,19 +31,19 @@ export class SpotFee {
      */
     'gtTakerFee'?: string;
     /**
-     * Maker fee rate if using GT deduction. It will be 0 if GT deduction is disabled
+     * Maker fee rate with GT deduction. Returns 0 if GT deduction is disabled
      */
     'gtMakerFee'?: string;
     /**
-     * Loan fee rate of margin lending.
+     * Loan fee rate of margin lending
      */
     'loanFee'?: string;
     /**
-     * Point type. 0 - Initial version. 1 - new version since 202009.
+     * Point card type: 0 - Original version, 1 - New version since 202009
      */
     'pointType'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**

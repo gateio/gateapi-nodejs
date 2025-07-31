@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -37,7 +37,7 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List lending markets.
+     * @summary List lending markets
      */
     public async listUniCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<UniCurrencyPair> }> {
         const localVarPath = this.client.basePath + '/margin/uni/currency_pairs';
@@ -64,8 +64,8 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get detail of lending market.
-     * @param currencyPair Currency pair.
+     * @summary Get lending market details
+     * @param currencyPair Currency pair
      */
     public async getUniCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: UniCurrencyPair }> {
         const localVarPath =
@@ -101,9 +101,9 @@ export class MarginUniApi {
     }
 
     /**
-     * Please note that the interest rates are subject to change based on the borrowing and lending demand, and therefore, the provided rates may not be entirely accurate.
-     * @summary Estimate interest Rate.
-     * @param currencies An array of up to 10 specifying the currency name.
+     * Interest rates change hourly based on lending depth, so completely accurate rates cannot be provided.
+     * @summary Estimate interest rate for isolated margin currencies
+     * @param currencies Array of currency names to query, maximum 10
      */
     public async getMarginUniEstimateRate(
         currencies: Array<string>,
@@ -141,12 +141,12 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List loans.
+     * @summary Query loans
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+     * @param opts.currencyPair Currency pair
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
     public async listUniLoans(opts: {
         currencyPair?: string;
@@ -195,7 +195,7 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Borrow or repay.
+     * @summary Borrow or repay
      * @param createUniLoan
      */
     public async createUniLoan(createUniLoan: CreateUniLoan): Promise<{ response: AxiosResponse; body?: any }> {
@@ -222,13 +222,13 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get load records.
+     * @summary Query loan records
      * @param opts Optional parameters
-     * @param opts.type type: borrow - borrow, repay - repay.
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.currencyPair Currency pair.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+     * @param opts.type Type: &#x60;borrow&#x60; - borrow, &#x60;repay&#x60; - repay
+     * @param opts.currency Query by specified currency name
+     * @param opts.currencyPair Currency pair
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
     public async listUniLoanRecords(opts: {
         type?: 'borrow' | 'repay';
@@ -282,12 +282,12 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary List interest records.
+     * @summary Query interest deduction records
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.currencyPair Currency pair
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -348,9 +348,9 @@ export class MarginUniApi {
 
     /**
      *
-     * @summary Get maximum borrowable.
-     * @param currency Retrieve data of the specified currency.
-     * @param currencyPair Currency pair.
+     * @summary Query maximum borrowable amount by currency
+     * @param currency Query by specified currency name
+     * @param currencyPair Currency pair
      */
     public async getUniBorrowable(
         currency: string,

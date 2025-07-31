@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * The returned result is a map type, where the key represents the market and taker and maker fee rates.
+ * The returned result is a map type, where the key represents the market and taker and maker fee rates
  */
 export class FuturesFee {
     /**
-     * Taker fee.
+     * Taker fee
      */
     'takerFee'?: string;
     /**
-     * maker fee.
+     * maker fee
      */
     'makerFee'?: string;
 

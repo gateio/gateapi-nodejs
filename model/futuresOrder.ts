@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,67 +10,67 @@
  */
 
 /**
- * Futures order details.
+ * Futures order details
  */
 export class FuturesOrder {
     /**
-     * Futures order ID.
+     * Futures order ID
      */
     'id'?: bigint;
     /**
-     * User ID.
+     * User ID
      */
     'user'?: number;
     /**
-     * Creation time of order.
+     * Creation time of order
      */
     'createTime'?: number;
     /**
-     * Order finished time. Not returned if order is open.
+     * Order finished time. Not returned if order is open
      */
     'finishTime'?: number;
     /**
-     * How the order was finished.  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - increasing position while `reduce-only` set- position_closed: cancelled because of position close - position_closed: canceled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
+     * How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is `IOC`, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while `reduce-only` set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention
      */
     'finishAs'?: FuturesOrder.FinishAs;
     /**
-     * Order status  - `open`: waiting to be traded - `finished`: finished
+     * Order status  - `open`: Pending - `finished`: Completed
      */
     'status'?: FuturesOrder.Status;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract': string;
     /**
-     * Order size. Specify positive number to make a bid, and negative number to ask
+     * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
     'size': number;
     /**
-     * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
+     * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc`.
+     * Order price. Price of 0 with `tif` set to `ioc` represents a market order.
      */
     'price'?: string;
     /**
-     * Set as `true` to close the position, with `size` set to 0.
+     * Set as `true` to close the position, with `size` set to 0
      */
     'close'?: boolean;
     /**
-     * Is the order to close position.
+     * Is the order to close position
      */
     'isClose'?: boolean;
     /**
-     * Set as `true` to be reduce-only order.
+     * Set as `true` to be reduce-only order
      */
     'reduceOnly'?: boolean;
     /**
-     * Is the order reduce-only.
+     * Is the order reduce-only
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order for liquidation.
+     * Is the order for liquidation
      */
     'isLiq'?: boolean;
     /**
@@ -78,27 +78,27 @@ export class FuturesOrder {
      */
     'tif'?: FuturesOrder.Tif;
     /**
-     * Size left to be traded.
+     * Unfilled quantity
      */
     'left'?: number;
     /**
-     * Fill price of the order.
+     * Fill price
      */
     'fillPrice'?: string;
     /**
-     * Order custom information, users can use this field to set a custom ID, and the user-defined field must meet the following conditions:  1. Must start with `t-` 2. If `t-` is not calculated, the length cannot exceed 28 bytes 3. The input content can only contain numbers, letters, underscores (_), midscores (-) or dots (.)  In addition to user-defined information, the following are internal reserved fields that identifies the source of the order:  - web: web page - api: API call - app: mobile terminal - auto_deleveraging: Automatic position reduction - liquidation: Liquidation under the classic account’s old liquidation mode - liq-x: new liquidation mode (isolated, cross margin one-way mode, non-hedging part of cross margin hedge mode) b. Liquidation under isolated margin in unified account single currency margin mode  - hedge-liq-x: Liquidation under the new liquidation mode of the classic account hedge mode, the cross margin hedged part undergoes liquidation, meaning both long and short positions are liquidated simultaneously. - pm_liquidate: Unified account multi-currency margin mode liquidation - comb_margin_liquidate: Unified account portfolio margin mode liquidation - scm_liquidate: Unified account single currency margin mode liquidation - insurance: insurance
+     * Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance
      */
     'text'?: string;
     /**
-     * Taker fee.
+     * Taker fee
      */
     'tkfr'?: string;
     /**
-     * Maker fee.
+     * Maker fee
      */
     'mkfr'?: string;
     /**
-     * Reference user ID.
+     * Referrer user ID
      */
     'refu'?: number;
     /**
@@ -110,11 +110,11 @@ export class FuturesOrder {
      */
     'stpId'?: number;
     /**
-     * Self-Trading Prevention Action. Users can use this field to set self-trade prevetion strategies  1. After users join the `STP Group`, he can pass `stp_act` to limit the user\'s self-trade prevetion strategy. If `stp_act` is not passed, the default is `cn` strategy。 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter。 3. If the user did not use \'stp_act\' when placing the order, \'stp_act\' will return \'-\'  - cn: Cancel newest, Cancel new orders and keep old ones - co: Cancel oldest, new ones - cb: Cancel both, Both old and new orders will be cancelled
+     * Self-Trading Prevention Action. Users can use this field to set self-trade prevention strategies  1. After users join the `STP Group`, they can pass `stp_act` to limit the user\'s self-trade prevention strategy. If `stp_act` is not passed, the default is `cn` strategy. 2. When the user does not join the `STP group`, an error will be returned when passing the `stp_act` parameter. 3. If the user did not use `stp_act` when placing the order, `stp_act` will return \'-\'  - cn: Cancel newest, cancel new orders and keep old ones - co: Cancel oldest, cancel old orders and keep new ones - cb: Cancel both, both old and new orders will be cancelled
      */
     'stpAct'?: FuturesOrder.StpAct;
     /**
-     * The custom data that the user remarked when amending the order.
+     * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
 

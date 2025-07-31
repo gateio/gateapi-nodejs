@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,87 +10,87 @@
  */
 
 /**
- * Options order detail.
+ * Options order details
  */
 export class OptionsOrder {
     /**
-     * Options order ID.
+     * Options order ID
      */
     'id'?: number;
     /**
-     * User ID.
+     * User ID
      */
     'user'?: number;
     /**
-     * Creation time of order.
+     * Creation time of order
      */
     'createTime'?: number;
     /**
-     * Order finished time. Not returned if order is open.
+     * Order finished time. Not returned if order is open
      */
     'finishTime'?: number;
     /**
-     * Ending method, including:  - filled: fully completed - canceled: user canceled - liquidated: forced liquidation cancellation - ioc: Not fully filled immediately because tif is set to ioc - auto_deleveraged: automatic deleveraging cancel - reduce_only: Increased position is cancelled, or the position is closed - position_closed: Because the position was closed, the pending order was canceled - reduce_out: Only reduce the excluded pending orders that are not easy to be filled - mmp_cancelled: MMP canceled
+     * Order finish reason:  - filled: Fully filled - cancelled: User cancelled - liquidated: Cancelled due to liquidation - ioc: Not immediately fully filled due to IOC time-in-force setting - auto_deleveraged: Cancelled due to auto-deleveraging - reduce_only: Cancelled due to position increase while reduce-only is set - position_closed: Cancelled because the position was closed - reduce_out: Only reduce positions by excluding hard-to-fill orders - mmp_cancelled: Cancelled by MMP
      */
     'finishAs'?: OptionsOrder.FinishAs;
     /**
-     * Order status  - `open`: waiting to be traded - `finished`: finished
+     * Order status  - `open`: Pending - `finished`: Completed
      */
     'status'?: OptionsOrder.Status;
     /**
-     * Contract name.
+     * Options identifier
      */
     'contract': string;
     /**
-     * Order size. Specify positive number to make a bid, and negative number to ask
+     * Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      */
     'size': number;
     /**
-     * Display size for iceberg order. 0 for non-iceberg. Note that you will have to pay the taker fee for the hidden size
+     * Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      */
     'iceberg'?: number;
     /**
-     * Order price. 0 for market order with `tif` set as `ioc` (USDT).
+     * Order price. Price of 0 with `tif` set as `ioc` represents market order (quote currency)
      */
     'price'?: string;
     /**
-     * Set as `true` to close the position, with `size` set to 0.
+     * Set as `true` to close the position, with `size` set to 0
      */
     'close'?: boolean;
     /**
-     * Is the order to close position.
+     * Is the order to close position
      */
     'isClose'?: boolean;
     /**
-     * Set as `true` to be reduce-only order.
+     * Set as `true` to be reduce-only order
      */
     'reduceOnly'?: boolean;
     /**
-     * Is the order reduce-only.
+     * Is the order reduce-only
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order for liquidation.
+     * Is the order for liquidation
      */
     'isLiq'?: boolean;
     /**
-     * When set to true, delegate to MMP.
+     * When set to true, it is an MMP order
      */
     'mmp'?: boolean;
     /**
-     * Whether it is MMP delegation. Corresponds to `mmp` in the request.
+     * Whether it is an MMP order. Corresponds to `mmp` in the request
      */
     'isMmp'?: boolean;
     /**
-     * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
+     * Time in force strategy. Market orders currently only support IOC mode  - gtc: Good Till Cancelled - ioc: Immediate Or Cancelled, execute immediately or cancel, taker only - poc: Pending Or Cancelled, passive order, maker only
      */
     'tif'?: OptionsOrder.Tif;
     /**
-     * Size left to be traded.
+     * Unfilled quantity
      */
     'left'?: number;
     /**
-     * Fill price of the order.
+     * Fill price
      */
     'fillPrice'?: string;
     /**
@@ -98,19 +98,19 @@ export class OptionsOrder {
      */
     'text'?: string;
     /**
-     * Taker fee.
+     * Taker fee
      */
     'tkfr'?: string;
     /**
-     * Maker fee.
+     * Maker fee
      */
     'mkfr'?: string;
     /**
-     * Reference user ID.
+     * Referrer user ID
      */
     'refu'?: number;
     /**
-     * Referrer rebate.
+     * Referrer rebate
      */
     'refr'?: string;
 

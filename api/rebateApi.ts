@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -39,15 +39,15 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary The agency obtains the transaction history of the recommended user.
+     * Record query time range cannot exceed 30 days
+     * @summary Broker obtains transaction history of recommended users
      * @param opts Optional parameters
-     * @param opts.currencyPair Specify the currency pair, if not specified, return all currency pairs.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currencyPair Specify the trading pair. If not specified, returns all trading pairs
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async agencyTransactionHistory(opts: {
         currencyPair?: string;
@@ -109,15 +109,15 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary The agency obtains the commission history of the recommended user.
+     * Record query time range cannot exceed 30 days
+     * @summary Broker obtains rebate history of recommended users
      * @param opts Optional parameters
-     * @param opts.currency Filter by currency. Return all currency records if not specified.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currency Specify the currency. If not specified, returns all currencies
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async agencyCommissionsHistory(opts: {
         currency?: string;
@@ -179,15 +179,15 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary Partner obtains transaction records of recommended users.
+     * Record query time range cannot exceed 30 days
+     * @summary Partner obtains transaction history of recommended users
      * @param opts Optional parameters
-     * @param opts.currencyPair Specify the currency pair, if not specified, return all currency pairs.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currencyPair Specify the trading pair. If not specified, returns all trading pairs
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async partnerTransactionHistory(opts: {
         currencyPair?: string;
@@ -245,15 +245,15 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary Partner obtains commission records of recommended users.
+     * Record query time range cannot exceed 30 days
+     * @summary Partner obtains rebate records of recommended users
      * @param opts Optional parameters
-     * @param opts.currency Filter by currency. Return all currency records if not specified.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from Time range beginning, default to 7 days before current time.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currency Specify the currency. If not specified, returns all currencies
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time for querying records, defaults to 7 days before current time if not specified
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async partnerCommissionsHistory(opts: {
         currency?: string;
@@ -311,12 +311,12 @@ export class RebateApi {
     }
 
     /**
-     * Including sub-agents, direct customers, indirect customers.
-     * @summary Partner subordinate list.
+     * Including sub-agents, direct customers, and indirect customers
+     * @summary Partner subordinate list
      * @param opts Optional parameters
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async partnerSubList(opts: {
         userId?: number;
@@ -359,14 +359,14 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary The broker obtains the user\'s commission rebate records.
+     * Record query time range cannot exceed 30 days
+     * @summary Broker obtains user\'s rebate records
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
-     * @param opts.to Time range ending, default to current time.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time of the query record. If not specified, defaults to 30 days before the current time
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
     public async rebateBrokerCommissionHistory(opts: {
         limit?: number;
@@ -419,14 +419,14 @@ export class RebateApi {
     }
 
     /**
-     * Record time range cannot exceed 30 days.
-     * @summary The broker obtains the user\'s trading history.
+     * Record query time range cannot exceed 30 days
+     * @summary Broker obtains user\'s trading history
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.userId User ID. If not specified, all user records will be returned.
-     * @param opts.from The start time of the query record. If not specified, the default is to push forward 30 days from the current time.
-     * @param opts.to Time range ending, default to current time.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.userId User ID. If not specified, all user records will be returned
+     * @param opts.from Start time of the query record. If not specified, defaults to 30 days before the current time
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
     public async rebateBrokerTransactionHistory(opts: {
         limit?: number;
@@ -480,7 +480,7 @@ export class RebateApi {
 
     /**
      *
-     * @summary User retrieves rebate information.
+     * @summary User obtains rebate information
      */
     public async rebateUserInfo(): Promise<{ response: AxiosResponse; body: Array<RebateUserInfo> }> {
         const localVarPath = this.client.basePath + '/rebate/user/info';
@@ -506,9 +506,9 @@ export class RebateApi {
     }
 
     /**
-     * Query whether the specified user is in the system.
-     * @summary User-subordinate relationship.
-     * @param userIdList Query the user\&#39;s ID list, split by,, if there are more than 100, take 100.
+     * Query whether the specified user is within the system
+     * @summary User subordinate relationship
+     * @param userIdList Query user ID list, separated by commas. If more than 100, only 100 will be returned
      */
     public async userSubRelation(userIdList: string): Promise<{ response: AxiosResponse; body: UserSubRelation }> {
         const localVarPath = this.client.basePath + '/rebate/user/sub_relation';

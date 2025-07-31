@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Spot order details.
+ * Spot order details
  */
 export class OrderPatch {
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Specify query account.
+     * Specify query account
      */
     'account'?: string;
     /**
-     * Trading Quantity. Either amountor pricemust be specified.
+     * Trading quantity. Either `amount` or `price` must be specified
      */
     'amount'?: string;
     /**
-     * Trading Price. Either amountor pricemust be specified.
+     * Trading price. Either `amount` or `price` must be specified
      */
     'price'?: string;
     /**
-     * Custom info during amending order.
+     * Custom info during order amendment
      */
     'amendText'?: string;
     /**

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -42,7 +42,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary ETH2 swap.
+     * @summary ETH2 swap
      * @param eth2Swap
      */
     public async swapETH2(eth2Swap: Eth2Swap): Promise<{ response: AxiosResponse; body?: any }> {
@@ -68,8 +68,8 @@ export class EarnApi {
     }
 
     /**
-     * Check the ETH earnings rate record for the last 31 days.
-     * @summary ETH2 historical rate of return query.
+     * Query ETH earnings rate records for the last 31 days
+     * @summary ETH2 historical return rate query
      */
     public async rateListETH2(): Promise<{ response: AxiosResponse; body: Array<Eth2RateList> }> {
         const localVarPath = this.client.basePath + '/earn/staking/eth2/rate_records';
@@ -96,9 +96,9 @@ export class EarnApi {
 
     /**
      *
-     * @summary Dual Investment product list.
+     * @summary Dual Investment product list
      * @param opts Optional parameters
-     * @param opts.planId Financial project id.
+     * @param opts.planId Financial project ID
      */
     public async listDualInvestmentPlans(opts: {
         planId?: number;
@@ -132,12 +132,12 @@ export class EarnApi {
 
     /**
      *
-     * @summary Dual Investment order list.
+     * @summary Dual Investment order list
      * @param opts Optional parameters
-     * @param opts.from Start checkout time.
-     * @param opts.to End settlement time.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.from Start settlement time
+     * @param opts.to End settlement time
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listDualOrders(opts: {
         from?: number;
@@ -186,7 +186,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary Place Dual Investment order.
+     * @summary Place Dual Investment order
      * @param placeDualInvestmentOrder
      */
     public async placeDualOrder(
@@ -217,12 +217,12 @@ export class EarnApi {
 
     /**
      *
-     * @summary Structured Product List.
+     * @summary Structured Product List
      * @param status Status (Default empty to query all)  &#x60;in_process&#x60;-In progress &#x60;will_begin&#x60;-Not started &#x60;wait_settlement&#x60;-Pending settlement &#x60;done&#x60;-Completed
      * @param opts Optional parameters
      * @param opts.type Product Type (Default empty to query all)  &#x60;SharkFin2.0&#x60;-Shark Fin &#x60;BullishSharkFin&#x60;-Bullish Treasure &#x60;BearishSharkFin&#x60;-Bearish Treasure &#x60;DoubleNoTouch&#x60;-Volatility Treasure &#x60;RangeAccrual&#x60;-Range Smart Yield &#x60;SnowBall&#x60;-Snowball
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listStructuredProducts(
         status: string,
@@ -276,12 +276,12 @@ export class EarnApi {
 
     /**
      *
-     * @summary Structured Product Order List.
+     * @summary Structured Product Order List
      * @param opts Optional parameters
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listStructuredOrders(opts: {
         from?: number;
@@ -330,7 +330,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary Place Structured Product Order.
+     * @summary Place Structured Product Order
      * @param structuredBuy
      */
     public async placeStructuredOrder(structuredBuy: StructuredBuy): Promise<{ response: AxiosResponse; body?: any }> {
@@ -359,7 +359,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary Staking Coins.
+     * @summary Staking coins
      * @param findCoin
      */
     public async findCoin(findCoin: FindCoin): Promise<{ response: AxiosResponse; body: Array<string> }> {
@@ -393,7 +393,7 @@ export class EarnApi {
 
     /**
      *
-     * @summary On-chain Token Swap for Earned Coins.
+     * @summary On-chain token swap for earned coins
      * @param swapCoin
      */
     public async swapStakingCoin(swapCoin: SwapCoin): Promise<{ response: AxiosResponse; body: SwapCoinStruct }> {

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class UnifiedCollateralReq {
     /**
-     * User-set collateral mode0(all)-All currencies used as collateral, collateral; when collateral_type is 0(all), the enable_list and disable_list parameters are invalid
+     * User-set collateral mode: 0(all)-All currencies as collateral, 1(custom)-Custom currencies as collateral. When collateral_type is 0(all), enable_list and disable_list parameters are invalid
      */
     'collateralType'?: UnifiedCollateralReq.CollateralType;
     /**
-     * Currency list, where collateral_type=1(custom) indicates the logic of addition
+     * Currency list, where collateral_type=1(custom) indicates the addition logic
      */
     'enableList'?: Array<string>;
     /**
-     * Cancellation list, indicating the logic of cancellation.
+     * Disable list, indicating the disable logic
      */
     'disableList'?: Array<string>;
 

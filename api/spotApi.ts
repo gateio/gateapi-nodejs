@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -53,8 +53,8 @@ export class SpotApi {
     }
 
     /**
-     * When a currency corresponds to multiple chains, you can query the information of multiple chains through the `chains` field, such as the charging and recharge status, identification, etc. of the chain.
-     * @summary List all currencies\' details.
+     * When a currency corresponds to multiple chains, you can query the information of multiple chains through the `chains` field, such as the charging and recharge status, identification, etc. of the chain
+     * @summary Query all currency information
      */
     public async listCurrencies(): Promise<{ response: AxiosResponse; body: Array<Currency> }> {
         const localVarPath = this.client.basePath + '/spot/currencies';
@@ -81,8 +81,8 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get details of a specific currency.
-     * @param currency Currency name.
+     * @summary Query single currency information
+     * @param currency Currency name
      */
     public async getCurrency(currency: string): Promise<{ response: AxiosResponse; body: Currency }> {
         const localVarPath =
@@ -116,7 +116,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary List all currency pairs supported.
+     * @summary Query all supported currency pairs
      */
     public async listCurrencyPairs(): Promise<{ response: AxiosResponse; body: Array<CurrencyPair> }> {
         const localVarPath = this.client.basePath + '/spot/currency_pairs';
@@ -143,8 +143,8 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get details of a specifc currency pair.
-     * @param currencyPair Currency pair.
+     * @summary Query single currency pair details
+     * @param currencyPair Currency pair
      */
     public async getCurrencyPair(currencyPair: string): Promise<{ response: AxiosResponse; body: CurrencyPair }> {
         const localVarPath =
@@ -180,11 +180,11 @@ export class SpotApi {
     }
 
     /**
-     * Return only related data if `currency_pair` is specified; otherwise return all of them
-     * @summary Retrieve ticker information.
+     * If `currency_pair` is specified, only query that currency pair; otherwise return all information
+     * @summary Get currency pair ticker information
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
-     * @param opts.timezone Timezone.
+     * @param opts.currencyPair Currency pair
+     * @param opts.timezone Timezone
      */
     public async listTickers(opts: {
         currencyPair?: string;
@@ -222,13 +222,13 @@ export class SpotApi {
     }
 
     /**
-     * Market depth buy orders are sorted by price from high to low, sell orders are reversed
-     * @summary Retrieve order book.
-     * @param currencyPair Currency pair.
+     * Market depth buy orders are sorted by price from high to low, sell orders are sorted from low to high
+     * @summary Get market depth information
+     * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0.
-     * @param opts.limit Maximum number of order depth data in asks or bids.
-     * @param opts.withId Return order book ID.
+     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.limit Number of depth levels
+     * @param opts.withId Return order book update ID
      */
     public async listOrderBook(
         currencyPair: string,
@@ -277,16 +277,16 @@ export class SpotApi {
     }
 
     /**
-     * Supports `from` and `to` by time range query or page-turn query based on `last_id`. By default, is the last 30 days.  The query method based on `last_id` page turn is no longer recommended. If `last_id` is specified, the time range query parameters will be ignored.  The maximum number of pages when searching data using limit&page paging function is 100,0, that is, limit * (page - 1) <= 100,0.
-     * @summary Retrieve market trades.
-     * @param currencyPair Currency pair.
+     * Supports querying by time range using `from` and `to` parameters or pagination based on `last_id`. By default, queries the last 30 days.  Pagination based on `last_id` is no longer recommended. If `last_id` is specified, the time range query parameters will be ignored.  When using limit&page pagination to retrieve data, the maximum number of pages is 100,000, that is, limit * (page - 1) <= 100,000.
+     * @summary Query market transaction records
+     * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list. Default: 100, Minimum: 1, Maximum: 1000
-     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
-     * @param opts.reverse Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.page Page number.
+     * @param opts.limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+     * @param opts.reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set.
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.page Page number
      */
     public async listTrades(
         currencyPair: string,
@@ -348,13 +348,13 @@ export class SpotApi {
 
     /**
      * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
-     * @summary Market candlesticks.
-     * @param currencyPair Currency pair.
+     * @summary Market K-line chart
+     * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
-     * @param opts.interval Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+     * @param opts.interval Time interval between data points. Note that &#x60;30d&#x60; represents a calendar month, not aligned to 30 days
      */
     public async listCandlesticks(
         currencyPair: string,
@@ -415,10 +415,10 @@ export class SpotApi {
     }
 
     /**
-     * This API is deprecated in favour of new fee retrieving API `/wallet/fee`.
-     * @summary Query user trading fee rates.
+     * This API is deprecated. The new fee query API is `/wallet/fee`
+     * @summary Query account fee rates
      * @param opts Optional parameters
-     * @param opts.currencyPair Specify a currency pair to retrieve precise fee rate  This field is optional. In most cases, the fee rate is identical among all currency pairs
+     * @param opts.currencyPair Specify currency pair to get more accurate fee settings.  This field is optional. Usually fee settings are the same for all currency pairs.
      */
     public async getFee(opts: { currencyPair?: string }): Promise<{ response: AxiosResponse; body: SpotFee }> {
         const localVarPath = this.client.basePath + '/spot/fee';
@@ -450,8 +450,8 @@ export class SpotApi {
 
     /**
      *
-     * @summary Query a batch of user trading fee rates.
-     * @param currencyPairs A request can only query up to 50 currency pairs.
+     * @summary Batch query account fee rates
+     * @param currencyPairs Maximum 50 currency pairs per request
      */
     public async getBatchSpotFee(
         currencyPairs: string,
@@ -487,9 +487,9 @@ export class SpotApi {
 
     /**
      *
-     * @summary List spot accounts.
+     * @summary List spot trading accounts
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.currency Query by specified currency name
      */
     public async listSpotAccounts(opts: {
         currency?: string;
@@ -522,16 +522,16 @@ export class SpotApi {
     }
 
     /**
-     * Record query time range is not allowed to exceed 30 days.  The maximum number of pages when searching data using limit&page paging function is 100,0, that is, limit * (page - 1) <= 100,0.
-     * @summary Query account book.
+     * Record query time range cannot exceed 30 days.  When using limit&page pagination to retrieve data, the maximum number of pages is 100,000, that is, limit * (page - 1) <= 100,000.
+     * @summary Query spot account transaction history
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
-     * @param opts.code Specify account change code query, if not specified, all change types are included, and the priority is higher than &#x60;type&#x60;
+     * @param opts.currency Query by specified currency name
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.type Query by specified account change type. If not specified, all change types will be included.
+     * @param opts.code Specify account change code for query. If not specified, all change types are included. This parameter has higher priority than &#x60;type&#x60;
      */
     public async listSpotAccountBook(opts: {
         currency?: string;
@@ -594,8 +594,8 @@ export class SpotApi {
     }
 
     /**
-     * Batch orders requirements:  1. custom order field `text` is required 2. At most 4 currency pairs, maximum 10 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. `account` must be identical for all orders
-     * @summary Create a batch of orders.
+     * Batch order requirements:  1. Custom order field `text` must be specified 2. Up to 4 currency pairs per request, with up to 10 orders per currency pair 3. Spot orders and margin orders cannot be mixed; all `account` fields in the same request must be identical
+     * @summary Batch place orders
      * @param order
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -639,11 +639,11 @@ export class SpotApi {
 
     /**
      * Query the current order list of all trading pairs. Please note that the paging parameter controls the number of pending orders in each trading pair. There is no paging control trading pairs. All trading pairs with pending orders will be returned.
-     * @summary List all open orders.
+     * @summary List all open orders
      * @param opts Optional parameters
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records returned in one page in each currency pair.
-     * @param opts.account Specify query account.
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in one page in each currency pair
+     * @param opts.account Specify query account
      */
     public async listAllOpenOrders(opts: {
         page?: number;
@@ -686,8 +686,8 @@ export class SpotApi {
     }
 
     /**
-     * Currently, only cross-margin accounts are supported to close position when cross currencies are disabled.  Maximum buy quantity = (unpaid principal and interest - currency balance - the amount of the currency in the order book) / 0.998
-     * @summary close position when cross-currency is disabled.
+     * Currently, only cross-margin accounts are supported to place buy orders for disabled currencies. Maximum buy quantity = (unpaid principal and interest - currency balance - the amount of the currency in pending orders) / 0.998
+     * @summary Close position when cross-currency is disabled
      * @param liquidateOrder
      */
     public async createCrossLiquidateOrder(
@@ -724,17 +724,17 @@ export class SpotApi {
     }
 
     /**
-     * Note that the query results are spot order lists for spot, unified account and warehouse-by-site leverage accounts by default.  `status` is set to `open`, that is, when querying the pending order list, only pagination control of `page` and `limit` is supported. `limit` Maximum setting is only allowed to 100 . The `side` and `from`, `to` parameters for time range query are not supported.  `status` when querying historical delegations, in addition to pagination queries, `from` and `to` are also supported by time range queries. In addition, it supports setting the `side` parameter to filter one-side history.  The parameters of the time range filtering are processed according to the order end time.
-     * @summary List orders.
-     * @param currencyPair Retrieve results with specified currency pair. It is required for open orders, but optional for finished ones.
+     * Note that query results default to spot order lists for spot, unified account, and isolated margin accounts.  When `status` is set to `open` (i.e., when querying pending order lists), only `page` and `limit` pagination controls are supported. `limit` can only be set to a maximum of 100. The `side` parameter and time range query parameters `from` and `to` are not supported.  When `status` is set to `finished` (i.e., when querying historical orders), in addition to pagination queries, `from` and `to` time range queries are also supported. Additionally, the `side` parameter can be set to filter one-sided history.  Time range filter parameters are processed according to the order end time.
+     * @summary List orders
+     * @param currencyPair Query by specified currency pair. Required for open orders, optional for filled orders
      * @param status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled
      * @param opts Optional parameters
-     * @param opts.page Page number.
+     * @param opts.page Page number
      * @param opts.limit Maximum number of records to be returned. If &#x60;status&#x60; is &#x60;open&#x60;, maximum of &#x60;limit&#x60; is 100
-     * @param opts.account Specify query account.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.side All bids or asks. Both included if not specified.
+     * @param opts.account Specify query account
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.side Specify all bids or all asks, both included if not specified
      */
     public async listOrders(
         currencyPair: string,
@@ -803,8 +803,8 @@ export class SpotApi {
     }
 
     /**
-     * Support spot, margin, leverage, and full-position leverage orders. Use different accounts through the `account` field, default is `spot`, that is, use the spot account to place an order if the user is `unified` account, default is to place an order with a unified account  When using leveraged account trading, that is, when `account` is set to `margin`, you can set `auto_borrow` to `true`, In the case of insufficient account balance, the system will automatically execute the `POST /margin/uni/loans` to borrow the insufficient part. Whether the assets obtained after the leveraged order is automatically used to return the borrowing orders of the leveraged account in a position-by-store leverage account depends on the automatic repayment settings of the user\'s position-by-store leverage account**, The account automatic repayment settings can be queried and set through `/margin/auto_repay`.  Use unified is set to `unified`, `auto_borrow` \" can also be enableTo realize the insufficient part of automatic borrowing, but unlike the leverage account, whether the entrustment of a unified account is automatically repayable depends on the   when placing an order`auto_repay` setting, this setting is only effective for the current entrustment, that is, only the assets obtained after the entrustment transaction will be used to repay the borrowing orders of the full-position leverage account. Unified account ordering currently supports `auto_borrow` and `auto_repay` at the same time.  Auto repayment will be triggered at the end of the order, i.e. `status` is `cancelled` or `closed` .  **Delegation Status**  The entrustment status in the pending order is `open`, which remains at `open` until all the quantity is traded. If it is eaten, the order ends and the status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of whether there are partial transactions, the status will become `cancelled`  **Iceberg Entrustment**  `iceberg` is used to set the number of iceberg delegations displayed, and does not support complete hiding. Note that when hidden part of the transaction is charged according to the taker\'s handling rate.  **Restrict user transactions**  Set `stp_act` to decide to use strategies that limit user transactions
-     * @summary Create an order.
+     * Supports spot, margin, leverage, and cross-margin leverage orders. Use different accounts through the `account` field. Default is `spot`, which means using the spot account to place orders. If the user has a `unified` account, the default is to place orders with the unified account.  When using leveraged account trading (i.e., when `account` is set to `margin`), you can set `auto_borrow` to `true`. In case of insufficient account balance, the system will automatically execute `POST /margin/uni/loans` to borrow the insufficient amount. Whether assets obtained after leveraged order execution are automatically used to repay borrowing orders of the isolated margin account depends on the automatic repayment settings of the user\'s isolated margin account. Account automatic repayment settings can be queried and set through `/margin/auto_repay`.  When using unified account trading (i.e., when `account` is set to `unified`), `auto_borrow` can also be enabled to realize automatic borrowing of insufficient amounts. However, unlike the isolated margin account, whether unified account orders are automatically repaid depends on the `auto_repay` setting when placing the order. This setting only applies to the current order, meaning only assets obtained after order execution will be used to repay borrowing orders of the cross-margin account. Unified account ordering currently supports enabling both `auto_borrow` and `auto_repay` simultaneously.  Auto repayment will be triggered when the order ends, i.e., when `status` is `cancelled` or `closed`.  **Order Status**  The order status in pending orders is `open`, which remains `open` until all quantity is filled. If fully filled, the order ends and status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of partial fills, the status will become `cancelled`.  **Iceberg Orders**  `iceberg` is used to set the displayed quantity of iceberg orders and does not support complete hiding. Note that hidden portions are charged according to the taker\'s fee rate.  **Self-Trade Prevention**  Set `stp_act` to determine the self-trade prevention strategy to use
+     * @summary Create an order
      * @param order
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -847,13 +847,13 @@ export class SpotApi {
     }
 
     /**
-     * When the `account` parameter is not specified, all pending orders including spot, unified account, and position-by-position leverage will be cancelled. When transaction pairs are revoked You can specify a certain account separately to cancel all orders under the specified account
-     * @summary Cancel all `open` orders in specified currency pair.
+     * When the `account` parameter is not specified, all pending orders including spot, unified account, and isolated margin will be cancelled. When `currency_pair` is not specified, all trading pair pending orders will be cancelled. You can specify a particular account to cancel all pending orders under that account
+     * @summary Cancel all `open` orders in specified currency pair
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
-     * @param opts.side All bids or asks. Both included if not specified.
-     * @param opts.account Specify account type  Classic account: All are included if not specified Unified account: Specify unified
-     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
+     * @param opts.currencyPair Currency pair
+     * @param opts.side Specify all bids or all asks, both included if not specified
+     * @param opts.account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60;
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async cancelOrders(opts: {
@@ -908,7 +908,7 @@ export class SpotApi {
 
     /**
      * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
-     * @summary Cancel a batch of orders with an ID list.
+     * @summary Cancel batch orders by specified ID list
      * @param cancelBatchOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -953,12 +953,12 @@ export class SpotApi {
     }
 
     /**
-     * By default, orders for spot, unified account and warehouse-by-site leverage account are checked.
-     * @summary Get a single order.
+     * By default, queries orders for spot, unified account, and isolated margin accounts.
+     * @summary Query single order details
      * @param orderId The order ID returned when the order was successfully created or the custom ID specified by the user\&#39;s creation (i.e. the &#x60;text&#x60; field). Operations based on custom IDs can only be checked in pending orders. Only order ID can be used after the order is finished (transaction/cancel)
-     * @param currencyPair Specify the transaction pair to query. If you are querying pending order records, this field is traded records, this field can be left blank.
+     * @param currencyPair Specify the trading pair to query. This field is required when querying pending order records. This field can be omitted when querying filled order records.
      * @param opts Optional parameters
-     * @param opts.account Specify query account.
+     * @param opts.account Specify query account
      */
     public async getOrder(
         orderId: string,
@@ -1008,12 +1008,12 @@ export class SpotApi {
 
     /**
      * By default, orders for spot, unified accounts and leveraged accounts are revoked.
-     * @summary Cancel a single order.
+     * @summary Cancel single order
      * @param orderId The order ID returned when the order was successfully created or the custom ID specified by the user\&#39;s creation (i.e. the &#x60;text&#x60; field). Operations based on custom IDs can only be checked in pending orders. Only order ID can be used after the order is finished (transaction/cancel)
-     * @param currencyPair Currency pair.
+     * @param currencyPair Currency pair
      * @param opts Optional parameters
-     * @param opts.account Specify query account.
-     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - ACK: Asynchronous mode, returns only key order fields - RESULT: No clearing information - FULL: Full mode (default)
+     * @param opts.account Specify query account
+     * @param opts.actionMode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default)
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async cancelOrder(
@@ -1072,12 +1072,12 @@ export class SpotApi {
 
     /**
      * Modify orders in spot, unified account and isolated margin account by default.  Currently both request body and query support currency_pair and account parameters, but request body has higher priority.  currency_pair must be filled in one of the request body or query parameters.  About rate limit: Order modification and order creation share the same rate limit rules.  About matching priority: Only reducing the quantity does not affect the matching priority. Modifying the price or increasing the quantity will adjust the priority to the end of the new price level.  Note: Modifying the quantity to be less than the filled quantity will trigger a cancellation and isolated margin account by default.  Currently both request body and query support currency_pair and account parameters, but request body has higher priority.  currency_pair must be filled in one of the request body or query parameters.  About rate limit: Order modification and order creation share the same rate limit rules.  About matching priority: Only reducing the quantity does not affect the matching priority. Modifying the price or increasing the quantity will adjust the priority to the end of the new price level.  Note: Modifying the quantity to be less than the filled quantity will trigger a cancellation operation.
-     * @summary Amend an order.
+     * @summary Amend single order
      * @param orderId The order ID returned when the order was successfully created or the custom ID specified by the user\&#39;s creation (i.e. the &#x60;text&#x60; field). Operations based on custom IDs can only be checked in pending orders. Only order ID can be used after the order is finished (transaction/cancel)
      * @param orderPatch
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
-     * @param opts.account Specify query account.
+     * @param opts.currencyPair Currency pair
+     * @param opts.account Specify query account
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      */
     public async amendOrder(
@@ -1135,15 +1135,15 @@ export class SpotApi {
 
     /**
      * By default query of transaction records for spot, unified account and warehouse-by-site leverage accounts.  The history within a specified time range can be queried by specifying `from` or (and) `to`.  - If no time parameters are specified, only data for the last 7 days can be obtained. - If only any parameter of `from` or `to` is specified, only 7-day data from the start (or end) of the specified time is returned. - The range not allowed to exceed 30 days.  The parameters of the time range filter are processed according to the order end time.  The maximum number of pages when searching data using limit&page paging function is 100,0, that is, limit * (page - 1) <= 100,0.
-     * @summary List personal trading history.
+     * @summary Query personal trading records
      * @param opts Optional parameters
-     * @param opts.currencyPair Retrieve results with specified currency pair.
-     * @param opts.limit Maximum number of records to be returned in a single list. Default: 100, Minimum: 1, Maximum: 1000
-     * @param opts.page Page number.
+     * @param opts.currencyPair Retrieve results with specified currency pair
+     * @param opts.limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000
+     * @param opts.page Page number
      * @param opts.orderId Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present
-     * @param opts.account Specify query account.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
+     * @param opts.account Specify query account
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
     public async listMyTrades(opts: {
         currencyPair?: string;
@@ -1207,7 +1207,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get server current time.
+     * @summary Get server current time
      */
     public async getSystemTime(): Promise<{ response: AxiosResponse; body: SystemTime }> {
         const localVarPath = this.client.basePath + '/spot/time';
@@ -1234,7 +1234,7 @@ export class SpotApi {
 
     /**
      * Spot order heartbeat detection. If there is no \"cancel existing countdown\" or \"set new countdown\" when the user-set `timeout` time is reached, the related `spot pending orders` will be automatically cancelled. This interface can be called repeatedly to set a new countdown or cancel the countdown. Usage example: Repeat this interface at 30s intervals, setting the countdown `timeout` to `30 (seconds)` each time. If this interface is not called again within 30 seconds, all pending orders on the `market` you specified will be automatically cancelled. If no `market` is specified, all market cancelled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will be terminated and the automatic order cancellation function will be cancelled.
-     * @summary Countdown cancel orders.
+     * @summary Countdown cancel orders
      * @param countdownCancelAllSpotTask
      */
     public async countdownCancelAllSpot(
@@ -1271,8 +1271,8 @@ export class SpotApi {
     }
 
     /**
-     * Modify orders in spot, unified account and isolated margin account by default. Modify uncompleted orders, up to 5 orders can be modified at a time. Request parameters should be passed in array format. If there are order modification failures during the batch modification process, the modification of the next order will continue to be executed, and the execution will return with the corresponding order failure information. The call order of batch modification orders is consistent with the order list order. The return is consistent with the order list order.
-     * @summary Batch modification of orders.
+     * Modify orders in spot, unified account and isolated margin account by default. Modify uncompleted orders, up to 5 orders can be modified at a time. Request parameters should be passed in array format. If there are order modification failures during the batch modification process, the modification of the next order will continue to be executed, and the execution will return with the corresponding order failure information. The call order of batch modification orders is consistent with the order list order. The return content order of batch modification orders is consistent with the order list order.
+     * @summary Batch modification of orders
      * @param batchAmendItem
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -1316,14 +1316,14 @@ export class SpotApi {
 
     /**
      *
-     * @summary Query spot insurance fund historical data.
+     * @summary Query spot insurance fund historical data
      * @param business Leverage business, margin - position by position; unified - unified account
-     * @param currency Currency.
-     * @param from Start timestamp, seconds.
-     * @param to End timestamp, in seconds.
+     * @param currency Currency
+     * @param from Start timestamp in seconds
+     * @param to End timestamp in seconds
      * @param opts Optional parameters
-     * @param opts.page Page number.
-     * @param opts.limit The maximum number of items returned in the list, the default value is 30.
+     * @param opts.page Page number
+     * @param opts.limit The maximum number of items returned in the list, the default value is 30
      */
     public async getSpotInsuranceHistory(
         business: string,
@@ -1393,13 +1393,13 @@ export class SpotApi {
 
     /**
      *
-     * @summary Retrieve running auto order list.
-     * @param status Only list the orders with this status.
+     * @summary Query running auto order list
+     * @param status Query order list based on status
      * @param opts Optional parameters
-     * @param opts.market Currency pair.
-     * @param opts.account Trading account type. Portfolio margin account must set to &#x60;unified&#x60;.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.market Trading market
+     * @param opts.account Trading account type. Unified account must be set to &#x60;unified&#x60;
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listSpotPriceTriggeredOrders(
         status: 'open' | 'finished',
@@ -1462,7 +1462,7 @@ export class SpotApi {
 
     /**
      *
-     * @summary Create a price-triggered order.
+     * @summary Create price-triggered order
      * @param spotPriceTriggeredOrder
      */
     public async createSpotPriceTriggeredOrder(
@@ -1500,10 +1500,10 @@ export class SpotApi {
 
     /**
      *
-     * @summary Cancel All Price-triggered Orders.
+     * @summary Cancel all auto orders
      * @param opts Optional parameters
-     * @param opts.market Currency pair.
-     * @param opts.account Trading account type. Portfolio margin account must set to &#x60;unified&#x60;.
+     * @param opts.market Trading market
+     * @param opts.account Trading account type. Unified account must be set to &#x60;unified&#x60;
      */
     public async cancelSpotPriceTriggeredOrderList(opts: {
         market?: string;
@@ -1549,8 +1549,8 @@ export class SpotApi {
 
     /**
      *
-     * @summary Get a price-triggered order.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Query single auto order details
+     * @param orderId ID returned when order is successfully created
      */
     public async getSpotPriceTriggeredOrder(
         orderId: string,
@@ -1588,8 +1588,8 @@ export class SpotApi {
 
     /**
      *
-     * @summary cancel a price-triggered order.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Cancel single auto order
+     * @param orderId ID returned when order is successfully created
      */
     public async cancelSpotPriceTriggeredOrder(
         orderId: string,

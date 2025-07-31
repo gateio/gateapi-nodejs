@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,59 +10,59 @@
  */
 
 /**
- * Repayment record.
+ * Repayment record
  */
 export class RepayRecord {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * Repayment record ID.
+     * Repayment record ID
      */
     'recordId'?: number;
     /**
-     * Repayment amount.
+     * Repayment amount
      */
     'repaidAmount'?: string;
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * Collateral.
+     * Collateral currency
      */
     'collateralCurrency'?: string;
     /**
-     * The initial collateralization rate.
+     * Initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * Borrowing time, timestamp.
+     * Borrowing time, timestamp
      */
     'borrowTime'?: number;
     /**
-     * Repayment time, timestamp.
+     * Repayment time, timestamp
      */
     'repayTime'?: number;
     /**
-     * Total interest.
+     * Total interest
      */
     'totalInterest'?: string;
     /**
-     * Principal to be repaid before repayment.
+     * Principal to be repaid before repayment
      */
     'beforeLeftPrincipal'?: string;
     /**
-     * Principal to be repaid after repayment.
+     * Principal to be repaid after repayment
      */
     'afterLeftPrincipal'?: string;
     /**
-     * Collateral quantity before repayment.
+     * Collateral amount before repayment
      */
     'beforeLeftCollateral'?: string;
     /**
-     * Collateral quantity after repayment.
+     * Collateral amount after repayment
      */
     'afterLeftCollateral'?: string;
 

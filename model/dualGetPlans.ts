@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,55 +11,55 @@
 
 export class DualGetPlans {
     /**
-     * Plan ID.
+     * Product ID
      */
     'id'?: number;
     /**
-     * Instrument Name.
+     * Product Name
      */
     'instrumentName'?: string;
     /**
-     * Investment Currency.
+     * Investment Token
      */
     'investCurrency'?: string;
     /**
-     * Strike Currency.
+     * Strike Token
      */
     'exerciseCurrency'?: string;
     /**
-     * Strike price.
+     * Strike price
      */
     'exercisePrice'?: number;
     /**
-     * Settlement time.
+     * Settlement time
      */
     'deliveryTime'?: number;
     /**
-     * Minimum Copies.
+     * Minimum Units
      */
     'minCopies'?: number;
     /**
-     * Maximum Copies.
+     * Maximum Units
      */
     'maxCopies'?: number;
     /**
-     * Per Unit Value.
+     * Value Per Unit
      */
     'perValue'?: string;
     /**
-     * APY.
+     * Annual Yield
      */
     'apyDisplay'?: string;
     /**
-     * start time.
+     * Start Time
      */
     'startTime'?: number;
     /**
-     * Finished time.
+     * End time
      */
     'endTime'?: number;
     /**
-     * Status:   `NOTSTARTED`-not started  `ONGOING`-ongoing  `ENDED`-ended
+     * Status:   `NOTSTARTED`-Not Started  `ONGOING`-In Progress  `ENDED`-Ended
      */
     'status'?: string;
 

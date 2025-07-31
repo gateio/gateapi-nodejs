@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coin** | **string** | Currency. | [optional] [default to undefined]
-**cointype** | **string** | Coin Type swap-Voucher lock-Locked. | [optional] [default to undefined]
+**coin** | **string** | Currency | [optional] [default to undefined]
+**cointype** | **string** | Token Type: swap-Voucher, lock-Locked | [optional] [default to undefined]
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,7 +13,7 @@ import { UserSub } from './userSub';
 
 export class UserSubRelation {
     /**
-     * Subordinate relationship list.
+     * Subordinate relationship list
      */
     'list'?: Array<UserSub>;
 

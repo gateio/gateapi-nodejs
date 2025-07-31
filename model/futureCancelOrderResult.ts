@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Order cancellation result.
+ * Order cancellation result
  */
 export class FutureCancelOrderResult {
     /**
-     * Order ID.
+     * Order ID
      */
     'id'?: string;
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * Whether cancellation succeeded.
+     * Whether cancellation succeeded
      */
     'succeeded'?: boolean;
     /**
-     * Error message when failed to cancel the order; empty if succeeded.
+     * Error description when cancellation fails, empty if successful
      */
     'message'?: string;
 

@@ -4,18 +4,18 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listFlashSwapCurrencyPair**](FlashSwapApi.md#listFlashSwapCurrencyPair) | **GET** /flash_swap/currency_pairs | List All Supported Currency Pairs In Flash Swap.
-[**listFlashSwapOrders**](FlashSwapApi.md#listFlashSwapOrders) | **GET** /flash_swap/orders | List all flash swap orders.
-[**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order.
-[**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Get a single flash swap order\&#39;s detail.
-[**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Initiate a flash swap order preview.
+[**listFlashSwapCurrencyPair**](FlashSwapApi.md#listFlashSwapCurrencyPair) | **GET** /flash_swap/currency_pairs | List All Supported Currency Pairs In Flash Swap
+[**listFlashSwapOrders**](FlashSwapApi.md#listFlashSwapOrders) | **GET** /flash_swap/orders | Query flash swap order list
+[**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
+[**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Query single flash swap order
+[**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Flash swap order preview
 
 
 ## listFlashSwapCurrencyPair
 
 > Promise<{ response: http.IncomingMessage; body: Array<FlashSwapCurrencyPair>; }> listFlashSwapCurrencyPair(opts)
 
-List All Supported Currency Pairs In Flash Swap.
+List All Supported Currency Pairs In Flash Swap
 
 &#x60;BTC_GT&#x60; represents selling BTC and buying GT. The limits for each currency may vary across different currency pairs.  It is not necessary that two currencies that can be swapped instantaneously can be exchanged with each other. For example, it is possible to sell BTC and buy GT, but it does not necessarily mean that GT can be sold to buy BTC.
 
@@ -29,9 +29,9 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.FlashSwapApi(client);
 const opts = {
-  'currency': "BTC", // string | Retrieve data of the specified currency.
-  'page': 1, // number | Page number.
-  'limit': 1000 // number | Maximum response items. Default: 100, minimum: 1, Maximum: 1000.
+  'currency': "BTC", // string | Query by specified currency name
+  'page': 1, // number | Page number
+  'limit': 1000 // number | Maximum number of items returned. Default: 1000, minimum: 1, maximum: 1000
 };
 api.listFlashSwapCurrencyPair(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -43,9 +43,9 @@ api.listFlashSwapCurrencyPair(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Retrieve data of the specified currency. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum response items. Default: 100, minimum: 1, Maximum: 1000. | [optional] [default to 1000]
+ **currency** | **string**| Query by specified currency name | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of items returned. Default: 1000, minimum: 1, maximum: 1000 | [optional] [default to 1000]
 
 ### Return type
 
@@ -64,7 +64,7 @@ No authorization required
 
 > Promise<{ response: http.IncomingMessage; body: Array<FlashSwapOrder>; }> listFlashSwapOrders(opts)
 
-List all flash swap orders.
+Query flash swap order list
 
 ### Example
 
@@ -78,12 +78,12 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FlashSwapApi(client);
 const opts = {
-  'status': 1, // number | Flash swap order status  `1` - success `2` - failure
-  'sellCurrency': "BTC", // string | Currency to sell which can be retrieved from supported currency list API `GET /flash_swap/currencies`
-  'buyCurrency': "BTC", // string | Currency to buy which can be retrieved from supported currency list API `GET /flash_swap/currencies`
-  'reverse': true, // boolean | If results are sorted by id in reverse order. Default to `true`  - `true`: sort by id in descending order(recent first) - ascending order(oldest first)
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'page': 1 // number | Page number.
+  'status': 1, // number | Flash swap order status  `1` - success `2` - failed
+  'sellCurrency': "BTC", // string | Asset name to sell - Retrieved from API `GET /flash_swap/currencies` for supported flash swap currencies
+  'buyCurrency': "BTC", // string | Asset name to buy - Retrieved from API `GET /flash_swap/currencies` for supported flash swap currencies
+  'reverse': true, // boolean | Sort by ID in ascending or descending order, default `true` - `true`: ID descending order (most recent data first) - `false`: ID ascending order (oldest data first)
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'page': 1 // number | Page number
 };
 api.listFlashSwapOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -95,12 +95,12 @@ api.listFlashSwapOrders(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **number**| Flash swap order status  &#x60;1&#x60; - success &#x60;2&#x60; - failure | [optional] [default to undefined]
- **sellCurrency** | **string**| Currency to sell which can be retrieved from supported currency list API &#x60;GET /flash_swap/currencies&#x60; | [optional] [default to undefined]
- **buyCurrency** | **string**| Currency to buy which can be retrieved from supported currency list API &#x60;GET /flash_swap/currencies&#x60; | [optional] [default to undefined]
- **reverse** | **boolean**| If results are sorted by id in reverse order. Default to &#x60;true&#x60;  - &#x60;true&#x60;: sort by id in descending order(recent first) - ascending order(oldest first) | [optional] [default to undefined]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **page** | **number**| Page number. | [optional] [default to 1]
+ **status** | **number**| Flash swap order status  &#x60;1&#x60; - success &#x60;2&#x60; - failed | [optional] [default to undefined]
+ **sellCurrency** | **string**| Asset name to sell - Retrieved from API &#x60;GET /flash_swap/currencies&#x60; for supported flash swap currencies | [optional] [default to undefined]
+ **buyCurrency** | **string**| Asset name to buy - Retrieved from API &#x60;GET /flash_swap/currencies&#x60; for supported flash swap currencies | [optional] [default to undefined]
+ **reverse** | **boolean**| Sort by ID in ascending or descending order, default &#x60;true&#x60; - &#x60;true&#x60;: ID descending order (most recent data first) - &#x60;false&#x60;: ID ascending order (oldest data first) | [optional] [default to undefined]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **page** | **number**| Page number | [optional] [default to 1]
 
 ### Return type
 
@@ -119,7 +119,7 @@ Promise<{ response: AxiosResponse; body: Array<FlashSwapOrder>; }> [FlashSwapOrd
 
 > Promise<{ response: http.IncomingMessage; body: FlashSwapOrder; }> createFlashSwapOrder(flashSwapOrderRequest)
 
-Create a flash swap order.
+Create a flash swap order
 
 Initiate a flash swap preview in advance because order creation requires a preview result
 
@@ -164,7 +164,7 @@ Promise<{ response: AxiosResponse; body: FlashSwapOrder; }> [FlashSwapOrder](Fla
 
 > Promise<{ response: http.IncomingMessage; body: FlashSwapOrder; }> getFlashSwapOrder(orderId)
 
-Get a single flash swap order\&#39;s detail.
+Query single flash swap order
 
 ### Example
 
@@ -177,7 +177,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.FlashSwapApi(client);
-const orderId = 1; // number | Flash swap order ID.
+const orderId = 1; // number | Flash swap order ID
 api.getFlashSwapOrder(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -188,7 +188,7 @@ api.getFlashSwapOrder(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Flash swap order ID. | [default to undefined]
+ **orderId** | **number**| Flash swap order ID | [default to undefined]
 
 ### Return type
 
@@ -207,7 +207,7 @@ Promise<{ response: AxiosResponse; body: FlashSwapOrder; }> [FlashSwapOrder](Fla
 
 > Promise<{ response: http.IncomingMessage; body: FlashSwapOrderPreview; }> previewFlashSwapOrder(flashSwapPreviewRequest)
 
-Initiate a flash swap order preview.
+Flash swap order preview
 
 ### Example
 

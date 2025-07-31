@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class RepayRecordLeftInterest {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Currency Index Price.
+     * Currency Index Price
      */
     'indexPrice'?: string;
     /**
-     * Interest amount before repayment.
+     * Interest amount before repayment
      */
     'beforeAmount'?: string;
     /**
-     * Converted value of interest before repayment in USDT.
+     * Converted value of interest before repayment in USDT
      */
     'beforeAmountUsdt'?: string;
     /**
-     * Interest amount after repayment.
+     * Interest amount after repayment
      */
     'afterAmount'?: string;
     /**
-     * Converted value of interest after repayment in USDT.
+     * Converted value of interest after repayment in USDT
      */
     'afterAmountUsdt'?: string;
 

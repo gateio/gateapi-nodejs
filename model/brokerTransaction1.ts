@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,40 +13,40 @@ import { BrokerCommissionSubBrokerInfo } from './brokerCommissionSubBrokerInfo';
 
 export class BrokerTransaction1 {
     /**
-     * Transaction Time. (unix timestamp).
+     * Transaction Time. (unix timestamp)
      */
     'transactionTime'?: number;
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * Group name.
+     * Group name
      */
     'groupName'?: string;
     /**
-     * fee (usdt).
+     * Fee amount (USDT)
      */
     'fee'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Commission Amount.
+     * Transaction amount
      */
     'amount'?: string;
     /**
-     * Fee currency.
+     * Fee currency
      */
     'feeAsset'?: string;
     /**
-     * Rebate Type: Spot、Futures、Options.、Alpha
+     * Commission transaction type: Spot, Futures, Options, Alpha
      */
     'source'?: string;
     'subBrokerInfo'?: BrokerCommissionSubBrokerInfo;
     /**
-     * Alpha token address
+     * Alpha contract address
      */
     'alphaContractAddr'?: string;
 

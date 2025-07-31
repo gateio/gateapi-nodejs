@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateTime** | **number** | Date and Time Stamp. | [optional] [default to undefined]
-**date** | **string** | Date. | [optional] [default to undefined]
-**rate** | **string** | percentage. | [optional] [default to undefined]
+**dateTime** | **number** | Date Timestamp | [optional] [default to undefined]
+**date** | **string** | Date | [optional] [default to undefined]
+**rate** | **string** | Percentage Rate | [optional] [default to undefined]
 

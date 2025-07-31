@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,147 +10,147 @@
  */
 
 /**
- * Futures contract details.
+ * Futures contract details
  */
 export class Contract {
     /**
-     * Futures contract.
+     * Futures contract
      */
     'name'?: string;
     /**
-     * Futures contract type.
+     * Contract type: inverse - inverse contract, direct - direct contract
      */
     'type'?: Contract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency.
+     * Multiplier used in converting from invoicing to settlement currency
      */
     'quantoMultiplier'?: string;
     /**
-     * Minimum leverage.
+     * Minimum leverage
      */
     'leverageMin'?: string;
     /**
-     * Maximum leverage.
+     * Maximum leverage
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin.
+     * Maintenance rate of margin
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type, internal - based on internal trading, external index price
+     * Mark price type: internal - internal trading price, index - external index price
      */
     'markType'?: Contract.MarkType;
     /**
-     * Current mark price.
+     * Current mark price
      */
     'markPrice'?: string;
     /**
-     * Current index price.
+     * Current index price
      */
     'indexPrice'?: string;
     /**
-     * Last trading price.
+     * Last trading price
      */
     'lastPrice'?: string;
     /**
-     * Maker fee rate, where negative means rebate.
+     * Maker fee rate, negative values indicate rebates
      */
     'makerFeeRate'?: string;
     /**
-     * Taker fee rate.
+     * Taker fee rate
      */
     'takerFeeRate'?: string;
     /**
-     * Minimum order price increment.
+     * Minimum order price increment
      */
     'orderPriceRound'?: string;
     /**
-     * Minimum mark price increment.
+     * Minimum mark price increment
      */
     'markPriceRound'?: string;
     /**
-     * Current funding rate.
+     * Current funding rate
      */
     'fundingRate'?: string;
     /**
-     * Funding application interval, unit in seconds.
+     * Funding application interval, unit in seconds
      */
     'fundingInterval'?: number;
     /**
-     * Next funding time.
+     * Next funding time
      */
     'fundingNextApply'?: number;
     /**
-     * Risk limit base,deprecated.
+     * Base risk limit (deprecated)
      */
     'riskLimitBase'?: string;
     /**
-     * Step of adjusting risk limit,deprecated.
+     * Risk limit adjustment step (deprecated)
      */
     'riskLimitStep'?: string;
     /**
-     * Maximum risk limit the contract allowed,deprecated,It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits.
+     * Maximum risk limit allowed by the contract (deprecated). It is recommended to use /futures/{settle}/risk_limit_tiers to query risk limits
      */
     'riskLimitMax'?: string;
     /**
-     * Minimum order size the contract allowed.
+     * Minimum order size allowed by the contract
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size the contract allowed.
+     * Maximum order size allowed by the contract
      */
     'orderSizeMax'?: number;
     /**
-     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:   abs(order_price - mark_price) <= mark_price * order_price_deviate
+     * Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
      */
     'orderPriceDeviate'?: string;
     /**
-     * Referral fee rate discount.
+     * Trading fee discount for referred users
      */
     'refDiscountRate'?: string;
     /**
-     * Referrer commission rate.
+     * Commission rate for referrers
      */
     'refRebateRate'?: string;
     /**
-     * Current orderbook ID.
+     * Orderbook update ID
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID.
+     * Current trade ID
      */
     'tradeId'?: number;
     /**
-     * Historical accumulated trade size.
+     * Historical cumulative trading volume
      */
     'tradeSize'?: number;
     /**
-     * Current total long position size.
+     * Current total long position size
      */
     'positionSize'?: number;
     /**
-     * Last changed time of configuration.
+     * Last configuration update time
      */
     'configChangeTime'?: number;
     /**
-     * `in_delisting=true` And when position_size>0, it means the contract is in the offline transition period `in_delisting=true` contract is offline
+     * `in_delisting=true` and position_size>0 indicates the contract is in delisting transition period `in_delisting=true` and position_size=0 indicates the contract is delisted
      */
     'inDelisting'?: boolean;
     /**
-     * Maximum number of open orders.
+     * Maximum number of pending orders
      */
     'ordersLimit'?: number;
     /**
-     * Whether bouns is enabled.
+     * Whether bonus is enabled
      */
     'enableBonus'?: boolean;
     /**
-     * Whether portfolio margin account is enabled.
+     * Whether portfolio margin account is enabled
      */
     'enableCredit'?: boolean;
     /**
-     * Created time of the contract.
+     * Created time of the contract
      */
     'createTime'?: number;
     /**
@@ -158,11 +158,11 @@ export class Contract {
      */
     'fundingCapRatio'?: string;
     /**
-     * Contract Status Types include: prelaunch, trading, delisting, delisted.
+     * Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted)
      */
     'status'?: string;
     /**
-     * Contract expiry timestamp.
+     * Contract expiry timestamp
      */
     'launchTime'?: number;
 

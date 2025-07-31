@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Options underlying detail.
+ * Options underlying detail
  */
 export class OptionsUnderlyingTicker {
     /**
-     * Total put options trades amount in last 24h.
+     * Total put options trades amount in last 24h
      */
     'tradePut'?: number;
     /**
-     * Total call options trades amount in last 24h.
+     * Total call options trades amount in last 24h
      */
     'tradeCall'?: number;
     /**
-     * Index price (quote currency).
+     * Index price (quote currency)
      */
     'indexPrice'?: string;
 

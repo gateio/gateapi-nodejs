@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,51 +11,51 @@
 
 export class FuturesLiquidate {
     /**
-     * Liquidation time.
+     * Liquidation time
      */
     'time'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Position leverage. Not returned in public endpoints.
+     * Position leverage. Not returned in public endpoints
      */
     'leverage'?: string;
     /**
-     * Position size.
+     * Position size
      */
     'size'?: number;
     /**
-     * Position margin. Not returned in public endpoints.
+     * Position margin. Not returned in public endpoints
      */
     'margin'?: string;
     /**
-     * Average entry price. Not returned in public endpoints.
+     * Average entry price. Not returned in public endpoints
      */
     'entryPrice'?: string;
     /**
-     * Liquidation price. Not returned in public endpoints.
+     * Liquidation price. Not returned in public endpoints
      */
     'liqPrice'?: string;
     /**
-     * Mark price. Not returned in public endpoints.
+     * Mark price. Not returned in public endpoints
      */
     'markPrice'?: string;
     /**
-     * Liquidation order ID. Not returned in public endpoints.
+     * Liquidation order ID. Not returned in public endpoints
      */
     'orderId'?: number;
     /**
-     * Liquidation order price.
+     * Liquidation order price
      */
     'orderPrice'?: string;
     /**
-     * Liquidation order average taker price.
+     * Liquidation order average taker price
      */
     'fillPrice'?: string;
     /**
-     * Liquidation order maker size.
+     * Liquidation order maker size
      */
     'left'?: number;
 

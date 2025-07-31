@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,39 +13,39 @@ import { CollateralCurrency } from './collateralCurrency';
 
 export class CreateMultiCollateralOrder {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed, if not specified, default to current.
+     * current - current rate, fixed - fixed rate, defaults to current if not specified
      */
     'orderType'?: string;
     /**
-     * Fixed interest rate loan period: 7d - 7 days, 30d - 30 days. Must be provided for fixed
+     * Fixed interest rate lending period: 7d - 7 days, 30d - 30 days. Required for fixed rate
      */
     'fixedType'?: string;
     /**
-     * Fixed interest rate, must be specified for fixed.
+     * Fixed interest rate, required for fixed rate
      */
     'fixedRate'?: string;
     /**
-     * Fixed interest rate, automatic renewal.
+     * Fixed interest rate, auto-renewal
      */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment.
+     * Fixed interest rate, auto-repayment
      */
     'autoRepay'?: boolean;
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'borrowCurrency': string;
     /**
-     * Borrowing amount.
+     * Borrowed amount
      */
     'borrowAmount': string;
     /**
-     * Collateral currency and amount.
+     * Collateral currency and amount
      */
     'collateralCurrencies'?: Array<CollateralCurrency>;
 

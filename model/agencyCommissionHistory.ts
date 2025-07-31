@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,15 +13,15 @@ import { AgencyCommission } from './agencyCommission';
 
 export class AgencyCommissionHistory {
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Total.
+     * Total
      */
     'total'?: number;
     /**
-     * List of comission history.
+     * List of commission history
      */
     'list'?: Array<AgencyCommission>;
 

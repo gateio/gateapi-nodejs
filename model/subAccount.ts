@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class SubAccount {
     /**
-     * custom text.
+     * Remark
      */
     'remark'?: string;
     /**
-     * Sub-account login name: Only letters, numbers and underscores are supported, and cannot contain other illegal characters
+     * 子账户登陆名：仅支持字母、数字、下划线，不可包含其他非法字符。
      */
     'loginName': string;
     /**
-     * The sub-account\'s password. (Default: the same as main account\'s password).
+     * The sub-account\'s password. (Default: the same as main account\'s password)
      */
     'password'?: string;
     /**
@@ -27,19 +27,19 @@ export class SubAccount {
      */
     'email'?: string;
     /**
-     * State: 1-normal, 2-locked\".
+     * Sub-account status: 1-normal, 2-locked
      */
     'state'?: number;
     /**
-     * \"Sub-account type: 1 - sub-account, 3 - cross margin account.
+     * Sub-account type: 1-Regular sub-account, 3-Cross margin sub-account
      */
     'type'?: number;
     /**
-     * The user id of the sub-account.
+     * Sub-account user ID
      */
     'userId'?: number;
     /**
-     * Created time.
+     * Created time
      */
     'createTime'?: number;
 

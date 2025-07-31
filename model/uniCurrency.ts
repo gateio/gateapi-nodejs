@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Currency detail.
+ * Currency detail
  */
 export class UniCurrency {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * The minimum lending amount, in the unit of the currency.
+     * The minimum lending amount, in the unit of the currency
      */
     'minLendAmount'?: string;
     /**
-     * The total maximum lending amount, in USDT.
+     * The total maximum lending amount, in USDT
      */
     'maxLendAmount'?: string;
     /**
-     * Maximum rate (Hourly).
+     * Maximum rate (Hourly)
      */
     'maxRate'?: string;
     /**
-     * Minimum rate (Hourly).
+     * Minimum rate (Hourly)
      */
     'minRate'?: string;
 

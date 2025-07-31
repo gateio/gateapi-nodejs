@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,31 +10,31 @@
  */
 
 /**
- * Order information that needs to be modified.
+ * Order information that needs to be modified
  */
 export class BatchAmendItem {
     /**
-     * The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the \'text\' field).
+     * The order ID returned upon successful creation or the custom ID specified by the user during creation (i.e., the \'text\' field)
      */
     'orderId': string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair': string;
     /**
-     * Default spot, unified account and warehouse-by-store leverage account.
+     * Default spot, unified account and warehouse-by-store leverage account
      */
     'account'?: string;
     /**
-     * Trading Quantity. Only one of amountor pricecan be specified.
+     * Trading Quantity. Only one of `amount` or `price` can be specified
      */
     'amount'?: string;
     /**
-     * Trading Price. Only one of amountor pricecan be specified.
+     * Trading Price. Only one of `amount` or `price` can be specified
      */
     'price'?: string;
     /**
-     * Custom info during amending order.
+     * Custom info during order amendment
      */
     'amendText'?: string;
     /**

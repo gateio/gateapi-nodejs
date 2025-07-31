@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -17,91 +17,91 @@ export class FuturesAccount {
      */
     'total'?: string;
     /**
-     * Unrealized PNL.
+     * Unrealized PNL
      */
     'unrealisedPnl'?: string;
     /**
-     * Position margin.
+     * Position margin
      */
     'positionMargin'?: string;
     /**
-     * Order margin of unfinished orders.
+     * Order margin of unfinished orders
      */
     'orderMargin'?: string;
     /**
-     * The available balance for transferring or trading(including bonus. Bonus can\'t be withdrawn. The transfer amount needs to deduct the bonus)
+     * Available balance for transferring or trading (including bonus. Bonus cannot be withdrawn, so transfer amount needs to deduct bonus)
      */
     'available'?: string;
     /**
-     * POINT amount.
+     * Point card amount
      */
     'point'?: string;
     /**
-     * Settle currency.
+     * Settlement currency
      */
     'currency'?: string;
     /**
-     * Whether dual mode is enabled.
+     * Whether dual mode is enabled
      */
     'inDualMode'?: boolean;
     /**
-     * Whether portfolio margin account mode is enabled.
+     * Whether portfolio margin account mode is enabled
      */
     'enableCredit'?: boolean;
     /**
-     * Initial margin position, applicable to the portfolio margin account model.
+     * Initial margin occupied by positions, applicable to unified account mode
      */
     'positionInitialMargin'?: string;
     /**
-     * The maintenance deposit occupied by the position is suitable for the new classic account margin model and unified account model
+     * Maintenance margin occupied by positions, applicable to new classic account margin mode and unified account mode
      */
     'maintenanceMargin'?: string;
     /**
-     * Perpetual Contract Bonus.
+     * Bonus
      */
     'bonus'?: string;
     /**
-     * Classic account margin mode, true-new mode, false-old mode.
+     * Classic account margin mode, true-new mode, false-old mode
      */
     'enableEvolvedClassic'?: boolean;
     /**
-     * Full -warehouse hanging order deposit, suitable for the new classic account margin model
+     * Cross margin order margin, applicable to new classic account margin mode
      */
     'crossOrderMargin'?: string;
     /**
-     * The initial security deposit of the full warehouse is suitable for the new classic account margin model
+     * Cross margin initial margin, applicable to new classic account margin mode
      */
     'crossInitialMargin'?: string;
     /**
-     * Maintain deposit in full warehouse, suitable for new classic account margin models
+     * Cross margin maintenance margin, applicable to new classic account margin mode
      */
     'crossMaintenanceMargin'?: string;
     /**
-     * The full warehouse does not achieve profit and loss, suitable for the new classic account margin model
+     * Cross margin unrealized P&L, applicable to new classic account margin mode
      */
     'crossUnrealisedPnl'?: string;
     /**
-     * Full warehouse available amount, suitable for the new classic account margin model
+     * Cross margin available balance, applicable to new classic account margin mode
      */
     'crossAvailable'?: string;
     /**
-     * Full margin balance, suitable for the new classic account margin model.
+     * Cross margin balance, applicable to new classic account margin mode
      */
     'crossMarginBalance'?: string;
     /**
-     * Maintain margin ratio for the full position, suitable for the new classic account margin model
+     * Cross margin maintenance margin rate, applicable to new classic account margin mode
      */
     'crossMmr'?: string;
     /**
-     * The initial margin rate of the full position is suitable for the new classic account margin model
+     * Cross margin initial margin rate, applicable to new classic account margin mode
      */
     'crossImr'?: string;
     /**
-     * Ware -position margin, suitable for the new classic account margin model.
+     * Isolated position margin, applicable to new classic account margin mode
      */
     'isolatedPositionMargin'?: string;
     /**
-     * Whether to open a new two-way position mode.
+     * Whether to open a new two-way position mode
      */
     'enableNewDualMode'?: boolean;
     /**
@@ -109,7 +109,7 @@ export class FuturesAccount {
      */
     'marginMode'?: number;
     /**
-     * Whether to enable tiered maintenance margin calculation.
+     * Whether to enable tiered maintenance margin calculation
      */
     'enableTieredMm'?: boolean;
     'history'?: FuturesAccountHistory;

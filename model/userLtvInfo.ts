@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,35 +10,35 @@
  */
 
 /**
- * User\'s currency statistics data.
+ * User\'s currency statistics data
  */
 export class UserLtvInfo {
     /**
-     * Collateral.
+     * Collateral currency
      */
     'collateralCurrency'?: string;
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * The initial collateralization rate.
+     * Initial collateralization rate
      */
     'initLtv'?: string;
     /**
-     * Warning collateralization ratio.
+     * Warning collateralization rate
      */
     'alertLtv'?: string;
     /**
-     * The liquidation collateralization rate.
+     * Liquidation collateralization rate
      */
     'liquidateLtv'?: string;
     /**
-     * Minimum borrowable amount for the loan currency.
+     * Minimum borrowable amount for the loan currency
      */
     'minBorrowAmount'?: string;
     /**
-     * Remaining borrowable amount for the loan currency.
+     * Remaining borrowable amount for the loan currency
      */
     'leftBorrowableAmount'?: string;
 

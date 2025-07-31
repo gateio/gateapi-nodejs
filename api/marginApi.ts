@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -40,9 +40,9 @@ export class MarginApi {
 
     /**
      *
-     * @summary Margin account list.
+     * @summary Margin account list
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
+     * @param opts.currencyPair Currency pair
      */
     public async listMarginAccounts(opts: {
         currencyPair?: string;
@@ -75,16 +75,16 @@ export class MarginApi {
     }
 
     /**
-     * Only transferals from and to margin account are provided for now. Time range allows 30 days at most
-     * @summary List margin account balance change history.
+     * Currently only provides transfer history to and from margin accounts. Query time range cannot exceed 30 days
+     * @summary Query margin account balance change history
      * @param opts Optional parameters
-     * @param opts.currency List records related to specified currency only. If specified, &#x60;currency_pair&#x60; is also required.
-     * @param opts.currencyPair List records related to specified currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not provided
-     * @param opts.type Only retrieve changes of the specified type. All types will be returned if not specified.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.currency Query history for specified currency. If &#x60;currency&#x60; is specified, &#x60;currency_pair&#x60; must also be specified.
+     * @param opts.currencyPair Specify margin account currency pair. Used in combination with &#x60;currency&#x60;. Ignored if &#x60;currency&#x60; is not specified
+     * @param opts.type Query by specified account change type. If not specified, all change types will be included.
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listMarginAccountBook(opts: {
         currency?: string;
@@ -148,9 +148,9 @@ export class MarginApi {
 
     /**
      *
-     * @summary Funding account list.
+     * @summary Funding account list
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
+     * @param opts.currency Query by specified currency name
      */
     public async listFundingAccounts(opts: {
         currency?: string;
@@ -184,7 +184,7 @@ export class MarginApi {
 
     /**
      *
-     * @summary Retrieve user auto repayment setting.
+     * @summary Query user auto repayment settings
      */
     public async getAutoRepayStatus(): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
         const localVarPath = this.client.basePath + '/margin/auto_repay';
@@ -211,8 +211,8 @@ export class MarginApi {
 
     /**
      *
-     * @summary Update user\'s auto repayment setting.
-     * @param status New auto repayment status. &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled.
+     * @summary Update user auto repayment settings
+     * @param status Whether to enable auto repayment: &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled
      */
     public async setAutoRepay(status: string): Promise<{ response: AxiosResponse; body: AutoRepaySetting }> {
         const localVarPath = this.client.basePath + '/margin/auto_repay';
@@ -246,10 +246,10 @@ export class MarginApi {
 
     /**
      *
-     * @summary Get the max transferable amount for a specific margin currency.
-     * @param currency Retrieve data of the specified currency.
+     * @summary Get maximum transferable amount for isolated margin
+     * @param currency Query by specified currency name
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
+     * @param opts.currencyPair Currency pair
      */
     public async getMarginTransferable(
         currency: string,
@@ -291,8 +291,8 @@ export class MarginApi {
 
     /**
      *
-     * @summary Check the user\'s own leverage lending gradient in the current market.
-     * @param currencyPair Currency pair.
+     * @summary Query user\'s own leverage lending tiers in current market
+     * @param currencyPair Currency pair
      */
     public async getUserMarginTier(
         currencyPair: string,
@@ -328,8 +328,8 @@ export class MarginApi {
 
     /**
      *
-     * @summary Query the current market leverage lending gradient.
-     * @param currencyPair Currency pair.
+     * @summary Query current market leverage lending tiers
+     * @param currencyPair Currency pair
      */
     public async getMarketMarginTier(
         currencyPair: string,
@@ -365,7 +365,7 @@ export class MarginApi {
 
     /**
      *
-     * @summary Set the user market leverage multiple.
+     * @summary Set user market leverage multiplier
      * @param marginMarketLeverage
      */
     public async setUserMarketLeverage(
@@ -395,10 +395,10 @@ export class MarginApi {
     }
 
     /**
-     * Support querying risk rate per position account and margin rate per position account
-     * @summary Query the user\'s leverage account list.
+     * Supports querying risk ratio isolated accounts and margin ratio isolated accounts
+     * @summary Query user\'s isolated margin account list
      * @param opts Optional parameters
-     * @param opts.currencyPair Currency pair.
+     * @param opts.currencyPair Currency pair
      */
     public async listMarginUserAccount(opts: {
         currencyPair?: string;
@@ -431,13 +431,13 @@ export class MarginApi {
     }
 
     /**
-     * Sort by creation time in descending order by default. Set `reverse=false` to return ascending results.
-     * @summary List cross margin borrow history. (deprecated).
-     * @param status Filter by status. Supported values are 2 and 3. (deprecated.).
+     * Sorted by creation time in descending order by default. Set `reverse=false` for ascending order
+     * @summary Query cross margin borrow history (deprecated)
+     * @param status Filter by status. Supported values are 2 and 3. (deprecated.)
      * @param opts Optional parameters
-     * @param opts.currency Filter by currency.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.currency Query by specified currency, includes all currencies if not specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.reverse Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results
      */
     public async listCrossMarginLoans(
@@ -491,13 +491,13 @@ export class MarginApi {
     }
 
     /**
-     * Sort by creation time in descending order by default. Set `reverse=false` to return ascending results.
-     * @summary Retrieve cross margin repayments. (deprecated).
+     * Sorted by creation time in descending order by default. Set `reverse=false` for ascending order
+     * @summary Retrieve cross margin repayments. (deprecated)
      * @param opts Optional parameters
      * @param opts.currency
      * @param opts.loanId
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.reverse Whether to sort in descending order, which is the default. Set &#x60;reverse&#x3D;false&#x60; to return ascending results
      */
     public async listCrossMarginRepayments(opts: {

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,11 +10,11 @@
  */
 
 /**
- * Initiate a flash swap order preview.
+ * Flash swap order preview
  */
 export class FlashSwapOrderPreview {
     /**
-     * Preview result ID.
+     * Preview result ID
      */
     'previewId'?: string;
     /**
@@ -22,7 +22,7 @@ export class FlashSwapOrderPreview {
      */
     'sellCurrency'?: string;
     /**
-     * Amount to sell.
+     * Amount to sell
      */
     'sellAmount'?: string;
     /**
@@ -30,11 +30,11 @@ export class FlashSwapOrderPreview {
      */
     'buyCurrency'?: string;
     /**
-     * Amount to buy.
+     * Amount to buy
      */
     'buyAmount'?: string;
     /**
-     * Price.
+     * Price
      */
     'price'?: string;
 

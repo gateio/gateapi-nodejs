@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,19 +13,19 @@ import { UnifiedHistoryLoanRateRates } from './unifiedHistoryLoanRateRates';
 
 export class UnifiedHistoryLoanRate {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * The VIP level of the floating rate required.
+     * VIP level for the floating rate to be retrieved
      */
     'tier'?: string;
     /**
-     * VIP level corresponding floating rate.
+     * Floating rate corresponding to VIP level
      */
     'tierUpRate'?: string;
     /**
-     * Historical interest rate information, one data per hour, the array size is determined by the page and limit parameters provided by the interface request parameters, sorted from recent to far in time
+     * Historical interest rate information, one data point per hour, array size determined by page and limit parameters from the API request, sorted by time from recent to distant
      */
     'rates'?: Array<UnifiedHistoryLoanRateRates>;
 

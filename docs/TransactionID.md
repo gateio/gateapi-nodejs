@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**txId** | **number** | Order id. | [optional] [default to undefined]
+**txId** | **number** | Order ID | [optional] [default to undefined]
 

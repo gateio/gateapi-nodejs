@@ -4,22 +4,22 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAccountDetail**](AccountApi.md#getAccountDetail) | **GET** /account/detail | Get account detail.
-[**getAccountRateLimit**](AccountApi.md#getAccountRateLimit) | **GET** /account/rate_limit | Get user transaction rate limit information.
-[**listSTPGroups**](AccountApi.md#listSTPGroups) | **GET** /account/stp_groups | List STP Groups.
-[**createSTPGroup**](AccountApi.md#createSTPGroup) | **POST** /account/stp_groups | Create STP Group.
-[**listSTPGroupsUsers**](AccountApi.md#listSTPGroupsUsers) | **GET** /account/stp_groups/{stp_id}/users | List users of the STP group.
-[**addSTPGroupUsers**](AccountApi.md#addSTPGroupUsers) | **POST** /account/stp_groups/{stp_id}/users | Add users to the STP group.
-[**deleteSTPGroupUsers**](AccountApi.md#deleteSTPGroupUsers) | **DELETE** /account/stp_groups/{stp_id}/users | Delete the user in the STP group.
-[**getDebitFee**](AccountApi.md#getDebitFee) | **GET** /account/debit_fee | Query GT deduction configuration.
-[**setDebitFee**](AccountApi.md#setDebitFee) | **POST** /account/debit_fee | Set GT deduction.
+[**getAccountDetail**](AccountApi.md#getAccountDetail) | **GET** /account/detail | Retrieve user account information
+[**getAccountRateLimit**](AccountApi.md#getAccountRateLimit) | **GET** /account/rate_limit | Get user transaction rate limit information
+[**listSTPGroups**](AccountApi.md#listSTPGroups) | **GET** /account/stp_groups | Query STP user groups created by the user
+[**createSTPGroup**](AccountApi.md#createSTPGroup) | **POST** /account/stp_groups | Create STP user group
+[**listSTPGroupsUsers**](AccountApi.md#listSTPGroupsUsers) | **GET** /account/stp_groups/{stp_id}/users | Query users in the STP user group
+[**addSTPGroupUsers**](AccountApi.md#addSTPGroupUsers) | **POST** /account/stp_groups/{stp_id}/users | Add users to the STP user group
+[**deleteSTPGroupUsers**](AccountApi.md#deleteSTPGroupUsers) | **DELETE** /account/stp_groups/{stp_id}/users | Delete users from the STP user group
+[**getDebitFee**](AccountApi.md#getDebitFee) | **GET** /account/debit_fee | Query GT fee deduction configuration
+[**setDebitFee**](AccountApi.md#setDebitFee) | **POST** /account/debit_fee | Configure GT fee deduction
 
 
 ## getAccountDetail
 
 > Promise<{ response: http.IncomingMessage; body: AccountDetail; }> getAccountDetail()
 
-Get account detail.
+Retrieve user account information
 
 ### Example
 
@@ -58,7 +58,7 @@ Promise<{ response: AxiosResponse; body: AccountDetail; }> [AccountDetail](Accou
 
 > Promise<{ response: http.IncomingMessage; body: Array<AccountRateLimit>; }> getAccountRateLimit()
 
-Get user transaction rate limit information.
+Get user transaction rate limit information
 
 ### Example
 
@@ -97,9 +97,9 @@ Promise<{ response: AxiosResponse; body: Array<AccountRateLimit>; }> [AccountRat
 
 > Promise<{ response: http.IncomingMessage; body: Array<StpGroup>; }> listSTPGroups(opts)
 
-List STP Groups.
+Query STP user groups created by the user
 
-Retrieve the list of STP groups created by the main account user only.
+Only query STP user groups created by the current main account
 
 ### Example
 
@@ -113,7 +113,7 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
 const opts = {
-  'name': "group" // string | Perform a fuzzy search based on the name.
+  'name': "group" // string | Fuzzy search by name
 };
 api.listSTPGroups(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -125,7 +125,7 @@ api.listSTPGroups(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Perform a fuzzy search based on the name. | [optional] [default to undefined]
+ **name** | **string**| Fuzzy search by name | [optional] [default to undefined]
 
 ### Return type
 
@@ -144,9 +144,9 @@ Promise<{ response: AxiosResponse; body: Array<StpGroup>; }> [StpGroup](StpGroup
 
 > Promise<{ response: http.IncomingMessage; body: StpGroup; }> createSTPGroup(stpGroup)
 
-Create STP Group.
+Create STP user group
 
-Only the main account is allowed to create a new STP user group.
+Only the main account is allowed to create a new STP user group
 
 ### Example
 
@@ -189,9 +189,9 @@ Promise<{ response: AxiosResponse; body: StpGroup; }> [StpGroup](StpGroup.md)
 
 > Promise<{ response: http.IncomingMessage; body: Array<StpGroupUser>; }> listSTPGroupsUsers(stpId)
 
-List users of the STP group.
+Query users in the STP user group
 
-Only the main account that created this STP group can query the account.
+Only the main account that created this STP group can query the account ID list in the current STP group
 
 ### Example
 
@@ -204,7 +204,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID.
+const stpId = 1; // number | STP Group ID
 api.listSTPGroupsUsers(stpId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -215,7 +215,7 @@ api.listSTPGroupsUsers(stpId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID. | [default to undefined]
+ **stpId** | **number**| STP Group ID | [default to undefined]
 
 ### Return type
 
@@ -234,9 +234,9 @@ Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> [StpGroupUser](
 
 > Promise<{ response: http.IncomingMessage; body: Array<StpGroupUser>; }> addSTPGroupUsers(stpId, requestBody)
 
-Add users to the STP group.
+Add users to the STP user group
 
-- Only the master account that created the STP user group is allowed to add users group.- Only accounts under the main account are allowed to be added. Cross-account is not permitted
+- Only the main account that created this STP group can add users to the STP user group - Only accounts under the current main account are allowed, cross-main account is not permitted
 
 ### Example
 
@@ -249,8 +249,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID.
-const requestBody = [[1,2,3]]; // Array<number> | User ID.
+const stpId = 1; // number | STP Group ID
+const requestBody = [[1,2,3]]; // Array<number> | User ID
 api.addSTPGroupUsers(stpId, requestBody)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -261,8 +261,8 @@ api.addSTPGroupUsers(stpId, requestBody)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID. | [default to undefined]
- **requestBody** | [**Array&lt;number&gt;**](number.md)| User ID. | 
+ **stpId** | **number**| STP Group ID | [default to undefined]
+ **requestBody** | [**Array&lt;number&gt;**](number.md)| User ID | 
 
 ### Return type
 
@@ -281,7 +281,7 @@ Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> [StpGroupUser](
 
 > Promise<{ response: http.IncomingMessage; body: Array<StpGroupUser>; }> deleteSTPGroupUsers(stpId, userId)
 
-Delete the user in the STP group.
+Delete users from the STP user group
 
 - Only the main account that created this STP group is allowed to delete users from the STP user group - Deletion is limited to accounts under the current main account; cross-account deletion is not permitted
 
@@ -296,8 +296,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.AccountApi(client);
-const stpId = 1; // number | STP Group ID.
-const userId = 1; // number | STP user ID, multiple can be separated by commas.
+const stpId = 1; // number | STP Group ID
+const userId = 1; // number | STP user IDs, multiple IDs can be separated by commas
 api.deleteSTPGroupUsers(stpId, userId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -308,8 +308,8 @@ api.deleteSTPGroupUsers(stpId, userId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stpId** | **number**| STP Group ID. | [default to undefined]
- **userId** | **number**| STP user ID, multiple can be separated by commas. | [default to undefined]
+ **stpId** | **number**| STP Group ID | [default to undefined]
+ **userId** | **number**| STP user IDs, multiple IDs can be separated by commas | [default to undefined]
 
 ### Return type
 
@@ -328,9 +328,9 @@ Promise<{ response: AxiosResponse; body: Array<StpGroupUser>; }> [StpGroupUser](
 
 > Promise<{ response: http.IncomingMessage; body: DebitFee; }> getDebitFee()
 
-Query GT deduction configuration.
+Query GT fee deduction configuration
 
-Query the current GT deduction configuration for the account.
+Query the GT fee deduction configuration for the current account
 
 ### Example
 
@@ -369,9 +369,9 @@ Promise<{ response: AxiosResponse; body: DebitFee; }> [DebitFee](DebitFee.md)
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> setDebitFee(debitFee)
 
-Set GT deduction.
+Configure GT fee deduction
 
-Enable or disable GT deduction for the current account.
+Enable or disable GT fee deduction for the current account
 
 ### Example
 

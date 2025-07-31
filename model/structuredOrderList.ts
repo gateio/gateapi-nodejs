@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Structured order.
+ * Structured order
  */
 export class StructuredOrderList {
     /**
-     * Order ID.
+     * Order ID
      */
     'id'?: number;
     /**
-     * Plan ID.
+     * Product ID
      */
     'pid'?: string;
     /**
-     * Locked coin.
+     * Locked coin
      */
     'lockCoin'?: string;
     /**
-     * Locked amount.
+     * Locked amount
      */
     'amount'?: string;
     /**
@@ -34,11 +34,11 @@ export class StructuredOrderList {
      */
     'status'?: string;
     /**
-     * Income.
+     * Income
      */
     'income'?: string;
     /**
-     * Created time.
+     * Created time
      */
     'createTime'?: number;
 

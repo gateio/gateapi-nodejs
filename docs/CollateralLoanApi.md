@@ -4,23 +4,23 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCollateralLoanOrders**](CollateralLoanApi.md#listCollateralLoanOrders) | **GET** /loan/collateral/orders | List Orders.
-[**createCollateralLoan**](CollateralLoanApi.md#createCollateralLoan) | **POST** /loan/collateral/orders | Place order.
-[**getCollateralLoanOrderDetail**](CollateralLoanApi.md#getCollateralLoanOrderDetail) | **GET** /loan/collateral/orders/{order_id} | Get a single order.
-[**repayCollateralLoan**](CollateralLoanApi.md#repayCollateralLoan) | **POST** /loan/collateral/repay | Repayment.
-[**listRepayRecords**](CollateralLoanApi.md#listRepayRecords) | **GET** /loan/collateral/repay_records | Repayment history.
-[**listCollateralRecords**](CollateralLoanApi.md#listCollateralRecords) | **GET** /loan/collateral/collaterals | Query collateral adjustment records.
-[**operateCollateral**](CollateralLoanApi.md#operateCollateral) | **POST** /loan/collateral/collaterals | Increase or redeem collateral.
-[**getUserTotalAmount**](CollateralLoanApi.md#getUserTotalAmount) | **GET** /loan/collateral/total_amount | Query the total borrowing and collateral amount for the user.
-[**getUserLtvInfo**](CollateralLoanApi.md#getUserLtvInfo) | **GET** /loan/collateral/ltv | Query user\&#39;s collateralization ratio.
-[**listCollateralCurrencies**](CollateralLoanApi.md#listCollateralCurrencies) | **GET** /loan/collateral/currencies | Query supported borrowing and collateral currencies.
+[**listCollateralLoanOrders**](CollateralLoanApi.md#listCollateralLoanOrders) | **GET** /loan/collateral/orders | Query collateral loan order list
+[**createCollateralLoan**](CollateralLoanApi.md#createCollateralLoan) | **POST** /loan/collateral/orders | Place collateral loan order
+[**getCollateralLoanOrderDetail**](CollateralLoanApi.md#getCollateralLoanOrderDetail) | **GET** /loan/collateral/orders/{order_id} | Query single order details
+[**repayCollateralLoan**](CollateralLoanApi.md#repayCollateralLoan) | **POST** /loan/collateral/repay | Collateral loan repayment
+[**listRepayRecords**](CollateralLoanApi.md#listRepayRecords) | **GET** /loan/collateral/repay_records | Query collateral loan repayment records
+[**listCollateralRecords**](CollateralLoanApi.md#listCollateralRecords) | **GET** /loan/collateral/collaterals | Query collateral adjustment records
+[**operateCollateral**](CollateralLoanApi.md#operateCollateral) | **POST** /loan/collateral/collaterals | Increase or redeem collateral
+[**getUserTotalAmount**](CollateralLoanApi.md#getUserTotalAmount) | **GET** /loan/collateral/total_amount | Query user\&#39;s total borrowing and collateral amount
+[**getUserLtvInfo**](CollateralLoanApi.md#getUserLtvInfo) | **GET** /loan/collateral/ltv | Query user\&#39;s collateralization ratio and remaining borrowable currencies
+[**listCollateralCurrencies**](CollateralLoanApi.md#listCollateralCurrencies) | **GET** /loan/collateral/currencies | Query supported borrowing and collateral currencies
 
 
 ## listCollateralLoanOrders
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralOrder>; }> listCollateralLoanOrders(opts)
 
-List Orders.
+Query collateral loan order list
 
 ### Example
 
@@ -34,10 +34,10 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
 const opts = {
-  'page': 1, // number | Page number.
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'collateralCurrency': "BTC", // string | Collateral.
-  'borrowCurrency': "USDT" // string | Borrowed currency.
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'collateralCurrency': "BTC", // string | Collateral currency
+  'borrowCurrency': "USDT" // string | Borrowed currency
 };
 api.listCollateralLoanOrders(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -49,10 +49,10 @@ api.listCollateralLoanOrders(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **collateralCurrency** | **string**| Collateral. | [optional] [default to undefined]
- **borrowCurrency** | **string**| Borrowed currency. | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **collateralCurrency** | **string**| Collateral currency | [optional] [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -71,7 +71,7 @@ Promise<{ response: AxiosResponse; body: Array<CollateralOrder>; }> [CollateralO
 
 > Promise<{ response: http.IncomingMessage; body: OrderResp; }> createCollateralLoan(createCollateralOrder)
 
-Place order.
+Place collateral loan order
 
 ### Example
 
@@ -114,7 +114,7 @@ Promise<{ response: AxiosResponse; body: OrderResp; }> [OrderResp](OrderResp.md)
 
 > Promise<{ response: http.IncomingMessage; body: CollateralOrder; }> getCollateralLoanOrderDetail(orderId)
 
-Get a single order.
+Query single order details
 
 ### Example
 
@@ -127,7 +127,7 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
-const orderId = 100001; // number | Order ID returned on successful order creation.
+const orderId = 100001; // number | Order ID returned when order is successfully created
 api.getCollateralLoanOrderDetail(orderId)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -138,7 +138,7 @@ api.getCollateralLoanOrderDetail(orderId)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **number**| Order ID returned on successful order creation. | [default to undefined]
+ **orderId** | **number**| Order ID returned when order is successfully created | [default to undefined]
 
 ### Return type
 
@@ -157,7 +157,7 @@ Promise<{ response: AxiosResponse; body: CollateralOrder; }> [CollateralOrder](C
 
 > Promise<{ response: http.IncomingMessage; body: RepayResp; }> repayCollateralLoan(repayLoan)
 
-Repayment.
+Collateral loan repayment
 
 ### Example
 
@@ -200,7 +200,7 @@ Promise<{ response: AxiosResponse; body: RepayResp; }> [RepayResp](RepayResp.md)
 
 > Promise<{ response: http.IncomingMessage; body: Array<RepayRecord>; }> listRepayRecords(source, opts)
 
-Repayment history.
+Query collateral loan repayment records
 
 ### Example
 
@@ -213,14 +213,14 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
-const source = "repay"; // string | Operation type: repay - Regular repayment, liquidate - Liquidation.
+const source = "repay"; // string | Operation type: repay - Regular repayment, liquidate - Liquidation
 const opts = {
-  'borrowCurrency': "USDT", // string | Borrowed currency.
-  'collateralCurrency': "BTC", // string | Collateral.
-  'page': 1, // number | Page number.
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'from': 1609459200, // number | Start timestamp of the query.
-  'to': 1609459200 // number | Time range ending, default to current time.
+  'borrowCurrency': "USDT", // string | Borrowed currency
+  'collateralCurrency': "BTC", // string | Collateral currency
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'from': 1609459200, // number | Start timestamp for the query
+  'to': 1609459200 // number | End timestamp for the query, defaults to current time if not specified
 };
 api.listRepayRecords(source, opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -232,13 +232,13 @@ api.listRepayRecords(source, opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **string**| Operation type: repay - Regular repayment, liquidate - Liquidation. | [default to undefined]
- **borrowCurrency** | **string**| Borrowed currency. | [optional] [default to undefined]
- **collateralCurrency** | **string**| Collateral. | [optional] [default to undefined]
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **from** | **number**| Start timestamp of the query. | [optional] [default to undefined]
- **to** | **number**| Time range ending, default to current time. | [optional] [default to undefined]
+ **source** | **string**| Operation type: repay - Regular repayment, liquidate - Liquidation | [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
+ **collateralCurrency** | **string**| Collateral currency | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
 
 ### Return type
 
@@ -257,7 +257,7 @@ Promise<{ response: AxiosResponse; body: Array<RepayRecord>; }> [RepayRecord](Re
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralRecord>; }> listCollateralRecords(opts)
 
-Query collateral adjustment records.
+Query collateral adjustment records
 
 ### Example
 
@@ -271,12 +271,12 @@ client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
 const opts = {
-  'page': 1, // number | Page number.
-  'limit': 100, // number | Maximum number of records to be returned in a single list.
-  'from': 1609459200, // number | Start timestamp of the query.
-  'to': 1609459200, // number | Time range ending, default to current time.
-  'borrowCurrency': "USDT", // string | Borrowed currency.
-  'collateralCurrency': "BTC" // string | Collateral.
+  'page': 1, // number | Page number
+  'limit': 100, // number | Maximum number of records returned in a single list
+  'from': 1609459200, // number | Start timestamp for the query
+  'to': 1609459200, // number | End timestamp for the query, defaults to current time if not specified
+  'borrowCurrency': "USDT", // string | Borrowed currency
+  'collateralCurrency': "BTC" // string | Collateral currency
 };
 api.listCollateralRecords(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -288,12 +288,12 @@ api.listCollateralRecords(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **number**| Page number. | [optional] [default to 1]
- **limit** | **number**| Maximum number of records to be returned in a single list. | [optional] [default to 100]
- **from** | **number**| Start timestamp of the query. | [optional] [default to undefined]
- **to** | **number**| Time range ending, default to current time. | [optional] [default to undefined]
- **borrowCurrency** | **string**| Borrowed currency. | [optional] [default to undefined]
- **collateralCurrency** | **string**| Collateral. | [optional] [default to undefined]
+ **page** | **number**| Page number | [optional] [default to 1]
+ **limit** | **number**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **from** | **number**| Start timestamp for the query | [optional] [default to undefined]
+ **to** | **number**| End timestamp for the query, defaults to current time if not specified | [optional] [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [optional] [default to undefined]
+ **collateralCurrency** | **string**| Collateral currency | [optional] [default to undefined]
 
 ### Return type
 
@@ -312,7 +312,7 @@ Promise<{ response: AxiosResponse; body: Array<CollateralRecord>; }> [Collateral
 
 > Promise<{ response: http.IncomingMessage; body?: any; }> operateCollateral(collateralAlign)
 
-Increase or redeem collateral.
+Increase or redeem collateral
 
 ### Example
 
@@ -355,7 +355,7 @@ Promise<{ response: AxiosResponse; body?: any; }>
 
 > Promise<{ response: http.IncomingMessage; body: UserTotalAmount; }> getUserTotalAmount()
 
-Query the total borrowing and collateral amount for the user.
+Query user\&#39;s total borrowing and collateral amount
 
 ### Example
 
@@ -394,7 +394,7 @@ Promise<{ response: AxiosResponse; body: UserTotalAmount; }> [UserTotalAmount](U
 
 > Promise<{ response: http.IncomingMessage; body: UserLtvInfo; }> getUserLtvInfo(collateralCurrency, borrowCurrency)
 
-Query user\&#39;s collateralization ratio.
+Query user\&#39;s collateralization ratio and remaining borrowable currencies
 
 ### Example
 
@@ -407,8 +407,8 @@ const client = new GateApi.ApiClient();
 client.setApiKeySecret("YOUR_API_KEY", "YOUR_API_SECRET");
 
 const api = new GateApi.CollateralLoanApi(client);
-const collateralCurrency = "BTC"; // string | Collateral.
-const borrowCurrency = "USDT"; // string | Borrowed currency.
+const collateralCurrency = "BTC"; // string | Collateral currency
+const borrowCurrency = "USDT"; // string | Borrowed currency
 api.getUserLtvInfo(collateralCurrency, borrowCurrency)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
          error => console.error(error));
@@ -419,8 +419,8 @@ api.getUserLtvInfo(collateralCurrency, borrowCurrency)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collateralCurrency** | **string**| Collateral. | [default to undefined]
- **borrowCurrency** | **string**| Borrowed currency. | [default to undefined]
+ **collateralCurrency** | **string**| Collateral currency | [default to undefined]
+ **borrowCurrency** | **string**| Borrowed currency | [default to undefined]
 
 ### Return type
 
@@ -439,7 +439,7 @@ Promise<{ response: AxiosResponse; body: UserLtvInfo; }> [UserLtvInfo](UserLtvIn
 
 > Promise<{ response: http.IncomingMessage; body: Array<CollateralLoanCurrency>; }> listCollateralCurrencies(opts)
 
-Query supported borrowing and collateral currencies.
+Query supported borrowing and collateral currencies
 
 ### Example
 
@@ -451,7 +451,7 @@ const client = new GateApi.ApiClient();
 
 const api = new GateApi.CollateralLoanApi(client);
 const opts = {
-  'loanCurrency': "BTC" // string | The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies.
+  'loanCurrency': "BTC" // string | Parameter loan_currency. If omitted, returns all supported borrowing currencies; if provided, returns the array of collateral currencies supported for that borrowing currency
 };
 api.listCollateralCurrencies(opts)
    .then(value => console.log('API called successfully. Returned data: ', value.body),
@@ -463,7 +463,7 @@ api.listCollateralCurrencies(opts)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loanCurrency** | **string**| The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies. | [optional] [default to undefined]
+ **loanCurrency** | **string**| Parameter loan_currency. If omitted, returns all supported borrowing currencies; if provided, returns the array of collateral currencies supported for that borrowing currency | [optional] [default to undefined]
 
 ### Return type
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class MultiChainAddressItem {
     /**
-     * Name of the chain.
+     * Name of the chain
      */
     'chain'?: string;
     /**
-     * Deposit address.
+     * Deposit address
      */
     'address'?: string;
     /**
-     * Notes that some currencies required(e.g., Tag, Memo) when depositing.
+     * Notes that some currencies required(e.g., Tag, Memo) when depositing
      */
     'paymentId'?: string;
     /**
-     * Note type, `Tag` or `Memo`.
+     * Note type, `Tag` or `Memo`
      */
     'paymentName'?: string;
     /**

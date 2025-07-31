@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,71 +11,71 @@
 
 export class DualGetOrders {
     /**
-     * Order ID.
+     * Order ID
      */
     'id'?: number;
     /**
-     * Plan ID.
+     * Product ID
      */
     'planId'?: number;
     /**
-     * Copies.
+     * Units
      */
     'copies'?: string;
     /**
-     * Investment Amount.
+     * Investment Quantity
      */
     'investAmount'?: string;
     /**
-     * Settlement Amount.
+     * Settlement Quantity
      */
     'settlementAmount'?: string;
     /**
-     * Creation time.
+     * Created time
      */
     'createTime'?: number;
     /**
-     * Completion Time.
+     * Completed Time
      */
     'completeTime'?: number;
     /**
-     * Status:  `INIT`-INIT `SETTLEMENT_SUCCESS`-Settlement Success `SETTLEMENT_PROCESSING`-SEttlement Processing `CANCELED`-Canceled `FAILED`-Failed
+     * Status:  `INIT`-Created `SETTLEMENT_SUCCESS`-Settlement Success `SETTLEMENT_PROCESSING`-Settlement Processing `CANCELED`-Canceled `FAILED`-Failed
      */
     'status'?: string;
     /**
-     * Investment Currency.
+     * Investment Token
      */
     'investCurrency'?: string;
     /**
-     * Strike Currency.
+     * Strike Token
      */
     'exerciseCurrency'?: string;
     /**
-     * Strike price.
+     * Strike price
      */
     'exercisePrice'?: string;
     /**
-     * settlement price.
+     * Settlement price
      */
     'settlementPrice'?: string;
     /**
-     * Settle currency.
+     * Settlement currency
      */
     'settlementCurrency'?: string;
     /**
-     * APY.
+     * Annual Yield
      */
     'apyDisplay'?: string;
     /**
-     * Settlement APY.
+     * Settlement Annual Yield
      */
     'apySettlement'?: string;
     /**
-     * Settlement time.
+     * Settlement time
      */
     'deliveryTime'?: number;
     /**
-     * Custom order information.
+     * Custom order information
      */
     'text'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,39 +10,39 @@
  */
 
 /**
- * Loan records.
+ * Borrowing Records
  */
 export class UnifiedLoanRecord {
     /**
-     * ID.
+     * ID
      */
     'id'?: number;
     /**
-     * type: borrow - borrow, repay - repay.
+     * Type: `borrow` - borrow, `repay` - repay
      */
     'type'?: string;
     /**
-     * Repayment type, none - No repayment type, manual_repay - Manual repayment, auto_repay - Automatic repayment after withdrawal, different_currencies_repayment - Different currency repayment
+     * Repayment type: none - No repayment type, manual_repay - Manual repayment, auto_repay - Automatic repayment, cancel_auto_repay - Automatic repayment after order cancellation, different_currencies_repayment - Cross-currency repayment
      */
     'repaymentType'?: string;
     /**
-     * Loan type, returned when querying loan records. manual_borrow - Manual repayment , auto_borrow - Automatic repayment
+     * Borrowing type, returned when querying loan records: manual_borrow - Manual borrowing, auto_borrow - Automatic borrowing
      */
     'borrowType'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * The amount of lending or repaying.
+     * Borrow or repayment amount
      */
     'amount'?: string;
     /**
-     * Created time.
+     * Created time
      */
     'createTime'?: number;
 

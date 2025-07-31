@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,35 +11,35 @@
 
 export class OptionsMyTrade {
     /**
-     * Trade ID.
+     * Fill ID
      */
     'id'?: number;
     /**
-     * Trading time.
+     * Fill Time
      */
     'createTime'?: number;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Order ID related.
+     * Related order ID
      */
     'orderId'?: number;
     /**
-     * Trading size.
+     * Trading size
      */
     'size'?: number;
     /**
-     * Trading price (quote currency).
+     * Trade price (quote currency)
      */
     'price'?: string;
     /**
-     * Underlying price (quote currency).
+     * Underlying price (quote currency)
      */
     'underlyingPrice'?: string;
     /**
-     * Trade role. Available values are `taker` and `maker`.
+     * Trade role. taker - taker, maker - maker
      */
     'role'?: OptionsMyTrade.Role;
 

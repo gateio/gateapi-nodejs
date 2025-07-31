@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Dual Investment order.
+ * Dual Investment Order
  */
 export class PlaceDualInvestmentOrder {
     /**
-     * Plan ID.
+     * Product ID
      */
     'planId': string;
     /**
-     * Subscription amount, mutually exclusive with the copies field.
+     * Subscription amount, mutually exclusive with copies field
      */
     'amount': string;
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     * Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
      */
     'text'?: string;
 

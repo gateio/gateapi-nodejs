@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,55 +11,55 @@
 
 export class PositionClose {
     /**
-     * Position close time.
+     * Position close time
      */
     'time'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Position side, long or short.
+     * Position side  - `long`: Long position - `short`: Short position
      */
     'side'?: PositionClose.Side;
     /**
-     * PNL.
+     * PnL
      */
     'pnl'?: string;
     /**
-     * PNL - Position P/L.
+     * PNL - Position P/L
      */
     'pnlPnl'?: string;
     /**
-     * PNL - Funding Fees.
+     * PNL - Funding Fees
      */
     'pnlFund'?: string;
     /**
-     * PNL - Transaction Fees.
+     * PNL - Transaction Fees
      */
     'pnlFee'?: string;
     /**
-     * Text of close order.
+     * Source of close order. See `order.text` field for specific values
      */
     'text'?: string;
     /**
-     * Max Trade Size.
+     * Max Trade Size
      */
     'maxSize'?: string;
     /**
-     * Cumulative closed position volume.
+     * Cumulative closed position volume
      */
     'accumSize'?: string;
     /**
-     * First Open Time.
+     * First Open Time
      */
     'firstOpenTime'?: number;
     /**
-     * When \'side\' is \'long,\' it indicates the opening average price; when closing average price.
+     * When side is \'long\', it indicates the opening average price; when side is \'short\', it indicates the closing average price
      */
     'longPrice'?: string;
     /**
-     * When \'side\' is \'long,\' it indicates the opening average price; when closing average price
+     * When side is \'long\', it indicates the closing average price; when side is \'short\', it indicates the opening average price
      */
     'shortPrice'?: string;
 

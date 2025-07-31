@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,11 +13,11 @@ import { CrossMarginBalance } from './crossMarginBalance';
 
 export class SubCrossMarginAccount {
     /**
-     * User ID of the cross margin account. 0 means that the subaccount has not yet opened a cross margin account
+     * Cross margin account user ID. 0 means this sub-account has not yet opened a cross margin account
      */
     'userId'?: number;
     /**
-     * Whether account is locked.
+     * Whether the account is locked
      */
     'locked'?: boolean;
     'balances'?: { [key: string]: CrossMarginBalance };
@@ -30,47 +30,47 @@ export class SubCrossMarginAccount {
      */
     'borrowed'?: string;
     /**
-     * Total borrowed value in USDT * borrowed factor.
+     * Total borrowed value in USDT * leverage factor
      */
     'borrowedNet'?: string;
     /**
-     * Total net assets in USDT.
+     * Total net assets in USDT
      */
     'net'?: string;
     /**
-     * Position leverage.
+     * Position leverage
      */
     'leverage'?: string;
     /**
-     * Total unpaid interests in USDT, i.e., the sum of all currencies\' `interest*price*discount`
+     * Total unpaid interest in USDT, i.e., the sum of all currencies\' `interest*price*discount`
      */
     'interest'?: string;
     /**
-     * Risk rate. When it belows 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
+     * Risk rate. When it falls below 110%, liquidation will be triggered. Calculation formula: `total / (borrowed+interest)`
      */
     'risk'?: string;
     /**
-     * Total initial margin.
+     * Total initial margin
      */
     'totalInitialMargin'?: string;
     /**
-     * Total margin balance.
+     * Total margin balance
      */
     'totalMarginBalance'?: string;
     /**
-     * Total maintenance margin.
+     * Total maintenance margin
      */
     'totalMaintenanceMargin'?: string;
     /**
-     * Total initial margin rate.
+     * Total initial margin rate
      */
     'totalInitialMarginRate'?: string;
     /**
-     * Total maintenance margin rate.
+     * Total maintenance margin rate
      */
     'totalMaintenanceMarginRate'?: string;
     /**
-     * Total available margin.
+     * Total available margin
      */
     'totalAvailableMargin'?: string;
 

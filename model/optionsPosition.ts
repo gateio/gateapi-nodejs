@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,68 +12,68 @@
 import { OptionsPositionCloseOrder } from './optionsPositionCloseOrder';
 
 /**
- * Options position information.
+ * Options contract position details
  */
 export class OptionsPosition {
     /**
-     * User ID.
+     * User ID
      */
     'user'?: number;
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying'?: string;
     /**
-     * Underlying price (quote currency).
+     * Underlying price (quote currency)
      */
     'underlyingPrice'?: string;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Position size (contract size).
+     * Position size (contract quantity)
      */
     'size'?: number;
     /**
-     * Entry size (quote currency).
+     * Entry size (quote currency)
      */
     'entryPrice'?: string;
     /**
-     * Current mark price (quote currency).
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
-     * Implied volatility.
+     * Implied volatility
      */
     'markIv'?: string;
     /**
-     * Realized PNL.
+     * Realized PnL
      */
     'realisedPnl'?: string;
     /**
-     * Unrealized PNL.
+     * Unrealized PNL
      */
     'unrealisedPnl'?: string;
     /**
-     * Current open orders.
+     * Current pending order quantity
      */
     'pendingOrders'?: number;
     'closeOrder'?: OptionsPositionCloseOrder | null;
     /**
-     * Delta.
+     * Greek letter delta
      */
     'delta'?: string;
     /**
-     * Gamma.
+     * Greek letter gamma
      */
     'gamma'?: string;
     /**
-     * Vega.
+     * Greek letter vega
      */
     'vega'?: string;
     /**
-     * Theta.
+     * Greek letter theta
      */
     'theta'?: string;
 

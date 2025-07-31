@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Market gradient information.
+ * Market gradient information
  */
 export class MarginLeverageTier {
     /**
-     * Maximum loan limit.
+     * Maximum loan limit
      */
     'upperLimit'?: string;
     /**
-     * Maintenance margin rate.
+     * Maintenance margin rate
      */
     'mmr'?: string;
     /**
-     * Maximum leverage multiple.
+     * Maximum leverage multiple
      */
     'leverage'?: string;
 

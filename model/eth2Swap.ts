@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * ETH2 Staking.
+ * ETH2 Mining
  */
 export class Eth2Swap {
     /**
-     * 1-Forward Swap（ETH -> ETH2）, 2-Reverse Swap（ETH2 -> ETH）.
+     * 1-Forward Swap (ETH -> ETH2), 2-Reverse Swap (ETH2 -> ETH)
      */
     'side': string;
     /**
-     * amount.
+     * Swap Amount
      */
     'amount': string;
 

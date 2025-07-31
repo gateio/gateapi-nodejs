@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class OptionsPositionClose {
     /**
-     * Position close time.
+     * Position close time
      */
     'time'?: number;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Position side, long or short.
+     * Position side  - `long`: Long position - `short`: Short position
      */
     'side'?: OptionsPositionClose.Side;
     /**
-     * PNL.
+     * PnL
      */
     'pnl'?: string;
     /**
-     * Text of close order.
+     * Source of close order. See `order.text` field for specific values
      */
     'text'?: string;
     /**
-     * settlement size.
+     * Settlement size
      */
     'settleSize'?: string;
 

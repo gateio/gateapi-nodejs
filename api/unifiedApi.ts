@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -52,11 +52,11 @@ export class UnifiedApi {
     }
 
     /**
-     * The assets of each currency in the account will be adjusted according to their liquidity, defined by corresponding adjustment coefficients, and then uniformly converted to USD to calculate the total asset value and position value of the account.  You can refer to the [Formula](#portfolio-account) in the documentation
-     * @summary Get unified account information.
+     * The assets of each currency in the account will be adjusted according to their liquidity, defined by corresponding adjustment coefficients, and then uniformly converted to USD to calculate the total asset value and position value of the account.  For specific formulas, please refer to [Margin Formula](#margin-formula)
+     * @summary Get unified account information
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.subUid Sub account user ID.
+     * @param opts.currency Query by specified currency name
+     * @param opts.subUid Sub account user ID
      */
     public async listUnifiedAccounts(opts: {
         currency?: string;
@@ -95,8 +95,8 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Query about the maximum borrowing for the unified account.
-     * @param currency Retrieve data of the specified currency.
+     * @summary Query maximum borrowable amount for unified account
+     * @param currency Query by specified currency name
      */
     public async getUnifiedBorrowable(currency: string): Promise<{ response: AxiosResponse; body: UnifiedBorrowable }> {
         const localVarPath = this.client.basePath + '/unified/borrowable';
@@ -130,8 +130,8 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Query about the maximum transferable for the unified account.
-     * @param currency Retrieve data of the specified currency.
+     * @summary Query maximum transferable amount for unified account
+     * @param currency Query by specified currency name
      */
     public async getUnifiedTransferable(
         currency: string,
@@ -167,8 +167,8 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Batch query can be transferred out at most for unified accounts; each currency is the maximum value. After the user withdraws the currency, the amount of transferable currency will be changed.
-     * @param currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
+     * @summary Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * @param currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time
      */
     public async getUnifiedTransferables(
         currencies: string,
@@ -206,8 +206,8 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Batch query unified account can be borrowed up to a maximum.
-     * @param currencies Specify the currency names for querying in an array, separated by commas, with a maximum of 10 currencies.
+     * @summary Batch query unified account maximum borrowable amount
+     * @param currencies Specify currency names for querying in an array, separated by commas, maximum 10 currencies
      */
     public async getUnifiedBorrowableList(
         currencies: Array<string>,
@@ -245,12 +245,12 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary List loans.
+     * @summary Query loans
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
-     * @param opts.type Loan type, platform - platform, margin - margin.
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
+     * @param opts.type Loan type: platform borrowing - platform, margin borrowing - margin
      */
     public async listUnifiedLoans(opts: {
         currency?: string;
@@ -298,8 +298,8 @@ export class UnifiedApi {
     }
 
     /**
-     * When borrowing, it is essential to ensure that the borrowed amount is not below the minimum borrowing threshold for the specific cryptocurrency and does not exceed the maximum borrowing limit set by the platform and the user.  The interest on the loan will be automatically deducted from the account at regular intervals. It is the user\'s responsibility to manage the repayment of the borrowed amount.  For repayment, the option to repay the available by setting the parameter `repaid_all=true`
-     * @summary Borrow or repay.
+     * When borrowing, ensure the borrowed amount is not below the minimum borrowing threshold for the specific cryptocurrency and does not exceed the maximum borrowing limit set by the platform and user.  Loan interest will be automatically deducted from the account at regular intervals. Users are responsible for managing repayment of borrowed amounts.  For repayment, use `repaid_all=true` to repay all available amounts
+     * @summary Borrow or repay
      * @param unifiedLoan
      */
     public async createUnifiedLoan(
@@ -335,12 +335,12 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Get load records.
+     * @summary Query loan records
      * @param opts Optional parameters
-     * @param opts.type The types of lending records, borrow - indicates the action of borrowing funds, repaying the borrowed funds
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+     * @param opts.type Loan record type: borrow - borrowing, repay - repayment
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
     public async listUnifiedLoanRecords(opts: {
         type?: string;
@@ -389,14 +389,14 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary List interest records.
+     * @summary Query interest deduction records
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.type Loan type, platform loan - platform, leverage loan - margin, if not passed, defaults to margin
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.type Loan type: platform borrowing - platform, margin borrowing - margin. Defaults to margin if not specified
      */
     public async listUnifiedLoanInterestRecords(opts: {
         currency?: string;
@@ -454,8 +454,8 @@ export class UnifiedApi {
     }
 
     /**
-     * Retrieve user risk unit details, only valid in portfolio margin mode.
-     * @summary Get user risk unit details.
+     * Get user risk unit details, only valid in portfolio margin mode
+     * @summary Get user risk unit details
      */
     public async getUnifiedRiskUnits(): Promise<{ response: AxiosResponse; body: UnifiedRiskUnits }> {
         const localVarPath = this.client.basePath + '/unified/risk_units';
@@ -482,7 +482,7 @@ export class UnifiedApi {
 
     /**
      * Unified account mode: - `classic`: Classic account mode - `multi_currency`: Cross-currency margin mode - `portfolio`: Portfolio margin mode - `single_currency`: Single-currency margin mode
-     * @summary Query mode of the unified account.
+     * @summary Query mode of the unified account
      */
     public async getUnifiedMode(): Promise<{ response: AxiosResponse; body: UnifiedModeSet }> {
         const localVarPath = this.client.basePath + '/unified/unified_mode';
@@ -509,7 +509,7 @@ export class UnifiedApi {
 
     /**
      * Each account mode switch only requires passing the corresponding account mode parameter, and also supports turning on or off the configuration switches under the corresponding account mode during the switch. - When enabling the classic account mode, mode=classic ```  PUT /unified/unified_mode  {  \"mode\": \"classic\"  } ``` - When enabling the cross-currency margin \"multi_currency\",  \"settings\": {  \"usdt_futures\": true  }  } ``` - When enabling the portfolio margin mode, mode=portfolio ```  PUT /unified/unified_mode  {  \"mode\": \"portfolio\",  \"settings\": {  \"spot_hedge\": true  }  } ``` - When enabling the single-currency margin mode, mode=single_currency ```  PUT /unified/unified_mode  {  \"mode\": \"single_currency\"  } ```
-     * @summary Set mode of the unified account.
+     * @summary Set unified account mode
      * @param unifiedModeSet
      */
     public async setUnifiedMode(unifiedModeSet: UnifiedModeSet): Promise<{ response: AxiosResponse; body?: any }> {
@@ -535,9 +535,9 @@ export class UnifiedApi {
     }
 
     /**
-     * Due to fluctuations in lending depth, hourly interest rates may vary, and thus, I cannot provide exact rates. When a currency is not supported, the interest rate returned will be an empty string.
-     * @summary Get unified estimate rate.
-     * @param currencies Specify the currency names for querying in an array, separated by commas, with a maximum of 10 currencies.
+     * Interest rates fluctuate hourly based on lending depth, so exact rates cannot be provided. When a currency is not supported, the interest rate returned will be an empty string
+     * @summary Query unified account estimated interest rate
+     * @param currencies Specify currency names for querying in an array, separated by commas, maximum 10 currencies
      */
     public async getUnifiedEstimateRate(
         currencies: Array<string>,
@@ -573,7 +573,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary List currency discount tiers.
+     * @summary Query unified account tiered discount
      */
     public async listCurrencyDiscountTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedDiscount> }> {
         const localVarPath = this.client.basePath + '/unified/currency_discount_tiers';
@@ -600,7 +600,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary List loan margin tiers.
+     * @summary Query unified account tiered loan margin
      */
     public async listLoanMarginTiers(): Promise<{ response: AxiosResponse; body: Array<UnifiedMarginTiers> }> {
         const localVarPath = this.client.basePath + '/unified/loan_margin_tiers';
@@ -626,8 +626,8 @@ export class UnifiedApi {
     }
 
     /**
-     * Portfolio Margin Calculator When inputting a simulated position portfolio, each position includes the position name and quantity held, supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. When inputting simulated orders, each order includes the market identifier, order price, and order of BTC and ETH perpetual contracts, options, and spot markets. Market orders are not included.
-     * @summary Portfolio margin calculator.
+     * Portfolio Margin Calculator  When inputting simulated position portfolios, each position includes the position name and quantity held, supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. When inputting simulated orders, each order includes the market identifier, order price, and order quantity, supporting markets within the range of BTC and ETH perpetual contracts, options, and spot markets. Market orders are not included.
+     * @summary Portfolio margin calculator
      * @param unifiedPortfolioInput
      */
     public async calculatePortfolioMargin(
@@ -665,8 +665,8 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Minimum currency leverage that can be set.
-     * @param currency Currency.
+     * @summary Maximum and minimum currency leverage that can be set
+     * @param currency Currency
      */
     public async getUserLeverageCurrencyConfig(
         currency: string,
@@ -703,14 +703,14 @@ export class UnifiedApi {
     }
 
     /**
-     * Get the user\'s currency leverage. If currency is not passed, query all currencies.
-     * @summary Get the leverage multiple of the user currency.
+     * Get user currency leverage. If currency is not specified, query all currencies
+     * @summary Get user currency leverage
      * @param opts Optional parameters
-     * @param opts.currency Currency.
+     * @param opts.currency Currency
      */
     public async getUserLeverageCurrencySetting(opts: {
         currency?: string;
-    }): Promise<{ response: AxiosResponse; body: UnifiedLeverageSetting }> {
+    }): Promise<{ response: AxiosResponse; body: Array<UnifiedLeverageSetting> }> {
         const localVarPath = this.client.basePath + '/unified/leverage/user_currency_setting';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.client.defaultHeaders);
@@ -735,12 +735,16 @@ export class UnifiedApi {
         };
 
         const authSettings = ['apiv4'];
-        return this.client.request<UnifiedLeverageSetting>(config, 'UnifiedLeverageSetting', authSettings);
+        return this.client.request<Array<UnifiedLeverageSetting>>(
+            config,
+            'Array<UnifiedLeverageSetting>',
+            authSettings,
+        );
     }
 
     /**
      *
-     * @summary Set the loan currency leverage.
+     * @summary Set loan currency leverage
      * @param unifiedLeverageSetting
      */
     public async setUserLeverageCurrencySetting(
@@ -771,9 +775,9 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary List of loan currencies supported by unified account.
+     * @summary List of loan currencies supported by unified account
      * @param opts Optional parameters
-     * @param opts.currency Currency.
+     * @param opts.currency Currency
      */
     public async listUnifiedCurrencies(opts: {
         currency?: string;
@@ -807,12 +811,12 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary get historical lending rates.
-     * @param currency Currency.
+     * @summary Get historical lending rates
+     * @param currency Currency
      * @param opts Optional parameters
-     * @param opts.tier The VIP level of the floating rate that needs to be queried.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 100.
+     * @param opts.tier VIP level for the floating rate to be queried
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100
      */
     public async getHistoryLoanRate(
         currency: string,
@@ -862,7 +866,7 @@ export class UnifiedApi {
 
     /**
      *
-     * @summary Set Collateral Currency.
+     * @summary Set collateral currency
      * @param unifiedCollateralReq
      */
     public async setUnifiedCollateral(

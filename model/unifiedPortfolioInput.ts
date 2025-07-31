@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -17,35 +17,35 @@ import { MockSpotBalance } from './mockSpotBalance';
 import { MockSpotOrder } from './mockSpotOrder';
 
 /**
- * Input for the portfolio margin calculator.
+ * Portfolio margin calculator input
  */
 export class UnifiedPortfolioInput {
     /**
-     * Spot.
+     * Spot
      */
     'spotBalances'?: Array<MockSpotBalance>;
     /**
-     * Spot orders.
+     * Spot orders
      */
     'spotOrders'?: Array<MockSpotOrder>;
     /**
-     * Futures positions.
+     * Futures positions
      */
     'futuresPositions'?: Array<MockFuturesPosition>;
     /**
-     * Futures order.
+     * Futures order
      */
     'futuresOrders'?: Array<MockFuturesOrder>;
     /**
-     * Options positions.
+     * Options positions
      */
     'optionsPositions'?: Array<MockOptionsPosition>;
     /**
-     * Option orders.
+     * Option orders
      */
     'optionsOrders'?: Array<MockOptionsOrder>;
     /**
-     * Whether to enable spot hedging.
+     * Whether to enable spot hedging
      */
     'spotHedge'?: boolean;
 

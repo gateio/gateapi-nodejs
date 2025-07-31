@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,31 +11,31 @@
 
 export class UnifiedLeverageConfig {
     /**
-     * Current leverage ratio.
+     * Current leverage ratio
      */
     'currentLeverage'?: string;
     /**
-     * Minimum adjustable leverage ratio.
+     * Minimum adjustable leverage ratio
      */
     'minLeverage'?: string;
     /**
-     * Maximum adjustable leverage ratio.
+     * Maximum adjustable leverage ratio
      */
     'maxLeverage'?: string;
     /**
-     * Current liabilities.
+     * Current liabilities
      */
     'debit'?: string;
     /**
-     * Available Margin.
+     * Available Margin
      */
     'availableMargin'?: string;
     /**
-     * The current leverage you can choose is.
+     * Maximum borrowable amount at current leverage
      */
     'borrowable'?: string;
     /**
-     * The maximum amount of margin that can be borrowed and the be borrowed, whichever is smaller
+     * Maximum borrowable from margin and maximum borrowable from Earn, whichever is smaller
      */
     'exceptLeverageBorrowable'?: string;
 

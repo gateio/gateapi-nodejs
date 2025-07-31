@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -15,19 +15,19 @@ export class OrderBook {
      */
     'id'?: number;
     /**
-     * The timestamp of the response data being generated (in milliseconds).
+     * The timestamp of the response data being generated (in milliseconds)
      */
     'current'?: number;
     /**
-     * The timestamp of when the orderbook last changed (in milliseconds).
+     * The timestamp of when the orderbook last changed (in milliseconds)
      */
     'update'?: number;
     /**
-     * Asks order depth.
+     * Ask Depth
      */
     'asks': Array<Array<string>>;
     /**
-     * Bids order depth.
+     * Bid Depth
      */
     'bids': Array<Array<string>>;
 

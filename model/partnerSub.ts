@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class PartnerSub {
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * The time when the user joined the system, in seconds Unix timestamp.
+     * Time when user joined the system, Unix timestamp in seconds
      */
     'userJoinTime'?: number;
     /**
-     * Type (1-Sub-agent 2-Indirect Customer 3-Direct Customer).
+     * Type (1-Sub-agent 2-Indirect direct customer 3-Direct direct customer)
      */
     'type'?: number;
 

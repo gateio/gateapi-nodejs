@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class SpotPriceTrigger {
     /**
-     * Trigger price.
+     * Trigger price
      */
     'price': string;
     /**
-     * Price trigger condition  - `>=`: triggered when market price larger than or equal to `price` field - `<=`: or equal to `price` field
+     * Price trigger condition  - `>=`: triggered when market price is greater than or equal to `price` - `<=`: triggered when market price is less than or equal to `price`
      */
     'rule': SpotPriceTrigger.Rule;
     /**
-     * How long (in seconds) to wait for the condition to be triggered before cancelling the order.
+     * Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
      */
     'expiration': number;
 

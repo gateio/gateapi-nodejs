@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,7 +11,7 @@
 
 export class FuturesInitialOrder {
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract': string;
     /**
@@ -19,7 +19,7 @@ export class FuturesInitialOrder {
      */
     'size'?: number;
     /**
-     * Order price. Set to 0 to use market price.
+     * Order price. Set to 0 to use market price
      */
     'price': string;
     /**
@@ -27,11 +27,11 @@ export class FuturesInitialOrder {
      */
     'close'?: boolean;
     /**
-     * Time in force strategy, default is gtc, market order currently only supports ioc mode mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
+     * Time in force strategy, default is gtc, market orders currently only support ioc mode  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled
      */
     'tif'?: FuturesInitialOrder.Tif;
     /**
-     * The source of the order, including: - web: web - api: api - app: app
+     * The source of the order, including: - web: Web - api: API call - app: Mobile app
      */
     'text'?: string;
     /**
@@ -39,15 +39,15 @@ export class FuturesInitialOrder {
      */
     'reduceOnly'?: boolean;
     /**
-     * Do not set auto_size When the dual-position mode is closed all positions (size=0), auto_size, close_long, close_short, short When the double-storey mode partially closes the position (size ≠ 0), there is no need to set auto_size
+     * Single position mode: auto_size is not required Dual position mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions Dual position mode partial closing (size≠0): auto_size is not required
      */
     'autoSize'?: string;
     /**
-     * Is the order reduce-only.
+     * Is the order reduce-only
      */
     'isReduceOnly'?: boolean;
     /**
-     * Is the order to close position.
+     * Is the order to close position
      */
     'isClose'?: boolean;
 

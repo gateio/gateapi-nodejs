@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class SubAccountTransfer {
     /**
-     * Sub account user ID.
+     * Sub account user ID
      */
     'subAccount': string;
     /**
-     * Target sub user\'s account. `spot` - spot account, `futures` - perpetual contract account, `delivery` - delivery account
+     * Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account, options - options account
      */
     'subAccountType'?: string;
     /**
-     * Transfer currency name.
+     * Transfer currency name
      */
     'currency': string;
     /**
-     * Transfer amount.
+     * Transfer amount
      */
     'amount': string;
     /**
-     * Transfer direction. to - transfer into sub account; from - transfer out from sub account
+     * Transfer direction: to - transfer into sub-account, from - transfer out from sub-account
      */
     'direction': string;
     /**
-     * The custom ID provided by the customer serves as a safeguard against duplicate transfers. It can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\', with a length ranging from 1 to 64 characters.
+     * Customer-defined ID to prevent duplicate transfers. Can be a combination of letters (case-sensitive), numbers, hyphens \'-\', and underscores \'_\'. Can be pure letters or pure numbers with length between 1-64 characters
      */
     'clientOrderId'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,71 +11,71 @@
 
 export class Ticker {
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Last trading price.
+     * Last trading price
      */
     'last'?: string;
     /**
-     * Recent lowest ask.
+     * Recent lowest ask
      */
     'lowestAsk'?: string;
     /**
-     * The latest seller\'s lowest price quantity; does not exist for batch query; exists for single query, and is empty if there is no data
+     * Latest seller\'s lowest price quantity; not available for batch queries; available for single queries, empty if no data
      */
     'lowestSize'?: string;
     /**
-     * Recent highest bid.
+     * Recent highest bid
      */
     'highestBid'?: string;
     /**
-     * The latest buyer\'s highest price quantity; does not exist for batch query; exists for single query, and is empty if there is no data
+     * Latest buyer\'s highest price quantity; not available for batch queries; available for single queries, empty if no data
      */
     'highestSize'?: string;
     /**
-     * Change percentage in the last 24h.
+     * 24h price change percentage (negative for decrease, e.g., -7.45)
      */
     'changePercentage'?: string;
     /**
-     * utc0 timezone, the percentage change in the last 24 hours.
+     * UTC+0 timezone, 24h price change percentage, negative for decline (e.g., -7.45)
      */
     'changeUtc0'?: string;
     /**
-     * utc8 timezone, the percentage change in the last 24 hours.
+     * UTC+8 timezone, 24h price change percentage, negative for decline (e.g., -7.45)
      */
     'changeUtc8'?: string;
     /**
-     * Base currency trade volume in the last 24h.
+     * Base currency trading volume in the last 24h
      */
     'baseVolume'?: string;
     /**
-     * Quote currency trade volume in the last 24h.
+     * Quote currency trading volume in the last 24h
      */
     'quoteVolume'?: string;
     /**
-     * Highest price in 24h.
+     * 24h High
      */
     'high24h'?: string;
     /**
-     * Lowest price in 24h.
+     * 24h Low
      */
     'low24h'?: string;
     /**
-     * ETF net value.
+     * ETF net value
      */
     'etfNetValue'?: string;
     /**
-     * ETF previous net value at re-balancing time.
+     * ETF net value at previous rebalancing point
      */
     'etfPreNetValue'?: string | null;
     /**
-     * ETF previous re-balancing time.
+     * ETF previous rebalancing time
      */
     'etfPreTimestamp'?: number | null;
     /**
-     * ETF current leverage.
+     * ETF current leverage
      */
     'etfLeverage'?: string | null;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,159 +10,159 @@
  */
 
 /**
- * Futures contract details.
+ * Futures contract details
  */
 export class DeliveryContract {
     /**
-     * Futures contract.
+     * Futures contract
      */
     'name'?: string;
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying'?: string;
     /**
-     * Cycle type, e.g. WEEKLY, QUARTERLY.
+     * Cycle type, e.g. WEEKLY, QUARTERLY
      */
     'cycle'?: DeliveryContract.Cycle;
     /**
-     * Futures contract type.
+     * Contract type: inverse - inverse contract, direct - direct contract
      */
     'type'?: DeliveryContract.Type;
     /**
-     * Multiplier used in converting from invoicing to settlement currency.
+     * Multiplier used in converting from invoicing to settlement currency
      */
     'quantoMultiplier'?: string;
     /**
-     * Minimum leverage.
+     * Minimum leverage
      */
     'leverageMin'?: string;
     /**
-     * Maximum leverage.
+     * Maximum leverage
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate of margin.
+     * Maintenance rate of margin
      */
     'maintenanceRate'?: string;
     /**
-     * Mark price type, internal - based on internal trading, external index price
+     * Mark price type: internal - internal trading price, index - external index price
      */
     'markType'?: DeliveryContract.MarkType;
     /**
-     * Current mark price.
+     * Current mark price
      */
     'markPrice'?: string;
     /**
-     * Current index price.
+     * Current index price
      */
     'indexPrice'?: string;
     /**
-     * Last trading price.
+     * Last trading price
      */
     'lastPrice'?: string;
     /**
-     * Maker fee rate, where negative means rebate.
+     * Maker fee rate, negative values indicate rebates
      */
     'makerFeeRate'?: string;
     /**
-     * Taker fee rate.
+     * Taker fee rate
      */
     'takerFeeRate'?: string;
     /**
-     * Minimum order price increment.
+     * Minimum order price increment
      */
     'orderPriceRound'?: string;
     /**
-     * Minimum mark price increment.
+     * Minimum mark price increment
      */
     'markPriceRound'?: string;
     /**
-     * Fair basis rate.
+     * Fair basis rate
      */
     'basisRate'?: string;
     /**
-     * Fair basis value.
+     * Fair basis value
      */
     'basisValue'?: string;
     /**
-     * Funding used for calculating impact bid, ask price.
+     * Funding used for calculating impact bid, ask price
      */
     'basisImpactValue'?: string;
     /**
-     * Settle price.
+     * Settle price
      */
     'settlePrice'?: string;
     /**
-     * Settle price update interval.
+     * Settle price update interval
      */
     'settlePriceInterval'?: number;
     /**
-     * Settle price update duration in seconds.
+     * Settle price update duration in seconds
      */
     'settlePriceDuration'?: number;
     /**
-     * Contract expiry timestamp.
+     * Contract expiry timestamp
      */
     'expireTime'?: number;
     /**
-     * Risk limit base.
+     * Risk limit base
      */
     'riskLimitBase'?: string;
     /**
-     * Step of adjusting risk limit.
+     * Step of adjusting risk limit
      */
     'riskLimitStep'?: string;
     /**
-     * Maximum risk limit the contract allowed.
+     * Maximum risk limit the contract allowed
      */
     'riskLimitMax'?: string;
     /**
-     * Minimum order size the contract allowed.
+     * Minimum order size allowed by the contract
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size the contract allowed.
+     * Maximum order size allowed by the contract
      */
     'orderSizeMax'?: number;
     /**
-     * deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:   abs(order_price - mark_price) <= mark_price * order_price_deviate
+     * Maximum allowed deviation between order price and current mark price. The order price `order_price` must satisfy the following condition:      abs(order_price - mark_price) <= mark_price * order_price_deviate
      */
     'orderPriceDeviate'?: string;
     /**
-     * Referral fee rate discount.
+     * Trading fee discount for referred users
      */
     'refDiscountRate'?: string;
     /**
-     * Referrer commission rate.
+     * Commission rate for referrers
      */
     'refRebateRate'?: string;
     /**
-     * Current orderbook ID.
+     * Orderbook update ID
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID.
+     * Current trade ID
      */
     'tradeId'?: number;
     /**
-     * Historical accumulated trade size.
+     * Historical cumulative trading volume
      */
     'tradeSize'?: number;
     /**
-     * Current total long position size.
+     * Current total long position size
      */
     'positionSize'?: number;
     /**
-     * Last changed time of configuration.
+     * Last configuration update time
      */
     'configChangeTime'?: number;
     /**
-     * Contract is delisting.
+     * Contract is delisting
      */
     'inDelisting'?: boolean;
     /**
-     * Maximum number of open orders.
+     * Maximum number of pending orders
      */
     'ordersLimit'?: number;
 

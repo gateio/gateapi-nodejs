@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * Total borrowed amount and pledged collateral amount by the user.
+ * User\'s total borrowing and collateral amount
  */
 export class UserTotalAmount {
     /**
-     * Total borrowing amount, calculated in USDT.
+     * Total borrowing amount in USDT
      */
     'borrowAmount'?: string;
     /**
-     * Total collateral amount, calculated in USDT.
+     * Total collateral amount in USDT
      */
     'collateralAmount'?: string;
 

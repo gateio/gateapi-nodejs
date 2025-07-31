@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,83 +10,83 @@
  */
 
 /**
- * Spot currency pair.
+ * Spot currency pair
  */
 export class CurrencyPair {
     /**
-     * Currency pair.
+     * Currency pair
      */
     'id'?: string;
     /**
-     * Base currency.
+     * Base currency
      */
     'base'?: string;
     /**
-     * Transaction currency name.
+     * Base currency name
      */
     'baseName'?: string;
     /**
-     * Quote currency.
+     * Quote currency
      */
     'quote'?: string;
     /**
-     * Name of the denominated currency.
+     * Quote currency name
      */
     'quoteName'?: string;
     /**
-     * Trading fee.
+     * Trading fee rate
      */
     'fee'?: string;
     /**
-     * Minimum amount of base currency to trade, `null` means no limit.
+     * Minimum amount of base currency to trade, `null` means no limit
      */
     'minBaseAmount'?: string;
     /**
-     * Minimum amount of quote currency to trade, `null` means no limit.
+     * Minimum amount of quote currency to trade, `null` means no limit
      */
     'minQuoteAmount'?: string;
     /**
-     * Maximum amount of base currency to trade, `null` means no limit.
+     * Maximum amount of base currency to trade, `null` means no limit
      */
     'maxBaseAmount'?: string;
     /**
-     * Maximum amount of quote currency to trade, `null` means no limit.
+     * Maximum amount of quote currency to trade, `null` means no limit
      */
     'maxQuoteAmount'?: string;
     /**
-     * Amount scale.
+     * Amount scale
      */
     'amountPrecision'?: number;
     /**
-     * Price scale.
+     * Price scale
      */
     'precision'?: number;
     /**
-     * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: sold
+     * Trading status  - untradable: cannot be traded - buyable: can be bought - sellable: can be sold - tradable: can be bought and sold
      */
     'tradeStatus'?: CurrencyPair.TradeStatus;
     /**
-     * Sell start unix timestamp in seconds.
+     * Sell start unix timestamp in seconds
      */
     'sellStart'?: number;
     /**
-     * Buy start unix timestamp in seconds.
+     * Buy start unix timestamp in seconds
      */
     'buyStart'?: number;
     /**
-     * Expected time to remove the shelves, Unix timestamp in seconds.
+     * Expected time to remove the shelves, Unix timestamp in seconds
      */
     'delistingTime'?: number;
     /**
-     * Trading pair type, normal: normal, premarket: pre-market.
+     * Trading pair type, normal: normal, premarket: pre-market
      */
     'type'?: string;
     /**
-     * Transaction link.
+     * Transaction link
      */
     'tradeUrl'?: string;
     /**
-     * Whether the trading pair is in ST risk assessment, false - No, true - Yes.
+     * Whether the trading pair is in ST risk assessment, false - No, true - Yes
      */
     'stTag'?: boolean;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,39 +13,39 @@ import { BorrowCurrencyInfo } from './borrowCurrencyInfo';
 import { CollateralCurrencyInfo } from './collateralCurrencyInfo';
 
 /**
- * Multi-Collateral Order.
+ * Multi-Collateral Order
  */
 export class MultiCollateralOrder {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: string;
     /**
-     * current - current, fixed - fixed.
+     * current - current, fixed - fixed
      */
     'orderType'?: string;
     /**
-     * Fixed interest rate loan periods: 7d - 7 days, 30d - 30 days.
+     * Fixed interest rate loan periods: 7d - 7 days, 30d - 30 days
      */
     'fixedType'?: string;
     /**
-     * Fixed interest rate.
+     * Fixed interest rate
      */
     'fixedRate'?: string;
     /**
-     * Expiration time, timestamp, unit in seconds.
+     * Expiration time, timestamp, unit in seconds
      */
     'expireTime'?: number;
     /**
-     * Fixed interest rate, automatic renewal.
+     * Fixed interest rate, auto-renewal
      */
     'autoRenew'?: boolean;
     /**
-     * Fixed interest rate, automatic repayment.
+     * Fixed interest rate, auto-repayment
      */
     'autoRepay'?: boolean;
     /**
-     * The current collateralization rate.
+     * Current collateralization rate
      */
     'currentLtv'?: string;
     /**
@@ -53,23 +53,23 @@ export class MultiCollateralOrder {
      */
     'status'?: string;
     /**
-     * Borrowing time, timestamp in seconds.
+     * Borrowing time, timestamp in seconds
      */
     'borrowTime'?: number;
     /**
-     * Value of Left repay amount converted in USDT.
+     * Total outstanding value converted to USDT
      */
     'totalLeftRepayUsdt'?: string;
     /**
-     * Value of Collateral amount in USDT.
+     * Total collateral value converted to USDT
      */
     'totalLeftCollateralUsdt'?: string;
     /**
-     * Borrowing Currency List.
+     * Borrowing Currency List
      */
     'borrowCurrencies'?: Array<BorrowCurrencyInfo>;
     /**
-     * Collateral Currency List.
+     * Collateral Currency List
      */
     'collateralCurrencies'?: Array<CollateralCurrencyInfo>;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class SavedAddress {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Chain name.
+     * Chain name
      */
     'chain'?: string;
     /**
-     * Address.
+     * Address
      */
     'address'?: string;
     /**
-     * Name.
+     * Name
      */
     'name'?: string;
     /**
-     * Tag.
+     * Tag
      */
     'tag'?: string;
     /**
-     * Whether to pass the verification 0-unverified, 1-verified.
+     * Whether to pass the verification 0-unverified, 1-verified
      */
     'verified'?: string;
 

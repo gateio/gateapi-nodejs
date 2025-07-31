@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -14,11 +14,11 @@
  */
 export class OptionsMMPReset {
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying': string;
     /**
-     * Time window (milliseconds), between 1-5000, 0 means disabling MMP.
+     * Time window (milliseconds), between 1-5000, 0 means disable MMP
      */
     'window'?: number;
     /**
@@ -26,19 +26,19 @@ export class OptionsMMPReset {
      */
     'frozenPeriod'?: number;
     /**
-     * Trading volume upper limit (positive number, up to 2 decimal places).
+     * Trading volume upper limit (positive number, up to 2 decimal places)
      */
     'qtyLimit'?: string;
     /**
-     * Upper limit of net delta value (positive number, up to 2 decimal places).
+     * Upper limit of net delta value (positive number, up to 2 decimal places)
      */
     'deltaLimit'?: string;
     /**
-     * Trigger freeze time (milliseconds), 0 means no freeze is triggered.
+     * Trigger freeze time (milliseconds), 0 means no freeze is triggered
      */
     'triggerTimeMs'?: number;
     /**
-     * Unfreeze time (milliseconds). If the freeze duration is not configured, there will be no unfreeze time after the freeze is triggered.
+     * Unfreeze time (milliseconds). If the freeze duration is not configured, there will be no unfreeze time after the freeze is triggered
      */
     'frozenUntilMs'?: number;
 

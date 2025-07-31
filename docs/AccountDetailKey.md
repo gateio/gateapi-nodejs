@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mode** | **number** | mode: 1 - classic account 2 - portfolio margin account. | [optional] [default to undefined]
+**mode** | **number** | Mode: 1 - Classic mode, 2 - Legacy unified mode | [optional] [default to undefined]
 

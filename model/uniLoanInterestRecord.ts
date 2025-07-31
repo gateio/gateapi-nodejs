@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,35 +10,35 @@
  */
 
 /**
- * Interest record.
+ * Interest Deduction Record
  */
 export class UniLoanInterestRecord {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Actual rate.
+     * Actual Rate
      */
     'actualRate'?: string;
     /**
-     * Interest.
+     * Interest
      */
     'interest'?: string;
     /**
-     * Status: 0 - fail, 1 - success.
+     * Status: 0 - fail, 1 - success
      */
     'status'?: number;
     /**
-     * Type, platform - platform，margin - margin.
+     * Type: platform - Platform borrowing, margin - Margin borrowing
      */
     'type'?: string;
     /**
-     * Created time.
+     * Created time
      */
     'createTime'?: number;
 

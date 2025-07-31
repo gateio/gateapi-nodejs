@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class RepayCurrencyRes {
     /**
-     * Has the repayment been successful.
+     * Whether the repayment was successful
      */
     'succeeded'?: boolean;
     /**
-     * Error identifier for unsuccessful operations; empty for successful.
+     * Error identifier for failed operations; empty when successful
      */
     'label'?: string;
     /**
-     * Error description in case of operation failure; empty when successful.
+     * Error description for failed operations; empty when successful
      */
     'message'?: string;
     /**
-     * Repayment currency.
+     * Repayment currency
      */
     'currency'?: string;
     /**
-     * Principal.
+     * Principal
      */
     'repaidPrincipal'?: string;
     /**
-     * Principal.
+     * Principal
      */
     'repaidInterest'?: string;
 

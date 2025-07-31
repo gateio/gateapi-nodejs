@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,23 +11,23 @@
 
 export class FundingAccount {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * Available assets to lend, which is identical to spot account `available`.
+     * Available assets to lend, which is identical to spot account `available`
      */
     'available'?: string;
     /**
-     * Locked amount. i.e. amount in `open` loans.
+     * Locked amount. i.e. amount in `open` loans
      */
     'locked'?: string;
     /**
-     * Outstanding loan amount yet to be repaid.
+     * Outstanding loan amount yet to be repaid
      */
     'lent'?: string;
     /**
-     * Amount used for lending. total_lent = lent + locked.
+     * Amount used for lending. total_lent = lent + locked
      */
     'totalLent'?: string;
 

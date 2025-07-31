@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,11 +10,11 @@
  */
 
 /**
- * API Key detail.
+ * API Key details
  */
 export class AccountDetailKey {
     /**
-     * mode: 1 - classic account 2 - portfolio margin account.
+     * Mode: 1 - Classic mode, 2 - Legacy unified mode
      */
     'mode'?: number;
 

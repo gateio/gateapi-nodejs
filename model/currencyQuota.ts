@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Currency Quota.
+ * Currency Quota
  */
 export class CurrencyQuota {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Currency Index Price.
+     * Currency Index Price
      */
     'indexPrice'?: string;
     /**
-     * Minimum borrowing/collateral quota for the currency.
+     * Minimum borrowing/collateral limit for the currency
      */
     'minQuota'?: string;
     /**
-     * Remaining borrowing/collateral limit for the currency.
+     * Remaining borrowing/collateral quota for the currency
      */
     'leftQuota'?: string;
     /**
-     * Remaining currency limit converted to USDT.
+     * Remaining currency limit converted to USDT
      */
     'leftQuoteUsdt'?: string;
 

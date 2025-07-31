@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**txId** | **string** | Order id. | [optional] [default to undefined]
-**status** | **string** | Transfer status, PENDING - in process, SUCCESS - successful transfer, FAIL - failed transfer, PARTIAL_SUCCESS - Partially successful (this status will appear when transferring between sub-subs) | [optional] [default to undefined]
+**txId** | **string** | Order ID | [optional] [default to undefined]
+**status** | **string** | Transfer status: PENDING - Processing, SUCCESS - Transfer successful, FAIL - Transfer failed, PARTIAL_SUCCESS - Partially successful (this status appears when transferring between sub-accounts) | [optional] [default to undefined]
 

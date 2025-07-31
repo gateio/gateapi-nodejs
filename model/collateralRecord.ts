@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,47 +10,47 @@
  */
 
 /**
- * Collateral record.
+ * Collateral record
  */
 export class CollateralRecord {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * Collateral record ID.
+     * Collateral record ID
      */
     'recordId'?: number;
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'borrowCurrency'?: string;
     /**
-     * Borrowing amount.
+     * Borrowed amount
      */
     'borrowAmount'?: string;
     /**
-     * Collateral.
+     * Collateral currency
      */
     'collateralCurrency'?: string;
     /**
-     * The collateral amount before adjustment.
+     * Collateral amount before adjustment
      */
     'beforeCollateral'?: string;
     /**
-     * The collateral amount after adjustment.
+     * Collateral amount after adjustment
      */
     'afterCollateral'?: string;
     /**
-     * The collateral ratio before adjustment.
+     * Collateral ratio before adjustment
      */
     'beforeLtv'?: string;
     /**
-     * The collateral ratio after adjustment.
+     * Collateral ratio after adjustment
      */
     'afterLtv'?: string;
     /**
-     * Timestamp of the operation, in seconds.
+     * Operation time, timestamp in seconds
      */
     'operateTime'?: number;
 

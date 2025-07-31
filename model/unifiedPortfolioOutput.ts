@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,23 +12,23 @@
 import { MockRiskUnit } from './mockRiskUnit';
 
 /**
- * The output of the portfolio margin calculator.
+ * Portfolio margin calculator output
  */
 export class UnifiedPortfolioOutput {
     /**
-     * Total maintenance margin, including only the portfolio margin calculation results for positions in the risk unit,  excluding borrowed margin. If borrowing exists, conventional borrowing margin requirements will still apply.
+     * Total maintenance margin, including only portfolio margin calculation results for positions in risk units, excluding borrowing margin. If borrowing exists, conventional borrowing margin requirements will still apply
      */
     'maintainMarginTotal'?: string;
     /**
-     * Total initial margin, calculated as the maximum of the following three combinations: position,  position + positive delta orders, orders.
+     * Total initial margin, calculated as the maximum of the following three combinations: position, position + positive delta orders, position + negative delta orders
      */
     'initialMarginTotal'?: string;
     /**
-     * Calculate time.
+     * Calculation time
      */
     'calculateTime'?: number;
     /**
-     * Risk unit.
+     * Risk unit
      */
     'riskUnit'?: Array<MockRiskUnit>;
 

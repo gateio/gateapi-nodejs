@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,15 +12,15 @@
 import { RepayCurrencyRes } from './repayCurrencyRes';
 
 /**
- * Repay Multi-Collateral Loan.
+ * Multi-currency collateral repayment
  */
 export class MultiRepayResp {
     /**
-     * Order ID.
+     * Order ID
      */
     'orderId'?: number;
     /**
-     * Repay Currency List.
+     * Repay Currency List
      */
     'repaidCurrencies'?: Array<RepayCurrencyRes>;
 

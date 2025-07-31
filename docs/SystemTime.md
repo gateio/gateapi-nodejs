@@ -4,5 +4,5 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**serverTime** | **number** | Server current time(ms). | [optional] [default to undefined]
+**serverTime** | **number** | Server current time(ms) | [optional] [default to undefined]
 

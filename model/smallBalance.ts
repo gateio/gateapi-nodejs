@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Convert Small Balance.
+ * Small Balance Conversion
  */
 export class SmallBalance {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Available balance.
+     * Available balance
      */
     'availableBalance'?: string;
     /**
-     * Estimated as BTC.
+     * Estimated as BTC
      */
     'estimatedAsBtc'?: string;
     /**
-     * Estimated conversion to GT.
+     * Estimated conversion to GT
      */
     'convertibleToGt'?: string;
 

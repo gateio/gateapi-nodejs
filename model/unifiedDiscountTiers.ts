@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,23 +11,23 @@
 
 export class UnifiedDiscountTiers {
     /**
-     * Tier.
+     * Tier
      */
     'tier'?: string;
     /**
-     * Discount.
+     * Discount
      */
     'discount'?: string;
     /**
-     * Lower limit.
+     * Lower limit
      */
     'lowerLimit'?: string;
     /**
-     * Upper limit,＋ indicates positive infinity.
+     * Upper limit, + indicates positive infinity
      */
     'upperLimit'?: string;
     /**
-     * Position leverage.
+     * Position leverage
      */
     'leverage'?: string;
 

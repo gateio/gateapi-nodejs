@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,7 +10,7 @@
  */
 
 /**
- * Countdown cancel task detail.
+ * Countdown cancel task details
  */
 export class CountdownCancelAllOptionsTask {
     /**
@@ -18,11 +18,11 @@ export class CountdownCancelAllOptionsTask {
      */
     'timeout': number;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Profit and loss range.
+ * Profit and loss range
  */
 export class ProfitLossRange {
     /**
-     * Percentage change in price.
+     * Percentage change in price
      */
     'pricePercentage'?: string;
     /**
-     * Percentage change in implied volatility.
+     * Percentage change in implied volatility
      */
     'impliedVolatilityPercentage'?: string;
     /**
-     * PNL.
+     * PnL
      */
     'profitLoss'?: string;
 

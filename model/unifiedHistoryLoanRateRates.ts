@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,11 +11,11 @@
 
 export class UnifiedHistoryLoanRateRates {
     /**
-     * The hourly timestamp corresponding to the interest rate, in milliseconds.
+     * Hourly timestamp corresponding to this interest rate, in milliseconds
      */
     'time'?: number;
     /**
-     * Historical interest rates for this hour.
+     * Historical interest rate for this hour
      */
     'rate'?: string;
 

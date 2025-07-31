@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Current close order if any, or `null`.
+ * Current close order information, or `null` if no close order
  */
 export class OptionsPositionCloseOrder {
     /**
-     * Close order ID.
+     * Order ID
      */
     'id'?: number;
     /**
-     * Close order price （quote currency).
+     * Order price (quote currency)
      */
     'price'?: string;
     /**
-     * Is the close order from liquidation.
+     * Whether the close order is from liquidation
      */
     'isLiq'?: boolean;
 

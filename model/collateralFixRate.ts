@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Multi-collateral fixed interest rate.
+ * Multi-collateral fixed interest rate
  */
 export class CollateralFixRate {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Fixed interest rate for a lending period of 7 days.
+     * Fixed interest rate for 7-day lending period
      */
     'rate7d'?: string;
     /**
-     * Fixed interest rate for a lending period of 30 days.
+     * Fixed interest rate for 30-day lending period
      */
     'rate30d'?: string;
     /**
-     * Update time, timestamp, unit in seconds.
+     * Update time, timestamp in seconds
      */
     'updateTime'?: number;
 

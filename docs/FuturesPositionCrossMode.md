@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mode** | **string** | Full position-by-position model, ISOLATED-by-position, CROSS-full position. | [default to undefined]
-**contract** | **string** | Contract Market. | [default to undefined]
+**mode** | **string** | Cross margin or isolated margin mode. ISOLATED - isolated margin mode, CROSS - cross margin mode | [default to undefined]
+**contract** | **string** | Futures market | [default to undefined]
 

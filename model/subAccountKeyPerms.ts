@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,11 +11,11 @@
 
 export class SubAccountKeyPerms {
     /**
-     * Permission function name (no value will be cleared) - wallet: wallet - spot: spot/leverage - futures: perpetual contract - delivery: delivery contract - earn: financial management - custody: custody - options: options - account: account information - loan: loan - margin: leverage - unified: unified account - copy: copy
+     * Permission function name (no value will be cleared) - wallet: wallet - spot: spot/margin - futures: perpetual contract - delivery: delivery contract - earn: earn - custody: custody - options: options - account: account information - loan: lending - margin: margin - unified: unified account - copy: copy trading
      */
     'name'?: string;
     /**
-     * read only.
+     * Read Only
      */
     'readOnly'?: boolean;
 

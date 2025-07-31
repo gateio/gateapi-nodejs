@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -19,15 +19,15 @@ export class SpotPricePutOrder {
      */
     'side': SpotPricePutOrder.Side;
     /**
-     * Order price.
+     * Order price
      */
     'price': string;
     /**
-     * When `type` is limit, it refers to base currency. For instance, `BTC_USDT` means `BTC`  When different currency according to `side`  - `side` : `buy` means quote currency, `BTC_USDT` means `USDT` - `side` : `sell` means base currency，`BTC_USDT` means `BTC`
+     * Trading quantity When `type` is `limit`, it refers to the base currency (the currency being traded), such as `BTC` in `BTC_USDT` When `type` is `market`, it refers to different currencies based on the side: - `side`: `buy` refers to quote currency, `BTC_USDT` means `USDT` - `side`: `sell` refers to base currency, `BTC_USDT` means `BTC`
      */
     'amount': string;
     /**
-     * Trading account type. Portfolio margin account must set to `unified`  -normal: spot trading - margin: margin trading - unified: unified trading
+     * Trading account type. Unified account must be set to `unified`  - normal: spot trading - margin: margin trading - unified: unified account
      */
     'account': SpotPricePutOrder.Account;
     /**
@@ -35,15 +35,15 @@ export class SpotPricePutOrder {
      */
     'timeInForce'?: SpotPricePutOrder.TimeInForce;
     /**
-     * Whether to borrow coins automatically.
+     * Whether to borrow coins automatically
      */
     'autoBorrow'?: boolean;
     /**
-     * Whether to repay the loan automatically.
+     * Whether to repay the loan automatically
      */
     'autoRepay'?: boolean;
     /**
-     * The source of the order, including: - web: web - api: api - app: app
+     * The source of the order, including: - web: Web - api: API call - app: Mobile app
      */
     'text'?: string;
 

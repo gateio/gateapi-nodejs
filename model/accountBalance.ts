@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * Total balances calculated with specified currency unit.
+ * Total balances calculated with specified currency unit
  */
 export class AccountBalance {
     /**
-     * Account total balance amount.
+     * Account total balance amount
      */
     'amount'?: string;
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: AccountBalance.Currency;
     /**
@@ -26,7 +26,7 @@ export class AccountBalance {
      */
     'unrealisedPnl'?: string;
     /**
-     * Borrowed，this field will only appear in margin and cross_margin accounts.
+     * Total borrowed amount, this field will only appear in margin and cross_margin accounts
      */
     'borrowed'?: string;
 

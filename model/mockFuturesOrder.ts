@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,19 +10,19 @@
  */
 
 /**
- * Futures order.
+ * Futures order
  */
 export class MockFuturesOrder {
     /**
-     * Futures name, currently only supports perpetual futures for BTC and ETH with USDT.
+     * Futures name, currently only supports USDT perpetual contracts for BTC and ETH
      */
     'contract': string;
     /**
-     * Futures quantity, representing the initial order quantity, not involved in actual settlement.
+     * Contract quantity, representing the initial order quantity, not involved in actual settlement
      */
     'size': string;
     /**
-     * Unfilled contract quantity, involved in actual calculation.
+     * Unfilled contract quantity, involved in actual calculation
      */
     'left': string;
 

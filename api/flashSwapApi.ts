@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -36,11 +36,11 @@ export class FlashSwapApi {
 
     /**
      * `BTC_GT` represents selling BTC and buying GT. The limits for each currency may vary across different currency pairs.  It is not necessary that two currencies that can be swapped instantaneously can be exchanged with each other. For example, it is possible to sell BTC and buy GT, but it does not necessarily mean that GT can be sold to buy BTC.
-     * @summary List All Supported Currency Pairs In Flash Swap.
+     * @summary List All Supported Currency Pairs In Flash Swap
      * @param opts Optional parameters
-     * @param opts.currency Retrieve data of the specified currency.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum response items. Default: 100, minimum: 1, Maximum: 1000.
+     * @param opts.currency Query by specified currency name
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of items returned. Default: 1000, minimum: 1, maximum: 1000
      */
     public async listFlashSwapCurrencyPair(opts: {
         currency?: string;
@@ -84,14 +84,14 @@ export class FlashSwapApi {
 
     /**
      *
-     * @summary List all flash swap orders.
+     * @summary Query flash swap order list
      * @param opts Optional parameters
-     * @param opts.status Flash swap order status  &#x60;1&#x60; - success &#x60;2&#x60; - failure
-     * @param opts.sellCurrency Currency to sell which can be retrieved from supported currency list API &#x60;GET /flash_swap/currencies&#x60;
-     * @param opts.buyCurrency Currency to buy which can be retrieved from supported currency list API &#x60;GET /flash_swap/currencies&#x60;
-     * @param opts.reverse If results are sorted by id in reverse order. Default to &#x60;true&#x60;  - &#x60;true&#x60;: sort by id in descending order(recent first) - ascending order(oldest first)
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.page Page number.
+     * @param opts.status Flash swap order status  &#x60;1&#x60; - success &#x60;2&#x60; - failed
+     * @param opts.sellCurrency Asset name to sell - Retrieved from API &#x60;GET /flash_swap/currencies&#x60; for supported flash swap currencies
+     * @param opts.buyCurrency Asset name to buy - Retrieved from API &#x60;GET /flash_swap/currencies&#x60; for supported flash swap currencies
+     * @param opts.reverse Sort by ID in ascending or descending order, default &#x60;true&#x60; - &#x60;true&#x60;: ID descending order (most recent data first) - &#x60;false&#x60;: ID ascending order (oldest data first)
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.page Page number
      */
     public async listFlashSwapOrders(opts: {
         status?: number;
@@ -150,7 +150,7 @@ export class FlashSwapApi {
 
     /**
      * Initiate a flash swap preview in advance because order creation requires a preview result
-     * @summary Create a flash swap order.
+     * @summary Create a flash swap order
      * @param flashSwapOrderRequest
      */
     public async createFlashSwapOrder(
@@ -188,8 +188,8 @@ export class FlashSwapApi {
 
     /**
      *
-     * @summary Get a single flash swap order\'s detail.
-     * @param orderId Flash swap order ID.
+     * @summary Query single flash swap order
+     * @param orderId Flash swap order ID
      */
     public async getFlashSwapOrder(orderId: number): Promise<{ response: AxiosResponse; body: FlashSwapOrder }> {
         const localVarPath =
@@ -223,7 +223,7 @@ export class FlashSwapApi {
 
     /**
      *
-     * @summary Initiate a flash swap order preview.
+     * @summary Flash swap order preview
      * @param flashSwapPreviewRequest
      */
     public async previewFlashSwapOrder(

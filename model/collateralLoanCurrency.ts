@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * Supported borrowing and collateral currencies.
+ * Supported borrowing and collateral currencies
  */
 export class CollateralLoanCurrency {
     /**
-     * Borrowed currency.
+     * Borrowed currency
      */
     'loanCurrency'?: string;
     /**
-     * List of supported collateral currencies.
+     * List of supported collateral currencies
      */
     'collateralCurrency'?: Array<string>;
 

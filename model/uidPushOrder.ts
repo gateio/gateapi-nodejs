@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,39 +11,39 @@
 
 export class UidPushOrder {
     /**
-     * Order ID.
+     * Order ID
      */
     'id'?: number;
     /**
-     * Initiator User ID.
+     * Initiator User ID
      */
     'pushUid'?: number;
     /**
-     * Recipient User ID.
+     * Recipient User ID
      */
     'receiveUid'?: number;
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * Transfer amount.
+     * Transfer amount
      */
     'amount'?: string;
     /**
-     * Creation time.
+     * Created time
      */
     'createTime'?: number;
     /**
-     * Withdrawal Status  - CREATING: Creating - PENDING: Waiting for receiving(Please contact the other party to accept the transfer on the Gate official website) - CANCELLING: Cancelling - CANCELLED: Revoked - REFUSING: Rejection - REFUSED: Rejected - RECEIVING: Receiving - RECEIVED: Success
+     * Withdrawal status:  - CREATING: Creating - PENDING: Waiting for recipient (Please contact the recipient to accept the transfer on Gate official website) - CANCELLING: Cancelling - CANCELLED: Cancelled - REFUSING: Refusing - REFUSED: Refused - RECEIVING: Receiving - RECEIVED: Success
      */
     'status'?: string;
     /**
-     * PENDING Reason Tips.
+     * PENDING reason tips
      */
     'message'?: string;
     /**
-     * Order Type.
+     * Order Type
      */
     'transactionType'?: string;
 

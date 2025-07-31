@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,31 +11,31 @@
 
 export class FuturesTrade {
     /**
-     * Trade ID.
+     * Fill ID
      */
     'id'?: number;
     /**
-     * Trading time.
+     * Fill Time
      */
     'createTime'?: number;
     /**
-     * Trading time, with milliseconds set to 3 decimal places.
+     * Trade time, with millisecond precision to 3 decimal places
      */
     'createTimeMs'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Trading size.
+     * Trading size
      */
     'size'?: number;
     /**
-     * Trading price (quote currency).
+     * Trade price (quote currency)
      */
     'price'?: string;
     /**
-     * Whether internal trade. Internal trade refers to the takeover of liquidation orders by the insurance fund and ADL users. Since it is not a normal matching on the market depth, the transaction price may deviate, and it will not be recorded in the K-line. an internal trade, this field will not be returned.
+     * Whether it is an internal trade. Internal trade refers to the takeover of liquidation orders by the insurance fund and ADL users. Since it is not a normal matching on the market depth, the trade price may deviate from the market, and it will not be recorded in the K-line. If it is not an internal trade, this field will not be returned
      */
     'isInternal'?: boolean;
 

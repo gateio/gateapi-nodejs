@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,79 +10,79 @@
  */
 
 /**
- * Options contract detail.
+ * Options contract details
  */
 export class OptionsTicker {
     /**
-     * Options contract name.
+     * Options contract name
      */
     'name'?: string;
     /**
-     * Last trading price (quote currency).
+     * Last trade price (quote currency)
      */
     'lastPrice'?: string;
     /**
-     * Current mark price (quote currency).
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
-     * Current index price (quote currency).
+     * Current index price (quote currency)
      */
     'indexPrice'?: string;
     /**
-     * Best ask size.
+     * Best ask size
      */
     'ask1Size'?: number;
     /**
-     * Best ask price.
+     * Best ask price
      */
     'ask1Price'?: string;
     /**
-     * Best bid size.
+     * Best bid size
      */
     'bid1Size'?: number;
     /**
-     * Best bid price.
+     * Best bid price
      */
     'bid1Price'?: string;
     /**
-     * Current total long position size.
+     * Current total long position size
      */
     'positionSize'?: number;
     /**
-     * Implied volatility.
+     * Implied volatility
      */
     'markIv'?: string;
     /**
-     * Bid side implied volatility.
+     * Bid side implied volatility
      */
     'bidIv'?: string;
     /**
-     * Ask side implied volatility.
+     * Ask side implied volatility
      */
     'askIv'?: string;
     /**
-     * Current leverage. Formula: underlying_price / mark_price * delta.
+     * Current leverage. Formula: underlying_price / mark_price * delta
      */
     'leverage'?: string;
     /**
-     * Delta.
+     * Greek letter delta
      */
     'delta'?: string;
     /**
-     * Gamma.
+     * Greek letter gamma
      */
     'gamma'?: string;
     /**
-     * Vega.
+     * Greek letter vega
      */
     'vega'?: string;
     /**
-     * Theta.
+     * Greek letter theta
      */
     'theta'?: string;
     /**
-     * Rho.
+     * Rho
      */
     'rho'?: string;
 

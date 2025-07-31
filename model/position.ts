@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,19 +12,19 @@
 import { PositionCloseOrder } from './positionCloseOrder';
 
 /**
- * Futures position details.
+ * Futures position details
  */
 export class Position {
     /**
-     * User ID.
+     * User ID
      */
     'user'?: number;
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Position size.
+     * Position size
      */
     'size'?: number;
     /**
@@ -32,35 +32,35 @@ export class Position {
      */
     'leverage'?: string;
     /**
-     * Position risk limit.
+     * Position risk limit
      */
     'riskLimit'?: string;
     /**
-     * Maximum leverage under current risk limit.
+     * Maximum leverage under current risk limit
      */
     'leverageMax'?: string;
     /**
-     * Maintenance rate under current risk limit.
+     * Maintenance rate under current risk limit
      */
     'maintenanceRate'?: string;
     /**
-     * Position value calculated in settlement currency.
+     * Position value calculated in settlement currency
      */
     'value'?: string;
     /**
-     * Position margin.
+     * Position margin
      */
     'margin'?: string;
     /**
-     * Entry price.
+     * Entry price
      */
     'entryPrice'?: string;
     /**
-     * Liquidation price.
+     * Liquidation price
      */
     'liqPrice'?: string;
     /**
-     * Current mark price.
+     * Current mark price
      */
     'markPrice'?: string;
     /**
@@ -72,39 +72,39 @@ export class Position {
      */
     'maintenanceMargin'?: string;
     /**
-     * Unrealized PNL.
+     * Unrealized PNL
      */
     'unrealisedPnl'?: string;
     /**
-     * Realized PNL.
+     * Realized PnL
      */
     'realisedPnl'?: string;
     /**
-     * Realized PNL - Position P/L.
+     * Realized PNL - Position P/L
      */
     'pnlPnl'?: string;
     /**
-     * Realized PNL - Funding Fees.
+     * Realized PNL - Funding Fees
      */
     'pnlFund'?: string;
     /**
-     * Realized PNL - Transaction Fees.
+     * Realized PNL - Transaction Fees
      */
     'pnlFee'?: string;
     /**
-     * History realized PNL.
+     * Total realized PnL from closed positions
      */
     'historyPnl'?: string;
     /**
-     * PNL of last position close.
+     * PNL of last position close
      */
     'lastClosePnl'?: string;
     /**
-     * Realized POINT PNL.
+     * Realized POINT PNL
      */
     'realisedPoint'?: string;
     /**
-     * History realized POINT PNL.
+     * History realized POINT PNL
      */
     'historyPoint'?: string;
     /**
@@ -112,36 +112,36 @@ export class Position {
      */
     'adlRanking'?: number;
     /**
-     * Current open orders.
+     * Current pending order quantity
      */
     'pendingOrders'?: number;
     'closeOrder'?: PositionCloseOrder | null;
     /**
-     * Position mode, including:  - `single`: dual mode is not enabled- `dual_long`: long position in dual mode- `dual_short`: mode
+     * Position mode, including:  - `single`: Single position mode - `dual_long`: Long position in dual position mode - `dual_short`: Short position in dual position mode
      */
     'mode'?: Position.Mode;
     /**
-     * Cross margin leverage(valid only when `leverage` is 0).
+     * Cross margin leverage (valid only when `leverage` is 0)
      */
     'crossLeverageLimit'?: string;
     /**
-     * Last update time.
+     * Last update time
      */
     'updateTime'?: number;
     /**
-     * Update id. Each time the position is updated, the value will be +1.
+     * Update ID. The value increments by 1 each time the position is updated
      */
     'updateId'?: number;
     /**
-     * First Open Time.
+     * First Open Time
      */
     'openTime'?: number;
     /**
-     * Risk limit table ID.
+     * Risk limit table ID
      */
     'riskLimitTable'?: string;
     /**
-     * Average maintenance margin rate.
+     * Average maintenance margin rate
      */
     'averageMaintenanceRate'?: string;
 

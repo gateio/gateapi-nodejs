@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,35 +10,35 @@
  */
 
 /**
- * Interest Record.
+ * Lending Record
  */
 export class UniLendRecord {
     /**
-     * Currency name.
+     * Currency name
      */
     'currency'?: string;
     /**
-     * current amount.
+     * Current Amount
      */
     'amount'?: string;
     /**
-     * Last wallet amount.
+     * Previous Available Amount
      */
     'lastWalletAmount'?: string;
     /**
-     * Last lent amount.
+     * Previous Lent Amount
      */
     'lastLentAmount'?: string;
     /**
-     * Last frozen amount.
+     * Previous Frozen Amount
      */
     'lastFrozenAmount'?: string;
     /**
-     * Record type: lend - lend, redeem - redeem.
+     * Record Type: lend - Lend, redeem - Redeem
      */
     'type'?: string;
     /**
-     * Created time.
+     * Created time
      */
     'createTime'?: number;
 

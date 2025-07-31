@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,31 +10,31 @@
  */
 
 /**
- * data point in every timestamp.
+ * data point in every timestamp
  */
 export class DeliveryCandlestick {
     /**
-     * Unix timestamp in seconds.
+     * Unix timestamp in seconds
      */
     't'?: number;
     /**
-     * size volume (contract size). Only returned if `contract` is not prefixed.
+     * size volume (contract size). Only returned if `contract` is not prefixed
      */
     'v'?: number;
     /**
-     * Close price (quote currency).
+     * Close price (quote currency)
      */
     'c'?: string;
     /**
-     * Highest price (quote currency).
+     * Highest price (quote currency)
      */
     'h'?: string;
     /**
-     * Lowest price (quote currency).
+     * Lowest price (quote currency)
      */
     'l'?: string;
     /**
-     * Open price (quote currency).
+     * Open price (quote currency)
      */
     'o'?: string;
 

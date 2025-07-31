@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -64,11 +64,11 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List all futures contracts.
-     * @param settle Settle currency.
+     * @summary Query all futures contracts
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listFuturesContracts(
         settle: 'btc' | 'usdt',
@@ -114,9 +114,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get a single contract.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Query single contract information
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async getFuturesContract(
         settle: 'btc' | 'usdt',
@@ -159,14 +159,14 @@ export class FuturesApi {
     }
 
     /**
-     * Bids will be sorted by price from high to low, while asks sorted reversely.
-     * @summary Futures order book.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * Bids will be sorted by price from high to low, while asks sorted reversely
+     * @summary Query futures market depth information
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0.
-     * @param opts.limit Maximum number of order depth data in asks or bids.
-     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
+     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.limit Number of depth levels
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time depth changes
      */
     public async listFuturesOrderBook(
         settle: 'btc' | 'usdt',
@@ -224,12 +224,12 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Futures trading history.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures market transaction records
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
      * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time.
@@ -298,14 +298,14 @@ export class FuturesApi {
 
     /**
      * Return specified contract candlesticks. If prefix `contract` with `mark_`, the contract\'s mark price candlesticks are returned; if prefix with `index_`, index price candlesticks will be returned.  Maximum of 2000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
-     * @summary Get futures candlesticks.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures market K-line chart
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
-     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natual week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 1 natual month, not 30 days
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+     * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days
      */
     public async listFuturesCandlesticks(
         settle: 'btc' | 'usdt',
@@ -375,14 +375,14 @@ export class FuturesApi {
 
     /**
      * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
-     * @summary Premium Index K-Line.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Premium Index K-line chart
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
-     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Interval time between data points.
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+     * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Time interval between data points
      */
     public async listFuturesPremiumIndex(
         settle: 'btc' | 'usdt',
@@ -452,10 +452,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List futures tickers.
-     * @param settle Settle currency.
+     * @summary Get all futures trading statistics
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      */
     public async listFuturesTickers(
         settle: 'btc' | 'usdt',
@@ -497,11 +497,11 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Funding rate history.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures market historical funding rate
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      */
@@ -565,10 +565,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Futures insurance balance history.
-     * @param settle Settle currency.
+     * @summary Futures market insurance fund history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listFuturesInsuranceLedger(
         settle: 'btc' | 'usdt',
@@ -610,11 +610,11 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Futures stats.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures statistics
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.from Start timestamp.
+     * @param opts.from Start timestamp
      * @param opts.interval
      * @param opts.limit
      */
@@ -674,9 +674,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get index constituents.
-     * @param settle Settle currency.
-     * @param index Index name.
+     * @summary Query index constituents
+     * @param settle Settle currency
+     * @param index Index name
      */
     public async getIndexConstituents(
         settle: 'btc' | 'usdt',
@@ -719,14 +719,14 @@ export class FuturesApi {
     }
 
     /**
-     * The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
-     * @summary Retrieve liquidation history.
-     * @param settle Settle currency.
+     * The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+     * @summary Query liquidation order history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listLiquidatedOrders(
         settle: 'btc' | 'usdt',
@@ -780,12 +780,12 @@ export class FuturesApi {
 
     /**
      * When the \'contract\' parameter is not passed, the default is to query the risk limits for the top 100 markets.\'Limit\' and \'offset\' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
-     * @summary List risk limit tiers.
-     * @param settle Settle currency.
+     * @summary Query risk limit tiers
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listFuturesRiskLimitTiers(
         settle: 'btc' | 'usdt',
@@ -835,8 +835,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Query futures account.
-     * @param settle Settle currency.
+     * @summary Get futures account
+     * @param settle Settle currency
      */
     public async listFuturesAccounts(
         settle: 'btc' | 'usdt',
@@ -871,13 +871,13 @@ export class FuturesApi {
     }
 
     /**
-     * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。 2023-10-30 can be filtered.
-     * @summary Query account book.
-     * @param settle Settle currency.
+     * If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+     * @summary Query futures account change history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
@@ -942,12 +942,12 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List all positions of a user.
-     * @param settle Settle currency.
+     * @summary Get user position list
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.holding Return only real positions - true, return all - false.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.holding Return only real positions - true, return all - false
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPositions(
         settle: 'btc' | 'usdt',
@@ -997,9 +997,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get single position.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Get single position information
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async getPosition(
         settle: 'btc' | 'usdt',
@@ -1043,10 +1043,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position margin.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param change Margin change amount, positive number increases, negative number.
+     * @summary Update position margin
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param change Margin change amount, positive number increases, negative number decreases
      */
     public async updatePositionMargin(
         settle: 'btc' | 'usdt',
@@ -1098,12 +1098,12 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position leverage.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param leverage New position leverage.
+     * @summary Update position leverage
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param leverage New position leverage
      * @param opts Optional parameters
-     * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0).
+     * @param opts.crossLeverageLimit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0)
      */
     public async updatePositionLeverage(
         settle: 'btc' | 'usdt',
@@ -1164,8 +1164,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Switch to the full position-by-store mode.
-     * @param settle Settle currency.
+     * @summary Switch Position Margin Mode
+     * @param settle Settle currency
      * @param futuresPositionCrossMode
      */
     public async updatePositionCrossMode(
@@ -1211,8 +1211,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary 双仓模式下切换全逐仓模式
-     * @param settle Settle currency.
+     * @summary Switch Between Cross and Isolated Margin Modes Under Hedge Mode
+     * @param settle Settle currency
      * @param inlineObject
      */
     public async updateDualCompPositionCrossMode(
@@ -1263,10 +1263,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position risk limit.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param riskLimit New Risk Limit Value.
+     * @summary Update position risk limit
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param riskLimit New risk limit value
      */
     public async updatePositionRiskLimit(
         settle: 'btc' | 'usdt',
@@ -1317,10 +1317,10 @@ export class FuturesApi {
     }
 
     /**
-     * The prerequisite for changing mode is that all positions have no holdings.
-     * @summary Enable or disable dual mode.
-     * @param settle Settle currency.
-     * @param dualMode Whether to enable dual mode.
+     * The prerequisite for changing mode is that all positions have no holdings and no pending orders
+     * @summary Set position mode
+     * @param settle Settle currency
+     * @param dualMode Whether to enable dual mode
      */
     public async setDualMode(
         settle: 'btc' | 'usdt',
@@ -1364,9 +1364,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Retrieve position detail in dual mode.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Get position information in dual mode
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async getDualModePosition(
         settle: 'btc' | 'usdt',
@@ -1410,11 +1410,11 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position margin in dual mode.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param change Margin change amount, positive number increases, negative number.
-     * @param dualSide Long or short position.
+     * @summary Update position margin in dual mode
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param change Margin change amount, positive number increases, negative number decreases
+     * @param dualSide Long or short position
      */
     public async updateDualModePositionMargin(
         settle: 'btc' | 'usdt',
@@ -1482,12 +1482,12 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position leverage in dual mode.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param leverage New position leverage.
+     * @summary Update position leverage in dual mode
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param leverage New position leverage
      * @param opts Optional parameters
-     * @param opts.crossLeverageLimit Cross margin leverage(valid only when &#x60;leverage&#x60; is 0).
+     * @param opts.crossLeverageLimit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0)
      */
     public async updateDualModePositionLeverage(
         settle: 'btc' | 'usdt',
@@ -1554,10 +1554,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Update position risk limit in dual mode.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param riskLimit New Risk Limit Value.
+     * @summary Update position risk limit in dual mode
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param riskLimit New risk limit value
      */
     public async updateDualModePositionRiskLimit(
         settle: 'btc' | 'usdt',
@@ -1615,14 +1615,14 @@ export class FuturesApi {
 
     /**
      * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
-     * @summary List futures orders.
-     * @param settle Settle currency.
-     * @param status Only list the orders with this status.
+     * @summary Query futures order list
+     * @param settle Settle currency
+     * @param status Query order list based on status
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time
      */
     public async listFuturesOrders(
         settle: 'btc' | 'usdt',
@@ -1684,8 +1684,8 @@ export class FuturesApi {
 
     /**
      * - When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In dual warehouse mode,   - Reduce position: reduce_only=true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size=0, set the direction of closing position according to auto_size, and set `reduce_only` to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
-     * @summary Create a futures order.
-     * @param settle Settle currency.
+     * @summary Place futures order
+     * @param settle Settle currency
      * @param futuresOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -1736,10 +1736,10 @@ export class FuturesApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation.
-     * @summary Cancel all `open` orders matched.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
+     * @summary Cancel all orders with \'open\' status
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
      * @param opts.side Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders
@@ -1796,14 +1796,14 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List Futures Orders By Time Range.
-     * @param settle Settle currency.
+     * @summary Query futures order list by time range
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async getOrdersWithTimeRange(
         settle: 'btc' | 'usdt',
@@ -1861,8 +1861,8 @@ export class FuturesApi {
 
     /**
      * - Up to 10 orders per request - If any of the order\'s parameters are missing or in the wrong format, all of them will not be executed, and a http status 400 error will be returned directly - If the parameters are checked and passed, all are executed. Even if there is a business logic error in the middle (such as insufficient funds), it will not affect other execution orders - The returned result is in array format, and the order corresponds to the orders in the request body - In the returned result, the `succeeded` field of type bool indicates whether the execution was successful or not - If the execution is successful, the normal order content is included; if the execution fails, the `label` field is included to indicate the cause of the error - In the rate limiting, each order is counted individually
-     * @summary Create a batch of futures orders.
-     * @param settle Settle currency.
+     * @summary Place batch futures orders
+     * @param settle Settle currency
      * @param futuresOrder
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -1916,8 +1916,8 @@ export class FuturesApi {
 
     /**
      * - Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
-     * @summary Get a single order.
-     * @param settle Settle currency.
+     * @summary Query single order details
+     * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
      */
     public async getFuturesOrder(
@@ -1962,8 +1962,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Amend an order.
-     * @param settle Settle currency.
+     * @summary Amend single order
+     * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
      * @param futuresOrderAmendment
      * @param opts Optional parameters
@@ -2026,8 +2026,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Cancel a single order.
-     * @param settle Settle currency.
+     * @summary Cancel single order
+     * @param settle Settle currency
      * @param orderId Order ID returned, or user custom ID(i.e., &#x60;text&#x60; field). Operations based on custom ID can only be checked when the order is in orderbook. finished, it can be checked within 60 seconds after the end of the order. After that, only order ID is accepted.
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -2080,13 +2080,13 @@ export class FuturesApi {
 
     /**
      * By default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/my_trades_timerange`.
-     * @summary List personal trading history.
-     * @param settle Settle currency.
+     * @summary Query personal trading records
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.order Futures order ID, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.order Futures order ID, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. If you need to iterate through and retrieve more records, we recommend using \&#39;GET /futures/{settle}/my_trades_timerange\&#39;.
      */
     public async getMyTrades(
@@ -2145,15 +2145,15 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List personal trading history by time range.
-     * @param settle Settle currency.
+     * @summary Query personal trading records by time range
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.role Query role, maker or taker.
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.role Query role, maker or taker
      */
     public async getMyTradesWithTimeRange(
         settle: 'btc' | 'usdt',
@@ -2219,16 +2219,16 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List position close history.
-     * @param settle Settle currency.
+     * @summary Query position close history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.side Query side. long or shot.
-     * @param opts.pnl Query profit or loss.
+     * @param opts.side Query side. long or shot
+     * @param opts.pnl Query profit or loss
      */
     public async listPositionClose(
         settle: 'btc' | 'usdt',
@@ -2302,15 +2302,15 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List liquidation history.
-     * @param settle Settle currency.
+     * @summary Query liquidation history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.at Specify a liquidation timestamp.
+     * @param opts.at Specify liquidation timestamp
      */
     public async listLiquidates(
         settle: 'btc' | 'usdt',
@@ -2372,15 +2372,15 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List Auto-Deleveraging History.
-     * @param settle Settle currency.
+     * @summary Query ADL auto-deleveraging order information
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-     * @param opts.at Specify an auto-deleveraging timestamp.
+     * @param opts.at Specify auto-deleveraging timestamp
      */
     public async listAutoDeleverages(
         settle: 'btc' | 'usdt',
@@ -2442,8 +2442,8 @@ export class FuturesApi {
 
     /**
      * Heartbeat detection for contract orders: When the user-set `timeout` time is reached, if neither the existing countdown is canceled nor a new countdown is set, the relevant contract orders will be automatically canceled. This API can be called repeatedly to or cancel the countdown. Usage example: Repeatedly call this API at 30-second intervals, setting the `timeout` to 30 (seconds) each time. If this API is not called again within 30 seconds, all open orders on your specified `market` will be automatically canceled. If the `timeout` is set to 0 within 30 seconds, the countdown timer will terminate, and the automatic order cancellation function will be disabled.
-     * @summary Countdown cancel orders.
-     * @param settle Settle currency.
+     * @summary Countdown cancel orders
+     * @param settle Settle currency
      * @param countdownCancelAllFuturesTask
      */
     public async countdownCancelAllFutures(
@@ -2489,10 +2489,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Query user trading fee rates.
-     * @param settle Settle currency.
+     * @summary Query futures market trading fee rates
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      */
     public async getFuturesFee(
         settle: 'btc' | 'usdt',
@@ -2537,9 +2537,9 @@ export class FuturesApi {
     }
 
     /**
-     * Multiple different order IDs can be specified. A maximum of 20 records.
-     * @summary Cancel a batch of orders with an ID list.
-     * @param settle Settle currency.
+     * Multiple different order IDs can be specified, maximum 20 records per request
+     * @summary Cancel batch orders by specified ID list
+     * @param settle Settle currency
      * @param requestBody
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -2596,9 +2596,9 @@ export class FuturesApi {
     }
 
     /**
-     * Multiple different order IDs can be specified. A maximum of 10 orders can.
-     * @summary Batch modify orders with specified IDs.
-     * @param settle Settle currency.
+     * Multiple different order IDs can be specified, maximum 10 orders per request
+     * @summary Batch modify orders by specified IDs
+     * @param settle Settle currency
      * @param batchAmendOrderReq
      * @param opts Optional parameters
      * @param opts.xGateExptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -2651,10 +2651,10 @@ export class FuturesApi {
     }
 
     /**
-     * Just pass table_id.
-     * @summary Query risk limit table by table_id.
-     * @param settle Settle currency.
-     * @param tableId Risk limit table ID.
+     * Just pass table_id
+     * @summary Query risk limit table by table_id
+     * @param settle Settle currency
+     * @param tableId Risk limit table ID
      */
     public async getFuturesRiskLimitTable(
         settle: 'btc' | 'usdt',
@@ -2698,13 +2698,13 @@ export class FuturesApi {
 
     /**
      *
-     * @summary List All Price-triggered Orders.
-     * @param settle Settle currency.
-     * @param status Only list the orders with this status.
+     * @summary Query auto order list
+     * @param settle Settle currency
+     * @param status Query order list based on status
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredOrders(
         settle: 'btc' | 'usdt',
@@ -2766,8 +2766,8 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Create a price-triggered order.
-     * @param settle Settle currency.
+     * @summary Create price-triggered order
+     * @param settle Settle currency
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredOrder(
@@ -2813,10 +2813,10 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Cancel All Price-triggered Orders.
-     * @param settle Settle currency.
+     * @summary Cancel all auto orders
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
+     * @param opts.contract Futures contract, return related data only if specified
      */
     public async cancelPriceTriggeredOrderList(
         settle: 'btc' | 'usdt',
@@ -2864,9 +2864,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary Get a price-triggered order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Query single auto order details
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async getPriceTriggeredOrder(
         settle: 'btc' | 'usdt',
@@ -2910,9 +2910,9 @@ export class FuturesApi {
 
     /**
      *
-     * @summary cancel a price-triggered order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Cancel single auto order
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async cancelPriceTriggeredOrder(
         settle: 'btc' | 'usdt',

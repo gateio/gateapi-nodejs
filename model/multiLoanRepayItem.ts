@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class MultiLoanRepayItem {
     /**
-     * Repayment currency.
+     * Repayment currency
      */
     'currency'?: string;
     /**
-     * Size.
+     * Size
      */
     'amount'?: string;
     /**
-     * Repayment method, set to true for full repayment, false for partial repayment.
+     * Repayment method, set to true for full repayment, false for partial repayment
      */
     'repaidAll'?: boolean;
 

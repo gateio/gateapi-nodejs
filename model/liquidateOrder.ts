@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Liquidate Order detail.
+ * Spot liquidation order details
  */
 export class LiquidateOrder {
     /**
-     * User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)
+     * Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
      */
     'text'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair': string;
     /**
-     * Trade amount.
+     * Trade amount
      */
     'amount': string;
     /**
-     * Order price.
+     * Order price
      */
     'price': string;
     /**
-     * Processing Mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request, and it is not included in the response result ACK: Asynchronous mode, only returns key order fields RESULT: No clearing information FULL: Full mode (default)
+     * Processing mode:  Different fields are returned when placing an order based on action_mode. This field is only valid during the request and is not included in the response `ACK`: Asynchronous mode, only returns key order fields `RESULT`: No liquidation information `FULL`: Full mode (default)
      */
     'actionMode'?: string;
 

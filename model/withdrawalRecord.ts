@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class WithdrawalRecord {
     /**
-     * Record ID.
+     * Record ID
      */
     'id'?: string;
     /**
-     * Hash record of the withdrawal.
+     * Hash record of the withdrawal
      */
     'txid'?: string;
     /**
-     * Block Number.
+     * Block Number
      */
     'blockNumber'?: string;
     /**
@@ -27,35 +27,35 @@ export class WithdrawalRecord {
      */
     'withdrawOrderId'?: string;
     /**
-     * Operation time.
+     * Operation time
      */
     'timestamp'?: string;
     /**
-     * Currency amount.
+     * Token amount
      */
     'amount': string;
     /**
-     * fee.
+     * fee
      */
     'fee'?: string;
     /**
-     * Currency name.
+     * Currency name
      */
     'currency': string;
     /**
-     * Withdrawal address.
+     * Withdrawal address
      */
     'address'?: string;
     /**
-     * The reason for withdrawal failure is that there is a value when status = CANCEL, and the rest of the state is empty
+     * Reason for withdrawal failure. Has a value when status = CANCEL, empty for all other statuses
      */
     'failReason'?: string;
     /**
-     * The withdrawal end time, i.e.: withdrawal cancel time or withdrawal success time When status = CANCEL, the corresponding cancel time When status = DONE and block_number > 0, it is the
+     * Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE and block_number > 0, it is the withdrawal success time
      */
     'timestamp2'?: string;
     /**
-     * Additional remarks with regards to the withdrawal.
+     * Additional remarks with regards to the withdrawal
      */
     'memo'?: string;
     /**
@@ -63,7 +63,7 @@ export class WithdrawalRecord {
      */
     'status'?: string;
     /**
-     * Name of the chain used in withdrawals.
+     * Name of the chain used in withdrawals
      */
     'chain': string;
 

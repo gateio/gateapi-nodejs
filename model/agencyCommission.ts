@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class AgencyCommission {
     /**
-     * Commission Time. (unix timestamp).
+     * Commission time (Unix timestamp in seconds)
      */
     'commissionTime'?: number;
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * Group name.
+     * Group name
      */
     'groupName'?: string;
     /**
-     * Commission Amount.
+     * Transaction amount
      */
     'commissionAmount'?: string;
     /**
-     * Commission Asset.
+     * Commission Asset
      */
     'commissionAsset'?: string;
     /**
-     * Source. SPOT - SPOT Rebate, FUTURES - Futures Rebate.
+     * Commission source: SPOT - Spot commission, FUTURES - Futures commission
      */
     'source'?: string;
 

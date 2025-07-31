@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * The sub broker info.
+ * Sub-broker information
  */
 export class BrokerCommissionSubBrokerInfo {
     /**
-     * The sub broker user ID.
+     * Sub-broker user ID
      */
     'userId'?: number;
     /**
-     * The sub broker original commission rate.
+     * Sub-broker original commission rate
      */
     'originalCommissionRate'?: string;
     /**
-     * The sub broker relative commission rate.
+     * Sub-broker relative commission rate
      */
     'relativeCommissionRate'?: string;
     /**
-     * The sub broker actual commission rate.
+     * Sub-broker actual commission rate
      */
     'commissionRate'?: string;
 

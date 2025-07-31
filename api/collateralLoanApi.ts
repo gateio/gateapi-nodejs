@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -42,12 +42,12 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary List Orders.
+     * @summary Query collateral loan order list
      * @param opts Optional parameters
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.collateralCurrency Collateral.
-     * @param opts.borrowCurrency Borrowed currency.
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.collateralCurrency Collateral currency
+     * @param opts.borrowCurrency Borrowed currency
      */
     public async listCollateralLoanOrders(opts: {
         page?: number;
@@ -99,7 +99,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Place order.
+     * @summary Place collateral loan order
      * @param createCollateralOrder
      */
     public async createCollateralLoan(
@@ -137,8 +137,8 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Get a single order.
-     * @param orderId Order ID returned on successful order creation.
+     * @summary Query single order details
+     * @param orderId Order ID returned when order is successfully created
      */
     public async getCollateralLoanOrderDetail(
         orderId: number,
@@ -176,7 +176,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Repayment.
+     * @summary Collateral loan repayment
      * @param repayLoan
      */
     public async repayCollateralLoan(repayLoan: RepayLoan): Promise<{ response: AxiosResponse; body: RepayResp }> {
@@ -210,15 +210,15 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Repayment history.
-     * @param source Operation type: repay - Regular repayment, liquidate - Liquidation.
+     * @summary Query collateral loan repayment records
+     * @param source Operation type: repay - Regular repayment, liquidate - Liquidation
      * @param opts Optional parameters
-     * @param opts.borrowCurrency Borrowed currency.
-     * @param opts.collateralCurrency Collateral.
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
+     * @param opts.borrowCurrency Borrowed currency
+     * @param opts.collateralCurrency Collateral currency
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
      */
     public async listRepayRecords(
         source: string,
@@ -290,14 +290,14 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query collateral adjustment records.
+     * @summary Query collateral adjustment records
      * @param opts Optional parameters
-     * @param opts.page Page number.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.from Start timestamp of the query.
-     * @param opts.to Time range ending, default to current time.
-     * @param opts.borrowCurrency Borrowed currency.
-     * @param opts.collateralCurrency Collateral.
+     * @param opts.page Page number
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.from Start timestamp for the query
+     * @param opts.to End timestamp for the query, defaults to current time if not specified
+     * @param opts.borrowCurrency Borrowed currency
+     * @param opts.collateralCurrency Collateral currency
      */
     public async listCollateralRecords(opts: {
         page?: number;
@@ -359,7 +359,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Increase or redeem collateral.
+     * @summary Increase or redeem collateral
      * @param collateralAlign
      */
     public async operateCollateral(collateralAlign: CollateralAlign): Promise<{ response: AxiosResponse; body?: any }> {
@@ -386,7 +386,7 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query the total borrowing and collateral amount for the user.
+     * @summary Query user\'s total borrowing and collateral amount
      */
     public async getUserTotalAmount(): Promise<{ response: AxiosResponse; body: UserTotalAmount }> {
         const localVarPath = this.client.basePath + '/loan/collateral/total_amount';
@@ -413,9 +413,9 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query user\'s collateralization ratio.
-     * @param collateralCurrency Collateral.
-     * @param borrowCurrency Borrowed currency.
+     * @summary Query user\'s collateralization ratio and remaining borrowable currencies
+     * @param collateralCurrency Collateral currency
+     * @param borrowCurrency Borrowed currency
      */
     public async getUserLtvInfo(
         collateralCurrency: string,
@@ -459,9 +459,9 @@ export class CollateralLoanApi {
 
     /**
      *
-     * @summary Query supported borrowing and collateral currencies.
+     * @summary Query supported borrowing and collateral currencies
      * @param opts Optional parameters
-     * @param opts.loanCurrency The parameter loan_currency is used to specify the borrowing currency. If loan_currency is not provided, the API will return all supported borrowing currencies.
+     * @param opts.loanCurrency Parameter loan_currency. If omitted, returns all supported borrowing currencies; if provided, returns the array of collateral currencies supported for that borrowing currency
      */
     public async listCollateralCurrencies(opts: {
         loanCurrency?: string;

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,55 +11,55 @@
 
 export class ContractStat {
     /**
-     * Stat timestamp.
+     * Stat timestamp
      */
     'time'?: number;
     /**
-     * Long/short account number ratio.
+     * Long/short taker ratio
      */
     'lsrTaker'?: number;
     /**
-     * Long/short taker size ratio.
+     * Long/short position user ratio
      */
     'lsrAccount'?: number;
     /**
-     * Long liquidation size.
+     * Long liquidation size (contracts)
      */
     'longLiqSize'?: number;
     /**
-     * Long liquidation amount(base currency).
+     * Long liquidation amount (base currency)
      */
     'longLiqAmount'?: number;
     /**
-     * Long liquidation volume(quote currency).
+     * Long liquidation volume (quote currency)
      */
     'longLiqUsd'?: number;
     /**
-     * Short liquidation size.
+     * Short liquidation size (contracts)
      */
     'shortLiqSize'?: number;
     /**
-     * Short liquidation amount(base currency).
+     * Short liquidation amount (base currency)
      */
     'shortLiqAmount'?: number;
     /**
-     * Short liquidation volume(quote currency).
+     * Short liquidation volume (quote currency)
      */
     'shortLiqUsd'?: number;
     /**
-     * Open interest size.
+     * Total open interest size (contracts)
      */
     'openInterest'?: number;
     /**
-     * Open interest volume(quote currency).
+     * Total open interest volume (quote currency)
      */
     'openInterestUsd'?: number;
     /**
-     * Top trader long/short account ratio.
+     * Top trader long/short account ratio
      */
     'topLsrAccount'?: number;
     /**
-     * Top trader long/short position ratio.
+     * Top trader long/short position ratio
      */
     'topLsrSize'?: number;
 

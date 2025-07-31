@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class OptionsSettlement {
     /**
-     * Last changed time of configuration.
+     * Last configuration update time
      */
     'time'?: number;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Settlement profit per size (quote currency).
+     * Settlement profit per contract (quote currency)
      */
     'profit'?: string;
     /**
-     * Settlement fee per size (quote currency).
+     * Settlement fee per contract (quote currency)
      */
     'fee'?: string;
     /**
-     * Strike price (quote currency).
+     * Strike price (quote currency)
      */
     'strikePrice'?: string;
     /**
-     * Settlement price (quote currency).
+     * Settlement price (quote currency)
      */
     'settlePrice'?: string;
 

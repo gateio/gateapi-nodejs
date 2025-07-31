@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,67 +11,67 @@
 
 export class Trade {
     /**
-     * Trade ID.
+     * Fill ID
      */
     'id'?: string;
     /**
-     * Trading time.
+     * Fill Time
      */
     'createTime'?: string;
     /**
-     * Trading time, with millisecond precision.
+     * Trading time, with millisecond precision
      */
     'createTimeMs'?: string;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair'?: string;
     /**
-     * Buy or sell order.
+     * Buy or sell order
      */
     'side'?: Trade.Side;
     /**
-     * Trade role. No value in public endpoints.
+     * Trade role, not returned in public endpoints
      */
     'role'?: Trade.Role;
     /**
-     * Trade amount.
+     * Trade amount
      */
     'amount'?: string;
     /**
-     * Order price.
+     * Order price
      */
     'price'?: string;
     /**
-     * Related order ID. No value in public endpoints.
+     * Related order ID, not returned in public endpoints
      */
     'orderId'?: string;
     /**
-     * Fee deducted. No value in public endpoints.
+     * Fee deducted, not returned in public endpoints
      */
     'fee'?: string;
     /**
-     * Fee currency unit. No value in public endpoints.
+     * Fee currency unit, not returned in public endpoints
      */
     'feeCurrency'?: string;
     /**
-     * Points used to deduct fee. No value in public endpoints.
+     * Points used to deduct fee, not returned in public endpoints
      */
     'pointFee'?: string;
     /**
-     * GT used to deduct fee. No value in public endpoints.
+     * GT used to deduct fee, not returned in public endpoints
      */
     'gtFee'?: string;
     /**
-     * The custom data that the user remarked when amending the order.
+     * The custom data that the user remarked when amending the order
      */
     'amendText'?: string;
     /**
-     * Represents a unique and consecutive trade ID within a single market. It is used to track and identify trades in the specific market
+     * Consecutive trade ID within a single market. Used to track and identify trades in the specific market
      */
     'sequenceId'?: string;
     /**
-     * User defined information. No value in public endpoints.
+     * User-defined information, not returned in public endpoints
      */
     'text'?: string;
 

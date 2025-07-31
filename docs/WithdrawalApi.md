@@ -4,18 +4,18 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**withdraw**](WithdrawalApi.md#withdraw) | **POST** /withdrawals | Withdraw.
-[**withdrawPushOrder**](WithdrawalApi.md#withdrawPushOrder) | **POST** /withdrawals/push | UID transfer.
-[**cancelWithdrawal**](WithdrawalApi.md#cancelWithdrawal) | **DELETE** /withdrawals/{withdrawal_id} | Cancel withdrawal with specified ID.
+[**withdraw**](WithdrawalApi.md#withdraw) | **POST** /withdrawals | Withdraw
+[**withdrawPushOrder**](WithdrawalApi.md#withdrawPushOrder) | **POST** /withdrawals/push | UID transfer
+[**cancelWithdrawal**](WithdrawalApi.md#cancelWithdrawal) | **DELETE** /withdrawals/{withdrawal_id} | Cancel withdrawal with specified ID
 
 
 ## withdraw
 
 > Promise<{ response: http.IncomingMessage; body: LedgerRecord; }> withdraw(ledgerRecord)
 
-Withdraw.
+Withdraw
 
-Withdrawals to Gate addresses do not incur transaction fees.
+If the recipient\&#39;s on-chain address is also Gate, no transaction fee will be charged
 
 ### Example
 
@@ -58,9 +58,9 @@ Promise<{ response: AxiosResponse; body: LedgerRecord; }> [LedgerRecord](LedgerR
 
 > Promise<{ response: http.IncomingMessage; body: UidPushWithdrawalResp; }> withdrawPushOrder(uidPushWithdrawal)
 
-UID transfer.
+UID transfer
 
-Transfers between main spot accounts are allowed; however, both parties cannot be sub-accounts
+Transfers between main spot accounts. Both parties cannot be sub-accounts
 
 ### Example
 
@@ -103,7 +103,7 @@ Promise<{ response: AxiosResponse; body: UidPushWithdrawalResp; }> [UidPushWithd
 
 > Promise<{ response: http.IncomingMessage; body: LedgerRecord; }> cancelWithdrawal(withdrawalId)
 
-Cancel withdrawal with specified ID.
+Cancel withdrawal with specified ID
 
 ### Example
 

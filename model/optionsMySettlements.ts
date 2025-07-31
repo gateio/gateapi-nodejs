@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,39 +11,39 @@
 
 export class OptionsMySettlements {
     /**
-     * Settlement time.
+     * Settlement time
      */
     'time'?: number;
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying'?: string;
     /**
-     * Options contract name.
+     * Options contract name
      */
     'contract'?: string;
     /**
-     * Strike price (quote currency).
+     * Strike price (quote currency)
      */
     'strikePrice'?: string;
     /**
-     * Settlement price (quote currency).
+     * Settlement price (quote currency)
      */
     'settlePrice'?: string;
     /**
-     * Size.
+     * Settlement size
      */
     'size'?: number;
     /**
-     * Settlement profit (quote currency).
+     * Settlement profit (quote currency)
      */
     'settleProfit'?: string;
     /**
-     * Fee (quote currency).
+     * Settlement fee (quote currency)
      */
     'fee'?: string;
     /**
-     * The accumulated profit and loss of opening a position, including premium, fee, settlement profit, etc. (quote currency)
+     * Accumulated profit and loss from opening positions, including premium, fees, settlement profit, etc. (quote currency)
      */
     'realisedPnl'?: string;
 

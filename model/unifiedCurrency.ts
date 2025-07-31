@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,27 +11,27 @@
 
 export class UnifiedCurrency {
     /**
-     * Currency name.
+     * Currency name
      */
     'name'?: string;
     /**
-     * Currency precision.
+     * Currency precision
      */
     'prec'?: string;
     /**
-     * The minimum debit limit is the unit of currency.
+     * Minimum borrowable limit, in currency units
      */
     'minBorrowAmount'?: string;
     /**
-     * The minimum debit limit is the unit of currency.
+     * User\'s maximum borrowable limit, in USDT
      */
     'userMaxBorrowAmount'?: string;
     /**
-     * The maximum debit limit for the platform is USDT.
+     * Platform\'s maximum borrowable limit, in USDT
      */
     'totalMaxBorrowAmount'?: string;
     /**
-     * Does the lending status  - `disable` : Loans are prohibited  - `enable`: Support lending
+     * Lending status  - `disable` : Lending prohibited  - `enable` : Lending supported
      */
     'loanStatus'?: string;
 

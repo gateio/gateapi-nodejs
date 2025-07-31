@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -12,28 +12,28 @@
 import { AccountDetailKey } from './accountDetailKey';
 
 /**
- * Account detail.
+ * Account details
  */
 export class AccountDetail {
     /**
-     * IP whitelist.
+     * IP Whitelist
      */
     'ipWhitelist'?: Array<string>;
     /**
-     * CurrencyPair whitelisting.
+     * Trading pair whitelist
      */
     'currencyPairs'?: Array<string>;
     /**
-     * User ID.
+     * User ID
      */
     'userId'?: number;
     /**
-     * User VIP level.
+     * User VIP level
      */
     'tier'?: number;
     'key'?: AccountDetailKey;
     /**
-     * User role: 0 - Normal user, 1 - Copy trading leader, follower, 3 - Both leader and follower
+     * User role: 0 - Normal user, 1 - Copy trading leader, 2 - Follower, 3 - Both leader and follower
      */
     'copyTradingRole'?: number;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class MultiCollateralItem {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Currency Index Price.
+     * Currency Index Price
      */
     'indexPrice'?: string;
     /**
-     * Discount.
+     * Discount
      */
     'discount'?: string;
 

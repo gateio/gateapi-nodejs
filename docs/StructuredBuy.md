@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pid** | **string** | Plan ID. | [optional] [default to undefined]
-**amount** | **string** | Purchase Amount. | [optional] [default to undefined]
+**pid** | **string** | Product ID | [optional] [default to undefined]
+**amount** | **string** | Buy Quantity | [optional] [default to undefined]
 

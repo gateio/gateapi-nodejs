@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,11 +10,11 @@
  */
 
 /**
- * Parameters of flash swap order creation.
+ * Parameters of flash swap order creation
  */
 export class FlashSwapPreviewRequest {
     /**
-     * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs.
+     * The name of the asset being sold, as obtained from the \"GET /flash_swap/currency_pairs\" API, which retrieves a list of supported flash swap currency pairs
      */
     'sellCurrency': string;
     /**
@@ -22,7 +22,7 @@ export class FlashSwapPreviewRequest {
      */
     'sellAmount'?: string;
     /**
-     * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs.
+     * The name of the asset being purchased, as obtained from the \"GET /flash_swap/currency_pairs\" API, which provides a list of supported flash swap currency pairs
      */
     'buyCurrency': string;
     /**

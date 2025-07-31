@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -48,8 +48,8 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List all futures contracts.
-     * @param settle Settle currency.
+     * @summary Query all futures contracts
+     * @param settle Settle currency
      */
     public async listDeliveryContracts(
         settle: 'usdt',
@@ -85,9 +85,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Get a single contract.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Query single contract information
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async getDeliveryContract(
         settle: 'usdt',
@@ -130,14 +130,14 @@ export class DeliveryApi {
     }
 
     /**
-     * Bids will be sorted by price from high to low, while asks sorted reversely.
-     * @summary Futures order book.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * Bids will be sorted by price from high to low, while asks sorted reversely
+     * @summary Query futures market depth information
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.interval Order depth. 0 means no aggregation is applied. default to 0.
-     * @param opts.limit Maximum number of order depth data in asks or bids.
-     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time.
+     * @param opts.interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+     * @param opts.limit Number of depth levels
+     * @param opts.withId Whether to return depth update ID. This ID increments by 1 each time depth changes
      */
     public async listDeliveryOrderBook(
         settle: 'usdt',
@@ -195,11 +195,11 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Futures trading history.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures market transaction records
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      * @param opts.lastId 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围
      * @param opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.
      * @param opts.to Specify end time in Unix seconds, default to current time.
@@ -264,14 +264,14 @@ export class DeliveryApi {
 
     /**
      * Return specified contract candlesticks. If prefix `contract` with `mark_`, the contract\'s mark price candlesticks are returned; if prefix with `index_`, index price candlesticks will be returned.  Maximum of 2000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
-     * @summary Get futures candlesticks.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Futures market K-line chart
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
      * @param opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
-     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision specified
-     * @param opts.limit Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
-     * @param opts.interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time
+     * @param opts.to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
+     * @param opts.limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected.
+     * @param opts.interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time
      */
     public async listDeliveryCandlesticks(
         settle: 'usdt',
@@ -357,10 +357,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List futures tickers.
-     * @param settle Settle currency.
+     * @summary Get all futures trading statistics
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
+     * @param opts.contract Futures contract
      */
     public async listDeliveryTickers(
         settle: 'usdt',
@@ -402,10 +402,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Futures insurance balance history.
-     * @param settle Settle currency.
+     * @summary Futures market insurance fund history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listDeliveryInsuranceLedger(
         settle: 'usdt',
@@ -449,8 +449,8 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Query futures account.
-     * @param settle Settle currency.
+     * @summary Get futures account
+     * @param settle Settle currency
      */
     public async listDeliveryAccounts(settle: 'usdt'): Promise<{ response: AxiosResponse; body: FuturesAccount }> {
         const localVarPath =
@@ -484,10 +484,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Query account book.
-     * @param settle Settle currency.
+     * @summary Query futures account change history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.limit Maximum number of records returned in a single list
      * @param opts.from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
      * @param opts.to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
      * @param opts.type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
@@ -552,8 +552,8 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List all positions of a user.
-     * @param settle Settle currency.
+     * @summary Get user position list
+     * @param settle Settle currency
      */
     public async listDeliveryPositions(settle: 'usdt'): Promise<{ response: AxiosResponse; body: Array<Position> }> {
         const localVarPath =
@@ -587,9 +587,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Get single position.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Get single position information
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async getDeliveryPosition(
         settle: 'usdt',
@@ -633,10 +633,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Update position margin.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param change Margin change amount, positive number increases, negative number.
+     * @summary Update position margin
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param change Margin change amount, positive number increases, negative number decreases
      */
     public async updateDeliveryPositionMargin(
         settle: 'usdt',
@@ -694,10 +694,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Update position leverage.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param leverage New position leverage.
+     * @summary Update position leverage
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param leverage New position leverage
      */
     public async updateDeliveryPositionLeverage(
         settle: 'usdt',
@@ -755,10 +755,10 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Update position risk limit.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
-     * @param riskLimit New position risk limit.
+     * @summary Update position risk limit
+     * @param settle Settle currency
+     * @param contract Futures contract
+     * @param riskLimit New position risk limit
      */
     public async updateDeliveryPositionRiskLimit(
         settle: 'usdt',
@@ -815,16 +815,16 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation.
-     * @summary List futures orders.
-     * @param settle Settle currency.
-     * @param status Only list the orders with this status.
+     * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
+     * @summary Query futures order list
+     * @param settle Settle currency
+     * @param status Query order list based on status
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
-     * @param opts.countTotal Whether to return total number matched. Default to 0(no return).
+     * @param opts.contract Futures contract
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+     * @param opts.countTotal Whether to return total number matched, defaults to 0 (no return)
      */
     public async listDeliveryOrders(
         settle: 'usdt',
@@ -889,9 +889,9 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation.
-     * @summary Create a futures order.
-     * @param settle Settle currency.
+     * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
+     * @summary Place futures order
+     * @param settle Settle currency
      * @param futuresOrder
      */
     public async createDeliveryOrder(
@@ -934,12 +934,12 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation.
-     * @summary Cancel all `open` orders matched.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
+     * @summary Cancel all orders with \'open\' status
+     * @param settle Settle currency
+     * @param contract Futures contract
      * @param opts Optional parameters
-     * @param opts.side All bids or asks. Both included if not specified.
+     * @param opts.side Specify all bids or all asks, both included if not specified
      */
     public async cancelDeliveryOrders(
         settle: 'usdt',
@@ -988,10 +988,10 @@ export class DeliveryApi {
     }
 
     /**
-     * Zero-filled order cannot be retrieved 10 minutes after order cancellation.
-     * @summary Get a single order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * Zero-fill orders cannot be retrieved 10 minutes after order cancellation
+     * @summary Query single order details
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async getDeliveryOrder(
         settle: 'usdt',
@@ -1035,9 +1035,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Cancel a single order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Cancel single order
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async cancelDeliveryOrder(
         settle: 'usdt',
@@ -1081,15 +1081,15 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List personal trading history.
-     * @param settle Settle currency.
+     * @summary Query personal trading records
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.order Futures order ID, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
-     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time.
-     * @param opts.countTotal Whether to return total number matched. Default to 0(no return).
+     * @param opts.contract Futures contract
+     * @param opts.order Futures order ID, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
+     * @param opts.lastId Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+     * @param opts.countTotal Whether to return total number matched, defaults to 0 (no return)
      */
     public async getMyDeliveryTrades(
         settle: 'usdt',
@@ -1158,11 +1158,11 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List position close history.
-     * @param settle Settle currency.
+     * @summary Query position close history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.limit Maximum number of records to be returned in a single list.
+     * @param opts.contract Futures contract
+     * @param opts.limit Maximum number of records returned in a single list
      */
     public async listDeliveryPositionClose(
         settle: 'usdt',
@@ -1208,12 +1208,12 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List liquidation history.
-     * @param settle Settle currency.
+     * @summary Query liquidation history
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.at Specify a liquidation timestamp.
+     * @param opts.contract Futures contract
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.at Specify liquidation timestamp
      */
     public async listDeliveryLiquidates(
         settle: 'usdt',
@@ -1263,12 +1263,12 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List settlement history.
-     * @param settle Settle currency.
+     * @summary Query settlement records
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.at Specify a settlement timestamp.
+     * @param opts.contract Futures contract
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.at Specify settlement timestamp
      */
     public async listDeliverySettlements(
         settle: 'usdt',
@@ -1318,12 +1318,12 @@ export class DeliveryApi {
 
     /**
      * When the \'contract\' parameter is not passed, the default is to query the risk limits for the top 100 markets.\'Limit\' and \'offset\' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
-     * @summary List risk limit tiers.
-     * @param settle Settle currency.
+     * @summary Query risk limit tiers
+     * @param settle Settle currency
      * @param opts Optional parameters
-     * @param opts.contract Futures contract.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listDeliveryRiskLimitTiers(
         settle: 'usdt',
@@ -1373,13 +1373,13 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary List All Price-triggered Orders.
-     * @param settle Settle currency.
-     * @param status Only list the orders with this status.
+     * @summary Query auto order list
+     * @param settle Settle currency
+     * @param status Query order list based on status
      * @param opts Optional parameters
-     * @param opts.contract Futures contract, return related data only if specified.
-     * @param opts.limit Maximum number of records to be returned in a single list.
-     * @param opts.offset List offset, starting from 0.
+     * @param opts.contract Futures contract, return related data only if specified
+     * @param opts.limit Maximum number of records returned in a single list
+     * @param opts.offset List offset, starting from 0
      */
     public async listPriceTriggeredDeliveryOrders(
         settle: 'usdt',
@@ -1445,8 +1445,8 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Create a price-triggered order.
-     * @param settle Settle currency.
+     * @summary Create price-triggered order
+     * @param settle Settle currency
      * @param futuresPriceTriggeredOrder
      */
     public async createPriceTriggeredDeliveryOrder(
@@ -1494,9 +1494,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Cancel All Price-triggered Orders.
-     * @param settle Settle currency.
-     * @param contract Futures contract.
+     * @summary Cancel all auto orders
+     * @param settle Settle currency
+     * @param contract Futures contract
      */
     public async cancelPriceTriggeredDeliveryOrderList(
         settle: 'usdt',
@@ -1548,9 +1548,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary Get a price-triggered order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Query single auto order details
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async getPriceTriggeredDeliveryOrder(
         settle: 'usdt',
@@ -1598,9 +1598,9 @@ export class DeliveryApi {
 
     /**
      *
-     * @summary cancel a price-triggered order.
-     * @param settle Settle currency.
-     * @param orderId Retrieve the data of the order with the specified ID.
+     * @summary Cancel single auto order
+     * @param settle Settle currency
+     * @param orderId ID returned when order is successfully created
      */
     public async cancelPriceTriggeredDeliveryOrder(
         settle: 'usdt',

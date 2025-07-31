@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -33,8 +33,8 @@ export class WithdrawalApi {
     }
 
     /**
-     * Withdrawals to Gate addresses do not incur transaction fees.
-     * @summary Withdraw.
+     * If the recipient\'s on-chain address is also Gate, no transaction fee will be charged
+     * @summary Withdraw
      * @param ledgerRecord
      */
     public async withdraw(ledgerRecord: LedgerRecord): Promise<{ response: AxiosResponse; body: LedgerRecord }> {
@@ -67,8 +67,8 @@ export class WithdrawalApi {
     }
 
     /**
-     * Transfers between main spot accounts are allowed; however, both parties cannot be sub-accounts
-     * @summary UID transfer.
+     * Transfers between main spot accounts. Both parties cannot be sub-accounts
+     * @summary UID transfer
      * @param uidPushWithdrawal
      */
     public async withdrawPushOrder(
@@ -106,7 +106,7 @@ export class WithdrawalApi {
 
     /**
      *
-     * @summary Cancel withdrawal with specified ID.
+     * @summary Cancel withdrawal with specified ID
      * @param withdrawalId
      */
     public async cancelWithdrawal(withdrawalId: string): Promise<{ response: AxiosResponse; body: LedgerRecord }> {

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -13,41 +13,41 @@ import { SpotPricePutOrder } from './spotPricePutOrder';
 import { SpotPriceTrigger } from './spotPriceTrigger';
 
 /**
- * Spot order detail.
+ * Spot price order details
  */
 export class SpotPriceTriggeredOrder {
     'trigger': SpotPriceTrigger;
     'put': SpotPricePutOrder;
     /**
-     * Auto order ID.
+     * Auto order ID
      */
     'id'?: number;
     /**
-     * User ID.
+     * User ID
      */
     'user'?: number;
     /**
-     * Currency pair.
+     * Market
      */
     'market': string;
     /**
-     * Creation time.
+     * Created time
      */
     'ctime'?: number;
     /**
-     * Finished time.
+     * End time
      */
     'ftime'?: number;
     /**
-     * ID of the newly created order on condition triggered.
+     * ID of the order created after trigger
      */
     'firedOrderId'?: number;
     /**
-     * Status  - open: open - cancelled: being manually cancelled - finish: successfully executed - failed: failed to execute - expired - expired
+     * Status  - open: Running - cancelled: Manually cancelled - finish: Successfully completed - failed: Failed to execute - expired: Expired
      */
     'status'?: string;
     /**
-     * Additional remarks on how the order was finished.
+     * Additional description of how the order was completed
      */
     'reason'?: string;
 

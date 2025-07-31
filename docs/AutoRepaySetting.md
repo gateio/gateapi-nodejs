@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **string** | Auto repayment status. &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled. | [optional] [default to undefined]
+**status** | **string** | Auto repayment status: &#x60;on&#x60; - enabled, &#x60;off&#x60; - disabled | [optional] [default to undefined]
 
 ## Enum: AutoRepaySetting.Status
 

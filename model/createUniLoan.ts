@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,27 +10,27 @@
  */
 
 /**
- * Borrow or repay.
+ * Borrow or repay
  */
 export class CreateUniLoan {
     /**
-     * Currency.
+     * Currency
      */
     'currency': string;
     /**
-     * type: borrow - borrow, repay - repay.
+     * Type: `borrow` - borrow, `repay` - repay
      */
     'type': CreateUniLoan.Type;
     /**
-     * The amount of lending or repaying.
+     * Borrow or repayment amount
      */
     'amount': string;
     /**
-     * Full repayment. Repay operation only. If the value is `true`, the amount will be ignored and repaid in full.
+     * Full repayment. For repayment operations only. When `true`, overrides `amount` and repays the full amount
      */
     'repaidAll'?: boolean;
     /**
-     * Currency pair.
+     * Currency pair
      */
     'currencyPair': string;
 

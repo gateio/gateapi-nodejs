@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,107 +10,107 @@
  */
 
 /**
- * Options contract detail.
+ * Options contract details
  */
 export class OptionsContract {
     /**
-     * Options contract name.
+     * Options contract name
      */
     'name'?: string;
     /**
-     * tag.
+     * Tag
      */
     'tag'?: string;
     /**
-     * Creation time.
+     * Created time
      */
     'createTime'?: number;
     /**
-     * Expiration time.
+     * Expiration time
      */
     'expirationTime'?: number;
     /**
-     * `true` means call options, while `false` is put options.
+     * `true` means call options, `false` means put options
      */
     'isCall'?: boolean;
     /**
-     * Multiplier used in converting from invoicing to settlement currency.
+     * Multiplier used in converting from invoicing to settlement currency
      */
     'multiplier'?: string;
     /**
-     * Underlying.
+     * Underlying
      */
     'underlying'?: string;
     /**
-     * Underlying price (quote currency).
+     * Underlying price (quote currency)
      */
     'underlyingPrice'?: string;
     /**
-     * Last trading price.
+     * Last trading price
      */
     'lastPrice'?: string;
     /**
-     * Current mark price (quote currency).
+     * Current mark price (quote currency)
      */
     'markPrice'?: string;
     /**
-     * Current index price (quote currency).
+     * Current index price (quote currency)
      */
     'indexPrice'?: string;
     /**
-     * Maker fee rate, where negative means rebate.
+     * Maker fee rate, negative values indicate rebates
      */
     'makerFeeRate'?: string;
     /**
-     * Taker fee rate.
+     * Taker fee rate
      */
     'takerFeeRate'?: string;
     /**
-     * Minimum order price increment.
+     * Minimum order price increment
      */
     'orderPriceRound'?: string;
     /**
-     * Minimum mark price increment.
+     * Minimum mark price increment
      */
     'markPriceRound'?: string;
     /**
-     * Minimum order size the contract allowed.
+     * Minimum order size allowed by the contract
      */
     'orderSizeMin'?: number;
     /**
-     * Maximum order size the contract allowed.
+     * Maximum order size allowed by the contract
      */
     'orderSizeMax'?: number;
     /**
-     * The positive and negative offset allowed between the order price and the current mark price, that `order_price` must meet the following conditions:   order_price is within the range of mark_price +/- order_price_deviate * underlying_price and does not distinguish between buy and sell orders
+     * The positive and negative offset allowed between the order price and the current mark price, that `order_price` must meet the following conditions:  order_price is within the range of mark_price +/- order_price_deviate * underlying_price and does not distinguish between buy and sell orders
      */
     'orderPriceDeviate'?: string;
     /**
-     * Referral fee rate discount.
+     * Trading fee discount for referred users
      */
     'refDiscountRate'?: string;
     /**
-     * Referrer commission rate.
+     * Commission rate for referrers
      */
     'refRebateRate'?: string;
     /**
-     * Current orderbook ID.
+     * Orderbook update ID
      */
     'orderbookId'?: number;
     /**
-     * Current trade ID.
+     * Current trade ID
      */
     'tradeId'?: number;
     /**
-     * Historical accumulated trade size.
+     * Historical cumulative trading volume
      */
     'tradeSize'?: number;
     /**
-     * Current total long position size.
+     * Current total long position size
      */
     'positionSize'?: number;
     /**
-     * Maximum number of open orders.
+     * Maximum number of pending orders
      */
     'ordersLimit'?: number;
 

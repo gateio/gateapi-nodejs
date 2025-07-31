@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -14,27 +14,27 @@
  */
 export class Transfer {
     /**
-     * Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
+     * Transfer currency name. For contract accounts, `currency` can be set to `POINT` (points) or supported settlement currencies (e.g., `BTC`, `USDT`)
      */
     'currency': string;
     /**
-     * Account to transfer from.
+     * Account to transfer from
      */
     'from': Transfer.From;
     /**
-     * Account to transfer to.
+     * Account to transfer to
      */
     'to': Transfer.To;
     /**
-     * Transfer amount.
+     * Transfer amount
      */
     'amount': string;
     /**
-     * Margin currency pair. Required if transfer from or to margin account.
+     * Margin trading pair. Required when transferring to or from margin account
      */
     'currencyPair'?: string;
     /**
-     * Futures settle currency. Required if transferring from or to futures account
+     * Contract settlement currency. Required when transferring to or from contract account
      */
     'settle'?: string;
 

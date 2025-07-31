@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,51 +10,51 @@
  */
 
 /**
- * Structured Products.
+ * Structured Investment
  */
 export class StructuredGetProjectList {
     /**
-     * Plan ID.
+     * Product ID
      */
     'id'?: number;
     /**
-     * product type:   `SharkFin2.0`-Shark Fin2.0  `BullishSharkFin`-Bullish Shark Fin  `BearishSharkFin`-Bearish Shark Fin `DoubleNoTouch`-Double No-Touch `RangeAccrual`-Range Accrual `SnowBall`-Snow Ball
+     * Product Type:   `SharkFin2.0`-Shark Fin 2.0  `BullishSharkFin`-Bullish Shark Fin  `BearishSharkFin`-Bearish Shark Fin `DoubleNoTouch`-Double No-Touch `RangeAccrual`-Range Accrual `SnowBall`-Snow Ball
      */
     'type'?: string;
     /**
-     * name.
+     * Product Name
      */
     'nameEn'?: string;
     /**
-     * Investment Currency.
+     * Investment Token
      */
     'investmentCoin'?: string;
     /**
-     * Investment term.
+     * Investment Period
      */
     'investmentPeriod'?: string;
     /**
-     * Minimum annual rate.
+     * Minimum Annual Rate
      */
     'minAnnualRate'?: string;
     /**
-     * Intermediate annual rate.
+     * Intermediate Annual Rate
      */
     'midAnnualRate'?: string;
     /**
-     * Maximum annual rate.
+     * Maximum Annual Rate
      */
     'maxAnnualRate'?: string;
     /**
-     * Watch market.
+     * Underlying Market
      */
     'watchMarket'?: string;
     /**
-     * start time.
+     * Start Time
      */
     'startTime'?: number;
     /**
-     * Finished time.
+     * End time
      */
     'endTime'?: number;
     /**

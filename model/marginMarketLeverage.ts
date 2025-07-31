@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,15 +10,15 @@
  */
 
 /**
- * Market leverage settings.
+ * Market leverage settings
  */
 export class MarginMarketLeverage {
     /**
-     * Currency pair.
+     * Market
      */
     'currencyPair'?: string;
     /**
-     * Position leverage.
+     * Position leverage
      */
     'leverage': string;
 

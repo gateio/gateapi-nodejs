@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,31 +10,31 @@
  */
 
 /**
- * Information for each tier of the risk limit ladder.
+ * Information for each tier of the gradient risk limit table
  */
 export class FuturesRiskLimitTier {
     /**
-     * Tier.
+     * Tier
      */
     'tier'?: number;
     /**
-     * Position risk limit.
+     * Position risk limit
      */
     'riskLimit'?: string;
     /**
-     * Initial margin rate.
+     * Initial margin rate
      */
     'initialRate'?: string;
     /**
-     * Maintenance margin rate.
+     * Maintenance margin rate
      */
     'maintenanceRate'?: string;
     /**
-     * Maximum leverage.
+     * Maximum leverage
      */
     'leverageMax'?: string;
     /**
-     * Maintenance margin quick calculation deduction.
+     * Maintenance margin quick calculation deduction amount
      */
     'deduction'?: string;
 

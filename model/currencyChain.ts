@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,15 +11,15 @@
 
 export class CurrencyChain {
     /**
-     * Chain name.
+     * Chain name
      */
     'chain'?: string;
     /**
-     * Chain name in Chinese.
+     * Chain name in Chinese
      */
     'nameCn'?: string;
     /**
-     * Chain name in English.
+     * Chain name in English
      */
     'nameEn'?: string;
     /**
@@ -27,19 +27,19 @@ export class CurrencyChain {
      */
     'contractAddress'?: string;
     /**
-     * If it is disabled. 0 means NOT being disabled.
+     * If it is disabled. 0 means NOT being disabled
      */
     'isDisabled'?: number;
     /**
-     * Is deposit disabled. 0 means not.
+     * Is deposit disabled. 0 means not disabled
      */
     'isDepositDisabled'?: number;
     /**
-     * Is withdrawal disabled. 0 means not.
+     * Is withdrawal disabled. 0 means not disabled
      */
     'isWithdrawDisabled'?: number;
     /**
-     * Withdrawal precision.
+     * Withdrawal precision
      */
     'decimal'?: string;
 

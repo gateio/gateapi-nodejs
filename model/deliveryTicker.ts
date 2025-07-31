@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,67 +11,67 @@
 
 export class DeliveryTicker {
     /**
-     * Futures contract.
+     * Futures contract
      */
     'contract'?: string;
     /**
-     * Last trading price.
+     * Last trading price
      */
     'last'?: string;
     /**
-     * Change percentage.
+     * Price change percentage. Negative values indicate price decrease, e.g. -7.45
      */
     'changePercentage'?: string;
     /**
-     * Contract total size.
+     * Contract total size
      */
     'totalSize'?: string;
     /**
-     * Lowest trading price in recent 24h.
+     * 24-hour lowest price
      */
     'low24h'?: string;
     /**
-     * Highest trading price in recent 24h.
+     * 24-hour highest price
      */
     'high24h'?: string;
     /**
-     * Trade size in recent 24h.
+     * 24-hour trading volume
      */
     'volume24h'?: string;
     /**
-     * Trade volumes in recent 24h in BTC(deprecated, use `volume_24h_base`, `volume_24h_quote`, `volume_24h_settle` instead)
+     * 24-hour trading volume in BTC (deprecated, use `volume_24h_base`, `volume_24h_quote`, `volume_24h_settle` instead)
      */
     'volume24hBtc'?: string;
     /**
-     * Trade volumes in recent 24h in USD(deprecated, use `volume_24h_base`, `volume_24h_quote`, `volume_24h_settle` instead)
+     * 24-hour trading volume in USD (deprecated, use `volume_24h_base`, `volume_24h_quote`, `volume_24h_settle` instead)
      */
     'volume24hUsd'?: string;
     /**
-     * Trade volume in recent 24h, in base currency.
+     * 24-hour trading volume in base currency
      */
     'volume24hBase'?: string;
     /**
-     * Trade volume in recent 24h, in quote currency.
+     * 24-hour trading volume in quote currency
      */
     'volume24hQuote'?: string;
     /**
-     * Trade volume in recent 24h, in settle currency.
+     * 24-hour trading volume in settle currency
      */
     'volume24hSettle'?: string;
     /**
-     * Recent mark price.
+     * Recent mark price
      */
     'markPrice'?: string;
     /**
-     * Funding rate.
+     * Funding rate
      */
     'fundingRate'?: string;
     /**
-     * Indicative Funding rate in next period. (deprecated. use `funding_rate`).
+     * Indicative Funding rate in next period. (deprecated. use `funding_rate`)
      */
     'fundingRateIndicative'?: string;
     /**
-     * Index price.
+     * Index price
      */
     'indexPrice'?: string;
     /**
@@ -79,27 +79,27 @@ export class DeliveryTicker {
      */
     'quantoBaseRate'?: string;
     /**
-     * Basis rate.
+     * Basis rate
      */
     'basisRate'?: string;
     /**
-     * Basis value.
+     * Basis value
      */
     'basisValue'?: string;
     /**
-     * Recent lowest ask.
+     * Recent lowest ask
      */
     'lowestAsk'?: string;
     /**
-     * The latest seller\'s lowest price order quantity.
+     * The latest seller\'s lowest price order quantity
      */
     'lowestSize'?: string;
     /**
-     * Recent highest bid.
+     * Recent highest bid
      */
     'highestBid'?: string;
     /**
-     * The latest buyer\'s highest price order volume.
+     * The latest buyer\'s highest price order volume
      */
     'highestSize'?: string;
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,51 +11,51 @@
 
 export class WithdrawStatus {
     /**
-     * Currency.
+     * Currency
      */
     'currency'?: string;
     /**
-     * Currency name.
+     * Currency name
      */
     'name'?: string;
     /**
-     * Currency Chinese name.
+     * Currency Chinese name
      */
     'nameCn'?: string;
     /**
-     * Deposits fee.
+     * Deposit fee
      */
     'deposit'?: string;
     /**
-     * Withdrawal fee rate percentage.
+     * Withdrawal fee rate percentage
      */
     'withdrawPercent'?: string;
     /**
-     * Fixed withdrawal fee.
+     * Fixed withdrawal fee
      */
     'withdrawFix'?: string;
     /**
-     * Daily allowed withdrawal amount.
+     * Daily allowed withdrawal amount
      */
     'withdrawDayLimit'?: string;
     /**
-     * Minimum withdrawal amount.
+     * Minimum withdrawal amount
      */
     'withdrawAmountMini'?: string;
     /**
-     * Daily withdrawal amount left.
+     * Daily withdrawal amount left
      */
     'withdrawDayLimitRemain'?: string;
     /**
-     * Maximum amount for each withdrawal.
+     * Maximum amount for each withdrawal
      */
     'withdrawEachtimeLimit'?: string;
     /**
-     * Fixed withdrawal fee on multiple chains.
+     * Fixed withdrawal fee on multiple chains
      */
     'withdrawFixOnChains'?: { [key: string]: string };
     /**
-     * Percentage withdrawal fee on multiple chains.
+     * Percentage withdrawal fee on multiple chains
      */
     'withdrawPercentOnChains'?: { [key: string]: string };
 

@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -10,23 +10,23 @@
  */
 
 /**
- * Blockchain Mining.
+ * Blockchain Mining
  */
 export class SwapCoin {
     /**
-     * Currency.
+     * Currency
      */
     'coin': string;
     /**
-     * 0 - Stake 1 - Redeem.
+     * 0 - Stake 1 - Redeem
      */
     'side': string;
     /**
-     * Size.
+     * Size
      */
     'amount': string;
     /**
-     * DeFi-type Mining Protocol Identifier.
+     * DeFi-type Mining Protocol Identifier
      */
     'pid'?: number;
 

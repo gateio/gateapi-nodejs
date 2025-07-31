@@ -1,6 +1,6 @@
 /**
  * Gate API
- * Welcome to Gate API  APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
+ * Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.
  *
  * Contact: support@mail.gate.com
  *
@@ -11,19 +11,19 @@
 
 export class UserSub {
     /**
-     * User ID.
+     * User ID
      */
     'uid'?: number;
     /**
-     * The system to which the user belongs (partner referral). If empty, it means not belonging to any system.
+     * User\'s system affiliation (partner/referral). Empty means not belonging to any system
      */
     'belong'?: string;
     /**
-     * Type (0-not in the system 1-direct subordinate agent 2-indirect subordinate agent 3-direct customer 4-indirect direct customer 5-ordinary user)
+     * Type (0-Not in system 1-Direct subordinate agent 2-Indirect subordinate agent 3-Direct direct customer 4-Indirect direct customer 5-Regular user)
      */
     'type'?: number;
     /**
-     * Inviter user ID.
+     * Inviter user ID
      */
     'refUid'?: number;
 
