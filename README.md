@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository has been archived and is no longer maintained. The project has moved to **[gate/gateapi-nodejs](https://github.com/gate/gateapi-nodejs)**. Please use the new repository for updates, issues, and pull requests.
+
 ## gate-api@7.1.8
 
 TypeScript NodeJS client for gate-api.
